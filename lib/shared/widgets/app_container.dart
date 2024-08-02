@@ -14,11 +14,12 @@ class _AppContainerState extends State<AppContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: AppSizing.height(context) * 0.1,
       padding: EdgeInsets.symmetric(horizontal: AppSizing.width(context) * 0.05, vertical: 20),
       width: AppSizing.width(context),
       decoration: BoxDecoration(
         border: Border(
-          bottom: BorderSide(color: Theme.of(context).highlightColor),
+          bottom: BorderSide(color: Theme.of(context).dividerColor),
         ),
       ),
       child: widget.child,

@@ -29,6 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   cupertino_icons: ^1.0.6
+  # dynamic_widget: ^5.0.0
   flutter:
     sdk: flutter
   flutter_code_editor: ^0.3.2
@@ -36,6 +37,7 @@ dependencies:
   flutter_svg: ^2.0.10+1
   flutter_syntax_view: ^4.1.0
   google_fonts: ^6.2.1
+  icons_flutter: ^0.0.4
   syntax_highlight: ^0.4.0
 
 dev_dependencies:

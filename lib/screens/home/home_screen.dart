@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterui/shared/data/components.dart';
+import 'package:flutterui/shared/utils/sizing.dart';
 import 'package:flutterui/shared/widgets/code_highlighter.dart';
 import 'package:flutterui/shared/widgets/code_highlighter2.dart';
 import 'package:flutterui/shared/widgets/layout.dart';
@@ -16,8 +17,18 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return AppLayout(
       children: [
-        Text("Loader"),
-        Card(child: CodeHighlighter(code: sampleCode)),
+        Text(
+          "Title of the Page",
+          style: Theme.of(context).textTheme.displayLarge,
+        ),
+        AppSizing.kh20Spacer(),
+        CodeHighlighter(
+          component: AllComponents.widgets[0],
+        ),
+        AppSizing.kh20Spacer(),
+        CodeHighlighter(
+          component: AllComponents.widgets[0],
+        ),
       ],
     );
   }

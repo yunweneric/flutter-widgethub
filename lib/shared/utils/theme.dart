@@ -6,39 +6,39 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   static TextTheme lightTextTheme = TextTheme(
-    displayLarge: GoogleFonts.poppins(
+    displayLarge: GoogleFonts.inter(
       color: AppColors.TEXTBLACK,
       fontWeight: FontWeight.w800,
       fontSize: 30.sp,
     ),
-    displayMedium: GoogleFonts.poppins(
+    displayMedium: GoogleFonts.inter(
       color: AppColors.TEXTBLACK,
       fontWeight: FontWeight.w600,
       fontSize: 16.sp,
     ),
-    displaySmall: GoogleFonts.poppins(
+    displaySmall: GoogleFonts.inter(
       color: AppColors.TEXTBLACK,
       fontWeight: FontWeight.w600,
       fontSize: 12.sp,
     ),
-    bodyMedium: GoogleFonts.poppins(
+    bodyMedium: GoogleFonts.inter(
       color: AppColors.TEXTBLACK,
       fontSize: 14.sp,
       height: 1.2,
       letterSpacing: 0.1,
       fontWeight: FontWeight.normal,
     ),
-    bodySmall: GoogleFonts.poppins(
+    bodySmall: GoogleFonts.inter(
       color: AppColors.TEXTBLACK,
       fontWeight: FontWeight.w400,
       fontSize: 12.sp,
     ),
-    labelMedium: GoogleFonts.poppins(
+    labelMedium: GoogleFonts.inter(
       color: AppColors.TEXTGREY,
       fontWeight: FontWeight.w400,
       fontSize: 14.sp,
     ),
-    labelSmall: GoogleFonts.poppins(
+    labelSmall: GoogleFonts.inter(
       color: AppColors.TEXTGREY,
       fontWeight: FontWeight.w400,
       fontSize: 12.sp,
@@ -46,39 +46,39 @@ class AppTheme {
     ),
   );
   static TextTheme darkTextTheme = TextTheme(
-    displayLarge: GoogleFonts.poppins(
+    displayLarge: GoogleFonts.inter(
       color: AppColors.TEXTWHITE,
       fontWeight: FontWeight.w800,
       fontSize: 30.sp,
     ),
-    displayMedium: GoogleFonts.poppins(
+    displayMedium: GoogleFonts.inter(
       color: AppColors.TEXTWHITE,
       fontWeight: FontWeight.w600,
       fontSize: 16.sp,
     ),
-    displaySmall: GoogleFonts.poppins(
+    displaySmall: GoogleFonts.inter(
       color: AppColors.TEXTWHITE,
       fontWeight: FontWeight.w600,
       fontSize: 12.sp,
     ),
-    bodyMedium: GoogleFonts.poppins(
-      color: AppColors.TEXTWHITE,
+    bodyMedium: GoogleFonts.inter(
+      color: AppColors.TEXTGREY,
       fontWeight: FontWeight.normal,
       fontSize: 14.sp,
       height: 1.2,
       letterSpacing: 0.1,
     ),
-    bodySmall: GoogleFonts.poppins(
-      color: AppColors.TEXTWHITE,
+    bodySmall: GoogleFonts.inter(
+      color: AppColors.TEXTGREY,
       fontWeight: FontWeight.w400,
       fontSize: 12.sp,
     ),
-    labelMedium: GoogleFonts.poppins(
+    labelMedium: GoogleFonts.inter(
       color: AppColors.TEXTGREY,
       fontWeight: FontWeight.w400,
       fontSize: 14.sp,
     ),
-    labelSmall: GoogleFonts.poppins(
+    labelSmall: GoogleFonts.inter(
       color: AppColors.TEXTGREY,
       fontWeight: FontWeight.w400,
       fontSize: 12.sp,
@@ -87,7 +87,7 @@ class AppTheme {
   );
 
   static InputDecorationTheme lightInputDecoration = InputDecorationTheme(
-    contentPadding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
+    contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 2.h),
     labelStyle: TextStyle(color: AppColors.TEXTGREY, fontSize: 16.sp, fontWeight: FontWeight.w400),
     hintStyle: TextStyle(color: AppColors.TEXTGREY, fontSize: 16.sp, fontWeight: FontWeight.w400),
     floatingLabelStyle: TextStyle(color: AppColors.TEXTGREY, fontSize: 12.sp),
@@ -100,7 +100,7 @@ class AppTheme {
   );
 
   static InputDecorationTheme darkInputDecoration = InputDecorationTheme(
-    contentPadding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
+    contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 2.h),
     labelStyle: TextStyle(color: AppColors.TEXTGREY, fontSize: 16.sp, fontWeight: FontWeight.w400),
     hintStyle: TextStyle(color: AppColors.TEXTGREY, fontSize: 16.sp, fontWeight: FontWeight.w400),
     floatingLabelStyle: TextStyle(color: AppColors.TEXTGREY, fontSize: 12.sp),
@@ -126,11 +126,11 @@ class AppTheme {
       inputDecorationTheme: lightInputDecoration,
       appBarTheme: AppBarTheme(
         backgroundColor: AppColors.BG,
-        titleTextStyle: GoogleFonts.poppins(color: AppColors.TEXTBLACK, fontWeight: FontWeight.w500, fontSize: 20.sp),
+        titleTextStyle: GoogleFonts.inter(color: AppColors.TEXTBLACK, fontWeight: FontWeight.w500, fontSize: 20.sp),
         elevation: 0,
       ),
       chipTheme: ChipThemeData(
-        backgroundColor: AppColors.TEXTWHITE,
+        backgroundColor: AppColors.TEXTGREY,
         side: const BorderSide(color: AppColors.BGGRAY2, width: 1),
         selectedColor: AppColors.PRIMARY,
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
@@ -151,17 +151,20 @@ class AppTheme {
       colorScheme: const ColorScheme.dark(primary: AppColors.PRIMARY, error: AppColors.RED),
       cardTheme: const CardTheme(color: AppColors.BGCARDDARK),
       textTheme: darkTextTheme,
-      highlightColor: AppColors.BGGRAY3,
+      dividerColor: AppColors.BGCARDDARK,
+      highlightColor: AppColors.BGGRAY,
       inputDecorationTheme: darkInputDecoration,
       appBarTheme: AppBarTheme(
         backgroundColor: AppColors.BGDARK,
-        titleTextStyle: GoogleFonts.poppins(
+        titleTextStyle: GoogleFonts.inter(
           color: AppColors.TEXTWHITE,
           fontWeight: FontWeight.w500,
           fontSize: 20.sp,
         ),
         elevation: 20,
       ),
+      iconTheme: IconThemeData(color: AppColors.TEXTGREY, size: 20.w),
+      primaryIconTheme: IconThemeData(color: AppColors.TEXTGREY, size: 20.w),
       chipTheme: ChipThemeData(
         backgroundColor: AppColors.BGCARDDARK,
         side: const BorderSide(color: AppColors.BGCARDDARK, width: 1),

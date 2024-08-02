@@ -1,29 +1,20 @@
-final sampleCode = '''import 'package:flutter/material.dart';
-import 'package:flutterui/shared/widgets/app_container.dart';
-class NavBar extends StatefulWidget {
-  const NavBar({super.key});
+import 'package:flutter/material.dart';
+import 'package:flutterui/components/buttons/classic_button.dart';
+import 'package:flutterui/shared/data/literals/nav_bar.dart';
+import 'package:flutterui/shared/widgets/nav_bar.dart';
 
-  @override
-  State<NavBar> createState() => _NavBarState();
+class Component {
+  final String code;
+  final Widget widget;
+
+  Component({required this.code, required this.widget});
 }
 
-class _NavBarState extends State<NavBar> {
-  @override
-  Widget build(BuildContext context) {
-    List<String> links = ["Get started", "Templates"];
-    return AppContainer(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text("Logo"),
-          Container(
-            child: Row(
-              children: [...links.map((item) => Text(item))],
-            ),
-          )
-        ],
-      ),
-    );
-  }
+class AllComponents {
+  static List<Component> widgets = [
+    Component(code: navBarLiteral, widget: ClassicButton()),
+    Component(code: navBarLiteral, widget: ClassicButton()),
+  ];
+
+  // List<Component> get getWidgets => widgets;
 }
-''';
