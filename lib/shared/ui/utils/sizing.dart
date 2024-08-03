@@ -35,15 +35,7 @@ class AppSizing {
     );
   }
 
-  static SizedBox minorInputSpacer(BuildContext context) => SizedBox(height: 5.h);
-
-  static SizedBox inputSpacer(BuildContext context) => SizedBox(height: height(context) / 50);
-
-  static SizedBox minorSpacer(BuildContext context) => SizedBox(height: height(context) / 30);
-
-  static SizedBox majorSpacer(BuildContext context) => SizedBox(height: height(context) / 10);
-
-  static EdgeInsets kMainPadding() => EdgeInsets.symmetric(horizontal: 20.w);
+  static EdgeInsets kMainPadding() => EdgeInsets.symmetric(horizontal: 40.w);
 
   static EdgeInsets kpadding(double width, double height) => EdgeInsets.symmetric(horizontal: width.w, vertical: height.h);
 
@@ -53,4 +45,8 @@ class AppSizing {
   static Widget khSpacer(double height) => SizedBox(height: height);
 
   static Widget kwSpacer(double width) => SizedBox(width: width);
+
+  static bool isMobile(context) => width(context) < 789;
+  static bool isTablet(context) => width(context) > 789 && width(context) < 992;
+  static bool isDesktop(context) => width(context) > 992;
 }

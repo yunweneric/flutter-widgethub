@@ -53,7 +53,7 @@ class _AppChipState extends State<AppChip> {
             if (widget.title != null)
               Text(
                 widget.title!,
-                style: TextStyle(color: isActive ? Theme.of(context).primaryColorDark : Theme.of(context).highlightColor),
+                style: TextStyle(color: isActive ? Theme.of(context).primaryColor : Theme.of(context).highlightColor),
               ),
           ],
         ),

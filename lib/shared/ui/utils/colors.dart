@@ -16,7 +16,7 @@ class AppColors {
   static const Color BGGRAY3 = Color(0XFFFBFBFB);
 
   // Card colors
-  static const Color CARDCOLOR = Color(0xFFFFFFFF);
+  static const Color CARDCOLOR = Color.fromARGB(255, 237, 237, 237);
   static const Color RED = Color(0xFFED1010);
   static const Color DARKRED = Color(0xFF8B2813);
 

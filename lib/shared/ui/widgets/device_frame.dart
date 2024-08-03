@@ -1,11 +1,20 @@
 import 'package:device_frame/device_frame.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutterui/shared/ui/utils/sizing.dart';
 
 class AppDeviceFrame extends StatefulWidget {
   final DeviceInfo deviceInfo;
   final Widget child;
-  const AppDeviceFrame({super.key, required this.deviceInfo, required this.child});
+  final Orientation? orientation;
+  final bool? isFrameVisible;
+  const AppDeviceFrame({
+    super.key,
+    required this.deviceInfo,
+    required this.child,
+    this.orientation = Orientation.portrait,
+    this.isFrameVisible = true,
+  });
 
   @override
   State<AppDeviceFrame> createState() => _AppDeviceFrameState();
@@ -14,11 +23,13 @@ class AppDeviceFrame extends StatefulWidget {
 class _AppDeviceFrameState extends State<AppDeviceFrame> {
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return SizedBox(
+      width: AppSizing.width(context),
+      height: AppSizing.isMobile(context) ? AppSizing.height(context) * 0.5 : AppSizing.height(context) * 0.6,
       child: DeviceFrame(
         device: widget.deviceInfo,
-        isFrameVisible: true,
-        orientation: Orientation.portrait,
+        isFrameVisible: widget.isFrameVisible!,
+        orientation: widget.orientation!,
         screen: widget.child,
       ),
     );

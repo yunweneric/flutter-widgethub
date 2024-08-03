@@ -6,39 +6,39 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   static TextTheme lightTextTheme = TextTheme(
-    displayLarge: GoogleFonts.inter(
+    displayLarge: GoogleFonts.dmSans(
       color: AppColors.TEXTBLACK,
       fontWeight: FontWeight.w800,
       fontSize: 30.sp,
     ),
-    displayMedium: GoogleFonts.inter(
+    displayMedium: GoogleFonts.dmSans(
       color: AppColors.TEXTBLACK,
       fontWeight: FontWeight.w600,
       fontSize: 16.sp,
     ),
-    displaySmall: GoogleFonts.inter(
+    displaySmall: GoogleFonts.dmSans(
       color: AppColors.TEXTBLACK,
       fontWeight: FontWeight.w600,
       fontSize: 12.sp,
     ),
-    bodyMedium: GoogleFonts.inter(
+    bodyMedium: GoogleFonts.dmSans(
       color: AppColors.TEXTBLACK,
       fontSize: 14.sp,
       height: 1.2,
       letterSpacing: 0.1,
       fontWeight: FontWeight.normal,
     ),
-    bodySmall: GoogleFonts.inter(
+    bodySmall: GoogleFonts.dmSans(
       color: AppColors.TEXTBLACK,
       fontWeight: FontWeight.w400,
       fontSize: 12.sp,
     ),
-    labelMedium: GoogleFonts.inter(
+    labelMedium: GoogleFonts.dmSans(
       color: AppColors.TEXTGREY,
       fontWeight: FontWeight.w400,
       fontSize: 14.sp,
     ),
-    labelSmall: GoogleFonts.inter(
+    labelSmall: GoogleFonts.dmSans(
       color: AppColors.TEXTGREY,
       fontWeight: FontWeight.w400,
       fontSize: 12.sp,
@@ -46,39 +46,39 @@ class AppTheme {
     ),
   );
   static TextTheme darkTextTheme = TextTheme(
-    displayLarge: GoogleFonts.inter(
+    displayLarge: GoogleFonts.dmSans(
       color: AppColors.TEXTWHITE,
       fontWeight: FontWeight.w800,
       fontSize: 30.sp,
     ),
-    displayMedium: GoogleFonts.inter(
+    displayMedium: GoogleFonts.dmSans(
       color: AppColors.TEXTWHITE,
       fontWeight: FontWeight.w600,
       fontSize: 16.sp,
     ),
-    displaySmall: GoogleFonts.inter(
+    displaySmall: GoogleFonts.dmSans(
       color: AppColors.TEXTWHITE,
       fontWeight: FontWeight.w600,
       fontSize: 12.sp,
     ),
-    bodyMedium: GoogleFonts.inter(
+    bodyMedium: GoogleFonts.dmSans(
       color: AppColors.TEXTGREY,
       fontWeight: FontWeight.normal,
       fontSize: 14.sp,
       height: 1.2,
       letterSpacing: 0.1,
     ),
-    bodySmall: GoogleFonts.inter(
+    bodySmall: GoogleFonts.dmSans(
       color: AppColors.TEXTGREY,
       fontWeight: FontWeight.w400,
       fontSize: 12.sp,
     ),
-    labelMedium: GoogleFonts.inter(
+    labelMedium: GoogleFonts.dmSans(
       color: AppColors.TEXTGREY,
       fontWeight: FontWeight.w400,
       fontSize: 14.sp,
     ),
-    labelSmall: GoogleFonts.inter(
+    labelSmall: GoogleFonts.dmSans(
       color: AppColors.TEXTGREY,
       fontWeight: FontWeight.w400,
       fontSize: 12.sp,
@@ -124,10 +124,26 @@ class AppTheme {
       cardColor: AppColors.CARDCOLOR,
       textTheme: lightTextTheme,
       inputDecorationTheme: lightInputDecoration,
+      dividerColor: AppColors.BGGRAY2,
       appBarTheme: AppBarTheme(
         backgroundColor: AppColors.BG,
-        titleTextStyle: GoogleFonts.inter(color: AppColors.TEXTBLACK, fontWeight: FontWeight.w500, fontSize: 20.sp),
+        titleTextStyle: GoogleFonts.dmSans(color: AppColors.TEXTBLACK, fontWeight: FontWeight.w500, fontSize: 20.sp),
         elevation: 0,
+      ),
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          padding: EdgeInsets.all(10.r),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
+        ),
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          elevation: 0,
+          side: BorderSide(color: AppColors.BGGRAY2),
+          backgroundColor: AppColors.CARDCOLOR,
+          padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 18.w),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
+        ),
       ),
       chipTheme: ChipThemeData(
         backgroundColor: AppColors.TEXTGREY,
@@ -138,6 +154,7 @@ class AppTheme {
       ),
       dividerTheme: DividerThemeData(color: AppColors.BGGRAY2),
       dialogTheme: DialogTheme(backgroundColor: AppColors.CARDCOLOR),
+      iconTheme: IconThemeData(color: AppColors.TEXTGREY, size: 20.w),
     );
   }
 
@@ -145,7 +162,7 @@ class AppTheme {
     return ThemeData(
       primaryColor: AppColors.PRIMARY,
       scaffoldBackgroundColor: AppColors.BGDARK,
-      primaryColorDark: AppColors.TEXTWHITE,
+      primaryColorDark: AppColors.BGGRAY,
       primaryColorLight: AppColors.TEXTBLACK,
       cardColor: AppColors.BGCARDDARK,
       colorScheme: const ColorScheme.dark(primary: AppColors.PRIMARY, error: AppColors.RED),
@@ -156,7 +173,7 @@ class AppTheme {
       inputDecorationTheme: darkInputDecoration,
       appBarTheme: AppBarTheme(
         backgroundColor: AppColors.BGDARK,
-        titleTextStyle: GoogleFonts.inter(
+        titleTextStyle: GoogleFonts.dmSans(
           color: AppColors.TEXTWHITE,
           fontWeight: FontWeight.w500,
           fontSize: 20.sp,
@@ -178,12 +195,17 @@ class AppTheme {
         style: TextButton.styleFrom(
           padding: EdgeInsets.all(10.r),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
+          textStyle: darkTextTheme.bodyMedium,
+          iconColor: AppColors.BGGRAY,
         ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 18.w),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
+          backgroundColor: AppColors.BGCARDDARK,
+          textStyle: darkTextTheme.bodyMedium,
+          iconColor: AppColors.BGGRAY,
         ),
       ),
     );

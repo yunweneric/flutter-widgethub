@@ -28,6 +28,8 @@ class MyApp extends StatelessWidget {
                 useInheritedMediaQuery: true,
                 builder: (context, child) {
                   final themeMode = state.themeMode == AppThemeMode.SYSTEM;
+                  final isDark = state.themeMode == AppThemeMode.DARK;
+                  print(["theme mode", themeMode, 'isLight', isDark]);
                   return MaterialApp(
                     debugShowCheckedModeBanner: false,
                     title: 'Flutter UI',
@@ -35,7 +37,7 @@ class MyApp extends StatelessWidget {
                     darkTheme: AppTheme.dark(),
                     themeMode: themeMode
                         ? ThemeMode.system
-                        : themeMode
+                        : isDark
                             ? ThemeMode.dark
                             : ThemeMode.light,
 
