@@ -44,18 +44,17 @@ class _AppChipState extends State<AppChip> {
             setState(() => isActive = !isActive);
             if (widget.onTap != null) widget.onTap!();
           },
-          child: Text(""),
-          // child: Row(
-          //   children: [
-          //     AppIcon(icon: widget.icon, color: isActive ? Theme.of(context).primaryColor : Theme.of(context).highlightColor),
-          //     if (widget.title != null) AppSizing.kwSpacer(5.w),
-          //     if (widget.title != null)
-          //       Text(
-          //         widget.title!,
-          //         style: TextStyle(color: isActive ? Theme.of(context).primaryColor : Theme.of(context).highlightColor),
-          //       ),
-          //   ],
-          // ),
+          child: Row(
+            children: [
+              AppIcon(icon: widget.icon, color: isActive ? Theme.of(context).primaryColor : Theme.of(context).highlightColor),
+              if (widget.title != null) AppSizing.kwSpacer(5.w),
+              if (widget.title != null)
+                Text(
+                  widget.title!,
+                  style: TextStyle(color: isActive ? Theme.of(context).primaryColor : Theme.of(context).highlightColor),
+                ),
+            ],
+          ),
         );
       },
     );

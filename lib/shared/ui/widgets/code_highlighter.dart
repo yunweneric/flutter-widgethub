@@ -113,7 +113,7 @@ class _CodeHighlighterState extends State<CodeHighlighter> {
               Opacity(
                 opacity: value,
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: 20.h),
+                  padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: AppSizing.isMobile(context) ? 10.h : 20.h),
                   width: AppSizing.width(context),
                   decoration: BoxDecoration(
                     border: Border.all(color: Theme.of(context).dividerColor),
@@ -121,7 +121,7 @@ class _CodeHighlighterState extends State<CodeHighlighter> {
                   ),
                   child: Text.rich(
                     content!,
-                    style: GoogleFonts.spaceMono(fontSize: 14.sp, height: 1.7.h, wordSpacing: 7.w),
+                    style: GoogleFonts.spaceMono(fontSize: AppSizing.isMobile(context) ? 10.sp : 14.sp, height: 1.7.h, wordSpacing: 7.w),
                   ),
                 ),
               ),

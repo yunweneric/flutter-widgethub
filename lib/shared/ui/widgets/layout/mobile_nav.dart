@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutterui/core/service_locators.dart';
+import 'package:flutterui/shared/data/enums/theme.dart';
+import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/shared/ui/utils/icons.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/icon.dart';
@@ -17,7 +20,7 @@ class _MobileNavState extends State<MobileNav> {
   Widget build(BuildContext context) {
     return Container(
       // height: 20.h,
-      padding: AppSizing.kMainPadding() + EdgeInsets.symmetric(vertical: 30.h),
+      padding: AppSizing.kMainPadding(context) + EdgeInsets.symmetric(vertical: 30.h),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -35,7 +38,16 @@ class _MobileNavState extends State<MobileNav> {
           ),
           Row(
             children: [
-              TextButton(onPressed: () {}, child: AppIcon(icon: AppIcons.moon)),
+              Builder(builder: (context) {
+                final theme = getIt.get<ThemeBloc>();
+                final isDark = Theme.of(context).brightness == Brightness.dark;
+                return TextButton(
+                  child: AppIcon(icon: isDark ? AppIcons.moon : AppIcons.sun),
+                  onPressed: () => theme.add(
+                    ChangeTheme(themeMode: isDark ? AppThemeMode.LIGHT : AppThemeMode.DARK),
+                  ),
+                );
+              }),
               TextButton(onPressed: () {}, child: AppIcon(icon: AppIcons.search)),
             ],
           )

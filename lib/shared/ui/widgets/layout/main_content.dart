@@ -20,7 +20,7 @@ class _MainContentState extends State<MainContent> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 40.w),
+          padding: AppSizing.kMainPadding(context),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,

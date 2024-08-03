@@ -35,7 +35,7 @@ class AppSizing {
     );
   }
 
-  static EdgeInsets kMainPadding() => EdgeInsets.symmetric(horizontal: 30.w);
+  static EdgeInsets kMainPadding(BuildContext context) => EdgeInsets.symmetric(horizontal: isMobile(context) ? 15.w : 30.w);
 
   static EdgeInsets kpadding(double width, double height) => EdgeInsets.symmetric(horizontal: width.w, vertical: height.h);
 
