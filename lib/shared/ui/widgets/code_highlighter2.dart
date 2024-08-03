@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_syntax_view/flutter_syntax_view.dart';
-import 'package:syntax_highlight/syntax_highlight.dart';
 
 class CodeHighlighter2 extends StatefulWidget {
   final String code;

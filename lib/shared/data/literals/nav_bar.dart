@@ -1,4 +1,4 @@
-final navBarLiteral = '''import 'package:flutter/material.dart';
+const navBarLiteral = '''import 'package:flutter/material.dart';
 import 'package:flutterui/shared/widgets/app_container.dart';
 class NavBar extends StatefulWidget {
   const NavBar({super.key});

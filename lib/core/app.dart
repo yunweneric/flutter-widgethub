@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
 
                     // themeMode: ThemeMode.system,
 
-                    home: HomeScreen(),
+                    home: const HomeScreen(),
                   );
                 },
               );

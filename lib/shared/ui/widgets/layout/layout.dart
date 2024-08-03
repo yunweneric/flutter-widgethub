@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
-import 'package:flutterui/shared/ui/widgets/footer_details.dart';
 import 'package:flutterui/shared/ui/widgets/layout/main_content.dart';
 import 'package:flutterui/shared/ui/widgets/layout/mobile_nav.dart';
 import 'package:flutterui/shared/ui/widgets/layout/nav_bar.dart';
 import 'package:flutterui/shared/ui/widgets/layout/side_bar.dart';
-import 'package:icons_flutter/icons_flutter.dart';
 
 class AppLayout extends StatefulWidget {
   final List<Widget> children;

@@ -16,56 +16,56 @@ class _SideBarState extends State<SideBar> {
     SideBarGroupModel(
       title: "Get started",
       items: [
-        SideBarItem(title: "Getting Started"),
-        SideBarItem(title: "PlayGround"),
+        const SideBarItem(title: "Getting Started"),
+        const SideBarItem(title: "PlayGround"),
       ],
     ),
     SideBarGroupModel(
       title: "Components",
       items: [
-        SideBarItem(title: "Buttons"),
-        SideBarItem(title: "Inputs"),
-        SideBarItem(title: "Chips"),
+        const SideBarItem(title: "Buttons"),
+        const SideBarItem(title: "Inputs"),
+        const SideBarItem(title: "Chips"),
       ],
     ),
     SideBarGroupModel(
       title: "Blocks",
       items: [
-        SideBarItem(title: "Banners"),
-        SideBarItem(title: "Features"),
-        SideBarItem(title: "Footers"),
+        const SideBarItem(title: "Banners"),
+        const SideBarItem(title: "Features"),
+        const SideBarItem(title: "Footers"),
       ],
     ),
     SideBarGroupModel(
       title: "Animations",
       items: [
-        SideBarItem(title: "Buttons"),
-        SideBarItem(title: "Inputs"),
-        SideBarItem(title: "Chips"),
+        const SideBarItem(title: "Buttons"),
+        const SideBarItem(title: "Inputs"),
+        const SideBarItem(title: "Chips"),
       ],
     ),
     SideBarGroupModel(
       title: "Effects",
       items: [
-        SideBarItem(title: "Buttons"),
-        SideBarItem(title: "Inputs"),
-        SideBarItem(title: "Chips"),
+        const SideBarItem(title: "Buttons"),
+        const SideBarItem(title: "Inputs"),
+        const SideBarItem(title: "Chips"),
       ],
     ),
     SideBarGroupModel(
       title: "Animations",
       items: [
-        SideBarItem(title: "Buttons"),
-        SideBarItem(title: "Inputs"),
-        SideBarItem(title: "Chips"),
+        const SideBarItem(title: "Buttons"),
+        const SideBarItem(title: "Inputs"),
+        const SideBarItem(title: "Chips"),
       ],
     ),
     SideBarGroupModel(
       title: "Animations",
       items: [
-        SideBarItem(title: "Buttons"),
-        SideBarItem(title: "Inputs"),
-        SideBarItem(title: "Chips"),
+        const SideBarItem(title: "Buttons"),
+        const SideBarItem(title: "Inputs"),
+        const SideBarItem(title: "Chips"),
       ],
     ),
   ];
@@ -103,7 +103,7 @@ class _SideBarState extends State<SideBar> {
                         children: [
                           ListView.builder(
                             itemCount: item.items.length,
-                            physics: NeverScrollableScrollPhysics(),
+                            physics: const NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
                             itemBuilder: (context, index) {
                               final sideBarItem = item.items[index];
@@ -119,12 +119,12 @@ class _SideBarState extends State<SideBar> {
                             width: 2.w,
                             child: ListView.builder(
                               itemCount: item.items.length,
-                              physics: NeverScrollableScrollPhysics(),
+                              physics: const NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
                               itemBuilder: (context, index) {
                                 final sideBarItem = item.items[index];
                                 return AnimatedContainer(
-                                  duration: Duration(milliseconds: 400),
+                                  duration: const Duration(milliseconds: 400),
                                   height: 30.h,
                                   color: activeSideBar == sideBarItem ? Theme.of(context).primaryColor : Theme.of(context).dividerColor,
                                   width: 2.w,
@@ -137,7 +137,7 @@ class _SideBarState extends State<SideBar> {
                     ],
                   ),
                 );
-              }).toList(),
+              }),
             ],
           ),
         ),

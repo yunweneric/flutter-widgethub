@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutterui/shared/ui/utils/icons.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
-import 'package:icons_flutter/icons_flutter.dart';
+import 'package:flutterui/shared/ui/widgets/icon.dart';
 
 class DetailedFooter extends StatefulWidget {
   const DetailedFooter({super.key});
@@ -19,45 +20,45 @@ class _DetailedFooterState extends State<DetailedFooter> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text("Build with 💙 by yunwen"),
+          const Text("Build with 💙 by yunwen"),
           Row(
             children: [
               TextButton.icon(
                 onPressed: () {},
                 label: AppSizing.isMobile(context)
-                    ? SizedBox.shrink()
+                    ? const SizedBox.shrink()
                     : Text(
                         "LinkedIn",
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
-                icon: Icon(
-                  AntDesign.linkedin_square,
+                icon: AppIcon(
+                  icon: AppIcons.linkedIn,
                   color: Theme.of(context).primaryColorDark,
                 ),
               ),
               TextButton.icon(
                 onPressed: () {},
                 label: AppSizing.isMobile(context)
-                    ? SizedBox.shrink()
+                    ? const SizedBox.shrink()
                     : Text(
                         "Twitter",
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
-                icon: Icon(
-                  AntDesign.twitter,
+                icon: AppIcon(
+                  icon: AppIcons.x,
                   color: Theme.of(context).primaryColorDark,
                 ),
               ),
               TextButton.icon(
                 onPressed: () {},
                 label: AppSizing.isMobile(context)
-                    ? SizedBox.shrink()
+                    ? const SizedBox.shrink()
                     : Text(
                         "Github",
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
-                icon: Icon(
-                  AntDesign.github,
+                icon: AppIcon(
+                  icon: AppIcons.github,
                   color: Theme.of(context).primaryColorDark,
                 ),
               )

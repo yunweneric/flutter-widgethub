@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:flutterui/shared/ui/utils/icons.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
-import 'package:icons_flutter/icons_flutter.dart';
+import 'package:flutterui/shared/ui/widgets/icon.dart';
 
 class MobileNav extends StatefulWidget {
   const MobileNav({super.key});
@@ -21,8 +23,8 @@ class _MobileNavState extends State<MobileNav> {
         children: [
           Row(
             children: [
-              TextButton(
-                child: Icon(Icons.menu),
+              ElevatedButton(
+                child: AppIcon(icon: AppIcons.menu),
                 onPressed: () {},
               ),
               TextButton(
@@ -33,9 +35,8 @@ class _MobileNavState extends State<MobileNav> {
           ),
           Row(
             children: [
-              Icon(FontAwesome.moon_o),
-              AppSizing.kwSpacer(20.w),
-              Icon(AntDesign.search1),
+              TextButton(onPressed: () {}, child: AppIcon(icon: AppIcons.moon)),
+              TextButton(onPressed: () {}, child: AppIcon(icon: AppIcons.search)),
             ],
           )
         ],

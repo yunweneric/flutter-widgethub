@@ -139,7 +139,7 @@ class AppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           elevation: 0,
-          side: BorderSide(color: AppColors.BGGRAY2),
+          side: const BorderSide(color: AppColors.BGGRAY2),
           backgroundColor: AppColors.CARDCOLOR,
           padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 18.w),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
@@ -152,8 +152,8 @@ class AppTheme {
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
         labelStyle: TextStyle(fontSize: 12.sp, color: AppColors.TEXTBLACK),
       ),
-      dividerTheme: DividerThemeData(color: AppColors.BGGRAY2),
-      dialogTheme: DialogTheme(backgroundColor: AppColors.CARDCOLOR),
+      dividerTheme: const DividerThemeData(color: AppColors.BGGRAY2),
+      dialogTheme: const DialogTheme(backgroundColor: AppColors.CARDCOLOR),
       iconTheme: IconThemeData(color: AppColors.TEXTGREY, size: 20.w),
     );
   }
@@ -189,8 +189,8 @@ class AppTheme {
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
         labelStyle: TextStyle(fontSize: 12.sp, color: AppColors.TEXTWHITE),
       ),
-      dividerTheme: DividerThemeData(color: AppColors.BGGRAY2),
-      dialogTheme: DialogTheme(backgroundColor: AppColors.BGCARDDARK),
+      dividerTheme: const DividerThemeData(color: AppColors.BGGRAY2),
+      dialogTheme: const DialogTheme(backgroundColor: AppColors.BGCARDDARK),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           padding: EdgeInsets.all(10.r),

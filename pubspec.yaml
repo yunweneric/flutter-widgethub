@@ -40,7 +40,6 @@ dependencies:
   flutter_syntax_view: ^4.1.0
   get_it: ^7.7.0
   google_fonts: ^6.2.1
-  icons_flutter: ^0.0.4
   syntax_highlight: ^0.4.0
 
 dev_dependencies:
@@ -52,9 +51,9 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter packages.
 flutter:
-  # The following line ensures that the Material Icons font is
+  # The following line ensures that the Material AppIcons font is
   # included with your application, so that you can use the icons in
-  # the material Icons class.
+  # the material AppIcons class.
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:

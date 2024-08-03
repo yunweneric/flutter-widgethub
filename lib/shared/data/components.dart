@@ -11,8 +11,8 @@ class Component {
 
 class AllComponents {
   static List<Component> widgets = [
-    Component(code: navBarLiteral, widget: ClassicButton()),
-    Component(code: navBarLiteral, widget: ClassicButton()),
+    Component(code: navBarLiteral, widget: const ClassicButton()),
+    Component(code: navBarLiteral, widget: const ClassicButton()),
   ];
 
   // List<Component> get getWidgets => widgets;

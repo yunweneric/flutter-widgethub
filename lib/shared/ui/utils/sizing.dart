@@ -16,26 +16,26 @@ class AppSizing {
 
   static OutlineInputBorder mainFocusBorder() {
     return OutlineInputBorder(
-      borderSide: BorderSide(width: 0.6, color: AppColors.DARKRED),
+      borderSide: const BorderSide(width: 0.6, color: AppColors.DARKRED),
       borderRadius: BorderRadius.all(Radius.circular(45.r)),
     );
   }
 
   static OutlineInputBorder focusedErrorBorder() {
     return OutlineInputBorder(
-      borderSide: BorderSide(width: 1, color: AppColors.RED),
+      borderSide: const BorderSide(width: 1, color: AppColors.RED),
       borderRadius: BorderRadius.all(Radius.circular(45.r)),
     );
   }
 
   static OutlineInputBorder errorBorder() {
     return OutlineInputBorder(
-      borderSide: BorderSide(width: 0.6, color: AppColors.RED),
+      borderSide: const BorderSide(width: 0.6, color: AppColors.RED),
       borderRadius: BorderRadius.all(Radius.circular(45.r)),
     );
   }
 
-  static EdgeInsets kMainPadding() => EdgeInsets.symmetric(horizontal: 40.w);
+  static EdgeInsets kMainPadding() => EdgeInsets.symmetric(horizontal: 30.w);
 
   static EdgeInsets kpadding(double width, double height) => EdgeInsets.symmetric(horizontal: width.w, vertical: height.h);
 

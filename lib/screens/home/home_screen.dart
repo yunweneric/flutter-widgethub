@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutterui/shared/data/components.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/code_highlighter.dart';
-import 'package:flutterui/shared/ui/widgets/code_highlighter2.dart';
 import 'package:flutterui/shared/ui/widgets/layout/layout.dart';
 
 class HomeScreen extends StatefulWidget {

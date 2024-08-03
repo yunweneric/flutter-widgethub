@@ -1,20 +1,17 @@
-import 'dart:math';
-
-import 'package:device_frame/device_frame.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/core/service_locators.dart';
 import 'package:flutterui/shared/data/components.dart';
 import 'package:flutterui/shared/data/enums/device_type.dart';
-import 'package:flutterui/shared/data/enums/theme.dart';
 import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
+import 'package:flutterui/shared/ui/utils/icons.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/utils/util.dart';
 import 'package:flutterui/shared/ui/widgets/chip.dart';
 import 'package:flutterui/shared/ui/widgets/device_frame.dart';
+import 'package:flutterui/shared/ui/widgets/icon.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:icons_flutter/icons_flutter.dart';
 import 'package:syntax_highlight/syntax_highlight.dart';
 
 class CodeHighlighter extends StatefulWidget {
@@ -62,10 +59,14 @@ class _CodeHighlighterState extends State<CodeHighlighter> {
   ];
 
   Widget generateDeviceIcon(AppDeviceType selectedDevice) {
-    if (selectedDevice == AppDeviceType.MOBILE) return Icon(AntDesign.mobile1, size: 20.w, color: Theme.of(context).highlightColor);
-    if (selectedDevice == AppDeviceType.TABLET) return Icon(AntDesign.tablet1, size: 20.w, color: Theme.of(context).highlightColor);
-    if (selectedDevice == AppDeviceType.DESKTOP) return Icon(AntDesign.laptop, size: 20.w, color: Theme.of(context).highlightColor);
-    return Icon(AntDesign.mobile1, size: 20.w, color: Theme.of(context).highlightColor);
+    if (selectedDevice == AppDeviceType.MOBILE) return icon(AppIcons.mobile);
+    if (selectedDevice == AppDeviceType.TABLET) return icon(AppIcons.tablet);
+    if (selectedDevice == AppDeviceType.DESKTOP) return icon(AppIcons.desktop);
+    return icon(AppIcons.mobile);
+  }
+
+  Widget icon(String file) {
+    return Transform.scale(scale: 0.6, child: AppIcon(icon: file, size: 10.w));
   }
 
   @override
@@ -152,22 +153,20 @@ class _CodeHighlighterState extends State<CodeHighlighter> {
               AppChip(
                 onTap: () => setState(() => isCode = false),
                 active: !isCode,
-                icon: const Icon(AntDesign.dashboard),
+                icon: AppIcons.tab,
                 title: AppSizing.isMobile(context) ? null : "Preview",
               ),
               AppSizing.kwSpacer(10.w),
               AppChip(
                 active: isCode,
                 onTap: () => setState(() => isCode = true),
-                icon: const Icon(AntDesign.codesquareo),
+                icon: AppIcons.code,
                 title: AppSizing.isMobile(context) ? null : "Code",
               ),
             ],
           ),
-
-          // if (AppSizing.isDesktop(context))
           TweenAnimationBuilder(
-            duration: Duration(milliseconds: 500),
+            duration: const Duration(milliseconds: 500),
             key: ValueKey(isCode),
             tween: isCode ? Tween<double>(begin: 1, end: 0) : Tween<double>(begin: -1, end: 0),
             builder: (context, value, child) {
@@ -178,7 +177,7 @@ class _CodeHighlighterState extends State<CodeHighlighter> {
                       ? Transform.translate(
                           offset: Offset(0, value * 20),
                           child: AppChip(
-                            icon: const Icon(AntDesign.copy1),
+                            icon: AppIcons.clipboard,
                             title: AppSizing.isMobile(context) ? null : "Copy",
                           ),
                         )
@@ -189,19 +188,22 @@ class _CodeHighlighterState extends State<CodeHighlighter> {
                               : Row(
                                   children: [
                                     AppChip(
-                                      icon: const Icon(AntDesign.mobile1),
+                                      active: selectedDevice == AppDeviceType.MOBILE,
+                                      icon: AppIcons.mobile,
                                       title: "Mobile",
                                       onTap: () => setState(() => selectedDevice = AppDeviceType.MOBILE),
                                     ),
                                     AppSizing.kwSpacer(10.w),
                                     AppChip(
-                                      icon: const Icon(AntDesign.tablet1),
+                                      active: selectedDevice == AppDeviceType.TABLET,
+                                      icon: AppIcons.tablet,
                                       title: "Tablet",
                                       onTap: () => setState(() => selectedDevice = AppDeviceType.TABLET),
                                     ),
                                     AppSizing.kwSpacer(10.w),
                                     AppChip(
-                                      icon: const Icon(AntDesign.laptop),
+                                      active: selectedDevice == AppDeviceType.DESKTOP,
+                                      icon: AppIcons.desktop,
                                       title: "Desktop",
                                       onTap: () => setState(() => selectedDevice = AppDeviceType.DESKTOP),
                                     )
@@ -221,7 +223,7 @@ class _CodeHighlighterState extends State<CodeHighlighter> {
     return Container(
       height: 500.h,
       color: Theme.of(context).cardColor,
-      child: Center(child: CircularProgressIndicator()),
+      child: const Center(child: CircularProgressIndicator()),
     );
   }
 
@@ -255,7 +257,7 @@ class _CodeHighlighterState extends State<CodeHighlighter> {
       onSelected: (device) => setState(() => selectedDevice = device),
       textStyle: Theme.of(context).textTheme.bodyMedium,
       leadingIcon: generateDeviceIcon(selectedDevice),
-      trailingIcon: Icon(Icons.keyboard_arrow_down_outlined, size: 20.w, color: Theme.of(context).highlightColor),
+      trailingIcon: AppIcon(icon: AppIcons.chevron_down, color: Theme.of(context).highlightColor),
       dropdownMenuEntries: menu,
       inputDecorationTheme: InputDecorationTheme(
         filled: true,

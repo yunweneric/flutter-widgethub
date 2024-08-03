@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:flutterui/shared/ui/utils/icons.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/footer_details.dart';
-import 'package:icons_flutter/icons_flutter.dart';
+import 'package:flutterui/shared/ui/widgets/icon.dart';
 
 class MainContent extends StatefulWidget {
   final List<Widget> children;
@@ -24,17 +26,17 @@ class _MainContentState extends State<MainContent> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AppSizing.khSpacer(30.h),
-              TextButton.icon(
+              ElevatedButton.icon(
                 onPressed: () {},
-                icon: Icon(AntDesign.back),
-                label: Text("Back"),
+                icon: AppIcon(icon: AppIcons.back),
+                label: const Text("Back"),
               ),
               AppSizing.khSpacer(30.h),
               ...widget.children,
               AppSizing.khSpacer(30.h),
               Divider(color: Theme.of(context).dividerColor),
               AppSizing.khSpacer(30.h),
-              DetailedFooter(),
+              const DetailedFooter(),
             ],
           ),
         ),
