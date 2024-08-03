@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/shared/utils/colors.dart';
-import 'package:flutterui/shared/utils/sizing.dart';
+import 'package:flutterui/shared/ui/utils/colors.dart';
+import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
@@ -174,6 +174,18 @@ class AppTheme {
       ),
       dividerTheme: DividerThemeData(color: AppColors.BGGRAY2),
       dialogTheme: DialogTheme(backgroundColor: AppColors.BGCARDDARK),
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          padding: EdgeInsets.all(10.r),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
+        ),
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 18.w),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
+        ),
+      ),
     );
   }
 }

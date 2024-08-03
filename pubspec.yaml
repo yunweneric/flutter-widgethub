@@ -28,14 +28,17 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  bloc: ^8.1.4
   cupertino_icons: ^1.0.6
-  # dynamic_widget: ^5.0.0
+  device_frame: ^1.2.0
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.1.6
   flutter_code_editor: ^0.3.2
   flutter_screenutil: ^5.9.3
   flutter_svg: ^2.0.10+1
   flutter_syntax_view: ^4.1.0
+  get_it: ^7.7.0
   google_fonts: ^6.2.1
   icons_flutter: ^0.0.4
   syntax_highlight: ^0.4.0

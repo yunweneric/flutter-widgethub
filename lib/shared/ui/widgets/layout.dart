@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/shared/utils/sizing.dart';
-import 'package:flutterui/shared/widgets/nav_bar.dart';
+import 'package:flutterui/shared/ui/utils/sizing.dart';
+import 'package:flutterui/shared/ui/widgets/nav_bar.dart';
 
 class AppLayout extends StatefulWidget {
   final List<Widget> children;
@@ -33,7 +33,7 @@ class _AppLayoutState extends State<AppLayout> {
                 ),
                 Container(
                   height: AppSizing.height(context) * 0.9,
-                  padding: AppSizing.kMainPadding(),
+                  padding: EdgeInsets.symmetric(horizontal: 40.w),
                   width: AppSizing.width(context) * 0.8,
                   child: mainContent(),
                 )

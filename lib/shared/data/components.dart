@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterui/components/buttons/classic_button.dart';
 import 'package:flutterui/shared/data/literals/nav_bar.dart';
-import 'package:flutterui/shared/widgets/nav_bar.dart';
+import 'package:flutterui/shared/ui/widgets/nav_bar.dart';
 
 class Component {
   final String code;

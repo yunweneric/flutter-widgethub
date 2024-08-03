@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterui/shared/utils/colors.dart';
-import 'package:flutterui/shared/utils/sizing.dart';
+import 'package:flutterui/shared/ui/utils/colors.dart';
+import 'package:flutterui/shared/ui/utils/sizing.dart';
 
 class AppContainer extends StatefulWidget {
   final Widget child;
@@ -15,7 +15,7 @@ class _AppContainerState extends State<AppContainer> {
   Widget build(BuildContext context) {
     return Container(
       height: AppSizing.height(context) * 0.1,
-      padding: EdgeInsets.symmetric(horizontal: AppSizing.width(context) * 0.05, vertical: 20),
+      padding: EdgeInsets.symmetric(horizontal: AppSizing.width(context) * 0.02, vertical: 20),
       width: AppSizing.width(context),
       decoration: BoxDecoration(
         border: Border(
