@@ -37,14 +37,13 @@ class _CategoryCardState extends State<CategoryCard> {
               },
               mouseCursor: WidgetStateMouseCursor.clickable,
               onHover: (status) {
-                print(['status', status]);
                 setState(() {
                   isHovered = status;
                 });
               },
               child: AnimatedScale(
                 scale: isHovered ? 1.0 : 0.8,
-                duration: Duration(milliseconds: 400),
+                duration: const Duration(milliseconds: 400),
                 child: Center(child: widget.component.widget),
               ),
             ),
