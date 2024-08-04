@@ -31,46 +31,46 @@ class _SideBarState extends State<SideBar> {
         const SideBarItem(title: "Chips", link: RouteNames.chips),
       ],
     ),
-    // SideBarGroupModel(
-    //   title: "Blocks",
-    //   items: [
-    //     const SideBarItem(title: "Banners", link: "#"),
-    //     const SideBarItem(title: "Features", link: "#"),
-    //     const SideBarItem(title: "Footers", link: "#"),
-    //   ],
-    // ),
-    // SideBarGroupModel(
-    //   title: "Animations",
-    //   items: [
-    //     const SideBarItem(title: "Buttons", link: "#"),
-    //     const SideBarItem(title: "Inputs", link: "#"),
-    //     const SideBarItem(title: "Chips", link: "#"),
-    //   ],
-    // ),
-    // SideBarGroupModel(
-    //   title: "Effects",
-    //   items: [
-    //     const SideBarItem(title: "Buttons", link: "#"),
-    //     const SideBarItem(title: "Inputs", link: "#"),
-    //     const SideBarItem(title: "Chips", link: "#"),
-    //   ],
-    // ),
-    // SideBarGroupModel(
-    //   title: "Animations",
-    //   items: [
-    //     const SideBarItem(title: "Buttons", link: "#"),
-    //     const SideBarItem(title: "Inputs", link: "#"),
-    //     const SideBarItem(title: "Chips", link: "#"),
-    //   ],
-    // ),
-    // SideBarGroupModel(
-    //   title: "Animations",
-    //   items: [
-    //     const SideBarItem(title: "Buttons", link: "#"),
-    //     const SideBarItem(title: "Inputs", link: "#"),
-    //     const SideBarItem(title: "Chips", link: "#"),
-    //   ],
-    // ),
+    SideBarGroupModel(
+      title: "Blocks",
+      items: [
+        const SideBarItem(title: "Banners", link: "#"),
+        const SideBarItem(title: "Features", link: "#"),
+        const SideBarItem(title: "Footers", link: "#"),
+      ],
+    ),
+    SideBarGroupModel(
+      title: "Animations",
+      items: [
+        const SideBarItem(title: "Buttons", link: "#"),
+        const SideBarItem(title: "Inputs", link: "#"),
+        const SideBarItem(title: "Chips", link: "#"),
+      ],
+    ),
+    SideBarGroupModel(
+      title: "Effects",
+      items: [
+        const SideBarItem(title: "Buttons", link: "#"),
+        const SideBarItem(title: "Inputs", link: "#"),
+        const SideBarItem(title: "Chips", link: "#"),
+      ],
+    ),
+    SideBarGroupModel(
+      title: "Animations",
+      items: [
+        const SideBarItem(title: "Buttons", link: "#"),
+        const SideBarItem(title: "Inputs", link: "#"),
+        const SideBarItem(title: "Chips", link: "#"),
+      ],
+    ),
+    SideBarGroupModel(
+      title: "Animations",
+      items: [
+        const SideBarItem(title: "Buttons", link: "#"),
+        const SideBarItem(title: "Inputs", link: "#"),
+        const SideBarItem(title: "Chips", link: "#"),
+      ],
+    ),
   ];
 
   SideBarItem? activeSideBar;

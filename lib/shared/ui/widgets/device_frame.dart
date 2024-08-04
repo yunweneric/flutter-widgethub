@@ -1,5 +1,6 @@
 import 'package:device_frame/device_frame.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 
 class AppDeviceFrame extends StatefulWidget {
@@ -29,7 +30,10 @@ class _AppDeviceFrameState extends State<AppDeviceFrame> {
       child: AnimatedSwitcher(
         duration: const Duration(milliseconds: 500),
         child: widget.isFrameVisible == false
-            ? Container(child: widget.child)
+            ? Container(
+                child: widget.child,
+                // width: AppSizing.kWPercentage(context, 40),
+              )
             : DeviceFrame(
                 device: widget.deviceInfo,
                 isFrameVisible: widget.isFrameVisible!,

@@ -43,7 +43,7 @@ class _CategoryCardState extends State<CategoryCard> {
                 });
               },
               child: AnimatedScale(
-                scale: isHovered ? 1.2 : 1,
+                scale: isHovered ? 1.0 : 0.8,
                 duration: Duration(milliseconds: 400),
                 child: Center(child: widget.component.widget),
               ),
