@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/core/service_locators.dart';
-import 'package:flutterui/shared/data/components.dart';
+import 'package:flutterui/components/export/data.dart';
 import 'package:flutterui/shared/data/enums/device_type.dart';
 import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/shared/ui/utils/icons.dart';
@@ -14,18 +14,18 @@ import 'package:flutterui/shared/ui/widgets/icon.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:syntax_highlight/syntax_highlight.dart';
 
-class CodeHighlighter extends StatefulWidget {
+class CodePreview extends StatefulWidget {
   final Component component;
-  const CodeHighlighter({super.key, required this.component});
+  const CodePreview({super.key, required this.component});
 
   @override
-  State<CodeHighlighter> createState() => _CodeHighlighterState();
+  State<CodePreview> createState() => _CodePreviewState();
 }
 
-class _CodeHighlighterState extends State<CodeHighlighter> {
+class _CodePreviewState extends State<CodePreview> {
   Future<Text>? futureWidget;
   TextSpan? content;
-  bool hideSizers = false;
+  bool hideSizers = true;
   bool isCode = false;
   AppDeviceType selectedDevice = AppDeviceType.MOBILE;
 
@@ -101,42 +101,22 @@ class _CodeHighlighterState extends State<CodeHighlighter> {
   }
 
   Widget codeAndPreview() {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 0.w, vertical: 0.h),
-      child: TweenAnimationBuilder(
-        duration: const Duration(milliseconds: 300),
-        key: ValueKey(isCode),
-        tween: isCode ? Tween<double>(begin: 0, end: 1) : Tween<double>(begin: 1, end: 0),
-        builder: (context, value, child) {
-          return Stack(
-            alignment: Alignment.center,
-            children: [
-              Opacity(
-                opacity: value,
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: AppSizing.isMobile(context) ? 10.h : 20.h),
-                  width: AppSizing.width(context),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Theme.of(context).dividerColor),
-                    borderRadius: AppSizing.radiusSm(),
-                  ),
-                  child: Text.rich(
-                    content!,
-                    style: GoogleFonts.spaceMono(fontSize: AppSizing.isMobile(context) ? 10.sp : 14.sp, height: 1.7.h, wordSpacing: 7.w),
-                  ),
-                ),
+    return AnimatedSwitcher(
+      duration: const Duration(milliseconds: 1300),
+      child: isCode
+          ? Container(
+              padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: AppSizing.isMobile(context) ? 10.h : 20.h),
+              width: AppSizing.width(context),
+              decoration: BoxDecoration(borderRadius: AppSizing.radiusSm()),
+              child: Text.rich(
+                content!,
+                style: GoogleFonts.spaceMono(fontSize: AppSizing.isMobile(context) ? 10.sp : 14.sp, height: 1.7.h, wordSpacing: 7.w),
               ),
-              Opacity(
-                opacity: 1 - value,
-                child: preview(
-                  child: widget.component.widget,
-                  device: selectedDevice,
-                ),
-              ),
-            ],
-          );
-        },
-      ),
+            )
+          : preview(
+              child: widget.component.widget,
+              device: selectedDevice,
+            ),
     );
   }
 
@@ -189,7 +169,7 @@ class _CodeHighlighterState extends State<CodeHighlighter> {
                               : Row(
                                   children: [
                                     TweenAnimationBuilder(
-                                      duration: Duration(milliseconds: 500),
+                                      duration: const Duration(milliseconds: 500),
                                       key: ValueKey(hideSizers),
                                       tween: !hideSizers ? Tween<double>(begin: 1, end: 0) : Tween<double>(begin: 0, end: 1),
                                       builder: (context, value, child) {
@@ -257,7 +237,8 @@ class _CodeHighlighterState extends State<CodeHighlighter> {
   }
 
   Widget preview({required Widget child, required AppDeviceType device}) {
-    return SizedBox(
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 0.w, vertical: 45.h),
       child: AnimatedSwitcher(
         duration: duration,
         child: AppDeviceFrame(

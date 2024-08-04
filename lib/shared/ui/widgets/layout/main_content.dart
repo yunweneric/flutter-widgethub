@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutterui/shared/ui/utils/icons.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
-import 'package:flutterui/shared/ui/widgets/footer_details.dart';
+import 'package:flutterui/shared/ui/widgets/component_footer.dart';
 import 'package:flutterui/shared/ui/widgets/icon.dart';
 
 class MainContent extends StatefulWidget {
@@ -26,19 +26,23 @@ class _MainContentState extends State<MainContent> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AppSizing.khSpacer(30.h),
-              ElevatedButton.icon(
+              TextButton.icon(
+                style: TextButton.styleFrom(
+                  padding: AppSizing.kpadding(15.w, 20.h),
+                  side: BorderSide(color: Theme.of(context).dividerColor),
+                ),
                 onPressed: () {
                   context.router.back();
                 },
                 icon: AppIcon(icon: AppIcons.back),
-                label: const Text("Back"),
+                label: Text("Back", style: Theme.of(context).textTheme.bodyMedium),
               ),
               AppSizing.khSpacer(30.h),
               ...widget.children,
               AppSizing.khSpacer(30.h),
               Divider(color: Theme.of(context).dividerColor),
               AppSizing.khSpacer(30.h),
-              const DetailedFooter(),
+              const ComponentFooter(),
             ],
           ),
         ),

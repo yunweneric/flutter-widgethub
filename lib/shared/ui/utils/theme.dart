@@ -124,7 +124,7 @@ class AppTheme {
       cardColor: AppColors.CARDCOLOR,
       textTheme: lightTextTheme,
       inputDecorationTheme: lightInputDecoration,
-      dividerColor: AppColors.BGGRAY2,
+      dividerColor: AppColors.BGGRAY2.withOpacity(0.3),
       appBarTheme: AppBarTheme(
         backgroundColor: AppColors.BG,
         titleTextStyle: GoogleFonts.dmSans(color: AppColors.TEXTBLACK, fontWeight: FontWeight.w500, fontSize: 20.sp),
@@ -139,7 +139,7 @@ class AppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           elevation: 0,
-          side: const BorderSide(color: AppColors.BGGRAY2),
+          // side: const BorderSide(color: AppColors.BGGRAY3),
           backgroundColor: AppColors.CARDCOLOR,
           padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 18.w),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),

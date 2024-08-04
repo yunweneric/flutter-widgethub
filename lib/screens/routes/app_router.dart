@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutterui/screens/routes/app_router.gr.dart';
+import 'package:flutterui/screens/routes/route_names.dart';
 
 @AutoRouterConfig(
   replaceInRouteName: 'Screen,Route',
@@ -19,10 +20,14 @@ class AppRouter extends RootStackRouter {
           path: '/components',
           page: ComponentLayoutRoute.page,
           children: [
-            AutoRoute(initial: true, page: ComponentCategoryRoute.page),
-            AutoRoute(path: 'buttons', page: ComponentDetailsRoute.page),
+            AutoRoute(path: "index", initial: true, page: ComponentCategoryRoute.page),
+            AutoRoute(path: RouteNames.buttons, page: ComponentDetailsRoute.page),
+            AutoRoute(path: RouteNames.notFound, page: NotFoundRoute.page),
+            AutoRoute(page: NotFoundRoute.page),
           ],
         ),
+        // AutoRoute(path: "/${RouteNames.notFound}", page: NotFoundRoute.page),
+        // AutoRoute(path: "*", page: NotFoundRoute.page),
       ];
 
   @override

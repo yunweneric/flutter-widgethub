@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/screens/categories/routes/category_router.dart';
 import 'package:flutterui/shared/ui/utils/icons.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
-import 'package:flutterui/shared/ui/widgets/footer_details.dart';
+import 'package:flutterui/shared/ui/widgets/component_footer.dart';
 import 'package:flutterui/shared/ui/widgets/icon.dart';
 import 'package:flutterui/shared/ui/widgets/layout/main_content.dart';
 import 'package:flutterui/shared/ui/widgets/layout/mobile_nav.dart';
@@ -78,7 +78,7 @@ class _AppLayoutState extends State<ComponentLayoutScreen> {
                       //           AppSizing.khSpacer(30.h),
                       //           Divider(color: Theme.of(context).dividerColor),
                       //           AppSizing.khSpacer(30.h),
-                      //           const DetailedFooter(),
+                      //           const ComponentFooter(),
                       //         ],
                       //       ),
                       //     ),

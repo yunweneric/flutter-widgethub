@@ -3,8 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SideBarItem extends StatefulWidget {
   final String title;
+  final String? link;
   final void Function()? onPressed;
-  const SideBarItem({super.key, required this.title, this.onPressed});
+  const SideBarItem({super.key, required this.title, this.onPressed, this.link});
 
   @override
   State<SideBarItem> createState() => _SideBarItemState();

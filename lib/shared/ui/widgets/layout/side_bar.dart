@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutterui/screens/routes/app_router.gr.dart';
+import 'package:flutterui/screens/routes/route_names.dart';
 import 'package:flutterui/shared/ui/models/sidebar_group_model.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/layout/side_bar_item.dart';
@@ -17,58 +19,58 @@ class _SideBarState extends State<SideBar> {
     SideBarGroupModel(
       title: "Get started",
       items: [
-        const SideBarItem(title: "Getting Started"),
-        const SideBarItem(title: "PlayGround"),
+        const SideBarItem(title: "Getting Started", link: RouteNames.gettingStarted),
+        const SideBarItem(title: "PlayGround", link: RouteNames.playground),
       ],
     ),
     SideBarGroupModel(
       title: "Components",
       items: [
-        const SideBarItem(title: "Buttons"),
-        const SideBarItem(title: "Inputs"),
-        const SideBarItem(title: "Chips"),
+        const SideBarItem(title: "Buttons", link: RouteNames.buttons),
+        const SideBarItem(title: "Inputs", link: RouteNames.inputs),
+        const SideBarItem(title: "Chips", link: RouteNames.chips),
       ],
     ),
-    SideBarGroupModel(
-      title: "Blocks",
-      items: [
-        const SideBarItem(title: "Banners"),
-        const SideBarItem(title: "Features"),
-        const SideBarItem(title: "Footers"),
-      ],
-    ),
-    SideBarGroupModel(
-      title: "Animations",
-      items: [
-        const SideBarItem(title: "Buttons"),
-        const SideBarItem(title: "Inputs"),
-        const SideBarItem(title: "Chips"),
-      ],
-    ),
-    SideBarGroupModel(
-      title: "Effects",
-      items: [
-        const SideBarItem(title: "Buttons"),
-        const SideBarItem(title: "Inputs"),
-        const SideBarItem(title: "Chips"),
-      ],
-    ),
-    SideBarGroupModel(
-      title: "Animations",
-      items: [
-        const SideBarItem(title: "Buttons"),
-        const SideBarItem(title: "Inputs"),
-        const SideBarItem(title: "Chips"),
-      ],
-    ),
-    SideBarGroupModel(
-      title: "Animations",
-      items: [
-        const SideBarItem(title: "Buttons"),
-        const SideBarItem(title: "Inputs"),
-        const SideBarItem(title: "Chips"),
-      ],
-    ),
+    // SideBarGroupModel(
+    //   title: "Blocks",
+    //   items: [
+    //     const SideBarItem(title: "Banners", link: "#"),
+    //     const SideBarItem(title: "Features", link: "#"),
+    //     const SideBarItem(title: "Footers", link: "#"),
+    //   ],
+    // ),
+    // SideBarGroupModel(
+    //   title: "Animations",
+    //   items: [
+    //     const SideBarItem(title: "Buttons", link: "#"),
+    //     const SideBarItem(title: "Inputs", link: "#"),
+    //     const SideBarItem(title: "Chips", link: "#"),
+    //   ],
+    // ),
+    // SideBarGroupModel(
+    //   title: "Effects",
+    //   items: [
+    //     const SideBarItem(title: "Buttons", link: "#"),
+    //     const SideBarItem(title: "Inputs", link: "#"),
+    //     const SideBarItem(title: "Chips", link: "#"),
+    //   ],
+    // ),
+    // SideBarGroupModel(
+    //   title: "Animations",
+    //   items: [
+    //     const SideBarItem(title: "Buttons", link: "#"),
+    //     const SideBarItem(title: "Inputs", link: "#"),
+    //     const SideBarItem(title: "Chips", link: "#"),
+    //   ],
+    // ),
+    // SideBarGroupModel(
+    //   title: "Animations",
+    //   items: [
+    //     const SideBarItem(title: "Buttons", link: "#"),
+    //     const SideBarItem(title: "Inputs", link: "#"),
+    //     const SideBarItem(title: "Chips", link: "#"),
+    //   ],
+    // ),
   ];
 
   SideBarItem? activeSideBar;
@@ -108,12 +110,22 @@ class _SideBarState extends State<SideBar> {
                             shrinkWrap: true,
                             itemBuilder: (context, index) {
                               final sideBarItem = item.items[index];
+                              // final routePath = item.items[index].title.split(" ").join("-").toLowerCase();
                               return SideBarItem(
                                 title: sideBarItem.title,
-                                onPressed: () => setState(() {
-                                  activeSideBar = sideBarItem;
-                                  context.router.pushNamed("/components/buttons");
-                                }),
+                                onPressed: () {
+                                  setState(() {
+                                    activeSideBar = sideBarItem;
+                                    // context.router.pushNamed("/components/$routePath");
+                                  });
+                                  // context.router.pushNamed("/buttons")
+
+                                  final activeRoute = context.router.currentPath;
+                                  context.router.pushNamed("/components/${sideBarItem.link}");
+                                  print(["activeRoute", activeRoute]);
+
+                                  // context.router.push(ComponentDetailsRoute());
+                                },
                               );
                             },
                           ),
@@ -125,10 +137,15 @@ class _SideBarState extends State<SideBar> {
                               shrinkWrap: true,
                               itemBuilder: (context, index) {
                                 final sideBarItem = item.items[index];
+                                final activeRoute = context.router.currentPath;
+                                final isActive = activeRoute == "/components/${sideBarItem.link}";
+
+                                print(['isActive ${sideBarItem.link}', isActive]);
+                                print(['activeRoute', activeRoute]);
                                 return AnimatedContainer(
                                   duration: const Duration(milliseconds: 400),
                                   height: 30.h,
-                                  color: activeSideBar == sideBarItem ? Theme.of(context).primaryColor : Theme.of(context).dividerColor,
+                                  color: isActive ? Theme.of(context).primaryColor : Theme.of(context).dividerColor,
                                   width: 2.w,
                                 );
                               },

@@ -13,6 +13,7 @@ class AppIcons {
   static const search = "assets/icons/search.svg";
   static const moon = "assets/icons/moon.svg";
   static const back = "assets/icons/back.svg";
+  static const next = "assets/icons/next.svg";
   static const linkedIn = "assets/icons/linkedIn.svg";
   static const x = "assets/icons/x.svg";
 }

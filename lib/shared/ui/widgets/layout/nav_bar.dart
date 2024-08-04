@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutterui/core/service_locators.dart';
 import 'package:flutterui/shared/data/enums/theme.dart';
 import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
+import 'package:flutterui/shared/ui/models/nav_link.dart';
 import 'package:flutterui/shared/ui/utils/icons.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/app_container.dart';
@@ -18,10 +20,13 @@ class NavBar extends StatefulWidget {
 }
 
 class _NavBarState extends State<NavBar> {
+  List<NavLink> links = [
+    NavLink(title: "Components", path: "/components"),
+    NavLink(title: "Templates", path: "/templates"),
+    NavLink(title: "Pricing", path: "/pricing"),
+  ];
   @override
   Widget build(BuildContext context) {
-    List<String> links = ["Component", "Templates", 'Pricing'];
-    List<String> socials = ["Twitter", "LinkedIn"];
     return BlocBuilder<ThemeBloc, ThemeState>(
       builder: (context, state) {
         return AppContainer(
@@ -32,21 +37,32 @@ class _NavBarState extends State<NavBar> {
                 children: [
                   TextButton(
                     child: Text("Logo", style: Theme.of(context).textTheme.displayLarge),
-                    onPressed: () {},
+                    onPressed: () {
+                      context.router.pushNamed("/");
+                    },
                   ),
                   AppSizing.kwSpacer(50.w),
                   Container(
                     child: Row(
                       children: [
-                        ...links.map(
-                          (item) => Padding(
+                        ...links.map((item) {
+                          final activeRoute = context.router.currentPath;
+                          final isActive = activeRoute == item.path;
+                          return Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: TextButton(
-                              onPressed: () {},
-                              child: Text(item, style: Theme.of(context).textTheme.bodyMedium),
+                              onPressed: () {
+                                context.router.pushNamed(item.path);
+                              },
+                              child: Text(
+                                item.title,
+                                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                      color: isActive ? Theme.of(context).primaryColor : null,
+                                    ),
+                              ),
                             ),
-                          ),
-                        )
+                          );
+                        })
                       ],
                     ),
                   )

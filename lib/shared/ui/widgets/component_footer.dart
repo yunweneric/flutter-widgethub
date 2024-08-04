@@ -4,14 +4,14 @@ import 'package:flutterui/shared/ui/utils/icons.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/icon.dart';
 
-class DetailedFooter extends StatefulWidget {
-  const DetailedFooter({super.key});
+class ComponentFooter extends StatefulWidget {
+  const ComponentFooter({super.key});
 
   @override
-  State<DetailedFooter> createState() => _DetailedFooterState();
+  State<ComponentFooter> createState() => _DetailedFooterState();
 }
 
-class _DetailedFooterState extends State<DetailedFooter> {
+class _DetailedFooterState extends State<ComponentFooter> {
   @override
   Widget build(BuildContext context) {
     return Container(
