@@ -9,9 +9,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i5;
-import 'package:flutter/material.dart' as _i7;
-import 'package:flutterui/screens/categories/routes/category_router.dart'
-    as _i6;
+import 'package:flutter/material.dart' as _i6;
 import 'package:flutterui/screens/categories/screens/component_category.dart'
     as _i1;
 import 'package:flutterui/screens/categories/screens/component_details.dart'
@@ -19,44 +17,6 @@ import 'package:flutterui/screens/categories/screens/component_details.dart'
 import 'package:flutterui/screens/categories/widget/component_layout.dart'
     as _i3;
 import 'package:flutterui/screens/home/home_screen.dart' as _i4;
-
-abstract class $AppRouter extends _i5.RootStackRouter {
-  $AppRouter({super.navigatorKey});
-
-  @override
-  final Map<String, _i5.PageFactory> pagesMap = {
-    ComponentCategoryRoute.name: (routeData) {
-      return _i5.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i1.ComponentCategoryScreen(),
-      );
-    },
-    ComponentDetailsRoute.name: (routeData) {
-      return _i5.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i2.ComponentDetailsScreen(),
-      );
-    },
-    ComponentLayoutRoute.name: (routeData) {
-      final args = routeData.argsAs<ComponentLayoutRouteArgs>(
-          orElse: () => const ComponentLayoutRouteArgs());
-      return _i5.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i3.ComponentLayoutScreen(
-          key: args.key,
-          widgets: args.widgets,
-        ),
-      );
-    },
-    HomeRoute.name: (routeData) {
-      return _i5.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i4.HomeScreen(),
-      );
-    },
-    ..._i6.DashboardRouter().pagesMap,
-  };
-}
 
 /// generated route for
 /// [_i1.ComponentCategoryScreen]
@@ -69,7 +29,12 @@ class ComponentCategoryRoute extends _i5.PageRouteInfo<void> {
 
   static const String name = 'ComponentCategoryRoute';
 
-  static const _i5.PageInfo<void> page = _i5.PageInfo<void>(name);
+  static _i5.PageInfo page = _i5.PageInfo(
+    name,
+    builder: (data) {
+      return const _i1.ComponentCategoryScreen();
+    },
+  );
 }
 
 /// generated route for
@@ -83,15 +48,20 @@ class ComponentDetailsRoute extends _i5.PageRouteInfo<void> {
 
   static const String name = 'ComponentDetailsRoute';
 
-  static const _i5.PageInfo<void> page = _i5.PageInfo<void>(name);
+  static _i5.PageInfo page = _i5.PageInfo(
+    name,
+    builder: (data) {
+      return const _i2.ComponentDetailsScreen();
+    },
+  );
 }
 
 /// generated route for
 /// [_i3.ComponentLayoutScreen]
 class ComponentLayoutRoute extends _i5.PageRouteInfo<ComponentLayoutRouteArgs> {
   ComponentLayoutRoute({
-    _i7.Key? key,
-    List<_i7.Widget>? widgets,
+    _i6.Key? key,
+    List<_i6.Widget>? widgets,
     List<_i5.PageRouteInfo>? children,
   }) : super(
           ComponentLayoutRoute.name,
@@ -104,8 +74,17 @@ class ComponentLayoutRoute extends _i5.PageRouteInfo<ComponentLayoutRouteArgs> {
 
   static const String name = 'ComponentLayoutRoute';
 
-  static const _i5.PageInfo<ComponentLayoutRouteArgs> page =
-      _i5.PageInfo<ComponentLayoutRouteArgs>(name);
+  static _i5.PageInfo page = _i5.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ComponentLayoutRouteArgs>(
+          orElse: () => const ComponentLayoutRouteArgs());
+      return _i3.ComponentLayoutScreen(
+        key: args.key,
+        widgets: args.widgets,
+      );
+    },
+  );
 }
 
 class ComponentLayoutRouteArgs {
@@ -114,9 +93,9 @@ class ComponentLayoutRouteArgs {
     this.widgets,
   });
 
-  final _i7.Key? key;
+  final _i6.Key? key;
 
-  final List<_i7.Widget>? widgets;
+  final List<_i6.Widget>? widgets;
 
   @override
   String toString() {
@@ -135,5 +114,10 @@ class HomeRoute extends _i5.PageRouteInfo<void> {
 
   static const String name = 'HomeRoute';
 
-  static const _i5.PageInfo<void> page = _i5.PageInfo<void>(name);
+  static _i5.PageInfo page = _i5.PageInfo(
+    name,
+    builder: (data) {
+      return const _i4.HomeScreen();
+    },
+  );
 }

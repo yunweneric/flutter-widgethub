@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterui/shared/data/components.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/code_highlighter.dart';
-import 'package:flutterui/screens/categories/widget/component_layout.dart';
+import 'package:flutterui/shared/ui/widgets/layout/main_content.dart';
 
 @RoutePage()
 class ComponentDetailsScreen extends StatefulWidget {
@@ -16,7 +16,7 @@ class ComponentDetailsScreen extends StatefulWidget {
 class _HomeScreenState extends State<ComponentDetailsScreen> {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return MainContent(
       children: [
         Text(
           "Title of the Page",

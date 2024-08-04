@@ -6,17 +6,20 @@ import 'package:flutterui/screens/routes/app_router.gr.dart';
   // generateForDir: ["lib/screens/home"],
   // modules: [DashboardRouter],
 )
-class AppRouter extends $AppRouter {
+class AppRouter extends RootStackRouter {
+  @override
+  RouteType get defaultRouteType => const RouteType.custom(
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+      );
+
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(path: '/', page: HomeRoute.page),
-        // ...DashboardRouter().routes,
-
+        AutoRoute(initial: true, page: HomeRoute.page),
         AutoRoute(
           path: '/components',
           page: ComponentLayoutRoute.page,
           children: [
-            AutoRoute(path: '', page: ComponentCategoryRoute.page),
+            AutoRoute(initial: true, page: ComponentCategoryRoute.page),
             AutoRoute(path: 'buttons', page: ComponentDetailsRoute.page),
           ],
         ),

@@ -25,6 +25,7 @@ class CodeHighlighter extends StatefulWidget {
 class _CodeHighlighterState extends State<CodeHighlighter> {
   Future<Text>? futureWidget;
   TextSpan? content;
+  bool hideSizers = false;
   bool isCode = false;
   AppDeviceType selectedDevice = AppDeviceType.MOBILE;
 
@@ -187,30 +188,50 @@ class _CodeHighlighterState extends State<CodeHighlighter> {
                               ? selectDevices()
                               : Row(
                                   children: [
-                                    AppChip(
-                                      active: selectedDevice == AppDeviceType.MOBILE,
-                                      icon: AppIcons.mobile,
-                                      title: "Mobile",
-                                      onTap: () => setState(() => selectedDevice = AppDeviceType.MOBILE),
+                                    TweenAnimationBuilder(
+                                      duration: Duration(milliseconds: 500),
+                                      key: ValueKey(hideSizers),
+                                      tween: !hideSizers ? Tween<double>(begin: 1, end: 0) : Tween<double>(begin: 0, end: 1),
+                                      builder: (context, value, child) {
+                                        return Transform(
+                                          alignment: Alignment.centerRight,
+                                          transform: Matrix4.identity()..scale(value),
+                                          child: Opacity(
+                                            opacity: value,
+                                            child: Row(
+                                              children: [
+                                                AppChip(
+                                                  active: selectedDevice == AppDeviceType.MOBILE,
+                                                  icon: AppIcons.mobile,
+                                                  title: "Mobile",
+                                                  onTap: () => setState(() => selectedDevice = AppDeviceType.MOBILE),
+                                                ),
+                                                AppSizing.kwSpacer(10.w),
+                                                AppChip(
+                                                  active: selectedDevice == AppDeviceType.TABLET,
+                                                  icon: AppIcons.tablet,
+                                                  title: "Tablet",
+                                                  onTap: () => setState(() => selectedDevice = AppDeviceType.TABLET),
+                                                ),
+                                                AppSizing.kwSpacer(10.w),
+                                                AppChip(
+                                                  active: selectedDevice == AppDeviceType.DESKTOP,
+                                                  icon: AppIcons.desktop,
+                                                  title: "Desktop",
+                                                  onTap: () => setState(() => selectedDevice = AppDeviceType.DESKTOP),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        );
+                                      },
                                     ),
                                     AppSizing.kwSpacer(10.w),
-                                    AppChip(
-                                      active: selectedDevice == AppDeviceType.TABLET,
-                                      icon: AppIcons.tablet,
-                                      title: "Tablet",
-                                      onTap: () => setState(() => selectedDevice = AppDeviceType.TABLET),
-                                    ),
-                                    AppSizing.kwSpacer(10.w),
-                                    AppChip(
-                                      active: selectedDevice == AppDeviceType.DESKTOP,
-                                      icon: AppIcons.desktop,
-                                      title: "Desktop",
-                                      onTap: () => setState(() => selectedDevice = AppDeviceType.DESKTOP),
-                                    ),
                                     Switch.adaptive(
                                       value: isFrameVisible,
                                       onChanged: (val) {
                                         setState(() {
+                                          hideSizers = val;
                                           isFrameVisible = val;
                                         });
                                       },

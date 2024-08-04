@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/screens/categories/widget/category_card.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/screens/categories/widget/component_layout.dart';
+import 'package:flutterui/shared/ui/widgets/layout/main_content.dart';
 
 @RoutePage()
 class ComponentCategoryScreen extends StatefulWidget {
@@ -16,18 +17,20 @@ class ComponentCategoryScreen extends StatefulWidget {
 class _ComponentCategoryScreenState extends State<ComponentCategoryScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Wrap(
-        spacing: AppSizing.kWPercentage(context, 5),
-        runSpacing: AppSizing.kWPercentage(context, 5),
-        children: [
-          ...[1, 2, 3, 4, 5, 6, 6].map(
-            (item) {
-              return CategoryCard();
-            },
-          )
-        ],
-      ),
+    return MainContent(
+      children: [
+        Wrap(
+          spacing: AppSizing.kWPercentage(context, 5),
+          runSpacing: AppSizing.kWPercentage(context, 5),
+          children: [
+            ...[1, 2, 3, 4, 5, 6, 6].map(
+              (item) {
+                return CategoryCard();
+              },
+            )
+          ],
+        ),
+      ],
     );
   }
 }

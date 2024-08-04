@@ -47,45 +47,44 @@ class _AppLayoutState extends State<ComponentLayoutScreen> {
                         width: AppSizing.isMobile(context) ? 0 : AppSizing.width(context) * 0.2,
                         child: const SideBar(),
                       ),
-
-                      SizedBox(
-                        height: AppSizing.height(context),
-                        width: AppSizing.isMobile(context) ? AppSizing.width(context) : AppSizing.width(context) * 0.8,
-                        child: SingleChildScrollView(
-                          child: Padding(
-                            padding: AppSizing.kMainPadding(context),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                AppSizing.khSpacer(30.h),
-                                ElevatedButton.icon(
-                                  onPressed: () {},
-                                  icon: AppIcon(icon: AppIcons.back),
-                                  label: const Text("Back"),
-                                ),
-                                AppSizing.khSpacer(30.h),
-                                AnimatedContainer(
-                                  duration: duration,
-                                  // color: Colors.teal,
-                                  height: AppSizing.height(context),
-                                  constraints: BoxConstraints(
-                                      // minHeight: AppSizing.height(context) * 2,
-                                      ),
-                                  width: AppSizing.isMobile(context) ? AppSizing.width(context) : AppSizing.kWPercentage(context, 100),
-                                  child: AutoRouter(),
-                                  // child: Expanded(child: AutoRouter()),
-                                ),
-                                AppSizing.khSpacer(30.h),
-                                Divider(color: Theme.of(context).dividerColor),
-                                AppSizing.khSpacer(30.h),
-                                const DetailedFooter(),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-
-                      // Expanded(child: AutoRouter()),
+                      // SizedBox(
+                      //   height: AppSizing.height(context),
+                      //   width: AppSizing.isMobile(context) ? AppSizing.width(context) : AppSizing.width(context) * 0.8,
+                      //   child: SingleChildScrollView(
+                      //     child: Padding(
+                      //       padding: AppSizing.kMainPadding(context),
+                      //       child: Column(
+                      //         crossAxisAlignment: CrossAxisAlignment.start,
+                      //         children: [
+                      //           AppSizing.khSpacer(30.h),
+                      //           ElevatedButton.icon(
+                      //             onPressed: () {},
+                      //             icon: AppIcon(icon: AppIcons.back),
+                      //             label: const Text("Back"),
+                      //           ),
+                      //           AppSizing.khSpacer(30.h),
+                      //           AnimatedContainer(
+                      //             duration: duration,
+                      //             // color: Colors.teal,
+                      //             // height: AppSizing.height(context),
+                      //             constraints: BoxConstraints(
+                      //                 // minHeight: AppSizing.height(context) * 2,
+                      //                 ),
+                      //             width: AppSizing.isMobile(context) ? AppSizing.width(context) : AppSizing.kWPercentage(context, 100),
+                      //             // child: AutoRouter(),
+                      //             // child: Expanded(child: AutoRouter()),
+                      //             // child: Expanded(child: AutoRouter()),
+                      //           ),
+                      //           AppSizing.khSpacer(30.h),
+                      //           Divider(color: Theme.of(context).dividerColor),
+                      //           AppSizing.khSpacer(30.h),
+                      //           const DetailedFooter(),
+                      //         ],
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
+                      Expanded(child: AutoRouter()),
                     ],
                   ),
                 ),

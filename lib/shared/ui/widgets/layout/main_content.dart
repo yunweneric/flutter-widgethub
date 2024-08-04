@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -7,8 +8,8 @@ import 'package:flutterui/shared/ui/widgets/footer_details.dart';
 import 'package:flutterui/shared/ui/widgets/icon.dart';
 
 class MainContent extends StatefulWidget {
-  final Widget child;
-  const MainContent({super.key, required this.child});
+  final List<Widget> children;
+  const MainContent({super.key, required this.children});
 
   @override
   State<MainContent> createState() => _MainContentState();
@@ -26,12 +27,14 @@ class _MainContentState extends State<MainContent> {
             children: [
               AppSizing.khSpacer(30.h),
               ElevatedButton.icon(
-                onPressed: () {},
+                onPressed: () {
+                  context.router.back();
+                },
                 icon: AppIcon(icon: AppIcons.back),
                 label: const Text("Back"),
               ),
               AppSizing.khSpacer(30.h),
-              widget.child,
+              ...widget.children,
               AppSizing.khSpacer(30.h),
               Divider(color: Theme.of(context).dividerColor),
               AppSizing.khSpacer(30.h),

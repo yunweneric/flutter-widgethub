@@ -29,7 +29,7 @@ class _AppDeviceFrameState extends State<AppDeviceFrame> {
       child: AnimatedSwitcher(
         duration: const Duration(milliseconds: 500),
         child: widget.isFrameVisible == false
-            ? Container(color: Theme.of(context).primaryColor, child: widget.child)
+            ? Container(child: widget.child)
             : DeviceFrame(
                 device: widget.deviceInfo,
                 isFrameVisible: widget.isFrameVisible!,
