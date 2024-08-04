@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/shared/ui/models/sidebar_group_model.dart';
@@ -111,6 +112,7 @@ class _SideBarState extends State<SideBar> {
                                 title: sideBarItem.title,
                                 onPressed: () => setState(() {
                                   activeSideBar = sideBarItem;
+                                  context.router.pushNamed("/components/buttons");
                                 }),
                               );
                             },

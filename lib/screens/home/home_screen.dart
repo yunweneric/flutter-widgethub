@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterui/shared/data/components.dart';
-import 'package:flutterui/shared/ui/utils/sizing.dart';
-import 'package:flutterui/shared/ui/widgets/code_highlighter.dart';
-import 'package:flutterui/shared/ui/widgets/layout/layout.dart';
+import 'package:flutterui/screens/home/widgets/component_cta.dart';
+import 'package:flutterui/screens/home/widgets/hero_section.dart';
+import 'package:flutterui/screens/home/widgets/home_footer.dart';
+import 'package:flutterui/shared/ui/widgets/layout/nav_bar.dart';
 
+@RoutePage()
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -12,22 +14,37 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  ScrollController _controller = ScrollController();
+
+  @override
+  void initState() {
+    _controller.addListener(listenToScroll);
+    super.initState();
+  }
+
+  void listenToScroll() {}
+
+  @override
+  void dispose() {
+    _controller.removeListener(listenToScroll);
+
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return AppLayout(
-      children: [
-        Text(
-          "Title of the Page",
-          style: Theme.of(context).textTheme.displayLarge,
+    return const Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            NavBar(),
+            HeroSection(),
+            ComponentCTA(),
+            HomeFooter(),
+          ],
         ),
-        AppSizing.kh10Spacer(),
-        Text(
-          "When designing a responsive website, breakpoints are crucial for ensuring that your layout adapts smoothly to various screen sizes. Here are common breakpoints used in web development, which you can adjust based on your specific design needs",
-          style: Theme.of(context).textTheme.bodyMedium,
-        ),
-        AppSizing.kh20Spacer(),
-        CodeHighlighter(component: AllComponents.widgets[0]),
-      ],
+      ),
     );
   }
 }

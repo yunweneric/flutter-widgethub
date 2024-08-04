@@ -7,8 +7,8 @@ import 'package:flutterui/shared/ui/widgets/footer_details.dart';
 import 'package:flutterui/shared/ui/widgets/icon.dart';
 
 class MainContent extends StatefulWidget {
-  final List<Widget> children;
-  const MainContent({super.key, required this.children});
+  final Widget child;
+  const MainContent({super.key, required this.child});
 
   @override
   State<MainContent> createState() => _MainContentState();
@@ -22,7 +22,6 @@ class _MainContentState extends State<MainContent> {
         child: Padding(
           padding: AppSizing.kMainPadding(context),
           child: Column(
-            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AppSizing.khSpacer(30.h),
@@ -32,7 +31,7 @@ class _MainContentState extends State<MainContent> {
                 label: const Text("Back"),
               ),
               AppSizing.khSpacer(30.h),
-              ...widget.children,
+              widget.child,
               AppSizing.khSpacer(30.h),
               Divider(color: Theme.of(context).dividerColor),
               AppSizing.khSpacer(30.h),

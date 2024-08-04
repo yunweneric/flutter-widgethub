@@ -7,6 +7,7 @@ class AppDeviceFrame extends StatefulWidget {
   final Widget child;
   final Orientation? orientation;
   final bool? isFrameVisible;
+
   const AppDeviceFrame({
     super.key,
     required this.deviceInfo,
@@ -25,11 +26,16 @@ class _AppDeviceFrameState extends State<AppDeviceFrame> {
     return SizedBox(
       width: AppSizing.width(context),
       height: AppSizing.isMobile(context) ? AppSizing.height(context) * 0.5 : AppSizing.height(context) * 0.6,
-      child: DeviceFrame(
-        device: widget.deviceInfo,
-        isFrameVisible: widget.isFrameVisible!,
-        orientation: widget.orientation!,
-        screen: widget.child,
+      child: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 500),
+        child: widget.isFrameVisible == false
+            ? Container(color: Theme.of(context).primaryColor, child: widget.child)
+            : DeviceFrame(
+                device: widget.deviceInfo,
+                isFrameVisible: widget.isFrameVisible!,
+                orientation: widget.orientation!,
+                screen: widget.child,
+              ),
       ),
     );
   }

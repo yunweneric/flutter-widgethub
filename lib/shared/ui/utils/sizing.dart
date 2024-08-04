@@ -5,6 +5,8 @@ import 'package:flutterui/shared/ui/utils/colors.dart';
 class AppSizing {
   static double width(BuildContext context) => MediaQuery.of(context).size.width;
   static double height(BuildContext context) => MediaQuery.of(context).size.height;
+  static double kHPercentage(BuildContext context, double value) => (height(context) * value) / 100;
+  static double kWPercentage(BuildContext context, double value) => (width(context) * value) / 100;
   static radiusMd() => BorderRadius.circular(10.r);
   static radiusSm() => BorderRadius.circular(5.r);
   static OutlineInputBorder mainBorder(Color color) {

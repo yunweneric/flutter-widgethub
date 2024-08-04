@@ -20,6 +20,7 @@ class UtilHelper {
 
   static findDevice({required AppDeviceType type}) {
     if (type == AppDeviceType.MOBILE) return Devices.android.samsungGalaxyS20;
+    // if (type == AppDeviceType.MOBILE) return Devices.ios.iPhone12ProMax;
     if (type == AppDeviceType.TABLET) return Devices.android.largeTablet;
     if (type == AppDeviceType.DESKTOP) return Devices.macOS.wideMonitor;
   }

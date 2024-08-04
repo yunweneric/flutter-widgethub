@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/core/service_locators.dart';
+import 'package:flutterui/screens/categories/screens/component_category.dart';
+import 'package:flutterui/screens/categories/screens/component_details.dart';
 import 'package:flutterui/screens/home/home_screen.dart';
+import 'package:flutterui/screens/routes/app_router.dart';
 import 'package:flutterui/shared/data/enums/theme.dart';
 import 'package:flutterui/shared/logic/language/language_bloc.dart';
 import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
@@ -30,7 +33,8 @@ class MyApp extends StatelessWidget {
                   final themeMode = state.themeMode == AppThemeMode.SYSTEM;
                   final isDark = state.themeMode == AppThemeMode.DARK;
                   print(["theme mode", themeMode, 'isLight', isDark]);
-                  return MaterialApp(
+                  return MaterialApp.router(
+                    routerConfig: getIt.get<AppRouter>().config(),
                     debugShowCheckedModeBanner: false,
                     title: 'Flutter UI',
                     theme: AppTheme.light(),
@@ -43,7 +47,9 @@ class MyApp extends StatelessWidget {
 
                     // themeMode: ThemeMode.system,
 
-                    home: const HomeScreen(),
+                    // home: const HomeScreen(),
+                    // home: const ComponentCategoryScreen(),
+                    // home: const ComponentDetailsScreen(),
                   );
                 },
               );

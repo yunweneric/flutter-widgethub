@@ -29,7 +29,7 @@ class _CodeHighlighterState extends State<CodeHighlighter> {
   AppDeviceType selectedDevice = AppDeviceType.MOBILE;
 
   final duration = const Duration(seconds: 1);
-
+  bool isFrameVisible = true;
   final themBloc = getIt.get<ThemeBloc>();
   @override
   initState() {
@@ -206,6 +206,14 @@ class _CodeHighlighterState extends State<CodeHighlighter> {
                                       icon: AppIcons.desktop,
                                       title: "Desktop",
                                       onTap: () => setState(() => selectedDevice = AppDeviceType.DESKTOP),
+                                    ),
+                                    Switch.adaptive(
+                                      value: isFrameVisible,
+                                      onChanged: (val) {
+                                        setState(() {
+                                          isFrameVisible = val;
+                                        });
+                                      },
                                     )
                                   ],
                                 ),
@@ -233,7 +241,7 @@ class _CodeHighlighterState extends State<CodeHighlighter> {
         duration: duration,
         child: AppDeviceFrame(
           deviceInfo: UtilHelper.findDevice(type: device),
-          isFrameVisible: true,
+          isFrameVisible: isFrameVisible,
           child: child,
         ),
       ),
