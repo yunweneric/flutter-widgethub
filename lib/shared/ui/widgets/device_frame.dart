@@ -28,14 +28,7 @@ class _AppDeviceFrameState extends State<AppDeviceFrame> {
       height: AppSizing.isMobile(context) ? AppSizing.height(context) * 0.5 : AppSizing.height(context) * 0.6,
       child: AnimatedSwitcher(
         duration: const Duration(milliseconds: 500),
-        child: widget.isFrameVisible == false
-            ? Container(child: widget.child)
-            : DeviceFrame(
-                device: widget.deviceInfo,
-                isFrameVisible: widget.isFrameVisible!,
-                orientation: widget.orientation!,
-                screen: widget.child,
-              ),
+        child: widget.isFrameVisible == false ? Container(child: widget.child) : DeviceFrame(device: widget.deviceInfo, isFrameVisible: widget.isFrameVisible!, orientation: widget.orientation!, screen: widget.child),
       ),
     );
   }
