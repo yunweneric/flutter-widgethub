@@ -24,7 +24,9 @@ class AppDeviceFrame extends StatefulWidget {
 class _AppDeviceFrameState extends State<AppDeviceFrame> {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      clipBehavior: Clip.hardEdge,
+      decoration: BoxDecoration(),
       width: AppSizing.width(context),
       height: AppSizing.isMobile(context) ? AppSizing.height(context) * 0.5 : AppSizing.height(context) * 0.6,
       child: AnimatedSwitcher(
@@ -32,7 +34,7 @@ class _AppDeviceFrameState extends State<AppDeviceFrame> {
         child: widget.isFrameVisible == false
             ? Container(
                 child: widget.child,
-                // width: AppSizing.kWPercentage(context, 40),
+                width: AppSizing.kWPercentage(context, 40),
               )
             : DeviceFrame(
                 device: widget.deviceInfo,

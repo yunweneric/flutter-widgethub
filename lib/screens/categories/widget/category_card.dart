@@ -17,14 +17,30 @@ class _CategoryCardState extends State<CategoryCard> {
   bool isHovered = false;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: AppSizing.kWPercentage(context, 35),
+    return Container(
+      clipBehavior: Clip.hardEdge,
+      decoration: BoxDecoration(),
+      width: AppSizing.kWPercentage(
+        context,
+        AppSizing.isMobile(context)
+            ? 45
+            : AppSizing.isTablet(context)
+                ? 30
+                : 35,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             padding: EdgeInsets.all(30.w),
-            width: AppSizing.kWPercentage(context, 35),
+            width: AppSizing.kWPercentage(
+              context,
+              AppSizing.isMobile(context)
+                  ? 45
+                  : AppSizing.isTablet(context)
+                      ? 30
+                      : 35,
+            ),
             height: AppSizing.kWPercentage(context, 25),
             decoration: BoxDecoration(
               color: Theme.of(context).scaffoldBackgroundColor,

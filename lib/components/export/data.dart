@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterui/components/animations/skew_card/data.dart';
 import 'package:flutterui/components/buttons/classic_button/data.dart';
 import 'package:flutterui/components/cards/flip_card/data.dart';
 
@@ -16,6 +17,7 @@ class AllComponents {
   static List<Component> widgets = [
     ClassicButtonData.component,
     AppFlipCard.component,
+    SkewCardData.component,
     ClassicButtonData.component,
     ClassicButtonData.component,
   ];
