@@ -1,4 +1,5 @@
 class RouteNames {
+  static const home = "/";
   static const buttons = "buttons";
   static const banners = "banners";
   static const chips = "chips";

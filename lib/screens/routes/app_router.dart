@@ -24,10 +24,11 @@ class AppRouter extends RootStackRouter {
             AutoRoute(path: RouteNames.buttons, page: ComponentDetailsRoute.page),
             AutoRoute(path: RouteNames.notFound, page: NotFoundRoute.page),
             AutoRoute(page: NotFoundRoute.page),
+            AutoRoute(path: "*", page: NotFoundRoute.page),
           ],
         ),
         // AutoRoute(path: "/${RouteNames.notFound}", page: NotFoundRoute.page),
-        // AutoRoute(path: "*", page: NotFoundRoute.page),
+        AutoRoute(path: "*", page: NotFoundRoute.page),
       ];
 
   @override

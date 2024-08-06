@@ -19,7 +19,7 @@ class _SideBarState extends State<SideBar> {
     SideBarGroupModel(
       title: "Get started",
       items: [
-        const SideBarItem(title: "Getting Started", link: "components"),
+        const SideBarItem(title: "Getting Started", link: "components/index"),
         const SideBarItem(title: "PlayGround", link: "components/${RouteNames.playground}"),
       ],
     ),
@@ -103,13 +103,10 @@ class _SideBarState extends State<SideBar> {
                                     activeSideBar = sideBarItem;
                                     // context.router.pushNamed("/components/$routePath");
                                   });
-                                  // context.router.pushNamed("/buttons")
 
                                   final activeRoute = context.router.currentPath;
-                                  context.router.pushNamed("/components/${sideBarItem.link}");
+                                  if (sideBarItem.link != null) context.router.pushNamed("/${sideBarItem.link}");
                                   print(["activeRoute", activeRoute]);
-
-                                  // context.router.push(ComponentDetailsRoute());
                                 },
                               );
                             },
@@ -123,7 +120,7 @@ class _SideBarState extends State<SideBar> {
                               itemBuilder: (context, index) {
                                 final sideBarItem = item.items[index];
                                 final activeRoute = context.router.currentPath;
-                                final isActive = activeRoute == "/components/${sideBarItem.link}";
+                                final isActive = activeRoute == "/${sideBarItem.link}";
 
                                 // print(['isActive ${sideBarItem.link}', isActive]);
                                 // print(['activeRoute', activeRoute]);

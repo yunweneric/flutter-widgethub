@@ -62,7 +62,7 @@ class _CategoryCardState extends State<CategoryCard> {
                     // device: DeviceInfo.genericPhone(
                     //   platform: TargetPlatform.android,
                     //   id: widget.component.title,
-                    //   name: widget.component.title,
+                    //   name: widget.component.title,ß
                     //   screenSize: Size(400, 700),
                     // ),
                     // isFrameVisible: false,
