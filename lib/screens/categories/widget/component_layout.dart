@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutterui/components/data/logic/component/component_bloc.dart';
+import 'package:flutterui/core/service_locators.dart';
 import 'package:flutterui/screens/categories/routes/category_router.dart';
 import 'package:flutterui/shared/ui/utils/icons.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
@@ -22,6 +24,14 @@ class ComponentLayoutScreen extends StatefulWidget {
 
 class _AppLayoutState extends State<ComponentLayoutScreen> {
   final duration = const Duration(seconds: 1);
+
+  final componentBloc = getIt.get<ComponentBloc>();
+  @override
+  void initState() {
+    componentBloc.add(GetAllComponentsEvent());
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,43 +57,6 @@ class _AppLayoutState extends State<ComponentLayoutScreen> {
                         width: AppSizing.isMobile(context) ? 0 : AppSizing.width(context) * 0.2,
                         child: const SideBar(),
                       ),
-                      // SizedBox(
-                      //   height: AppSizing.height(context),
-                      //   width: AppSizing.isMobile(context) ? AppSizing.width(context) : AppSizing.width(context) * 0.8,
-                      //   child: SingleChildScrollView(
-                      //     child: Padding(
-                      //       padding: AppSizing.kMainPadding(context),
-                      //       child: Column(
-                      //         crossAxisAlignment: CrossAxisAlignment.start,
-                      //         children: [
-                      //           AppSizing.khSpacer(30.h),
-                      //           ElevatedButton.icon(
-                      //             onPressed: () {},
-                      //             icon: AppIcon(icon: AppIcons.back),
-                      //             label: const Text("Back"),
-                      //           ),
-                      //           AppSizing.khSpacer(30.h),
-                      //           AnimatedContainer(
-                      //             duration: duration,
-                      //             // color: Colors.teal,
-                      //             // height: AppSizing.height(context),
-                      //             constraints: BoxConstraints(
-                      //                 // minHeight: AppSizing.height(context) * 2,
-                      //                 ),
-                      //             width: AppSizing.isMobile(context) ? AppSizing.width(context) : AppSizing.kWPercentage(context, 100),
-                      //             // child: AutoRouter(),
-                      //             // child: Expanded(child: AutoRouter()),
-                      //             // child: Expanded(child: AutoRouter()),
-                      //           ),
-                      //           AppSizing.khSpacer(30.h),
-                      //           Divider(color: Theme.of(context).dividerColor),
-                      //           AppSizing.khSpacer(30.h),
-                      //           const ComponentFooter(),
-                      //         ],
-                      //       ),
-                      //     ),
-                      //   ),
-                      // ),
                       Expanded(child: AutoRouter()),
                     ],
                   ),

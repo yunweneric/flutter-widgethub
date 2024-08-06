@@ -19,8 +19,8 @@ class _SideBarState extends State<SideBar> {
     SideBarGroupModel(
       title: "Get started",
       items: [
-        const SideBarItem(title: "Getting Started", link: RouteNames.gettingStarted),
-        const SideBarItem(title: "PlayGround", link: RouteNames.playground),
+        const SideBarItem(title: "Getting Started", link: "components"),
+        const SideBarItem(title: "PlayGround", link: "components/${RouteNames.playground}"),
       ],
     ),
     SideBarGroupModel(
@@ -32,11 +32,12 @@ class _SideBarState extends State<SideBar> {
       ],
     ),
     SideBarGroupModel(
-      title: "Blocks",
+      title: "Templates",
       items: [
-        const SideBarItem(title: "Banners", link: "#"),
-        const SideBarItem(title: "Features", link: "#"),
-        const SideBarItem(title: "Footers", link: "#"),
+        const SideBarItem(title: "Social", link: "#"),
+        const SideBarItem(title: "Authentication", link: "#"),
+        const SideBarItem(title: "App Clones", link: "#"),
+        const SideBarItem(title: "Onboarding", link: "#"),
       ],
     ),
     SideBarGroupModel(
@@ -49,22 +50,6 @@ class _SideBarState extends State<SideBar> {
     ),
     SideBarGroupModel(
       title: "Effects",
-      items: [
-        const SideBarItem(title: "Buttons", link: "#"),
-        const SideBarItem(title: "Inputs", link: "#"),
-        const SideBarItem(title: "Chips", link: "#"),
-      ],
-    ),
-    SideBarGroupModel(
-      title: "Animations",
-      items: [
-        const SideBarItem(title: "Buttons", link: "#"),
-        const SideBarItem(title: "Inputs", link: "#"),
-        const SideBarItem(title: "Chips", link: "#"),
-      ],
-    ),
-    SideBarGroupModel(
-      title: "Animations",
       items: [
         const SideBarItem(title: "Buttons", link: "#"),
         const SideBarItem(title: "Inputs", link: "#"),
@@ -140,8 +125,8 @@ class _SideBarState extends State<SideBar> {
                                 final activeRoute = context.router.currentPath;
                                 final isActive = activeRoute == "/components/${sideBarItem.link}";
 
-                                print(['isActive ${sideBarItem.link}', isActive]);
-                                print(['activeRoute', activeRoute]);
+                                // print(['isActive ${sideBarItem.link}', isActive]);
+                                // print(['activeRoute', activeRoute]);
                                 return AnimatedContainer(
                                   duration: const Duration(milliseconds: 400),
                                   height: 30.h,

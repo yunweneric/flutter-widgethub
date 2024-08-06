@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutterui/components/data/logic/component/component_bloc.dart';
+import 'package:flutterui/core/observers/nav_observer.dart';
 import 'package:flutterui/core/service_locators.dart';
 import 'package:flutterui/screens/categories/ui/component_category.dart';
 import 'package:flutterui/screens/categories/ui/component_details.dart';
@@ -23,6 +25,7 @@ class MyApp extends StatelessWidget {
           providers: [
             BlocProvider(create: (context) => getIt.get<ThemeBloc>()),
             BlocProvider(create: (context) => getIt.get<LanguageBloc>()),
+            BlocProvider(create: (context) => getIt.get<ComponentBloc>()),
           ],
           child: BlocBuilder<ThemeBloc, ThemeState>(
             builder: (context, state) {
@@ -32,9 +35,9 @@ class MyApp extends StatelessWidget {
                 builder: (context, child) {
                   final themeMode = state.themeMode == AppThemeMode.SYSTEM;
                   final isDark = state.themeMode == AppThemeMode.DARK;
-                  print(["theme mode", themeMode, 'isLight', isDark]);
+                  // print(["theme mode", themeMode, 'isLight', isDark]);
                   return MaterialApp.router(
-                    routerConfig: getIt.get<AppRouter>().config(),
+                    routerConfig: getIt.get<AppRouter>().config(navigatorObservers: () => [MyObserver()]),
                     debugShowCheckedModeBanner: false,
                     title: 'Flutter UI',
                     theme: AppTheme.light(),

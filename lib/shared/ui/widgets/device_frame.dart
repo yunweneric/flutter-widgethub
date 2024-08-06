@@ -39,6 +39,7 @@ class _AppDeviceFrameState extends State<AppDeviceFrame> {
             : DeviceFrame(
                 device: widget.deviceInfo,
                 isFrameVisible: widget.isFrameVisible!,
+                // isFrameVisible: false,
                 orientation: widget.orientation!,
                 screen: widget.child,
               ),

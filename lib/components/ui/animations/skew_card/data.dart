@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutterui/components/animations/skew_card/skew_card_code.dart';
-import 'package:flutterui/components/animations/skew_card/skew_card_widget.dart';
-import 'package:flutterui/components/export/data.dart';
+import 'package:flutterui/components/ui/animations/skew_card/skew_card_code.dart';
+import 'package:flutterui/components/ui/animations/skew_card/skew_card_widget.dart';
+import 'package:flutterui/components/ui/export/data.dart';
 import 'package:flutterui/components/shared/setup.dart';
 
 class SkewCardData {
