@@ -14,35 +14,30 @@ class _HeroSectionState extends State<HeroSection> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: AppSizing.height(context),
+      color: Colors.teal,
+      height: AppSizing.kHPercentage(context, 90),
+      width: AppSizing.kWPercentage(context, 95),
+      alignment: Alignment.topLeft,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            "Stop coding from scratch. Build faster. \nLaunch sooner.",
-            style: Theme.of(context).textTheme.displayLarge,
-            textAlign: TextAlign.center,
-          ),
-          AppSizing.kh20Spacer(),
-          Text("Free-to-use UI elements designed for rapid development"),
-          AppSizing.kh20Spacer(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  context.router.pushNamed("/components/index");
-                },
-                child: Text("Get started"),
-              ),
-              AppSizing.kwSpacer(30.w),
-              ElevatedButton(
-                onPressed: () {
-                  context.router.pushNamed("/components/buttons");
-                },
-                child: Text("Explore"),
-              ),
-            ],
+          SizedBox(
+            width: AppSizing.kHPercentage(context, 80),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Easy to use UI components",
+                  style: Theme.of(context).textTheme.displayLarge,
+                  textAlign: TextAlign.center,
+                ),
+                AppSizing.kh20Spacer(),
+                Text(
+                  "Seamlessly integrate a wide range of customizable pre-built UI components to accelerate your development process.",
+                ),
+                AppSizing.kh20Spacer(),
+              ],
+            ),
           )
         ],
       ),
