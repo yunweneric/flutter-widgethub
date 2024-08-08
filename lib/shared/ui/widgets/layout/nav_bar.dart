@@ -39,6 +39,7 @@ class _NavBarState extends State<NavBar> {
                     Row(
                       children: [
                         TextButton(
+                          style: TextButton.styleFrom(padding: EdgeInsets.zero),
                           child: Text("Logo", style: Theme.of(context).textTheme.displayLarge),
                           onPressed: () {
                             context.router.pushNamed("/");
@@ -76,7 +77,7 @@ class _NavBarState extends State<NavBar> {
                         AppSizing.isTablet(context)
                             ? TextButton(onPressed: () {}, child: AppIcon(icon: AppIcons.search))
                             : SizedBox(
-                                width: 280.w,
+                                width: 220.w,
                                 child: Transform.scale(
                                   scale: 0.8,
                                   child: TextField(

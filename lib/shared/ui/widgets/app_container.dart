@@ -14,15 +14,21 @@ class _AppContainerState extends State<AppContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // height: AppSizing.height(context) * 0.1,
-      padding: EdgeInsets.symmetric(horizontal: AppSizing.width(context) * 0.02, vertical: 15.h),
-      width: AppSizing.width(context),
+      width: AppSizing.kWPercentage(context, 100),
       decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(color: Theme.of(context).dividerColor),
         ),
       ),
-      child: widget.child,
+      child: Column(
+        children: [
+          Container(
+            padding: EdgeInsets.symmetric(vertical: 15.h),
+            width: AppSizing.kWPercentage(context, 90),
+            child: widget.child,
+          ),
+        ],
+      ),
     );
   }
 }

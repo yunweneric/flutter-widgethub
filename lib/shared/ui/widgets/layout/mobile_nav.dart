@@ -19,7 +19,7 @@ class _MobileNavState extends State<MobileNav> {
   Widget build(BuildContext context) {
     return Container(
       // height: 20.h,
-      width: AppSizing.kWPercentage(context, 80),
+      width: AppSizing.kWPercentage(context, 90),
       padding: EdgeInsets.symmetric(vertical: 30.h),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

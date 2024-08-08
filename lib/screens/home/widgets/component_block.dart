@@ -38,11 +38,11 @@ class _ComponentBlockState extends State<ComponentBlock> {
       ),
       builder: (context, value, child) {
         return SizedBox(
-          width: AppSizing.kWPercentage(context, 18),
+          width: AppSizing.kWPercentage(context, 20),
           child: Column(
             children: [
               Divider(
-                endIndent: value * AppSizing.kWPercentage(context, 18),
+                endIndent: value * AppSizing.kWPercentage(context, 20),
                 color: widget.isActive ? Theme.of(context).primaryColor : Theme.of(context).scaffoldBackgroundColor,
               ),
               AppSizing.kh10Spacer(),

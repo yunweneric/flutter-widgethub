@@ -20,7 +20,7 @@ class _DeviceInteractiveState extends State<DeviceInteractive> {
       runSpacing: 10,
       children: [
         DeviceSectionFrame(
-          parentWidth: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 38),
+          parentWidth: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 44),
           deviceAlignment: Alignment.bottomCenter,
           child: Scaffold(
             bottomNavigationBar: BottomNavigationBar(
@@ -35,7 +35,7 @@ class _DeviceInteractiveState extends State<DeviceInteractive> {
         ),
         AppSizing.kwSpacer(AppSizing.kWPercentage(context, 2)),
         SizedBox(
-          width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 38),
+          width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 44),
           height: AppSizing.kHPercentage(context, 35),
           child: CodeHighlight(
             fontSize: 14.sp,

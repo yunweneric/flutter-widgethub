@@ -60,7 +60,7 @@ class _ComponentCTAState extends State<ComponentCTA> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppSizing.kWPercentage(context, 80),
+      width: AppSizing.kWPercentage(context, 90),
       alignment: Alignment.topLeft,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -117,7 +117,7 @@ class _ComponentCTAState extends State<ComponentCTA> {
           ),
           AppSizing.kh20Spacer(),
           SizedBox(
-            width: AppSizing.kHPercentage(context, 80),
+            width: AppSizing.kHPercentage(context, 90),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -145,12 +145,14 @@ class _ComponentCTAState extends State<ComponentCTA> {
           AppSizing.kh20Spacer(),
           Wrap(
             runSpacing: 40.h,
+            runAlignment: WrapAlignment.spaceBetween,
+            alignment: WrapAlignment.spaceBetween,
             children: [
               if (!AppSizing.isMobile(context))
                 Container(
                   width: AppSizing.kWPercentage(context, AppSizing.isTablet(context) ? 20 : 100),
                   child: Wrap(
-                    spacing: AppSizing.kWPercentage(context, 2),
+                    spacing: AppSizing.kWPercentage(context, 2.5),
                     crossAxisAlignment: WrapCrossAlignment.center,
                     runAlignment: WrapAlignment.spaceBetween,
                     children: [
@@ -177,15 +179,17 @@ class _ComponentCTAState extends State<ComponentCTA> {
                   ),
                 ),
               Container(
-                width: AppSizing.kWPercentage(context, AppSizing.isTablet(context) ? 60 : 100),
+                // color: Colors.teal,
+                width: AppSizing.kWPercentage(context, AppSizing.isTablet(context) ? 70 : 100),
                 child: Builder(builder: (context) {
                   List<Widget> allWidgets = blocks.expand((item) => item.widgets).toList();
                   List<Widget> activeWidgets = activeBlock.widgets;
                   final displayWidget = AppSizing.isMobile(context) ? allWidgets : activeWidgets;
                   return Wrap(
-                    spacing: AppSizing.kWPercentage(context, 2),
-                    runSpacing: AppSizing.kWPercentage(context, 2),
+                    spacing: AppSizing.kWPercentage(context, 2.5),
+                    runSpacing: AppSizing.kWPercentage(context, 2.5),
                     crossAxisAlignment: WrapCrossAlignment.center,
+                    alignment: AppSizing.isTablet(context) ? WrapAlignment.end : WrapAlignment.start,
                     runAlignment: WrapAlignment.spaceBetween,
                     children: [
                       ...displayWidget.map(
@@ -198,8 +202,8 @@ class _ComponentCTAState extends State<ComponentCTA> {
                           onTap: () {},
                           child: DeviceSectionFrame(
                             deviceAlignment: Alignment.topCenter,
-                            parentWidth: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 38 : 18),
-                            parentHeight: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 30 : 15),
+                            parentWidth: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 43 : 20),
+                            parentHeight: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 35 : 15),
                             childWidth: AppSizing.kWPercentage(context, 10),
                             childHeight: AppSizing.kWPercentage(context, 22),
                             child: Scaffold(
@@ -216,8 +220,7 @@ class _ComponentCTAState extends State<ComponentCTA> {
               ),
             ],
           ),
-          AppSizing.kh20Spacer(),
-          AppSizing.khSpacer(300),
+          AppSizing.khSpacer(60),
         ],
       ),
     );

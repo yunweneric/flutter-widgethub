@@ -20,7 +20,6 @@ class _HeroSectionState extends State<HeroSection> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // color: Colors.teal,
       height: AppSizing.isMobile(context) ? null : AppSizing.kHPercentage(context, 90),
       width: AppSizing.kWPercentage(context, 100),
       alignment: Alignment.topLeft,
@@ -33,7 +32,7 @@ class _HeroSectionState extends State<HeroSection> {
             children: [
               Container(
                 width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 80 : 40),
-                margin: EdgeInsets.only(left: AppSizing.kWPercentage(context, 10)),
+                margin: EdgeInsets.only(left: AppSizing.kWPercentage(context, 5)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -64,7 +63,8 @@ class _HeroSectionState extends State<HeroSection> {
                     ),
                     AppSizing.kh20Spacer(),
                     AppSizing.kh20Spacer(),
-                    Row(
+                    Wrap(
+                      runSpacing: 20,
                       children: [
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
@@ -100,7 +100,7 @@ class _HeroSectionState extends State<HeroSection> {
               if (!AppSizing.isMobile(context))
                 Container(
                   height: AppSizing.kHPercentage(context, 80),
-                  width: AppSizing.kWPercentage(context, 50),
+                  width: AppSizing.kWPercentage(context, 55),
                   child: StaggeredGrid.count(
                     crossAxisCount: 4,
                     mainAxisSpacing: 10,
