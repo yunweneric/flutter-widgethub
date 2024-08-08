@@ -105,12 +105,17 @@ class _CodePreviewState extends State<CodePreview> {
       duration: const Duration(milliseconds: 1300),
       child: isCode
           ? Container(
-              padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: AppSizing.isMobile(context) ? 10.h : 20.h),
               width: AppSizing.width(context),
               decoration: BoxDecoration(borderRadius: AppSizing.radiusSm()),
-              child: Text.rich(
-                content!,
-                style: GoogleFonts.spaceMono(fontSize: AppSizing.isMobile(context) ? 10.sp : 14.sp, height: 1.7.h, wordSpacing: 7.w),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: AppSizing.isMobile(context) ? 10.h : 20.h),
+                  child: Text.rich(
+                    content!,
+                    style: GoogleFonts.spaceMono(fontSize: AppSizing.isMobile(context) ? 10.sp : 14.sp, height: 1.7.h, wordSpacing: 7.w),
+                  ),
+                ),
               ),
             )
           : preview(

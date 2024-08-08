@@ -43,6 +43,8 @@ dependencies:
   get_it: ^7.7.0
   google_fonts: ^6.2.1
   logger: ^2.4.0
+  syncfusion_flutter_core: ^26.2.8
+  syncfusion_flutter_sliders: ^26.2.8
   syntax_highlight: ^0.4.0
 
 dev_dependencies:

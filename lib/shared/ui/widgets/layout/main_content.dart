@@ -21,9 +21,9 @@ class _MainContentState extends State<MainContent> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 80 : 100),
+          width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 100),
           margin: EdgeInsets.symmetric(
-            horizontal: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 10 : 2),
+            horizontal: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 5 : 2),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

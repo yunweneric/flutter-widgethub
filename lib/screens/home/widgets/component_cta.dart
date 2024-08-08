@@ -99,6 +99,7 @@ class _ComponentCTAState extends State<ComponentCTA> {
               ],
             ),
           ),
+          AppSizing.khSpacer(30.h),
           const DeviceInteractive(),
           AppSizing.khSpacer(100.h),
           Row(

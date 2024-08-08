@@ -3,11 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutterui/components/ui/export/data.dart';
+import 'package:flutterui/core/service_locators.dart';
+import 'package:flutterui/screens/home/ui/apps/leave_review/home.dart';
+import 'package:flutterui/screens/home/ui/apps/theme_toggle/theme_toggle.dart';
 import 'package:flutterui/screens/routes/route_names.dart';
+import 'package:flutterui/shared/data/enums/theme.dart';
+import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/shared/ui/utils/colors.dart';
+import 'package:flutterui/shared/ui/utils/icons.dart';
 import 'package:flutterui/shared/ui/utils/images.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/device_section_frame.dart';
+import 'package:flutterui/shared/ui/widgets/icon.dart';
 
 class HeroSection extends StatefulWidget {
   const HeroSection({super.key});
@@ -20,7 +29,7 @@ class _HeroSectionState extends State<HeroSection> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: AppSizing.isMobile(context) ? null : AppSizing.kHPercentage(context, 90),
+      // height: AppSizing.isMobile(context) ? null : AppSizing.kHPercentage(context, 90),
       width: AppSizing.kWPercentage(context, 100),
       alignment: Alignment.topLeft,
       child: Column(
@@ -99,8 +108,9 @@ class _HeroSectionState extends State<HeroSection> {
               ),
               if (!AppSizing.isMobile(context))
                 Container(
-                  height: AppSizing.kHPercentage(context, 80),
+                  // height: AppSizing.kHPercentage(context, 100),
                   width: AppSizing.kWPercentage(context, 55),
+                  // color: Colors.teal,
                   child: StaggeredGrid.count(
                     crossAxisCount: 4,
                     mainAxisSpacing: 10,
@@ -108,58 +118,54 @@ class _HeroSectionState extends State<HeroSection> {
                     children: [
                       StaggeredGridTile.count(
                         crossAxisCellCount: 2,
-                        mainAxisCellCount: 2,
+                        mainAxisCellCount: 1.8,
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: AppSizing.radiusMd(),
-                            // color: Theme.of(context).primaryColor.withOpacity(0.0),
                           ),
                           child: DeviceSectionFrame(
-                            child: Text("Hello"),
+                            child: Center(child: Text("Hello1")),
+                          ),
+                        ),
+                      ),
+
+                      // StaggeredGridTile.count(
+                      //   crossAxisCellCount: 2,
+                      //   mainAxisCellCount: 1.8,
+                      //   child: Container(
+                      //     decoration: BoxDecoration(
+                      //       borderRadius: AppSizing.radiusMd(),
+                      //       // color: Theme.of(context).primaryColor.withOpacity(0.0),
+                      //     ),
+                      //     child: DeviceSectionFrame(
+                      //       child: Text("Hello"),
+                      //       deviceAlignment: Alignment.topCenter,
+                      //     ),
+                      //   ),
+                      // ),
+                      StaggeredGridTile.count(
+                        crossAxisCellCount: 2,
+                        mainAxisCellCount: 3.6,
+                        child: Container(
+                          decoration: BoxDecoration(borderRadius: AppSizing.radiusMd()),
+                          child: const DeviceSectionFrame(
+                            deviceAlignment: Alignment.center,
+                            child: LeaveReviewHomeScreen(),
                           ),
                         ),
                       ),
                       StaggeredGridTile.count(
                         crossAxisCellCount: 2,
-                        mainAxisCellCount: 2,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: AppSizing.radiusMd(),
-                            // color: Theme.of(context).primaryColor.withOpacity(0.0),
-                          ),
-                          child: DeviceSectionFrame(
-                            child: Text("Hello"),
-                            deviceAlignment: Alignment.topCenter,
-                          ),
-                        ),
-                      ),
-                      StaggeredGridTile.count(
-                        crossAxisCellCount: 2,
-                        mainAxisCellCount: 2,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: AppSizing.radiusMd(),
-                            // color: Theme.of(context).primaryColor.withOpacity(0.0),
-                          ),
-                          child: DeviceSectionFrame(
-                            child: Text("Hello"),
-                            deviceAlignment: Alignment.topCenter,
-                          ),
-                        ),
-                      ),
-                      StaggeredGridTile.count(
-                        crossAxisCellCount: 2,
-                        mainAxisCellCount: 2,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: AppSizing.radiusMd(),
-                            // color: Theme.of(context).primaryColor.withOpacity(0.0),
-                          ),
-                          child: DeviceSectionFrame(
-                            child: Scaffold(),
-                            deviceAlignment: Alignment.bottomCenter,
-                          ),
-                        ),
+                        mainAxisCellCount: 1.8,
+                        child: Builder(builder: (context) {
+                          return Container(
+                            decoration: BoxDecoration(borderRadius: AppSizing.radiusMd()),
+                            child: DeviceSectionFrame(
+                              child: ThemeToggle(),
+                              deviceAlignment: Alignment.topCenter,
+                            ),
+                          );
+                        }),
                       ),
                     ],
                   ),
