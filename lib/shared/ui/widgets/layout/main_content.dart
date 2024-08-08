@@ -20,8 +20,11 @@ class _MainContentState extends State<MainContent> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Padding(
-          padding: AppSizing.kMainPadding(context),
+        child: Container(
+          width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 80 : 100),
+          margin: EdgeInsets.symmetric(
+            horizontal: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 10 : 2),
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

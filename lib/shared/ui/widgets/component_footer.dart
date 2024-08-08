@@ -17,47 +17,43 @@ class _DetailedFooterState extends State<ComponentFooter> {
     return Container(
       padding: AppSizing.kpadding(0, 30.h),
       width: AppSizing.width(context),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Wrap(
+        runSpacing: 20,
+        crossAxisAlignment: WrapCrossAlignment.center,
+        runAlignment: WrapAlignment.spaceBetween,
+        alignment: WrapAlignment.spaceBetween,
+        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Text("Build with 💙 by yunwen"),
+          Text(
+            "Build with 💙 by yunwen",
+            style: Theme.of(context).textTheme.bodySmall,
+            textAlign: TextAlign.center,
+          ),
           Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextButton.icon(
+              TextButton(
+                style: TextButton.styleFrom(
+                  fixedSize: Size(10.w, 10.w),
+                  padding: EdgeInsets.zero,
+                ),
                 onPressed: () {},
-                label: AppSizing.isMobile(context)
-                    ? const SizedBox.shrink()
-                    : Text(
-                        "LinkedIn",
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                icon: AppIcon(
+                child: AppIcon(
                   icon: AppIcons.linkedIn,
                   color: Theme.of(context).primaryColorDark,
                 ),
               ),
-              TextButton.icon(
+              TextButton(
                 onPressed: () {},
-                label: AppSizing.isMobile(context)
-                    ? const SizedBox.shrink()
-                    : Text(
-                        "Twitter",
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                icon: AppIcon(
+                child: AppIcon(
                   icon: AppIcons.x,
                   color: Theme.of(context).primaryColorDark,
                 ),
               ),
-              TextButton.icon(
+              TextButton(
                 onPressed: () {},
-                label: AppSizing.isMobile(context)
-                    ? const SizedBox.shrink()
-                    : Text(
-                        "Github",
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                icon: AppIcon(
+                child: AppIcon(
                   icon: AppIcons.github,
                   color: Theme.of(context).primaryColorDark,
                 ),

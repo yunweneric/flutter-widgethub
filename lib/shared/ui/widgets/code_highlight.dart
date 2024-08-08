@@ -10,7 +10,8 @@ import 'package:syntax_highlight/syntax_highlight.dart';
 
 class CodeHighlight extends StatefulWidget {
   final String code;
-  const CodeHighlight({super.key, required this.code});
+  final double? fontSize;
+  const CodeHighlight({super.key, required this.code, this.fontSize});
 
   @override
   State<CodeHighlight> createState() => _CodeHighlightState();
@@ -59,14 +60,23 @@ class _CodeHighlightState extends State<CodeHighlight> {
             color: Theme.of(context).cardColor,
             borderRadius: AppSizing.radiusMd(),
           ),
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-            child: Text.rich(
-              content!,
-              style: GoogleFonts.spaceMono(
-                fontSize: AppSizing.isMobile(context) ? 10.sp : 14.sp,
-                height: 1.7.h,
-                wordSpacing: 7.w,
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+                child: Text.rich(
+                  content!,
+                  softWrap: false,
+                  overflow: TextOverflow.clip,
+                  style: GoogleFonts.sourceCodePro(
+                    // style: GoogleFonts.firaCode(
+                    fontSize: widget.fontSize ?? (AppSizing.isMobile(context) ? 10.sp : 14.sp),
+                    height: 1.7.h,
+                    wordSpacing: 7.w,
+                  ),
+                ),
               ),
             ),
           ),

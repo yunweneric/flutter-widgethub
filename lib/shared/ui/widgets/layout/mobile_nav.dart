@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:flutterui/core/service_locators.dart';
 import 'package:flutterui/shared/data/enums/theme.dart';
 import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
@@ -20,15 +19,16 @@ class _MobileNavState extends State<MobileNav> {
   Widget build(BuildContext context) {
     return Container(
       // height: 20.h,
-      padding: AppSizing.kMainPadding(context) + EdgeInsets.symmetric(vertical: 30.h),
+      width: AppSizing.kWPercentage(context, 80),
+      padding: EdgeInsets.symmetric(vertical: 30.h),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             children: [
-              ElevatedButton(
-                child: AppIcon(icon: AppIcons.menu),
-                onPressed: () {},
+              GestureDetector(
+                child: AppIcon(icon: AppIcons.menu, size: 40.w),
+                onTap: () {},
               ),
               TextButton(
                 child: Text("Logo", style: Theme.of(context).textTheme.displayMedium),

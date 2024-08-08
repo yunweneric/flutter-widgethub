@@ -6,39 +6,39 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   static TextTheme lightTextTheme = TextTheme(
-    displayLarge: GoogleFonts.dmSans(
+    displayLarge: GoogleFonts.inter(
       color: AppColors.TEXTBLACK,
       fontWeight: FontWeight.w800,
       fontSize: 30.sp,
     ),
-    displayMedium: GoogleFonts.dmSans(
+    displayMedium: GoogleFonts.inter(
       color: AppColors.TEXTBLACK,
       fontWeight: FontWeight.w600,
       fontSize: 16.sp,
     ),
-    displaySmall: GoogleFonts.dmSans(
+    displaySmall: GoogleFonts.inter(
       color: AppColors.TEXTBLACK,
       fontWeight: FontWeight.w600,
       fontSize: 12.sp,
     ),
-    bodyMedium: GoogleFonts.dmSans(
-      color: AppColors.TEXTBLACK,
+    bodyMedium: GoogleFonts.inter(
+      color: AppColors.TEXTGREY,
       fontSize: 14.sp,
-      height: 1.2,
+      height: 1.5,
       letterSpacing: 0.1,
       fontWeight: FontWeight.normal,
     ),
-    bodySmall: GoogleFonts.dmSans(
-      color: AppColors.TEXTBLACK,
+    bodySmall: GoogleFonts.inter(
+      color: AppColors.TEXTGREY,
       fontWeight: FontWeight.w400,
       fontSize: 12.sp,
     ),
-    labelMedium: GoogleFonts.dmSans(
+    labelMedium: GoogleFonts.inter(
       color: AppColors.TEXTGREY,
       fontWeight: FontWeight.w400,
       fontSize: 14.sp,
     ),
-    labelSmall: GoogleFonts.dmSans(
+    labelSmall: GoogleFonts.inter(
       color: AppColors.TEXTGREY,
       fontWeight: FontWeight.w400,
       fontSize: 12.sp,
@@ -46,39 +46,39 @@ class AppTheme {
     ),
   );
   static TextTheme darkTextTheme = TextTheme(
-    displayLarge: GoogleFonts.dmSans(
+    displayLarge: GoogleFonts.inter(
       color: AppColors.TEXTWHITE,
       fontWeight: FontWeight.w800,
       fontSize: 30.sp,
     ),
-    displayMedium: GoogleFonts.dmSans(
+    displayMedium: GoogleFonts.inter(
       color: AppColors.TEXTWHITE,
       fontWeight: FontWeight.w600,
       fontSize: 16.sp,
     ),
-    displaySmall: GoogleFonts.dmSans(
+    displaySmall: GoogleFonts.inter(
       color: AppColors.TEXTWHITE,
       fontWeight: FontWeight.w600,
       fontSize: 12.sp,
     ),
-    bodyMedium: GoogleFonts.dmSans(
+    bodyMedium: GoogleFonts.inter(
       color: AppColors.TEXTGREY,
       fontWeight: FontWeight.normal,
       fontSize: 14.sp,
-      height: 1.2,
+      height: 1.5.h,
       letterSpacing: 0.1,
     ),
-    bodySmall: GoogleFonts.dmSans(
+    bodySmall: GoogleFonts.inter(
       color: AppColors.TEXTGREY,
       fontWeight: FontWeight.w400,
       fontSize: 12.sp,
     ),
-    labelMedium: GoogleFonts.dmSans(
+    labelMedium: GoogleFonts.inter(
       color: AppColors.TEXTGREY,
       fontWeight: FontWeight.w400,
       fontSize: 14.sp,
     ),
-    labelSmall: GoogleFonts.dmSans(
+    labelSmall: GoogleFonts.inter(
       color: AppColors.TEXTGREY,
       fontWeight: FontWeight.w400,
       fontSize: 12.sp,
@@ -127,7 +127,7 @@ class AppTheme {
       dividerColor: AppColors.BGGRAY2.withOpacity(0.3),
       appBarTheme: AppBarTheme(
         backgroundColor: AppColors.BG,
-        titleTextStyle: GoogleFonts.dmSans(color: AppColors.TEXTBLACK, fontWeight: FontWeight.w500, fontSize: 20.sp),
+        titleTextStyle: GoogleFonts.inter(color: AppColors.TEXTBLACK, fontWeight: FontWeight.w500, fontSize: 20.sp),
         elevation: 0,
       ),
       textButtonTheme: TextButtonThemeData(
@@ -173,7 +173,7 @@ class AppTheme {
       inputDecorationTheme: darkInputDecoration,
       appBarTheme: AppBarTheme(
         backgroundColor: AppColors.BGDARK,
-        titleTextStyle: GoogleFonts.dmSans(
+        titleTextStyle: GoogleFonts.inter(
           color: AppColors.TEXTWHITE,
           fontWeight: FontWeight.w500,
           fontSize: 20.sp,

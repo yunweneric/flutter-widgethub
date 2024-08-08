@@ -25,6 +25,9 @@ class _ComponentCategoryScreenState extends State<ComponentCategoryScreen> {
         return MainContent(
           children: [
             Wrap(
+              alignment: WrapAlignment.spaceBetween,
+              runAlignment: WrapAlignment.spaceBetween,
+              crossAxisAlignment: WrapCrossAlignment.center,
               spacing: AppSizing.isTablet(context) ? AppSizing.kWPercentage(context, 2) : AppSizing.kWPercentage(context, 5),
               runSpacing: AppSizing.kWPercentage(context, 5),
               children: [

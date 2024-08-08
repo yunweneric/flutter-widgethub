@@ -11,6 +11,7 @@ import 'package:flutterui/shared/ui/utils/icons.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/app_container.dart';
 import 'package:flutterui/shared/ui/widgets/icon.dart';
+import 'package:flutterui/shared/ui/widgets/layout/mobile_nav.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({super.key});
@@ -29,111 +30,113 @@ class _NavBarState extends State<NavBar> {
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeBloc, ThemeState>(
       builder: (context, state) {
-        return AppContainer(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  TextButton(
-                    child: Text("Logo", style: Theme.of(context).textTheme.displayLarge),
-                    onPressed: () {
-                      context.router.pushNamed("/");
-                    },
-                  ),
-                  AppSizing.kwSpacer(50.w),
-                  Container(
-                    child: Row(
+        return AppSizing.isMobile(context)
+            ? MobileNav()
+            : AppContainer(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
                       children: [
-                        ...links.map((item) {
-                          final activeRoute = context.router.currentPath;
-                          final isActive = activeRoute == item.path;
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: TextButton(
-                              onPressed: () {
-                                context.router.pushNamed(item.path);
-                              },
-                              child: Text(
-                                item.title,
-                                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                      color: isActive ? Theme.of(context).primaryColor : null,
+                        TextButton(
+                          child: Text("Logo", style: Theme.of(context).textTheme.displayLarge),
+                          onPressed: () {
+                            context.router.pushNamed("/");
+                          },
+                        ),
+                        AppSizing.kwSpacer(50.w),
+                        Container(
+                          child: Row(
+                            children: [
+                              ...links.map((item) {
+                                final activeRoute = context.router.currentPath;
+                                final isActive = activeRoute == item.path;
+                                return Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: TextButton(
+                                    onPressed: () {
+                                      context.router.pushNamed(item.path);
+                                    },
+                                    child: Text(
+                                      item.title,
+                                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                            color: isActive ? Theme.of(context).primaryColor : null,
+                                          ),
                                     ),
-                              ),
-                            ),
-                          );
-                        })
+                                  ),
+                                );
+                              })
+                            ],
+                          ),
+                        )
                       ],
                     ),
-                  )
-                ],
-              ),
-              Row(
-                children: [
-                  AppSizing.isTablet(context)
-                      ? TextButton(onPressed: () {}, child: AppIcon(icon: AppIcons.search))
-                      : SizedBox(
-                          width: 280.w,
-                          child: Transform.scale(
-                            scale: 0.8,
-                            child: TextField(
-                              decoration: InputDecoration(
-                                contentPadding: EdgeInsets.symmetric(horizontal: 10.w),
-                                hintText: "Search component...",
-                                prefixIcon: Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: AppIcon(icon: AppIcons.search, color: Theme.of(context).highlightColor),
+                    Row(
+                      children: [
+                        AppSizing.isTablet(context)
+                            ? TextButton(onPressed: () {}, child: AppIcon(icon: AppIcons.search))
+                            : SizedBox(
+                                width: 280.w,
+                                child: Transform.scale(
+                                  scale: 0.8,
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.symmetric(horizontal: 10.w),
+                                      hintText: "Search component...",
+                                      prefixIcon: Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: AppIcon(icon: AppIcons.search, color: Theme.of(context).highlightColor),
+                                      ),
+                                      // suffixIcon: AppIcon(icon:AppIcons.search1, size: 20.w, color: Theme.of(context).highlightColor),
+                                    ),
+                                  ),
                                 ),
-                                // suffixIcon: AppIcon(icon:AppIcons.search1, size: 20.w, color: Theme.of(context).highlightColor),
                               ),
-                            ),
+                        TextButton(
+                          style: TextButton.styleFrom(
+                            fixedSize: Size(25.w, 25.w),
+                          ),
+                          child: AppIcon(
+                            icon: AppIcons.linkedIn,
+                            color: Theme.of(context).primaryColorDark,
+                          ),
+                          onPressed: () {},
+                        ),
+                        AppSizing.kwSpacer(5.w),
+                        TextButton(
+                          onPressed: () {},
+                          child: AppIcon(
+                            icon: AppIcons.x,
+                            color: Theme.of(context).primaryColorDark,
                           ),
                         ),
-                  TextButton(
-                    style: TextButton.styleFrom(
-                      fixedSize: Size(25.w, 25.w),
-                    ),
-                    child: AppIcon(
-                      icon: AppIcons.linkedIn,
-                      color: Theme.of(context).primaryColorDark,
-                    ),
-                    onPressed: () {},
-                  ),
-                  AppSizing.kwSpacer(5.w),
-                  TextButton(
-                    onPressed: () {},
-                    child: AppIcon(
-                      icon: AppIcons.x,
-                      color: Theme.of(context).primaryColorDark,
-                    ),
-                  ),
-                  AppSizing.kwSpacer(5.w),
-                  TextButton(
-                    onPressed: () {},
-                    child: AppIcon(icon: AppIcons.github),
-                  ),
-                  AppSizing.kwSpacer(5.w),
-                  Builder(
-                    builder: (context) {
-                      final theme = getIt.get<ThemeBloc>();
-                      final isDark = Theme.of(context).brightness == Brightness.dark;
-                      return TextButton(
-                        onPressed: () => theme.add(
-                          ChangeTheme(themeMode: isDark ? AppThemeMode.LIGHT : AppThemeMode.DARK),
+                        AppSizing.kwSpacer(5.w),
+                        TextButton(
+                          onPressed: () {},
+                          child: AppIcon(icon: AppIcons.github),
                         ),
-                        child: AppIcon(
-                          icon: isDark ? AppIcons.moon : AppIcons.sun,
-                          color: Theme.of(context).primaryColorDark,
+                        AppSizing.kwSpacer(5.w),
+                        Builder(
+                          builder: (context) {
+                            final theme = getIt.get<ThemeBloc>();
+                            final isDark = Theme.of(context).brightness == Brightness.dark;
+                            return TextButton(
+                              onPressed: () => theme.add(
+                                ChangeTheme(themeMode: isDark ? AppThemeMode.LIGHT : AppThemeMode.DARK),
+                              ),
+                              child: AppIcon(
+                                icon: isDark ? AppIcons.moon : AppIcons.sun,
+                                color: Theme.of(context).primaryColorDark,
+                              ),
+                            );
+                          },
                         ),
-                      );
-                    },
-                  ),
-                ],
-              )
-              // navBar
-            ],
-          ),
-        );
+                      ],
+                    )
+                    // navBar
+                  ],
+                ),
+              );
       },
     );
   }

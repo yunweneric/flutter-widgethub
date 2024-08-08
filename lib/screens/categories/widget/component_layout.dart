@@ -37,15 +37,14 @@ class _AppLayoutState extends State<ComponentLayoutScreen> {
     return Scaffold(
       body: LayoutBuilder(
         builder: (context, constraints) {
-          return SizedBox(
+          return Container(
+            alignment: Alignment.center,
             height: AppSizing.height(context),
-            width: AppSizing.width(context),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                if (!AppSizing.isMobile(context)) const NavBar(),
-                if (AppSizing.isMobile(context)) const MobileNav(),
+                Center(child: NavBar()),
                 Expanded(
                   child: Row(
                     children: [

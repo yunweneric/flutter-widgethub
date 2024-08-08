@@ -26,28 +26,14 @@ class _CategoryCardState extends State<CategoryCard> {
         Container(
           clipBehavior: Clip.hardEdge,
           decoration: BoxDecoration(),
-          width: AppSizing.kWPercentage(
-            context,
-            AppSizing.isMobile(context)
-                ? 45
-                : AppSizing.isTablet(context)
-                    ? 30
-                    : 35,
-          ),
+          width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 35),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
                 padding: EdgeInsets.all(30.w),
-                width: AppSizing.kWPercentage(
-                  context,
-                  AppSizing.isMobile(context)
-                      ? 45
-                      : AppSizing.isTablet(context)
-                          ? 30
-                          : 35,
-                ),
-                height: AppSizing.kWPercentage(context, 25),
+                width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 35),
+                height: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 50 : 25),
                 decoration: BoxDecoration(
                   color: Theme.of(context).scaffoldBackgroundColor,
                   border: Border.all(color: Theme.of(context).dividerColor),
