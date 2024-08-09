@@ -55,21 +55,16 @@ class _HeroSectionState extends State<HeroSection> {
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                     AppSizing.kh20Spacer(),
-                    Row(
-                      children: [
-                        Image.asset(
-                          AppImages.flutterColored,
-                          width: 90.w,
-                          color: Theme.of(context).brightness == Brightness.dark ? Theme.of(context).primaryColorDark : null,
-                        ),
-                        AppSizing.kwSpacer(20.w),
-                        Image.asset(
-                          AppImages.dartColored,
-                          width: 90.w,
-                          color: Theme.of(context).brightness == Brightness.dark ? Theme.of(context).primaryColorDark : null,
-                        ),
-                      ],
-                    ),
+                    Builder(builder: (context) {
+                      final theme = Theme.of(context).brightness == Brightness.dark ? 'dark' : 'light';
+                      return Row(
+                        children: [
+                          Image.asset("assets/images/flutter_${theme}.png", width: 100.w),
+                          AppSizing.kwSpacer(20.w),
+                          Image.asset("assets/images/dart_${theme}.png", width: 100.w),
+                        ],
+                      );
+                    }),
                     AppSizing.kh20Spacer(),
                     AppSizing.kh20Spacer(),
                     Wrap(
@@ -128,21 +123,6 @@ class _HeroSectionState extends State<HeroSection> {
                           ),
                         ),
                       ),
-
-                      // StaggeredGridTile.count(
-                      //   crossAxisCellCount: 2,
-                      //   mainAxisCellCount: 1.8,
-                      //   child: Container(
-                      //     decoration: BoxDecoration(
-                      //       borderRadius: AppSizing.radiusMd(),
-                      //       // color: Theme.of(context).primaryColor.withOpacity(0.0),
-                      //     ),
-                      //     child: DeviceSectionFrame(
-                      //       child: Text("Hello"),
-                      //       deviceAlignment: Alignment.topCenter,
-                      //     ),
-                      //   ),
-                      // ),
                       StaggeredGridTile.count(
                         crossAxisCellCount: 2,
                         mainAxisCellCount: 3.6,
@@ -171,7 +151,32 @@ class _HeroSectionState extends State<HeroSection> {
                   ),
                 ),
             ],
-          )
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class Demo1 extends StatefulWidget {
+  const Demo1({super.key});
+
+  @override
+  State<Demo1> createState() => _Demo1State();
+}
+
+class _Demo1State extends State<Demo1> {
+  final isRed = true;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          Container(
+            height: 300,
+            width: 200,
+            color: Colors.red,
+          ),
         ],
       ),
     );

@@ -15,10 +15,13 @@ class ThemeToggle extends StatefulWidget {
 
 class _ThemeToggleState extends State<ThemeToggle> {
   final theme = getIt.get<ThemeBloc>();
+  double moonScale = 1.0;
+  double sunScale = 1.0;
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final width = AppSizing.kWPercentage(context, 35);
+
     return Scaffold(
       body: Container(
         height: AppSizing.kHPercentage(context, 50),
@@ -55,12 +58,28 @@ class _ThemeToggleState extends State<ThemeToggle> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     InkWell(
+                      splashColor: Theme.of(context).scaffoldBackgroundColor,
+                      focusColor: Theme.of(context).scaffoldBackgroundColor,
+                      highlightColor: Theme.of(context).scaffoldBackgroundColor,
+                      onHover: (hover) => setState(() => sunScale = hover ? 1.5 : 1.0),
                       onTap: () => theme.add(ChangeTheme(themeMode: AppThemeMode.LIGHT)),
-                      child: Transform.scale(scale: 1.5, child: AppIcon(icon: AppIcons.sun)),
+                      child: AnimatedScale(
+                        duration: const Duration(milliseconds: 200),
+                        scale: sunScale,
+                        child: const AppIcon(icon: AppIcons.sun),
+                      ),
                     ),
                     InkWell(
+                      splashColor: Theme.of(context).scaffoldBackgroundColor,
+                      focusColor: Theme.of(context).scaffoldBackgroundColor,
+                      highlightColor: Theme.of(context).scaffoldBackgroundColor,
+                      onHover: (hover) => setState(() => moonScale = hover ? 1.5 : 1.0),
                       onTap: () => theme.add(ChangeTheme(themeMode: AppThemeMode.DARK)),
-                      child: Transform.scale(scale: 1.5, child: AppIcon(icon: AppIcons.moon)),
+                      child: AnimatedScale(
+                        duration: const Duration(milliseconds: 200),
+                        scale: moonScale,
+                        child: const AppIcon(icon: AppIcons.moon),
+                      ),
                     ),
                   ],
                 ),
