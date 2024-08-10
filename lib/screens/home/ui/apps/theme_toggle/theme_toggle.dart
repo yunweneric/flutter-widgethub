@@ -95,7 +95,7 @@ class _ThemeToggleState extends State<ThemeToggle> {
                           curve: Curves.elasticOut,
                           tween: Tween<double>(begin: -0.8, end: -0.1),
                           builder: (context, value, child) {
-                            return Transform.rotate(angle: pi * value, child: AppIcon(icon: AppIcons.moon));
+                            return Transform.rotate(angle: pi * value, child: const AppIcon(icon: AppIcons.moon));
                           },
                         ),
                       ),

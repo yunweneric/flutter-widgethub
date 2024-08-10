@@ -37,41 +37,53 @@ class _HomeFooterState extends State<HomeFooter> {
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    TextButton(
-                      style: TextButton.styleFrom(
-                        fixedSize: Size(25.w, 25.w),
-                      ),
-                      child: AppIcon(
-                        icon: AppIcons.linkedIn,
-                        color: Theme.of(context).primaryColorDark,
-                      ),
-                      onPressed: () {},
-                    ),
-                    AppSizing.kwSpacer(5.w),
-                    TextButton(
-                      onPressed: () {},
-                      child: AppIcon(
-                        icon: AppIcons.x,
-                        color: Theme.of(context).primaryColorDark,
+                    CircleAvatar(
+                      backgroundColor: Colors.transparent,
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                          fixedSize: Size(25.w, 25.w),
+                        ),
+                        child: AppIcon(
+                          icon: AppIcons.linkedIn,
+                          color: Theme.of(context).primaryColorDark,
+                        ),
+                        onPressed: () {},
                       ),
                     ),
                     AppSizing.kwSpacer(5.w),
-                    TextButton(
-                      onPressed: () {},
-                      child: const AppIcon(icon: AppIcons.github),
+                    CircleAvatar(
+                      backgroundColor: Colors.transparent,
+                      child: TextButton(
+                        onPressed: () {},
+                        child: AppIcon(
+                          icon: AppIcons.x,
+                          color: Theme.of(context).primaryColorDark,
+                        ),
+                      ),
+                    ),
+                    AppSizing.kwSpacer(5.w),
+                    CircleAvatar(
+                      backgroundColor: Colors.transparent,
+                      child: TextButton(
+                        onPressed: () {},
+                        child: const AppIcon(icon: AppIcons.github),
+                      ),
                     ),
                     AppSizing.kwSpacer(5.w),
                     Builder(
                       builder: (context) {
                         final theme = getIt.get<ThemeBloc>();
                         final isDark = Theme.of(context).brightness == Brightness.dark;
-                        return TextButton(
-                          onPressed: () => theme.add(
-                            ChangeTheme(themeMode: isDark ? AppThemeMode.LIGHT : AppThemeMode.DARK),
-                          ),
-                          child: AppIcon(
-                            icon: isDark ? AppIcons.moon : AppIcons.sun,
-                            color: Theme.of(context).primaryColorDark,
+                        return CircleAvatar(
+                          backgroundColor: Colors.transparent,
+                          child: TextButton(
+                            onPressed: () => theme.add(
+                              ChangeTheme(themeMode: isDark ? AppThemeMode.LIGHT : AppThemeMode.DARK),
+                            ),
+                            child: AppIcon(
+                              icon: isDark ? AppIcons.moon : AppIcons.sun,
+                              color: Theme.of(context).primaryColorDark,
+                            ),
                           ),
                         );
                       },

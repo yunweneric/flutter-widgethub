@@ -7,6 +7,7 @@ import 'package:flutterui/core/service_locators.dart';
 import 'package:flutterui/screens/routes/app_router.dart';
 import 'package:flutterui/shared/data/enums/theme.dart';
 import 'package:flutterui/shared/logic/language/language_bloc.dart';
+import 'package:flutterui/shared/logic/navigation/navigation_bloc.dart';
 import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/shared/ui/utils/theme.dart';
 
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
             BlocProvider(create: (context) => getIt.get<ThemeBloc>()),
             BlocProvider(create: (context) => getIt.get<LanguageBloc>()),
             BlocProvider(create: (context) => getIt.get<ComponentBloc>()),
+            BlocProvider(create: (context) => getIt.get<NavigationBloc>()),
           ],
           child: BlocBuilder<ThemeBloc, ThemeState>(
             builder: (context, state) {

@@ -41,19 +41,19 @@ class _DeviceInteractiveState extends State<DeviceInteractive> {
                           : Colors.yellow.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(30),
                 ),
-                duration: Duration(milliseconds: 800),
+                duration: const Duration(milliseconds: 800),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     TweenAnimationBuilder(
                       key: ValueKey(currentIndex),
                       tween: Tween<double>(begin: 1, end: 0),
-                      duration: Duration(milliseconds: 1500),
+                      duration: const Duration(milliseconds: 1500),
                       curve: Curves.bounceOut,
                       builder: (context, value, child) {
                         return Transform(
                           transform: Matrix4.identity()..translate(0.0, -value * 100),
-                          child: AppIcon(icon: AppIcons.clipboard),
+                          child: const AppIcon(icon: AppIcons.clipboard),
                         );
                       },
                     ),
@@ -62,7 +62,7 @@ class _DeviceInteractiveState extends State<DeviceInteractive> {
                 ),
               ),
               bottomNavigationBar: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     // border: Border(top: BorderSide(color: Theme.of(context).dividerColor.withOpacity(0.5))),
                     ),
                 child: BottomNavigationBar(

@@ -15,13 +15,15 @@ class AppRouter extends RootStackRouter {
 
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(initial: true, page: HomeRoute.page),
+        AutoRoute(initial: true, path: RouteNames.home, page: HomeRoute.page),
         AutoRoute(
           path: '/components',
           page: ComponentLayoutRoute.page,
           children: [
-            AutoRoute(path: "index", initial: true, page: ComponentCategoryRoute.page),
-            AutoRoute(path: RouteNames.buttons, page: ComponentDetailsRoute.page),
+            AutoRoute(path: "", page: ComponentCategoryRoute.page),
+            AutoRoute(path: RouteNames.buttons, page: ComponentLayoutRoute.page),
+            AutoRoute(path: RouteNames.templates, page: ComponentTemplatesRoute.page),
+            AutoRoute(path: RouteNames.onboarding, page: ComponentTemplatesRoute.page),
             AutoRoute(path: RouteNames.notFound, page: NotFoundRoute.page),
             AutoRoute(page: NotFoundRoute.page),
             // AutoRoute(path: "*", page: NotFoundRoute.page),

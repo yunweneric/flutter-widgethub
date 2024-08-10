@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutterui/screens/home/data/block_items.dart';
 import 'package:flutterui/screens/home/model/component_block_model.dart';
 import 'package:flutterui/screens/home/widgets/component_block.dart';
-import 'package:flutterui/screens/home/widgets/device_interactive.dart';
+import 'package:flutterui/screens/routes/app_router.gr.dart';
 import 'package:flutterui/shared/ui/utils/icons.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/device_section_frame.dart';
@@ -17,54 +19,7 @@ class AssetsSection extends StatefulWidget {
 
 class _AssetsSectionState extends State<AssetsSection> {
   late ComponentBlockModel activeBlock;
-  List<ComponentBlockModel> blocks = [
-    ComponentBlockModel(
-      title: "Components",
-      description: "A wide range of pre-built UI components from buttons and sliders to complex forms.",
-      widgets: [
-        const TextField(),
-        const Text("Hello"),
-        const Text("Hello"),
-        const TextField(),
-      ],
-    ),
-    ComponentBlockModel(
-      title: "Blocks",
-      description: "A collection of reusable layout blocks to help you create consistent and responsive layouts",
-      widgets: [
-        const TextField(),
-        const Text("Hello"),
-        const Text("Hello"),
-        const TextField(),
-      ],
-    ),
-    ComponentBlockModel(
-      title: "Animations",
-      description: "Smooth and captivating animations that can be easily applied to any element.",
-      widgets: [
-        const TextField(),
-        const Text("Hello"),
-        const Text("Hello"),
-        const TextField(),
-        const Text("Hello"),
-        const Text("Hello"),
-        const Text("Hello"),
-      ],
-    ),
-    ComponentBlockModel(
-      title: "Effects",
-      description: "Visual effects ranging from shadows and gradients to more complex transformations",
-      widgets: [
-        const TextField(),
-        const Text("Hello"),
-        const Text("Hello"),
-        const TextField(),
-        const Text("Hello"),
-        const Text("Hello"),
-        const Text("Hello"),
-      ],
-    ),
-  ];
+  List<ComponentBlockModel> blocks = blocItems;
 
   @override
   void initState() {
@@ -159,45 +114,61 @@ class _AssetsSectionState extends State<AssetsSection> {
                 ),
               Builder(
                 builder: (context) {
-                  List<Widget> allWidgets = blocks.expand((item) => item.widgets).toList();
-                  List<Widget> activeWidgets = activeBlock.widgets;
-                  final displayWidget = AppSizing.isMobile(context) ? allWidgets : activeWidgets;
+                  List<BlocItem> allBlockItems = blocks.expand((item) => item.items).toList();
+                  List<BlocItem> activeBlockItem = activeBlock.items;
+                  final displayWidget = AppSizing.isMobile(context) ? allBlockItems : activeBlockItem;
                   return Container(
-                    alignment: Alignment.topCenter,
-                    constraints: BoxConstraints(minHeight: AppSizing.kHPercentage(context, 50)),
+                    alignment: Alignment.topLeft,
+                    constraints: BoxConstraints(minHeight: AppSizing.kHPercentage(context, 25)),
                     width: AppSizing.kWPercentage(context, AppSizing.isTablet(context) ? 70 : 100),
                     child: AnimatedSwitcher(
-                      duration: Duration(milliseconds: 1500),
+                      duration: const Duration(milliseconds: 1500),
                       key: ValueKey(activeBlock),
                       child: Wrap(
                         spacing: AppSizing.kWPercentage(context, 2.5),
                         runSpacing: AppSizing.kWPercentage(context, 2.5),
                         crossAxisAlignment: WrapCrossAlignment.center,
                         alignment: AppSizing.isTablet(context) ? WrapAlignment.end : WrapAlignment.start,
-                        runAlignment: WrapAlignment.spaceBetween,
+                        runAlignment: WrapAlignment.start,
                         children: List.generate(
                           displayWidget.length,
                           (index) {
-                            return InkWell(
-                              enableFeedback: false,
-                              hoverColor: Theme.of(context).scaffoldBackgroundColor,
-                              highlightColor: Theme.of(context).scaffoldBackgroundColor,
-                              focusColor: Theme.of(context).scaffoldBackgroundColor,
-                              splashColor: Theme.of(context).scaffoldBackgroundColor,
-                              onTap: () {},
-                              child: DeviceSectionFrame(
-                                deviceAlignment: Alignment.center,
-                                parentWidth: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 43 : 20),
-                                parentHeight: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 35 : 15),
-                                childWidth: AppSizing.kWPercentage(context, 10),
-                                childHeight: AppSizing.kWPercentage(context, 22),
-                                child: Scaffold(
-                                  body: Center(
-                                    child: TextFormField(),
-                                  ),
+                            return Builder(builder: (context) {
+                              List<String> icons = [
+                                "assets/icons/linkedin.svg",
+                                "assets/icons/tiktok.svg",
+                                "assets/icons/linkedin.svg",
+                                "assets/icons/youtube.svg",
+                                "assets/icons/spotify.svg",
+                              ];
+                              final item = displayWidget[index];
+                              return InkWell(
+                                enableFeedback: false,
+                                hoverColor: Theme.of(context).scaffoldBackgroundColor,
+                                highlightColor: Theme.of(context).scaffoldBackgroundColor,
+                                focusColor: Theme.of(context).scaffoldBackgroundColor,
+                                splashColor: Theme.of(context).scaffoldBackgroundColor,
+                                onTap: () {
+                                  context.router.pushNamed("/components/${item.link}");
+                                  // context.router.push(ComponentLayoutRoute());
+                                },
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    DeviceSectionFrame(
+                                      deviceAlignment: item.alignment,
+                                      parentWidth: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 43 : 20),
+                                      parentHeight: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 35 : 15),
+                                      childWidth: AppSizing.kWPercentage(context, 10),
+                                      childHeight: AppSizing.kWPercentage(context, 22),
+                                      child: item.widget,
+                                    ),
+                                    AppSizing.kh20Spacer(),
+                                    Text(item.title)
+                                  ],
                                 ),
-                              ),
-                            );
+                              );
+                            });
                           },
                         ),
                       ),

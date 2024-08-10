@@ -2,6 +2,7 @@ class RouteNames {
   static const home = "/";
   static const components = "components";
   static const buttons = "buttons";
+  static const templates = "templates";
   static const banners = "banners";
   static const chips = "chips";
   static const inputs = "inputs";
@@ -10,4 +11,7 @@ class RouteNames {
   static const playground = "playground";
   static const notFound = "not-found";
   static const animations = "animations";
+  static const authScreens = "auth-screens";
+  static const homeScreens = "home-screens";
+  static const onboarding = "onboarding-screens";
 }
