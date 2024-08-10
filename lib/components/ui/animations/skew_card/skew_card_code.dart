@@ -1,4 +1,4 @@
-final skewCardCode = '''
+const skewCardCode = '''
 import 'dart:math';
 
 import 'package:flutter/material.dart';

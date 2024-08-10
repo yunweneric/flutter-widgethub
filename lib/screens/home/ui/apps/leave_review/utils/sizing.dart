@@ -6,8 +6,8 @@ class LeaveReviewAppSizing {
   static bool isMobile(BuildContext context) => width(context) < 480;
   static bool isTablet(BuildContext context) => width(context) > 480 && width(context) < 895;
   static bool isDesktop(BuildContext context) => width(context) > 895;
-  static SizedBox kh10(BuildContext context) => SizedBox(height: 10);
+  static SizedBox kh10(BuildContext context) => const SizedBox(height: 10);
   static SizedBox khSpacer(double height) => SizedBox(height: height);
-  static SizedBox kh20(BuildContext context) => SizedBox(height: 20);
-  static SizedBox kw20(BuildContext context) => SizedBox(width: 20);
+  static SizedBox kh20(BuildContext context) => const SizedBox(height: 20);
+  static SizedBox kw20(BuildContext context) => const SizedBox(width: 20);
 }

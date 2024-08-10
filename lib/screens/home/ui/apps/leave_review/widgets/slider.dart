@@ -6,30 +6,29 @@ import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 
 class AppSlider extends StatefulWidget {
+  final double value;
   final void Function(dynamic)? onChanged;
-  const AppSlider({super.key, this.onChanged});
+  const AppSlider({super.key, this.onChanged, required this.value});
 
   @override
   State<AppSlider> createState() => _AppSliderState();
 }
 
 class _AppSliderState extends State<AppSlider> {
-  double _value = 2.0;
-
   @override
   Widget build(BuildContext context) {
     return SfSliderTheme(
       data: SfSliderThemeData(
         activeLabelStyle: Theme.of(context).textTheme.displaySmall,
         inactiveLabelStyle: Theme.of(context).textTheme.displaySmall,
-        labelOffset: Offset(0.0, 30.0),
+        labelOffset: const Offset(0.0, 30.0),
         activeTrackColor: ReviewColors.bgBlack.withOpacity(0.2),
         inactiveTrackColor: ReviewColors.bgBlack.withOpacity(0.2),
       ),
       child: SfSlider(
         min: 0.0,
         max: 2.0,
-        value: _value,
+        value: widget.value,
         interval: 1,
         showDividers: true,
         showLabels: true,
@@ -41,11 +40,11 @@ class _AppSliderState extends State<AppSlider> {
                   : 'Good';
         },
         dividerShape: _DividerShape(),
-        thumbShape: _SfThumbShape(animateAngle: _value >= 1 ? _value * 1 : 1),
+        thumbShape: _SfThumbShape(animateAngle: widget.value >= 1 ? widget.value * 1 : 1),
         onChanged: (dynamic newValue) {
           if (widget.onChanged != null) widget.onChanged!(newValue);
           setState(() {
-            _value = newValue;
+            // widget.value = newValue;
           });
         },
       ),

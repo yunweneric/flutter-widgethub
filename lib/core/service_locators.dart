@@ -8,8 +8,8 @@ final getIt = GetIt.instance;
 
 class ServiceLocators {
   static Future<void> register() async {
-    final _appRouter = AppRouter();
-    getIt.registerSingleton<AppRouter>(_appRouter);
+    final appRouter = AppRouter();
+    getIt.registerSingleton<AppRouter>(appRouter);
 
     final themBloc = ThemeBloc();
     final languageBloc = LanguageBloc();

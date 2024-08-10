@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:flutterui/core/service_locators.dart';
 import 'package:flutterui/shared/data/enums/theme.dart';
 import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
@@ -31,7 +30,7 @@ class _NavBarState extends State<NavBar> {
     return BlocBuilder<ThemeBloc, ThemeState>(
       builder: (context, state) {
         return AppSizing.isMobile(context)
-            ? MobileNav()
+            ? const MobileNav()
             : AppContainer(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -75,7 +74,7 @@ class _NavBarState extends State<NavBar> {
                     Row(
                       children: [
                         AppSizing.isTablet(context)
-                            ? TextButton(onPressed: () {}, child: AppIcon(icon: AppIcons.search))
+                            ? TextButton(onPressed: () {}, child: const AppIcon(icon: AppIcons.search))
                             : SizedBox(
                                 width: 220.w,
                                 child: Transform.scale(
@@ -114,7 +113,7 @@ class _NavBarState extends State<NavBar> {
                         AppSizing.kwSpacer(5.w),
                         TextButton(
                           onPressed: () {},
-                          child: AppIcon(icon: AppIcons.github),
+                          child: const AppIcon(icon: AppIcons.github),
                         ),
                         AppSizing.kwSpacer(5.w),
                         Builder(

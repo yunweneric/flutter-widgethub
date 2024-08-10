@@ -48,7 +48,7 @@ class _MobileNavState extends State<MobileNav> {
                   ),
                 );
               }),
-              TextButton(onPressed: () {}, child: AppIcon(icon: AppIcons.search)),
+              TextButton(onPressed: () {}, child: const AppIcon(icon: AppIcons.search)),
             ],
           )
         ],

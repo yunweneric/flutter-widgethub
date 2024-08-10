@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -5,7 +6,6 @@ import 'package:flutterui/screens/home/ui/apps/leave_review/utils/colors.dart';
 import 'package:flutterui/screens/home/ui/apps/leave_review/utils/sizing.dart';
 import 'package:flutterui/screens/home/ui/apps/leave_review/widgets/arc.dart';
 import 'package:flutterui/screens/home/ui/apps/leave_review/widgets/slider.dart';
-import 'package:flutterui/shared/ui/utils/sizing.dart';
 
 class LeaveReviewHomeScreen extends StatefulWidget {
   const LeaveReviewHomeScreen({super.key});
@@ -20,25 +20,46 @@ class _LeaveReviewHomeScreenState extends State<LeaveReviewHomeScreen> {
   int activeIndex = 1;
 
   final duration = const Duration(milliseconds: 500);
+  Timer? timer;
+
+  bool isForward = true;
+
+  startTimer() {
+    timer = Timer.periodic(const Duration(milliseconds: 3000), (tick) {
+      setState(() {
+        value = isForward ? value + 1 : value - 1;
+        activeIndex = isForward ? activeIndex + 1 : activeIndex - 1;
+        if (value == 0) isForward = true;
+        if (value == 3) isForward = false;
+      });
+      pageController.animateToPage(activeIndex, duration: duration, curve: Curves.elasticOut);
+    });
+  }
 
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 2), () {
+    pageController.addListener(listenPageChange);
+    Future.delayed(const Duration(seconds: 2), () {
       setState(() {
         value = 2.0;
         activeIndex = 2;
       });
       pageController.animateToPage(2, duration: duration, curve: Curves.elasticOut);
     });
+    // startTimer();
 
     super.initState();
   }
 
   @override
   void dispose() {
+    pageController.removeListener(listenPageChange);
     pageController.dispose();
+    timer?.cancel();
     super.dispose();
   }
+
+  void listenPageChange() {}
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +74,7 @@ class _LeaveReviewHomeScreenState extends State<LeaveReviewHomeScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TweenAnimationBuilder(
-                  duration: Duration(milliseconds: 1000),
+                  duration: const Duration(milliseconds: 1000),
                   tween: Tween<double>(begin: 1, end: 0),
                   curve: Curves.easeOutBack,
                   builder: (context, doubleVal, child) {
@@ -68,7 +89,7 @@ class _LeaveReviewHomeScreenState extends State<LeaveReviewHomeScreen> {
                     );
                   }),
               TweenAnimationBuilder(
-                duration: Duration(milliseconds: 1000),
+                duration: const Duration(milliseconds: 1000),
                 tween: Tween<double>(begin: 1, end: 0),
                 curve: Curves.easeOutBack,
                 builder: (context, doubleVal, child) {
@@ -87,7 +108,7 @@ class _LeaveReviewHomeScreenState extends State<LeaveReviewHomeScreen> {
 
   Widget headerSection() {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       child: Column(
         children: [
           Row(
@@ -96,12 +117,12 @@ class _LeaveReviewHomeScreenState extends State<LeaveReviewHomeScreen> {
               CircleAvatar(
                 radius: 25,
                 backgroundColor: ReviewColors.bgBlack.withOpacity(0.1),
-                child: Icon(Icons.close),
+                child: const Icon(Icons.close),
               ),
               CircleAvatar(
                 radius: 25,
                 backgroundColor: ReviewColors.bgBlack.withOpacity(0.1),
-                child: Icon(Icons.info_outline),
+                child: const Icon(Icons.info_outline),
               ),
             ],
           ),
@@ -198,7 +219,7 @@ class _LeaveReviewHomeScreenState extends State<LeaveReviewHomeScreen> {
               height: LeaveReviewAppSizing.height(context) * 0.1,
               child: PageView.builder(
                   allowImplicitScrolling: false,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   controller: pageController,
                   itemCount: items.length,
                   onPageChanged: (value) {
@@ -221,6 +242,7 @@ class _LeaveReviewHomeScreenState extends State<LeaveReviewHomeScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: AppSlider(
+                value: value,
                 onChanged: (dynamic val) {
                   setState(() {
                     value = val;
@@ -263,7 +285,7 @@ class _LeaveReviewHomeScreenState extends State<LeaveReviewHomeScreen> {
                     child: ElevatedButton.icon(
                       iconAlignment: IconAlignment.end,
                       style: ElevatedButton.styleFrom(
-                        minimumSize: Size(150, 60),
+                        minimumSize: const Size(150, 60),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                         ),

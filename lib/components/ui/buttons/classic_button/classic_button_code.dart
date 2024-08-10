@@ -1,4 +1,4 @@
-final classicButtonCode = '''import 'package:flutter/material.dart';
+const classicButtonCode = '''import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/icon.dart';

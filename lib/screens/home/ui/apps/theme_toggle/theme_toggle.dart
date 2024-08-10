@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutterui/core/service_locators.dart';
 import 'package:flutterui/shared/data/enums/theme.dart';
@@ -35,7 +37,8 @@ class _ThemeToggleState extends State<ThemeToggle> {
                 top: 0,
                 bottom: 0,
                 left: !isDark ? 0 : width * 0.55,
-                duration: Duration(milliseconds: 500),
+                curve: Curves.elasticInOut,
+                duration: const Duration(milliseconds: 1500),
                 child: CircleAvatar(
                   radius: 30,
                   backgroundColor: Theme.of(context).dividerColor,
@@ -48,7 +51,7 @@ class _ThemeToggleState extends State<ThemeToggle> {
               Container(
                 width: width,
                 height: 60,
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 decoration: BoxDecoration(
                   border: Border.all(color: Theme.of(context).disabledColor),
                   borderRadius: BorderRadius.circular(80),
@@ -66,7 +69,15 @@ class _ThemeToggleState extends State<ThemeToggle> {
                       child: AnimatedScale(
                         duration: const Duration(milliseconds: 200),
                         scale: sunScale,
-                        child: const AppIcon(icon: AppIcons.sun),
+                        child: TweenAnimationBuilder(
+                          key: ObjectKey(sunScale),
+                          duration: const Duration(milliseconds: 1500),
+                          curve: Curves.elasticOut,
+                          tween: Tween<double>(begin: 0.3, end: 0),
+                          builder: (context, value, child) {
+                            return Transform.rotate(angle: pi * value, child: const AppIcon(icon: AppIcons.sun));
+                          },
+                        ),
                       ),
                     ),
                     InkWell(
@@ -78,7 +89,15 @@ class _ThemeToggleState extends State<ThemeToggle> {
                       child: AnimatedScale(
                         duration: const Duration(milliseconds: 200),
                         scale: moonScale,
-                        child: const AppIcon(icon: AppIcons.moon),
+                        child: TweenAnimationBuilder(
+                          key: ValueKey(moonScale),
+                          duration: const Duration(milliseconds: 1500),
+                          curve: Curves.elasticOut,
+                          tween: Tween<double>(begin: -0.8, end: -0.1),
+                          builder: (context, value, child) {
+                            return Transform.rotate(angle: pi * value, child: AppIcon(icon: AppIcons.moon));
+                          },
+                        ),
                       ),
                     ),
                   ],

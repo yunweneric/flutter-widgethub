@@ -1,2 +1,2 @@
-final classicButtonSetup = '''
+const classicButtonSetup = '''
 flutter pub get''';

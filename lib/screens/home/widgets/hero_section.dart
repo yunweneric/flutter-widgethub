@@ -1,22 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutterui/components/ui/export/data.dart';
-import 'package:flutterui/core/service_locators.dart';
 import 'package:flutterui/screens/home/ui/apps/leave_review/home.dart';
 import 'package:flutterui/screens/home/ui/apps/theme_toggle/theme_toggle.dart';
 import 'package:flutterui/screens/routes/route_names.dart';
-import 'package:flutterui/shared/data/enums/theme.dart';
-import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
-import 'package:flutterui/shared/ui/utils/colors.dart';
-import 'package:flutterui/shared/ui/utils/icons.dart';
-import 'package:flutterui/shared/ui/utils/images.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/device_section_frame.dart';
-import 'package:flutterui/shared/ui/widgets/icon.dart';
 
 class HeroSection extends StatefulWidget {
   const HeroSection({super.key});
@@ -38,6 +28,7 @@ class _HeroSectionState extends State<HeroSection> {
         children: [
           AppSizing.kh20Spacer(),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
                 width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 80 : 40),
@@ -59,9 +50,9 @@ class _HeroSectionState extends State<HeroSection> {
                       final theme = Theme.of(context).brightness == Brightness.dark ? 'dark' : 'light';
                       return Row(
                         children: [
-                          Image.asset("assets/images/flutter_${theme}.png", width: 100.w),
+                          Image.asset("assets/images/flutter_$theme.png", width: 100.w),
                           AppSizing.kwSpacer(20.w),
-                          Image.asset("assets/images/dart_${theme}.png", width: 100.w),
+                          Image.asset("assets/images/dart_$theme.png", width: 100.w),
                         ],
                       );
                     }),
@@ -90,7 +81,7 @@ class _HeroSectionState extends State<HeroSection> {
                           ),
                           iconAlignment: IconAlignment.end,
                           onPressed: () {},
-                          icon: Icon(Icons.arrow_forward_rounded),
+                          icon: const Icon(Icons.arrow_forward_rounded),
                           label: Text(
                             "Browse all assets",
                             style: TextStyle(color: Theme.of(context).primaryColorDark),
@@ -102,9 +93,9 @@ class _HeroSectionState extends State<HeroSection> {
                 ),
               ),
               if (!AppSizing.isMobile(context))
-                Container(
+                SizedBox(
                   // height: AppSizing.kHPercentage(context, 100),
-                  width: AppSizing.kWPercentage(context, 55),
+                  width: AppSizing.kWPercentage(context, 52),
                   // color: Colors.teal,
                   child: StaggeredGrid.count(
                     crossAxisCount: 4,
@@ -118,7 +109,7 @@ class _HeroSectionState extends State<HeroSection> {
                           decoration: BoxDecoration(
                             borderRadius: AppSizing.radiusMd(),
                           ),
-                          child: DeviceSectionFrame(
+                          child: const DeviceSectionFrame(
                             child: Center(child: Text("Hello1")),
                           ),
                         ),
@@ -140,9 +131,9 @@ class _HeroSectionState extends State<HeroSection> {
                         child: Builder(builder: (context) {
                           return Container(
                             decoration: BoxDecoration(borderRadius: AppSizing.radiusMd()),
-                            child: DeviceSectionFrame(
-                              child: ThemeToggle(),
+                            child: const DeviceSectionFrame(
                               deviceAlignment: Alignment.topCenter,
+                              child: ThemeToggle(),
                             ),
                           );
                         }),

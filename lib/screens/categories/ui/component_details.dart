@@ -67,8 +67,8 @@ class _HomeScreenState extends State<ComponentDetailsScreen> {
                         onPressed: () {
                           componentBloc.add(FindNextComponentBloc(isNext: false));
                         },
-                        label: Text("Previous"),
-                        icon: AppIcon(icon: AppIcons.back),
+                        label: const Text("Previous"),
+                        icon: const AppIcon(icon: AppIcons.back),
                       ),
                       AppSizing.kh10Spacer(),
                       Text(state.allComponents[activeIndex - 1].title, style: Theme.of(context).textTheme.displayMedium),
@@ -83,8 +83,8 @@ class _HomeScreenState extends State<ComponentDetailsScreen> {
                         onPressed: () {
                           componentBloc.add(FindNextComponentBloc(isNext: true));
                         },
-                        label: Text("Next"),
-                        icon: AppIcon(icon: AppIcons.next),
+                        label: const Text("Next"),
+                        icon: const AppIcon(icon: AppIcons.next),
                       ),
                       AppSizing.kh10Spacer(),
                       Text(state.allComponents[activeIndex + 1].title, style: Theme.of(context).textTheme.displayMedium),

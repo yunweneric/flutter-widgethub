@@ -58,7 +58,7 @@ class _HomeFooterState extends State<HomeFooter> {
                     AppSizing.kwSpacer(5.w),
                     TextButton(
                       onPressed: () {},
-                      child: AppIcon(icon: AppIcons.github),
+                      child: const AppIcon(icon: AppIcons.github),
                     ),
                     AppSizing.kwSpacer(5.w),
                     Builder(

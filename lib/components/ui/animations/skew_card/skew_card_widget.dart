@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 
@@ -19,7 +18,7 @@ class _SkewCardState extends State<SkewCard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 209, 207, 207),
+      backgroundColor: const Color.fromARGB(255, 209, 207, 207),
       body: GestureDetector(
         child: Container(
           child: Stack(
@@ -81,8 +80,8 @@ class _SkewCardState extends State<SkewCard> {
     return Container(
       height: AppSizing.height(context) * 0.6,
       width: AppSizing.width(context),
-      margin: EdgeInsets.symmetric(horizontal: 30),
-      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+      margin: const EdgeInsets.symmetric(horizontal: 30),
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(30),
@@ -100,7 +99,7 @@ class _SkewCardState extends State<SkewCard> {
             ),
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 2, vertical: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 20),
             width: AppSizing.width(context),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -113,7 +112,7 @@ class _SkewCardState extends State<SkewCard> {
                         fontWeight: FontWeight.w600,
                       ),
                 ),
-                Text(
+                const Text(
                   "Flutter Developer",
                   style: TextStyle(
                     fontSize: 16,

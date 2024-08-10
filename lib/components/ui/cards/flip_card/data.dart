@@ -5,7 +5,7 @@ import 'package:flutterui/components/ui/cards/flip_card/flip_card_widget.dart';
 import 'package:flutterui/components/ui/export/data.dart';
 
 class AppFlipCard {
-  static Widget widget = ComponentFlipCard(title: "Hello Wold");
+  static Widget widget = const ComponentFlipCard(title: "Hello Wold");
   static String code = flipCardButtonCode;
   static String setup = flipCardButtonSetup;
   static Component component = Component(

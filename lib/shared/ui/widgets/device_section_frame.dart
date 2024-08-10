@@ -41,7 +41,7 @@ class _DeviceSectionFrameState extends State<DeviceSectionFrame> {
         clipBehavior: Clip.hardEdge,
         alignment: widget.deviceAlignment ?? Alignment.bottomCenter,
         fit: BoxFit.cover,
-        child: Container(
+        child: SizedBox(
           width: widget.childWidth ?? AppSizing.kWPercentage(context, 10),
           height: widget.childHeight ?? AppSizing.kWPercentage(context, 22),
           child: AppDeviceFrame(

@@ -1,6 +1,5 @@
 import 'package:device_frame/device_frame.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 
 class AppDeviceFrame extends StatefulWidget {
@@ -26,15 +25,15 @@ class _AppDeviceFrameState extends State<AppDeviceFrame> {
   Widget build(BuildContext context) {
     return Container(
       clipBehavior: Clip.hardEdge,
-      decoration: BoxDecoration(),
+      decoration: const BoxDecoration(),
       width: AppSizing.width(context),
       height: AppSizing.isMobile(context) ? AppSizing.height(context) * 0.5 : AppSizing.height(context) * 0.6,
       child: AnimatedSwitcher(
         duration: const Duration(milliseconds: 500),
         child: widget.isFrameVisible == false
-            ? Container(
-                child: widget.child,
+            ? SizedBox(
                 width: AppSizing.kWPercentage(context, 40),
+                child: widget.child,
               )
             : DeviceFrame(
                 device: widget.deviceInfo,

@@ -1,2 +1,2 @@
-final basicSetup = '''
+const basicSetup = '''
 flutter pub get''';

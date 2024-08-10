@@ -1,4 +1,4 @@
-final demoApp = '''
+const demoApp = '''
 class StarterView extends StatelessWidget {
   const StarterView({super.key});
   @override

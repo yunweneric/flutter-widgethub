@@ -23,14 +23,14 @@ class _NotFoundScreenState extends State<NotFoundScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text("Page not found!"),
+            const Text("Page not found!"),
             ElevatedButton(
               onPressed: () {
                 final router = context.innerRouterOf<StackRouter>(ComponentLayoutRoute.name);
                 print(router);
                 context.router.pushNamed(RouteNames.home);
               },
-              child: Text("Home"),
+              child: const Text("Home"),
             ),
           ],
         ),

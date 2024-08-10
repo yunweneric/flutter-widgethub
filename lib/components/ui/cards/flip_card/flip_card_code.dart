@@ -1,4 +1,4 @@
-final flipCardButtonCode = '''import 'package:flutter/material.dart';
+const flipCardButtonCode = '''import 'package:flutter/material.dart';
 
 class ComponentFlipCard extends StatefulWidget {
   const ComponentFlipCard({super.key, required this.title});

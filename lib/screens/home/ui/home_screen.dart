@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterui/screens/home/widgets/component_cta.dart';
+import 'package:flutterui/screens/home/widgets/assets_section.dart';
+import 'package:flutterui/screens/home/widgets/integration_section.dart';
 import 'package:flutterui/screens/home/widgets/hero_section.dart';
 import 'package:flutterui/screens/home/widgets/home_footer.dart';
 import 'package:flutterui/shared/ui/widgets/layout/nav_bar.dart';
@@ -14,7 +15,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  ScrollController _controller = ScrollController();
+  final ScrollController _controller = ScrollController();
 
   @override
   void initState() {
@@ -40,7 +41,8 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             NavBar(),
             HeroSection(),
-            ComponentCTA(),
+            IntegrationSection(),
+            AssetsSection(),
             HomeFooter(),
           ],
         ),

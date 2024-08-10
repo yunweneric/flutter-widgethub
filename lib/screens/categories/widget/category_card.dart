@@ -25,7 +25,7 @@ class _CategoryCardState extends State<CategoryCard> {
       children: [
         Container(
           clipBehavior: Clip.hardEdge,
-          decoration: BoxDecoration(),
+          decoration: const BoxDecoration(),
           width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 35),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
