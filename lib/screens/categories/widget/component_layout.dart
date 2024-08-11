@@ -37,20 +37,23 @@ class _AppLayoutState extends State<ComponentLayoutScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const Center(child: NavBar()),
+                const Center(child: NavBar(isHomeScreenLayout: false)),
                 Expanded(
-                  child: Row(
-                    children: [
-                      AnimatedContainer(
-                        duration: duration,
-                        decoration: BoxDecoration(
-                          border: Border(right: BorderSide(color: Theme.of(context).dividerColor)),
+                  child: Container(
+                    // margin: EdgeInsets.symmetric(horizontal: AppSizing.kWPercentage(context, 2.5)),
+                    child: Row(
+                      children: [
+                        AnimatedContainer(
+                          duration: duration,
+                          decoration: BoxDecoration(
+                            border: Border(right: BorderSide(color: Theme.of(context).dividerColor)),
+                          ),
+                          width: AppSizing.isMobile(context) ? 0 : AppSizing.width(context) * 0.2,
+                          child: const SideBar(),
                         ),
-                        width: AppSizing.isMobile(context) ? 0 : AppSizing.width(context) * 0.2,
-                        child: const SideBar(),
-                      ),
-                      const Expanded(child: AutoRouter()),
-                    ],
+                        const Expanded(child: AutoRouter()),
+                      ],
+                    ),
                   ),
                 ),
               ],

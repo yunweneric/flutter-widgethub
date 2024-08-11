@@ -33,29 +33,33 @@ class _DetailedFooterState extends State<ComponentFooter> {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextButton(
-                style: TextButton.styleFrom(
-                  fixedSize: Size(10.w, 10.w),
-                  padding: EdgeInsets.zero,
-                ),
-                onPressed: () {},
-                child: AppIcon(
-                  icon: AppIcons.linkedIn,
-                  color: Theme.of(context).primaryColorDark,
-                ),
-              ),
-              TextButton(
-                onPressed: () {},
-                child: AppIcon(
-                  icon: AppIcons.x,
-                  color: Theme.of(context).primaryColorDark,
+              CircleAvatar(
+                backgroundColor: Colors.transparent,
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                    fixedSize: Size(10.w, 10.w),
+                    padding: EdgeInsets.zero,
+                  ),
+                  onPressed: () {},
+                  child: AppIcon(
+                    icon: AppIcons.linkedIn,
+                  ),
                 ),
               ),
-              TextButton(
-                onPressed: () {},
-                child: AppIcon(
-                  icon: AppIcons.github,
-                  color: Theme.of(context).primaryColorDark,
+              CircleAvatar(
+                backgroundColor: Colors.transparent,
+                child: TextButton(
+                  onPressed: () {},
+                  child: AppIcon(
+                    icon: AppIcons.x,
+                  ),
+                ),
+              ),
+              CircleAvatar(
+                backgroundColor: Colors.transparent,
+                child: TextButton(
+                  onPressed: () {},
+                  child: AppIcon(icon: AppIcons.github),
                 ),
               )
             ],

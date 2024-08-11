@@ -2,7 +2,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutterui/screens/home/data/block_items.dart';
+import 'package:flutterui/components/data/logic/component/component_bloc.dart';
+import 'package:flutterui/components/ui/export/data.dart';
+import 'package:flutterui/core/service_locators.dart';
+import 'package:flutterui/screens/home/data/export/block_items.dart';
 import 'package:flutterui/screens/home/model/component_block_model.dart';
 import 'package:flutterui/screens/home/widgets/component_block.dart';
 import 'package:flutterui/screens/routes/app_router.gr.dart';
@@ -18,8 +21,9 @@ class AssetsSection extends StatefulWidget {
 }
 
 class _AssetsSectionState extends State<AssetsSection> {
-  late ComponentBlockModel activeBlock;
-  List<ComponentBlockModel> blocks = blocItems;
+  late AppCategoryGroup activeBlock;
+  List<AppCategoryGroup> blocks = blocItems;
+  final componentBloc = getIt.get<ComponentBloc>();
 
   @override
   void initState() {
@@ -114,8 +118,8 @@ class _AssetsSectionState extends State<AssetsSection> {
                 ),
               Builder(
                 builder: (context) {
-                  List<BlocItem> allBlockItems = blocks.expand((item) => item.items).toList();
-                  List<BlocItem> activeBlockItem = activeBlock.items;
+                  List<AppCategory> allBlockItems = blocks.expand((item) => item.items).toList();
+                  List<AppCategory> activeBlockItem = activeBlock.items;
                   final displayWidget = AppSizing.isMobile(context) ? allBlockItems : activeBlockItem;
                   return Container(
                     alignment: Alignment.topLeft,
@@ -149,8 +153,8 @@ class _AssetsSectionState extends State<AssetsSection> {
                                 focusColor: Theme.of(context).scaffoldBackgroundColor,
                                 splashColor: Theme.of(context).scaffoldBackgroundColor,
                                 onTap: () {
-                                  context.router.pushNamed("/components/${item.link}");
-                                  // context.router.push(ComponentLayoutRoute());
+                                  componentBloc.add(UpdateActiveCategoryEvent(category: item));
+                                  context.router.push(ComponentCategoryRoute(category: item.link));
                                 },
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,

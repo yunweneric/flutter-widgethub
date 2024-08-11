@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 
@@ -9,7 +11,49 @@ class BottomBarBlocItem extends StatefulWidget {
 }
 
 class _BottomBarBlocItemState extends State<BottomBarBlocItem> {
+  Timer? timer;
   int activeIndex = 0;
+
+  final duration = const Duration(milliseconds: 1200);
+  @override
+  void initState() {
+    startTimer();
+    super.initState();
+  }
+
+  startTimer() {
+    timer = Timer.periodic(duration, (tick) {
+      setState(() {
+        if (activeIndex == 4) {
+          activeIndex = 0;
+          return;
+        }
+        activeIndex = activeIndex + 1;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
+  }
+
+  Color generateColor() {
+    switch (activeIndex) {
+      case 0:
+        return Colors.teal;
+      case 1:
+        return Colors.blue;
+      case 2:
+        return Colors.purple;
+      case 3:
+        return Colors.amber;
+      default:
+        return Colors.red;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,12 +61,13 @@ class _BottomBarBlocItemState extends State<BottomBarBlocItem> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Container(
+          AnimatedContainer(
+            duration: const Duration(milliseconds: 500),
             height: AppSizing.kHPercentage(context, 60),
             width: AppSizing.width(context),
-            margin: EdgeInsets.symmetric(horizontal: 30),
+            margin: const EdgeInsets.symmetric(horizontal: 30),
             decoration: BoxDecoration(
-              color: Theme.of(context).primaryColor,
+              color: generateColor(),
               borderRadius: BorderRadius.circular(20),
             ),
           ),
@@ -44,7 +89,7 @@ class _BottomBarBlocItemState extends State<BottomBarBlocItem> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     margin: EdgeInsets.symmetric(horizontal: 10),
-                    width: activeIndex == item ? AppSizing.kWPercentage(context, 5) : AppSizing.kWPercentage(context, 2),
+                    width: activeIndex == item ? AppSizing.kWPercentage(context, 8) : AppSizing.kWPercentage(context, 2.5),
                     duration: Duration(milliseconds: 200),
                   ),
                 );

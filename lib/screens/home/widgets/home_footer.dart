@@ -45,7 +45,6 @@ class _HomeFooterState extends State<HomeFooter> {
                         ),
                         child: AppIcon(
                           icon: AppIcons.linkedIn,
-                          color: Theme.of(context).primaryColorDark,
                         ),
                         onPressed: () {},
                       ),
@@ -57,7 +56,6 @@ class _HomeFooterState extends State<HomeFooter> {
                         onPressed: () {},
                         child: AppIcon(
                           icon: AppIcons.x,
-                          color: Theme.of(context).primaryColorDark,
                         ),
                       ),
                     ),
@@ -82,7 +80,6 @@ class _HomeFooterState extends State<HomeFooter> {
                             ),
                             child: AppIcon(
                               icon: isDark ? AppIcons.moon : AppIcons.sun,
-                              color: Theme.of(context).primaryColorDark,
                             ),
                           ),
                         );

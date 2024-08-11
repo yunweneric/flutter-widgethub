@@ -2,9 +2,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutterui/components/data/logic/component/component_bloc.dart';
+import 'package:flutterui/core/service_locators.dart';
+import 'package:flutterui/screens/home/data/export/block_items.dart';
+import 'package:flutterui/screens/home/model/component_block_model.dart';
+import 'package:flutterui/screens/routes/app_router.gr.dart';
 import 'package:flutterui/screens/routes/route_names.dart';
-import 'package:flutterui/shared/logic/navigation/navigation_bloc.dart';
-import 'package:flutterui/shared/ui/models/sidebar_group_model.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/layout/side_bar_item.dart';
 
@@ -16,44 +19,27 @@ class SideBar extends StatefulWidget {
 }
 
 class _SideBarState extends State<SideBar> {
-  List<SideBarGroupModel> items = [
-    SideBarGroupModel(
-      title: "Get started",
+  List<AppCategoryGroup> items = [
+    AppCategoryGroup(
+      title: "Get Started",
+      description: "A wide range of pre-built UI templates from app clones to demo apps all in one place",
       items: [
-        const SideBarItem(title: "Getting Started", link: ""),
-        const SideBarItem(title: "PlayGround", link: RouteNames.playground),
+        AppCategory(
+          link: RouteNames.home,
+          widget: const Text(""),
+          title: "Get Started",
+        ),
+        AppCategory(
+          link: RouteNames.home,
+          widget: const Text(""),
+          title: "Playground",
+        ),
       ],
     ),
-    SideBarGroupModel(
-      title: "Blocks",
-      items: [
-        const SideBarItem(title: "Buttons", link: RouteNames.buttons),
-        const SideBarItem(title: "Inputs", link: RouteNames.inputs),
-        const SideBarItem(title: "Chips", link: RouteNames.chips),
-      ],
-    ),
-    SideBarGroupModel(
-      title: "Templates",
-      items: [
-        const SideBarItem(title: "App Clones", link: RouteNames.templates),
-        const SideBarItem(title: "Home Screens", link: RouteNames.homeScreens),
-        const SideBarItem(title: "Auth Screens", link: RouteNames.authScreens),
-        const SideBarItem(title: "Onboarding Screens", link: RouteNames.onboarding),
-      ],
-    ),
-    SideBarGroupModel(
-      title: "Animations",
-      items: [
-        const SideBarItem(title: "Sliders", link: "sliders"),
-      ],
-    ),
-    SideBarGroupModel(
-      title: "Effects",
-      items: [],
-    ),
+    ...blocItems,
   ];
 
-  SideBarItem? activeSideBar;
+  AppCategory? activeSideBar;
 
   @override
   void initState() {
@@ -63,22 +49,18 @@ class _SideBarState extends State<SideBar> {
     super.initState();
   }
 
-  String currentRoute = '/';
+  String activeCategory = '';
+  final componentBloc = getIt.get<ComponentBloc>();
   @override
   Widget build(BuildContext context) {
-    // final currentRoute = context.router.currentUrl;
-    // final currentRoute = ModalRoute.of(context)?.data?.isActive;
-
-    // print(['currentRoute BuildContext', currentRoute]);
-    return BlocBuilder<NavigationBloc, NavigationState>(
+    return BlocBuilder<ComponentBloc, ComponentState>(
       builder: (context, state) {
-        if (state is NavigationUpdated) {
-          currentRoute = context.router.currentUrl;
+        if (state is UpdateActiveCategorySuccess) {
+          activeCategory = state.activeCategory!.link;
         }
-        // print(["state", state.currentRoute]);
         return Scaffold(
           body: Container(
-            width: AppSizing.width(context),
+            // width: AppSizing.width(context),
             padding: EdgeInsets.only(left: 40.w),
             child: SingleChildScrollView(
               child: Column(
@@ -104,8 +86,11 @@ class _SideBarState extends State<SideBar> {
                                   return SideBarItem(
                                     title: sideBarItem.title,
                                     onPressed: () {
+                                      componentBloc.add(UpdateActiveCategoryEvent(category: sideBarItem));
                                       setState(() => activeSideBar = sideBarItem);
-                                      if (sideBarItem.link != null) context.router.pushNamed("/components/${sideBarItem.link}");
+                                      context.router.push(
+                                        ComponentCategoryRoute(category: sideBarItem.link),
+                                      );
                                     },
                                   );
                                 },
@@ -118,18 +103,7 @@ class _SideBarState extends State<SideBar> {
                                   shrinkWrap: true,
                                   itemBuilder: (context, index) {
                                     final sideBarItem = item.items[index];
-
-                                    // final activeRoute = context.router.currentUrl;
-                                    // final isActive = currentRoute == "/components/${sideBarItem.link}" || currentRoute == "/components/${activeSideBar?.link}";
-                                    final isActive = currentRoute == "/components/${sideBarItem.link}" || currentRoute == "/components/${activeSideBar?.link}";
-                                    // print([
-                                    //   'isActive',
-                                    //   isActive,
-                                    //   'sideBarItem',
-                                    //   sideBarItem.link,
-                                    //   'currentRoute',
-                                    //   currentRoute,
-                                    // ]);
+                                    final isActive = activeCategory == sideBarItem.link;
                                     return AnimatedContainer(
                                       duration: const Duration(milliseconds: 400),
                                       height: 30.h,

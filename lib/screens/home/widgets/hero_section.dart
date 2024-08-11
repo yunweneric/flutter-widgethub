@@ -2,20 +2,27 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:flutterui/components/data/logic/component/component_bloc.dart';
+import 'package:flutterui/core/service_locators.dart';
+import 'package:flutterui/screens/home/data/export/block_items.dart';
+import 'package:flutterui/screens/home/model/component_block_model.dart';
 import 'package:flutterui/screens/home/ui/apps/leave_review/home.dart';
 import 'package:flutterui/screens/home/ui/apps/theme_toggle/theme_toggle.dart';
+import 'package:flutterui/screens/routes/app_router.gr.dart';
 import 'package:flutterui/screens/routes/route_names.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/device_section_frame.dart';
 
 class HeroSection extends StatefulWidget {
-  const HeroSection({super.key});
+  final VoidCallback onBrowserAll;
+  const HeroSection({super.key, required this.onBrowserAll});
 
   @override
   State<HeroSection> createState() => _HeroSectionState();
 }
 
 class _HeroSectionState extends State<HeroSection> {
+  final componentBloc = getIt.get<ComponentBloc>();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -66,7 +73,16 @@ class _HeroSectionState extends State<HeroSection> {
                             backgroundColor: Theme.of(context).primaryColor,
                           ),
                           onPressed: () {
-                            context.router.pushNamed("/${RouteNames.components}");
+                            componentBloc.add(
+                              UpdateActiveCategoryEvent(
+                                category: AppCategory(
+                                  widget: widget,
+                                  title: "All Components",
+                                  link: RouteNames.home,
+                                ),
+                              ),
+                            );
+                            context.router.push(ComponentCategoryRoute(category: RouteNames.gettingStarted));
                           },
                           child: Text(
                             "Get started",
@@ -80,7 +96,7 @@ class _HeroSectionState extends State<HeroSection> {
                             side: BorderSide(color: Theme.of(context).dividerColor),
                           ),
                           iconAlignment: IconAlignment.end,
-                          onPressed: () {},
+                          onPressed: widget.onBrowserAll,
                           icon: const Icon(Icons.arrow_forward_rounded),
                           label: Text(
                             "Browse all assets",

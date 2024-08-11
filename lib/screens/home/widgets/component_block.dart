@@ -3,7 +3,7 @@ import 'package:flutterui/screens/home/model/component_block_model.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 
 class ComponentBlock extends StatefulWidget {
-  final ComponentBlockModel item;
+  final AppCategoryGroup item;
   final bool isActive;
 
   const ComponentBlock({super.key, required this.isActive, required this.item});

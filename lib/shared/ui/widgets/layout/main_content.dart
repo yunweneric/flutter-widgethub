@@ -40,7 +40,15 @@ class _MainContentState extends State<MainContent> {
                 label: Text("Back", style: Theme.of(context).textTheme.bodyMedium),
               ),
               AppSizing.khSpacer(30.h),
-              ...widget.children,
+              ConstrainedBox(
+                constraints: BoxConstraints(minHeight: AppSizing.kHPercentage(context, 60)),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ...widget.children,
+                  ],
+                ),
+              ),
               AppSizing.khSpacer(30.h),
               Divider(color: Theme.of(context).dividerColor),
               AppSizing.khSpacer(30.h),

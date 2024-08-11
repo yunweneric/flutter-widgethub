@@ -24,10 +24,6 @@ class _ComponentTemplatesScreenState extends State<ComponentTemplatesScreen> {
   Widget build(BuildContext context) {
     return BlocBuilder<ComponentBloc, ComponentState>(
       builder: (context, state) {
-        final currentRoute = context.router.currentUrl;
-        // print(['currentRoute', currentRoute]);
-
-        navigationBloc.add(NavigationEventUpdated(route: currentRoute));
         return MainContent(
           children: [
             Wrap(

@@ -4,6 +4,7 @@ import 'package:flutterui/screens/home/widgets/assets_section.dart';
 import 'package:flutterui/screens/home/widgets/integration_section.dart';
 import 'package:flutterui/screens/home/widgets/hero_section.dart';
 import 'package:flutterui/screens/home/widgets/home_footer.dart';
+import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/layout/nav_bar.dart';
 
 @RoutePage()
@@ -35,15 +36,24 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
+        controller: _controller,
         child: Column(
           children: [
-            NavBar(),
-            HeroSection(),
-            IntegrationSection(),
-            AssetsSection(),
-            HomeFooter(),
+            const NavBar(isHomeScreenLayout: true),
+            HeroSection(
+              onBrowserAll: () {
+                _controller.animateTo(
+                  AppSizing.height(context) * 1.8,
+                  duration: Duration(seconds: 1),
+                  curve: Curves.fastOutSlowIn,
+                );
+              },
+            ),
+            const IntegrationSection(),
+            const AssetsSection(),
+            const HomeFooter(),
           ],
         ),
       ),

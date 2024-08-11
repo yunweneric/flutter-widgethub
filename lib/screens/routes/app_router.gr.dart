@@ -42,10 +42,18 @@ class ComingSoonRoute extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.ComponentCategoryScreen]
-class ComponentCategoryRoute extends _i8.PageRouteInfo<void> {
-  const ComponentCategoryRoute({List<_i8.PageRouteInfo>? children})
-      : super(
+class ComponentCategoryRoute
+    extends _i8.PageRouteInfo<ComponentCategoryRouteArgs> {
+  ComponentCategoryRoute({
+    _i9.Key? key,
+    required String category,
+    List<_i8.PageRouteInfo>? children,
+  }) : super(
           ComponentCategoryRoute.name,
+          args: ComponentCategoryRouteArgs(
+            key: key,
+            category: category,
+          ),
           initialChildren: children,
         );
 
@@ -54,9 +62,29 @@ class ComponentCategoryRoute extends _i8.PageRouteInfo<void> {
   static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
-      return const _i2.ComponentCategoryScreen();
+      final args = data.argsAs<ComponentCategoryRouteArgs>();
+      return _i2.ComponentCategoryScreen(
+        key: args.key,
+        category: args.category,
+      );
     },
   );
+}
+
+class ComponentCategoryRouteArgs {
+  const ComponentCategoryRouteArgs({
+    this.key,
+    required this.category,
+  });
+
+  final _i9.Key? key;
+
+  final String category;
+
+  @override
+  String toString() {
+    return 'ComponentCategoryRouteArgs{key: $key, category: $category}';
+  }
 }
 
 /// generated route for

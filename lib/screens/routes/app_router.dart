@@ -21,16 +21,13 @@ class AppRouter extends RootStackRouter {
           page: ComponentLayoutRoute.page,
           children: [
             AutoRoute(path: "", page: ComponentCategoryRoute.page),
-            AutoRoute(path: RouteNames.buttons, page: ComponentLayoutRoute.page),
-            AutoRoute(path: RouteNames.templates, page: ComponentTemplatesRoute.page),
-            AutoRoute(path: RouteNames.onboarding, page: ComponentTemplatesRoute.page),
             AutoRoute(path: RouteNames.notFound, page: NotFoundRoute.page),
             AutoRoute(page: NotFoundRoute.page),
-            // AutoRoute(path: "*", page: NotFoundRoute.page),
+            AutoRoute(path: "*", page: NotFoundRoute.page),
           ],
         ),
         // AutoRoute(path: "/${RouteNames.notFound}", page: NotFoundRoute.page),
-        // AutoRoute(path: "*", page: NotFoundRoute.page),
+        AutoRoute(path: "*", page: NotFoundRoute.page),
       ];
 
   @override

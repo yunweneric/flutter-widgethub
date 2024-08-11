@@ -24,7 +24,7 @@ class _AppContainerState extends State<AppContainer> {
         children: [
           Container(
             padding: EdgeInsets.symmetric(vertical: 15.h),
-            width: AppSizing.kWPercentage(context, 90),
+            width: AppSizing.kWPercentage(context, 95),
             child: widget.child,
           ),
         ],

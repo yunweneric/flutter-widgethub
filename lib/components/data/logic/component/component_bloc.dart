@@ -1,18 +1,31 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutterui/components/ui/export/data.dart';
+import 'package:flutterui/screens/home/model/component_block_model.dart';
 
 part 'component_event.dart';
 part 'component_state.dart';
 
 class ComponentBloc extends Bloc<ComponentEvent, ComponentState> {
   ComponentBloc() : super(ComponentInitial(activeComponent: AllComponents.widgets.first, allComponents: [])) {
+    on<UpdateActiveCategoryEvent>((event, emit) {
+      emit(UpdateActiveCategorySuccess(
+        activeComponent: state.activeComponent,
+        allComponents: AllComponents.widgets,
+        activeCategory: event.category,
+      ));
+    });
     on<GetAllComponentsEvent>((event, emit) {
-      emit(FetchComponents(activeComponent: state.activeComponent, allComponents: AllComponents.widgets));
+      emit(FetchComponents(
+        activeComponent: state.activeComponent,
+        allComponents: AllComponents.widgets,
+        activeCategory: state.activeCategory,
+      ));
     });
     on<UpdateActiveComponentEvent>((event, emit) {
       emit(UpdateActiveComponentSuccess(
         activeComponent: event.newComponent,
         allComponents: state.allComponents,
+        activeCategory: state.activeCategory,
       ));
     });
     on<FindNextComponentBloc>((event, emit) {
@@ -23,6 +36,7 @@ class ComponentBloc extends Bloc<ComponentEvent, ComponentState> {
         emit(UpdateActiveComponentSuccess(
           activeComponent: allComponents.first,
           allComponents: state.allComponents,
+          activeCategory: state.activeCategory,
         ));
         return;
       }
@@ -30,6 +44,7 @@ class ComponentBloc extends Bloc<ComponentEvent, ComponentState> {
         emit(UpdateActiveComponentSuccess(
           activeComponent: allComponents[activeIndex + 1],
           allComponents: state.allComponents,
+          activeCategory: state.activeCategory,
         ));
         return;
       }
@@ -37,6 +52,7 @@ class ComponentBloc extends Bloc<ComponentEvent, ComponentState> {
         emit(UpdateActiveComponentSuccess(
           activeComponent: allComponents[activeIndex - 1],
           allComponents: state.allComponents,
+          activeCategory: state.activeCategory,
         ));
         return;
       }

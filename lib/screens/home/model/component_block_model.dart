@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
-class ComponentBlockModel {
+class AppCategoryGroup {
   final String title;
   final bool? isActive;
   final String description;
-  final List<BlocItem> items;
+  final List<AppCategory> items;
 
-  ComponentBlockModel({required this.title, this.isActive, required this.description, required this.items});
+  AppCategoryGroup({required this.title, this.isActive, required this.description, required this.items});
 }
 
-class BlocItem {
+class AppCategory {
   final Widget widget;
   final String title;
   final String link;
   final AlignmentGeometry? alignment;
 
-  BlocItem({required this.widget, required this.title, this.alignment, required this.link});
+  AppCategory({required this.widget, required this.title, this.alignment, required this.link});
 }

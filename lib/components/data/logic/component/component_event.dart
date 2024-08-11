@@ -15,3 +15,8 @@ class FindNextComponentBloc extends ComponentEvent {
 
   FindNextComponentBloc({required this.isNext});
 }
+
+class UpdateActiveCategoryEvent extends ComponentEvent {
+  final AppCategory category;
+  UpdateActiveCategoryEvent({required this.category});
+}

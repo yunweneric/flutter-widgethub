@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/core/service_locators.dart';
+import 'package:flutterui/screens/routes/app_router.dart';
+import 'package:flutterui/screens/routes/app_router.gr.dart';
+import 'package:flutterui/screens/routes/route_names.dart';
 import 'package:flutterui/shared/data/enums/theme.dart';
 import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/shared/ui/models/nav_link.dart';
@@ -13,7 +16,8 @@ import 'package:flutterui/shared/ui/widgets/icon.dart';
 import 'package:flutterui/shared/ui/widgets/layout/mobile_nav.dart';
 
 class NavBar extends StatefulWidget {
-  const NavBar({super.key});
+  final bool isHomeScreenLayout;
+  const NavBar({super.key, required this.isHomeScreenLayout});
 
   @override
   State<NavBar> createState() => _NavBarState();
@@ -22,8 +26,7 @@ class NavBar extends StatefulWidget {
 class _NavBarState extends State<NavBar> {
   List<NavLink> links = [
     NavLink(title: "Components", path: "/components"),
-    NavLink(title: "Templates", path: "/templates"),
-    NavLink(title: "Pricing", path: "/pricing"),
+    NavLink(title: "Support", path: "/pricing"),
   ];
   @override
   Widget build(BuildContext context) {
@@ -41,7 +44,9 @@ class _NavBarState extends State<NavBar> {
                           style: TextButton.styleFrom(padding: EdgeInsets.zero),
                           child: Text("Logo", style: Theme.of(context).textTheme.displayLarge),
                           onPressed: () {
-                            context.router.pushNamed("");
+                            // getIt.get<AppRouter>().pushNamed(RouteNames.home);
+                            // context.router.pushNamed(RouteNames.home);
+                            context.router.push(HomeRoute());
                           },
                         ),
                         AppSizing.kwSpacer(50.w),
@@ -100,7 +105,6 @@ class _NavBarState extends State<NavBar> {
                             ),
                             child: AppIcon(
                               icon: AppIcons.linkedIn,
-                              color: Theme.of(context).primaryColorDark,
                             ),
                             onPressed: () {},
                           ),
@@ -112,7 +116,6 @@ class _NavBarState extends State<NavBar> {
                             onPressed: () {},
                             child: AppIcon(
                               icon: AppIcons.x,
-                              color: Theme.of(context).primaryColorDark,
                             ),
                           ),
                         ),
@@ -137,7 +140,6 @@ class _NavBarState extends State<NavBar> {
                                 ),
                                 child: AppIcon(
                                   icon: isDark ? AppIcons.moon : AppIcons.sun,
-                                  color: Theme.of(context).primaryColorDark,
                                 ),
                               ),
                             );
