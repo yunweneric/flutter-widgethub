@@ -7,6 +7,9 @@ import 'package:flutterui/screens/home/data/blocks/inputs_bloc_item.dart';
 import 'package:flutterui/screens/home/data/blocks/loaders_bloc_item.dart';
 import 'package:flutterui/screens/home/data/blocks/switchers_bloc_item.dart';
 import 'package:flutterui/screens/home/data/blocks/text_bloc_item.dart';
+import 'package:flutterui/screens/home/data/effects/background_effects_bloc_item.dart';
+import 'package:flutterui/screens/home/data/effects/colors_effect_bloc.dart';
+import 'package:flutterui/screens/home/data/effects/gradient_effects_bloc_item.dart';
 import 'package:flutterui/screens/home/data/templates/app_clone_bloc_item.dart';
 import 'package:flutterui/screens/home/data/templates/auth_bloc_item.dart';
 import 'package:flutterui/screens/home/data/templates/bottom_bar.dart';
@@ -121,13 +124,14 @@ final blocItems = [
     items: [
       AppCategory(
         link: RouteNames.gradientEffects,
-        widget: Text("Hello"),
+        widget: const GradientEffectsBlocItem(),
         title: "Gradients",
       ),
       AppCategory(
         link: RouteNames.backgroundEffects,
-        widget: Text("Hello"),
-        title: "Backgrounds",
+        widget: const ColorsEffectBloc(),
+        title: "Color Effects",
+        alignment: Alignment.topCenter,
       ),
     ],
   ),
