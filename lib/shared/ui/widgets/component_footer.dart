@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/shared/ui/utils/icons.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
+import 'package:flutterui/shared/ui/utils/util.dart';
 import 'package:flutterui/shared/ui/widgets/icon.dart';
 
 class ComponentFooter extends StatefulWidget {
@@ -40,7 +41,7 @@ class _DetailedFooterState extends State<ComponentFooter> {
                     fixedSize: Size(10.w, 10.w),
                     padding: EdgeInsets.zero,
                   ),
-                  onPressed: () {},
+                  onPressed: () => UtilHelper.openUrl("https://www.linkedin.com/in/yunweneric"),
                   child: const AppIcon(
                     icon: AppIcons.linkedIn,
                   ),
@@ -49,16 +50,14 @@ class _DetailedFooterState extends State<ComponentFooter> {
               CircleAvatar(
                 backgroundColor: Colors.transparent,
                 child: TextButton(
-                  onPressed: () {},
-                  child: const AppIcon(
-                    icon: AppIcons.x,
-                  ),
+                  onPressed: () => UtilHelper.openUrl("https://twitter.com/yunweneric"),
+                  child: const AppIcon(icon: AppIcons.x),
                 ),
               ),
               CircleAvatar(
                 backgroundColor: Colors.transparent,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () => UtilHelper.openUrl("https://github.com/yunweneric/"),
                   child: const AppIcon(icon: AppIcons.github),
                 ),
               )
