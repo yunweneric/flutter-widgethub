@@ -18,7 +18,7 @@ class _ColorsEffectBlocState extends State<ColorsEffectBloc> with SingleTickerPr
   void initState() {
     myAnimationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 10000),
+      duration: const Duration(milliseconds: 10000),
     )..repeat();
 
     animation = TweenSequence<Color>(
@@ -66,7 +66,7 @@ class _ColorsEffectBlocState extends State<ColorsEffectBloc> with SingleTickerPr
         child: AnimatedBuilder(
             animation: myAnimationController!,
             builder: (context, child) {
-              return Container(
+              return SizedBox(
                 height: AppSizing.kHPercentage(context, 30),
                 child: Center(
                   child: ColorFiltered(

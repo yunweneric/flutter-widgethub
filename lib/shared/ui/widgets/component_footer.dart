@@ -41,7 +41,7 @@ class _DetailedFooterState extends State<ComponentFooter> {
                     padding: EdgeInsets.zero,
                   ),
                   onPressed: () {},
-                  child: AppIcon(
+                  child: const AppIcon(
                     icon: AppIcons.linkedIn,
                   ),
                 ),
@@ -50,7 +50,7 @@ class _DetailedFooterState extends State<ComponentFooter> {
                 backgroundColor: Colors.transparent,
                 child: TextButton(
                   onPressed: () {},
-                  child: AppIcon(
+                  child: const AppIcon(
                     icon: AppIcons.x,
                   ),
                 ),
@@ -59,7 +59,7 @@ class _DetailedFooterState extends State<ComponentFooter> {
                 backgroundColor: Colors.transparent,
                 child: TextButton(
                   onPressed: () {},
-                  child: AppIcon(icon: AppIcons.github),
+                  child: const AppIcon(icon: AppIcons.github),
                 ),
               )
             ],

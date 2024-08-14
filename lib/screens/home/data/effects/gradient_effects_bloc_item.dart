@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 
 class ListColorTween extends Tween<List<Color>> {
-  ListColorTween({List<Color>? begin, List<Color>? end}) : super(begin: begin, end: end);
+  ListColorTween({super.begin, super.end});
 
   @override
   List<Color> lerp(double t) {
@@ -31,7 +31,7 @@ class _GradientEffectsBlocItemState extends State<GradientEffectsBlocItem> with 
   void initState() {
     myAnimationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 10000),
+      duration: const Duration(milliseconds: 10000),
     )..repeat();
 
     animation = TweenSequence<List<Color>>(

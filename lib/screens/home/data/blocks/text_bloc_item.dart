@@ -61,7 +61,7 @@ class _TextBlocItemState extends State<TextBlocItem> {
                             child: Opacity(
                               opacity: (1 - value.clamp(0, 1)),
                               child: Text(
-                                "${count}",
+                                "$count",
                                 textAlign: TextAlign.center,
                                 style: Theme.of(context).textTheme.displayLarge,
                               ),

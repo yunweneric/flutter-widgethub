@@ -71,7 +71,7 @@ class _ButtonsBlocItemState extends State<ButtonsBlocItem> {
                     ),
                     child: Center(
                       child: Text(
-                        "${count}%",
+                        "$count%",
                         style: TextStyle(color: count > 60 ? Colors.white : Colors.black, fontSize: 18),
                       ),
                     ),

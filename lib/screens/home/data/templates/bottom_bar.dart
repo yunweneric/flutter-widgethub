@@ -88,9 +88,9 @@ class _BottomBarBlocItemState extends State<BottomBarBlocItem> {
                       color: activeIndex == item ? Theme.of(context).primaryColor : Theme.of(context).primaryColor.withOpacity(0.2),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    margin: EdgeInsets.symmetric(horizontal: 10),
+                    margin: const EdgeInsets.symmetric(horizontal: 10),
                     width: activeIndex == item ? AppSizing.kWPercentage(context, 8) : AppSizing.kWPercentage(context, 2.5),
-                    duration: Duration(milliseconds: 200),
+                    duration: const Duration(milliseconds: 200),
                   ),
                 );
               })
@@ -99,7 +99,7 @@ class _BottomBarBlocItemState extends State<BottomBarBlocItem> {
           AppSizing.khSpacer(40),
           ElevatedButton(
             onPressed: () {},
-            child: Text("Get started"),
+            child: const Text("Get started"),
           ),
           AppSizing.khSpacer(40),
         ],

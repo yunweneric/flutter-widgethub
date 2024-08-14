@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 
 class HomeScreenBlocItem extends StatefulWidget {
@@ -30,7 +29,7 @@ class _HomeScreenBlocItemState extends State<HomeScreenBlocItem> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      CircleAvatar(child: Icon(Icons.notifications, color: Colors.white)),
+                      const CircleAvatar(child: Icon(Icons.notifications, color: Colors.white)),
                       AppSizing.kwSpacer(10),
                       CircleAvatar(
                         child: ClipOval(child: Image.asset("assets/images/profile_0.jpg")),
@@ -38,7 +37,7 @@ class _HomeScreenBlocItemState extends State<HomeScreenBlocItem> {
                     ],
                   ),
                   AppSizing.kh20Spacer(),
-                  TextField(
+                  const TextField(
                     decoration: InputDecoration(
                       hintText: "Search chats...",
                     ),
@@ -48,14 +47,14 @@ class _HomeScreenBlocItemState extends State<HomeScreenBlocItem> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text("Trending", style: Theme.of(context).textTheme.displayMedium),
-                      Text("See all"),
+                      const Text("See all"),
                     ],
                   ),
                   AppSizing.kh20Spacer(),
                   ListTile(
                     leading: ClipOval(child: Image.asset("assets/images/profile_0.jpg")),
-                    title: Text("Mary BB"),
-                    subtitle: Text("Hi, how have yoou been?"),
+                    title: const Text("Mary BB"),
+                    subtitle: const Text("Hi, how have yoou been?"),
                     trailing: Chip(
                       side: BorderSide.none,
                       label: Text("20", style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Colors.white)),
@@ -65,8 +64,8 @@ class _HomeScreenBlocItemState extends State<HomeScreenBlocItem> {
                   AppSizing.kh10Spacer(),
                   ListTile(
                     leading: ClipOval(child: Image.asset("assets/images/profile_1.jpg")),
-                    title: Text("Mary BB"),
-                    subtitle: Text("Hi, how have yoou been?"),
+                    title: const Text("Mary BB"),
+                    subtitle: const Text("Hi, how have yoou been?"),
                     trailing: Chip(
                       side: BorderSide.none,
                       label: Text("20", style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Colors.white)),

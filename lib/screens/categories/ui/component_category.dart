@@ -28,7 +28,7 @@ class _ComponentCategoryScreenState extends State<ComponentCategoryScreen> {
               key: ValueKey(activeCategory?.title),
               duration: const Duration(milliseconds: 500),
               child: activeCategory == null
-                  ? SizedBox()
+                  ? const SizedBox()
                   : Column(
                       children: [
                         Text(activeCategory.title, style: Theme.of(context).textTheme.displayLarge),
@@ -47,7 +47,7 @@ class _ComponentCategoryScreenState extends State<ComponentCategoryScreen> {
                 return AnimatedSwitcher(
                   duration: const Duration(milliseconds: 500),
                   child: components.isEmpty
-                      ? Container(
+                      ? SizedBox(
                           height: AppSizing.kHPercentage(context, 50),
                           child: Center(child: Text("No Item in this ${activeCategory?.title}!")),
                         )

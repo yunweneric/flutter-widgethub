@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutterui/shared/ui/utils/icons.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
-import 'package:flutterui/shared/ui/widgets/icon.dart';
 
 class AuthBlocItem extends StatefulWidget {
   const AuthBlocItem({super.key});
@@ -29,16 +27,16 @@ class _AuthBlocItemState extends State<AuthBlocItem> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 30),
+                padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: Column(
                   children: [
-                    TextField(
+                    const TextField(
                       decoration: InputDecoration(
                         hintText: "Email",
                       ),
                     ),
                     AppSizing.kh20Spacer(),
-                    TextField(
+                    const TextField(
                       decoration: InputDecoration(
                         hintText: "Password",
                       ),
@@ -51,15 +49,15 @@ class _AuthBlocItemState extends State<AuthBlocItem> {
                         fixedSize: Size.fromWidth(AppSizing.width(context)),
                       ),
                       onPressed: () {},
-                      label: Text("Login"),
-                      icon: Icon(Icons.arrow_forward_rounded),
+                      label: const Text("Login"),
+                      icon: const Icon(Icons.arrow_forward_rounded),
                     ),
                   ],
                 ),
               ),
               AppSizing.kh20Spacer(),
               AppSizing.kh10Spacer(),
-              Text("Or login with social"),
+              const Text("Or login with social"),
               AppSizing.kh10Spacer(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

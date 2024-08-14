@@ -15,7 +15,7 @@ class DrawersBlocItem extends StatefulWidget {
 class _DrawersBlocItemState extends State<DrawersBlocItem> {
   bool isExpanded = false;
 
-  final duration = Duration(milliseconds: 2400);
+  final duration = const Duration(milliseconds: 2400);
   final curve = Curves.elasticInOut;
   Timer? timer;
 
@@ -47,12 +47,12 @@ class _DrawersBlocItemState extends State<DrawersBlocItem> {
           clipBehavior: Clip.none,
           children: [
             Padding(
-              padding: EdgeInsets.only(left: 20),
+              padding: const EdgeInsets.only(left: 20),
               child: GestureDetector(
                 onTap: () => setState(() {
                   isExpanded = !isExpanded;
                 }),
-                child: AppIcon(
+                child: const AppIcon(
                   icon: AppIcons.menu,
                   size: 40,
                 ),
@@ -75,7 +75,7 @@ class _DrawersBlocItemState extends State<DrawersBlocItem> {
                   children: [
                     ...['Home', "About", "Cart", "Contact", "Settings"].map((item) {
                       return Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10),
+                        padding: const EdgeInsets.symmetric(vertical: 10),
                         child: Text(
                           item,
                           style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 22),
@@ -96,8 +96,8 @@ class _DrawersBlocItemState extends State<DrawersBlocItem> {
                 transform: Matrix4.identity()..rotateZ(isExpanded ? -0.1 : 0),
                 duration: duration,
                 width: AppSizing.width(context),
-                margin: EdgeInsets.only(top: 30),
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+                margin: const EdgeInsets.only(top: 30),
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
                 decoration: BoxDecoration(
                   color: isExpanded ? Theme.of(context).primaryColor.withOpacity(0.4) : Theme.of(context).scaffoldBackgroundColor,
                   borderRadius: BorderRadius.circular(20),
@@ -105,7 +105,7 @@ class _DrawersBlocItemState extends State<DrawersBlocItem> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    TextField(
+                    const TextField(
                       decoration: InputDecoration(hintText: "Search chats"),
                     ),
                     AppSizing.kh20Spacer(),
@@ -113,7 +113,7 @@ class _DrawersBlocItemState extends State<DrawersBlocItem> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text("Latest chats", style: Theme.of(context).textTheme.displayMedium),
-                        Text("See all"),
+                        const Text("See all"),
                       ],
                     ),
                     AppSizing.kh20Spacer(),
@@ -121,15 +121,15 @@ class _DrawersBlocItemState extends State<DrawersBlocItem> {
                       leading: ClipOval(
                         child: Image.asset("assets/images/profile_0.jpg"),
                       ),
-                      title: Text("Lina Assoh"),
-                      subtitle: Text("Hi Flutter dev, how have you been?"),
+                      title: const Text("Lina Assoh"),
+                      subtitle: const Text("Hi Flutter dev, how have you been?"),
                     ),
                     ListTile(
                       leading: ClipOval(
                         child: Image.asset("assets/images/profile_1.jpg"),
                       ),
-                      title: Text("Lina Assoh"),
-                      subtitle: Text("Hi Flutter dev, how have you been?"),
+                      title: const Text("Lina Assoh"),
+                      subtitle: const Text("Hi Flutter dev, how have you been?"),
                     ),
                   ],
                 ),

@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
               onBrowserAll: () {
                 _controller.animateTo(
                   AppSizing.height(context) * 1.8,
-                  duration: Duration(seconds: 1),
+                  duration: const Duration(seconds: 1),
                   curve: Curves.fastOutSlowIn,
                 );
               },

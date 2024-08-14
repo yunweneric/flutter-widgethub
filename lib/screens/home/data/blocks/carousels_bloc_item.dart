@@ -61,7 +61,7 @@ class _CarouselsBlocItemState extends State<CarouselsBlocItem> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Container(
+          SizedBox(
             // color: Colors.tealAccent,
             height: AppSizing.kHPercentage(context, 50),
             child: ListWheelScrollView(
@@ -71,7 +71,7 @@ class _CarouselsBlocItemState extends State<CarouselsBlocItem> {
               children: List.generate(10, (item) => item).map((item) {
                 return Container(
                   height: 500,
-                  margin: EdgeInsets.symmetric(horizontal: 30),
+                  margin: const EdgeInsets.symmetric(horizontal: 30),
                   decoration: BoxDecoration(
                     color: Color(0xFF * item * 9035060),
                     borderRadius: BorderRadius.circular(10),

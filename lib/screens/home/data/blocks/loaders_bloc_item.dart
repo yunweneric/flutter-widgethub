@@ -14,7 +14,7 @@ class _LoadersBlocItemState extends State<LoadersBlocItem> {
     return Scaffold(
       body: Column(
         children: [
-          Container(
+          SizedBox(
             width: AppSizing.width(context),
             height: AppSizing.kHPercentage(context, 50),
             child: Transform.scale(

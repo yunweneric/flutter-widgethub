@@ -26,7 +26,7 @@ class _ThemeToggleState extends State<ThemeToggle> {
 
     return Scaffold(
       body: Container(
-        height: AppSizing.kHPercentage(context, 50),
+        height: AppSizing.kHPercentage(context, 25),
         width: AppSizing.width(context),
         alignment: Alignment.topLeft,
         child: Center(
@@ -104,7 +104,7 @@ class _ThemeToggleState extends State<ThemeToggle> {
                 ),
               ),
               Positioned(
-                top: 100,
+                top: 70,
                 left: 0,
                 right: 0,
                 child: Text(

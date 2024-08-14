@@ -7,8 +7,6 @@ import 'package:flutterui/screens/home/data/blocks/inputs_bloc_item.dart';
 import 'package:flutterui/screens/home/data/blocks/loaders_bloc_item.dart';
 import 'package:flutterui/screens/home/data/blocks/switchers_bloc_item.dart';
 import 'package:flutterui/screens/home/data/blocks/text_bloc_item.dart';
-import 'package:flutterui/screens/home/data/effects/background_effects_bloc_item.dart';
-import 'package:flutterui/screens/home/data/effects/colors_effect_bloc.dart';
 import 'package:flutterui/screens/home/data/effects/gradient_effects_bloc_item.dart';
 import 'package:flutterui/screens/home/data/templates/app_clone_bloc_item.dart';
 import 'package:flutterui/screens/home/data/templates/auth_bloc_item.dart';
@@ -92,7 +90,7 @@ final blocItems = [
       ),
       AppCategory(
         link: RouteNames.carousels,
-        widget: CarouselsBlocItem(),
+        widget: const CarouselsBlocItem(),
         title: "Sliders and Carousels",
       ),
     ],
@@ -101,21 +99,21 @@ final blocItems = [
     title: "Animations",
     description: "Smooth and captivating animations that can be easily applied to any element.",
     items: [
-      AppCategory(
-        link: RouteNames.hoverAnimations,
-        widget: Text("Hello"),
-        title: "Hover Animations",
-      ),
-      AppCategory(
-        link: RouteNames.skewAnimations,
-        widget: Text("Hello"),
-        title: "Skew Animations",
-      ),
-      AppCategory(
-        link: RouteNames.rotationAnimations,
-        widget: Text("Hello"),
-        title: "Rotation Animations",
-      ),
+      // AppCategory(
+      //   link: RouteNames.hoverAnimations,
+      //   widget: Text("Hello"),
+      //   title: "Hover Animations",
+      // ),
+      // AppCategory(
+      //   link: RouteNames.skewAnimations,
+      //   widget: Text("Hello"),
+      //   title: "Skew Animations",
+      // ),
+      // AppCategory(
+      //   link: RouteNames.rotationAnimations,
+      //   widget: Text("Hello"),
+      //   title: "Rotation Animations",
+      // ),
     ],
   ),
   AppCategoryGroup(
@@ -125,14 +123,14 @@ final blocItems = [
       AppCategory(
         link: RouteNames.gradientEffects,
         widget: const GradientEffectsBlocItem(),
-        title: "Gradients",
+        title: "Linear Gradients",
       ),
-      AppCategory(
-        link: RouteNames.backgroundEffects,
-        widget: const ColorsEffectBloc(),
-        title: "Color Effects",
-        alignment: Alignment.topCenter,
-      ),
+      // AppCategory(
+      //   link: RouteNames.backgroundEffects,
+      //   widget: const ColorsEffectBloc(),
+      //   title: "Color Effects",
+      //   alignment: Alignment.topCenter,
+      // ),
     ],
   ),
 ];

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
+import 'package:flutterui/components/ui/templates/nike_zoomer/nike_zoomer.dart';
 import 'package:flutterui/core/service_locators.dart';
-import 'package:flutterui/screens/home/data/export/block_items.dart';
 import 'package:flutterui/screens/home/model/component_block_model.dart';
 import 'package:flutterui/screens/home/ui/apps/leave_review/home.dart';
 import 'package:flutterui/screens/home/ui/apps/theme_toggle/theme_toggle.dart';
@@ -120,13 +120,13 @@ class _HeroSectionState extends State<HeroSection> {
                     children: [
                       StaggeredGridTile.count(
                         crossAxisCellCount: 2,
-                        mainAxisCellCount: 1.8,
+                        mainAxisCellCount: 2.6,
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: AppSizing.radiusMd(),
                           ),
                           child: const DeviceSectionFrame(
-                            child: Center(child: Text("Hello1")),
+                            child: NikeZoomerTemplate(),
                           ),
                         ),
                       ),
@@ -143,7 +143,7 @@ class _HeroSectionState extends State<HeroSection> {
                       ),
                       StaggeredGridTile.count(
                         crossAxisCellCount: 2,
-                        mainAxisCellCount: 1.8,
+                        mainAxisCellCount: 1.0,
                         child: Builder(builder: (context) {
                           return Container(
                             decoration: BoxDecoration(borderRadius: AppSizing.radiusMd()),

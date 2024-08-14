@@ -1,20 +1,14 @@
-import 'dart:io';
+// import 'dart:io';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'package:device_frame/device_frame.dart';
 import 'package:flutterui/shared/data/enums/device_type.dart';
 
 class UtilHelper {
-  static convertWidgetToString(String location) async {
-    try {
-      final file = File(location);
-      final contents = await file.readAsString();
-
-      print(contents);
-      return contents;
-    } catch (e) {
-      print(e);
-
-      return '';
+  static Future<void> openUrl(String link) async {
+    final Uri url = Uri.parse(link);
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
     }
   }
 

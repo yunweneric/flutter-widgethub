@@ -3,14 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/core/service_locators.dart';
-import 'package:flutterui/screens/routes/app_router.dart';
 import 'package:flutterui/screens/routes/app_router.gr.dart';
-import 'package:flutterui/screens/routes/route_names.dart';
 import 'package:flutterui/shared/data/enums/theme.dart';
 import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/shared/ui/models/nav_link.dart';
 import 'package:flutterui/shared/ui/utils/icons.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
+import 'package:flutterui/shared/ui/utils/util.dart';
 import 'package:flutterui/shared/ui/widgets/app_container.dart';
 import 'package:flutterui/shared/ui/widgets/icon.dart';
 import 'package:flutterui/shared/ui/widgets/layout/mobile_nav.dart';
@@ -46,7 +45,7 @@ class _NavBarState extends State<NavBar> {
                           onPressed: () {
                             // getIt.get<AppRouter>().pushNamed(RouteNames.home);
                             // context.router.pushNamed(RouteNames.home);
-                            context.router.push(HomeRoute());
+                            context.router.push(const HomeRoute());
                           },
                         ),
                         AppSizing.kwSpacer(50.w),
@@ -103,27 +102,23 @@ class _NavBarState extends State<NavBar> {
                             style: TextButton.styleFrom(
                               fixedSize: Size(25.w, 25.w),
                             ),
-                            child: AppIcon(
-                              icon: AppIcons.linkedIn,
-                            ),
-                            onPressed: () {},
+                            child: const AppIcon(icon: AppIcons.linkedIn),
+                            onPressed: () => UtilHelper.openUrl("https://www.linkedin.com/in/yunweneric"),
                           ),
                         ),
                         AppSizing.kwSpacer(5.w),
                         CircleAvatar(
                           backgroundColor: Colors.transparent,
                           child: TextButton(
-                            onPressed: () {},
-                            child: AppIcon(
-                              icon: AppIcons.x,
-                            ),
+                            onPressed: () => UtilHelper.openUrl("https://twitter.com/yunweneric"),
+                            child: const AppIcon(icon: AppIcons.x),
                           ),
                         ),
                         AppSizing.kwSpacer(5.w),
                         CircleAvatar(
                           backgroundColor: Colors.transparent,
                           child: TextButton(
-                            onPressed: () {},
+                            onPressed: () => UtilHelper.openUrl("https://github.com/yunweneric/"),
                             child: const AppIcon(icon: AppIcons.github),
                           ),
                         ),

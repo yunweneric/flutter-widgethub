@@ -5,6 +5,7 @@ import 'package:flutterui/shared/data/enums/theme.dart';
 import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/shared/ui/utils/icons.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
+import 'package:flutterui/shared/ui/utils/util.dart';
 import 'package:flutterui/shared/ui/widgets/icon.dart';
 
 class HomeFooter extends StatefulWidget {
@@ -43,18 +44,18 @@ class _HomeFooterState extends State<HomeFooter> {
                         style: TextButton.styleFrom(
                           fixedSize: Size(25.w, 25.w),
                         ),
-                        child: AppIcon(
+                        child: const AppIcon(
                           icon: AppIcons.linkedIn,
                         ),
-                        onPressed: () {},
+                        onPressed: () => UtilHelper.openUrl("https://www.linkedin.com/in/yunweneric"),
                       ),
                     ),
                     AppSizing.kwSpacer(5.w),
                     CircleAvatar(
                       backgroundColor: Colors.transparent,
                       child: TextButton(
-                        onPressed: () {},
-                        child: AppIcon(
+                        onPressed: () => UtilHelper.openUrl("https://twitter.com/yunweneric"),
+                        child: const AppIcon(
                           icon: AppIcons.x,
                         ),
                       ),
@@ -63,7 +64,7 @@ class _HomeFooterState extends State<HomeFooter> {
                     CircleAvatar(
                       backgroundColor: Colors.transparent,
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () => UtilHelper.openUrl("https://github.com/yunweneric/"),
                         child: const AppIcon(icon: AppIcons.github),
                       ),
                     ),

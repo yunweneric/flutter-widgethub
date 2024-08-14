@@ -10,6 +10,6 @@ class BackgroundEffectsBlocItem extends StatefulWidget {
 class _BackgroundEffectsBlocItemState extends State<BackgroundEffectsBlocItem> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return const Scaffold();
   }
 }
