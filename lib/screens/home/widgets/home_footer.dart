@@ -26,67 +26,75 @@ class _HomeFooterState extends State<HomeFooter> {
             padding: EdgeInsets.symmetric(vertical: 20.h),
             width: AppSizing.kWPercentage(context, 90),
             child: Wrap(
-              crossAxisAlignment: WrapCrossAlignment.start,
+              crossAxisAlignment: WrapCrossAlignment.center,
               alignment: WrapAlignment.spaceBetween,
-              // runAlignment: WrapAlignment.start,
               children: [
-                Text(
-                  "2024 © Build with 💙 by Yunwen",
-                  style: Theme.of(context).textTheme.bodySmall,
+                Container(
+                  width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 40),
+                  child: Text(
+                    "2024 © Build with 💙 by Yunwen",
+                    style: Theme.of(context).textTheme.bodySmall,
+                    textAlign: AppSizing.isMobile(context) ? TextAlign.center : TextAlign.left,
+                  ),
                 ),
 
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    CircleAvatar(
-                      backgroundColor: Colors.transparent,
-                      child: TextButton(
-                        style: TextButton.styleFrom(
-                          fixedSize: Size(25.w, 25.w),
-                        ),
-                        child: const AppIcon(
-                          icon: AppIcons.linkedIn,
-                        ),
-                        onPressed: () => UtilHelper.openUrl("https://www.linkedin.com/in/yunweneric"),
-                      ),
-                    ),
-                    AppSizing.kwSpacer(5.w),
-                    CircleAvatar(
-                      backgroundColor: Colors.transparent,
-                      child: TextButton(
-                        onPressed: () => UtilHelper.openUrl("https://twitter.com/yunweneric"),
-                        child: const AppIcon(
-                          icon: AppIcons.x,
-                        ),
-                      ),
-                    ),
-                    AppSizing.kwSpacer(5.w),
-                    CircleAvatar(
-                      backgroundColor: Colors.transparent,
-                      child: TextButton(
-                        onPressed: () => UtilHelper.openUrl("https://github.com/yunweneric/"),
-                        child: const AppIcon(icon: AppIcons.github),
-                      ),
-                    ),
-                    AppSizing.kwSpacer(5.w),
-                    Builder(
-                      builder: (context) {
-                        final theme = getIt.get<ThemeBloc>();
-                        final isDark = Theme.of(context).brightness == Brightness.dark;
-                        return CircleAvatar(
-                          backgroundColor: Colors.transparent,
-                          child: TextButton(
-                            onPressed: () => theme.add(
-                              ChangeTheme(themeMode: isDark ? AppThemeMode.LIGHT : AppThemeMode.DARK),
-                            ),
-                            child: AppIcon(
-                              icon: isDark ? AppIcons.moon : AppIcons.sun,
-                            ),
+                Container(
+                  margin: EdgeInsets.only(top: AppSizing.isMobile(context) ? 20 : 0),
+                  width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 40),
+                  child: Row(
+                    mainAxisAlignment: AppSizing.isMobile(context) ? MainAxisAlignment.center : MainAxisAlignment.end,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      CircleAvatar(
+                        backgroundColor: Colors.transparent,
+                        child: TextButton(
+                          style: TextButton.styleFrom(
+                            fixedSize: Size(25.w, 25.w),
                           ),
-                        );
-                      },
-                    ),
-                  ],
+                          child: const AppIcon(
+                            icon: AppIcons.linkedIn,
+                          ),
+                          onPressed: () => UtilHelper.openUrl("https://www.linkedin.com/in/yunweneric"),
+                        ),
+                      ),
+                      AppSizing.kwSpacer(5.w),
+                      CircleAvatar(
+                        backgroundColor: Colors.transparent,
+                        child: TextButton(
+                          onPressed: () => UtilHelper.openUrl("https://twitter.com/yunweneric"),
+                          child: const AppIcon(
+                            icon: AppIcons.x,
+                          ),
+                        ),
+                      ),
+                      AppSizing.kwSpacer(5.w),
+                      CircleAvatar(
+                        backgroundColor: Colors.transparent,
+                        child: TextButton(
+                          onPressed: () => UtilHelper.openUrl("https://github.com/yunweneric/"),
+                          child: const AppIcon(icon: AppIcons.github),
+                        ),
+                      ),
+                      AppSizing.kwSpacer(5.w),
+                      Builder(
+                        builder: (context) {
+                          final theme = getIt.get<ThemeBloc>();
+                          final isDark = Theme.of(context).brightness == Brightness.dark;
+                          return CircleAvatar(
+                            backgroundColor: Colors.transparent,
+                            child: TextButton(
+                              onPressed: () => theme.add(
+                                ChangeTheme(themeMode: isDark ? AppThemeMode.LIGHT : AppThemeMode.DARK),
+                              ),
+                              child: AppIcon(
+                                icon: isDark ? AppIcons.moon : AppIcons.sun,
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
                 )
                 // navBar
               ],

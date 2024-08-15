@@ -16,87 +16,81 @@ class _DeviceInteractiveState extends State<DeviceInteractive> {
   int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Wrap(
-        verticalDirection: VerticalDirection.up,
-        runSpacing: 10,
-        children: [
-          DeviceSectionFrame(
-            parentWidth: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 44),
-            parentHeight: AppSizing.kHPercentage(context, 60),
-            deviceAlignment: Alignment.bottomCenter,
-            child: Scaffold(
-              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-              body: AnimatedContainer(
-                height: AppSizing.height(context),
-                width: AppSizing.width(context),
-                // alignment: Alignment.bottomCenter,
-                decoration: BoxDecoration(
-                  color: currentIndex == 0
-                      ? Colors.red.withOpacity(0.8)
-                      : currentIndex == 1
-                          ? Colors.teal.withOpacity(0.8)
-                          : Colors.blue.withOpacity(0.8),
-                  // borderRadius: BorderRadius.circular(30),
-                ),
-                duration: const Duration(milliseconds: 800),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    TweenAnimationBuilder(
-                      key: ValueKey(currentIndex),
-                      tween: Tween<double>(begin: 1, end: 0),
-                      duration: const Duration(milliseconds: 1500),
-                      curve: Curves.bounceOut,
-                      builder: (context, value, child) {
-                        return Transform(
-                          transform: Matrix4.identity()..translate(0.0, -value * 200),
-                          child: Text(
-                            currentIndex == 0
-                                ? "RED"
-                                : currentIndex == 1
-                                    ? "TEAL"
-                                    : "BLUE",
-                            style: const TextStyle(fontSize: 80, fontWeight: FontWeight.w900, color: AppColors.TEXTWHITE),
-                          ),
-                        );
-                      },
-                    ),
-                    AppSizing.khSpacer(AppSizing.kHPercentage(context, 6)),
-                  ],
-                ),
+    return Wrap(
+      verticalDirection: VerticalDirection.up,
+      runSpacing: 10,
+      children: [
+        DeviceSectionFrame(
+          parentWidth: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 44),
+          parentHeight: AppSizing.kHPercentage(context, AppSizing.isDesktop(context) ? 60 : 40),
+          deviceAlignment: Alignment.bottomCenter,
+          child: Scaffold(
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            body: AnimatedContainer(
+              height: AppSizing.height(context),
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: currentIndex == 0
+                    ? Colors.red.withOpacity(0.8)
+                    : currentIndex == 1
+                        ? Colors.teal.withOpacity(0.8)
+                        : Colors.blue.withOpacity(0.8),
               ),
-              bottomNavigationBar: Container(
-                child: BottomNavigationBar(
-                  backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-                  selectedItemColor: currentIndex == 0
-                      ? Colors.red.withOpacity(1)
-                      : currentIndex == 1
-                          ? Colors.teal.withOpacity(1)
-                          : Colors.blue.withOpacity(1),
-                  onTap: (index) => {
-                    setState(() {
-                      currentIndex = index;
-                    })
-                  },
-                  currentIndex: currentIndex,
-                  items: const [
-                    BottomNavigationBarItem(icon: Icon(Icons.home), label: "Red"),
-                    BottomNavigationBarItem(icon: Icon(Icons.notification_add), label: "Teal"),
-                    BottomNavigationBarItem(icon: Icon(Icons.verified_user), label: "Blue"),
-                  ],
-                ),
+              duration: const Duration(milliseconds: 800),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  TweenAnimationBuilder(
+                    key: ValueKey(currentIndex),
+                    tween: Tween<double>(begin: 1, end: 0),
+                    duration: const Duration(milliseconds: 1500),
+                    curve: Curves.bounceOut,
+                    builder: (context, value, child) {
+                      return Transform(
+                        transform: Matrix4.identity()..translate(0.0, -value * 200),
+                        child: Text(
+                          currentIndex == 0
+                              ? "RED"
+                              : currentIndex == 1
+                                  ? "TEAL"
+                                  : "BLUE",
+                          style: const TextStyle(fontSize: 80, fontWeight: FontWeight.w900, color: AppColors.TEXTWHITE),
+                        ),
+                      );
+                    },
+                  ),
+                  AppSizing.khSpacer(AppSizing.kHPercentage(context, 6)),
+                ],
               ),
             ),
+            bottomNavigationBar: BottomNavigationBar(
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              selectedItemColor: currentIndex == 0
+                  ? Colors.red.withOpacity(1)
+                  : currentIndex == 1
+                      ? Colors.teal.withOpacity(1)
+                      : Colors.blue.withOpacity(1),
+              onTap: (index) => {
+                setState(() {
+                  currentIndex = index;
+                })
+              },
+              currentIndex: currentIndex,
+              items: const [
+                BottomNavigationBarItem(icon: Icon(Icons.home), label: "Red"),
+                BottomNavigationBarItem(icon: Icon(Icons.notification_add), label: "Teal"),
+                BottomNavigationBarItem(icon: Icon(Icons.verified_user), label: "Blue"),
+              ],
+            ),
           ),
-          AppSizing.kwSpacer(AppSizing.kWPercentage(context, 2)),
-          SizedBox(
-            width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 44),
-            height: AppSizing.kHPercentage(context, 60),
-            child: CodeHighlight(fontSize: 14.sp, code: code),
-          )
-        ],
-      ),
+        ),
+        AppSizing.kwSpacer(AppSizing.kWPercentage(context, 2)),
+        SizedBox(
+          width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 44),
+          height: AppSizing.kHPercentage(context, AppSizing.isDesktop(context) ? 60 : 40),
+          child: CodeHighlight(fontSize: AppSizing.isMobile(context) ? 10 : 14, code: code),
+        )
+      ],
     );
   }
 }

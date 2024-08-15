@@ -25,43 +25,49 @@ class _DetailedFooterState extends State<ComponentFooter> {
         alignment: WrapAlignment.spaceBetween,
         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            "Build with 💙 by yunwen",
-            style: Theme.of(context).textTheme.bodySmall,
-            textAlign: TextAlign.center,
+          SizedBox(
+            width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 35),
+            child: Text(
+              "Build with 💙 by yunwen",
+              style: Theme.of(context).textTheme.bodySmall,
+              textAlign: AppSizing.isMobile(context) ? TextAlign.center : TextAlign.left,
+            ),
           ),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircleAvatar(
-                backgroundColor: Colors.transparent,
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                    fixedSize: Size(10.w, 10.w),
-                    padding: EdgeInsets.zero,
+          SizedBox(
+            width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 35),
+            child: Row(
+              mainAxisAlignment: AppSizing.isMobile(context) ? MainAxisAlignment.center : MainAxisAlignment.end,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CircleAvatar(
+                  backgroundColor: Colors.transparent,
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                      fixedSize: Size(10.w, 10.w),
+                      padding: EdgeInsets.zero,
+                    ),
+                    onPressed: () => UtilHelper.openUrl("https://www.linkedin.com/in/yunweneric"),
+                    child: const AppIcon(
+                      icon: AppIcons.linkedIn,
+                    ),
                   ),
-                  onPressed: () => UtilHelper.openUrl("https://www.linkedin.com/in/yunweneric"),
-                  child: const AppIcon(
-                    icon: AppIcons.linkedIn,
+                ),
+                CircleAvatar(
+                  backgroundColor: Colors.transparent,
+                  child: TextButton(
+                    onPressed: () => UtilHelper.openUrl("https://twitter.com/yunweneric"),
+                    child: const AppIcon(icon: AppIcons.x),
                   ),
                 ),
-              ),
-              CircleAvatar(
-                backgroundColor: Colors.transparent,
-                child: TextButton(
-                  onPressed: () => UtilHelper.openUrl("https://twitter.com/yunweneric"),
-                  child: const AppIcon(icon: AppIcons.x),
-                ),
-              ),
-              CircleAvatar(
-                backgroundColor: Colors.transparent,
-                child: TextButton(
-                  onPressed: () => UtilHelper.openUrl("https://github.com/yunweneric/"),
-                  child: const AppIcon(icon: AppIcons.github),
-                ),
-              )
-            ],
+                CircleAvatar(
+                  backgroundColor: Colors.transparent,
+                  child: TextButton(
+                    onPressed: () => UtilHelper.openUrl("https://github.com/yunweneric/"),
+                    child: const AppIcon(icon: AppIcons.github),
+                  ),
+                )
+              ],
+            ),
           )
         ],
       ),

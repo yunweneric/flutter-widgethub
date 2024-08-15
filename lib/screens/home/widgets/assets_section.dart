@@ -107,10 +107,7 @@ class _AssetsSectionState extends State<AssetsSection> {
                           onHover: (status) {
                             // setState(() => activeBlock = item);
                           },
-                          child: ComponentBlock(
-                            item: item,
-                            isActive: activeBlock == item,
-                          ),
+                          child: ComponentBlock(item: item, isActive: activeBlock == item),
                         ),
                       )
                     ],
@@ -122,7 +119,9 @@ class _AssetsSectionState extends State<AssetsSection> {
                   List<AppCategory> activeBlockItem = activeBlock.items;
                   final displayWidget = AppSizing.isMobile(context) ? allBlockItems : activeBlockItem;
                   return Container(
-                    alignment: Alignment.topLeft,
+                    alignment: Alignment.centerLeft,
+                    // padding: EdgeInsets.only(left: 20),
+                    // color: Colors.amber,
                     constraints: BoxConstraints(minHeight: AppSizing.kHPercentage(context, 25)),
                     width: AppSizing.kWPercentage(context, AppSizing.isTablet(context) ? 70 : 100),
                     child: AnimatedSwitcher(
@@ -145,45 +144,63 @@ class _AssetsSectionState extends State<AssetsSection> {
                                 ],
                               ),
                             )
-                          : Wrap(
-                              spacing: AppSizing.kWPercentage(context, 2.5),
-                              runSpacing: AppSizing.kWPercentage(context, 2.5),
-                              crossAxisAlignment: WrapCrossAlignment.center,
-                              alignment: AppSizing.isTablet(context) ? WrapAlignment.end : WrapAlignment.start,
-                              runAlignment: WrapAlignment.start,
-                              children: List.generate(
-                                displayWidget.length,
-                                (index) {
-                                  return Builder(builder: (context) {
-                                    final item = displayWidget[index];
-                                    return InkWell(
-                                      enableFeedback: false,
-                                      hoverColor: Theme.of(context).scaffoldBackgroundColor,
-                                      highlightColor: Theme.of(context).scaffoldBackgroundColor,
-                                      focusColor: Theme.of(context).scaffoldBackgroundColor,
-                                      splashColor: Theme.of(context).scaffoldBackgroundColor,
-                                      onTap: () {
-                                        componentBloc.add(UpdateActiveCategoryEvent(category: item));
-                                        context.router.push(ComponentCategoryRoute(category: item.link));
-                                      },
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          DeviceSectionFrame(
-                                            deviceAlignment: item.alignment,
-                                            parentWidth: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 43 : 20),
-                                            parentHeight: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 35 : 15),
-                                            childWidth: AppSizing.kWPercentage(context, 10),
-                                            childHeight: AppSizing.kWPercentage(context, 22),
-                                            child: item.widget,
-                                          ),
-                                          AppSizing.kh20Spacer(),
-                                          Text(item.title)
-                                        ],
+                          : Container(
+                              // color: Colors.teal,
+                              child: Wrap(
+                                // spacing: AppSizing.kWPercentage(context, 2.5),
+                                runSpacing: AppSizing.kWPercentage(context, 2.5),
+                                crossAxisAlignment: WrapCrossAlignment.start,
+                                alignment: AppSizing.isTablet(context) ? WrapAlignment.end : WrapAlignment.start,
+                                runAlignment: WrapAlignment.start,
+                                children: List.generate(
+                                  displayWidget.length,
+                                  (index) {
+                                    return Container(
+                                      margin: EdgeInsets.only(
+                                        left: AppSizing.isTablet(context) ? AppSizing.kWPercentage(context, 2.5) : 0,
+                                        right: AppSizing.isTablet(context) ? 0 : AppSizing.kWPercentage(context, 2.5),
+                                      ),
+                                      child: Builder(
+                                        builder: (context) {
+                                          final item = displayWidget[index];
+                                          return InkWell(
+                                            enableFeedback: false,
+                                            hoverColor: Theme.of(context).scaffoldBackgroundColor,
+                                            highlightColor: Theme.of(context).scaffoldBackgroundColor,
+                                            focusColor: Theme.of(context).scaffoldBackgroundColor,
+                                            splashColor: Theme.of(context).scaffoldBackgroundColor,
+                                            onTap: () {
+                                              componentBloc.add(UpdateActiveCategoryEvent(category: item));
+                                              context.router.push(ComponentCategoryRoute(category: item.link));
+                                            },
+                                            child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                DeviceSectionFrame(
+                                                  deviceAlignment: item.alignment,
+                                                  parentWidth: generateWidth(),
+                                                  parentHeight: AppSizing.kWPercentage(
+                                                    context,
+                                                    AppSizing.isXMobile(context)
+                                                        ? 60
+                                                        : AppSizing.isMobile(context)
+                                                            ? 35
+                                                            : 15,
+                                                  ),
+                                                  childWidth: AppSizing.kWPercentage(context, 10),
+                                                  childHeight: AppSizing.kWPercentage(context, 22),
+                                                  child: item.widget,
+                                                ),
+                                                AppSizing.kh20Spacer(),
+                                                Text(item.title)
+                                              ],
+                                            ),
+                                          );
+                                        },
                                       ),
                                     );
-                                  });
-                                },
+                                  },
+                                ),
                               ),
                             ),
                     ),
@@ -196,5 +213,18 @@ class _AssetsSectionState extends State<AssetsSection> {
         ],
       ),
     );
+  }
+
+  double generateWidth() {
+    if (AppSizing.isXMobile(context)) {
+      return AppSizing.kWPercentage(context, 90);
+    }
+    if (AppSizing.isMobile(context)) {
+      return AppSizing.kWPercentage(context, 42);
+    } else if (AppSizing.isTablet(context)) {
+      return AppSizing.kWPercentage(context, 19);
+    } else {
+      return AppSizing.kWPercentage(context, 20);
+    }
   }
 }
