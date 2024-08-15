@@ -30,13 +30,13 @@ class _SideBarState extends State<SideBar> {
           title: "Get Started",
         ),
         AppCategory(
-          link: RouteNames.home,
+          link: RouteNames.requestComponent,
           widget: const Text(""),
-          title: "Playground",
+          title: "Request a component",
         ),
       ],
     ),
-    ...blocItems,
+    ...blocItems.where((item) => item.title.toLowerCase() != "animations"),
   ];
 
   AppCategory? activeSideBar;
