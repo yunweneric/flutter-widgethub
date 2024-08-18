@@ -9,6 +9,7 @@ class AppSizing {
   static double kWPercentage(BuildContext context, double value) => (width(context) * value) / 100;
   static radiusMd() => BorderRadius.circular(10.r);
   static radiusSm() => BorderRadius.circular(5.r);
+
   static OutlineInputBorder mainBorder(Color color) {
     return OutlineInputBorder(
       borderSide: BorderSide(width: 0.6, color: color),
@@ -18,7 +19,7 @@ class AppSizing {
 
   static OutlineInputBorder mainFocusBorder() {
     return OutlineInputBorder(
-      borderSide: const BorderSide(width: 0.6, color: AppColors.DARKRED),
+      borderSide: const BorderSide(width: 0.6, color: AppColors.PRIMARY),
       borderRadius: BorderRadius.all(Radius.circular(45.r)),
     );
   }

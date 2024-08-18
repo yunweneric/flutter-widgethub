@@ -37,7 +37,7 @@ class _AppLayoutState extends State<ComponentLayoutScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const Center(child: NavBar(isHomeScreenLayout: false)),
+                Center(child: NavBar(isHomeScreenLayout: false, onTap: () {})),
                 Expanded(
                   child: Container(
                     // margin: EdgeInsets.symmetric(horizontal: AppSizing.kWPercentage(context, 2.5)),

@@ -65,7 +65,7 @@ class _ThemeToggleState extends State<ThemeToggle> {
                       focusColor: Theme.of(context).scaffoldBackgroundColor,
                       highlightColor: Theme.of(context).scaffoldBackgroundColor,
                       onHover: (hover) => setState(() => sunScale = hover ? 1.5 : 1.0),
-                      onTap: () => theme.add(ChangeTheme(themeMode: AppThemeMode.LIGHT)),
+                      onTap: () => theme.add(ChangeTheme(themeMode: ThemeMode.light)),
                       child: AnimatedScale(
                         duration: const Duration(milliseconds: 200),
                         scale: sunScale,
@@ -85,7 +85,7 @@ class _ThemeToggleState extends State<ThemeToggle> {
                       focusColor: Theme.of(context).scaffoldBackgroundColor,
                       highlightColor: Theme.of(context).scaffoldBackgroundColor,
                       onHover: (hover) => setState(() => moonScale = hover ? 1.5 : 1.0),
-                      onTap: () => theme.add(ChangeTheme(themeMode: AppThemeMode.DARK)),
+                      onTap: () => theme.add(ChangeTheme(themeMode: ThemeMode.dark)),
                       child: AnimatedScale(
                         duration: const Duration(milliseconds: 200),
                         scale: moonScale,

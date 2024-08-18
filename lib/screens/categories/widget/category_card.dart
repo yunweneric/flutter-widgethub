@@ -33,7 +33,7 @@ class _CategoryCardState extends State<CategoryCard> {
               Container(
                 padding: EdgeInsets.all(30.w),
                 width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 35),
-                height: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 50 : 25),
+                height: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 80 : 25),
                 decoration: BoxDecoration(
                   color: Theme.of(context).scaffoldBackgroundColor,
                   border: Border.all(color: Theme.of(context).dividerColor),

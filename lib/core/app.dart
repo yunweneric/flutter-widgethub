@@ -32,8 +32,8 @@ class MyApp extends StatelessWidget {
                 designSize: Size(constraints.maxWidth, constraints.maxHeight),
                 useInheritedMediaQuery: true,
                 builder: (context, child) {
-                  final themeMode = state.themeMode == AppThemeMode.SYSTEM;
-                  final isDark = state.themeMode == AppThemeMode.DARK;
+                  // final themeMode = state.themeMode == ThemeMode.system;
+                  // final isDark = state.themeMode == ThemeMode.dark;
                   // print(["theme mode", themeMode, 'isLight', isDark]);
                   return MaterialApp.router(
                     routerConfig: getIt.get<AppRouter>().config(navigatorObservers: () => [MyObserver()]),
@@ -41,11 +41,12 @@ class MyApp extends StatelessWidget {
                     title: 'Flutter UI',
                     theme: AppTheme.light(),
                     darkTheme: AppTheme.dark(),
-                    themeMode: themeMode
-                        ? ThemeMode.system
-                        : isDark
-                            ? ThemeMode.dark
-                            : ThemeMode.light,
+                    themeMode: state.themeMode,
+                    // themeMode: themeMode
+                    //     ? ThemeMode.system
+                    //     : isDark
+                    //         ? ThemeMode.dark
+                    //         : ThemeMode.light,
 
                     // themeMode: ThemeMode.system,
 

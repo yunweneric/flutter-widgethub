@@ -84,7 +84,7 @@ class _HomeFooterState extends State<HomeFooter> {
                             backgroundColor: Colors.transparent,
                             child: TextButton(
                               onPressed: () => theme.add(
-                                ChangeTheme(themeMode: isDark ? AppThemeMode.LIGHT : AppThemeMode.DARK),
+                                ChangeTheme(themeMode: isDark ? ThemeMode.light : ThemeMode.dark),
                               ),
                               child: AppIcon(
                                 icon: isDark ? AppIcons.moon : AppIcons.sun,

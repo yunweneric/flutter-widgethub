@@ -9,8 +9,16 @@ class Component {
   final String setup;
   final String description;
   final Widget widget;
+  final String category;
 
-  Component({required this.code, required this.title, required this.setup, required this.description, required this.widget});
+  Component({
+    required this.code,
+    required this.title,
+    required this.setup,
+    required this.description,
+    required this.widget,
+    required this.category,
+  });
 }
 
 class AllComponents {

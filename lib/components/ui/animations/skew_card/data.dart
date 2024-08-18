@@ -14,5 +14,6 @@ class SkewCardData {
     description: 'A card perspective effect, hover over the card to elevate card elements.',
     title: '3D Skew Card',
     setup: setup,
+    category: "Cards",
   );
 }
