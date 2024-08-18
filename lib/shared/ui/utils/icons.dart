@@ -17,4 +17,5 @@ class AppIcons {
   static const linkedIn = "assets/icons/linkedIn.svg";
   static const x = "assets/icons/x.svg";
   static const diamond = "assets/icons/diamond.svg";
+  static const card = "assets/icons/card.svg";
 }

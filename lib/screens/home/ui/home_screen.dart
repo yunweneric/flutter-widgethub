@@ -3,11 +3,16 @@ import 'dart:math';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/core/service_locators.dart';
+import 'package:flutterui/screens/home/data/export/block_items.dart';
+import 'package:flutterui/screens/home/model/component_block_model.dart';
 import 'package:flutterui/screens/home/widgets/assets_section.dart';
 import 'package:flutterui/screens/home/widgets/integration_section.dart';
 import 'package:flutterui/screens/home/widgets/hero_section.dart';
 import 'package:flutterui/screens/home/widgets/home_footer.dart';
+import 'package:flutterui/screens/routes/app_router.gr.dart';
+import 'package:flutterui/screens/routes/route_names.dart';
 import 'package:flutterui/shared/data/enums/theme.dart';
 import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
@@ -29,6 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final ScrollController _controller = ScrollController();
 
   final themeBloc = getIt.get<ThemeBloc>();
+  final componentBloc = getIt.get<ComponentBloc>();
   @override
   void initState() {
     _controller.addListener(listenToScroll);
@@ -47,6 +53,25 @@ class _HomeScreenState extends State<HomeScreen> {
 
   bool isNavBarOpen = false;
 
+  List<AppCategoryGroup> items = [
+    AppCategoryGroup(
+      title: "Get Started",
+      description: "A wide range of pre-built UI templates from app clones to demo apps all in one place",
+      items: [
+        AppCategory(
+          link: RouteNames.home,
+          widget: const Text(""),
+          title: "Get Started",
+        ),
+        AppCategory(
+          link: RouteNames.requestComponent,
+          widget: const Text(""),
+          title: "Request a component",
+        ),
+      ],
+    ),
+    ...blocItems.where((item) => item.title.toLowerCase() != "animations"),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -106,14 +131,17 @@ class _HomeScreenState extends State<HomeScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text("Logo"),
+                                  Text(
+                                    "Logo",
+                                    style: Theme.of(context).textTheme.displayMedium,
+                                  ),
                                   CircleAvatar(
                                     backgroundColor: Colors.transparent,
                                     child: TextButton(
@@ -126,11 +154,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ],
                               ),
                               AppSizing.khSpacer(30),
-                              navItem(onPressed: () {}, title: "Components"),
-                              navItem(onPressed: () {}, title: "Templates"),
-                              navItem(onPressed: () {}, title: "Animations"),
-                              navItem(onPressed: () {}, title: "Blocs"),
-                              navItem(onPressed: () {}, title: "Effects"),
+                              ...items.map((item) {
+                                return navItem(
+                                  onPressed: () {
+                                    componentBloc.add(UpdateActiveCategoryEvent(category: item.items.first));
+                                    context.router.push(ComponentCategoryRoute(category: RouteNames.components));
+                                  },
+                                  title: item.title,
+                                );
+                              }),
                             ],
                           ),
                         ),
@@ -139,9 +171,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             navbarSection(child: supportSection(context)),
                             navbarSection(child: followUsSection(context)),
-                            navbarSection(
-                              child: themingSection(context),
-                            ),
+                            navbarSection(child: themingSection(context)),
                             AppSizing.kh20Spacer(),
                             Text(
                               "Made with 💙 by Yunwen",
@@ -250,8 +280,8 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               navItem(
                 onPressed: () => UtilHelper.openUrl("https://github.com/yunweneric/"),
-                icon: AppIcons.github,
-                title: "Donate to suppor us",
+                icon: AppIcons.card,
+                title: "Donate to support us",
               ),
             ],
           ),
@@ -273,7 +303,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget navItem({required String title, String? icon, required VoidCallback onPressed}) {
     return InkWell(
-      onTap: onPressed,
+      onTap: () {
+        setState(() => isNavBarOpen = false);
+        onPressed();
+      },
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 10),
         child: Row(

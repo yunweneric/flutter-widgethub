@@ -30,12 +30,10 @@ class _MainContentState extends State<MainContent> {
               AppSizing.khSpacer(30.h),
               TextButton.icon(
                 style: TextButton.styleFrom(
-                  padding: AppSizing.kpadding(15.w, 20.h),
+                  padding: AppSizing.isMobile(context) ? null : AppSizing.kpadding(15.w, 20.h),
                   side: BorderSide(color: Theme.of(context).dividerColor),
                 ),
-                onPressed: () {
-                  context.router.back();
-                },
+                onPressed: () => context.router.back(),
                 icon: const AppIcon(icon: AppIcons.back),
                 label: Text("Back", style: Theme.of(context).textTheme.bodyMedium),
               ),
@@ -44,9 +42,7 @@ class _MainContentState extends State<MainContent> {
                 constraints: BoxConstraints(minHeight: AppSizing.kHPercentage(context, 60)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ...widget.children,
-                  ],
+                  children: [...widget.children],
                 ),
               ),
               AppSizing.khSpacer(30.h),
