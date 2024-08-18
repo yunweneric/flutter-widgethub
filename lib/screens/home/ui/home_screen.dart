@@ -131,7 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          padding: const EdgeInsets.symmetric(horizontal: 30),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -293,7 +293,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget navbarSection({required Widget child}) {
     return Container(
       width: AppSizing.width(context),
-      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
       decoration: BoxDecoration(
         border: BorderDirectional(top: BorderSide(color: Theme.of(context).dividerColor)),
       ),
@@ -312,10 +312,10 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Row(
           children: [
             if (icon != null) ...[
-              AppIcon(icon: icon, size: 15),
+              AppIcon(icon: icon, size: 20),
               AppSizing.kwSpacer(5),
             ],
-            Text(title, style: Theme.of(context).textTheme.bodySmall),
+            Text(title, style: Theme.of(context).textTheme.bodyMedium),
           ],
         ),
       ),
