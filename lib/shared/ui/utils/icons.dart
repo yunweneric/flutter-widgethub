@@ -18,4 +18,6 @@ class AppIcons {
   static const x = "assets/icons/x.svg";
   static const diamond = "assets/icons/diamond.svg";
   static const card = "assets/icons/card.svg";
+  static const link = "assets/icons/link.svg";
+  static const download = "assets/icons/download.svg";
 }

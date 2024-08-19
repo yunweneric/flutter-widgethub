@@ -9,9 +9,7 @@ import 'package:flutterui/screens/routes/route_names.dart';
 )
 class AppRouter extends RootStackRouter {
   @override
-  RouteType get defaultRouteType => const RouteType.custom(
-        transitionsBuilder: TransitionsBuilders.fadeIn,
-      );
+  RouteType get defaultRouteType => const RouteType.custom(transitionsBuilder: TransitionsBuilders.fadeIn);
 
   @override
   List<AutoRoute> get routes => [
@@ -22,6 +20,7 @@ class AppRouter extends RootStackRouter {
           children: [
             AutoRoute(path: "", page: ComponentCategoryRoute.page),
             AutoRoute(path: RouteNames.notFound, page: NotFoundRoute.page),
+            AutoRoute(page: ComponentDetailsRoute.page),
             AutoRoute(page: NotFoundRoute.page),
             AutoRoute(path: "*", page: NotFoundRoute.page),
           ],

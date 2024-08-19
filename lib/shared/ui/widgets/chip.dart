@@ -51,7 +51,11 @@ class _AppChipState extends State<AppChip> {
                 },
                 child: Row(
                   children: [
-                    AppIcon(icon: widget.icon, color: isActive ? Theme.of(context).primaryColor : Theme.of(context).highlightColor),
+                    AppIcon(
+                      icon: widget.icon,
+                      color: isActive ? Theme.of(context).primaryColor : Theme.of(context).highlightColor,
+                      size: 20,
+                    ),
                     if (widget.title != null) AppSizing.kwSpacer(5.w),
                     if (widget.title != null)
                       Text(

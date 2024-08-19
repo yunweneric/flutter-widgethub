@@ -50,23 +50,18 @@ class _CarouselsBlocItemState extends State<CarouselsBlocItem> {
 
   @override
   Widget build(BuildContext context) {
-    if (controller != null) {
-      // final maxOffset = controller?.position.maxScrollExtent;
-      // final currentOffset = maxOffset! / 6;
-      // print(["scrolling", currentOffset, maxOffset]);
-      // controller?.animateTo(currentOffset, duration: duration, curve: Curves.elasticInOut);
-    }
-
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           SizedBox(
+            width: AppSizing.width(context),
             // color: Colors.tealAccent,
             height: AppSizing.kHPercentage(context, 50),
             child: ListWheelScrollView(
               controller: controller,
               itemExtent: 150,
+              offAxisFraction: -0.4,
               squeeze: 0.8,
               children: List.generate(10, (item) => item).map((item) {
                 return Container(

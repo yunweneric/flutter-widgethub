@@ -58,11 +58,9 @@ class _ComponentCategoryScreenState extends State<ComponentCategoryScreen> {
                           spacing: AppSizing.isTablet(context) ? AppSizing.kWPercentage(context, 2) : AppSizing.kWPercentage(context, 5),
                           runSpacing: AppSizing.kWPercentage(context, 5),
                           children: [
-                            ...components.map(
-                              (item) {
-                                return CategoryCard(component: item);
-                              },
-                            )
+                            ...components.map((item) {
+                              return CategoryCard(component: item);
+                            })
                           ],
                         ),
                 );

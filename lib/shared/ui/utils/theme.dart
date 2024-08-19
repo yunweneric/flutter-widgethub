@@ -139,10 +139,10 @@ class AppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           elevation: 0,
-          // side: const BorderSide(color: AppColors.BGGRAY3),
           backgroundColor: AppColors.CARDCOLOR,
-          padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 18.w),
+          padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 10.w),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
+          textStyle: lightTextTheme.bodySmall,
         ),
       ),
       chipTheme: ChipThemeData(
