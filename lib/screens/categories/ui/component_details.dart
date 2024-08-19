@@ -7,6 +7,7 @@ import 'package:flutterui/components/ui/export/data.dart';
 import 'package:flutterui/core/service_locators.dart';
 import 'package:flutterui/shared/ui/utils/icons.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
+import 'package:flutterui/shared/ui/utils/util.dart';
 import 'package:flutterui/shared/ui/widgets/code_highlight.dart';
 import 'package:flutterui/shared/ui/widgets/code_preview.dart';
 import 'package:flutterui/shared/ui/widgets/icon.dart';
@@ -169,13 +170,13 @@ class _HomeScreenState extends State<ComponentDetailsScreen> {
         AppSizing.khSpacer(5),
         if (component.gitHubLink != null)
           rowItem(
-            onTap: () {},
+            onTap: () => UtilHelper.openUrl(component.gitHubLink!),
             leading: AppIcons.github,
-            title: component.gitHubLink!,
+            title: "Open Github Repository",
           ),
         if (component.assetLink != null)
           rowItem(
-            onTap: () {},
+            onTap: () => UtilHelper.openUrl(component.assetLink!),
             leading: AppIcons.download,
             title: "Download assets",
           ),
