@@ -142,6 +142,7 @@ class _HomeScreenState extends State<ComponentDetailsScreen> {
                       ),
                       child: SvgPicture.asset(
                         "assets/icons/${item.describe()}.svg",
+                        color: Theme.of(context).primaryColorDark,
                       ),
                     ),
                   ),

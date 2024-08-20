@@ -66,6 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return AppLayout(
+      controller: _controller,
       children: [
         HeroSection(
           onBrowserAll: () {

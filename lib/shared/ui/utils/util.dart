@@ -1,4 +1,6 @@
 // import 'dart:io';
+import 'dart:math';
+
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:device_frame/device_frame.dart';
@@ -12,16 +14,20 @@ class UtilHelper {
     }
   }
 
-  static String generateUniqueId({String prefix = 'SDK-', int length = 7}) {
-    const String characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    final StringBuffer result = StringBuffer(prefix);
+  static String generateUniqueId({String prefix = ' "FWH-', int length = 7}) {
+    const String chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    // final StringBuffer result = StringBuffer(prefix);
 
-    for (int i = 0; i < length; i++) {
-      final int randomIndex = (characters.length * (new DateTime.now().millisecondsSinceEpoch % 1000) / 1000).toInt();
-      result.write(characters[randomIndex]);
-    }
+    // for (int i = 0; i < length; i++) {
+    //   final int randomIndex = (characters.length * (new DateTime.now().millisecondsSinceEpoch % 1000) / 1000).toInt();
+    //   result.write(characters[randomIndex]);
+    // }
 
-    return result.toString();
+    // return result.toString();
+
+    Random random = Random();
+    final items = List.generate(length - 4, (index) => chars[random.nextInt(chars.length)]);
+    return prefix + items.join();
   }
 
   static findDevice({required AppDeviceType type}) {

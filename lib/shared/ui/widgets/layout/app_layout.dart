@@ -15,35 +15,40 @@ import 'package:flutterui/shared/ui/widgets/icon.dart';
 import 'package:flutterui/shared/ui/widgets/layout/nav_bar.dart';
 
 class AppLayout extends StatefulWidget {
+  final bool? hideFooter;
   final List<Widget> children;
-  const AppLayout({super.key, required this.children});
+  final ScrollController? controller;
+  const AppLayout({super.key, required this.children, this.hideFooter, this.controller});
 
   @override
   State<AppLayout> createState() => _AppLayoutState();
 }
 
-class _AppLayoutState extends State<AppLayout> {
-  final ScrollController _controller = ScrollController();
-
+class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMixin {
+  // final ScrollController _controller = ScrollController();
+  AnimationController? animationController;
+  Animation<double>? navBarAnimation;
   final themeBloc = getIt.get<ThemeBloc>();
   final componentBloc = getIt.get<ComponentBloc>();
+  bool isNavBarOpen = false;
   @override
   void initState() {
-    _controller.addListener(listenToScroll);
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
+    navBarAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(animationController!);
     super.initState();
   }
 
-  void listenToScroll() {}
-
-  @override
-  void dispose() {
-    _controller.removeListener(listenToScroll);
-
-    _controller.dispose();
-    super.dispose();
+  void animateNavBar() {
+    navBarAnimation = Tween<double>(begin: 1.0, end: 0.0).animate(animationController!);
+    if (isNavBarOpen) {
+      animationController?.reverse();
+    } else {
+      animationController?.forward();
+    }
   }
-
-  bool isNavBarOpen = false;
 
   List<AppCategoryGroup> items = [
     AppCategoryGroup(
@@ -69,10 +74,10 @@ class _AppLayoutState extends State<AppLayout> {
     return Scaffold(
       body: Stack(
         children: [
-          TweenAnimationBuilder(
-              duration: const Duration(milliseconds: 500),
-              tween: !isNavBarOpen ? Tween<double>(begin: 1.0, end: 0.0) : Tween<double>(begin: 0.0, end: 1.0),
-              builder: (context, value, child) {
+          AnimatedBuilder(
+              animation: animationController!,
+              builder: (context, child) {
+                final value = navBarAnimation?.value ?? 0.0;
                 return Transform(
                   alignment: Alignment.center,
                   transform: Matrix4.identity()
@@ -81,17 +86,17 @@ class _AppLayoutState extends State<AppLayout> {
                     ..rotateY(0.2 * value)
                     ..translate(AppSizing.kWPercentage(context, 120.0 * value)),
                   child: SingleChildScrollView(
-                    controller: _controller,
+                    controller: widget.controller,
                     child: Column(
                       children: [
                         NavBar(
-                          isHomeScreenLayout: true,
-                          onTap: () => setState(() {
-                            isNavBarOpen = !isNavBarOpen;
-                          }),
-                        ),
+                            isHomeScreenLayout: true,
+                            onTap: () {
+                              setState(() => isNavBarOpen = !isNavBarOpen);
+                              animateNavBar();
+                            }),
                         ...widget.children,
-                        const HomeFooter(),
+                        widget.hideFooter == true ? const SizedBox.shrink() : const HomeFooter(),
                       ],
                     ),
                   ),
@@ -127,9 +132,12 @@ class _AppLayoutState extends State<AppLayout> {
                                   CircleAvatar(
                                     backgroundColor: Colors.transparent,
                                     child: TextButton(
-                                      onPressed: () => setState(() {
-                                        isNavBarOpen = false;
-                                      }),
+                                      onPressed: () {
+                                        setState(() {
+                                          isNavBarOpen = false;
+                                        });
+                                        animateNavBar();
+                                      },
                                       child: Icon(Icons.close),
                                     ),
                                   ),

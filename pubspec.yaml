@@ -31,6 +31,7 @@ dependencies:
   auto_route: ^9.2.0
   bloc: ^8.1.4
   cupertino_icons: ^1.0.6
+  currency_text_input_formatter: ^2.2.3
   device_frame: ^1.2.0
   flutter:
     sdk: flutter
