@@ -7,13 +7,14 @@ import 'package:flutterui/shared/logic/language/language_bloc.dart';
 import 'package:flutterui/shared/logic/navigation/navigation_bloc.dart';
 import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 
 final getIt = GetIt.instance;
 
 class ServiceLocators {
   static Future<void> register() async {
-    final appRouter = AppRouter();
-    getIt.registerSingleton<AppRouter>(appRouter);
+    // final appRouter = appRouter;
+    getIt.registerSingleton<GoRouter>(appRouter);
 
     final paymentService = PaymentService();
 

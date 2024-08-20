@@ -1,11 +1,10 @@
-import 'package:auto_route/auto_route.dart';
+// import 'package:auto_route/auto_route.dart';
 import 'package:device_frame/device_frame.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/core/service_locators.dart';
 import 'package:flutterui/components/ui/export/data.dart';
-import 'package:flutterui/screens/routes/app_router.gr.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 
 class CategoryCard extends StatefulWidget {
@@ -84,8 +83,9 @@ class _CategoryCardState extends State<CategoryCard> {
           hoverColor: Theme.of(context).scaffoldBackgroundColor,
           borderRadius: AppSizing.radiusMd(),
           onTap: () {
-            componentBloc.add(UpdateActiveComponentEvent(newComponent: widget.component));
-            context.router.push(ComponentDetailsRoute(component: widget.component));
+            // componentBloc.add(UpdateActiveComponentEvent(newComponent: widget.component));
+            // context.router.push(ComponentDetailsRoute(component: widget.component));
+            // context.router.pushNamed("/components/templates/${widget.component.id}");
           },
           onHover: (status) {
             setState(() {

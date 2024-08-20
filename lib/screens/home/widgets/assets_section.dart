@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -7,7 +6,6 @@ import 'package:flutterui/core/service_locators.dart';
 import 'package:flutterui/screens/home/data/export/block_items.dart';
 import 'package:flutterui/screens/home/model/component_block_model.dart';
 import 'package:flutterui/screens/home/widgets/component_block.dart';
-import 'package:flutterui/screens/routes/app_router.gr.dart';
 import 'package:flutterui/screens/routes/route_names.dart';
 import 'package:flutterui/shared/ui/utils/icons.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
@@ -76,7 +74,9 @@ class _AssetsSectionState extends State<AssetsSection> {
           TextButton.icon(
             style: TextButton.styleFrom(backgroundColor: Theme.of(context).scaffoldBackgroundColor),
             iconAlignment: IconAlignment.end,
-            onPressed: () => context.router.push(ComponentCategoryRoute(category: RouteNames.home)),
+            onPressed: () {
+              // context.router.push(ComponentCategoryRoute(category: RouteNames.home));
+            },
             icon: const Icon(Icons.arrow_forward_rounded),
             label: const Text("Browse all assets"),
           ),
@@ -170,8 +170,8 @@ class _AssetsSectionState extends State<AssetsSection> {
                                             focusColor: Theme.of(context).scaffoldBackgroundColor,
                                             splashColor: Theme.of(context).scaffoldBackgroundColor,
                                             onTap: () {
-                                              componentBloc.add(UpdateActiveCategoryEvent(category: item));
-                                              context.router.push(ComponentCategoryRoute(category: item.link));
+                                              // componentBloc.add(UpdateActiveCategoryEvent(category: item));
+                                              // context.router.push(ComponentCategoryRoute(category: item.link));
                                             },
                                             child: Column(
                                               crossAxisAlignment: CrossAxisAlignment.start,

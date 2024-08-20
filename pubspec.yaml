@@ -28,7 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  auto_route: ^9.2.0
+  # auto_route: ^9.2.0
   bloc: ^8.1.4
   cupertino_icons: ^1.0.6
   currency_text_input_formatter: ^2.2.3
@@ -42,6 +42,7 @@ dependencies:
   flutter_svg: ^2.0.10+1
   flutter_syntax_view: ^4.1.0
   get_it: ^7.7.0
+  go_router: ^14.2.3
   google_fonts: ^6.2.1
   logger: ^2.4.0
   syncfusion_flutter_core: ^26.2.8
@@ -50,7 +51,7 @@ dependencies:
   url_launcher: ^6.3.0
 
 dev_dependencies:
-  auto_route_generator: ^9.0.0
+  # auto_route_generator: ^9.0.0
   build_runner: ^2.4.11
   # build_runner: ^2.4.9
   flutter_lints: ^3.0.0

@@ -1,4 +1,4 @@
-import 'package:auto_route/auto_route.dart';
+// import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/shared/ui/utils/icons.dart';
@@ -33,7 +33,9 @@ class _MainContentState extends State<MainContent> {
                   padding: AppSizing.isMobile(context) ? null : AppSizing.kpadding(15.w, 20.h),
                   side: BorderSide(color: Theme.of(context).dividerColor),
                 ),
-                onPressed: () => context.router.back(),
+                // onPressed: () => context.router.back(),
+                onPressed: () {},
+
                 icon: const AppIcon(icon: AppIcons.back),
                 label: Text("Back", style: Theme.of(context).textTheme.bodyMedium),
               ),

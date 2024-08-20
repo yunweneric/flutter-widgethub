@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,16 +13,15 @@ import 'package:flutterui/shared/ui/widgets/code_preview.dart';
 import 'package:flutterui/shared/ui/widgets/icon.dart';
 import 'package:flutterui/shared/ui/widgets/layout/main_content.dart';
 
-@RoutePage()
-class ComponentDetailsScreen extends StatefulWidget {
+class ComponentDetailsWrapper extends StatefulWidget {
   final Component component;
-  const ComponentDetailsScreen({super.key, required this.component});
+  const ComponentDetailsWrapper({super.key, required this.component});
 
   @override
-  State<ComponentDetailsScreen> createState() => _HomeScreenState();
+  State<ComponentDetailsWrapper> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<ComponentDetailsScreen> {
+class _HomeScreenState extends State<ComponentDetailsWrapper> {
   final componentBloc = getIt.get<ComponentBloc>();
   @override
   Widget build(BuildContext context) {

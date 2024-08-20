@@ -1,4 +1,4 @@
-import 'package:auto_route/auto_route.dart';
+// import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,7 +6,7 @@ import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/core/service_locators.dart';
 import 'package:flutterui/screens/home/data/export/block_items.dart';
 import 'package:flutterui/screens/home/model/component_block_model.dart';
-import 'package:flutterui/screens/routes/app_router.gr.dart';
+// import 'package:flutterui/screens/routes/app_router.gr.dart';
 import 'package:flutterui/screens/routes/route_names.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/layout/side_bar_item.dart';
@@ -88,9 +88,9 @@ class _SideBarState extends State<SideBar> {
                                     onPressed: () {
                                       componentBloc.add(UpdateActiveCategoryEvent(category: sideBarItem));
                                       setState(() => activeSideBar = sideBarItem);
-                                      context.router.push(
-                                        ComponentCategoryRoute(category: sideBarItem.link),
-                                      );
+                                      // context.router.push(
+                                      //   ComponentCategoryRoute(category: sideBarItem.link),
+                                      // );
                                     },
                                   );
                                 },

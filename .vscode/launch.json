@@ -5,13 +5,11 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Web development",
+      "name": "Web dev",
       "request": "launch",
       "type": "dart",
       "program": "lib/main_dev.dart",
       "args": [
-        "--flavor",
-        "development",
         "--target",
         "lib/main_dev.dart",
         "--dart-define-from-file=../envs/fwh/dev.env.json",

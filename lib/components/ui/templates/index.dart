@@ -1,15 +1,14 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/core/service_locators.dart';
 import 'package:flutterui/screens/categories/widget/category_card.dart';
-import 'package:flutterui/screens/routes/app_router.dart';
+// import 'package:flutterui/screens/routes/app_router.dart';
 import 'package:flutterui/shared/logic/navigation/navigation_bloc.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/layout/main_content.dart';
 
-@RoutePage()
+// @RoutePage()
 class ComponentTemplatesScreen extends StatefulWidget {
   const ComponentTemplatesScreen({super.key});
 
@@ -19,7 +18,7 @@ class ComponentTemplatesScreen extends StatefulWidget {
 
 class _ComponentTemplatesScreenState extends State<ComponentTemplatesScreen> {
   final navigationBloc = getIt.get<NavigationBloc>();
-  final autoRoute = getIt.get<AppRouter>();
+  // final autoRoute = getIt.get<AppRouter>();
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ComponentBloc, ComponentState>(

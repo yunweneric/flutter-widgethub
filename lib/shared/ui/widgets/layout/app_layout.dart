@@ -1,11 +1,11 @@
-import 'package:auto_route/auto_route.dart';
+// import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/core/service_locators.dart';
 import 'package:flutterui/screens/home/data/export/block_items.dart';
 import 'package:flutterui/screens/home/model/component_block_model.dart';
 import 'package:flutterui/screens/home/widgets/home_footer.dart';
-import 'package:flutterui/screens/routes/app_router.gr.dart';
+// import 'package:flutterui/screens/routes/app_router.gr.dart';
 import 'package:flutterui/screens/routes/route_names.dart';
 import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/shared/ui/utils/icons.dart';
@@ -147,8 +147,8 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
                               ...items.map((item) {
                                 return navItem(
                                   onPressed: () {
-                                    componentBloc.add(UpdateActiveCategoryEvent(category: item.items.first));
-                                    context.router.push(ComponentCategoryRoute(category: RouteNames.components));
+                                    // componentBloc.add(UpdateActiveCategoryEvent(category: item.items.first));
+                                    // context.router.push(ComponentCategoryRoute(category: RouteNames.components));
                                   },
                                   title: item.title,
                                 );

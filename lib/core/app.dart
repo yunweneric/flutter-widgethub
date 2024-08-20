@@ -11,6 +11,7 @@ import 'package:flutterui/shared/logic/language/language_bloc.dart';
 import 'package:flutterui/shared/logic/navigation/navigation_bloc.dart';
 import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/shared/ui/utils/theme.dart';
+import 'package:go_router/go_router.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
                   // final isDark = state.themeMode == ThemeMode.dark;
                   // print(["theme mode", themeMode, 'isLight', isDark]);
                   return MaterialApp.router(
-                    routerConfig: getIt.get<AppRouter>().config(navigatorObservers: () => [MyObserver()]),
+                    routerConfig: getIt.get<GoRouter>(),
                     debugShowCheckedModeBanner: false,
                     title: 'Flutter UI',
                     theme: AppTheme.light(),

@@ -5,6 +5,7 @@ import 'package:flutterui/components/ui/cards/flip_card/data.dart';
 import 'package:flutterui/shared/data/enums/supported_platform.dart';
 
 class Component {
+  final String id;
   final String code;
   final String title;
   final String setup;
@@ -16,6 +17,7 @@ class Component {
   final List<SupportedPlatform> supportedPlatforms;
 
   Component({
+    required this.id,
     required this.code,
     required this.title,
     required this.setup,

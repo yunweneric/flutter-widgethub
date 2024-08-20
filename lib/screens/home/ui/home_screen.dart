@@ -1,4 +1,4 @@
-import 'package:auto_route/auto_route.dart';
+// import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
@@ -13,7 +13,7 @@ import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/layout/app_layout.dart';
 
-@RoutePage()
+// @RoutePage()
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 

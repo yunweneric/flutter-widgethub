@@ -11,6 +11,7 @@ class SkewCardData {
   static String setup = basicSetup;
   static Component component = Component(
     code: code,
+    id: "3d-skew-card",
     widget: widget,
     description: 'A card perspective effect, hover over the card to elevate card elements.',
     title: '3D Skew Card',

@@ -1,9 +1,9 @@
-import 'package:auto_route/auto_route.dart';
+//import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/core/service_locators.dart';
-import 'package:flutterui/screens/routes/app_router.gr.dart';
+// import 'package:flutterui/screens/routes/app_router.gr.dart';
 import 'package:flutterui/screens/routes/route_names.dart';
 import 'package:flutterui/shared/data/enums/theme.dart';
 import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
@@ -15,6 +15,7 @@ import 'package:flutterui/shared/ui/widgets/app_container.dart';
 import 'package:flutterui/shared/ui/widgets/app_search_bar.dart';
 import 'package:flutterui/shared/ui/widgets/icon.dart';
 import 'package:flutterui/shared/ui/widgets/layout/mobile_nav.dart';
+import 'package:go_router/go_router.dart';
 
 class NavBar extends StatefulWidget {
   final bool isHomeScreenLayout;
@@ -28,8 +29,8 @@ class NavBar extends StatefulWidget {
 
 class _NavBarState extends State<NavBar> {
   List<NavLink> links = [
-    NavLink(title: "Components", path: ComponentCategoryRoute(category: RouteNames.components)),
-    NavLink(title: "Support", path: const SupportRoute()),
+    NavLink(title: "Components", path: RouteNames.components),
+    NavLink(title: "Support", path: RouteNames.support),
   ];
   @override
   Widget build(BuildContext context) {
@@ -47,20 +48,20 @@ class _NavBarState extends State<NavBar> {
                           style: TextButton.styleFrom(padding: EdgeInsets.zero),
                           child: Text("Logo", style: Theme.of(context).textTheme.displayLarge),
                           onPressed: () {
-                            context.router.push(const HomeRoute());
+                            context.pushNamed(RouteNames.home);
                           },
                         ),
                         AppSizing.kwSpacer(50.w),
                         Row(
                           children: [
                             ...links.map((item) {
-                              final activeRoute = context.router.currentPath;
+                              final activeRoute = getIt.get<GoRouter>().routeInformationProvider.value.uri.path;
                               final isActive = activeRoute == item.path;
                               return Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: TextButton(
                                   onPressed: () {
-                                    context.router.push(item.path);
+                                    context.goNamed(item.path);
                                   },
                                   child: Text(
                                     item.title,

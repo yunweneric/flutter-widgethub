@@ -1,5 +1,4 @@
-// import 'package:auto_route/auto_route.dart';
-// import 'package:flutterui/screens/categories/routes/category_router.gm.dart';
+//// import 'package:flutterui/screens/categories/routes/category_router.gm.dart';
 
 // @AutoRouterConfig.module(
 //   replaceInRouteName: 'Screen,Route',
