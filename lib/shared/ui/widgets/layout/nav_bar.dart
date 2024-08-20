@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/core/service_locators.dart';
 import 'package:flutterui/screens/routes/app_router.gr.dart';
+import 'package:flutterui/screens/routes/route_names.dart';
 import 'package:flutterui/shared/data/enums/theme.dart';
 import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/shared/ui/models/nav_link.dart';
@@ -27,8 +28,8 @@ class NavBar extends StatefulWidget {
 
 class _NavBarState extends State<NavBar> {
   List<NavLink> links = [
-    NavLink(title: "Components", path: "/components"),
-    NavLink(title: "Support", path: "/pricing"),
+    NavLink(title: "Components", path: ComponentCategoryRoute(category: RouteNames.components)),
+    NavLink(title: "Support", path: const SupportRoute()),
   ];
   @override
   Widget build(BuildContext context) {
@@ -59,7 +60,7 @@ class _NavBarState extends State<NavBar> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: TextButton(
                                   onPressed: () {
-                                    context.router.pushNamed(item.path);
+                                    context.router.push(item.path);
                                   },
                                   child: Text(
                                     item.title,

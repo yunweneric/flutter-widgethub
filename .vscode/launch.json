@@ -5,21 +5,52 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "flutterui",
-      "request": "launch",
-      "type": "dart"
-    },
-    {
-      "name": "flutterui (profile mode)",
+      "name": "Web development",
       "request": "launch",
       "type": "dart",
-      "flutterMode": "profile"
+      "program": "lib/main_dev.dart",
+      "args": [
+        "--flavor",
+        "development",
+        "--target",
+        "lib/main_dev.dart",
+        "--dart-define-from-file=../envs/fwh/dev.env.json",
+        "-d",
+        "chrome",
+        "--web-port",
+        "8000",
+        "web-renderer",
+        "html",
+        "--web-browser-flag",
+        "--disable-web-security"
+      ]
     },
     {
-      "name": "flutterui (release mode)",
+      "name": "Launch dev",
       "request": "launch",
       "type": "dart",
-      "flutterMode": "release"
+      "program": "lib/main_dev.dart",
+      "args": [
+        "--flavor",
+        "dev",
+        "--target",
+        "lib/main_dev.dart",
+        "--dart-define-from-file=../envs/fwh/dev.env.json"
+      ]
+    },
+
+    {
+      "name": "Launch prod",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_prod.dart",
+      "args": [
+        "--flavor",
+        "prod",
+        "--target",
+        "lib/main_prod.dart",
+        "--dart-define-from-file=../envs/fwh/env.json"
+      ]
     }
   ]
 }

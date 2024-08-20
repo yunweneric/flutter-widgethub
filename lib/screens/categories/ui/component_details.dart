@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/components/ui/export/data.dart';
 import 'package:flutterui/core/service_locators.dart';
@@ -139,11 +140,8 @@ class _HomeScreenState extends State<ComponentDetailsScreen> {
                         color: Theme.of(context).cardColor,
                         borderRadius: AppSizing.radiusMd(),
                       ),
-                      child: Image.asset(
-                        width: 25,
-                        height: 25,
-                        "assets/images/${item.describe().toLowerCase()}.png",
-                        color: Theme.of(context).primaryColorDark,
+                      child: SvgPicture.asset(
+                        "assets/icons/${item.describe()}.svg",
                       ),
                     ),
                   ),

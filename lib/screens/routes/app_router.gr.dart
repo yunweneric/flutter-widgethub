@@ -8,9 +8,9 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i8;
-import 'package:flutter/material.dart' as _i9;
-import 'package:flutterui/components/ui/export/data.dart' as _i10;
+import 'package:auto_route/auto_route.dart' as _i9;
+import 'package:flutter/material.dart' as _i10;
+import 'package:flutterui/components/ui/export/data.dart' as _i11;
 import 'package:flutterui/components/ui/templates/index.dart' as _i5;
 import 'package:flutterui/screens/categories/ui/component_category.dart' as _i2;
 import 'package:flutterui/screens/categories/ui/component_details.dart' as _i3;
@@ -20,11 +20,12 @@ import 'package:flutterui/screens/coming_soon/ui/coming_soon_screen.dart'
     as _i1;
 import 'package:flutterui/screens/errors/ui/not_found.dart' as _i7;
 import 'package:flutterui/screens/home/ui/home_screen.dart' as _i6;
+import 'package:flutterui/screens/support/ui/support_screen.dart' as _i8;
 
 /// generated route for
 /// [_i1.ComingSoonScreen]
-class ComingSoonRoute extends _i8.PageRouteInfo<void> {
-  const ComingSoonRoute({List<_i8.PageRouteInfo>? children})
+class ComingSoonRoute extends _i9.PageRouteInfo<void> {
+  const ComingSoonRoute({List<_i9.PageRouteInfo>? children})
       : super(
           ComingSoonRoute.name,
           initialChildren: children,
@@ -32,7 +33,7 @@ class ComingSoonRoute extends _i8.PageRouteInfo<void> {
 
   static const String name = 'ComingSoonRoute';
 
-  static _i8.PageInfo page = _i8.PageInfo(
+  static _i9.PageInfo page = _i9.PageInfo(
     name,
     builder: (data) {
       return const _i1.ComingSoonScreen();
@@ -43,11 +44,11 @@ class ComingSoonRoute extends _i8.PageRouteInfo<void> {
 /// generated route for
 /// [_i2.ComponentCategoryScreen]
 class ComponentCategoryRoute
-    extends _i8.PageRouteInfo<ComponentCategoryRouteArgs> {
+    extends _i9.PageRouteInfo<ComponentCategoryRouteArgs> {
   ComponentCategoryRoute({
-    _i9.Key? key,
+    _i10.Key? key,
     required String category,
-    List<_i8.PageRouteInfo>? children,
+    List<_i9.PageRouteInfo>? children,
   }) : super(
           ComponentCategoryRoute.name,
           args: ComponentCategoryRouteArgs(
@@ -59,7 +60,7 @@ class ComponentCategoryRoute
 
   static const String name = 'ComponentCategoryRoute';
 
-  static _i8.PageInfo page = _i8.PageInfo(
+  static _i9.PageInfo page = _i9.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<ComponentCategoryRouteArgs>();
@@ -77,7 +78,7 @@ class ComponentCategoryRouteArgs {
     required this.category,
   });
 
-  final _i9.Key? key;
+  final _i10.Key? key;
 
   final String category;
 
@@ -90,11 +91,11 @@ class ComponentCategoryRouteArgs {
 /// generated route for
 /// [_i3.ComponentDetailsScreen]
 class ComponentDetailsRoute
-    extends _i8.PageRouteInfo<ComponentDetailsRouteArgs> {
+    extends _i9.PageRouteInfo<ComponentDetailsRouteArgs> {
   ComponentDetailsRoute({
-    _i9.Key? key,
-    required _i10.Component component,
-    List<_i8.PageRouteInfo>? children,
+    _i10.Key? key,
+    required _i11.Component component,
+    List<_i9.PageRouteInfo>? children,
   }) : super(
           ComponentDetailsRoute.name,
           args: ComponentDetailsRouteArgs(
@@ -106,7 +107,7 @@ class ComponentDetailsRoute
 
   static const String name = 'ComponentDetailsRoute';
 
-  static _i8.PageInfo page = _i8.PageInfo(
+  static _i9.PageInfo page = _i9.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<ComponentDetailsRouteArgs>();
@@ -124,9 +125,9 @@ class ComponentDetailsRouteArgs {
     required this.component,
   });
 
-  final _i9.Key? key;
+  final _i10.Key? key;
 
-  final _i10.Component component;
+  final _i11.Component component;
 
   @override
   String toString() {
@@ -136,11 +137,11 @@ class ComponentDetailsRouteArgs {
 
 /// generated route for
 /// [_i4.ComponentLayoutScreen]
-class ComponentLayoutRoute extends _i8.PageRouteInfo<ComponentLayoutRouteArgs> {
+class ComponentLayoutRoute extends _i9.PageRouteInfo<ComponentLayoutRouteArgs> {
   ComponentLayoutRoute({
-    _i9.Key? key,
-    List<_i9.Widget>? widgets,
-    List<_i8.PageRouteInfo>? children,
+    _i10.Key? key,
+    List<_i10.Widget>? widgets,
+    List<_i9.PageRouteInfo>? children,
   }) : super(
           ComponentLayoutRoute.name,
           args: ComponentLayoutRouteArgs(
@@ -152,7 +153,7 @@ class ComponentLayoutRoute extends _i8.PageRouteInfo<ComponentLayoutRouteArgs> {
 
   static const String name = 'ComponentLayoutRoute';
 
-  static _i8.PageInfo page = _i8.PageInfo(
+  static _i9.PageInfo page = _i9.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<ComponentLayoutRouteArgs>(
@@ -171,9 +172,9 @@ class ComponentLayoutRouteArgs {
     this.widgets,
   });
 
-  final _i9.Key? key;
+  final _i10.Key? key;
 
-  final List<_i9.Widget>? widgets;
+  final List<_i10.Widget>? widgets;
 
   @override
   String toString() {
@@ -183,8 +184,8 @@ class ComponentLayoutRouteArgs {
 
 /// generated route for
 /// [_i5.ComponentTemplatesScreen]
-class ComponentTemplatesRoute extends _i8.PageRouteInfo<void> {
-  const ComponentTemplatesRoute({List<_i8.PageRouteInfo>? children})
+class ComponentTemplatesRoute extends _i9.PageRouteInfo<void> {
+  const ComponentTemplatesRoute({List<_i9.PageRouteInfo>? children})
       : super(
           ComponentTemplatesRoute.name,
           initialChildren: children,
@@ -192,7 +193,7 @@ class ComponentTemplatesRoute extends _i8.PageRouteInfo<void> {
 
   static const String name = 'ComponentTemplatesRoute';
 
-  static _i8.PageInfo page = _i8.PageInfo(
+  static _i9.PageInfo page = _i9.PageInfo(
     name,
     builder: (data) {
       return const _i5.ComponentTemplatesScreen();
@@ -202,8 +203,8 @@ class ComponentTemplatesRoute extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i6.HomeScreen]
-class HomeRoute extends _i8.PageRouteInfo<void> {
-  const HomeRoute({List<_i8.PageRouteInfo>? children})
+class HomeRoute extends _i9.PageRouteInfo<void> {
+  const HomeRoute({List<_i9.PageRouteInfo>? children})
       : super(
           HomeRoute.name,
           initialChildren: children,
@@ -211,7 +212,7 @@ class HomeRoute extends _i8.PageRouteInfo<void> {
 
   static const String name = 'HomeRoute';
 
-  static _i8.PageInfo page = _i8.PageInfo(
+  static _i9.PageInfo page = _i9.PageInfo(
     name,
     builder: (data) {
       return const _i6.HomeScreen();
@@ -221,8 +222,8 @@ class HomeRoute extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i7.NotFoundScreen]
-class NotFoundRoute extends _i8.PageRouteInfo<void> {
-  const NotFoundRoute({List<_i8.PageRouteInfo>? children})
+class NotFoundRoute extends _i9.PageRouteInfo<void> {
+  const NotFoundRoute({List<_i9.PageRouteInfo>? children})
       : super(
           NotFoundRoute.name,
           initialChildren: children,
@@ -230,10 +231,29 @@ class NotFoundRoute extends _i8.PageRouteInfo<void> {
 
   static const String name = 'NotFoundRoute';
 
-  static _i8.PageInfo page = _i8.PageInfo(
+  static _i9.PageInfo page = _i9.PageInfo(
     name,
     builder: (data) {
       return const _i7.NotFoundScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [_i8.SupportScreen]
+class SupportRoute extends _i9.PageRouteInfo<void> {
+  const SupportRoute({List<_i9.PageRouteInfo>? children})
+      : super(
+          SupportRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SupportRoute';
+
+  static _i9.PageInfo page = _i9.PageInfo(
+    name,
+    builder: (data) {
+      return const _i8.SupportScreen();
     },
   );
 }

@@ -19,9 +19,12 @@ class _HomeFooterState extends State<HomeFooter> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: AppSizing.width(context),
+      decoration: BoxDecoration(
+        border: BorderDirectional(top: BorderSide(color: Theme.of(context).dividerColor)),
+      ),
       child: Column(
         children: [
-          Divider(color: Theme.of(context).dividerColor),
           Container(
             padding: EdgeInsets.symmetric(vertical: 20.h),
             width: AppSizing.kWPercentage(context, 90),

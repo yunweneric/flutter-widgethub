@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/components/ui/export/data.dart';
+import 'package:flutterui/shared/ui/utils/colors.dart';
 import 'package:flutterui/shared/ui/utils/icons.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/icon.dart';
@@ -50,6 +51,7 @@ showSearchModal(BuildContext context) {
   return showDialog(
     barrierDismissible: true,
     context: context,
+    barrierColor: Colors.black.withOpacity(0.8),
     builder: (context) {
       return const SearchBar();
     },
