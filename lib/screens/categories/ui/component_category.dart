@@ -33,7 +33,6 @@ class _ComponentCategoryScreenState extends State<ComponentCategoryScreen> {
                       children: [
                         Text(activeCategory.title, style: Theme.of(context).textTheme.displayLarge),
                         AppSizing.kh20Spacer(),
-                        // Text(activeCategory),
                       ],
                     ),
             ),

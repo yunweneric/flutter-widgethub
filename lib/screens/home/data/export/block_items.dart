@@ -21,7 +21,7 @@ final blocItems = [
     description: "A wide range of pre-built UI templates from app clones to demo apps all in one place",
     items: [
       AppCategory(
-        link: RouteNames.templates,
+        link: RouteNames.clones,
         widget: const AppCloneBlocItem(),
         title: "App Clones",
         alignment: Alignment.topCenter,

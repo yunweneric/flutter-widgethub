@@ -23,6 +23,7 @@ class RouteNames {
   static const authScreens = "$templates/auth-screens";
   static const homeScreens = "$templates/home-screens";
   static const onboarding = "$templates/onboarding-screens";
+  static const clones = "$templates/app-clones";
 
   static const playground = "/components/playground";
   static const notFound = "not-found";

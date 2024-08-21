@@ -33,10 +33,8 @@
 //   List<AutoRouteGuard> get guards => [];
 // }
 
-import 'package:flutter/material.dart';
 import 'package:flutterui/screens/categories/ui/component_category.dart';
 import 'package:flutterui/screens/categories/ui/component_details_wrapper.dart';
-import 'package:flutterui/screens/categories/ui/templates_category_screen.dart';
 import 'package:flutterui/screens/categories/widget/component_layout.dart';
 import 'package:flutterui/screens/home/ui/home_screen.dart';
 import 'package:flutterui/screens/routes/route_names.dart';

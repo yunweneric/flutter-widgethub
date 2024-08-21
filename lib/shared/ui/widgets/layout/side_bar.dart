@@ -26,7 +26,7 @@ class _SideBarState extends State<SideBar> {
       description: "A wide range of pre-built UI templates from app clones to demo apps all in one place",
       items: [
         AppCategory(
-          link: RouteNames.home,
+          link: RouteNames.gettingStarted,
           widget: const Text(""),
           title: "Get Started",
         ),
@@ -102,8 +102,10 @@ class _SideBarState extends State<SideBar> {
                                   shrinkWrap: true,
                                   itemBuilder: (context, index) {
                                     final sideBarItem = item.items[index];
-                                    final activePath = getIt.get<GoRouter>().routeInformationProvider.value.uri.scheme;
+                                    final activePath = getIt.get<GoRouter>().routeInformationProvider.value.uri.path;
                                     // final isActive = activeCategory == sideBarItem.link;
+
+                                    print(["activePath", activePath, "sideBarItem", sideBarItem.link]);
                                     final isActive = sideBarItem.link.contains(activePath);
                                     return AnimatedContainer(
                                       duration: const Duration(milliseconds: 400),
