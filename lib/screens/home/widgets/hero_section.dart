@@ -10,6 +10,8 @@ import 'package:flutterui/screens/home/ui/apps/leave_review/home.dart';
 import 'package:flutterui/screens/home/ui/apps/theme_toggle/theme_toggle.dart';
 // import 'package:flutterui/screens/routes/app_router.gr.dart';
 import 'package:flutterui/screens/routes/route_names.dart';
+import 'package:flutterui/shared/data/enums/component_category_enum.dart';
+import 'package:flutterui/shared/data/enums/sub_component_category_enum.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/device_section_frame.dart';
 import 'package:go_router/go_router.dart';
@@ -76,10 +78,11 @@ class _HeroSectionState extends State<HeroSection> {
                           onPressed: () {
                             componentBloc.add(
                               UpdateActiveCategoryEvent(
-                                category: AppCategory(
+                                category: AppCategoryModel(
                                   widget: widget,
-                                  title: "All Components",
+                                  category: ComponentCategoryEnum.GETTING_STARTED,
                                   link: RouteNames.home,
+                                  subCategory: SubComponentCategoryEnum.GETTING_STARTED,
                                 ),
                               ),
                             );

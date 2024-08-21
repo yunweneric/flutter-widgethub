@@ -14,121 +14,154 @@ import 'package:flutterui/screens/home/data/templates/bottom_bar.dart';
 import 'package:flutterui/screens/home/data/templates/home_screen_bloc_item.dart';
 import 'package:flutterui/screens/home/model/component_block_model.dart';
 import 'package:flutterui/screens/routes/route_names.dart';
+import 'package:flutterui/shared/data/enums/component_category_enum.dart';
+import 'package:flutterui/shared/data/enums/sub_component_category_enum.dart';
 
 final blocItems = [
-  AppCategoryGroup(
-    title: "Templates",
+  AppCategoryGroupModel(
+    category: ComponentCategoryEnum.GETTING_STARTED,
     description: "A wide range of pre-built UI templates from app clones to demo apps all in one place",
     items: [
-      AppCategory(
+      AppCategoryModel(
+        link: RouteNames.gettingStarted,
+        widget: const Text(""),
+        subCategory: SubComponentCategoryEnum.GETTING_STARTED,
+        category: ComponentCategoryEnum.GETTING_STARTED,
+      ),
+      AppCategoryModel(
+        link: RouteNames.requestComponent,
+        widget: const Text(""),
+        subCategory: SubComponentCategoryEnum.REQUEST_A_COMPONENT,
+        category: ComponentCategoryEnum.GETTING_STARTED,
+      ),
+    ],
+  ),
+  AppCategoryGroupModel(
+    category: ComponentCategoryEnum.TEMPLATES,
+    description: "A wide range of pre-built UI templates from app clones to demo apps all in one place",
+    items: [
+      AppCategoryModel(
         link: RouteNames.clones,
         widget: const AppCloneBlocItem(),
-        title: "App Clones",
+        subCategory: SubComponentCategoryEnum.APP_CLONES,
+        category: ComponentCategoryEnum.TEMPLATES,
         alignment: Alignment.topCenter,
       ),
-      AppCategory(
+      AppCategoryModel(
         link: RouteNames.onboarding,
         widget: const BottomBarBlocItem(),
-        title: "Onboarding Screens",
+        subCategory: SubComponentCategoryEnum.ONBOARDINGS_SCREENS,
+        category: ComponentCategoryEnum.TEMPLATES,
       ),
-      AppCategory(
+      AppCategoryModel(
         link: RouteNames.homeScreens,
         widget: const HomeScreenBlocItem(),
-        title: "Home Screens",
+        subCategory: SubComponentCategoryEnum.HOME_SCREENS,
+        category: ComponentCategoryEnum.TEMPLATES,
         alignment: Alignment.topCenter,
       ),
-      AppCategory(
+      AppCategoryModel(
         link: RouteNames.authScreens,
         widget: const AuthBlocItem(),
-        title: "Authentication Screens",
+        subCategory: SubComponentCategoryEnum.AUTHENTICATION_SCREENS,
+        category: ComponentCategoryEnum.TEMPLATES,
       ),
     ],
   ),
-  AppCategoryGroup(
-    title: "Blocks",
+  AppCategoryGroupModel(
+    category: ComponentCategoryEnum.BLOCKS,
     description: "A collection of reusable layout blocks to help you create consistent and responsive layouts",
     items: [
-      AppCategory(
+      AppCategoryModel(
         link: RouteNames.switchers,
         widget: const SwitchersBlocItem(),
-        title: "Switchers",
+        subCategory: SubComponentCategoryEnum.SWITCHERS,
+        category: ComponentCategoryEnum.BLOCKS,
         alignment: Alignment.topCenter,
       ),
-      AppCategory(
+      AppCategoryModel(
         link: RouteNames.inputs,
         widget: const InputsBlocItem(),
-        title: "Inputs",
+        subCategory: SubComponentCategoryEnum.INPUT,
+        category: ComponentCategoryEnum.BLOCKS,
         alignment: Alignment.center,
       ),
-      AppCategory(
+      AppCategoryModel(
         link: RouteNames.text,
         widget: const TextBlocItem(),
-        title: "Text",
+        subCategory: SubComponentCategoryEnum.TEXT,
+        category: ComponentCategoryEnum.BLOCKS,
       ),
-      AppCategory(
+      AppCategoryModel(
         link: RouteNames.sliders,
         widget: const LoadersBlocItem(),
-        title: "Loaders",
+        subCategory: SubComponentCategoryEnum.SWITCHERS,
+        category: ComponentCategoryEnum.BLOCKS,
         alignment: Alignment.topCenter,
       ),
-      AppCategory(
+      AppCategoryModel(
         link: RouteNames.buttons,
         widget: const ButtonsBlocItem(),
-        title: "Buttons",
+        subCategory: SubComponentCategoryEnum.BUTTONS,
+        category: ComponentCategoryEnum.BLOCKS,
         alignment: Alignment.center,
       ),
-      AppCategory(
+      AppCategoryModel(
         link: RouteNames.bottomBars,
         widget: const BottomNavBarsBlocItem(),
-        title: "Bottom Nav Bars",
+        subCategory: SubComponentCategoryEnum.BOTTOM_NAV_BARS,
+        category: ComponentCategoryEnum.BLOCKS,
       ),
-      AppCategory(
+      AppCategoryModel(
         link: RouteNames.drawers,
         widget: const DrawersBlocItem(),
-        title: "Drawer Menus",
+        subCategory: SubComponentCategoryEnum.DRAWERS,
+        category: ComponentCategoryEnum.BLOCKS,
         alignment: Alignment.topCenter,
       ),
-      AppCategory(
+      AppCategoryModel(
         link: RouteNames.carousels,
         widget: const CarouselsBlocItem(),
-        title: "Sliders and Carousels",
+        subCategory: SubComponentCategoryEnum.SLIDERS_AND_CAROUSELS,
+        category: ComponentCategoryEnum.BLOCKS,
       ),
     ],
   ),
-  AppCategoryGroup(
-    title: "Animations",
+  AppCategoryGroupModel(
+    category: ComponentCategoryEnum.ANIMATIONS,
     description: "Smooth and captivating animations that can be easily applied to any element.",
     items: [
-      // AppCategory(
+      // AppCategoryModel(
       //   link: RouteNames.hoverAnimations,
       //   widget: Text("Hello"),
-      //   title: "Hover Animations",
+      //   category: "Hover Animations",
       // ),
-      // AppCategory(
+      // AppCategoryModel(
       //   link: RouteNames.skewAnimations,
       //   widget: Text("Hello"),
-      //   title: "Skew Animations",
+      //   category: "Skew Animations",
       // ),
-      // AppCategory(
+      // AppCategoryModel(
       //   link: RouteNames.rotationAnimations,
       //   widget: Text("Hello"),
-      //   title: "Rotation Animations",
+      //   category: "Rotation Animations",
       // ),
     ],
   ),
-  AppCategoryGroup(
-    title: "Effects",
+  AppCategoryGroupModel(
+    category: ComponentCategoryEnum.EFFECTS,
     description: "Visual effects ranging from shadows and gradients to more complex transformations",
     items: [
-      AppCategory(
+      AppCategoryModel(
         link: RouteNames.gradientEffects,
         widget: const GradientEffectsBlocItem(),
-        title: "Linear Gradients",
+        subCategory: SubComponentCategoryEnum.LINEAR_GRADIENTS,
+        category: ComponentCategoryEnum.EFFECTS,
       ),
-      // AppCategory(
+      // AppCategoryModel(
       //   link: RouteNames.backgroundEffects,
       //   widget: const ColorsEffectBloc(),
-      //   title: "Color Effects",
+      //   category: "Color Effects",
       //   alignment: Alignment.topCenter,
       // ),
     ],

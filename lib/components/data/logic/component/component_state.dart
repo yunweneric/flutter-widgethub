@@ -3,7 +3,7 @@ part of 'component_bloc.dart';
 class ComponentState {
   final Component activeComponent;
   final List<Component> allComponents;
-  final AppCategory? activeCategory;
+  final AppCategoryModel? activeCategory;
 
   ComponentState({
     required this.activeComponent,

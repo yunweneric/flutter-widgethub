@@ -3,6 +3,8 @@ import 'package:flutterui/components/ui/animations/skew_card/skew_card_code.dart
 import 'package:flutterui/components/ui/animations/skew_card/skew_card_widget.dart';
 import 'package:flutterui/components/ui/export/data.dart';
 import 'package:flutterui/components/shared/setup.dart';
+import 'package:flutterui/shared/data/enums/component_category_enum.dart';
+import 'package:flutterui/shared/data/enums/sub_component_category_enum.dart';
 import 'package:flutterui/shared/data/enums/supported_platform.dart';
 
 class SkewCardData {
@@ -16,7 +18,8 @@ class SkewCardData {
     description: 'A card perspective effect, hover over the card to elevate card elements.',
     title: '3D Skew Card',
     setup: setup,
-    category: "Cards",
+    category: ComponentCategoryEnum.BLOCKS,
+    subcategory: SubComponentCategoryEnum.SLIDERS_AND_CAROUSELS,
     supportedPlatforms: [SupportedPlatform.ANDROID, SupportedPlatform.IOS],
   );
 }

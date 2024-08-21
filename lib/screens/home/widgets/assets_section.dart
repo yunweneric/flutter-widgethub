@@ -6,10 +6,12 @@ import 'package:flutterui/core/service_locators.dart';
 import 'package:flutterui/screens/home/data/export/block_items.dart';
 import 'package:flutterui/screens/home/model/component_block_model.dart';
 import 'package:flutterui/screens/home/widgets/component_block.dart';
-import 'package:flutterui/screens/routes/route_names.dart';
+import 'package:flutterui/shared/data/enums/component_category_enum.dart';
+import 'package:flutterui/shared/data/enums/sub_component_category_enum.dart';
 import 'package:flutterui/shared/ui/utils/icons.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/device_section_frame.dart';
+import 'package:go_router/go_router.dart';
 
 class AssetsSection extends StatefulWidget {
   const AssetsSection({super.key});
@@ -19,8 +21,11 @@ class AssetsSection extends StatefulWidget {
 }
 
 class _AssetsSectionState extends State<AssetsSection> {
-  late AppCategoryGroup activeBlock;
-  List<AppCategoryGroup> blocks = blocItems;
+  late AppCategoryGroupModel activeBlock;
+  List<AppCategoryGroupModel> blocks = blocItems.where((item) {
+    final condition = item.category != ComponentCategoryEnum.GETTING_STARTED;
+    return condition;
+  }).toList();
   final componentBloc = getIt.get<ComponentBloc>();
 
   @override
@@ -115,8 +120,8 @@ class _AssetsSectionState extends State<AssetsSection> {
                 ),
               Builder(
                 builder: (context) {
-                  List<AppCategory> allBlockItems = blocks.expand((item) => item.items).toList();
-                  List<AppCategory> activeBlockItem = activeBlock.items;
+                  List<AppCategoryModel> allBlockItems = blocks.expand((item) => item.items).toList();
+                  List<AppCategoryModel> activeBlockItem = activeBlock.items;
                   final displayWidget = AppSizing.isMobile(context) ? allBlockItems : activeBlockItem;
                   return Container(
                     alignment: Alignment.centerLeft,
@@ -170,6 +175,7 @@ class _AssetsSectionState extends State<AssetsSection> {
                                             focusColor: Theme.of(context).scaffoldBackgroundColor,
                                             splashColor: Theme.of(context).scaffoldBackgroundColor,
                                             onTap: () {
+                                              context.go(item.link, extra: {'id': item.link});
                                               // componentBloc.add(UpdateActiveCategoryEvent(category: item));
                                               // context.router.push(ComponentCategoryRoute(category: item.link));
                                             },
@@ -192,7 +198,7 @@ class _AssetsSectionState extends State<AssetsSection> {
                                                   child: item.widget,
                                                 ),
                                                 AppSizing.kh20Spacer(),
-                                                Text(item.title)
+                                                Text(item.subCategory.describe())
                                               ],
                                             ),
                                           );

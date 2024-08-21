@@ -8,6 +8,8 @@ import 'package:flutterui/screens/home/data/export/block_items.dart';
 import 'package:flutterui/screens/home/model/component_block_model.dart';
 // import 'package:flutterui/screens/routes/app_router.gr.dart';
 import 'package:flutterui/screens/routes/route_names.dart';
+import 'package:flutterui/shared/data/enums/component_category_enum.dart';
+import 'package:flutterui/shared/data/enums/sub_component_category_enum.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/layout/side_bar_item.dart';
 import 'package:go_router/go_router.dart';
@@ -20,27 +22,14 @@ class SideBar extends StatefulWidget {
 }
 
 class _SideBarState extends State<SideBar> {
-  List<AppCategoryGroup> items = [
-    AppCategoryGroup(
-      title: "Get Started",
-      description: "A wide range of pre-built UI templates from app clones to demo apps all in one place",
-      items: [
-        AppCategory(
-          link: RouteNames.gettingStarted,
-          widget: const Text(""),
-          title: "Get Started",
-        ),
-        AppCategory(
-          link: RouteNames.requestComponent,
-          widget: const Text(""),
-          title: "Request a component",
-        ),
-      ],
-    ),
-    ...blocItems.where((item) => item.title.toLowerCase() != "animations"),
+  List<AppCategoryGroupModel> items = [
+    ...blocItems.where((item) {
+      final condition = item.category != ComponentCategoryEnum.ANIMATIONS;
+      return condition;
+    }),
   ];
 
-  AppCategory? activeSideBar;
+  AppCategoryModel? activeSideBar;
 
   @override
   void initState() {
@@ -74,7 +63,7 @@ class _SideBarState extends State<SideBar> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(item.title, style: Theme.of(context).textTheme.displayMedium),
+                          Text(item.category.describe(), style: Theme.of(context).textTheme.displayMedium),
                           AppSizing.khSpacer(15.h),
                           Stack(
                             children: [
@@ -85,7 +74,7 @@ class _SideBarState extends State<SideBar> {
                                 itemBuilder: (context, index) {
                                   final sideBarItem = item.items[index];
                                   return SideBarItem(
-                                    title: sideBarItem.title,
+                                    title: sideBarItem.subCategory.describe(),
                                     onPressed: () {
                                       componentBloc.add(UpdateActiveCategoryEvent(category: sideBarItem));
                                       setState(() => activeSideBar = sideBarItem);

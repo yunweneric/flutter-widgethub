@@ -50,24 +50,8 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
     }
   }
 
-  List<AppCategoryGroup> items = [
-    AppCategoryGroup(
-      title: "Get Started",
-      description: "A wide range of pre-built UI templates from app clones to demo apps all in one place",
-      items: [
-        AppCategory(
-          link: RouteNames.home,
-          widget: const Text(""),
-          title: "Get Started",
-        ),
-        AppCategory(
-          link: RouteNames.requestComponent,
-          widget: const Text(""),
-          title: "Request a component",
-        ),
-      ],
-    ),
-    ...blocItems.where((item) => item.title.toLowerCase() != "animations"),
+  List<AppCategoryGroupModel> items = [
+    ...blocItems.where((item) => item.category.describe().toLowerCase() != "animations"),
   ];
   @override
   Widget build(BuildContext context) {
@@ -150,7 +134,7 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
                                     // componentBloc.add(UpdateActiveCategoryEvent(category: item.items.first));
                                     // context.router.push(ComponentCategoryRoute(category: RouteNames.components));
                                   },
-                                  title: item.title,
+                                  title: item.category.describe(),
                                 );
                               }),
                             ],

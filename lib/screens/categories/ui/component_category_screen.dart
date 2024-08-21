@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/screens/categories/widget/category_card.dart';
-import 'package:flutterui/screens/routes/route_names.dart';
+import 'package:flutterui/shared/data/enums/component_category_enum.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/layout/main_content.dart';
 
 // @RoutePage()
 class ComponentCategoryScreen extends StatefulWidget {
-  final String category;
+  final ComponentCategoryEnum category;
   const ComponentCategoryScreen({super.key, required this.category});
 
   @override
@@ -25,30 +25,32 @@ class _ComponentCategoryScreenState extends State<ComponentCategoryScreen> {
         return MainContent(
           children: [
             AnimatedSwitcher(
-              key: ValueKey(activeCategory?.title),
+              key: ValueKey(activeCategory?.category),
               duration: const Duration(milliseconds: 500),
               child: activeCategory == null
                   ? const SizedBox()
                   : Column(
                       children: [
-                        Text(activeCategory.title, style: Theme.of(context).textTheme.displayLarge),
+                        Text(activeCategory.category.describe(), style: Theme.of(context).textTheme.displayLarge),
                         AppSizing.kh20Spacer(),
                       ],
                     ),
             ),
             Builder(
               builder: (context) {
-                final components = activeCategory == null || activeCategory.link == RouteNames.home
-                    ? state.allComponents
-                    : state.allComponents.where((item) {
-                        return item.title == activeCategory.title;
-                      });
+                // final components = activeCategory == null || activeCategory.link == RouteNames.home
+                //     ? state.allComponents
+                //     : state.allComponents.where((item) {
+                //         return item.title == activeCategory.title;
+                //       });
+
+                final components = state.allComponents.where((item) => item.category == widget.category);
                 return AnimatedSwitcher(
                   duration: const Duration(milliseconds: 500),
                   child: components.isEmpty
                       ? SizedBox(
                           height: AppSizing.kHPercentage(context, 50),
-                          child: Center(child: Text("No Item in this ${activeCategory?.title}!")),
+                          child: Center(child: Text("No Item in this ${widget.category.describe()}!")),
                         )
                       : Wrap(
                           alignment: WrapAlignment.spaceBetween,

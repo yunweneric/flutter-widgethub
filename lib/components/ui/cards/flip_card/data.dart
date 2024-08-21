@@ -3,6 +3,8 @@ import 'package:flutterui/components/ui/cards/flip_card/flip_card_code.dart';
 import 'package:flutterui/components/ui/cards/flip_card/flip_card_setup.dart';
 import 'package:flutterui/components/ui/cards/flip_card/flip_card_widget.dart';
 import 'package:flutterui/components/ui/export/data.dart';
+import 'package:flutterui/shared/data/enums/component_category_enum.dart';
+import 'package:flutterui/shared/data/enums/sub_component_category_enum.dart';
 import 'package:flutterui/shared/data/enums/supported_platform.dart';
 
 class AppFlipCard {
@@ -16,7 +18,8 @@ class AppFlipCard {
     description: 'A card perspective effect, hover over the card to elevate card elements.',
     title: '3D Flip Card',
     setup: setup,
-    category: "Cards",
+    category: ComponentCategoryEnum.BLOCKS,
+    subcategory: SubComponentCategoryEnum.SLIDERS_AND_CAROUSELS,
     assetLink: "https://www.figma.com/design/NIgvpP0UaRQoHT7VJg4DGg/Uicons-by-Flaticon-%7C-Free-interface-icons-(Community)?node-id=7-223&t=gXWvwkFdg6JhDyp9-0",
     gitHubLink: "https://www.figma.com/design/NIgvpP0UaRQoHT7VJg4DGg/Uicons-by-Flaticon-%7C-Free-interface-icons-(Community)?node-id=7-223&t=gXWvwkFdg6JhDyp9-0",
     supportedPlatforms: [

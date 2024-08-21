@@ -33,13 +33,21 @@
 //   List<AutoRouteGuard> get guards => [];
 // }
 
-import 'package:flutterui/screens/categories/ui/component_category.dart';
+import 'package:flutter/material.dart';
+import 'package:flutterui/screens/categories/ui/component_category_screen.dart';
 import 'package:flutterui/screens/categories/ui/component_details_wrapper.dart';
 import 'package:flutterui/screens/categories/widget/component_layout.dart';
 import 'package:flutterui/screens/home/ui/home_screen.dart';
 import 'package:flutterui/screens/routes/route_names.dart';
 import 'package:flutterui/screens/support/ui/support_screen.dart';
+import 'package:flutterui/shared/data/enums/component_category_enum.dart';
 import 'package:go_router/go_router.dart';
+
+Widget buildComponentLayout(GoRouterState state) {
+  return ComponentCategoryScreen(
+    category: state.pathParameters['category'] as ComponentCategoryEnum,
+  );
+}
 
 // class AppRouter {
 final appRouter = GoRouter(
@@ -61,19 +69,19 @@ final appRouter = GoRouter(
         // Nested route 1 under ShellRoute
         GoRoute(
           path: RouteNames.components,
-          builder: (context, state) => ComponentCategoryScreen(category: "category"),
+          builder: (context, state) => buildComponentLayout(state),
         ),
         GoRoute(
           path: RouteNames.gettingStarted,
-          builder: (context, state) => ComponentCategoryScreen(category: "category"),
+          builder: (context, state) => buildComponentLayout(state),
         ),
         GoRoute(
           path: RouteNames.templates,
-          builder: (context, state) => ComponentCategoryScreen(category: "category"),
+          builder: (context, state) => buildComponentLayout(state),
         ),
         GoRoute(
           path: '${RouteNames.templates}/:id',
-          builder: (context, state) => ComponentCategoryScreen(category: "category"),
+          builder: (context, state) => buildComponentLayout(state),
         ),
         GoRoute(
           path: '${RouteNames.templates}/:id/:componentId',
@@ -81,7 +89,7 @@ final appRouter = GoRouter(
         ),
         GoRoute(
           path: RouteNames.blocks,
-          builder: (context, state) => ComponentCategoryScreen(category: "category"),
+          builder: (context, state) => buildComponentLayout(state),
         ),
         GoRoute(
           path: '${RouteNames.blocks}/:id',
@@ -89,7 +97,7 @@ final appRouter = GoRouter(
         ),
         GoRoute(
           path: RouteNames.animations,
-          builder: (context, state) => ComponentCategoryScreen(category: "category"),
+          builder: (context, state) => buildComponentLayout(state),
         ),
         GoRoute(
           path: '${RouteNames.animations}/:id',
@@ -97,7 +105,7 @@ final appRouter = GoRouter(
         ),
         GoRoute(
           path: RouteNames.effects,
-          builder: (context, state) => ComponentCategoryScreen(category: "category"),
+          builder: (context, state) => buildComponentLayout(state),
         ),
         GoRoute(
           path: '${RouteNames.effects}/:id',

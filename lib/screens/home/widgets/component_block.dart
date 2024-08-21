@@ -3,7 +3,7 @@ import 'package:flutterui/screens/home/model/component_block_model.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 
 class ComponentBlock extends StatefulWidget {
-  final AppCategoryGroup item;
+  final AppCategoryGroupModel item;
   final bool isActive;
 
   const ComponentBlock({super.key, required this.isActive, required this.item});
@@ -25,7 +25,7 @@ class _ComponentBlockState extends State<ComponentBlock> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              widget.item.title,
+              widget.item.category.describe(),
               style: Theme.of(context).textTheme.displayMedium,
             ),
             AppSizing.kh10Spacer(),

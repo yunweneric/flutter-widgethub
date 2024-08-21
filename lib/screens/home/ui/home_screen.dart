@@ -9,6 +9,8 @@ import 'package:flutterui/screens/home/widgets/assets_section.dart';
 import 'package:flutterui/screens/home/widgets/integration_section.dart';
 import 'package:flutterui/screens/home/widgets/hero_section.dart';
 import 'package:flutterui/screens/routes/route_names.dart';
+import 'package:flutterui/shared/data/enums/component_category_enum.dart';
+import 'package:flutterui/shared/data/enums/sub_component_category_enum.dart';
 import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/layout/app_layout.dart';
@@ -44,24 +46,26 @@ class _HomeScreenState extends State<HomeScreen> {
 
   bool isNavBarOpen = false;
 
-  List<AppCategoryGroup> items = [
-    AppCategoryGroup(
-      title: "Get Started",
+  List<AppCategoryGroupModel> items = [
+    AppCategoryGroupModel(
+      category: ComponentCategoryEnum.GETTING_STARTED,
       description: "A wide range of pre-built UI templates from app clones to demo apps all in one place",
       items: [
-        AppCategory(
+        AppCategoryModel(
           link: RouteNames.home,
           widget: const Text(""),
-          title: "Get Started",
+          category: ComponentCategoryEnum.GETTING_STARTED,
+          subCategory: SubComponentCategoryEnum.GETTING_STARTED,
         ),
-        AppCategory(
+        AppCategoryModel(
           link: RouteNames.requestComponent,
           widget: const Text(""),
-          title: "Request a component",
+          category: ComponentCategoryEnum.GETTING_STARTED,
+          subCategory: SubComponentCategoryEnum.REQUEST_A_COMPONENT,
         ),
       ],
     ),
-    ...blocItems.where((item) => item.title.toLowerCase() != "animations"),
+    ...blocItems.where((item) => item.category.describe().toLowerCase() != "animations"),
   ];
   @override
   Widget build(BuildContext context) {

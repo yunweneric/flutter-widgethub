@@ -171,7 +171,7 @@ class _SearchBarState extends State<SearchBar> {
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            component.category,
+                                            component.category.describe(),
                                             style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Theme.of(context).primaryColor),
                                           ),
                                           Text(

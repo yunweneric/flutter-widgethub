@@ -1,19 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutterui/shared/data/enums/component_category_enum.dart';
+import 'package:flutterui/shared/data/enums/sub_component_category_enum.dart';
 
-class AppCategoryGroup {
-  final String title;
+class AppCategoryGroupModel {
+  final ComponentCategoryEnum category;
   final bool? isActive;
   final String description;
-  final List<AppCategory> items;
+  final List<AppCategoryModel> items;
 
-  AppCategoryGroup({required this.title, this.isActive, required this.description, required this.items});
+  AppCategoryGroupModel({
+    required this.category,
+    required this.description,
+    required this.items,
+    this.isActive,
+  });
 }
 
-class AppCategory {
+class AppCategoryModel {
   final Widget widget;
-  final String title;
   final String link;
+  final ComponentCategoryEnum category;
+  final SubComponentCategoryEnum subCategory;
   final AlignmentGeometry? alignment;
 
-  AppCategory({required this.widget, required this.title, this.alignment, required this.link});
+  AppCategoryModel({
+    required this.widget,
+    required this.link,
+    required this.category,
+    required this.subCategory,
+    this.alignment,
+  });
 }
