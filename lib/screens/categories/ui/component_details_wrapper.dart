@@ -14,8 +14,8 @@ import 'package:flutterui/shared/ui/widgets/icon.dart';
 import 'package:flutterui/shared/ui/widgets/layout/main_content.dart';
 
 class ComponentDetailsWrapper extends StatefulWidget {
-  final Component component;
-  const ComponentDetailsWrapper({super.key, required this.component});
+  // final Component component;
+  const ComponentDetailsWrapper({super.key});
 
   @override
   State<ComponentDetailsWrapper> createState() => _HomeScreenState();

@@ -48,7 +48,7 @@ class _NavBarState extends State<NavBar> {
                           style: TextButton.styleFrom(padding: EdgeInsets.zero),
                           child: Text("Logo", style: Theme.of(context).textTheme.displayLarge),
                           onPressed: () {
-                            context.pushNamed(RouteNames.home);
+                            context.go(RouteNames.home);
                           },
                         ),
                         AppSizing.kwSpacer(50.w),
@@ -61,7 +61,7 @@ class _NavBarState extends State<NavBar> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: TextButton(
                                   onPressed: () {
-                                    context.goNamed(item.path);
+                                    context.go(item.path);
                                   },
                                   child: Text(
                                     item.title,

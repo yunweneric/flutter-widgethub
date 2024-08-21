@@ -75,8 +75,8 @@ import 'package:flutterui/shared/ui/widgets/layout/side_bar.dart';
 
 // @RoutePage()
 class ComponentLayoutScreen extends StatefulWidget {
-  final List<Widget>? widgets;
-  const ComponentLayoutScreen({super.key, this.widgets});
+  final Widget child;
+  const ComponentLayoutScreen({super.key, required this.child});
 
   @override
   State<ComponentLayoutScreen> createState() => _AppLayoutState();
@@ -110,6 +110,7 @@ class _AppLayoutState extends State<ComponentLayoutScreen> {
                 width: AppSizing.isMobile(context) ? 0 : AppSizing.width(context) * 0.2,
                 child: const SideBar(),
               ),
+              Expanded(child: widget.child),
               // const Expanded(child: AutoRouter()),
             ],
           ),

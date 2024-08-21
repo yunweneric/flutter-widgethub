@@ -12,6 +12,7 @@ import 'package:flutterui/screens/home/ui/apps/theme_toggle/theme_toggle.dart';
 import 'package:flutterui/screens/routes/route_names.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/device_section_frame.dart';
+import 'package:go_router/go_router.dart';
 
 class HeroSection extends StatefulWidget {
   final VoidCallback onBrowserAll;
@@ -82,7 +83,7 @@ class _HeroSectionState extends State<HeroSection> {
                                 ),
                               ),
                             );
-                            // context.router.push(ComponentCategoryRoute(category: RouteNames.gettingStarted));
+                            context.go(RouteNames.gettingStarted);
                           },
                           child: Text(
                             "Get started",

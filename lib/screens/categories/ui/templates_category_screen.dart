@@ -5,16 +5,23 @@ import 'package:flutterui/screens/categories/ui/component_details_wrapper.dart';
 
 // @RoutePage()
 class TemplatesCategoryScreen extends StatefulWidget {
-  final Component component;
-  const TemplatesCategoryScreen({super.key, required this.component});
+  final String id;
+  const TemplatesCategoryScreen({super.key, required this.id});
 
   @override
   State<TemplatesCategoryScreen> createState() => _TemplatesCategoryScreenState();
 }
 
 class _TemplatesCategoryScreenState extends State<TemplatesCategoryScreen> {
+  Component? activeComponent;
+  @override
+  void initState() {
+    // activeComponent = AllComponents.widgets.where(test)
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return ComponentDetailsWrapper(component: widget.component);
+    return ComponentDetailsWrapper();
   }
 }

@@ -61,7 +61,7 @@ final blocItems = [
         alignment: Alignment.center,
       ),
       AppCategory(
-        link: RouteNames.banners,
+        link: RouteNames.text,
         widget: const TextBlocItem(),
         title: "Text",
       ),

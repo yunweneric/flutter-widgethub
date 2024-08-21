@@ -10,6 +10,7 @@ import 'package:flutterui/screens/home/model/component_block_model.dart';
 import 'package:flutterui/screens/routes/route_names.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/layout/side_bar_item.dart';
+import 'package:go_router/go_router.dart';
 
 class SideBar extends StatefulWidget {
   const SideBar({super.key});
@@ -88,9 +89,7 @@ class _SideBarState extends State<SideBar> {
                                     onPressed: () {
                                       componentBloc.add(UpdateActiveCategoryEvent(category: sideBarItem));
                                       setState(() => activeSideBar = sideBarItem);
-                                      // context.router.push(
-                                      //   ComponentCategoryRoute(category: sideBarItem.link),
-                                      // );
+                                      context.go(sideBarItem.link);
                                     },
                                   );
                                 },
@@ -103,7 +102,9 @@ class _SideBarState extends State<SideBar> {
                                   shrinkWrap: true,
                                   itemBuilder: (context, index) {
                                     final sideBarItem = item.items[index];
-                                    final isActive = activeCategory == sideBarItem.link;
+                                    final activePath = getIt.get<GoRouter>().routeInformationProvider.value.uri.scheme;
+                                    // final isActive = activeCategory == sideBarItem.link;
+                                    final isActive = sideBarItem.link.contains(activePath);
                                     return AnimatedContainer(
                                       duration: const Duration(milliseconds: 400),
                                       height: 30.h,
