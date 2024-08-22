@@ -48,9 +48,9 @@ class _SideBarState extends State<SideBar> {
         if (state is UpdateActiveCategorySuccess) {
           activeCategory = state.activeCategory!.link;
         }
+        final activePath = getIt.get<GoRouter>().routeInformationProvider.value.uri.pathSegments;
         return Scaffold(
           body: Container(
-            // width: AppSizing.width(context),
             padding: EdgeInsets.only(left: 40.w),
             child: SingleChildScrollView(
               child: Column(
@@ -91,8 +91,6 @@ class _SideBarState extends State<SideBar> {
                                   shrinkWrap: true,
                                   itemBuilder: (context, index) {
                                     final sideBarItem = item.items[index];
-                                    final activePath = getIt.get<GoRouter>().routeInformationProvider.value.uri.pathSegments;
-
                                     // print(["activePath", activePath, "sideBarItem", sideBarItem.link]);
                                     final isActive = activePath.contains(sideBarItem.subCategory.link());
                                     return AnimatedContainer(

@@ -1,4 +1,6 @@
 class AppImages {
+  static const String logoDark = "assets/images/logo_dark.png";
+  static const String logoLight = "assets/images/logo_white.png";
   static const String flutter = "assets/images/flutter.png";
   static const String flutterColored = "assets/images/flutter_colored.png";
   static const String dartColored = "assets/images/dart_colored.png";

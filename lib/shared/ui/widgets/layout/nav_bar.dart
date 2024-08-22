@@ -9,6 +9,7 @@ import 'package:flutterui/shared/data/enums/theme.dart';
 import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/shared/ui/models/nav_link.dart';
 import 'package:flutterui/shared/ui/utils/icons.dart';
+import 'package:flutterui/shared/ui/utils/images.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/utils/util.dart';
 import 'package:flutterui/shared/ui/widgets/app_container.dart';
@@ -46,7 +47,18 @@ class _NavBarState extends State<NavBar> {
                       children: [
                         TextButton(
                           style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                          child: Text("Logo", style: Theme.of(context).textTheme.displayLarge),
+                          child: AnimatedSwitcher(
+                            duration: const Duration(milliseconds: 500),
+                            child: Theme.of(context).brightness == Brightness.light
+                                ? Image.asset(
+                                    AppImages.logoDark,
+                                    width: 130,
+                                  )
+                                : Image.asset(
+                                    AppImages.logoLight,
+                                    width: 130,
+                                  ),
+                          ),
                           onPressed: () {
                             context.go(RouteNames.home);
                           },
