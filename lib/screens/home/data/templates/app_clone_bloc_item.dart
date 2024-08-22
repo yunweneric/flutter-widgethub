@@ -6,10 +6,10 @@ class AppCloneBlocItem extends StatefulWidget {
   const AppCloneBlocItem({super.key});
 
   @override
-  State<AppCloneBlocItem> createState() => _AppCloneBlocItemState();
+  State<AppCloneBlocItem> createState() => _AppClonesideBarCategoriestate();
 }
 
-class _AppCloneBlocItemState extends State<AppCloneBlocItem> {
+class _AppClonesideBarCategoriestate extends State<AppCloneBlocItem> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/core/service_locators.dart';
-import 'package:flutterui/components/ui/export/data.dart';
+import 'package:flutterui/components/ui/export/component_store.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 
 class CategoryCard extends StatefulWidget {

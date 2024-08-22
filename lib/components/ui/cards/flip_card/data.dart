@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterui/components/ui/cards/flip_card/flip_card_code.dart';
 import 'package:flutterui/components/ui/cards/flip_card/flip_card_setup.dart';
 import 'package:flutterui/components/ui/cards/flip_card/flip_card_widget.dart';
-import 'package:flutterui/components/ui/export/data.dart';
+import 'package:flutterui/components/ui/export/component_store.dart';
 import 'package:flutterui/shared/data/enums/component_category_enum.dart';
 import 'package:flutterui/shared/data/enums/sub_component_category_enum.dart';
 import 'package:flutterui/shared/data/enums/supported_platform.dart';

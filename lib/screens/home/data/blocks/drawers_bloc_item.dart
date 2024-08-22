@@ -9,10 +9,10 @@ class DrawersBlocItem extends StatefulWidget {
   const DrawersBlocItem({super.key});
 
   @override
-  State<DrawersBlocItem> createState() => _DrawersBlocItemState();
+  State<DrawersBlocItem> createState() => _DrawerssideBarCategoriestate();
 }
 
-class _DrawersBlocItemState extends State<DrawersBlocItem> {
+class _DrawerssideBarCategoriestate extends State<DrawersBlocItem> {
   bool isExpanded = false;
 
   final duration = const Duration(milliseconds: 2400);

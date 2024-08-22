@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutterui/components/ui/export/data.dart';
+import 'package:flutterui/components/ui/export/component_store.dart';
 import 'package:flutterui/screens/home/model/component_block_model.dart';
 
 part 'component_event.dart';

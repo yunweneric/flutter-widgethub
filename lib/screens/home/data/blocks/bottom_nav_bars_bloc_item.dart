@@ -7,10 +7,10 @@ class BottomNavBarsBlocItem extends StatefulWidget {
   const BottomNavBarsBlocItem({super.key});
 
   @override
-  State<BottomNavBarsBlocItem> createState() => _BottomNavBarsBlocItemState();
+  State<BottomNavBarsBlocItem> createState() => _BottomNavBarssideBarCategoriestate();
 }
 
-class _BottomNavBarsBlocItemState extends State<BottomNavBarsBlocItem> {
+class _BottomNavBarssideBarCategoriestate extends State<BottomNavBarsBlocItem> {
   int currentIndex = 0;
   Timer? timer;
 

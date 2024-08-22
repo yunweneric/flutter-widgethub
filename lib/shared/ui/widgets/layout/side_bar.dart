@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/core/service_locators.dart';
-import 'package:flutterui/screens/home/data/export/block_items.dart';
+import 'package:flutterui/screens/home/data/export/sidebar_categories.dart';
 import 'package:flutterui/screens/home/model/component_block_model.dart';
 // import 'package:flutterui/screens/routes/app_router.gr.dart';
 import 'package:flutterui/screens/routes/route_names.dart';
@@ -23,7 +23,7 @@ class SideBar extends StatefulWidget {
 
 class _SideBarState extends State<SideBar> {
   List<AppCategoryGroupModel> items = [
-    ...blocItems.where((item) {
+    ...sideBarCategories.where((item) {
       final condition = item.category != ComponentCategoryEnum.ANIMATIONS;
       return condition;
     }),

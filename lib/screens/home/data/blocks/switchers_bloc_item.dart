@@ -7,10 +7,10 @@ class SwitchersBlocItem extends StatefulWidget {
   const SwitchersBlocItem({super.key});
 
   @override
-  State<SwitchersBlocItem> createState() => _TabsBlocItemState();
+  State<SwitchersBlocItem> createState() => _TabssideBarCategoriestate();
 }
 
-class _TabsBlocItemState extends State<SwitchersBlocItem> {
+class _TabssideBarCategoriestate extends State<SwitchersBlocItem> {
   Timer? timer;
 
   bool isOn = false;

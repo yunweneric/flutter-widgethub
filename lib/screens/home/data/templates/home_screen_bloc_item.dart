@@ -5,10 +5,10 @@ class HomeScreenBlocItem extends StatefulWidget {
   const HomeScreenBlocItem({super.key});
 
   @override
-  State<HomeScreenBlocItem> createState() => _HomeScreenBlocItemState();
+  State<HomeScreenBlocItem> createState() => _HomeScreensideBarCategoriestate();
 }
 
-class _HomeScreenBlocItemState extends State<HomeScreenBlocItem> {
+class _HomeScreensideBarCategoriestate extends State<HomeScreenBlocItem> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

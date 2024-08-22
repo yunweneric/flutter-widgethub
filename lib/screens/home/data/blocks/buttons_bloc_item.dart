@@ -7,10 +7,10 @@ class ButtonsBlocItem extends StatefulWidget {
   const ButtonsBlocItem({super.key});
 
   @override
-  State<ButtonsBlocItem> createState() => _ButtonsBlocItemState();
+  State<ButtonsBlocItem> createState() => _ButtonssideBarCategoriestate();
 }
 
-class _ButtonsBlocItemState extends State<ButtonsBlocItem> {
+class _ButtonssideBarCategoriestate extends State<ButtonsBlocItem> {
   Timer? timer;
   int count = 50;
   final duration = const Duration(milliseconds: 200);

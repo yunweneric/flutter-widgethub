@@ -40,12 +40,29 @@ import 'package:flutterui/screens/categories/widget/component_layout.dart';
 import 'package:flutterui/screens/home/ui/home_screen.dart';
 import 'package:flutterui/screens/routes/route_names.dart';
 import 'package:flutterui/screens/support/ui/support_screen.dart';
-import 'package:flutterui/shared/data/enums/component_category_enum.dart';
 import 'package:go_router/go_router.dart';
 
 Widget buildComponentLayout(GoRouterState state) {
   return ComponentCategoryScreen(
-    category: state.pathParameters['category'] as ComponentCategoryEnum,
+    category: state.pathParameters['id'],
+  );
+}
+
+GoRoute buildAnimatedRoute({required String path, required Widget child}) {
+  return GoRoute(
+    path: path,
+    pageBuilder: (context, state) {
+      return CustomTransitionPage(
+        key: state.pageKey,
+        child: child,
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return FadeTransition(
+            opacity: CurveTween(curve: Curves.easeInOutCirc).animate(animation),
+            child: child,
+          );
+        },
+      );
+    },
   );
 }
 
@@ -54,14 +71,10 @@ final appRouter = GoRouter(
   initialLocation: '/',
   routes: [
     // Regular GoRoute for HomeScreen
-    GoRoute(
-      path: '/',
-      builder: (context, state) => const HomeScreen(),
-    ),
-    GoRoute(
-      path: RouteNames.support,
-      builder: (context, state) => const SupportScreen(),
-    ),
+
+    buildAnimatedRoute(path: "/", child: const HomeScreen()),
+    buildAnimatedRoute(path: RouteNames.support, child: const SupportScreen()),
+
     // ShellRoute for routes with a shared layout
     ShellRoute(
       builder: (context, state, child) => ComponentLayoutScreen(child: child),
@@ -84,8 +97,8 @@ final appRouter = GoRouter(
           builder: (context, state) => buildComponentLayout(state),
         ),
         GoRoute(
-          path: '${RouteNames.templates}/:id/:componentId',
-          builder: (context, state) => ComponentDetailsWrapper(),
+          path: '${RouteNames.templates}/:id/:subCategory',
+          builder: (context, state) => buildComponentLayout(state),
         ),
         GoRoute(
           path: RouteNames.blocks,

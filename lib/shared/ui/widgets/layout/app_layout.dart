@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/core/service_locators.dart';
-import 'package:flutterui/screens/home/data/export/block_items.dart';
+import 'package:flutterui/screens/home/data/export/sidebar_categories.dart';
 import 'package:flutterui/screens/home/model/component_block_model.dart';
 import 'package:flutterui/screens/home/widgets/home_footer.dart';
 // import 'package:flutterui/screens/routes/app_router.gr.dart';
@@ -51,7 +51,7 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
   }
 
   List<AppCategoryGroupModel> items = [
-    ...blocItems.where((item) => item.category.describe().toLowerCase() != "animations"),
+    ...sideBarCategories.where((item) => item.category.describe().toLowerCase() != "animations"),
   ];
   @override
   Widget build(BuildContext context) {

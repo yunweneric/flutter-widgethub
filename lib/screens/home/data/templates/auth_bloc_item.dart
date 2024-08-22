@@ -6,10 +6,10 @@ class AuthBlocItem extends StatefulWidget {
   const AuthBlocItem({super.key});
 
   @override
-  State<AuthBlocItem> createState() => _AuthBlocItemState();
+  State<AuthBlocItem> createState() => _AuthsideBarCategoriestate();
 }
 
-class _AuthBlocItemState extends State<AuthBlocItem> {
+class _AuthsideBarCategoriestate extends State<AuthBlocItem> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

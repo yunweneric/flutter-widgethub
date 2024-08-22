@@ -7,10 +7,10 @@ class CarouselsBlocItem extends StatefulWidget {
   const CarouselsBlocItem({super.key});
 
   @override
-  State<CarouselsBlocItem> createState() => _CarouselsBlocItemState();
+  State<CarouselsBlocItem> createState() => _CarouselssideBarCategoriestate();
 }
 
-class _CarouselsBlocItemState extends State<CarouselsBlocItem> {
+class _CarouselssideBarCategoriestate extends State<CarouselsBlocItem> {
   Timer? timer;
 
   final duration = const Duration(milliseconds: 1200);

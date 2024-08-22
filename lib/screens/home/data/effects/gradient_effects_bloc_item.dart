@@ -18,10 +18,10 @@ class GradientEffectsBlocItem extends StatefulWidget {
   const GradientEffectsBlocItem({super.key});
 
   @override
-  State<GradientEffectsBlocItem> createState() => _GradientEffectsBlocItemState();
+  State<GradientEffectsBlocItem> createState() => _GradientEffectssideBarCategoriestate();
 }
 
-class _GradientEffectsBlocItemState extends State<GradientEffectsBlocItem> with SingleTickerProviderStateMixin {
+class _GradientEffectssideBarCategoriestate extends State<GradientEffectsBlocItem> with SingleTickerProviderStateMixin {
   AnimationController? myAnimationController;
 
   Animation<List<Color>>? animation;

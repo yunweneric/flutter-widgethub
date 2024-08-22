@@ -5,10 +5,10 @@ class LoadersBlocItem extends StatefulWidget {
   const LoadersBlocItem({super.key});
 
   @override
-  State<LoadersBlocItem> createState() => _LoadersBlocItemState();
+  State<LoadersBlocItem> createState() => _LoaderssideBarCategoriestate();
 }
 
-class _LoadersBlocItemState extends State<LoadersBlocItem> {
+class _LoaderssideBarCategoriestate extends State<LoadersBlocItem> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

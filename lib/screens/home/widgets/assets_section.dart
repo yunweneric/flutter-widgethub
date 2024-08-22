@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/core/service_locators.dart';
-import 'package:flutterui/screens/home/data/export/block_items.dart';
+import 'package:flutterui/screens/home/data/export/sidebar_categories.dart';
 import 'package:flutterui/screens/home/model/component_block_model.dart';
 import 'package:flutterui/screens/home/widgets/component_block.dart';
 import 'package:flutterui/shared/data/enums/component_category_enum.dart';
@@ -22,7 +22,7 @@ class AssetsSection extends StatefulWidget {
 
 class _AssetsSectionState extends State<AssetsSection> {
   late AppCategoryGroupModel activeBlock;
-  List<AppCategoryGroupModel> blocks = blocItems.where((item) {
+  List<AppCategoryGroupModel> blocks = sideBarCategories.where((item) {
     final condition = item.category != ComponentCategoryEnum.GETTING_STARTED;
     return condition;
   }).toList();
@@ -175,7 +175,9 @@ class _AssetsSectionState extends State<AssetsSection> {
                                             focusColor: Theme.of(context).scaffoldBackgroundColor,
                                             splashColor: Theme.of(context).scaffoldBackgroundColor,
                                             onTap: () {
-                                              context.go(item.link, extra: {'id': item.link});
+                                              context.go(item.link);
+                                              // context.go("/components/templates/app-clones");
+                                              // context.go("${item.link}/${item.category.describe()}");
                                               // componentBloc.add(UpdateActiveCategoryEvent(category: item));
                                               // context.router.push(ComponentCategoryRoute(category: item.link));
                                             },

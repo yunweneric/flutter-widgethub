@@ -7,10 +7,10 @@ class TextBlocItem extends StatefulWidget {
   const TextBlocItem({super.key});
 
   @override
-  State<TextBlocItem> createState() => _TextBlocItemState();
+  State<TextBlocItem> createState() => _TextsideBarCategoriestate();
 }
 
-class _TextBlocItemState extends State<TextBlocItem> {
+class _TextsideBarCategoriestate extends State<TextBlocItem> {
   Timer? timer;
 
   int count = 800;

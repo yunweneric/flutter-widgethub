@@ -7,10 +7,10 @@ class InputsBlocItem extends StatefulWidget {
   const InputsBlocItem({super.key});
 
   @override
-  State<InputsBlocItem> createState() => _InputsBlocItemState();
+  State<InputsBlocItem> createState() => _InputssideBarCategoriestate();
 }
 
-class _InputsBlocItemState extends State<InputsBlocItem> {
+class _InputssideBarCategoriestate extends State<InputsBlocItem> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
