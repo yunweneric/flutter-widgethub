@@ -12,7 +12,7 @@ echo "Clearing terminal..."
 clear
 
 echo "Building Flutter web with WASM..."
-flutter build web --wasm
+flutter build web --wasm --target lib/main_dev.dart --dart-define-from-file=../envs/fwh/dev.env.json
 
 echo "Deploying to Firebase..."
 firebase deploy

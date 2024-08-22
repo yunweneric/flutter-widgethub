@@ -9,8 +9,8 @@ import 'package:flutterui/shared/ui/widgets/layout/main_content.dart';
 
 // @RoutePage()
 class ComponentCategoryScreen extends StatefulWidget {
-  final String? category;
-  const ComponentCategoryScreen({super.key, this.category});
+  final String? subCategory;
+  const ComponentCategoryScreen({super.key, this.subCategory});
 
   @override
   State<ComponentCategoryScreen> createState() => _ComponentCategoryScreenState();
@@ -44,8 +44,8 @@ class _ComponentCategoryScreenState extends State<ComponentCategoryScreen> {
                 //         return item.title == activeCategory.title;
                 //       });
 
-                List<Component> components = state.allComponents.where((item) => item.category.describe() == widget.category).toList();
-                if (widget.category == null) {
+                List<Component> components = state.allComponents.where((item) => item.subcategory.link() == widget.subCategory).toList();
+                if (widget.subCategory == null) {
                   components = state.allComponents;
                 }
                 return AnimatedSwitcher(
@@ -53,7 +53,7 @@ class _ComponentCategoryScreenState extends State<ComponentCategoryScreen> {
                   child: components.isEmpty
                       ? SizedBox(
                           height: AppSizing.kHPercentage(context, 50),
-                          child: Center(child: Text("No Item in this ${widget.category}!")),
+                          child: Center(child: Text("No Item in this ${widget.subCategory}!")),
                         )
                       : Wrap(
                           alignment: WrapAlignment.spaceBetween,

@@ -91,11 +91,10 @@ class _SideBarState extends State<SideBar> {
                                   shrinkWrap: true,
                                   itemBuilder: (context, index) {
                                     final sideBarItem = item.items[index];
-                                    final activePath = getIt.get<GoRouter>().routeInformationProvider.value.uri.path;
-                                    // final isActive = activeCategory == sideBarItem.link;
+                                    final activePath = getIt.get<GoRouter>().routeInformationProvider.value.uri.pathSegments;
 
-                                    print(["activePath", activePath, "sideBarItem", sideBarItem.link]);
-                                    final isActive = sideBarItem.link.contains(activePath);
+                                    // print(["activePath", activePath, "sideBarItem", sideBarItem.link]);
+                                    final isActive = activePath.contains(sideBarItem.subCategory.link());
                                     return AnimatedContainer(
                                       duration: const Duration(milliseconds: 400),
                                       height: 30.h,

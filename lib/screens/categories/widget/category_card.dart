@@ -6,6 +6,7 @@ import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/core/service_locators.dart';
 import 'package:flutterui/components/ui/export/component_store.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
+import 'package:go_router/go_router.dart';
 
 class CategoryCard extends StatefulWidget {
   final Component component;
@@ -20,6 +21,7 @@ class _CategoryCardState extends State<CategoryCard> {
   bool isHovered = false;
   @override
   Widget build(BuildContext context) {
+    Component componentDetails = widget.component;
     return Stack(
       children: [
         Container(
@@ -51,7 +53,7 @@ class _CategoryCardState extends State<CategoryCard> {
                     //   screenSize: Size(400, 700),
                     // ),
                     // isFrameVisible: false,
-                    screen: widget.component.widget,
+                    screen: componentDetails.widget,
                     device: Devices.ios.iPhone13,
                   ),
                 ),
@@ -62,12 +64,12 @@ class _CategoryCardState extends State<CategoryCard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      widget.component.title,
+                      componentDetails.title,
                       style: Theme.of(context).textTheme.displayMedium,
                     ),
                     AppSizing.kh10Spacer(),
                     Text(
-                      widget.component.description,
+                      componentDetails.description,
                       style: Theme.of(context).textTheme.bodyMedium,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
@@ -83,9 +85,8 @@ class _CategoryCardState extends State<CategoryCard> {
           hoverColor: Theme.of(context).scaffoldBackgroundColor,
           borderRadius: AppSizing.radiusMd(),
           onTap: () {
-            // componentBloc.add(UpdateActiveComponentEvent(newComponent: widget.component));
-            // context.router.push(ComponentDetailsRoute(component: widget.component));
-            // context.router.pushNamed("/components/templates/${widget.component.id}");
+            final link = "/components/${componentDetails.category.link()}/${componentDetails.subcategory.link()}/${componentDetails.id}/";
+            context.go(link);
           },
           onHover: (status) {
             setState(() {

@@ -14,8 +14,8 @@ import 'package:flutterui/shared/ui/widgets/icon.dart';
 import 'package:flutterui/shared/ui/widgets/layout/main_content.dart';
 
 class ComponentDetailsWrapper extends StatefulWidget {
-  // final Component component;
-  const ComponentDetailsWrapper({super.key});
+  final String id;
+  const ComponentDetailsWrapper({super.key, required this.id});
 
   @override
   State<ComponentDetailsWrapper> createState() => _HomeScreenState();
@@ -27,28 +27,50 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
   Widget build(BuildContext context) {
     return BlocBuilder<ComponentBloc, ComponentState>(
       builder: (context, state) {
-        final activeIndex = state.allComponents.indexOf(state.activeComponent);
-        final canPrevious = activeIndex > 0;
-        final canNext = activeIndex < state.allComponents.length - 1;
-        final component = state.activeComponent;
-
+        final component = state.allComponents.where((item) => item.id == widget.id).firstOrNull;
+        print(component?.id);
+        if (component != null) {
+          final activeIndex = state.allComponents.indexOf(component);
+          final canPrevious = activeIndex > 0;
+          final canNext = activeIndex < state.allComponents.length - 1;
+          return MainContent(
+            children: [
+              Text(component.title, style: Theme.of(context).textTheme.displayLarge),
+              AppSizing.kh10Spacer(),
+              Text(component.description, style: Theme.of(context).textTheme.bodyMedium),
+              AppSizing.kh20Spacer(),
+              Text("Setup", style: Theme.of(context).textTheme.displayMedium),
+              AppSizing.kh10Spacer(),
+              AppSizing.kh10Spacer(),
+              CodeHighlight(code: component.setup),
+              AppSizing.kh20Spacer(),
+              AppSizing.kh10Spacer(),
+              supportPlatformSection(component, context),
+              resourcesSection(component),
+              CodePreview(component: component),
+              AppSizing.kh20Spacer(),
+              componentFooter(canPrevious, canNext, context, state, activeIndex)
+            ],
+          );
+        }
         return MainContent(
           children: [
-            Text(component.title, style: Theme.of(context).textTheme.displayLarge),
-            AppSizing.kh10Spacer(),
-            Text(component.description, style: Theme.of(context).textTheme.bodyMedium),
-            AppSizing.kh20Spacer(),
-            Text("Setup", style: Theme.of(context).textTheme.displayMedium),
-            AppSizing.kh10Spacer(),
-            AppSizing.kh10Spacer(),
-            CodeHighlight(code: component.setup),
-            AppSizing.kh20Spacer(),
-            AppSizing.kh10Spacer(),
-            supportPlatformSection(component, context),
-            resourcesSection(component),
-            CodePreview(component: component),
-            AppSizing.kh20Spacer(),
-            componentFooter(canPrevious, canNext, context, state, activeIndex)
+            SizedBox(
+              height: AppSizing.kHPercentage(context, 60),
+              child: Center(
+                  child: RichText(
+                text: TextSpan(
+                  text: "'${widget.id}' ",
+                  style: DefaultTextStyle.of(context).style.copyWith(color: Theme.of(context).primaryColor),
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: 'not found in collections!',
+                      style: TextStyle(color: Theme.of(context).primaryColorDark),
+                    ),
+                  ],
+                ),
+              )),
+            ),
           ],
         );
       },

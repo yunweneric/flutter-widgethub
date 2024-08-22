@@ -41,16 +41,16 @@ final sideBarCategories = [
     description: "A wide range of pre-built UI templates from app clones to demo apps all in one place",
     items: [
       AppCategoryModel(
-        link: RouteNames.clones,
+        link: RouteNames.appClones,
         widget: const AppCloneBlocItem(),
         subCategory: SubComponentCategoryEnum.APP_CLONES,
         category: ComponentCategoryEnum.TEMPLATES,
         alignment: Alignment.topCenter,
       ),
       AppCategoryModel(
-        link: RouteNames.onboarding,
+        link: RouteNames.onboardingScreens,
         widget: const BottomBarBlocItem(),
-        subCategory: SubComponentCategoryEnum.ONBOARDINGS_SCREENS,
+        subCategory: SubComponentCategoryEnum.ONBOARDING_SCREENS,
         category: ComponentCategoryEnum.TEMPLATES,
       ),
       AppCategoryModel(
@@ -82,20 +82,20 @@ final sideBarCategories = [
       AppCategoryModel(
         link: RouteNames.inputs,
         widget: const InputsBlocItem(),
-        subCategory: SubComponentCategoryEnum.INPUT,
+        subCategory: SubComponentCategoryEnum.INPUTS,
         category: ComponentCategoryEnum.BLOCKS,
         alignment: Alignment.center,
       ),
       AppCategoryModel(
-        link: RouteNames.text,
+        link: RouteNames.texts,
         widget: const TextBlocItem(),
-        subCategory: SubComponentCategoryEnum.TEXT,
+        subCategory: SubComponentCategoryEnum.TEXTS,
         category: ComponentCategoryEnum.BLOCKS,
       ),
       AppCategoryModel(
-        link: RouteNames.sliders,
+        link: RouteNames.loaders,
         widget: const LoadersBlocItem(),
-        subCategory: SubComponentCategoryEnum.SWITCHERS,
+        subCategory: SubComponentCategoryEnum.LOADERS,
         category: ComponentCategoryEnum.BLOCKS,
         alignment: Alignment.topCenter,
       ),

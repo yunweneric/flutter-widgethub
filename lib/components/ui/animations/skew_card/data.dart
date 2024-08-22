@@ -18,7 +18,7 @@ class SkewCardData {
     description: 'A card perspective effect, hover over the card to elevate card elements.',
     title: '3D Skew Card',
     setup: setup,
-    category: ComponentCategoryEnum.BLOCKS,
+    category: ComponentCategoryEnum.TEMPLATES,
     subcategory: SubComponentCategoryEnum.APP_CLONES,
     supportedPlatforms: [SupportedPlatform.ANDROID, SupportedPlatform.IOS],
   );

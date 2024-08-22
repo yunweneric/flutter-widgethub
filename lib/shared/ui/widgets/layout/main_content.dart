@@ -36,6 +36,7 @@ class _MainContentState extends State<MainContent> {
                   side: BorderSide(color: Theme.of(context).dividerColor),
                 ),
                 onPressed: () => context.go(RouteNames.home),
+                // onPressed: () => context.pop(),
                 // onPressed: () {},
                 icon: const AppIcon(icon: AppIcons.back),
                 label: Text("Back", style: Theme.of(context).textTheme.bodyMedium),

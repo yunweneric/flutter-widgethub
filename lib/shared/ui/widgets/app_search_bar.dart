@@ -5,6 +5,7 @@ import 'package:flutterui/shared/ui/utils/colors.dart';
 import 'package:flutterui/shared/ui/utils/icons.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/icon.dart';
+import 'package:go_router/go_router.dart';
 
 class AppSearchBar extends StatefulWidget {
   const AppSearchBar({super.key});
@@ -163,6 +164,11 @@ class _SearchBarState extends State<SearchBar> {
                                   itemBuilder: (context, index) {
                                     final component = filteredData[index];
                                     return ListTile(
+                                      onTap: () {
+                                        context.pop();
+                                        final link = "/components/${component.category.link()}/${component.subcategory.link()}/${component.id}/";
+                                        context.go(link);
+                                      },
                                       title: Text(
                                         component.title,
                                         style: Theme.of(context).textTheme.displayMedium,

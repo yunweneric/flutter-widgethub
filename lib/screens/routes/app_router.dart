@@ -1,38 +1,3 @@
-//// import 'package:flutterui/screens/routes/app_router.gr.dart';
-// import 'package:flutterui/screens/routes/route_names.dart';
-
-// @AutoRouterConfig(
-//   replaceInRouteName: 'Screen,Route',
-//   // generateForDir: ["lib/screens/home"],
-//   // modules: [DashboardRouter],
-// )
-// class AppRouter extends RootStackRouter {
-//   @override
-//   RouteType get defaultRouteType => const RouteType.custom(transitionsBuilder: TransitionsBuilders.fadeIn);
-
-//   @override
-//   List<AutoRoute> get routes => [
-//         AutoRoute(initial: true, path: RouteNames.home, page: HomeRoute.page),
-//         AutoRoute(path: RouteNames.support, page: SupportRoute.page),
-//         AutoRoute(
-//           path: '/components',
-//           page: ComponentLayoutRoute.page,
-//           children: [
-//             AutoRoute(path: "", page: ComponentCategoryRoute.page),
-//             AutoRoute(page: TemplatesCategoryRoute.page, path: RouteNames.templates),
-//             AutoRoute(path: RouteNames.notFound, page: NotFoundRoute.page),
-//             AutoRoute(page: NotFoundRoute.page),
-//             AutoRoute(path: "*", page: NotFoundRoute.page),
-//           ],
-//         ),
-//         // AutoRoute(path: "/${RouteNames.notFound}", page: NotFoundRoute.page),
-//         // AutoRoute(path: "*", page: NotFoundRoute.page),
-//       ];
-
-//   @override
-//   List<AutoRouteGuard> get guards => [];
-// }
-
 import 'package:flutter/material.dart';
 import 'package:flutterui/screens/categories/ui/component_category_screen.dart';
 import 'package:flutterui/screens/categories/ui/component_details_wrapper.dart';
@@ -44,17 +9,23 @@ import 'package:go_router/go_router.dart';
 
 Widget buildComponentLayout(GoRouterState state) {
   return ComponentCategoryScreen(
-    category: state.pathParameters['id'],
+    subCategory: state.pathParameters['id'],
   );
 }
 
-GoRoute buildAnimatedRoute({required String path, required Widget child}) {
+Widget buildComponentDetailsWidget(GoRouterState state) {
+  return ComponentDetailsWrapper(
+    id: state.pathParameters['subCategory'] as String,
+  );
+}
+
+GoRoute buildAnimatedRoute({required String path, required Function(BuildContext context, GoRouterState state) builder}) {
   return GoRoute(
     path: path,
     pageBuilder: (context, state) {
       return CustomTransitionPage(
         key: state.pageKey,
-        child: child,
+        child: builder(context, state),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           return FadeTransition(
             opacity: CurveTween(curve: Curves.easeInOutCirc).animate(animation),
@@ -71,58 +42,86 @@ final appRouter = GoRouter(
   initialLocation: '/',
   routes: [
     // Regular GoRoute for HomeScreen
-
-    buildAnimatedRoute(path: "/", child: const HomeScreen()),
-    buildAnimatedRoute(path: RouteNames.support, child: const SupportScreen()),
+    buildAnimatedRoute(path: "/", builder: (context, state) => HomeScreen()),
+    buildAnimatedRoute(path: RouteNames.support, builder: (context, state) => SupportScreen()),
 
     // ShellRoute for routes with a shared layout
     ShellRoute(
       builder: (context, state, child) => ComponentLayoutScreen(child: child),
       routes: [
         // Nested route 1 under ShellRoute
-        GoRoute(
+
+        buildAnimatedRoute(
           path: RouteNames.components,
           builder: (context, state) => buildComponentLayout(state),
         ),
-        GoRoute(
+        buildAnimatedRoute(
           path: RouteNames.gettingStarted,
           builder: (context, state) => buildComponentLayout(state),
         ),
-        GoRoute(
+
+        // **     ----------------------------------------------    //
+        // **     Template Routes
+        // **     ----------------------------------------------    //
+        buildAnimatedRoute(
           path: RouteNames.templates,
           builder: (context, state) => buildComponentLayout(state),
         ),
-        GoRoute(
+        buildAnimatedRoute(
           path: '${RouteNames.templates}/:id',
           builder: (context, state) => buildComponentLayout(state),
         ),
-        GoRoute(
+        buildAnimatedRoute(
           path: '${RouteNames.templates}/:id/:subCategory',
-          builder: (context, state) => buildComponentLayout(state),
+          builder: (context, state) => buildComponentDetailsWidget(state),
         ),
-        GoRoute(
+
+        // **     ----------------------------------------------    //
+        // **     Block Routes
+        // **     ----------------------------------------------    //
+        buildAnimatedRoute(
           path: RouteNames.blocks,
           builder: (context, state) => buildComponentLayout(state),
         ),
-        GoRoute(
+        buildAnimatedRoute(
           path: '${RouteNames.blocks}/:id',
-          builder: (context, state) => ComponentDetailsWrapper(),
+          builder: (context, state) => buildComponentLayout(state),
         ),
-        GoRoute(
+        buildAnimatedRoute(
+          path: '${RouteNames.blocks}/:id/:subCategory',
+          builder: (context, state) => buildComponentDetailsWidget(state),
+        ),
+
+        // **     ----------------------------------------------    //
+        // **     Animation Routes
+        // **     ----------------------------------------------    //
+        buildAnimatedRoute(
           path: RouteNames.animations,
           builder: (context, state) => buildComponentLayout(state),
         ),
-        GoRoute(
+        buildAnimatedRoute(
           path: '${RouteNames.animations}/:id',
-          builder: (context, state) => ComponentDetailsWrapper(),
+          builder: (context, state) => buildComponentLayout(state),
         ),
-        GoRoute(
+        buildAnimatedRoute(
+          path: '${RouteNames.animations}/:id/:subCategory',
+          builder: (context, state) => buildComponentDetailsWidget(state),
+        ),
+
+        // **     ----------------------------------------------    //
+        // **     Effects Routes
+        // **     ----------------------------------------------    //
+        buildAnimatedRoute(
           path: RouteNames.effects,
           builder: (context, state) => buildComponentLayout(state),
         ),
-        GoRoute(
+        buildAnimatedRoute(
           path: '${RouteNames.effects}/:id',
-          builder: (context, state) => ComponentDetailsWrapper(),
+          builder: (context, state) => buildComponentLayout(state),
+        ),
+        buildAnimatedRoute(
+          path: '${RouteNames.effects}/:id/:subCategory',
+          builder: (context, state) => buildComponentDetailsWidget(state),
         ),
       ],
     ),

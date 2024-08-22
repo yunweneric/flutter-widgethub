@@ -9,7 +9,7 @@ class RouteNames {
   static const animations = "/components/animations";
   static const effects = "/components/effects";
 
-  static const text = "$blocks/text";
+  static const texts = "$blocks/texts";
   static const buttons = "$blocks/buttons";
   static const chips = "$blocks/chips";
   static const inputs = "$blocks/inputs";
@@ -20,10 +20,10 @@ class RouteNames {
   static const drawers = "$blocks/drawers";
   static const carousels = "$blocks/carousels";
 
-  static const authScreens = "$templates/auth-screens";
+  static const authScreens = "$templates/authentication-screens";
   static const homeScreens = "$templates/home-screens";
-  static const onboarding = "$templates/onboarding-screens";
-  static const clones = "$templates/app-clones";
+  static const onboardingScreens = "$templates/onboarding-screens";
+  static const appClones = "$templates/app-clones";
 
   static const playground = "/components/playground";
   static const notFound = "not-found";
