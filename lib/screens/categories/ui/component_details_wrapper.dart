@@ -12,6 +12,7 @@ import 'package:flutterui/shared/ui/widgets/code_highlight.dart';
 import 'package:flutterui/shared/ui/widgets/code_preview.dart';
 import 'package:flutterui/shared/ui/widgets/icon.dart';
 import 'package:flutterui/shared/ui/widgets/layout/main_content.dart';
+import 'package:go_router/go_router.dart';
 
 class ComponentDetailsWrapper extends StatefulWidget {
   final String id;
@@ -25,7 +26,14 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
   final componentBloc = getIt.get<ComponentBloc>();
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ComponentBloc, ComponentState>(
+    return BlocConsumer<ComponentBloc, ComponentState>(
+      listener: (context, state) {
+        if (state is UpdateActiveComponentSuccess) {
+          final componentDetails = state.activeComponent;
+          final link = "/components/${componentDetails.category.link()}/${componentDetails.subcategory.link()}/${componentDetails.id}/";
+          context.go(link);
+        }
+      },
       builder: (context, state) {
         final component = state.allComponents.where((item) => item.id == widget.id).firstOrNull;
         print(component?.id);

@@ -1,16 +1,32 @@
 // import 'dart:io';
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutterui/core/platform/platform.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:device_frame/device_frame.dart';
 import 'package:flutterui/shared/data/enums/device_type.dart';
 
 class UtilHelper {
-  static Future<void> openUrl(String link) async {
-    final Uri url = Uri.parse(link);
-    if (!await launchUrl(url)) {
-      throw Exception('Could not launch $url');
+  static dynamic getWindows() {
+    final windows = getWindow();
+    return windows;
+  }
+
+  static Future<void> openUrl(String? link) async {
+    if (link == null) {
+      throw Exception('Could not launch $link');
+    }
+
+    if (kIsWeb) {
+      final windows = getWindows();
+      windows.location.href = link;
+    } else {
+      final uri = Uri.parse(link);
+      if (!await launchUrl(uri)) {
+        throw Exception('Could not launch $uri');
+      }
     }
   }
 
