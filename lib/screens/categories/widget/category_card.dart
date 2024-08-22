@@ -85,6 +85,7 @@ class _CategoryCardState extends State<CategoryCard> {
           hoverColor: Theme.of(context).scaffoldBackgroundColor,
           borderRadius: AppSizing.radiusMd(),
           onTap: () {
+            componentBloc.add(UpdateActiveComponentEvent(newComponent: componentDetails));
             final link = "/components/${componentDetails.category.link()}/${componentDetails.subcategory.link()}/${componentDetails.id}/";
             context.go(link);
           },

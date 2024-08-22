@@ -30,7 +30,7 @@ class ComponentBloc extends Bloc<ComponentEvent, ComponentState> {
     });
     on<FindNextComponentBloc>((event, emit) {
       final allComponents = AllComponents.widgets;
-      final activeIndex = allComponents.indexWhere((component) => component.title == state.activeComponent.title);
+      final activeIndex = allComponents.indexWhere((component) => component.id == state.activeComponent.id);
 
       if (activeIndex == -1) {
         emit(UpdateActiveComponentSuccess(

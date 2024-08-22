@@ -8,9 +8,7 @@ import 'package:flutterui/screens/support/ui/support_screen.dart';
 import 'package:go_router/go_router.dart';
 
 Widget buildComponentLayout(GoRouterState state) {
-  return ComponentCategoryScreen(
-    subCategory: state.pathParameters['id'],
-  );
+  return ComponentCategoryScreen(subCategory: state.pathParameters['id']);
 }
 
 Widget buildComponentDetailsWidget(GoRouterState state) {
@@ -19,7 +17,10 @@ Widget buildComponentDetailsWidget(GoRouterState state) {
   );
 }
 
-GoRoute buildAnimatedRoute({required String path, required Function(BuildContext context, GoRouterState state) builder}) {
+GoRoute buildAnimatedRoute({
+  required String path,
+  required Function(BuildContext context, GoRouterState state) builder,
+}) {
   return GoRoute(
     path: path,
     pageBuilder: (context, state) {

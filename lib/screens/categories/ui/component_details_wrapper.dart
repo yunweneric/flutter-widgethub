@@ -85,7 +85,13 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
     );
   }
 
-  Row componentFooter(bool canPrevious, bool canNext, BuildContext context, ComponentState state, int activeIndex) {
+  Row componentFooter(
+    bool canPrevious,
+    bool canNext,
+    BuildContext context,
+    ComponentState state,
+    int activeIndex,
+  ) {
     return Row(
       mainAxisAlignment: canPrevious && canNext
           ? MainAxisAlignment.spaceBetween
