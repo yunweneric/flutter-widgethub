@@ -88,7 +88,7 @@ class _HeroSectionState extends State<HeroSection> {
                                 ),
                               ),
                             );
-                            context.go(RouteNames.introduction);
+                            context.go(RouteNames.getStarted);
                           },
                           child: Text(
                             "Get started",

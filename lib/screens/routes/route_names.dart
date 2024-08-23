@@ -1,13 +1,15 @@
 class RouteNames {
   static const home = "/";
   static const support = "/support";
-  static const requestComponent = "/request-component";
   static const components = "/components";
   static const introduction = "/components/introduction";
   static const blocks = "/components/blocks";
   static const templates = "/components/templates";
   static const animations = "/components/animations";
   static const effects = "/components/effects";
+
+  static const getStarted = "$introduction/get-started";
+  static const requestComponent = "$introduction/request-component";
 
   static const texts = "$blocks/texts";
   static const buttons = "$blocks/buttons";

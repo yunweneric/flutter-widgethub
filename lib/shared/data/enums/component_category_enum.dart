@@ -1,4 +1,5 @@
 enum ComponentCategoryEnum {
+  INTRODUCTION,
   GETTING_STARTED,
   TEMPLATES,
   BLOCKS,

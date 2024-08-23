@@ -13,24 +13,23 @@ import 'package:flutterui/screens/home/data/templates/auth_bloc_item.dart';
 import 'package:flutterui/screens/home/data/templates/bottom_bar.dart';
 import 'package:flutterui/screens/home/data/templates/home_screen_bloc_item.dart';
 import 'package:flutterui/screens/home/model/component_block_model.dart';
-import 'package:flutterui/screens/routes/route_names.dart';
 import 'package:flutterui/shared/data/enums/component_category_enum.dart';
 import 'package:flutterui/shared/data/enums/sub_component_category_enum.dart';
 
 final sideBarCategories = [
   AppCategoryGroupModel(
-    category: ComponentCategoryEnum.GETTING_STARTED,
+    category: ComponentCategoryEnum.INTRODUCTION,
     description: "A wide range of pre-built UI templates from app clones to demo apps all in one place",
     items: [
       AppCategoryModel(
         widget: const Text(""),
         subCategory: SubComponentCategoryEnum.GETTING_STARTED,
-        category: ComponentCategoryEnum.GETTING_STARTED,
+        category: ComponentCategoryEnum.INTRODUCTION,
       ),
       AppCategoryModel(
         widget: const Text(""),
         subCategory: SubComponentCategoryEnum.REQUEST_A_COMPONENT,
-        category: ComponentCategoryEnum.GETTING_STARTED,
+        category: ComponentCategoryEnum.INTRODUCTION,
       ),
     ],
   ),
