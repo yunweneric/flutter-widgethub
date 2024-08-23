@@ -52,13 +52,11 @@ class _HomeScreenState extends State<HomeScreen> {
       description: "A wide range of pre-built UI templates from app clones to demo apps all in one place",
       items: [
         AppCategoryModel(
-          link: RouteNames.home,
           widget: const Text(""),
           category: ComponentCategoryEnum.GETTING_STARTED,
           subCategory: SubComponentCategoryEnum.GETTING_STARTED,
         ),
         AppCategoryModel(
-          link: RouteNames.requestComponent,
           widget: const Text(""),
           category: ComponentCategoryEnum.GETTING_STARTED,
           subCategory: SubComponentCategoryEnum.REQUEST_A_COMPONENT,

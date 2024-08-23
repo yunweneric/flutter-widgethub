@@ -23,13 +23,11 @@ final sideBarCategories = [
     description: "A wide range of pre-built UI templates from app clones to demo apps all in one place",
     items: [
       AppCategoryModel(
-        link: RouteNames.gettingStarted,
         widget: const Text(""),
         subCategory: SubComponentCategoryEnum.GETTING_STARTED,
         category: ComponentCategoryEnum.GETTING_STARTED,
       ),
       AppCategoryModel(
-        link: RouteNames.requestComponent,
         widget: const Text(""),
         subCategory: SubComponentCategoryEnum.REQUEST_A_COMPONENT,
         category: ComponentCategoryEnum.GETTING_STARTED,
@@ -41,27 +39,23 @@ final sideBarCategories = [
     description: "A wide range of pre-built UI templates from app clones to demo apps all in one place",
     items: [
       AppCategoryModel(
-        link: RouteNames.appClones,
         widget: const AppCloneBlocItem(),
         subCategory: SubComponentCategoryEnum.APP_CLONES,
         category: ComponentCategoryEnum.TEMPLATES,
         alignment: Alignment.topCenter,
       ),
       AppCategoryModel(
-        link: RouteNames.onboardingScreens,
         widget: const BottomBarBlocItem(),
         subCategory: SubComponentCategoryEnum.ONBOARDING_SCREENS,
         category: ComponentCategoryEnum.TEMPLATES,
       ),
       AppCategoryModel(
-        link: RouteNames.homeScreens,
         widget: const HomeScreenBlocItem(),
         subCategory: SubComponentCategoryEnum.HOME_SCREENS,
         category: ComponentCategoryEnum.TEMPLATES,
         alignment: Alignment.topCenter,
       ),
       AppCategoryModel(
-        link: RouteNames.authScreens,
         widget: const AuthBlocItem(),
         subCategory: SubComponentCategoryEnum.AUTHENTICATION_SCREENS,
         category: ComponentCategoryEnum.TEMPLATES,
@@ -73,54 +67,46 @@ final sideBarCategories = [
     description: "A collection of reusable layout blocks to help you create consistent and responsive layouts",
     items: [
       AppCategoryModel(
-        link: RouteNames.switchers,
         widget: const SwitchersBlocItem(),
         subCategory: SubComponentCategoryEnum.SWITCHERS,
         category: ComponentCategoryEnum.BLOCKS,
         alignment: Alignment.topCenter,
       ),
       AppCategoryModel(
-        link: RouteNames.inputs,
         widget: const InputsBlocItem(),
         subCategory: SubComponentCategoryEnum.INPUTS,
         category: ComponentCategoryEnum.BLOCKS,
         alignment: Alignment.center,
       ),
       AppCategoryModel(
-        link: RouteNames.texts,
         widget: const TextBlocItem(),
         subCategory: SubComponentCategoryEnum.TEXTS,
         category: ComponentCategoryEnum.BLOCKS,
       ),
       AppCategoryModel(
-        link: RouteNames.loaders,
         widget: const LoadersBlocItem(),
         subCategory: SubComponentCategoryEnum.LOADERS,
         category: ComponentCategoryEnum.BLOCKS,
         alignment: Alignment.topCenter,
       ),
       AppCategoryModel(
-        link: RouteNames.buttons,
         widget: const ButtonsBlocItem(),
         subCategory: SubComponentCategoryEnum.BUTTONS,
         category: ComponentCategoryEnum.BLOCKS,
         alignment: Alignment.center,
       ),
       AppCategoryModel(
-        link: RouteNames.bottomBars,
         widget: const BottomNavBarsBlocItem(),
         subCategory: SubComponentCategoryEnum.BOTTOM_NAV_BARS,
         category: ComponentCategoryEnum.BLOCKS,
       ),
       AppCategoryModel(
-        link: RouteNames.drawers,
         widget: const DrawersBlocItem(),
         subCategory: SubComponentCategoryEnum.DRAWERS,
         category: ComponentCategoryEnum.BLOCKS,
         alignment: Alignment.topCenter,
       ),
       AppCategoryModel(
-        link: RouteNames.carousels,
         widget: const CarouselsBlocItem(),
         subCategory: SubComponentCategoryEnum.SLIDERS_AND_CAROUSELS,
         category: ComponentCategoryEnum.BLOCKS,
@@ -153,7 +139,6 @@ final sideBarCategories = [
     description: "Visual effects ranging from shadows and gradients to more complex transformations",
     items: [
       AppCategoryModel(
-        link: RouteNames.gradientEffects,
         widget: const GradientEffectsBlocItem(),
         subCategory: SubComponentCategoryEnum.LINEAR_GRADIENTS,
         category: ComponentCategoryEnum.EFFECTS,

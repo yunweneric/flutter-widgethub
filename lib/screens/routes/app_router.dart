@@ -68,7 +68,11 @@ final appRouter = GoRouter(
           builder: (context, state) => buildComponentLayout(state),
         ),
         buildAnimatedRoute(
-          path: RouteNames.gettingStarted,
+          path: RouteNames.introduction,
+          builder: (context, state) => buildComponentLayout(state),
+        ),
+        buildAnimatedRoute(
+          path: '${RouteNames.introduction}/:id',
           builder: (context, state) => buildComponentLayout(state),
         ),
 

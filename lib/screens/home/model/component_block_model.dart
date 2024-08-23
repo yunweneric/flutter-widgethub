@@ -18,14 +18,12 @@ class AppCategoryGroupModel {
 
 class AppCategoryModel {
   final Widget widget;
-  final String link;
   final ComponentCategoryEnum category;
   final SubComponentCategoryEnum subCategory;
   final AlignmentGeometry? alignment;
 
   AppCategoryModel({
     required this.widget,
-    required this.link,
     required this.category,
     required this.subCategory,
     this.alignment,

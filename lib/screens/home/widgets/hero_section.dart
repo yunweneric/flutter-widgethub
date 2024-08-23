@@ -84,12 +84,11 @@ class _HeroSectionState extends State<HeroSection> {
                                 category: AppCategoryModel(
                                   widget: widget,
                                   category: ComponentCategoryEnum.GETTING_STARTED,
-                                  link: RouteNames.gettingStarted,
                                   subCategory: SubComponentCategoryEnum.GETTING_STARTED,
                                 ),
                               ),
                             );
-                            context.go(RouteNames.gettingStarted);
+                            context.go(RouteNames.introduction);
                           },
                           child: Text(
                             "Get started",

@@ -3,7 +3,7 @@ class RouteNames {
   static const support = "/support";
   static const requestComponent = "/request-component";
   static const components = "/components";
-  static const gettingStarted = "/components/getting-started";
+  static const introduction = "/components/introduction";
   static const blocks = "/components/blocks";
   static const templates = "/components/templates";
   static const animations = "/components/animations";

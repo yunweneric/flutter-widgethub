@@ -46,7 +46,7 @@ class _SideBarState extends State<SideBar> {
     return BlocBuilder<ComponentBloc, ComponentState>(
       builder: (context, state) {
         if (state is UpdateActiveCategorySuccess) {
-          activeCategory = state.activeCategory!.link;
+          activeCategory = state.activeCategory!.category.link() + state.activeCategory!.subCategory.link();
         }
         final activePath = getIt.get<GoRouter>().routeInformationProvider.value.uri.pathSegments;
         return Scaffold(
@@ -78,7 +78,8 @@ class _SideBarState extends State<SideBar> {
                                     onPressed: () {
                                       componentBloc.add(UpdateActiveCategoryEvent(category: sideBarItem));
                                       setState(() => activeSideBar = sideBarItem);
-                                      context.go(sideBarItem.link);
+                                      // context.go(sideBarItem.category.link());
+                                      context.go("/components/${sideBarItem.category.link()}/${sideBarItem.subCategory.link()}");
                                     },
                                   );
                                 },

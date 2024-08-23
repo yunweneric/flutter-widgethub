@@ -205,7 +205,7 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
                             return navItem(
                               onPressed: () {
                                 animateNavBar();
-                                context.go("/components/${categoryGroup.category.link()}");
+                                context.go("/components/${categoryGroup.category.link()}/${categoryGroup.items.first.subCategory.link()}");
                               },
                               title: categoryGroup.category.describe(),
                             );
@@ -237,7 +237,8 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
                                             onPressed: () {
                                               setState(() => isNavBarOpen = false);
                                               componentBloc.add(UpdateActiveCategoryEvent(category: category));
-                                              context.go(category.link);
+                                              context.go("/components/${category.category.link()}/${category.subCategory.link()}");
+                                              // context.go("/components/${category.category.link()}/${categoryGroup.items.first.subCategory.link()}");
                                             },
                                           );
                                         },

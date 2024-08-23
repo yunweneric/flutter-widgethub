@@ -175,7 +175,7 @@ class _AssetsSectionState extends State<AssetsSection> {
                                             focusColor: Theme.of(context).scaffoldBackgroundColor,
                                             splashColor: Theme.of(context).scaffoldBackgroundColor,
                                             onTap: () {
-                                              context.go(item.link);
+                                              context.go("/components/${item.category.link()}/${item.subCategory.link()}");
                                               // context.go("/components/templates/app-clones");
                                               // context.go("${item.link}/${item.category.describe()}");
                                               // componentBloc.add(UpdateActiveCategoryEvent(category: item));
