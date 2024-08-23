@@ -1,7 +1,7 @@
 class RouteNames {
   static const home = "/";
   static const support = "/support";
-  static const requestComponent = "request-component";
+  static const requestComponent = "/request-component";
   static const components = "/components";
   static const gettingStarted = "/components/getting-started";
   static const blocks = "/components/blocks";
@@ -16,9 +16,9 @@ class RouteNames {
   static const loaders = "$blocks/loaders";
   static const switchers = "$blocks/switchers";
   static const sliders = "$blocks/sliders";
-  static const bottomBars = "$blocks/bottom-bars";
+  static const bottomBars = "$blocks/bottom-nav-bars";
   static const drawers = "$blocks/drawers";
-  static const carousels = "$blocks/carousels";
+  static const carousels = "$blocks/sliders-and-carousels";
 
   static const authScreens = "$templates/authentication-screens";
   static const homeScreens = "$templates/home-screens";

@@ -1,39 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/core/service_locators.dart';
-import 'package:flutterui/shared/data/enums/theme.dart';
 import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/shared/ui/utils/icons.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/app_search_bar.dart';
 import 'package:flutterui/shared/ui/widgets/icon.dart';
 
-class MobileNav extends StatefulWidget {
+class HomeMobileNav extends StatefulWidget {
   final VoidCallback onTap;
-  const MobileNav({super.key, required this.onTap});
+  final bool isHomeScreenLayout;
+  const HomeMobileNav({super.key, required this.onTap, required this.isHomeScreenLayout});
 
   @override
-  State<MobileNav> createState() => _MobileNavState();
+  State<HomeMobileNav> createState() => _HomeMobileNavState();
 }
 
-class _MobileNavState extends State<MobileNav> {
+class _HomeMobileNavState extends State<HomeMobileNav> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.symmetric(horizontal: AppSizing.kWPercentage(context, 5)),
       width: AppSizing.kWPercentage(context, 90),
       padding: EdgeInsets.symmetric(vertical: 30.h),
+      color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.95),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               GestureDetector(
-                child: AppIcon(icon: AppIcons.menu, size: 35.w),
                 onTap: widget.onTap,
-              ),
-              TextButton(
-                child: Text("Logo", style: Theme.of(context).textTheme.displayMedium),
-                onPressed: () {},
+                child: const AppIcon(icon: AppIcons.menu, size: 35),
               ),
             ],
           ),

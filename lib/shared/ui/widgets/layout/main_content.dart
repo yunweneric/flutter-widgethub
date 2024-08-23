@@ -53,6 +53,7 @@ class _MainContentState extends State<MainContent> {
               Divider(color: Theme.of(context).dividerColor),
               AppSizing.khSpacer(30.h),
               const ComponentFooter(),
+              AppSizing.khSpacer(AppSizing.kHPercentage(context, 15)),
             ],
           ),
         ),

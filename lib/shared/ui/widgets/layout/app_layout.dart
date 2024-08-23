@@ -1,5 +1,7 @@
 // import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/core/service_locators.dart';
 import 'package:flutterui/screens/home/data/export/sidebar_categories.dart';
@@ -7,18 +9,23 @@ import 'package:flutterui/screens/home/model/component_block_model.dart';
 import 'package:flutterui/screens/home/widgets/home_footer.dart';
 // import 'package:flutterui/screens/routes/app_router.gr.dart';
 import 'package:flutterui/screens/routes/route_names.dart';
+import 'package:flutterui/shared/data/enums/component_category_enum.dart';
 import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/shared/ui/utils/icons.dart';
+import 'package:flutterui/shared/ui/utils/images.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/utils/util.dart';
 import 'package:flutterui/shared/ui/widgets/icon.dart';
-import 'package:flutterui/shared/ui/widgets/layout/nav_bar.dart';
+import 'package:flutterui/shared/ui/widgets/layout/home_nav_bar.dart';
+import 'package:flutterui/shared/ui/widgets/layout/side_bar_item.dart';
+import 'package:go_router/go_router.dart';
 
 class AppLayout extends StatefulWidget {
   final bool? hideFooter;
+  final bool? isHomeScreenLayout;
   final List<Widget> children;
   final ScrollController? controller;
-  const AppLayout({super.key, required this.children, this.hideFooter, this.controller});
+  const AppLayout({super.key, required this.children, this.hideFooter, this.controller, this.isHomeScreenLayout});
 
   @override
   State<AppLayout> createState() => _AppLayoutState();
@@ -50,9 +57,6 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
     }
   }
 
-  List<AppCategoryGroupModel> items = [
-    ...sideBarCategories.where((item) => item.category.describe().toLowerCase() != "animations"),
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,13 +77,14 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
                     controller: widget.controller,
                     child: Column(
                       children: [
-                        NavBar(
-                            isHomeScreenLayout: true,
-                            onTap: () {
-                              setState(() => isNavBarOpen = !isNavBarOpen);
-                              animateNavBar();
-                            }),
-                        ...widget.children,
+                        AppSizing.khSpacer(100),
+                        ConstrainedBox(
+                          constraints: BoxConstraints(minHeight: AppSizing.kHPercentage(context, 80)),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: widget.children,
+                          ),
+                        ),
                         widget.hideFooter == true ? const SizedBox.shrink() : const HomeFooter(),
                       ],
                     ),
@@ -87,7 +92,7 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
                 );
               }),
           AnimatedPositioned(
-            top: 0,
+            top: 20,
             left: isNavBarOpen ? 0 : -AppSizing.width(context),
             duration: const Duration(milliseconds: 500),
             child: SizedBox(
@@ -101,45 +106,7 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 30),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Logo",
-                                    style: Theme.of(context).textTheme.displayMedium,
-                                  ),
-                                  CircleAvatar(
-                                    backgroundColor: Colors.transparent,
-                                    child: TextButton(
-                                      onPressed: () {
-                                        setState(() {
-                                          isNavBarOpen = false;
-                                        });
-                                        animateNavBar();
-                                      },
-                                      child: Icon(Icons.close),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              AppSizing.khSpacer(30),
-                              ...items.map((item) {
-                                return navItem(
-                                  onPressed: () {
-                                    // componentBloc.add(UpdateActiveCategoryEvent(category: item.items.first));
-                                    // context.router.push(ComponentCategoryRoute(category: RouteNames.components));
-                                  },
-                                  title: item.category.describe(),
-                                );
-                              }),
-                            ],
-                          ),
-                        ),
+                        sideBarComponents(context),
                         AppSizing.kh20Spacer(),
                         Column(
                           children: [
@@ -160,7 +127,150 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
                 ),
               ),
             ),
-          )
+          ),
+          AnimatedPositioned(
+            top: 0,
+            left: !isNavBarOpen ? 0 : AppSizing.width(context),
+            duration: const Duration(milliseconds: 500),
+            child: HomeNavBar(
+              isHomeScreenLayout: widget.isHomeScreenLayout ?? true,
+              onTap: () {
+                setState(() => isNavBarOpen = !isNavBarOpen);
+                animateNavBar();
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Container sideBarComponents(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 30),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              TextButton(
+                child: AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 500),
+                  child: Theme.of(context).brightness == Brightness.dark
+                      ? Image.asset(
+                          AppImages.logoLight,
+                          width: 100,
+                        )
+                      : Image.asset(
+                          AppImages.logoDark,
+                          width: 100,
+                        ),
+                ),
+                onPressed: () {
+                  context.go(RouteNames.home);
+                },
+              ),
+              CircleAvatar(
+                backgroundColor: Colors.transparent,
+                child: TextButton(
+                  onPressed: () {
+                    setState(() {
+                      isNavBarOpen = false;
+                    });
+                    animateNavBar();
+                  },
+                  child: Icon(Icons.close),
+                ),
+              ),
+            ],
+          ),
+          AppSizing.khSpacer(30),
+          BlocConsumer<ComponentBloc, ComponentState>(
+            listener: (context, state) {},
+            builder: (context, state) {
+              final activePath = getIt.get<GoRouter>().routeInformationProvider.value.uri.pathSegments;
+
+              return Builder(builder: (context) {
+                List<AppCategoryGroupModel> categoriesGroup = [
+                  ...sideBarCategories.where((item) {
+                    final condition = item.category != ComponentCategoryEnum.ANIMATIONS;
+                    return condition;
+                  }),
+                ];
+                return widget.isHomeScreenLayout == true || widget.isHomeScreenLayout == null
+                    ? Column(
+                        children: [
+                          ...categoriesGroup.map((categoryGroup) {
+                            return navItem(
+                              onPressed: () {
+                                animateNavBar();
+                                context.go("/components/${categoryGroup.category.link()}");
+                              },
+                              title: categoryGroup.category.describe(),
+                            );
+                          }),
+                        ],
+                      )
+                    : Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          AppSizing.khSpacer(30.h),
+                          ...categoriesGroup.map((item) {
+                            return Container(
+                              margin: EdgeInsets.only(bottom: 30.h),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(item.category.describe(), style: Theme.of(context).textTheme.displayMedium),
+                                  AppSizing.khSpacer(15.h),
+                                  Stack(
+                                    children: [
+                                      ListView.builder(
+                                        itemCount: item.items.length,
+                                        physics: const NeverScrollableScrollPhysics(),
+                                        shrinkWrap: true,
+                                        itemBuilder: (context, index) {
+                                          final category = item.items[index];
+                                          return SideBarItem(
+                                            title: category.subCategory.describe(),
+                                            onPressed: () {
+                                              setState(() => isNavBarOpen = false);
+                                              componentBloc.add(UpdateActiveCategoryEvent(category: category));
+                                              context.go(category.link);
+                                            },
+                                          );
+                                        },
+                                      ),
+                                      SizedBox(
+                                        width: 2.w,
+                                        child: ListView.builder(
+                                          itemCount: item.items.length,
+                                          physics: const NeverScrollableScrollPhysics(),
+                                          shrinkWrap: true,
+                                          itemBuilder: (context, index) {
+                                            final sideBarItem = item.items[index];
+                                            final isActive = activePath.contains(sideBarItem.subCategory.link());
+                                            return AnimatedContainer(
+                                              duration: const Duration(milliseconds: 400),
+                                              height: 32,
+                                              color: isActive ? Theme.of(context).primaryColor : Theme.of(context).dividerColor,
+                                              width: 2.w,
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            );
+                          }),
+                        ],
+                      );
+              });
+            },
+          ),
         ],
       ),
     );
@@ -253,7 +363,10 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               navItem(
-                onPressed: () => UtilHelper.openUrl("https://github.com/yunweneric/"),
+                onPressed: () {
+                  animateNavBar();
+                  context.go(RouteNames.support);
+                },
                 icon: AppIcons.card,
                 title: "Donate to support us",
               ),

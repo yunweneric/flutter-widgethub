@@ -91,11 +91,10 @@ class _SideBarState extends State<SideBar> {
                                   shrinkWrap: true,
                                   itemBuilder: (context, index) {
                                     final sideBarItem = item.items[index];
-                                    // print(["activePath", activePath, "sideBarItem", sideBarItem.link]);
                                     final isActive = activePath.contains(sideBarItem.subCategory.link());
                                     return AnimatedContainer(
                                       duration: const Duration(milliseconds: 400),
-                                      height: 30.h,
+                                      height: 32,
                                       color: isActive ? Theme.of(context).primaryColor : Theme.of(context).dividerColor,
                                       width: 2.w,
                                     );

@@ -31,19 +31,13 @@ class _ComponentCategoryScreenState extends State<ComponentCategoryScreen> {
                   ? const SizedBox()
                   : Column(
                       children: [
-                        Text(activeCategory.category.describe(), style: Theme.of(context).textTheme.displayLarge),
+                        Text(activeCategory.subCategory.describe(), style: Theme.of(context).textTheme.displayLarge),
                         AppSizing.kh20Spacer(),
                       ],
                     ),
             ),
             Builder(
               builder: (context) {
-                // final components = activeCategory == null || activeCategory.link == RouteNames.home
-                //     ? state.allComponents
-                //     : state.allComponents.where((item) {
-                //         return item.title == activeCategory.title;
-                //       });
-
                 List<Component> components = state.allComponents.where((item) => item.subcategory.link() == widget.subCategory).toList();
                 if (widget.subCategory == null) {
                   components = state.allComponents;

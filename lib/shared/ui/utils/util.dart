@@ -3,12 +3,16 @@ import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutterui/core/platform/platform.dart';
+import 'package:flutterui/core/service_locators.dart';
+import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:device_frame/device_frame.dart';
 import 'package:flutterui/shared/data/enums/device_type.dart';
 
 class UtilHelper {
+  static String activeRoute = getIt.get<GoRouter>().routeInformationProvider.value.uri.path;
+
   static dynamic getWindows() {
     final windows = getWindow();
     return windows;

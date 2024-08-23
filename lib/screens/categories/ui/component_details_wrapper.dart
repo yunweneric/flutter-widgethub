@@ -57,7 +57,7 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
               resourcesSection(component),
               CodePreview(component: component),
               AppSizing.kh20Spacer(),
-              componentFooter(canPrevious, canNext, context, state, activeIndex)
+              componentFooter(canPrevious, canNext, context, state, activeIndex),
             ],
           );
         }

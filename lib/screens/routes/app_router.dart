@@ -3,6 +3,7 @@ import 'package:flutterui/screens/categories/ui/component_category_screen.dart';
 import 'package:flutterui/screens/categories/ui/component_details_wrapper.dart';
 import 'package:flutterui/screens/categories/widget/component_layout.dart';
 import 'package:flutterui/screens/home/ui/home_screen.dart';
+import 'package:flutterui/screens/request_component/request_component_screen.dart';
 import 'package:flutterui/screens/routes/route_names.dart';
 import 'package:flutterui/screens/support/ui/support_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -43,8 +44,18 @@ final appRouter = GoRouter(
   initialLocation: '/',
   routes: [
     // Regular GoRoute for HomeScreen
-    buildAnimatedRoute(path: "/", builder: (context, state) => HomeScreen()),
-    buildAnimatedRoute(path: RouteNames.support, builder: (context, state) => SupportScreen()),
+    buildAnimatedRoute(
+      path: "/",
+      builder: (context, state) => HomeScreen(),
+    ),
+    buildAnimatedRoute(
+      path: RouteNames.support,
+      builder: (context, state) => SupportScreen(),
+    ),
+    buildAnimatedRoute(
+      path: RouteNames.requestComponent,
+      builder: (context, state) => RequestComponentScreen(),
+    ),
 
     // ShellRoute for routes with a shared layout
     ShellRoute(

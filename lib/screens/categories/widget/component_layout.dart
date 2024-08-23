@@ -95,6 +95,7 @@ class _AppLayoutState extends State<ComponentLayoutScreen> {
   Widget build(BuildContext context) {
     return AppLayout(
       hideFooter: true,
+      isHomeScreenLayout: false,
       children: [
         SizedBox(
           width: AppSizing.width(context),

@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/core/service_locators.dart';
 // import 'package:flutterui/screens/routes/app_router.gr.dart';
 import 'package:flutterui/screens/routes/route_names.dart';
-import 'package:flutterui/shared/data/enums/theme.dart';
 import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/shared/ui/models/nav_link.dart';
 import 'package:flutterui/shared/ui/utils/icons.dart';
@@ -15,20 +14,20 @@ import 'package:flutterui/shared/ui/utils/util.dart';
 import 'package:flutterui/shared/ui/widgets/app_container.dart';
 import 'package:flutterui/shared/ui/widgets/app_search_bar.dart';
 import 'package:flutterui/shared/ui/widgets/icon.dart';
-import 'package:flutterui/shared/ui/widgets/layout/mobile_nav.dart';
+import 'package:flutterui/shared/ui/widgets/layout/home_mobile_nav.dart';
 import 'package:go_router/go_router.dart';
 
-class NavBar extends StatefulWidget {
+class HomeNavBar extends StatefulWidget {
   final bool isHomeScreenLayout;
   final VoidCallback onTap;
 
-  const NavBar({super.key, required this.onTap, required this.isHomeScreenLayout});
+  const HomeNavBar({super.key, required this.onTap, required this.isHomeScreenLayout});
 
   @override
-  State<NavBar> createState() => _NavBarState();
+  State<HomeNavBar> createState() => _HomeNavBarState();
 }
 
-class _NavBarState extends State<NavBar> {
+class _HomeNavBarState extends State<HomeNavBar> {
   List<NavLink> links = [
     NavLink(title: "Components", path: RouteNames.components),
     NavLink(title: "Support", path: RouteNames.support),
@@ -38,8 +37,12 @@ class _NavBarState extends State<NavBar> {
     return BlocBuilder<ThemeBloc, ThemeState>(
       builder: (context, state) {
         return AppSizing.isMobile(context)
-            ? MobileNav(onTap: widget.onTap)
+            ? HomeMobileNav(
+                onTap: widget.onTap,
+                isHomeScreenLayout: widget.isHomeScreenLayout,
+              )
             : AppContainer(
+                isHomeScreenLayout: widget.isHomeScreenLayout,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -135,7 +138,7 @@ class _NavBarState extends State<NavBar> {
                         ),
                       ],
                     )
-                    // navBar
+                    // HomenavBar
                   ],
                 ),
               );

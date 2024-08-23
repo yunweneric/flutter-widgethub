@@ -52,7 +52,7 @@ showSearchModal(BuildContext context) {
   return showDialog(
     barrierDismissible: true,
     context: context,
-    barrierColor: Colors.black.withOpacity(0.8),
+    barrierColor: Colors.black.withOpacity(0.4),
     builder: (context) {
       return const SearchBar();
     },

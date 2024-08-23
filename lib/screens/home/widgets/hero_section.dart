@@ -30,6 +30,8 @@ class _HeroSectionState extends State<HeroSection> {
   Widget build(BuildContext context) {
     return Container(
       // height: AppSizing.isMobile(context) ? null : AppSizing.kHPercentage(context, 90),
+      margin: EdgeInsets.symmetric(horizontal: AppSizing.kWPercentage(context, 5)),
+
       width: AppSizing.kWPercentage(context, 100),
       alignment: Alignment.topLeft,
       child: Column(
@@ -41,8 +43,9 @@ class _HeroSectionState extends State<HeroSection> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 80 : 40),
-                margin: EdgeInsets.only(left: AppSizing.kWPercentage(context, 5)),
+                width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 80 : 35),
+                // margin: EdgeInsets.only(left: AppSizing.kWPercentage(context, 5)),
+                // margin: EdgeInsets.symmetric(horizontal: AppSizing.kWPercentage(context, 5)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -81,7 +84,7 @@ class _HeroSectionState extends State<HeroSection> {
                                 category: AppCategoryModel(
                                   widget: widget,
                                   category: ComponentCategoryEnum.GETTING_STARTED,
-                                  link: RouteNames.home,
+                                  link: RouteNames.gettingStarted,
                                   subCategory: SubComponentCategoryEnum.GETTING_STARTED,
                                 ),
                               ),
@@ -115,6 +118,7 @@ class _HeroSectionState extends State<HeroSection> {
               if (!AppSizing.isMobile(context))
                 SizedBox(
                   // height: AppSizing.kHPercentage(context, 100),
+                  // width: AppSizing.kWPercentage(context, 52),
                   width: AppSizing.kWPercentage(context, 52),
                   // color: Colors.teal,
                   child: StaggeredGrid.count(
