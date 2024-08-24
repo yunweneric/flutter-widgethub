@@ -87,7 +87,7 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
                       controller: widget.controller,
                       child: Column(
                         children: [
-                          AppSizing.khSpacer(100),
+                          AppSizing.khSpacer(80),
                           ConstrainedBox(
                             constraints: BoxConstraints(minHeight: AppSizing.kHPercentage(context, 80)),
                             child: Column(

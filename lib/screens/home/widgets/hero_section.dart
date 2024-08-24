@@ -30,7 +30,7 @@ class _HeroSectionState extends State<HeroSection> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: AppSizing.isMobile(context) ? null : AppSizing.kHPercentage(context, 90),
+      // height: AppSizing.isMobile(context) ? null : AppSizing.kHPercentage(context, 90),
       margin: EdgeInsets.symmetric(horizontal: AppSizing.kWPercentage(context, 5)),
       width: AppSizing.kWPercentage(context, 100),
       alignment: Alignment.topLeft,

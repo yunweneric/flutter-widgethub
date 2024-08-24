@@ -36,12 +36,15 @@ class _SupportScreenState extends State<SupportScreen> {
     return Scaffold(
       body: AppLayout(
         children: [
-          Wrap(
-            // verticalDirection: VerticalDirection.up,
-            children: [
-              donationForm(),
-              donationImage(),
-            ],
+          Container(
+            width: AppSizing.kWPercentage(context, 90),
+            margin: EdgeInsets.symmetric(horizontal: AppSizing.kWPercentage(context, 5)),
+            child: Wrap(
+              children: [
+                donationForm(),
+                donationImage(),
+              ],
+            ),
           ),
         ],
       ),
@@ -50,8 +53,8 @@ class _SupportScreenState extends State<SupportScreen> {
 
   Widget donationForm() {
     return Container(
-      width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 50),
-      height: AppSizing.kHPercentage(context, AppSizing.isMobile(context) ? 50 : 100),
+      width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 40),
+      height: AppSizing.kHPercentage(context, AppSizing.isMobile(context) ? 40 : 80),
       padding: const EdgeInsets.symmetric(horizontal: 30),
       child: BlocConsumer<PaymentBloc, PaymentState>(
         listener: (context, state) {
@@ -137,7 +140,9 @@ class _SupportScreenState extends State<SupportScreen> {
   Widget donationImage() {
     return Container(
       width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 50),
-      height: AppSizing.height(context),
+      // height: AppSizing.height(context),
+      height: AppSizing.kHPercentage(context, AppSizing.isMobile(context) ? 40 : 100),
+
       color: Theme.of(context).primaryColor.withOpacity(0.2),
       child: Image.asset(
         "assets/images/support_1.jpg",

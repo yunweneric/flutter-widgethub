@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
                   return MaterialApp.router(
                     routerConfig: getIt.get<GoRouter>(),
                     debugShowCheckedModeBanner: false,
-                    title: 'Flutter UI',
+                    title: 'Flutter WidgetHub',
                     theme: AppTheme.light(),
                     darkTheme: AppTheme.dark(),
                     themeMode: state.themeMode,
