@@ -7,7 +7,6 @@ import 'package:flutterui/screens/home/data/export/sidebar_categories.dart';
 import 'package:flutterui/screens/home/model/component_block_model.dart';
 import 'package:flutterui/screens/home/widgets/component_block.dart';
 import 'package:flutterui/shared/data/enums/component_category_enum.dart';
-import 'package:flutterui/shared/data/enums/sub_component_category_enum.dart';
 import 'package:flutterui/shared/ui/utils/icons.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/device_section_frame.dart';
@@ -23,7 +22,7 @@ class AssetsSection extends StatefulWidget {
 class _AssetsSectionState extends State<AssetsSection> {
   late AppCategoryGroupModel activeBlock;
   List<AppCategoryGroupModel> blocks = sideBarCategories.where((item) {
-    final condition = item.category != ComponentCategoryEnum.GETTING_STARTED;
+    final condition = item.category != ComponentCategoryEnum.GETTING_STARTED && item.category != ComponentCategoryEnum.INTRODUCTION;
     return condition;
   }).toList();
   final componentBloc = getIt.get<ComponentBloc>();
@@ -79,9 +78,7 @@ class _AssetsSectionState extends State<AssetsSection> {
           TextButton.icon(
             style: TextButton.styleFrom(backgroundColor: Theme.of(context).scaffoldBackgroundColor),
             iconAlignment: IconAlignment.end,
-            onPressed: () {
-              // context.router.push(ComponentCategoryRoute(category: RouteNames.home));
-            },
+            onPressed: () {},
             icon: const Icon(Icons.arrow_forward_rounded),
             label: const Text("Browse all assets"),
           ),
@@ -106,12 +103,8 @@ class _AssetsSectionState extends State<AssetsSection> {
                           highlightColor: Theme.of(context).scaffoldBackgroundColor,
                           focusColor: Theme.of(context).scaffoldBackgroundColor,
                           splashColor: Theme.of(context).scaffoldBackgroundColor,
-                          onTap: () {
-                            setState(() => activeBlock = item);
-                          },
-                          onHover: (status) {
-                            // setState(() => activeBlock = item);
-                          },
+                          onTap: () => setState(() => activeBlock = item),
+                          onHover: (status) {},
                           child: ComponentBlock(item: item, isActive: activeBlock == item),
                         ),
                       )
@@ -125,8 +118,6 @@ class _AssetsSectionState extends State<AssetsSection> {
                   final displayWidget = AppSizing.isMobile(context) ? allBlockItems : activeBlockItem;
                   return Container(
                     alignment: Alignment.centerLeft,
-                    // padding: EdgeInsets.only(left: 20),
-                    // color: Colors.amber,
                     constraints: BoxConstraints(minHeight: AppSizing.kHPercentage(context, 25)),
                     width: AppSizing.kWPercentage(context, AppSizing.isTablet(context) ? 70 : 100),
                     child: AnimatedSwitcher(
@@ -176,10 +167,6 @@ class _AssetsSectionState extends State<AssetsSection> {
                                             splashColor: Theme.of(context).scaffoldBackgroundColor,
                                             onTap: () {
                                               context.go("/components/${item.category.link()}/${item.subCategory.link()}");
-                                              // context.go("/components/templates/app-clones");
-                                              // context.go("${item.link}/${item.category.describe()}");
-                                              // componentBloc.add(UpdateActiveCategoryEvent(category: item));
-                                              // context.router.push(ComponentCategoryRoute(category: item.link));
                                             },
                                             child: Column(
                                               crossAxisAlignment: CrossAxisAlignment.start,

@@ -6,10 +6,8 @@ import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/core/service_locators.dart';
 import 'package:flutterui/screens/home/data/export/sidebar_categories.dart';
 import 'package:flutterui/screens/home/model/component_block_model.dart';
-// import 'package:flutterui/screens/routes/app_router.gr.dart';
-import 'package:flutterui/screens/routes/route_names.dart';
 import 'package:flutterui/shared/data/enums/component_category_enum.dart';
-import 'package:flutterui/shared/data/enums/sub_component_category_enum.dart';
+import 'package:flutterui/shared/logic/sidebar/sidebar_bloc.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/layout/side_bar_item.dart';
 import 'package:go_router/go_router.dart';
@@ -30,7 +28,7 @@ class _SideBarState extends State<SideBar> {
   ];
 
   AppCategoryModel? activeSideBar;
-
+  final sidebarBloc = getIt.get<SidebarBloc>();
   @override
   void initState() {
     setState(() {
@@ -74,33 +72,16 @@ class _SideBarState extends State<SideBar> {
                                 itemBuilder: (context, index) {
                                   final sideBarItem = item.items[index];
                                   return SideBarItem(
+                                    isActive: activePath.contains(sideBarItem.subCategory.link()),
                                     title: sideBarItem.subCategory.describe(),
                                     onPressed: () {
+                                      sidebarBloc.add(UpdateSideBarEvent(newStatus: false));
                                       componentBloc.add(UpdateActiveCategoryEvent(category: sideBarItem));
                                       setState(() => activeSideBar = sideBarItem);
-                                      // context.go(sideBarItem.category.link());
                                       context.go("/components/${sideBarItem.category.link()}/${sideBarItem.subCategory.link()}");
                                     },
                                   );
                                 },
-                              ),
-                              SizedBox(
-                                width: 2.w,
-                                child: ListView.builder(
-                                  itemCount: item.items.length,
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  shrinkWrap: true,
-                                  itemBuilder: (context, index) {
-                                    final sideBarItem = item.items[index];
-                                    final isActive = activePath.contains(sideBarItem.subCategory.link());
-                                    return AnimatedContainer(
-                                      duration: const Duration(milliseconds: 400),
-                                      height: 32,
-                                      color: isActive ? Theme.of(context).primaryColor : Theme.of(context).dividerColor,
-                                      width: 2.w,
-                                    );
-                                  },
-                                ),
                               ),
                             ],
                           ),

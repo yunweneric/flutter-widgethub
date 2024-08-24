@@ -201,7 +201,7 @@ class AppTheme {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 18.w),
+          padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 10.w),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
           backgroundColor: AppColors.BGCARDDARK,
           textStyle: darkTextTheme.bodyMedium,

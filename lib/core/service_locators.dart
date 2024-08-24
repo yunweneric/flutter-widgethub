@@ -5,6 +5,7 @@ import 'package:flutterui/screens/support/data/services/payment_service.dart';
 import 'package:flutterui/screens/support/logic/payment/payment_bloc.dart';
 import 'package:flutterui/shared/logic/language/language_bloc.dart';
 import 'package:flutterui/shared/logic/navigation/navigation_bloc.dart';
+import 'package:flutterui/shared/logic/sidebar/sidebar_bloc.dart';
 import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
@@ -22,6 +23,7 @@ class ServiceLocators {
     final paymentBloc = PaymentBloc(paymentRepository);
 
     final themBloc = ThemeBloc();
+    final sidebarBloc = SidebarBloc();
     final languageBloc = LanguageBloc();
     final componentBloc = ComponentBloc();
     final navigationBloc = NavigationBloc();
@@ -29,6 +31,7 @@ class ServiceLocators {
       ..registerSingleton<ThemeBloc>(themBloc)
       ..registerSingleton<PaymentBloc>(paymentBloc)
       ..registerSingleton<ComponentBloc>(componentBloc)
+      ..registerSingleton<SidebarBloc>(sidebarBloc)
       ..registerSingleton<NavigationBloc>(navigationBloc)
       ..registerSingleton<LanguageBloc>(languageBloc);
 

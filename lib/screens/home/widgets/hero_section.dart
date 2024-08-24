@@ -12,6 +12,7 @@ import 'package:flutterui/screens/home/ui/apps/theme_toggle/theme_toggle.dart';
 import 'package:flutterui/screens/routes/route_names.dart';
 import 'package:flutterui/shared/data/enums/component_category_enum.dart';
 import 'package:flutterui/shared/data/enums/sub_component_category_enum.dart';
+import 'package:flutterui/shared/ui/utils/colors.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/device_section_frame.dart';
 import 'package:go_router/go_router.dart';
@@ -29,9 +30,8 @@ class _HeroSectionState extends State<HeroSection> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // height: AppSizing.isMobile(context) ? null : AppSizing.kHPercentage(context, 90),
+      height: AppSizing.isMobile(context) ? null : AppSizing.kHPercentage(context, 90),
       margin: EdgeInsets.symmetric(horizontal: AppSizing.kWPercentage(context, 5)),
-
       width: AppSizing.kWPercentage(context, 100),
       alignment: Alignment.topLeft,
       child: Column(
@@ -90,9 +90,9 @@ class _HeroSectionState extends State<HeroSection> {
                             );
                             context.go(RouteNames.getStarted);
                           },
-                          child: Text(
+                          child: const Text(
                             "Get started",
-                            style: TextStyle(color: Theme.of(context).primaryColorLight),
+                            style: TextStyle(color: AppColors.BG),
                           ),
                         ),
                         AppSizing.kwSpacer(20.w),

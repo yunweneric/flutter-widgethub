@@ -1,9 +1,7 @@
-//import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/core/service_locators.dart';
-// import 'package:flutterui/screens/routes/app_router.gr.dart';
 import 'package:flutterui/screens/routes/route_names.dart';
 import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/shared/ui/models/nav_link.dart';
@@ -62,9 +60,7 @@ class _HomeNavBarState extends State<HomeNavBar> {
                                     width: 130,
                                   ),
                           ),
-                          onPressed: () {
-                            context.go(RouteNames.home);
-                          },
+                          onPressed: () => context.go(RouteNames.home),
                         ),
                         AppSizing.kwSpacer(50.w),
                         Row(
@@ -75,9 +71,7 @@ class _HomeNavBarState extends State<HomeNavBar> {
                               return Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: TextButton(
-                                  onPressed: () {
-                                    context.go(item.path);
-                                  },
+                                  onPressed: () => context.go(item.path),
                                   child: Text(
                                     item.title,
                                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
@@ -138,7 +132,6 @@ class _HomeNavBarState extends State<HomeNavBar> {
                         ),
                       ],
                     )
-                    // HomenavBar
                   ],
                 ),
               );

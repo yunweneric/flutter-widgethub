@@ -9,6 +9,7 @@ import 'package:flutterui/screens/support/logic/payment/payment_bloc.dart';
 import 'package:flutterui/shared/data/enums/theme.dart';
 import 'package:flutterui/shared/logic/language/language_bloc.dart';
 import 'package:flutterui/shared/logic/navigation/navigation_bloc.dart';
+import 'package:flutterui/shared/logic/sidebar/sidebar_bloc.dart';
 import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/shared/ui/utils/theme.dart';
 import 'package:go_router/go_router.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
             BlocProvider(create: (context) => getIt.get<ComponentBloc>()),
             BlocProvider(create: (context) => getIt.get<NavigationBloc>()),
             BlocProvider(create: (context) => getIt.get<PaymentBloc>()),
+            BlocProvider(create: (context) => getIt.get<SidebarBloc>()),
           ],
           child: BlocBuilder<ThemeBloc, ThemeState>(
             builder: (context, state) {

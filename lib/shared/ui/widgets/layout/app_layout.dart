@@ -10,6 +10,7 @@ import 'package:flutterui/screens/home/widgets/home_footer.dart';
 // import 'package:flutterui/screens/routes/app_router.gr.dart';
 import 'package:flutterui/screens/routes/route_names.dart';
 import 'package:flutterui/shared/data/enums/component_category_enum.dart';
+import 'package:flutterui/shared/logic/sidebar/sidebar_bloc.dart';
 import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/shared/ui/utils/icons.dart';
 import 'package:flutterui/shared/ui/utils/images.dart';
@@ -32,11 +33,11 @@ class AppLayout extends StatefulWidget {
 }
 
 class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMixin {
-  // final ScrollController _controller = ScrollController();
   AnimationController? animationController;
   Animation<double>? navBarAnimation;
   final themeBloc = getIt.get<ThemeBloc>();
   final componentBloc = getIt.get<ComponentBloc>();
+  final sidebarBloc = getIt.get<SidebarBloc>();
   bool isNavBarOpen = false;
   @override
   void initState() {
@@ -59,88 +60,97 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          AnimatedBuilder(
-              animation: animationController!,
-              builder: (context, child) {
-                final value = navBarAnimation?.value ?? 0.0;
-                return Transform(
-                  alignment: Alignment.center,
-                  transform: Matrix4.identity()
-                    ..setEntry(3, 2, 0.01)
-                    ..scale(1.0, 1.0, -0.5)
-                    ..rotateY(0.2 * value)
-                    ..translate(AppSizing.kWPercentage(context, 120.0 * value)),
-                  child: SingleChildScrollView(
-                    controller: widget.controller,
-                    child: Column(
-                      children: [
-                        AppSizing.khSpacer(100),
-                        ConstrainedBox(
-                          constraints: BoxConstraints(minHeight: AppSizing.kHPercentage(context, 80)),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: widget.children,
-                          ),
-                        ),
-                        widget.hideFooter == true ? const SizedBox.shrink() : const HomeFooter(),
-                      ],
-                    ),
-                  ),
-                );
-              }),
-          AnimatedPositioned(
-            top: 20,
-            left: isNavBarOpen ? 0 : -AppSizing.width(context),
-            duration: const Duration(milliseconds: 500),
-            child: SizedBox(
-              height: AppSizing.height(context),
-              width: AppSizing.kWPercentage(context, 100),
-              child: SafeArea(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: AppSizing.kHPercentage(context, 2), horizontal: 0),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        sideBarComponents(context),
-                        AppSizing.kh20Spacer(),
-                        Column(
-                          children: [
-                            navbarSection(child: supportSection(context)),
-                            navbarSection(child: followUsSection(context)),
-                            navbarSection(child: themingSection(context)),
-                            AppSizing.kh20Spacer(),
-                            Text(
-                              "Made with 💙 by Yunwen",
-                              style: Theme.of(context).textTheme.bodySmall,
+    return BlocListener<SidebarBloc, SidebarState>(
+      listener: (context, state) {
+        if (state is SidebarUpdateStatus) {
+          setState(() => isNavBarOpen = state.isOpen);
+          animateNavBar();
+          // print(['state', state.isOpen]);
+          // print(['isNavBarOpen', isNavBarOpen]);
+        }
+      },
+      child: Scaffold(
+        body: Stack(
+          children: [
+            AnimatedBuilder(
+                animation: animationController!,
+                builder: (context, child) {
+                  final value = navBarAnimation?.value ?? 0.0;
+                  return Transform(
+                    alignment: Alignment.center,
+                    transform: Matrix4.identity()
+                      ..setEntry(3, 2, 0.01)
+                      ..scale(1.0, 1.0, -0.5)
+                      ..rotateY(0.2 * value)
+                      ..translate(AppSizing.kWPercentage(context, 120.0 * value)),
+                    child: SingleChildScrollView(
+                      controller: widget.controller,
+                      child: Column(
+                        children: [
+                          AppSizing.khSpacer(100),
+                          ConstrainedBox(
+                            constraints: BoxConstraints(minHeight: AppSizing.kHPercentage(context, 80)),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: widget.children,
                             ),
-                            AppSizing.kh20Spacer(),
-                          ],
-                        ),
-                      ],
+                          ),
+                          widget.hideFooter == true ? const SizedBox.shrink() : const HomeFooter(),
+                        ],
+                      ),
+                    ),
+                  );
+                }),
+            AnimatedPositioned(
+              top: 20,
+              left: isNavBarOpen ? 0 : -AppSizing.width(context),
+              duration: const Duration(milliseconds: 500),
+              child: SizedBox(
+                height: AppSizing.height(context),
+                width: AppSizing.kWPercentage(context, 100),
+                child: SafeArea(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: AppSizing.kHPercentage(context, 2), horizontal: 0),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          sideBarComponents(context),
+                          AppSizing.kh20Spacer(),
+                          Column(
+                            children: [
+                              navbarSection(child: supportSection(context)),
+                              navbarSection(child: followUsSection(context)),
+                              navbarSection(child: themingSection(context)),
+                              AppSizing.kh20Spacer(),
+                              Text(
+                                "Made with 💙 by Yunwen",
+                                style: Theme.of(context).textTheme.bodySmall,
+                              ),
+                              AppSizing.kh20Spacer(),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
-          ),
-          AnimatedPositioned(
-            top: 0,
-            left: !isNavBarOpen ? 0 : AppSizing.width(context),
-            duration: const Duration(milliseconds: 500),
-            child: HomeNavBar(
-              isHomeScreenLayout: widget.isHomeScreenLayout ?? true,
-              onTap: () {
-                setState(() => isNavBarOpen = !isNavBarOpen);
-                animateNavBar();
-              },
+            AnimatedPositioned(
+              top: 0,
+              left: !isNavBarOpen ? 0 : AppSizing.width(context),
+              duration: const Duration(milliseconds: 500),
+              child: HomeNavBar(
+                isHomeScreenLayout: widget.isHomeScreenLayout ?? true,
+                onTap: () {
+                  sidebarBloc.add(UpdateSideBarEvent(newStatus: true));
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -175,12 +185,9 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
                 backgroundColor: Colors.transparent,
                 child: TextButton(
                   onPressed: () {
-                    setState(() {
-                      isNavBarOpen = false;
-                    });
-                    animateNavBar();
+                    sidebarBloc.add(UpdateSideBarEvent(newStatus: false));
                   },
-                  child: Icon(Icons.close),
+                  child: const Icon(Icons.close),
                 ),
               ),
             ],
@@ -204,7 +211,8 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
                           ...categoriesGroup.map((categoryGroup) {
                             return navItem(
                               onPressed: () {
-                                animateNavBar();
+                                // animateNavBar();
+                                sidebarBloc.add(UpdateSideBarEvent(newStatus: false));
                                 context.go("/components/${categoryGroup.category.link()}/${categoryGroup.items.first.subCategory.link()}");
                               },
                               title: categoryGroup.category.describe(),
@@ -233,33 +241,15 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
                                         itemBuilder: (context, index) {
                                           final category = item.items[index];
                                           return SideBarItem(
+                                            isActive: activePath.contains(category.subCategory.link()),
                                             title: category.subCategory.describe(),
                                             onPressed: () {
-                                              setState(() => isNavBarOpen = false);
+                                              sidebarBloc.add(UpdateSideBarEvent(newStatus: false));
                                               componentBloc.add(UpdateActiveCategoryEvent(category: category));
                                               context.go("/components/${category.category.link()}/${category.subCategory.link()}");
-                                              // context.go("/components/${category.category.link()}/${categoryGroup.items.first.subCategory.link()}");
                                             },
                                           );
                                         },
-                                      ),
-                                      SizedBox(
-                                        width: 2.w,
-                                        child: ListView.builder(
-                                          itemCount: item.items.length,
-                                          physics: const NeverScrollableScrollPhysics(),
-                                          shrinkWrap: true,
-                                          itemBuilder: (context, index) {
-                                            final sideBarItem = item.items[index];
-                                            final isActive = activePath.contains(sideBarItem.subCategory.link());
-                                            return AnimatedContainer(
-                                              duration: const Duration(milliseconds: 400),
-                                              height: 32,
-                                              color: isActive ? Theme.of(context).primaryColor : Theme.of(context).dividerColor,
-                                              width: 2.w,
-                                            );
-                                          },
-                                        ),
                                       ),
                                     ],
                                   ),

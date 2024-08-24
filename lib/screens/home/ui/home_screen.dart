@@ -65,6 +65,16 @@ class _HomeScreenState extends State<HomeScreen> {
     ),
     ...sideBarCategories.where((item) => item.category.describe().toLowerCase() != "animations"),
   ];
+  double generateScrollFactor(BuildContext context) {
+    double factor = 1.0;
+
+    if (AppSizing.isMobile(context)) factor = 2.0;
+    if (AppSizing.isTablet(context)) factor = 2.0;
+    if (AppSizing.isDesktop(context)) factor = 1.8;
+
+    return factor;
+  }
+
   @override
   Widget build(BuildContext context) {
     return AppLayout(
@@ -73,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
         HeroSection(
           onBrowserAll: () {
             _controller.animateTo(
-              AppSizing.height(context) * 1.8,
+              AppSizing.height(context) * generateScrollFactor(context),
               duration: const Duration(seconds: 1),
               curve: Curves.fastOutSlowIn,
             );
