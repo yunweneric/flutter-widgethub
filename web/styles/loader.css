@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -81,28 +81,21 @@ body.dark-mode {
   height: 100%;
   position: absolute;
   /* color: rgb(49, 49, 49); */
-  /* text-transform: capitalize; */
-  letter-spacing: 0.08em;
-  font-family: "Roboto", sans-serif;
-  font-size: 1.5rem;
-  font-weight: 500;
+  text-transform: capitalize;
+  font-size: 3rem;
+  font-weight: 800;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #fff;
   padding: 2rem;
   text-align: center;
-  font-weight: normal;
 }
 
-
-.container .cube-container .cube .box  .dark-box {
+.container .cube-container .cube .box .dark-box {
   background-color: #000;
   color: #fff;
-  background-color: teal;
-
 }
-
 
 .container .cube-container .welcome-img {
   margin-left: 1rem;
@@ -110,9 +103,9 @@ body.dark-mode {
 }
 .container .cube-container .cube .box.front {
   transform: translateZ(75px);
-  text-align: left;
-  font-size: 1.2rem;
-  display: flex;
+  /* text-align: left; */
+  /* font-size: 1.2rem; */
+  /* display: flex; */
 }
 .container .cube-container .cube .box.back {
   transform: translateZ(-75px) rotateY(180deg);
