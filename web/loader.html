@@ -1,61 +1,87 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/loader.css" />
+    <title>String Animation</title>
+  </head>
 
-<head>
+  <body>
+    <div id="preloader">
+      <div class="container">
+        <div class="animated-text"></div>
+      </div>
 
-  <base href="$FLUTTER_BASE_HREF">
-
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
-
-  <!-- iOS meta tags & icons -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Flutter Widgethub">
-  <link rel="apple-touch-icon" href="/icons/Icon-192.png">
-
-
-  <!-- Prevent caching of files -->
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="icons/favicon.ico" />
-
-  <title>Flutter WidgetHub</title>
-  <link rel="stylesheet" href="./styles/loader.css" type="text/css">
-
-</head>
-
-<body>
-  <div class="container" id="preloader">
-    <div class="cube-container">
-      <div class="cube cube2" id="cube">
-        <div class="box box2 front">
-          Hi!
+      <div class="footer">
+        <img src="./images//flutterwidgethub_Logo.png" alt="" />
+        <p>Developed with 💙 by Yunwen!</p>
+        <div class="footer-icons">
+          <img src="./icons/github.svg" alt="" />
+          <img src="./icons/linkedin.svg" alt="" />
+          <img src="./icons/x.svg" alt="" />
         </div>
-        <div class="box box2 back">Build your flutter apps as fast as Barry Alen!</div>
-        <div class="box box2 back">Build your flutter apps as fast as Barry Alen!</div>
-        <div class="box box2 top">Get all Assets with a single click</div>
-        <div class="box box2 bottom">We are getting things ready for you!</div>
       </div>
     </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Detects the user's preferred color scheme
+        const userPrefersDark =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-    <div class="footer">
-      <img src="./images//flutterwidgethub_Logo.png" alt="">
-      <p>Developed with 💙 by Yunwen!</p>
-      <div class="footer-icons">
-        <img src="./icons/github.svg" alt="">
-        <img src="./icons/linkedin.svg" alt="">
-        <img src="./icons/x.svg" alt="">
-      </div>
-    </div>
+        // Apply the dark mode class if the user prefers dark mode
+        if (userPrefersDark) {
+          document.body.classList.add("dark-mode");
+        }
 
-  </div>
-  <script src="loader.js" async></script>
+        // Listen for changes to the user's color scheme preference
+        window
+          .matchMedia("(prefers-color-scheme: dark)")
+          .addEventListener("change", (e) => {
+            if (e.matches) {
+              document.body.classList.add("dark-mode");
+            } else {
+              document.body.classList.remove("dark-mode");
+            }
+          });
+        const textElement = document.querySelector(".animated-text");
+        const strings = [
+          "Hi!",
+          "Welcome to Flutter Widget Hub!",
+          "Enjoy Our Vast Collection of Flutter Templates, Blocks, Animations and Effects",
+          "We are getting everything ready for you!",
+          "Fun Fact, Flutter Widget Hub is Build Entirely with Flutter",
+          "Initial Load time might be longer than expected, Please stay put!",
+        ];
+        let index = 0;
 
-</body>
+        function animateText() {
+          // Remove 'active' class to initiate fade out and zoom out
+          textElement.classList.remove("active");
+          textElement.classList.add("hidden");
 
+          setTimeout(() => {
+            // After the text fades out, change the text content
+            textElement.textContent = strings[index];
+
+            // Remove 'hidden' class to reset the scale and opacity before adding 'active'
+            textElement.classList.remove("hidden");
+            textElement.classList.add("active");
+
+            // Move the current item to the end of the list to create an infinite loop
+            // strings.push(strings.shift());
+
+            index = (index + 1) % strings.length;
+          }, 1000); // Wait for fade-out and zoom-out to complete (1 second)
+        }
+
+        // Initial call to start the animation
+        animateText();
+
+        // Set an interval to animate the text every 2 seconds
+        setInterval(animateText, 5000);
+      });
+    </script>
+  </body>
 </html>

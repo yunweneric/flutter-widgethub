@@ -1,38 +1,58 @@
-let currentRotation = 0;
 
-const rotateCube = () => {
+document.addEventListener("DOMContentLoaded", () => {
+    // Detects the user's preferred color scheme
+    const userPrefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
 
+    // Apply the dark mode class if the user prefers dark mode
+    if (userPrefersDark) {
+      document.body.classList.add("dark-mode");
+    }
 
-    const cube = document.getElementById("cube");
+    // Listen for changes to the user's color scheme preference
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        if (e.matches) {
+          document.body.classList.add("dark-mode");
+        } else {
+          document.body.classList.remove("dark-mode");
+        }
+      });
+    const textElement = document.querySelector(".animated-text");
+    const strings = [
+      "Hi!",
+      "Welcome to Flutter Widget Hub!",
+      "Enjoy Our Vast Collection of Flutter Templates, Blocks, Animations and Effects",
+      "We are getting everything ready for you!",
+      "Initial Load time might be longer than expected, Please stay put!",
+    ];
+    let index = 0;
 
-    // Update the rotation angle
-    currentRotation += 90;
+    function animateText() {
+      // Remove 'active' class to initiate fade out and zoom out
+      textElement.classList.remove("active");
+      textElement.classList.add("hidden");
 
-    // Apply the new rotation
-    cube.style.transform = `rotateX(${currentRotation}deg)`;
+      setTimeout(() => {
+        // After the text fades out, change the text content
+        textElement.textContent = strings[index];
 
-}
+        // Remove 'hidden' class to reset the scale and opacity before adding 'active'
+        textElement.classList.remove("hidden");
+        textElement.classList.add("active");
 
-const initialize = () => {
-    const interval = setInterval(rotateCube, 5000);
-}
+        // Move the current item to the end of the list to create an infinite loop
+        // strings.push(strings.shift());
 
-const hidePreloader = () => {
-    const preloader = document.getElementById('preloader');
-    preloader.style.display = 'none';
-}
+        index = (index + 1) % strings.length;
+      }, 1000); // Wait for fade-out and zoom-out to complete (1 second)
+    }
 
+    // Initial call to start the animation
+    animateText();
 
-
-try {
-    initialize();
-} catch (error) {
-    console.log(error)
-}
-
-
-// I want to create an onboarding animation with html,css and js.
-
-// I have a list of text to display. After 5 seconds, I want to animate to the next item in the list. This animation is smooth, it should fade in, slide in and rotate the text in the y direction from the bottom to the center of the page. When moving to the next item, the previous item should slide out,fade out and rotate in the -y axis from the center to the top of the page while the next item repeats the next item animation. 
-
-// Do this just with html,css and js
+    // Set an interval to animate the text every 2 seconds
+    setInterval(animateText, 5000);
+  });
