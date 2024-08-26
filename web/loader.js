@@ -1,5 +1,10 @@
 
+
+
 document.addEventListener("DOMContentLoaded", () => {
+
+
+  console.log("DOMContentLoaded")
     // Detects the user's preferred color scheme
     const userPrefersDark =
       window.matchMedia &&

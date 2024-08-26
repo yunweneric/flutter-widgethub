@@ -132,7 +132,7 @@ class AppTheme {
       ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
-          padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
+          padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 10.w),
           textStyle: lightTextTheme.bodySmall,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
         ),
@@ -141,7 +141,7 @@ class AppTheme {
         style: ElevatedButton.styleFrom(
           elevation: 0,
           backgroundColor: AppColors.CARDCOLOR,
-          padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
+          padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 10.w),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
           textStyle: lightTextTheme.bodySmall,
         ),
@@ -194,7 +194,7 @@ class AppTheme {
       dialogTheme: const DialogTheme(backgroundColor: AppColors.BGCARDDARK),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
-          padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
+          padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 10.w),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
           textStyle: darkTextTheme.bodySmall,
           iconColor: AppColors.BGGRAY,
@@ -202,7 +202,7 @@ class AppTheme {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
+          padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 10.w),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
           backgroundColor: AppColors.BGCARDDARK,
           textStyle: darkTextTheme.bodySmall,

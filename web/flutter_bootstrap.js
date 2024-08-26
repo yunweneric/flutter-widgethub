@@ -19,8 +19,8 @@ const initialize = () => {
 
 
 try {
-
     window.addEventListener("load", () => {
+        console.log("flutter loaded!")
         initialize();
     });
 } catch (error) {

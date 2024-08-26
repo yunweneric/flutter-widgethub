@@ -9,22 +9,6 @@
   font-style: normal;
 }
 
-/* Light mode styles */
-body {
-  background-color: #ffffff;
-  color: #000000;
-  width: 100vw;
-  height: 100vh;
-}
-
-/* Dark mode styles */
-body.dark-mode {
-  background-color: #000000;
-  color: #ffffff;
-  width: 100vw;
-  height: 100vh;
-}
-
 body,
 html {
   margin: 0;
@@ -32,8 +16,23 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100vw;
   height: 100vh;
   background-color: #f0f0f0;
+}
+
+
+/* Light mode styles */
+body {
+  background-color: #ffffff;
+  color: #000000;
+ 
+}
+
+/* Dark mode styles */
+body.dark-mode {
+  background-color: #000000;
+  color: #ffffff;
 }
 
 #preloader {
@@ -118,6 +117,7 @@ html {
 
   .footer {
     font-size: 0.8rem;
+    background-color: red;
   }
 
   .footer img {
@@ -135,8 +135,4 @@ html {
     height: 2rem;
   }
 
-  .container .cube-container .welcome-img {
-    margin-left: 1rem;
-    width: 5rem;
-  }
 }
