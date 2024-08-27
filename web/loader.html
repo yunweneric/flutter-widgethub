@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles/loader.css" />
+    <link rel="stylesheet" href="./styles/loader.css" />
     <title>String Animation</title>
   </head>
 
@@ -14,14 +14,19 @@
       </div>
 
       <div class="footer">
-        <img src="./images//flutterwidgethub_Logo.png" alt="" />
+        <div class="logos">
+          <img src="./images/flutterwidgethub_Logo.png" alt="" class="lightLogo" />
+          <img src="./images/flutterwidgethub_Logo_white.png" alt="" class="darkLogo" />
+        </div>
         <p>Developed with 💙 by Yunwen!</p>
         <div class="footer-icons">
-          <img src="./icons/github.svg" alt="" />
-          <img src="./icons/linkedin.svg" alt="" />
-          <img src="./icons/x.svg" alt="" />
+          <a href="https://github.com/yunweneric"><img src="./icons/github.svg" alt="" /></a>
+          <a href="https://www.linkedin.com/in/yunweneric"><img src="./icons/linkedin.svg" alt="" /></a>          
+          <a href="https://x.com/yunweneric"><img src="./icons/x.svg" alt="" /></a>
         </div>
       </div>
+
+    <button id="skip_btn">Skip</button>
     </div>
     <script>
       document.addEventListener("DOMContentLoaded", () => {

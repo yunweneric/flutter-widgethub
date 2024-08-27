@@ -43,6 +43,22 @@ body.dark-mode {
   width: 100vw;
 }
 
+#skip_btn {
+  position: fixed;
+  right: 2rem;
+  top: 2rem;
+  padding: 0.6rem 2rem;
+  border-radius: 0.2rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.7s;
+  opacity: 0;
+}
+#skip_btn.active{
+  opacity: 1;
+}
+
+
 .animated-text {
   opacity: 0;
   transform: scale(1);
@@ -99,6 +115,31 @@ body.dark-mode {
   transform: scale(1.2);
   background-color: rgb(223, 221, 221);
   border-radius: 0.2rem;
+}
+
+
+ .lightLogo{
+  visibility: hidden;
+  opacity: 0;
+  transition:all 0.7s;
+}
+
+.darkLogo{
+  left: 50%;
+  right:  50%;
+  top: 0;
+  bottom: 0;
+  transform: translate(-50%,-30%);
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;  
+  transition:all 0.7s;
+
+}
+.showDarkLogo, .showLightLogo{
+  visibility: visible;
+  transition:all 0.7s;
+  opacity: 1;
 }
 
 @media only screen and (max-width: 997px) and (min-width: 1200px) {
