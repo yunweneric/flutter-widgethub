@@ -22,14 +22,12 @@ html {
 }
 
 
-/* Light mode styles */
 body {
   background-color: #ffffff;
   color: #000000;
  
 }
 
-/* Dark mode styles */
 body.dark-mode {
   background-color: #000000;
   color: #ffffff;
@@ -108,7 +106,6 @@ body.dark-mode {
   padding: 0.5rem;
   border-radius: 0.2rem;
   background-color: rgb(223, 221, 221);
-  /* background-color: red; */
 }
 
 .footer-icons img:hover {
@@ -141,7 +138,7 @@ body.dark-mode {
   transition:all 0.7s;
   opacity: 1;
 }
-
+/* 
 @media only screen and (max-width: 997px) and (min-width: 1200px) {
   .animated-text {
     font-size: 2rem;
@@ -176,4 +173,4 @@ body.dark-mode {
     height: 2rem;
   }
 
-}
+} */
