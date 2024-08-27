@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutterui/components/ui/animations/skew_card/skew_card_code.dart';
 import 'package:flutterui/components/ui/animations/skew_card/skew_card_widget.dart';
-import 'package:flutterui/components/ui/export/component_store.dart';
 import 'package:flutterui/components/shared/setup.dart';
 import 'package:flutterui/shared/data/enums/component_category_enum.dart';
 import 'package:flutterui/shared/data/enums/sub_component_category_enum.dart';
 import 'package:flutterui/shared/data/enums/supported_platform.dart';
+import 'package:flutterui/shared/data/models/component.dart';
 
 class SkewCardData {
   static const Widget widget = SkewCard();

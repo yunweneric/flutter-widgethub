@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/components/ui/export/component_store.dart';
 import 'package:flutterui/screens/categories/widget/category_card.dart';
+import 'package:flutterui/shared/data/models/component.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/layout/main_content.dart';
 

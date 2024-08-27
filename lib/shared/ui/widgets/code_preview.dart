@@ -1,9 +1,11 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/core/service_locators.dart';
-import 'package:flutterui/components/ui/export/component_store.dart';
+import 'package:flutterui/shared/data/enums/analytic_types.dart';
 import 'package:flutterui/shared/data/enums/device_type.dart';
+import 'package:flutterui/shared/data/models/component.dart';
 import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/shared/ui/utils/icons.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
@@ -32,6 +34,8 @@ class _CodePreviewState extends State<CodePreview> {
   final duration = const Duration(seconds: 1);
   bool isFrameVisible = true;
   final themBloc = getIt.get<ThemeBloc>();
+
+  final firebaseAnalytics = getIt.get<FirebaseAnalytics>();
   @override
   initState() {
     // setupHighLighter(Theme.of(context).brightness);
@@ -165,6 +169,12 @@ class _CodePreviewState extends State<CodePreview> {
                           child: AppChip(
                             icon: AppIcons.clipboard,
                             title: AppSizing.isMobile(context) ? null : "Copy",
+                            onTap: () async {
+                              await firebaseAnalytics.logEvent(
+                                name: AnalyticTypesEvent.COPY.describe(),
+                                parameters: widget.component.toMap(),
+                              );
+                            },
                           ),
                         )
                       : Transform.translate(

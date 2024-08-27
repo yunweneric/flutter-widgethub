@@ -13,4 +13,10 @@ enum ComponentCategoryEnum {
   String link() {
     return name.split("_").join("-").toLowerCase();
   }
+
+  ComponentCategoryEnum enumName(String title) {
+    return ComponentCategoryEnum.values.firstWhere(
+      (e) => e.name.toLowerCase() == title.toLowerCase(),
+    );
+  }
 }
