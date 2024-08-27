@@ -1,6 +1,9 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/components/ui/export/component_store.dart';
+import 'package:flutterui/core/service_locators.dart';
+import 'package:flutterui/shared/data/enums/analytic_types.dart';
 import 'package:flutterui/shared/data/models/component.dart';
 import 'package:flutterui/shared/ui/utils/colors.dart';
 import 'package:flutterui/shared/ui/utils/icons.dart';
@@ -33,7 +36,9 @@ class _AppSearchBarState extends State<AppSearchBar> {
               scale: 0.8,
               child: TextField(
                 readOnly: true,
-                onTap: () => showSearchModal(context),
+                onTap: () {
+                  showSearchModal(context);
+                },
                 decoration: InputDecoration(
                   contentPadding: const EdgeInsets.symmetric(horizontal: 10),
                   hintText: "Search component...",
@@ -165,8 +170,11 @@ class _SearchBarState extends State<SearchBar> {
                                   itemBuilder: (context, index) {
                                     final component = filteredData[index];
                                     return ListTile(
-                                      onTap: () {
+                                      onTap: () async {
                                         context.pop();
+                                        getIt.get<FirebaseAnalytics>().logEvent(
+                                              name: AnalyticTypesEvent.COPY.describe(),
+                                            );
                                         final link = "/components/${component.category.link()}/${component.subcategory.link()}/${component.id}/";
                                         context.go(link);
                                       },

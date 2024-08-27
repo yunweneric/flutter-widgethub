@@ -21,11 +21,9 @@ html {
   background-color: #f0f0f0;
 }
 
-
 body {
   background-color: #ffffff;
   color: #000000;
- 
 }
 
 body.dark-mode {
@@ -52,10 +50,9 @@ body.dark-mode {
   transition: all 0.7s;
   opacity: 0;
 }
-#skip_btn.active{
+#skip_btn.active {
   opacity: 1;
 }
-
 
 .animated-text {
   opacity: 0;
@@ -114,31 +111,30 @@ body.dark-mode {
   border-radius: 0.2rem;
 }
 
-
- .lightLogo{
+.lightLogo {
   visibility: hidden;
   opacity: 0;
-  transition:all 0.7s;
+  transition: all 0.7s;
 }
 
-.darkLogo{
+.darkLogo {
   left: 50%;
-  right:  50%;
+  right: 50%;
   top: 0;
   bottom: 0;
-  transform: translate(-50%,-30%);
+  transform: translate(-50%, -30%);
   position: absolute;
   visibility: hidden;
-  opacity: 0;  
-  transition:all 0.7s;
-
+  opacity: 0;
+  transition: all 0.7s;
 }
-.showDarkLogo, .showLightLogo{
+.showDarkLogo,
+.showLightLogo {
   visibility: visible;
-  transition:all 0.7s;
+  transition: all 0.7s;
   opacity: 1;
 }
-/* 
+
 @media only screen and (max-width: 997px) and (min-width: 1200px) {
   .animated-text {
     font-size: 2rem;
@@ -155,7 +151,6 @@ body.dark-mode {
 
   .footer {
     font-size: 0.8rem;
-    background-color: red;
   }
 
   .footer img {
@@ -172,5 +167,4 @@ body.dark-mode {
     width: 2rem;
     height: 2rem;
   }
-
-} */
+}

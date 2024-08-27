@@ -1,69 +1,94 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <base href="$FLUTTER_BASE_HREF" />
 
-<head>
+    <meta charset="UTF-8" />
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible" />
+    <meta
+      name="description"
+      content="Build Stunning flutter UI and UX from a vast collection of templates, blocs, animations and effects!"
+    />
 
-  <base href="$FLUTTER_BASE_HREF">
+    <!-- iOS meta tags & icons -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="Flutter Widgethub" />
+    <link rel="apple-touch-icon" href="/icons/Icon-192.png" />
 
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+    <!-- Prevent caching of files -->
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
 
-  <!-- iOS meta tags & icons -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Flutter Widgethub">
-  <link rel="apple-touch-icon" href="/icons/Icon-192.png">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="icons/favicon.ico" />
 
+    <title>Flutter WidgetHub</title>
+    <link rel="manifest" href="manifest.json" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/icons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/icons/favicon-16x16.png"
+    />
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="stylesheet" href="/styles/loader.css" />
+  </head>
 
-  <!-- Prevent caching of files -->
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="icons/favicon.ico" />
-
-  <title>Flutter WidgetHub</title>
-  <link rel="manifest" href="manifest.json">
-  <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
-  <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#5bbad5">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="theme-color" content="#ffffff">
-  <link rel="stylesheet" href="/styles/loader.css">
-
-</head>
-
-<body>
-  <div id="preloader">
-
-    <div class="container">
-      <div class="animated-text">
-
+  <body>
+    <div id="preloader">
+      <div class="container">
+        <div class="animated-text"></div>
       </div>
 
+      <div class="footer">
+        <div class="relative logos">
+          <img
+            src="./images/flutterwidgethub_Logo.png"
+            alt=""
+            class="lightLogo"
+          />
+          <img
+            src="./images/flutterwidgethub_Logo_white.png"
+            alt=""
+            class="darkLogo"
+          />
+        </div>
+        <p>Developed with 💙 by Yunwen!</p>
+        <div class="footer-icons">
+          <a href="https://github.com/yunweneric"
+            ><img src="./icons/github.svg" alt=""
+          /></a>
+          <a href="https://www.linkedin.com/in/yunweneric"
+            ><img src="./icons/linkedin.svg" alt=""
+          /></a>
+          <a href="https://x.com/yunweneric"
+            ><img src="./icons/x.svg" alt=""
+          /></a>
+        </div>
+      </div>
+
+      <button id="skip_btn">Skip</button>
     </div>
 
-    <div class="footer">
-      <div class="relative logos">
-        <img src="./images/flutterwidgethub_Logo.png" alt="" class="lightLogo" />
-        <img src="./images/flutterwidgethub_Logo_white.png" alt="" class="darkLogo" />
-      </div>
-      <p>Developed with 💙 by Yunwen!</p>
-      <div class="footer-icons">
-        <a href="https://github.com/yunweneric"><img src="./icons/github.svg" alt="" /></a>
-        <a href="https://www.linkedin.com/in/yunweneric"><img src="./icons/linkedin.svg" alt="" /></a>
-        <a href="https://x.com/yunweneric"><img src="./icons/x.svg" alt="" /></a>
-      </div>
-    </div>
-
-    <button id="skip_btn">Skip</button>
-  </div>
-
-  <script src="loader.js" defer></script>
-  <script src="flutter_bootstrap.js" async></script>
-</body>
-
+    <script src="loader.js" defer></script>
+    <script src="flutter_bootstrap.js" async></script>
+  </body>
 </html>
