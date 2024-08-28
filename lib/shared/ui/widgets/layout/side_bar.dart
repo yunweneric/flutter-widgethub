@@ -75,7 +75,7 @@ class _SideBarState extends State<SideBar> {
                                     isActive: activePath.contains(sideBarItem.subCategory.link()),
                                     title: sideBarItem.subCategory.describe(),
                                     onPressed: () {
-                                      sidebarBloc.add(UpdateSideBarEvent(newStatus: false));
+                                      if (AppSizing.isMobile(context)) sidebarBloc.add(UpdateSideBarEvent(newStatus: false));
                                       componentBloc.add(UpdateActiveCategoryEvent(category: sideBarItem));
                                       setState(() => activeSideBar = sideBarItem);
                                       context.go("/components/${sideBarItem.category.link()}/${sideBarItem.subCategory.link()}");
