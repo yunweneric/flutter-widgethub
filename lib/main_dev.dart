@@ -10,6 +10,7 @@ import 'firebase_options.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   usePathUrlStrategy();
   AppConfig.instance.init(env: AppEnv.DEV);
   await Firebase.initializeApp(

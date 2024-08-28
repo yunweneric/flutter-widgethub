@@ -25,15 +25,9 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -72,4 +66,24 @@ class DefaultFirebaseOptions {
     storageBucket: 'flutterui-b4f0b.appspot.com',
     iosBundleId: 'com.flutterwidget.hub',
   );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyCtGLjp4yboVK2NRSX2_1L7mHKqL17_Cas',
+    appId: '1:393409877189:ios:8d4d9fc0a2d3238c3eccac',
+    messagingSenderId: '393409877189',
+    projectId: 'flutterui-b4f0b',
+    storageBucket: 'flutterui-b4f0b.appspot.com',
+    iosBundleId: 'com.flutterwidget.hub',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyAgsqfA2CowNbmTtYqrW1MlWzVDsE5VWa4',
+    appId: '1:393409877189:web:db68fd372afe6c233eccac',
+    messagingSenderId: '393409877189',
+    projectId: 'flutterui-b4f0b',
+    authDomain: 'flutterui-b4f0b.firebaseapp.com',
+    storageBucket: 'flutterui-b4f0b.appspot.com',
+    measurementId: 'G-4BZ4EL84V5',
+  );
+
 }
