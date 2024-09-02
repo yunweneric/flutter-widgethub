@@ -91,23 +91,6 @@ class _HomeNavBarState extends State<HomeNavBar> {
                         CircleAvatar(
                           backgroundColor: Colors.transparent,
                           child: TextButton(
-                            style: TextButton.styleFrom(fixedSize: Size(25.w, 25.w)),
-                            child: const AppIcon(icon: AppIcons.linkedIn),
-                            onPressed: () => UtilHelper.openUrl("https://www.linkedin.com/in/yunweneric"),
-                          ),
-                        ),
-                        AppSizing.kwSpacer(5.w),
-                        CircleAvatar(
-                          backgroundColor: Colors.transparent,
-                          child: TextButton(
-                            onPressed: () => UtilHelper.openUrl("https://twitter.com/yunweneric"),
-                            child: const AppIcon(icon: AppIcons.x),
-                          ),
-                        ),
-                        AppSizing.kwSpacer(5.w),
-                        CircleAvatar(
-                          backgroundColor: Colors.transparent,
-                          child: TextButton(
                             onPressed: () => UtilHelper.openUrl("https://github.com/yunweneric/"),
                             child: const AppIcon(icon: AppIcons.github),
                           ),

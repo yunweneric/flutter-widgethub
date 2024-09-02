@@ -120,8 +120,6 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
                           AppSizing.kh20Spacer(),
                           Column(
                             children: [
-                              navbarSection(child: supportSection(context)),
-                              navbarSection(child: followUsSection(context)),
                               navbarSection(child: themingSection(context)),
                               AppSizing.kh20Spacer(),
                               Text(
@@ -299,71 +297,6 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
             ],
           ),
         ),
-      ],
-    );
-  }
-
-  Column followUsSection(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          "Follow us",
-          style: Theme.of(context).textTheme.displayMedium,
-        ),
-        AppSizing.kh10Spacer(),
-        Padding(
-          padding: const EdgeInsets.only(left: 5),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              navItem(
-                onPressed: () => UtilHelper.openUrl("https://github.com/yunweneric/"),
-                icon: AppIcons.github,
-                title: "GitHub",
-              ),
-              navItem(
-                onPressed: () => UtilHelper.openUrl("https://github.com/yunweneric/"),
-                icon: AppIcons.linkedIn,
-                title: "LinkedIn",
-              ),
-              navItem(
-                onPressed: () => UtilHelper.openUrl("https://github.com/yunweneric/"),
-                icon: AppIcons.x,
-                title: "X",
-              ),
-            ],
-          ),
-        )
-      ],
-    );
-  }
-
-  Column supportSection(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          "Support us",
-          style: Theme.of(context).textTheme.displayMedium,
-        ),
-        AppSizing.kh10Spacer(),
-        Padding(
-          padding: const EdgeInsets.only(left: 5),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              navItem(
-                onPressed: () {
-                  animateNavBar();
-                  context.go(RouteNames.support);
-                },
-                icon: AppIcons.card,
-                title: "Donate to support us",
-              ),
-            ],
-          ),
-        )
       ],
     );
   }

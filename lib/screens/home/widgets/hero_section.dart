@@ -42,7 +42,7 @@ class _HeroSectionState extends State<HeroSection> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
+              SizedBox(
                 width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 80 : 35),
                 // margin: EdgeInsets.only(left: AppSizing.kWPercentage(context, 5)),
                 // margin: EdgeInsets.symmetric(horizontal: AppSizing.kWPercentage(context, 5)),

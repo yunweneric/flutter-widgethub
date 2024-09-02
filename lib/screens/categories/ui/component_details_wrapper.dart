@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
-import 'package:flutterui/components/ui/export/component_store.dart';
 import 'package:flutterui/core/service_locators.dart';
 import 'package:flutterui/shared/data/models/component.dart';
 import 'package:flutterui/shared/ui/utils/icons.dart';

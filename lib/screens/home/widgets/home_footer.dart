@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/core/service_locators.dart';
-import 'package:flutterui/shared/data/enums/theme.dart';
 import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/shared/ui/utils/icons.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
@@ -32,7 +31,7 @@ class _HomeFooterState extends State<HomeFooter> {
               crossAxisAlignment: WrapCrossAlignment.center,
               alignment: WrapAlignment.spaceBetween,
               children: [
-                Container(
+                SizedBox(
                   width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 40),
                   child: Text(
                     "2024 © Build with 💙 by Yunwen",
@@ -48,28 +47,6 @@ class _HomeFooterState extends State<HomeFooter> {
                     mainAxisAlignment: AppSizing.isMobile(context) ? MainAxisAlignment.center : MainAxisAlignment.end,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      CircleAvatar(
-                        backgroundColor: Colors.transparent,
-                        child: TextButton(
-                          style: TextButton.styleFrom(
-                            fixedSize: Size(25.w, 25.w),
-                          ),
-                          child: const AppIcon(
-                            icon: AppIcons.linkedIn,
-                          ),
-                          onPressed: () => UtilHelper.openUrl("https://www.linkedin.com/in/yunweneric"),
-                        ),
-                      ),
-                      AppSizing.kwSpacer(5.w),
-                      CircleAvatar(
-                        backgroundColor: Colors.transparent,
-                        child: TextButton(
-                          onPressed: () => UtilHelper.openUrl("https://twitter.com/yunweneric"),
-                          child: const AppIcon(
-                            icon: AppIcons.x,
-                          ),
-                        ),
-                      ),
                       AppSizing.kwSpacer(5.w),
                       CircleAvatar(
                         backgroundColor: Colors.transparent,

@@ -5,7 +5,6 @@ import 'package:flutterui/screens/categories/widget/component_layout.dart';
 import 'package:flutterui/screens/home/ui/home_screen.dart';
 import 'package:flutterui/screens/request_component/request_component_screen.dart';
 import 'package:flutterui/screens/routes/route_names.dart';
-import 'package:flutterui/screens/support/ui/support_screen.dart';
 import 'package:go_router/go_router.dart';
 
 Widget buildComponentLayout(GoRouterState state) {
@@ -48,10 +47,7 @@ final appRouter = GoRouter(
       path: "/",
       builder: (context, state) => HomeScreen(),
     ),
-    buildAnimatedRoute(
-      path: RouteNames.support,
-      builder: (context, state) => SupportScreen(),
-    ),
+
     buildAnimatedRoute(
       path: RouteNames.requestComponent,
       builder: (context, state) => RequestComponentScreen(),

@@ -1,4 +1,5 @@
 //// import 'package:flutter/material.dart';
+library;
 // import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 // import 'package:flutterui/core/service_locators.dart';
 // import 'package:flutterui/shared/ui/utils/sizing.dart';

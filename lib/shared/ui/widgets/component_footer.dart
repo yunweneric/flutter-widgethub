@@ -42,26 +42,6 @@ class _DetailedFooterState extends State<ComponentFooter> {
                 CircleAvatar(
                   backgroundColor: Colors.transparent,
                   child: TextButton(
-                    style: TextButton.styleFrom(
-                      fixedSize: Size(10.w, 10.w),
-                      padding: EdgeInsets.zero,
-                    ),
-                    onPressed: () => UtilHelper.openUrl("https://www.linkedin.com/in/yunweneric"),
-                    child: const AppIcon(
-                      icon: AppIcons.linkedIn,
-                    ),
-                  ),
-                ),
-                CircleAvatar(
-                  backgroundColor: Colors.transparent,
-                  child: TextButton(
-                    onPressed: () => UtilHelper.openUrl("https://twitter.com/yunweneric"),
-                    child: const AppIcon(icon: AppIcons.x),
-                  ),
-                ),
-                CircleAvatar(
-                  backgroundColor: Colors.transparent,
-                  child: TextButton(
                     onPressed: () => UtilHelper.openUrl("https://github.com/yunweneric/"),
                     child: const AppIcon(icon: AppIcons.github),
                   ),

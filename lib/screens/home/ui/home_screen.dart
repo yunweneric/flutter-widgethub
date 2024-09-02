@@ -8,7 +8,6 @@ import 'package:flutterui/screens/home/model/component_block_model.dart';
 import 'package:flutterui/screens/home/widgets/assets_section.dart';
 import 'package:flutterui/screens/home/widgets/integration_section.dart';
 import 'package:flutterui/screens/home/widgets/hero_section.dart';
-import 'package:flutterui/screens/routes/route_names.dart';
 import 'package:flutterui/shared/data/enums/component_category_enum.dart';
 import 'package:flutterui/shared/data/enums/sub_component_category_enum.dart';
 import 'package:flutterui/shared/logic/theme/theme_bloc.dart';

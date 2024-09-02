@@ -5,7 +5,6 @@ import 'package:flutterui/components/ui/export/component_store.dart';
 import 'package:flutterui/core/service_locators.dart';
 import 'package:flutterui/shared/data/enums/analytic_types.dart';
 import 'package:flutterui/shared/data/models/component.dart';
-import 'package:flutterui/shared/ui/utils/colors.dart';
 import 'package:flutterui/shared/ui/utils/icons.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';
 import 'package:flutterui/shared/ui/widgets/icon.dart';
