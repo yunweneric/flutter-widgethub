@@ -1,6 +1,5 @@
 class RouteNames {
   static const home = "/";
-  static const support = "/support";
   static const components = "/components";
   static const introduction = "/components/introduction";
   static const blocks = "/components/blocks";

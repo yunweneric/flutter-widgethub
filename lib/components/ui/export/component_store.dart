@@ -8,7 +8,7 @@ class AllComponents {
     AppFlipCard.component,
     ClassicButtonData.component,
     SkewCardData.component,
-    // ClassicButtonData.component,
-    // ClassicButtonData.component,
+    ClassicButtonData.component,
+    ClassicButtonData.component,
   ];
 }

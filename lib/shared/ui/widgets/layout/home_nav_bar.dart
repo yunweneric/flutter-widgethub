@@ -28,7 +28,6 @@ class HomeNavBar extends StatefulWidget {
 class _HomeNavBarState extends State<HomeNavBar> {
   List<NavLink> links = [
     NavLink(title: "Components", path: RouteNames.components),
-    NavLink(title: "Support", path: RouteNames.support),
   ];
   @override
   Widget build(BuildContext context) {
