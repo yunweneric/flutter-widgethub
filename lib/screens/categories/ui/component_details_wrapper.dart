@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/core/service_locators.dart';
@@ -167,14 +168,16 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
                     scale: hasHovered ? 1.2 : 1.0,
                     duration: const Duration(milliseconds: 300),
                     child: Container(
+                      width: 40.w,
+                      height: 40.w,
                       margin: const EdgeInsets.only(right: 20),
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         color: Theme.of(context).cardColor,
                         borderRadius: AppSizing.radiusMd(),
                       ),
-                      child: SvgPicture.asset(
-                        "assets/icons/${item.describe()}.svg",
+                      child: Image.asset(
+                        "assets/images/${item.describe()}.png",
                         color: Theme.of(context).primaryColorDark,
                       ),
                     ),

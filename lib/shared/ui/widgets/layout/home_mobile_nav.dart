@@ -41,20 +41,14 @@ class _HomeMobileNavState extends State<HomeMobileNav> {
               Builder(builder: (context) {
                 final theme = getIt.get<ThemeBloc>();
                 final isDark = Theme.of(context).brightness == Brightness.dark;
-                return CircleAvatar(
-                  backgroundColor: Colors.transparent,
-                  child: TextButton(
-                    child: AppIcon(icon: isDark ? AppIcons.moon : AppIcons.sun),
-                    onPressed: () => theme.add(
-                      ChangeTheme(themeMode: isDark ? ThemeMode.light : ThemeMode.dark),
-                    ),
+                return TextButton(
+                  child: AppIcon(icon: isDark ? AppIcons.moon : AppIcons.sun),
+                  onPressed: () => theme.add(
+                    ChangeTheme(themeMode: isDark ? ThemeMode.light : ThemeMode.dark),
                   ),
                 );
               }),
-              CircleAvatar(
-                backgroundColor: Colors.transparent,
-                child: TextButton(onPressed: () => showSearchModal(context), child: const AppIcon(icon: AppIcons.search)),
-              ),
+              TextButton(onPressed: () => showSearchModal(context), child: const AppIcon(icon: AppIcons.search)),
             ],
           )
         ],

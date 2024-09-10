@@ -87,27 +87,21 @@ class _HomeNavBarState extends State<HomeNavBar> {
                     Row(
                       children: [
                         const AppSearchBar(),
-                        CircleAvatar(
-                          backgroundColor: Colors.transparent,
-                          child: TextButton(
-                            onPressed: () => UtilHelper.openUrl("https://github.com/yunweneric/"),
-                            child: const AppIcon(icon: AppIcons.github),
-                          ),
+                        TextButton(
+                          onPressed: () => UtilHelper.openUrl("https://github.com/yunweneric/"),
+                          child: const AppIcon(icon: AppIcons.github),
                         ),
                         AppSizing.kwSpacer(5.w),
                         Builder(
                           builder: (context) {
                             final theme = getIt.get<ThemeBloc>();
                             final isDark = Theme.of(context).brightness == Brightness.dark;
-                            return CircleAvatar(
-                              backgroundColor: Colors.transparent,
-                              child: TextButton(
-                                onPressed: () => theme.add(
-                                  ChangeTheme(themeMode: isDark ? ThemeMode.light : ThemeMode.dark),
-                                ),
-                                child: AppIcon(
-                                  icon: isDark ? AppIcons.moon : AppIcons.sun,
-                                ),
+                            return TextButton(
+                              onPressed: () => theme.add(
+                                ChangeTheme(themeMode: isDark ? ThemeMode.light : ThemeMode.dark),
+                              ),
+                              child: AppIcon(
+                                icon: isDark ? AppIcons.moon : AppIcons.sun,
                               ),
                             );
                           },
