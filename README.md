@@ -1,16 +1,89 @@
-# flutterui
+<p align="center">
+  <a href="https://flutterwidgethub.com/" target="blank"><img src="https://raw.githubusercontent.com/yunweneric/flutter-widgethub/main/assets/images/logo_dark.png" width="320" alt="Fapshi Logo" /></a>
+</p>
+  <p align="center">Welcome to <a href="https://flutterwidgethub.com/" target="_blank"> Flutter Widget Hub </a>Build Stunning Flutter Apps with Ease</p>
+    <p align="center">
+<a><img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/yunweneric/flutter-widgethub?color=%233867D6&style=for-the-badge"></a>
+<a><img alt="GitHub issues" src="https://img.shields.io/github/issues-raw/yunweneric/flutter-widgethub?color=%233867D6&style=for-the-badge"></a>
+<a href="" target="_blank"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/yunweneric/flutter-widgethub?color=%233867D6&style=for-the-badge"></a>
+<a><img alt="GitHub forks" src="https://img.shields.io/github/forks/yunweneric/flutter-widgethub?color=%233867D6&style=for-the-badge"></a>
+<a><img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/yunweneric/flutter-widgethub?color=%233867D6&style=for-the-badge"></a>
+<a href = "https://flutterwidgethub.com/"><img alt="Website" src="https://img.shields.io/website?color=%233867D6&style=for-the-badge&up_color=3F51B5&up_message=Visit%20us&url=https%3A%2F%2Fpayunit.net%2Fdocs%2F"></a>
 
-A new Flutter project.
+</p>
 
-## Getting Started
+**Payment SDK for Flutter**
 
-This project is a starting point for a Flutter application.
+This is a payment SDK for Flutter apps, developed in Dart, that provides functionalities to integrate various payment methods seamlessly into your Flutter applications.
 
-A few resources to get you started if this is your first Flutter project:
+### Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- #### Templates
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  A wide range of pre-built UI templates from app clones to demo apps all in one place
+
+- #### Blocs
+
+  A collection of reusable layout blocks to help you create consistent and responsive layouts
+
+- #### Animations
+
+  Smooth and captivating animations that can be easily applied to any element.
+
+- #### Effects
+
+  Visual effects ranging from shadows and gradients to more complex transformations
+
+### Contribution Guide
+
+We welcome contributions from the community to make this SDK better! To contribute, follow these steps:
+
+1. Fork the repository and clone it to your local machine:
+
+```bash
+$ https://github.com/yunweneric/flutter-widgethub
+```
+
+2. Create a new branch for your changes:
+
+```bash
+$ git checkout -b feature/your-feature-name
+```
+
+3. Make your changes and test them thoroughly.
+
+4. Add tests for new features or changes, and ensure all tests pass:
+
+```bash
+$ flutter test
+```
+
+5. Commit your changes and push them to your fork:
+
+```bash
+$ git add .
+$ git commit -m "Your descriptive commit message"
+$ git push origin feature/your-feature-name
+```
+
+6. Create a pull request from your fork to the main repository.
+
+### Code of Conduct
+
+Please note that this project is governed by a Code of Conduct. We expect all contributors and users to adhere to it. The Code of Conduct can be found in the `CODE_OF_CONDUCT.md` file in this repository.
+
+### License
+
+This SDK is released under the MIT License. You can find the license details in the `LICENSE` file.
+
+### Support
+
+For any questions, issues, or feature requests, feel free to create an issue in this repository or contact us at yunweneric@gmail.com.
+
+### Acknowledgements
+
+We would like to thank all contributors who have helped in making this SDK possible.
+
+---
+
+Feel free to add any additional information specific to your SDK or your organization!

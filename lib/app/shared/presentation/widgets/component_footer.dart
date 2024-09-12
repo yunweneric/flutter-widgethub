@@ -42,7 +42,7 @@ class _DetailedFooterState extends State<ComponentFooter> {
                 CircleAvatar(
                   backgroundColor: Colors.transparent,
                   child: TextButton(
-                    onPressed: () => UtilHelper.openUrl("https://github.com/yunweneric/"),
+                    onPressed: () => UtilHelper.openUrl("https://github.com/yunweneric/flutter-widgethub/"),
                     child: const AppIcon(icon: AppIcons.github),
                   ),
                 )

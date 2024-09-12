@@ -20,8 +20,8 @@ class NikeZoomerTemplateData {
     setup: setup,
     category: ComponentCategoryEnum.BLOCKS,
     subcategory: SubComponentCategoryEnum.SLIDERS_AND_CAROUSELS,
-    assetLink: "https://github.com/yunweneric/flutter-open-ui/raw/nike_zoomer/assets.zip",
-    gitHubLink: "https://github.com/yunweneric/flutter-open-ui/tree/nike_zoomer",
+    assetLink: "https://github.com/yunweneric/flutter-widgethub/flutter-open-ui/raw/nike_zoomer/assets.zip",
+    gitHubLink: "https://github.com/yunweneric/flutter-widgethub/flutter-open-ui/tree/nike_zoomer",
     supportedPlatforms: [
       SupportedPlatform.ANDROID,
       SupportedPlatform.IOS,

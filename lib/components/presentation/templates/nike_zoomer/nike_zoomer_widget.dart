@@ -227,7 +227,7 @@ class Follow extends StatelessWidget {
   Follow({super.key, required this.activeIndex});
 
   List<Link> links = [
-    Link(0, "github", "https://github.com/yunweneric/", "Github"),
+    Link(0, "github", "https://github.com/yunweneric/flutter-widgethub/", "Github"),
     Link(1, "x", "https://twitter.com/yunweneric", "X"),
     Link(2, "linkedIn", "https://www.linkedin.com/in/yunweneric", "LinkedIn"),
   ];

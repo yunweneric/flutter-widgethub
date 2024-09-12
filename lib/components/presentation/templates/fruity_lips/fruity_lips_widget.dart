@@ -150,7 +150,7 @@ class _FruityLipsTemplateState extends State<FruityLipsTemplate> with TickerProv
                 // color: Colors.teal,
                 child: Center(
                   child: Image.network(
-                    "https://github.com/yunweneric/flutter-open-ui/blob/fruity_lips/assets/images/logo.png?raw=true",
+                    "https://github.com/yunweneric/flutter-widgethub/flutter-open-ui/blob/fruity_lips/assets/images/logo.png?raw=true",
                     width: 150,
                   ),
                 ),

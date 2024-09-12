@@ -46,12 +46,12 @@ class _HeroSectionState extends State<HeroSection> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    SelectableText(
                       "Build Stunning Flutter Apps with Ease",
                       style: Theme.of(context).textTheme.displayLarge!.copyWith(fontSize: AppSizing.isMobile(context) ? 40.sp : 50.sp),
                     ),
                     AppSizing.kh20Spacer(),
-                    Text(
+                    SelectableText(
                       "From ready-to-use components and flexible layout blocks to smooth animations and striking effects, our tools help you create beautiful, functional apps quickly and efficiently.",
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
