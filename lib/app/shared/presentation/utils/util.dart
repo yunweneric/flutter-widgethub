@@ -1,9 +1,13 @@
 // import 'dart:io';
 import 'dart:math';
 
+import 'package:flutter/animation.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutterui/app/shared/presentation/helpers/platform/platform.dart';
 import 'package:flutterui/app/core/service_locators.dart';
+import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -34,20 +38,17 @@ class UtilHelper {
     }
   }
 
-  static String generateUniqueId({String prefix = ' "FWH-', int length = 7}) {
-    const String chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    // final StringBuffer result = StringBuffer(prefix);
-
-    // for (int i = 0; i < length; i++) {
-    //   final int randomIndex = (characters.length * (new DateTime.now().millisecondsSinceEpoch % 1000) / 1000).toInt();
-    //   result.write(characters[randomIndex]);
-    // }
-
-    // return result.toString();
-
-    Random random = Random();
-    final items = List.generate(length - 4, (index) => chars[random.nextInt(chars.length)]);
-    return prefix + items.join();
+  static Future<void> copy(BuildContext context, {required String data}) async {
+    await Clipboard.setData(ClipboardData(text: data));
+    // ScaffoldMessenger.of(context).showSnackBar(
+    //   SnackBar(
+    //     width: 200,
+    //     margin: const EdgeInsets.symmetric(horizontal: 10),
+    //     content: Text('Copied to Clipboard!'),
+    //     showCloseIcon: true,
+    //   ),
+    //   // snackBarAnimationStyle: AnimationStyle(curve: Curves.bounceIn),
+    // );
   }
 
   static findDevice({required AppDeviceType type}) {

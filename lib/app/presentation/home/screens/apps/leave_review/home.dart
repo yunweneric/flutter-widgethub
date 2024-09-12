@@ -2,10 +2,10 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutterui/app/presentation/home/ui/apps/leave_review/utils/colors.dart';
-import 'package:flutterui/app/presentation/home/ui/apps/leave_review/utils/sizing.dart';
-import 'package:flutterui/app/presentation/home/ui/apps/leave_review/widgets/arc.dart';
-import 'package:flutterui/app/presentation/home/ui/apps/leave_review/widgets/slider.dart';
+import 'package:flutterui/app/presentation/home/screens/apps/leave_review/utils/colors.dart';
+import 'package:flutterui/app/presentation/home/screens/apps/leave_review/utils/sizing.dart';
+import 'package:flutterui/app/presentation/home/screens/apps/leave_review/widgets/arc.dart';
+import 'package:flutterui/app/presentation/home/screens/apps/leave_review/widgets/slider.dart';
 
 class LeaveReviewHomeScreen extends StatefulWidget {
   const LeaveReviewHomeScreen({super.key});

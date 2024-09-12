@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutterui/app/presentation/categories/ui/component_category_screen.dart';
-import 'package:flutterui/app/presentation/categories/ui/component_details_wrapper.dart';
+import 'package:flutterui/app/presentation/categories/screens/component_category_screen.dart';
+import 'package:flutterui/app/presentation/categories/screens/component_details_wrapper.dart';
 import 'package:flutterui/app/presentation/categories/widget/component_layout.dart';
-import 'package:flutterui/app/presentation/home/ui/home_screen.dart';
+import 'package:flutterui/app/presentation/home/screens/home_screen.dart';
 import 'package:flutterui/app/presentation/request_component/request_component_screen.dart';
 import 'package:flutterui/app/core/routes/route_names.dart';
 import 'package:go_router/go_router.dart';

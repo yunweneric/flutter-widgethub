@@ -43,7 +43,7 @@ class _AppChipState extends State<AppChip> {
             builder: (context, color, child) {
               return ElevatedButton(
                 onHover: (value) {
-                  setState(() => isActive = !isActive);
+                  // setState(() => isActive = !isActive);
                 },
                 onPressed: () {
                   setState(() => isActive = !isActive);

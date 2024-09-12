@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart';
+import 'package:flutterui/app/shared/presentation/utils/util.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/presentation/home/data/export/sidebar_categories.dart';
@@ -78,7 +80,11 @@ class _SideBarState extends State<SideBar> {
                                       if (AppSizing.isMobile(context)) sidebarBloc.add(UpdateSideBarEvent(newStatus: false));
                                       componentBloc.add(UpdateActiveCategoryEvent(category: sideBarItem));
                                       setState(() => activeSideBar = sideBarItem);
-                                      context.go("/components/${sideBarItem.category.link()}/${sideBarItem.subCategory.link()}");
+                                      if (sideBarItem.subCategory == SubComponentCategoryEnum.REQUEST_A_COMPONENT) {
+                                        UtilHelper.openUrl("https://github.com/yunweneric");
+                                      } else {
+                                        context.go("/components/${sideBarItem.category.link()}/${sideBarItem.subCategory.link()}");
+                                      }
                                     },
                                   );
                                 },

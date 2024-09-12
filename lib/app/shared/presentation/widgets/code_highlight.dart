@@ -4,6 +4,7 @@ import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
+import 'package:flutterui/app/shared/presentation/utils/util.dart';
 import 'package:flutterui/app/shared/presentation/widgets/chip.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:syntax_highlight/syntax_highlight.dart';
@@ -85,9 +86,13 @@ class _CodeHighlightState extends State<CodeHighlight> {
           right: 10,
           top: 10,
           child: AppChip(
-            onTap: () => setState(() {
-              hasCopied = true;
-            }),
+            onTap: () {
+              setState(() => hasCopied = true);
+              UtilHelper.copy(context, data: widget.code);
+              Future.delayed(const Duration(seconds: 5), () {
+                setState(() => hasCopied = false);
+              });
+            },
             active: hasCopied,
             icon: AppIcons.clipboard,
             title: AppSizing.isMobile(context)

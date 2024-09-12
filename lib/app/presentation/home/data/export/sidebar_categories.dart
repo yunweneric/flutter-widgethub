@@ -21,13 +21,13 @@ final sideBarCategories = [
     category: ComponentCategoryEnum.INTRODUCTION,
     description: "A wide range of pre-built UI templates from app clones to demo apps all in one place",
     items: [
+      // AppCategoryModel(
+      //   widget: const SizedBox.shrink(),
+      //   subCategory: SubComponentCategoryEnum.ALL_COMPONENTS,
+      //   category: ComponentCategoryEnum.INTRODUCTION,
+      // ),
       AppCategoryModel(
-        widget: const Text(""),
-        subCategory: SubComponentCategoryEnum.GETTING_STARTED,
-        category: ComponentCategoryEnum.INTRODUCTION,
-      ),
-      AppCategoryModel(
-        widget: const Text(""),
+        widget: const SizedBox.shrink(),
         subCategory: SubComponentCategoryEnum.REQUEST_A_COMPONENT,
         category: ComponentCategoryEnum.INTRODUCTION,
       ),

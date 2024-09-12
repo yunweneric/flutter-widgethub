@@ -27,6 +27,7 @@ class _CodePreviewState extends State<CodePreview> {
   TextSpan? content;
   bool hideSizers = true;
   bool isCode = false;
+  bool hasCopied = false;
   AppDeviceType selectedDevice = AppDeviceType.MOBILE;
 
   final duration = const Duration(seconds: 1);
@@ -165,8 +166,18 @@ class _CodePreviewState extends State<CodePreview> {
                           offset: Offset(0, value * 20),
                           child: AppChip(
                             icon: AppIcons.clipboard,
-                            title: AppSizing.isMobile(context) ? null : "Copy",
-                            onTap: () async {},
+                            title: AppSizing.isMobile(context)
+                                ? null
+                                : hasCopied
+                                    ? 'Copied'
+                                    : "Copy",
+                            onTap: () async {
+                              setState(() => hasCopied = true);
+                              UtilHelper.copy(context, data: widget.component.code);
+                              Future.delayed(const Duration(seconds: 5), () {
+                                setState(() => hasCopied = false);
+                              });
+                            },
                           ),
                         )
                       : Transform.translate(

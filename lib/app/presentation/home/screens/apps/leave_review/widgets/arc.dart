@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterui/app/presentation/home/ui/apps/leave_review/utils/colors.dart';
+import 'package:flutterui/app/presentation/home/screens/apps/leave_review/utils/colors.dart';
 
 class ArcPainter extends CustomPainter {
   @override

@@ -6,8 +6,8 @@ import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/components/presentation/templates/nike_zoomer/nike_zoomer.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/presentation/home/model/component_block_model.dart';
-import 'package:flutterui/app/presentation/home/ui/apps/leave_review/home.dart';
-import 'package:flutterui/app/presentation/home/ui/apps/theme_toggle/theme_toggle.dart';
+import 'package:flutterui/app/presentation/home/screens/apps/leave_review/home.dart';
+import 'package:flutterui/app/presentation/home/screens/apps/theme_toggle/theme_toggle.dart';
 // import 'package:flutterui/screens/routes/app_router.gr.dart';
 import 'package:flutterui/app/core/routes/route_names.dart';
 import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
@@ -80,8 +80,8 @@ class _HeroSectionState extends State<HeroSection> {
                               UpdateActiveCategoryEvent(
                                 category: AppCategoryModel(
                                   widget: widget,
-                                  category: ComponentCategoryEnum.GETTING_STARTED,
-                                  subCategory: SubComponentCategoryEnum.GETTING_STARTED,
+                                  category: ComponentCategoryEnum.INTRODUCTION,
+                                  subCategory: SubComponentCategoryEnum.ALL_COMPONENTS,
                                 ),
                               ),
                             );
