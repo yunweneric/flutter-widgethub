@@ -8,10 +8,10 @@
       "name": "Web dev",
       "request": "launch",
       "type": "dart",
-      "program": "lib/main_dev.dart",
+      "program": "lib/app/core/main_dev.dart",
       "args": [
         "--target",
-        "lib/main_dev.dart",
+        "lib/app/core/main_dev.dart",
         "--dart-define-from-file=../envs/fwh/dev.env.json",
         "-d",
         "chrome",
@@ -27,12 +27,12 @@
       "name": "Launch dev",
       "request": "launch",
       "type": "dart",
-      "program": "lib/main_dev.dart",
+      "program": "lib/app/core/main_dev.dart",
       "args": [
         "--flavor",
         "dev",
         "--target",
-        "lib/main_dev.dart",
+        "lib/app/core/main_dev.dart",
         "--dart-define-from-file=../envs/fwh/dev.env.json"
       ]
     },
@@ -41,12 +41,12 @@
       "name": "Launch prod",
       "request": "launch",
       "type": "dart",
-      "program": "lib/main_prod.dart",
+      "program": "lib/app/core/main_prod.dart",
       "args": [
         "--flavor",
         "prod",
         "--target",
-        "lib/main_prod.dart",
+        "lib/app/core/main_prod.dart",
         "--dart-define-from-file=../envs/fwh/env.json"
       ]
     }

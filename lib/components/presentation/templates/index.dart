@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
-import 'package:flutterui/core/service_locators.dart';
-import 'package:flutterui/screens/categories/widget/category_card.dart';
+import 'package:flutterui/app/core/service_locators.dart';
+import 'package:flutterui/app/presentation/categories/widget/category_card.dart';
 // import 'package:flutterui/screens/routes/app_router.dart';
-import 'package:flutterui/shared/logic/navigation/navigation_bloc.dart';
-import 'package:flutterui/shared/presentation/utils/sizing.dart';
-import 'package:flutterui/shared/presentation/widgets/layout/main_content.dart';
+import 'package:flutterui/app/shared/logic/navigation/navigation_bloc.dart';
+import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
+import 'package:flutterui/app/shared/presentation/widgets/layout/main_content.dart';
 
 // @RoutePage()
 class ComponentTemplatesScreen extends StatefulWidget {

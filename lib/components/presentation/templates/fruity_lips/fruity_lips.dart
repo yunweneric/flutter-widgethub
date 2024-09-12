@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutterui/components/presentation/templates/fruity_lips/utils/fruits.dart';
-import 'package:flutterui/shared/presentation/utils/sizing.dart';
+import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 
 class FruityLipsTemplate extends StatefulWidget {
   const FruityLipsTemplate({super.key});

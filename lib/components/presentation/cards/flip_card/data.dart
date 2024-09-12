@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutterui/components/presentation/cards/flip_card/flip_card_code.dart';
 import 'package:flutterui/components/presentation/cards/flip_card/flip_card_setup.dart';
 import 'package:flutterui/components/presentation/cards/flip_card/flip_card_widget.dart';
-import 'package:flutterui/shared/data/enums/component_category_enum.dart';
-import 'package:flutterui/shared/data/enums/sub_component_category_enum.dart';
-import 'package:flutterui/shared/data/enums/supported_platform.dart';
-import 'package:flutterui/shared/data/models/component.dart';
+import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
+import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart';
+import 'package:flutterui/app/shared/data/enums/supported_platform.dart';
+import 'package:flutterui/app/shared/data/models/component.dart';
 
 class AppFlipCard {
   static Widget widget = const ComponentFlipCard(title: "Hello Wold");
