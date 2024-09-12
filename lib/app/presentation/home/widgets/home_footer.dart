@@ -49,7 +49,7 @@ class _HomeFooterState extends State<HomeFooter> {
                     children: [
                       AppSizing.kwSpacer(5.w),
                       TextButton(
-                        onPressed: () => UtilHelper.openUrl("https://github.com/yunweneric/"),
+                        onPressed: () => UtilHelper.openUrl("https://github.com/yunweneric/flutter-widgethub/"),
                         child: const AppIcon(icon: AppIcons.github),
                       ),
                       AppSizing.kwSpacer(5.w),

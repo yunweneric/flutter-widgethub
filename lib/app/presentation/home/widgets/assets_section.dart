@@ -67,7 +67,7 @@ class _AssetsSectionState extends State<AssetsSection> {
                 ),
                 AppSizing.kh20Spacer(),
                 Text(
-                  "Discover the versatile features YuwenUI designed to enhance your app development experience. With a variety of components, blocks, animations, and effects, you can create stunning and functional interfaces effortlessly.",
+                  "Discover the versatile features Flutter Widget Hub designed to enhance your app development experience. With a variety of components, blocks, animations, and effects, you can create stunning and functional interfaces effortlessly.",
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 AppSizing.kh20Spacer(),
