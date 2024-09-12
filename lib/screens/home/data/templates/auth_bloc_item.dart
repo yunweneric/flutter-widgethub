@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutterui/shared/ui/utils/sizing.dart';
+import 'package:flutterui/shared/presentation/utils/sizing.dart';
 
 class AuthBlocItem extends StatefulWidget {
   const AuthBlocItem({super.key});

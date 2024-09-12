@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutterui/shared/ui/utils/icons.dart';
-import 'package:flutterui/shared/ui/utils/sizing.dart';
-import 'package:flutterui/shared/ui/widgets/icon.dart';
+import 'package:flutterui/shared/presentation/utils/icons.dart';
+import 'package:flutterui/shared/presentation/utils/sizing.dart';
+import 'package:flutterui/shared/presentation/widgets/icon.dart';
 
 class DrawersBlocItem extends StatefulWidget {
   const DrawersBlocItem({super.key});

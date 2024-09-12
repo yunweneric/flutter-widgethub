@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutterui/shared/ui/utils/colors.dart';
-import 'package:flutterui/shared/ui/utils/sizing.dart';
-import 'package:flutterui/shared/ui/widgets/code_highlight.dart';
-import 'package:flutterui/shared/ui/widgets/device_section_frame.dart';
+import 'package:flutterui/shared/presentation/utils/colors.dart';
+import 'package:flutterui/shared/presentation/utils/sizing.dart';
+import 'package:flutterui/shared/presentation/widgets/code_highlight.dart';
+import 'package:flutterui/shared/presentation/widgets/device_section_frame.dart';
 
 class DeviceInteractive extends StatefulWidget {
   const DeviceInteractive({super.key});

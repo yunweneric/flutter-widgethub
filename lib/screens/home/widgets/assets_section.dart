@@ -7,9 +7,9 @@ import 'package:flutterui/screens/home/data/export/sidebar_categories.dart';
 import 'package:flutterui/screens/home/model/component_block_model.dart';
 import 'package:flutterui/screens/home/widgets/component_block.dart';
 import 'package:flutterui/shared/data/enums/component_category_enum.dart';
-import 'package:flutterui/shared/ui/utils/icons.dart';
-import 'package:flutterui/shared/ui/utils/sizing.dart';
-import 'package:flutterui/shared/ui/widgets/device_section_frame.dart';
+import 'package:flutterui/shared/presentation/utils/icons.dart';
+import 'package:flutterui/shared/presentation/utils/sizing.dart';
+import 'package:flutterui/shared/presentation/widgets/device_section_frame.dart';
 import 'package:go_router/go_router.dart';
 
 class AssetsSection extends StatefulWidget {

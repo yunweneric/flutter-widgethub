@@ -11,8 +11,8 @@ import 'package:flutterui/screens/home/widgets/hero_section.dart';
 import 'package:flutterui/shared/data/enums/component_category_enum.dart';
 import 'package:flutterui/shared/data/enums/sub_component_category_enum.dart';
 import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
-import 'package:flutterui/shared/ui/utils/sizing.dart';
-import 'package:flutterui/shared/ui/widgets/layout/app_layout.dart';
+import 'package:flutterui/shared/presentation/utils/sizing.dart';
+import 'package:flutterui/shared/presentation/widgets/layout/app_layout.dart';
 
 // @RoutePage()
 class HomeScreen extends StatefulWidget {

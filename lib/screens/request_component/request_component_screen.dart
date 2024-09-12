@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterui/shared/ui/utils/sizing.dart';
-import 'package:flutterui/shared/ui/widgets/layout/app_layout.dart';
+import 'package:flutterui/shared/presentation/utils/sizing.dart';
+import 'package:flutterui/shared/presentation/widgets/layout/app_layout.dart';
 
 class RequestComponentScreen extends StatefulWidget {
   const RequestComponentScreen({super.key});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterui/screens/home/model/component_block_model.dart';
-import 'package:flutterui/shared/ui/utils/sizing.dart';
+import 'package:flutterui/shared/presentation/utils/sizing.dart';
 
 class ComponentBlock extends StatefulWidget {
   final AppCategoryGroupModel item;

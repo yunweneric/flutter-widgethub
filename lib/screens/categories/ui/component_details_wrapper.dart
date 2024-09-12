@@ -5,13 +5,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/core/service_locators.dart';
 import 'package:flutterui/shared/data/models/component.dart';
-import 'package:flutterui/shared/ui/utils/icons.dart';
-import 'package:flutterui/shared/ui/utils/sizing.dart';
-import 'package:flutterui/shared/ui/utils/util.dart';
-import 'package:flutterui/shared/ui/widgets/code_highlight.dart';
-import 'package:flutterui/shared/ui/widgets/code_preview.dart';
-import 'package:flutterui/shared/ui/widgets/icon.dart';
-import 'package:flutterui/shared/ui/widgets/layout/main_content.dart';
+import 'package:flutterui/shared/presentation/utils/icons.dart';
+import 'package:flutterui/shared/presentation/utils/sizing.dart';
+import 'package:flutterui/shared/presentation/utils/util.dart';
+import 'package:flutterui/shared/presentation/widgets/code_highlight.dart';
+import 'package:flutterui/shared/presentation/widgets/code_preview.dart';
+import 'package:flutterui/shared/presentation/widgets/icon.dart';
+import 'package:flutterui/shared/presentation/widgets/layout/main_content.dart';
 import 'package:go_router/go_router.dart';
 
 class ComponentDetailsWrapper extends StatefulWidget {

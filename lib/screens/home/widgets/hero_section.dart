@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
-import 'package:flutterui/components/ui/templates/nike_zoomer/nike_zoomer.dart';
+import 'package:flutterui/components/presentation/templates/nike_zoomer/nike_zoomer.dart';
 import 'package:flutterui/core/service_locators.dart';
 import 'package:flutterui/screens/home/model/component_block_model.dart';
 import 'package:flutterui/screens/home/ui/apps/leave_review/home.dart';
@@ -12,9 +12,9 @@ import 'package:flutterui/screens/home/ui/apps/theme_toggle/theme_toggle.dart';
 import 'package:flutterui/screens/routes/route_names.dart';
 import 'package:flutterui/shared/data/enums/component_category_enum.dart';
 import 'package:flutterui/shared/data/enums/sub_component_category_enum.dart';
-import 'package:flutterui/shared/ui/utils/colors.dart';
-import 'package:flutterui/shared/ui/utils/sizing.dart';
-import 'package:flutterui/shared/ui/widgets/device_section_frame.dart';
+import 'package:flutterui/shared/presentation/utils/colors.dart';
+import 'package:flutterui/shared/presentation/utils/sizing.dart';
+import 'package:flutterui/shared/presentation/widgets/device_section_frame.dart';
 import 'package:go_router/go_router.dart';
 
 class HeroSection extends StatefulWidget {

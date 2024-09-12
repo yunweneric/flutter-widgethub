@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutterui/components/ui/export/component_store.dart';
+import 'package:flutterui/components/presentation/export/component_store.dart';
 import 'package:flutterui/screens/home/model/component_block_model.dart';
 import 'package:flutterui/shared/data/models/component.dart';
 

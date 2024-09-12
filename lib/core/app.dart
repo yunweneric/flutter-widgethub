@@ -7,7 +7,7 @@ import 'package:flutterui/shared/logic/language/language_bloc.dart';
 import 'package:flutterui/shared/logic/navigation/navigation_bloc.dart';
 import 'package:flutterui/shared/logic/sidebar/sidebar_bloc.dart';
 import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
-import 'package:flutterui/shared/ui/utils/theme.dart';
+import 'package:flutterui/shared/presentation/utils/theme.dart';
 import 'package:go_router/go_router.dart';
 
 class MyApp extends StatelessWidget {

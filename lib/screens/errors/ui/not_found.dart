@@ -1,7 +1,7 @@
 // import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutterui/screens/routes/app_router.gr.dart';
-import 'package:flutterui/shared/ui/utils/sizing.dart';
+import 'package:flutterui/shared/presentation/utils/sizing.dart';
 
 // @RoutePage()
 class NotFoundScreen extends StatefulWidget {

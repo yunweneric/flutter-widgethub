@@ -1,4 +1,3 @@
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/screens/routes/app_router.dart';
 import 'package:flutterui/shared/logic/language/language_bloc.dart';
@@ -12,9 +11,6 @@ final getIt = GetIt.instance;
 
 class ServiceLocators {
   static Future<void> register() async {
-    FirebaseAnalytics analytics = FirebaseAnalytics.instance;
-    getIt.registerSingleton<FirebaseAnalytics>(analytics);
-
     // final appRouter = appRouter;
     getIt.registerSingleton<GoRouter>(appRouter);
 

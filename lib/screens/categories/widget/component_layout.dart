@@ -69,9 +69,9 @@ library;
 import 'package:flutter/material.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/core/service_locators.dart';
-import 'package:flutterui/shared/ui/utils/sizing.dart';
-import 'package:flutterui/shared/ui/widgets/layout/app_layout.dart';
-import 'package:flutterui/shared/ui/widgets/layout/side_bar.dart';
+import 'package:flutterui/shared/presentation/utils/sizing.dart';
+import 'package:flutterui/shared/presentation/widgets/layout/app_layout.dart';
+import 'package:flutterui/shared/presentation/widgets/layout/side_bar.dart';
 
 // @RoutePage()
 class ComponentLayoutScreen extends StatefulWidget {

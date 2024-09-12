@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterui/screens/home/widgets/device_interactive.dart';
-import 'package:flutterui/shared/ui/utils/icons.dart';
-import 'package:flutterui/shared/ui/utils/sizing.dart';
+import 'package:flutterui/shared/presentation/utils/icons.dart';
+import 'package:flutterui/shared/presentation/utils/sizing.dart';
 
 class IntegrationSection extends StatefulWidget {
   const IntegrationSection({super.key});

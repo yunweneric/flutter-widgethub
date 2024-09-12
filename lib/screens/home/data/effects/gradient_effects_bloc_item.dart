@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterui/shared/ui/utils/sizing.dart';
+import 'package:flutterui/shared/presentation/utils/sizing.dart';
 
 class ListColorTween extends Tween<List<Color>> {
   ListColorTween({super.begin, super.end});

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/core/service_locators.dart';
 import 'package:flutterui/shared/logic/theme/theme_bloc.dart';
-import 'package:flutterui/shared/ui/utils/icons.dart';
-import 'package:flutterui/shared/ui/utils/sizing.dart';
-import 'package:flutterui/shared/ui/utils/util.dart';
-import 'package:flutterui/shared/ui/widgets/icon.dart';
+import 'package:flutterui/shared/presentation/utils/icons.dart';
+import 'package:flutterui/shared/presentation/utils/sizing.dart';
+import 'package:flutterui/shared/presentation/utils/util.dart';
+import 'package:flutterui/shared/presentation/widgets/icon.dart';
 
 class HomeFooter extends StatefulWidget {
   const HomeFooter({super.key});

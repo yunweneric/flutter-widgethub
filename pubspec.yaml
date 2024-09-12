@@ -33,8 +33,6 @@ dependencies:
   cupertino_icons: ^1.0.6
   currency_text_input_formatter: ^2.2.3
   device_frame: ^1.2.0
-  firebase_analytics: ^10.8.0
-  firebase_core: ^2.24.2
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.6
