@@ -1,3 +1,4 @@
+const fruityLipsCode = '''
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
@@ -95,7 +96,7 @@ class _FruityLipsTemplateState extends State<FruityLipsTemplate> with TickerProv
   }
 
   String generateAssetName(int index, String suffix) {
-    return "assets/images/fruity_lips/${fruits[index].colorName}_$suffix.png";
+    return "assets/images/fruity_lips/\${fruits[index].colorName}_\$suffix.png";
   }
 
   @override
@@ -290,3 +291,4 @@ class _FruityLipsTemplateState extends State<FruityLipsTemplate> with TickerProv
     );
   }
 }
+''';

@@ -1,11 +1,8 @@
 import 'dart:async';
 import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:flutterui/app/presentation/home/screens/apps/leave_review/utils/colors.dart';
-import 'package:flutterui/app/presentation/home/screens/apps/leave_review/utils/sizing.dart';
-import 'package:flutterui/app/presentation/home/screens/apps/leave_review/widgets/arc.dart';
-import 'package:flutterui/app/presentation/home/screens/apps/leave_review/widgets/slider.dart';
+import 'package:syncfusion_flutter_sliders/sliders.dart';
+import 'package:syncfusion_flutter_core/theme.dart';
 
 class LeaveReviewHomeScreen extends StatefulWidget {
   const LeaveReviewHomeScreen({super.key});
@@ -216,7 +213,7 @@ class _LeaveReviewHomeScreenState extends State<LeaveReviewHomeScreen> {
         return Column(
           children: [
             SizedBox(
-              height: LeaveReviewAppSizing.height(context) * 0.1,
+              height: LeaveReviewAppSizing.height(context) * 0.08,
               child: PageView.builder(
                   allowImplicitScrolling: false,
                   physics: const NeverScrollableScrollPhysics(),
@@ -316,5 +313,210 @@ class _LeaveReviewHomeScreenState extends State<LeaveReviewHomeScreen> {
     } else {
       return ReviewColors.bgGreen;
     }
+  }
+}
+
+class ReviewColors {
+  static const textWhite = Color(0xFFFFFFFF);
+  static const bgBlack = Color(0xFF161616);
+  static const textBlack = Color(0xFF232323);
+  static const bgWhite = Color(0xFFC0C0C0);
+  static const bgRed = Color(0xFFFC7359);
+  static const bgOrange = Color(0xFFDFA342);
+  static const bgGreen = Color(0xFF9FBE59);
+}
+
+class LeaveReviewAppSizing {
+  static double width(BuildContext context) => MediaQuery.of(context).size.width;
+  static double height(BuildContext context) => MediaQuery.of(context).size.height;
+  static bool isMobile(BuildContext context) => width(context) < 480;
+  static bool isTablet(BuildContext context) => width(context) > 480 && width(context) < 895;
+  static bool isDesktop(BuildContext context) => width(context) > 895;
+  static SizedBox kh10(BuildContext context) => const SizedBox(height: 10);
+  static SizedBox khSpacer(double height) => SizedBox(height: height);
+  static SizedBox kh20(BuildContext context) => const SizedBox(height: 20);
+  static SizedBox kw20(BuildContext context) => const SizedBox(width: 20);
+}
+
+class ArcPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    Paint paint = Paint()
+      ..color = ReviewColors.bgBlack
+      ..style = PaintingStyle.stroke
+      ..strokeCap = StrokeCap.round
+      ..strokeWidth = 12.0;
+
+    Path path = Path();
+    path.moveTo(0, size.height / 2);
+    path.quadraticBezierTo(size.width / 2, size.height, size.width, size.height / 2);
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => true;
+}
+
+class AppSlider extends StatefulWidget {
+  final double value;
+  final void Function(dynamic)? onChanged;
+  const AppSlider({super.key, this.onChanged, required this.value});
+
+  @override
+  State<AppSlider> createState() => _AppSliderState();
+}
+
+class _AppSliderState extends State<AppSlider> {
+  @override
+  Widget build(BuildContext context) {
+    return SfSliderTheme(
+      data: SfSliderThemeData(
+        activeLabelStyle: Theme.of(context).textTheme.displaySmall,
+        inactiveLabelStyle: Theme.of(context).textTheme.displaySmall,
+        labelOffset: const Offset(0.0, 30.0),
+        activeTrackColor: ReviewColors.bgBlack.withOpacity(0.2),
+        inactiveTrackColor: ReviewColors.bgBlack.withOpacity(0.2),
+      ),
+      child: SfSlider(
+        min: 0.0,
+        max: 2.0,
+        value: widget.value,
+        interval: 1,
+        showDividers: true,
+        showLabels: true,
+        labelFormatterCallback: (dynamic actualValue, String formattedText) {
+          return actualValue == 0
+              ? 'Bad'
+              : actualValue == 1
+                  ? 'Not Bad'
+                  : 'Good';
+        },
+        dividerShape: _DividerShape(),
+        thumbShape: _SfThumbShape(animateAngle: widget.value >= 1 ? widget.value * 1 : 1),
+        onChanged: (dynamic newValue) {
+          if (widget.onChanged != null) widget.onChanged!(newValue);
+          setState(() {
+            // widget.value = newValue;
+          });
+        },
+      ),
+    );
+  }
+}
+
+class _DividerShape extends SfDividerShape {
+  @override
+  void paint(
+    PaintingContext context,
+    Offset center,
+    Offset? thumbCenter,
+    Offset? startThumbCenter,
+    Offset? endThumbCenter, {
+    required RenderBox parentBox,
+    required SfSliderThemeData themeData,
+    SfRangeValues? currentValues,
+    dynamic currentValue,
+    required Paint? paint,
+    required Animation<double> enableAnimation,
+    required TextDirection textDirection,
+  }) {
+    bool isActive;
+
+    switch (textDirection) {
+      case TextDirection.ltr:
+        isActive = center.dx <= thumbCenter!.dx;
+        break;
+      case TextDirection.rtl:
+        isActive = center.dx >= thumbCenter!.dx;
+        break;
+    }
+
+    context.canvas.drawCircle(
+      center,
+      10.0,
+      Paint()
+        ..isAntiAlias = true
+        ..style = PaintingStyle.fill
+        ..color = ReviewColors.bgBlack,
+    );
+  }
+}
+
+class _SfThumbShape extends SfThumbShape {
+  final double animateAngle;
+
+  _SfThumbShape({required this.animateAngle});
+  @override
+  void paint(
+    PaintingContext context,
+    Offset center, {
+    required RenderBox parentBox,
+    required RenderBox? child,
+    required SfSliderThemeData themeData,
+    SfRangeValues? currentValues,
+    dynamic currentValue,
+    required Paint? paint,
+    required Animation<double> enableAnimation,
+    required TextDirection textDirection,
+    required SfThumb? thumb,
+  }) {
+    final Path path = Path();
+    double radius = 10.0; // Radius of the arc
+    double startAngle = pi * animateAngle; // Starting angle in radians
+    double sweepAngle = 3.14; // Sweep angle in radians (half-circle)
+
+    // Calculate the start and end points of the arc
+    Offset startPoint = Offset(
+      center.dx + radius * cos(startAngle),
+      center.dy + radius * sin(startAngle),
+    );
+    Offset endPoint = Offset(
+      center.dx + radius * cos(startAngle + sweepAngle),
+      center.dy + radius * sin(startAngle + sweepAngle),
+    );
+
+    // Calculate control points for the Bézier curve
+    double controlPointDistance = radius * (4 / 3) * tan(sweepAngle / 4);
+    Offset controlPoint1 = Offset(
+      startPoint.dx - controlPointDistance * sin(startAngle),
+      startPoint.dy + controlPointDistance * cos(startAngle),
+    );
+    Offset controlPoint2 = Offset(
+      endPoint.dx + controlPointDistance * sin(startAngle + sweepAngle),
+      endPoint.dy - controlPointDistance * cos(startAngle + sweepAngle),
+    );
+
+    // Move to the start point
+    path.moveTo(startPoint.dx, startPoint.dy);
+
+    // Draw the arc using Bézier curves
+    path.cubicTo(
+      controlPoint1.dx,
+      controlPoint1.dy,
+      controlPoint2.dx,
+      controlPoint2.dy,
+      endPoint.dx,
+      endPoint.dy,
+    );
+
+    // Draw the path on the canvas
+
+    context.canvas.drawCircle(
+      center,
+      20,
+      Paint()
+        ..color = ReviewColors.bgBlack
+        ..style = PaintingStyle.fill
+        ..strokeCap = StrokeCap.round
+        ..strokeWidth = 2,
+    );
+    context.canvas.drawPath(
+      path,
+      Paint()
+        ..color = Colors.white.withOpacity(0.1)
+        ..style = PaintingStyle.stroke
+        ..strokeCap = StrokeCap.round
+        ..strokeWidth = 5,
+    );
   }
 }
