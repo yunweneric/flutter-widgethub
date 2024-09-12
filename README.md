@@ -12,9 +12,7 @@
 
 </p>
 
-**Payment SDK for Flutter**
-
-This is a payment SDK for Flutter apps, developed in Dart, that provides functionalities to integrate various payment methods seamlessly into your Flutter applications.
+From ready-to-use components and flexible layout blocks to smooth animations and striking effects, Flutter Widget Hub is a collection of some pretty UIS aimed at helping developers create beautiful, functional flutter apps quickly and efficiently.
 
 ### Features
 
