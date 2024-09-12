@@ -34,6 +34,10 @@ This is a payment SDK for Flutter apps, developed in Dart, that provides functio
 
   Visual effects ranging from shadows and gradients to more complex transformations
 
+### New Component
+
+If you will like the community to build a custom component tailored for a specific use case, you can [Request a component](https://github.com/yunweneric/flutter-widgethub/issues) that and label it accordingly.
+
 ### Contribution Guide
 
 We welcome contributions from the community to make this SDK better! To contribute, follow these steps:
