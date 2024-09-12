@@ -55,6 +55,6 @@ class UtilHelper {
     if (type == AppDeviceType.MOBILE) return Devices.ios.iPhone13;
     // if (type == AppDeviceType.MOBILE) return Devices.ios.iPhone12ProMax;
     if (type == AppDeviceType.TABLET) return Devices.android.largeTablet;
-    if (type == AppDeviceType.DESKTOP) return Devices.macOS.wideMonitor;
+    if (type == AppDeviceType.DESKTOP) return Devices.macOS.macBookPro;
   }
 }

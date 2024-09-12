@@ -35,7 +35,7 @@ class _MainContentState extends State<MainContent> {
                   padding: AppSizing.isMobile(context) ? null : AppSizing.kpadding(15.w, 20.h),
                   side: BorderSide(color: Theme.of(context).dividerColor),
                 ),
-                onPressed: () => context.go(RouteNames.home),
+                onPressed: () => context.go(RouteNames.components),
                 // onPressed: () => context.pop(),
                 // onPressed: () {},
                 icon: const AppIcon(icon: AppIcons.back),

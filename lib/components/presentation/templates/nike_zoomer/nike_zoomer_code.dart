@@ -1,12 +1,10 @@
-import 'dart:async';
+const nikeZoomerCode = '''import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutterui/components/presentation/templates/nike_zoomer/components/follow.dart';
-import 'package:flutterui/components/presentation/templates/nike_zoomer/components/navbar.dart';
-import 'package:flutterui/components/presentation/templates/nike_zoomer/utils/colors.dart';
-import 'package:flutterui/components/presentation/templates/nike_zoomer/utils/sizing.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class NikeZoomerTemplate extends StatefulWidget {
   const NikeZoomerTemplate({super.key});
@@ -197,7 +195,7 @@ class _NikeZoomerTemplateState extends State<NikeZoomerTemplate> with SingleTick
                   transform: Matrix4.identity()
                     ..rotateZ(index == activeIndex ? _shoeRotationAnimation?.value ?? -0.7 : -0.7)
                     ..scale(1.0),
-                  child: Image.asset("assets/images/nike_$index.png"),
+                  child: Image.asset("assets/images/nike_\$index.png"),
                 ),
               ),
             ),
@@ -207,3 +205,164 @@ class _NikeZoomerTemplateState extends State<NikeZoomerTemplate> with SingleTick
     });
   }
 }
+
+class Link {
+  final int index;
+  final String url;
+  final String icon;
+  final String title;
+
+  Link(this.index, this.icon, this.url, this.title);
+}
+
+class Follow extends StatelessWidget {
+  final int activeIndex;
+  Follow({super.key, required this.activeIndex});
+
+  List<Link> links = [
+    Link(0, "github", "https://github.com/yunweneric/", "Github"),
+    Link(1, "x", "https://twitter.com/yunweneric", "X"),
+    Link(2, "linkedIn", "https://www.linkedin.com/in/yunweneric", "LinkedIn"),
+  ];
+
+  Color generateColor(int activeIndex, int index) {
+    if (activeIndex == index) {
+      switch (activeIndex) {
+        case 0:
+          return NZColors.blue;
+        case 1:
+          return NZColors.red;
+        case 2:
+          return NZColors.yellow;
+        default:
+          return Colors.transparent;
+      }
+    }
+    return Colors.transparent;
+  }
+
+  static Future<void> navigate(String link) async {
+    final Uri url = Uri.parse(link);
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch \$url');
+    }
+  }
+
+  linkItem(Link link, BuildContext context) {
+    return TextButton.icon(
+      onPressed: () => navigate(link.url),
+      label: Text(link.title, style: const TextStyle(color: NZColors.black)),
+      icon: SvgPicture.asset("assets/icons/\${link.icon}.svg"),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        children: [
+          Container(
+            width: NZSizing.width(context) / 4,
+            padding: const EdgeInsets.all(5),
+            decoration: BoxDecoration(
+              color: NZColors.white,
+              borderRadius: BorderRadius.circular(5),
+            ),
+            child: Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ...links.map((link) {
+                    return linkItem(link, context);
+                  })
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 5),
+          Container(
+            width: NZSizing.width(context) / 4,
+            padding: const EdgeInsets.all(5),
+            decoration: BoxDecoration(
+              color: NZColors.white,
+              borderRadius: BorderRadius.circular(5),
+            ),
+            child: const Center(child: Text("Coded by Yunwen", style: TextStyle(fontSize: 12))),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class NavBar extends StatelessWidget {
+  NavBar({super.key});
+
+  List<String> navItems = ["LifeStyle", "New Release", "Sales"];
+  List<String> navIcons = ["bag", "user", "heart"];
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Container(
+          alignment: Alignment.centerLeft,
+          width: NZSizing.width(context) / 3.5,
+          child: Image.asset("assets/images/nike.png", height: 120),
+        ),
+        SizedBox(
+          width: NZSizing.width(context) / 3.5,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ...navItems.map((item) {
+                return TextButton(
+                  onPressed: () {},
+                  child: Text(item, style: const TextStyle(color: NZColors.white, fontSize: 16)),
+                );
+              })
+            ],
+          ),
+        ),
+        SizedBox(
+          width: NZSizing.width(context) / 3.5,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              ...navIcons.map((item) {
+                return TextButton(
+                  onPressed: () {},
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.transparent,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+                  ),
+                  child: SvgPicture.asset("assets/icons/\$item.svg", width: 30, height: 30),
+                );
+              })
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class NZSizing {
+  static double width(context) => MediaQuery.of(context).size.width;
+  static double height(context) => MediaQuery.of(context).size.height;
+  static bool isMobile(context) => width(context) <= 889;
+  static bool isDesktop(context) => width(context) > 889;
+}
+
+class NZColors {
+  static const blue = Color(0XFF4A64ED);
+  static const red = Color(0xFFFF5A5A);
+  static const yellow = Color(0xFFFFCE6D);
+  static const white = Color(0xFFFFFFFF);
+  static const black = Color(0xff000000);
+}
+
+''';
