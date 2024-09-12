@@ -1,0 +1,170 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+body {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+body.dark-mode {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+#preloader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+#skip_btn {
+  position: fixed;
+  right: 2rem;
+  top: 2rem;
+  padding: 0.6rem 2rem;
+  border-radius: 0.2rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.7s;
+  opacity: 0;
+}
+#skip_btn.active {
+  opacity: 1;
+}
+
+.animated-text {
+  opacity: 0;
+  transform: scale(1);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  text-transform: capitalize;
+  font-size: 2.5rem;
+  font-weight: 800;
+  width: 60vw;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.animated-text.active {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.animated-text.hidden {
+  opacity: 0;
+  transform: scale(1.1);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer img {
+  width: 6rem;
+  margin-bottom: 2rem;
+}
+
+.footer-icons {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+}
+.footer-icons img {
+  cursor: pointer;
+  transition: all 0.5s;
+  width: 2rem;
+  height: 2rem;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  background-color: rgb(223, 221, 221);
+}
+
+.footer-icons img:hover {
+  transform: scale(1.2);
+  background-color: rgb(223, 221, 221);
+  border-radius: 0.2rem;
+}
+
+.lightLogo {
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.7s;
+}
+
+.darkLogo {
+  left: 50%;
+  right: 50%;
+  top: 0;
+  bottom: 0;
+  transform: translate(-50%, -30%);
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.7s;
+}
+.showDarkLogo,
+.showLightLogo {
+  visibility: visible;
+  transition: all 0.7s;
+  opacity: 1;
+}
+
+@media only screen and (max-width: 997px) and (min-width: 1200px) {
+  .animated-text {
+    font-size: 2rem;
+    font-weight: 800;
+    width: 70vw;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .animated-text {
+    font-size: 1.8rem;
+    font-weight: 800;
+    width: 70vw;
+  }
+
+  .footer {
+    font-size: 0.8rem;
+  }
+
+  .footer img {
+    width: 6rem;
+    margin-bottom: 2rem;
+  }
+
+  .footer-icons {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  .footer-icons img {
+    width: 2rem;
+    height: 2rem;
+  }
+}

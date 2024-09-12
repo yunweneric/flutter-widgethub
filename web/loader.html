@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/loader.css" />
+    <title>String Animation</title>
+  </head>
+
+  <body>
+    <div id="preloader">
+      <div class="container">
+        <div class="animated-text"></div>
+      </div>
+
+      <div class="footer">
+        <div class="logos">
+          <img
+            src="./images/flutterwidgethub_Logo.png"
+            alt=""
+            class="lightLogo"
+          />
+          <img
+            src="./images/flutterwidgethub_Logo_white.png"
+            alt=""
+            class="darkLogo"
+          />
+        </div>
+        <p>Developed with 💙 by Yunwen!</p>
+        <div class="footer-icons">
+          <a href="https://github.com/yunweneric"
+            ><img src="./icons/github.svg" alt=""
+          /></a>
+          <a href="https://www.linkedin.com/in/yunweneric"
+            ><img src="./icons/linkedin.svg" alt=""
+          /></a>
+          <a href="https://x.com/yunweneric"
+            ><img src="./icons/x.svg" alt=""
+          /></a>
+        </div>
+      </div>
+
+      <button id="skip_btn">Skip</button>
+    </div>
+    <!-- <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Detects the user's preferred color scheme
+        const userPrefersDark =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+        // Apply the dark mode class if the user prefers dark mode
+        if (userPrefersDark) {
+          document.body.classList.add("dark-mode");
+        }
+
+        // Listen for changes to the user's color scheme preference
+        window
+          .matchMedia("(prefers-color-scheme: dark)")
+          .addEventListener("change", (e) => {
+            if (e.matches) {
+              document.body.classList.add("dark-mode");
+            } else {
+              document.body.classList.remove("dark-mode");
+            }
+          });
+        const textElement = document.querySelector(".animated-text");
+        const strings = [
+          "Hi!",
+          "Welcome to Flutter Widget Hub!",
+          "Enjoy Our Vast Collection of Flutter Templates, Blocks, Animations and Effects",
+          "We are getting everything ready for you!",
+          "Fun Fact, Flutter Widget Hub is Build Entirely with Flutter",
+          "Initial Load time might be longer than expected, Please stay put!",
+        ];
+        let index = 0;
+
+        function animateText() {
+          // Remove 'active' class to initiate fade out and zoom out
+          textElement.classList.remove("active");
+          textElement.classList.add("hidden");
+
+          setTimeout(() => {
+            // After the text fades out, change the text content
+            textElement.textContent = strings[index];
+
+            // Remove 'hidden' class to reset the scale and opacity before adding 'active'
+            textElement.classList.remove("hidden");
+            textElement.classList.add("active");
+
+            // Move the current item to the end of the list to create an infinite loop
+            // strings.push(strings.shift());
+
+            index = (index + 1) % strings.length;
+          }, 1000); // Wait for fade-out and zoom-out to complete (1 second)
+        }
+
+        // Initial call to start the animation
+        animateText();
+
+        // Set an interval to animate the text every 2 seconds
+        setInterval(animateText, 5000);
+      });
+    </script> -->
+
+    <script src="loader.js" defer></script>
+  </body>
+</html>
