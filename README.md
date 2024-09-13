@@ -34,13 +34,25 @@ From ready-to-use components and flexible layout blocks to smooth animations and
 
 ### Setup
 
-#### Version support
+- #### Version support
 
-FVM is compiled in flutter version **3.22.1**. You can use [FVM](https://fvm.app/) to manage your flutter version
+  FVM is compiled in flutter version **3.22.1**. You can use [FVM](https://fvm.app/) to manage your flutter version
 
-#### Running app
+- #### Running app
 
-You can find the **main_dev.dart** and **main_prod.dart** files in the lib/app/core folder. In the **.vscode** folder, you can find the launch config for dev and prod environment
+  You can find the **main_dev.dart** and **main_prod.dart** files in the lib/app/core folder. In the **.vscode** folder, you can find the launch config for dev and prod environment
+
+  ### NB: Ensure you have an env.json or dev.env.json file out of your project in a folder called envs/fwh
+
+- #### Building app with wasm support
+
+```bash
+flutter build web --wasm --target lib/app/core/main_dev.dart --dart-define-from-file=../envs/fwh/dev.env.json
+```
+
+```bash
+flutter build web --wasm --target lib/app/core/main_prod.dart --dart-define-from-file=../envs/fwh/env.json
+```
 
 ### Request New Component
 
