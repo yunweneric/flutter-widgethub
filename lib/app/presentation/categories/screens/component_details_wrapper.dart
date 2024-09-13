@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutterui/components/data/logic/component/component_bloc.dart';
-import 'package:flutterui/app/core/service_locators.dart';
-import 'package:flutterui/app/shared/data/models/component.dart';
-import 'package:flutterui/app/shared/presentation/utils/icons.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
-import 'package:flutterui/app/shared/presentation/utils/util.dart';
-import 'package:flutterui/app/shared/presentation/widgets/code_highlight.dart';
-import 'package:flutterui/app/shared/presentation/widgets/code_preview.dart';
-import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
-import 'package:flutterui/app/shared/presentation/widgets/layout/main_content.dart';
+import 'package:fwh/components/data/logic/component/component_bloc.dart';
+import 'package:fwh/app/core/service_locators.dart';
+import 'package:fwh/app/shared/data/models/component.dart';
+import 'package:fwh/app/shared/presentation/utils/icons.dart';
+import 'package:fwh/app/shared/presentation/utils/sizing.dart';
+import 'package:fwh/app/shared/presentation/utils/util.dart';
+import 'package:fwh/app/shared/presentation/widgets/code_highlight.dart';
+import 'package:fwh/app/shared/presentation/widgets/code_preview.dart';
+import 'package:fwh/app/shared/presentation/widgets/icon.dart';
+import 'package:fwh/app/shared/presentation/widgets/layout/main_content.dart';
 import 'package:go_router/go_router.dart';
 
 class ComponentDetailsWrapper extends StatefulWidget {
@@ -43,11 +43,11 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
           final canNext = activeIndex < state.allComponents.length - 1;
           return MainContent(
             children: [
-              Text(component.title, style: Theme.of(context).textTheme.displayLarge),
+              SelectableText(component.title, style: Theme.of(context).textTheme.displayLarge),
               AppSizing.kh10Spacer(),
-              Text(component.description, style: Theme.of(context).textTheme.bodyMedium),
+              SelectableText(component.description, style: Theme.of(context).textTheme.bodyMedium),
               AppSizing.kh20Spacer(),
-              Text("Setup", style: Theme.of(context).textTheme.displayMedium),
+              SelectableText("Setup", style: Theme.of(context).textTheme.displayMedium),
               AppSizing.kh10Spacer(),
               AppSizing.kh10Spacer(),
               CodeHighlight(code: component.setup),
@@ -107,14 +107,14 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
                 onPressed: () {
                   componentBloc.add(FindNextComponentBloc(isNext: false));
                 },
-                label: Text(
+                label: SelectableText(
                   "Previous",
                   style: TextStyle(color: Theme.of(context).highlightColor),
                 ),
                 icon: const AppIcon(icon: AppIcons.back),
               ),
               AppSizing.kh10Spacer(),
-              Text(state.allComponents[activeIndex - 1].title, style: Theme.of(context).textTheme.displayMedium),
+              SelectableText(state.allComponents[activeIndex - 1].title, style: Theme.of(context).textTheme.displayMedium),
             ],
           ),
         if (canNext)
@@ -126,7 +126,7 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
                 onPressed: () {
                   componentBloc.add(FindNextComponentBloc(isNext: true));
                 },
-                label: Text(
+                label: SelectableText(
                   "Next",
                   style: TextStyle(color: Theme.of(context).highlightColor),
                 ),
@@ -135,7 +135,7 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
                 ),
               ),
               AppSizing.kh10Spacer(),
-              Text(state.allComponents[activeIndex + 1].title, style: Theme.of(context).textTheme.displayMedium),
+              SelectableText(state.allComponents[activeIndex + 1].title, style: Theme.of(context).textTheme.displayMedium),
             ],
           )
       ],
@@ -146,7 +146,7 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        SelectableText(
           "Support on",
           style: Theme.of(context).textTheme.displayMedium,
         ),
@@ -198,7 +198,7 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        SelectableText(
           "Resources",
           style: Theme.of(context).textTheme.displayMedium,
         ),

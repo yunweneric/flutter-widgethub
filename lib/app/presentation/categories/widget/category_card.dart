@@ -2,10 +2,10 @@
 import 'package:device_frame/device_frame.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/components/data/logic/component/component_bloc.dart';
-import 'package:flutterui/app/core/service_locators.dart';
-import 'package:flutterui/app/shared/data/models/component.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
+import 'package:fwh/components/data/logic/component/component_bloc.dart';
+import 'package:fwh/app/core/service_locators.dart';
+import 'package:fwh/app/shared/data/models/component.dart';
+import 'package:fwh/app/shared/presentation/utils/sizing.dart';
 import 'package:go_router/go_router.dart';
 
 class CategoryCard extends StatefulWidget {

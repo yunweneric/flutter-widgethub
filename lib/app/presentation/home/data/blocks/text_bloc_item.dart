@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
+import 'package:fwh/app/shared/presentation/utils/sizing.dart';
 
 class TextBlocItem extends StatefulWidget {
   const TextBlocItem({super.key});
@@ -60,7 +60,7 @@ class _TextsideBarCategoriestate extends State<TextBlocItem> {
                             offset: Offset(0, value * 80),
                             child: Opacity(
                               opacity: (1 - value.clamp(0, 1)),
-                              child: Text(
+                              child: SelectableText(
                                 "$count",
                                 textAlign: TextAlign.center,
                                 style: Theme.of(context).textTheme.displayLarge,
@@ -83,7 +83,7 @@ class _TextsideBarCategoriestate extends State<TextBlocItem> {
                             offset: Offset(0, (1 - value) * -80),
                             child: Opacity(
                               opacity: (value.clamp(0, 1)),
-                              child: Text(
+                              child: SelectableText(
                                 "${count - 1}",
                                 textAlign: TextAlign.center,
                                 style: Theme.of(context).textTheme.displayLarge,

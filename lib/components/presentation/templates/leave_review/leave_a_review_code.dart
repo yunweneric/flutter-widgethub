@@ -124,7 +124,7 @@ class _LeaveReviewHomeScreenState extends State<LeaveReviewHomeScreen> {
             ],
           ),
           LeaveReviewAppSizing.kh20(context),
-          Text(
+          SelectableText(
             "How was your shopping\nexperience",
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.displayMedium,
@@ -226,7 +226,7 @@ class _LeaveReviewHomeScreenState extends State<LeaveReviewHomeScreen> {
                   },
                   itemBuilder: (context, i) {
                     return Center(
-                      child: Text(
+                      child: SelectableText(
                         items[i],
                         style: Theme.of(context).textTheme.displayLarge!.copyWith(
                               color: ReviewColors.bgBlack.withOpacity(0.3),
@@ -269,7 +269,7 @@ class _LeaveReviewHomeScreenState extends State<LeaveReviewHomeScreen> {
                         color: ReviewColors.bgBlack.withOpacity(0.2),
                         borderRadius: BorderRadius.circular(30),
                       ),
-                      child: Text(
+                      child: SelectableText(
                         "Add Note",
                         style: Theme.of(context).textTheme.displaySmall,
                       ),
@@ -288,7 +288,7 @@ class _LeaveReviewHomeScreenState extends State<LeaveReviewHomeScreen> {
                         ),
                       ),
                       onPressed: () {},
-                      label: Text(
+                      label: SelectableText(
                         "Submit",
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),

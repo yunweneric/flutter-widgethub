@@ -1,7 +1,7 @@
 const classicButtonCode = '''import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/shared/ui/utils/sizing.dart';
-import 'package:flutterui/shared/ui/widgets/icon.dart';
+import 'package:fwh/shared/ui/utils/sizing.dart';
+import 'package:fwh/shared/ui/widgets/icon.dart';
 
 class AppChip extends StatefulWidget {
   final String icon;
@@ -54,7 +54,7 @@ class _AppChipState extends State<AppChip> {
                     AppIcon(icon: widget.icon, color: isActive ? Theme.of(context).primaryColor : Theme.of(context).highlightColor),
                     if (widget.title != null) AppSizing.kwSpacer(5.w),
                     if (widget.title != null)
-                      Text(
+                      SelectableText(
                         widget.title!,
                         style: TextStyle(color: isActive ? Theme.of(context).primaryColor : Theme.of(context).highlightColor),
                       ),

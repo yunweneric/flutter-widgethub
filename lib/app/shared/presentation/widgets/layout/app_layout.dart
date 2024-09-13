@@ -2,23 +2,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/components/data/logic/component/component_bloc.dart';
-import 'package:flutterui/app/core/service_locators.dart';
-import 'package:flutterui/app/presentation/home/data/export/sidebar_categories.dart';
-import 'package:flutterui/app/presentation/home/model/component_block_model.dart';
-import 'package:flutterui/app/presentation/home/widgets/home_footer.dart';
-// import 'package:flutterui/screens/routes/app_router.gr.dart';
-import 'package:flutterui/app/core/routes/route_names.dart';
-import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
-import 'package:flutterui/app/shared/logic/sidebar/sidebar_bloc.dart';
-import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
-import 'package:flutterui/app/shared/presentation/utils/icons.dart';
-import 'package:flutterui/app/shared/presentation/utils/images.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
-import 'package:flutterui/app/shared/presentation/utils/util.dart';
-import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
-import 'package:flutterui/app/shared/presentation/widgets/layout/home_nav_bar.dart';
-import 'package:flutterui/app/shared/presentation/widgets/layout/side_bar_item.dart';
+import 'package:fwh/components/data/logic/component/component_bloc.dart';
+import 'package:fwh/app/core/service_locators.dart';
+import 'package:fwh/app/presentation/home/data/export/sidebar_categories.dart';
+import 'package:fwh/app/presentation/home/model/component_block_model.dart';
+import 'package:fwh/app/presentation/home/widgets/home_footer.dart';
+// import 'package:fwh/screens/routes/app_router.gr.dart';
+import 'package:fwh/app/core/routes/route_names.dart';
+import 'package:fwh/app/shared/data/enums/component_category_enum.dart';
+import 'package:fwh/app/shared/logic/sidebar/sidebar_bloc.dart';
+import 'package:fwh/app/shared/logic/theme/theme_bloc.dart';
+import 'package:fwh/app/shared/presentation/utils/icons.dart';
+import 'package:fwh/app/shared/presentation/utils/images.dart';
+import 'package:fwh/app/shared/presentation/utils/sizing.dart';
+import 'package:fwh/app/shared/presentation/utils/util.dart';
+import 'package:fwh/app/shared/presentation/widgets/icon.dart';
+import 'package:fwh/app/shared/presentation/widgets/layout/home_nav_bar.dart';
+import 'package:fwh/app/shared/presentation/widgets/layout/side_bar_item.dart';
 import 'package:go_router/go_router.dart';
 
 class AppLayout extends StatefulWidget {
@@ -122,7 +122,7 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
                             children: [
                               navbarSection(child: themingSection(context)),
                               AppSizing.kh20Spacer(),
-                              Text(
+                              SelectableText(
                                 "Made with 💙 by Yunwen",
                                 style: Theme.of(context).textTheme.bodySmall,
                               ),
@@ -228,7 +228,7 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(item.category.describe(), style: Theme.of(context).textTheme.displayMedium),
+                                  SelectableText(item.category.describe(), style: Theme.of(context).textTheme.displayMedium),
                                   AppSizing.khSpacer(15.h),
                                   Stack(
                                     children: [
@@ -269,7 +269,7 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        SelectableText(
           "Choose Theming",
           style: Theme.of(context).textTheme.displayMedium,
         ),
@@ -326,7 +326,7 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
               AppIcon(icon: icon, size: 20),
               AppSizing.kwSpacer(5),
             ],
-            Text(title, style: Theme.of(context).textTheme.bodyMedium),
+            SelectableText(title, style: Theme.of(context).textTheme.bodyMedium),
           ],
         ),
       ),

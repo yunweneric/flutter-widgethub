@@ -515,7 +515,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.flutterwidget.hub.RunnerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/flutterui.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/flutterui";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/fwh.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/fwh";
 			};
 			name = Debug;
 		};
@@ -530,7 +530,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.flutterwidget.hub.RunnerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/flutterui.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/flutterui";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/fwh.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/fwh";
 			};
 			name = Release;
 		};
@@ -545,7 +545,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.flutterwidget.hub.RunnerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/flutterui.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/flutterui";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/fwh.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/fwh";
 			};
 			name = Profile;
 		};
@@ -880,7 +880,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.flutterwidget.hub.RunnerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/flutterui.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/flutterui";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/fwh.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/fwh";
 			};
 			name = "Debug-dev";
 		};
@@ -973,7 +973,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.flutterwidget.hub.RunnerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/flutterui.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/flutterui";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/fwh.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/fwh";
 			};
 			name = "Release-dev";
 		};
@@ -1066,7 +1066,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.flutterwidget.hub.RunnerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/flutterui.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/flutterui";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/fwh.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/fwh";
 			};
 			name = "Profile-dev";
 		};

@@ -1,10 +1,10 @@
 //// import 'package:flutter/material.dart';
 library;
-// import 'package:flutterui/components/data/logic/component/component_bloc.dart';
-// import 'package:flutterui/core/service_locators.dart';
-// import 'package:flutterui/shared/ui/utils/sizing.dart';
-// import 'package:flutterui/shared/ui/widgets/layout/nav_bar.dart';
-// import 'package:flutterui/shared/ui/widgets/layout/side_bar.dart';
+// import 'package:fwh/components/data/logic/component/component_bloc.dart';
+// import 'package:fwh/core/service_locators.dart';
+// import 'package:fwh/shared/ui/utils/sizing.dart';
+// import 'package:fwh/shared/ui/widgets/layout/nav_bar.dart';
+// import 'package:fwh/shared/ui/widgets/layout/side_bar.dart';
 
 // @RoutePage()
 // class ComponentLayoutScreen extends StatefulWidget {
@@ -67,11 +67,11 @@ library;
 
 // import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterui/components/data/logic/component/component_bloc.dart';
-import 'package:flutterui/app/core/service_locators.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
-import 'package:flutterui/app/shared/presentation/widgets/layout/app_layout.dart';
-import 'package:flutterui/app/shared/presentation/widgets/layout/side_bar.dart';
+import 'package:fwh/components/data/logic/component/component_bloc.dart';
+import 'package:fwh/app/core/service_locators.dart';
+import 'package:fwh/app/shared/presentation/utils/sizing.dart';
+import 'package:fwh/app/shared/presentation/widgets/layout/app_layout.dart';
+import 'package:fwh/app/shared/presentation/widgets/layout/side_bar.dart';
 
 // @RoutePage()
 class ComponentLayoutScreen extends StatefulWidget {

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/app/shared/presentation/utils/icons.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
-import 'package:flutterui/app/shared/presentation/utils/util.dart';
-import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
+import 'package:fwh/app/shared/presentation/utils/icons.dart';
+import 'package:fwh/app/shared/presentation/utils/sizing.dart';
+import 'package:fwh/app/shared/presentation/utils/util.dart';
+import 'package:fwh/app/shared/presentation/widgets/icon.dart';
 
 class ComponentFooter extends StatefulWidget {
   const ComponentFooter({super.key});
@@ -27,7 +27,7 @@ class _DetailedFooterState extends State<ComponentFooter> {
         children: [
           SizedBox(
             width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 35),
-            child: Text(
+            child: SelectableText(
               "Build with 💙 by yunwen",
               style: Theme.of(context).textTheme.bodySmall,
               textAlign: AppSizing.isMobile(context) ? TextAlign.center : TextAlign.left,

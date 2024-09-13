@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:flutterui/app/shared/presentation/helpers/platform/platform_enum.dart';
+import 'package:fwh/app/shared/presentation/helpers/platform/platform_enum.dart';
 
 AppPlatform getPlatform() {
   if (Platform.isAndroid) return AppPlatform.android;

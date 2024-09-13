@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
+import 'package:fwh/app/shared/presentation/utils/sizing.dart';
 
 class ColorsEffectBloc extends StatefulWidget {
   const ColorsEffectBloc({super.key});

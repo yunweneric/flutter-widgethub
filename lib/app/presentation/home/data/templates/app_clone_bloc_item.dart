@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
+import 'package:fwh/app/shared/presentation/utils/sizing.dart';
 
 class AppCloneBlocItem extends StatefulWidget {
   const AppCloneBlocItem({super.key});

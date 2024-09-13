@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/components/data/logic/component/component_bloc.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
+import 'package:fwh/components/data/logic/component/component_bloc.dart';
+import 'package:fwh/app/shared/presentation/utils/sizing.dart';
 
 class AppContainer extends StatefulWidget {
   final Widget child;

@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
+import 'package:fwh/app/shared/presentation/utils/sizing.dart';
 
 class BottomBarBlocItem extends StatefulWidget {
   const BottomBarBlocItem({super.key});
@@ -99,7 +99,7 @@ class _BottomBarsideBarCategoriestate extends State<BottomBarBlocItem> {
           AppSizing.khSpacer(40),
           ElevatedButton(
             onPressed: () {},
-            child: const Text("Get started"),
+            child: const SelectableText("Get started"),
           ),
           AppSizing.khSpacer(40),
         ],

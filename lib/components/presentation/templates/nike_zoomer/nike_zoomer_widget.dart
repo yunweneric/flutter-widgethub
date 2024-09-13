@@ -173,7 +173,7 @@ class _NikeZoomerTemplateState extends State<NikeZoomerTemplate> with SingleTick
                     transform: Matrix4.identity()
                       ..scale(index == activeIndex ? _textTranslationAnimation?.value ?? 1.8 : 1.0)
                       ..rotateZ(index == activeIndex ? _textRotationAnimation?.value ?? 0.0 : 0.0),
-                    child: Text(
+                    child: SelectableText(
                       index == 0
                           ? "BLUE"
                           : index == 1
@@ -258,7 +258,7 @@ class Follow extends StatelessWidget {
   linkItem(Link link, BuildContext context) {
     return TextButton.icon(
       onPressed: () => navigate(link.url),
-      label: Text(link.title, style: const TextStyle(color: NZColors.black)),
+      label: SelectableText(link.title, style: const TextStyle(color: NZColors.black)),
       icon: SvgPicture.asset("assets/icons/${link.icon}.svg"),
     );
   }
@@ -294,7 +294,7 @@ class Follow extends StatelessWidget {
               color: NZColors.white,
               borderRadius: BorderRadius.circular(5),
             ),
-            child: const Center(child: Text("Coded by Yunwen", style: TextStyle(fontSize: 12))),
+            child: const Center(child: SelectableText("Coded by Yunwen", style: TextStyle(fontSize: 12))),
           ),
         ],
       ),
@@ -328,7 +328,7 @@ class NavBar extends StatelessWidget {
               ...navItems.map((item) {
                 return TextButton(
                   onPressed: () {},
-                  child: Text(item, style: const TextStyle(color: NZColors.white, fontSize: 16)),
+                  child: SelectableText(item, style: const TextStyle(color: NZColors.white, fontSize: 16)),
                 );
               })
             ],

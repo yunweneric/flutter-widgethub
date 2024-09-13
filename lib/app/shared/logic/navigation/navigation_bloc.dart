@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutterui/app/core/routes/route_names.dart';
+import 'package:fwh/app/core/routes/route_names.dart';
 import 'package:meta/meta.dart';
 
 part 'navigation_event.dart';

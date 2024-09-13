@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/app/core/service_locators.dart';
-import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
-import 'package:flutterui/app/shared/presentation/utils/icons.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
-import 'package:flutterui/app/shared/presentation/widgets/app_search_bar.dart';
-import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
+import 'package:fwh/app/core/service_locators.dart';
+import 'package:fwh/app/shared/logic/theme/theme_bloc.dart';
+import 'package:fwh/app/shared/presentation/utils/icons.dart';
+import 'package:fwh/app/shared/presentation/utils/sizing.dart';
+import 'package:fwh/app/shared/presentation/widgets/app_search_bar.dart';
+import 'package:fwh/app/shared/presentation/widgets/icon.dart';
 
 class HomeMobileNav extends StatefulWidget {
   final VoidCallback onTap;

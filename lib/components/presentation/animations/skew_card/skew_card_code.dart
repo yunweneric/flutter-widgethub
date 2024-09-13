@@ -106,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                SelectableText(
                   "Yunwen Eric",
                   style: Theme.of(context).textTheme.displayMedium!.copyWith(
                         color: Theme.of(context).primaryColor,
@@ -114,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         fontWeight: FontWeight.w600,
                       ),
                 ),
-                Text(
+                SelectableText(
                   "Flutter Developer",
                   style: TextStyle(
                     fontSize: 16,

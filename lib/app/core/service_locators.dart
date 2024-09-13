@@ -1,9 +1,9 @@
-import 'package:flutterui/components/data/logic/component/component_bloc.dart';
-import 'package:flutterui/app/core/routes/app_router.dart';
-import 'package:flutterui/app/shared/logic/language/language_bloc.dart';
-import 'package:flutterui/app/shared/logic/navigation/navigation_bloc.dart';
-import 'package:flutterui/app/shared/logic/sidebar/sidebar_bloc.dart';
-import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
+import 'package:fwh/components/data/logic/component/component_bloc.dart';
+import 'package:fwh/app/core/routes/app_router.dart';
+import 'package:fwh/app/shared/logic/language/language_bloc.dart';
+import 'package:fwh/app/shared/logic/navigation/navigation_bloc.dart';
+import 'package:fwh/app/shared/logic/sidebar/sidebar_bloc.dart';
+import 'package:fwh/app/shared/logic/theme/theme_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 

@@ -1,6 +1,6 @@
 import 'package:device_frame/device_frame.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
+import 'package:fwh/app/shared/presentation/utils/sizing.dart';
 
 class AppDeviceFrame extends StatefulWidget {
   final DeviceInfo deviceInfo;

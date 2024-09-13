@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/app/shared/presentation/utils/colors.dart';
+import 'package:fwh/app/shared/presentation/utils/colors.dart';
 
 class AppSizing {
   static double width(BuildContext context) => MediaQuery.of(context).size.width;

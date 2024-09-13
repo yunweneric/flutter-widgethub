@@ -1,11 +1,11 @@
 // import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterui/components/data/logic/component/component_bloc.dart';
-import 'package:flutterui/app/presentation/categories/widget/category_card.dart';
-import 'package:flutterui/app/shared/data/models/component.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
-import 'package:flutterui/app/shared/presentation/widgets/layout/main_content.dart';
+import 'package:fwh/components/data/logic/component/component_bloc.dart';
+import 'package:fwh/app/presentation/categories/widget/category_card.dart';
+import 'package:fwh/app/shared/data/models/component.dart';
+import 'package:fwh/app/shared/presentation/utils/sizing.dart';
+import 'package:fwh/app/shared/presentation/widgets/layout/main_content.dart';
 
 // @RoutePage()
 class ComponentCategoryScreen extends StatefulWidget {
@@ -31,7 +31,7 @@ class _ComponentCategoryScreenState extends State<ComponentCategoryScreen> {
                   ? const SizedBox()
                   : Column(
                       children: [
-                        Text(activeCategory.subCategory.describe(), style: Theme.of(context).textTheme.displayLarge),
+                        SelectableText(activeCategory.subCategory.describe(), style: Theme.of(context).textTheme.displayLarge),
                         AppSizing.kh20Spacer(),
                       ],
                     ),
@@ -47,7 +47,7 @@ class _ComponentCategoryScreenState extends State<ComponentCategoryScreen> {
                   child: components.isEmpty
                       ? SizedBox(
                           height: AppSizing.kHPercentage(context, 50),
-                          child: Center(child: Text("No Item in this ${widget.subCategory}!")),
+                          child: Center(child: SelectableText("No Item in this ${widget.subCategory}!")),
                         )
                       : Wrap(
                           alignment: WrapAlignment.spaceBetween,

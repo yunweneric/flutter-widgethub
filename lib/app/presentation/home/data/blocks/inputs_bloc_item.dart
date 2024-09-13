@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutterui/app/shared/presentation/utils/icons.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
+import 'package:fwh/app/shared/presentation/utils/icons.dart';
+import 'package:fwh/app/shared/presentation/utils/sizing.dart';
 
 class InputsBlocItem extends StatefulWidget {
   const InputsBlocItem({super.key});

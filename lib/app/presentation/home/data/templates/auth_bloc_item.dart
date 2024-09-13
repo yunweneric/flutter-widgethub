@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
+import 'package:fwh/app/shared/presentation/utils/sizing.dart';
 
 class AuthBlocItem extends StatefulWidget {
   const AuthBlocItem({super.key});
@@ -49,7 +49,7 @@ class _AuthsideBarCategoriestate extends State<AuthBlocItem> {
                         fixedSize: Size.fromWidth(AppSizing.width(context)),
                       ),
                       onPressed: () {},
-                      label: const Text("Login"),
+                      label: const SelectableText("Login"),
                       icon: const Icon(Icons.arrow_forward_rounded),
                     ),
                   ],
@@ -57,7 +57,7 @@ class _AuthsideBarCategoriestate extends State<AuthBlocItem> {
               ),
               AppSizing.kh20Spacer(),
               AppSizing.kh10Spacer(),
-              const Text("Or login with social"),
+              const SelectableText("Or login with social"),
               AppSizing.kh10Spacer(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

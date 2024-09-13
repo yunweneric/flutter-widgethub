@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutterui/app/shared/presentation/utils/icons.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
-import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
+import 'package:fwh/app/shared/presentation/utils/icons.dart';
+import 'package:fwh/app/shared/presentation/utils/sizing.dart';
+import 'package:fwh/app/shared/presentation/widgets/icon.dart';
 
 class DrawersBlocItem extends StatefulWidget {
   const DrawersBlocItem({super.key});
@@ -76,7 +76,7 @@ class _DrawerssideBarCategoriestate extends State<DrawersBlocItem> {
                     ...['Home', "About", "Cart", "Contact", "Settings"].map((item) {
                       return Padding(
                         padding: const EdgeInsets.symmetric(vertical: 10),
-                        child: Text(
+                        child: SelectableText(
                           item,
                           style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 22),
                         ),
@@ -112,8 +112,8 @@ class _DrawerssideBarCategoriestate extends State<DrawersBlocItem> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Latest chats", style: Theme.of(context).textTheme.displayMedium),
-                        const Text("See all"),
+                        SelectableText("Latest chats", style: Theme.of(context).textTheme.displayMedium),
+                        const SelectableText("See all"),
                       ],
                     ),
                     AppSizing.kh20Spacer(),
@@ -121,15 +121,15 @@ class _DrawerssideBarCategoriestate extends State<DrawersBlocItem> {
                       leading: ClipOval(
                         child: Image.asset("assets/images/profile_0.jpg"),
                       ),
-                      title: const Text("Lina Assoh"),
-                      subtitle: const Text("Hi Flutter dev, how have you been?"),
+                      title: const SelectableText("Lina Assoh"),
+                      subtitle: const SelectableText("Hi Flutter dev, how have you been?"),
                     ),
                     ListTile(
                       leading: ClipOval(
                         child: Image.asset("assets/images/profile_1.jpg"),
                       ),
-                      title: const Text("Lina Assoh"),
-                      subtitle: const Text("Hi Flutter dev, how have you been?"),
+                      title: const SelectableText("Lina Assoh"),
+                      subtitle: const SelectableText("Hi Flutter dev, how have you been?"),
                     ),
                   ],
                 ),

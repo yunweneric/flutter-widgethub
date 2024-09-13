@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutterui/app/presentation/home/data/blocks/bottom_nav_bars_bloc_item.dart';
-import 'package:flutterui/app/presentation/home/data/blocks/buttons_bloc_item.dart';
-import 'package:flutterui/app/presentation/home/data/blocks/carousels_bloc_item.dart';
-import 'package:flutterui/app/presentation/home/data/blocks/drawers_bloc_item.dart';
-import 'package:flutterui/app/presentation/home/data/blocks/inputs_bloc_item.dart';
-import 'package:flutterui/app/presentation/home/data/blocks/loaders_bloc_item.dart';
-import 'package:flutterui/app/presentation/home/data/blocks/switchers_bloc_item.dart';
-import 'package:flutterui/app/presentation/home/data/blocks/text_bloc_item.dart';
-import 'package:flutterui/app/presentation/home/data/effects/gradient_effects_bloc_item.dart';
-import 'package:flutterui/app/presentation/home/data/templates/app_clone_bloc_item.dart';
-import 'package:flutterui/app/presentation/home/data/templates/auth_bloc_item.dart';
-import 'package:flutterui/app/presentation/home/data/templates/bottom_bar.dart';
-import 'package:flutterui/app/presentation/home/data/templates/home_screen_bloc_item.dart';
-import 'package:flutterui/app/presentation/home/model/component_block_model.dart';
-import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
-import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart';
+import 'package:fwh/app/presentation/home/data/blocks/bottom_nav_bars_bloc_item.dart';
+import 'package:fwh/app/presentation/home/data/blocks/buttons_bloc_item.dart';
+import 'package:fwh/app/presentation/home/data/blocks/carousels_bloc_item.dart';
+import 'package:fwh/app/presentation/home/data/blocks/drawers_bloc_item.dart';
+import 'package:fwh/app/presentation/home/data/blocks/inputs_bloc_item.dart';
+import 'package:fwh/app/presentation/home/data/blocks/loaders_bloc_item.dart';
+import 'package:fwh/app/presentation/home/data/blocks/switchers_bloc_item.dart';
+import 'package:fwh/app/presentation/home/data/blocks/text_bloc_item.dart';
+import 'package:fwh/app/presentation/home/data/effects/gradient_effects_bloc_item.dart';
+import 'package:fwh/app/presentation/home/data/templates/app_clone_bloc_item.dart';
+import 'package:fwh/app/presentation/home/data/templates/auth_bloc_item.dart';
+import 'package:fwh/app/presentation/home/data/templates/bottom_bar.dart';
+import 'package:fwh/app/presentation/home/data/templates/home_screen_bloc_item.dart';
+import 'package:fwh/app/presentation/home/model/component_block_model.dart';
+import 'package:fwh/app/shared/data/enums/component_category_enum.dart';
+import 'package:fwh/app/shared/data/enums/sub_component_category_enum.dart';
 
 final sideBarCategories = [
   AppCategoryGroupModel(
@@ -118,17 +118,17 @@ final sideBarCategories = [
     items: [
       // AppCategoryModel(
       //   link: RouteNames.hoverAnimations,
-      //   widget: Text("Hello"),
+      //   widget: SelectableText("Hello"),
       //   category: "Hover Animations",
       // ),
       // AppCategoryModel(
       //   link: RouteNames.skewAnimations,
-      //   widget: Text("Hello"),
+      //   widget: SelectableText("Hello"),
       //   category: "Skew Animations",
       // ),
       // AppCategoryModel(
       //   link: RouteNames.rotationAnimations,
-      //   widget: Text("Hello"),
+      //   widget: SelectableText("Hello"),
       //   category: "Rotation Animations",
       // ),
     ],

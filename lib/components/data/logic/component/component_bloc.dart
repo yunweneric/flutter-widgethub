@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutterui/components/presentation/export/store.dart';
-import 'package:flutterui/app/presentation/home/model/component_block_model.dart';
-import 'package:flutterui/app/shared/data/models/component.dart';
+import 'package:fwh/components/presentation/export/store.dart';
+import 'package:fwh/app/presentation/home/model/component_block_model.dart';
+import 'package:fwh/app/shared/data/models/component.dart';
 
 part 'component_event.dart';
 part 'component_state.dart';

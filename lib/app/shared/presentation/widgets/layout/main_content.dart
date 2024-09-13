@@ -1,11 +1,11 @@
 // import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/app/core/routes/route_names.dart';
-import 'package:flutterui/app/shared/presentation/utils/icons.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
-import 'package:flutterui/app/shared/presentation/widgets/component_footer.dart';
-import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
+import 'package:fwh/app/core/routes/route_names.dart';
+import 'package:fwh/app/shared/presentation/utils/icons.dart';
+import 'package:fwh/app/shared/presentation/utils/sizing.dart';
+import 'package:fwh/app/shared/presentation/widgets/component_footer.dart';
+import 'package:fwh/app/shared/presentation/widgets/icon.dart';
 import 'package:go_router/go_router.dart';
 
 class MainContent extends StatefulWidget {
@@ -39,7 +39,7 @@ class _MainContentState extends State<MainContent> {
                 // onPressed: () => context.pop(),
                 // onPressed: () {},
                 icon: const AppIcon(icon: AppIcons.back),
-                label: Text("Back", style: Theme.of(context).textTheme.bodyMedium),
+                label: SelectableText("Back", style: Theme.of(context).textTheme.bodyMedium),
               ),
               AppSizing.khSpacer(30.h),
               ConstrainedBox(

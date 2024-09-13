@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutterui/components/data/logic/component/component_bloc.dart';
-import 'package:flutterui/app/core/service_locators.dart';
-import 'package:flutterui/app/presentation/home/data/export/sidebar_categories.dart';
-import 'package:flutterui/app/presentation/home/model/component_block_model.dart';
-import 'package:flutterui/app/presentation/home/widgets/component_block.dart';
-import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
-import 'package:flutterui/app/shared/presentation/utils/icons.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
-import 'package:flutterui/app/shared/presentation/widgets/device_section_frame.dart';
+import 'package:fwh/components/data/logic/component/component_bloc.dart';
+import 'package:fwh/app/core/service_locators.dart';
+import 'package:fwh/app/presentation/home/data/export/sidebar_categories.dart';
+import 'package:fwh/app/presentation/home/model/component_block_model.dart';
+import 'package:fwh/app/presentation/home/widgets/component_block.dart';
+import 'package:fwh/app/shared/data/enums/component_category_enum.dart';
+import 'package:fwh/app/shared/presentation/utils/icons.dart';
+import 'package:fwh/app/shared/presentation/utils/sizing.dart';
+import 'package:fwh/app/shared/presentation/widgets/device_section_frame.dart';
 import 'package:go_router/go_router.dart';
 
 class AssetsSection extends StatefulWidget {
@@ -45,7 +45,7 @@ class _AssetsSectionState extends State<AssetsSection> {
             children: [
               SvgPicture.asset(AppIcons.diamond),
               AppSizing.kwSpacer(5.w),
-              Text(
+              SelectableText(
                 "ASSETS",
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                       fontWeight: FontWeight.w500,
@@ -61,12 +61,12 @@ class _AssetsSectionState extends State<AssetsSection> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                SelectableText(
                   "Beautifully crafted UI Assets, ready for your next project.",
                   style: Theme.of(context).textTheme.displayLarge!.copyWith(fontSize: 40.sp),
                 ),
                 AppSizing.kh20Spacer(),
-                Text(
+                SelectableText(
                   "Discover the versatile features Flutter Widget Hub designed to enhance your app development experience. With a variety of components, blocks, animations, and effects, you can create stunning and functional interfaces effortlessly.",
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
@@ -80,7 +80,7 @@ class _AssetsSectionState extends State<AssetsSection> {
             iconAlignment: IconAlignment.end,
             onPressed: () {},
             icon: const Icon(Icons.arrow_forward_rounded),
-            label: const Text("Browse all assets"),
+            label: const SelectableText("Browse all assets"),
           ),
           AppSizing.kh20Spacer(),
           Wrap(
@@ -131,12 +131,12 @@ class _AssetsSectionState extends State<AssetsSection> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Text(
+                                  SelectableText(
                                     "Coming soon!",
                                     style: Theme.of(context).textTheme.displayLarge,
                                   ),
                                   AppSizing.kh10Spacer(),
-                                  const Text("We will be adding items to this category very soon!")
+                                  const SelectableText("We will be adding items to this category very soon!")
                                 ],
                               ),
                             )
@@ -187,7 +187,7 @@ class _AssetsSectionState extends State<AssetsSection> {
                                                   child: item.widget,
                                                 ),
                                                 AppSizing.kh20Spacer(),
-                                                Text(item.subCategory.describe())
+                                                SelectableText(item.subCategory.describe())
                                               ],
                                             ),
                                           );

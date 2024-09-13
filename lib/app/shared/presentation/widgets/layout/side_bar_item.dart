@@ -34,7 +34,7 @@ class _SideBarItemState extends State<SideBarItem> {
             alignment: Alignment.centerLeft,
           ),
           onPressed: widget.onPressed,
-          child: Text(widget.title, style: Theme.of(context).textTheme.bodyMedium),
+          child: SelectableText(widget.title, style: Theme.of(context).textTheme.bodyMedium),
         ),
       ],
     );

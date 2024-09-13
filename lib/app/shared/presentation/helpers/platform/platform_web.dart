@@ -1,4 +1,4 @@
-import 'package:flutterui/app/shared/presentation/helpers/platform/platform_enum.dart';
+import 'package:fwh/app/shared/presentation/helpers/platform/platform_enum.dart';
 import "dart:html" as html;
 
 AppPlatform getPlatform() {

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
-import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart';
-import 'package:flutterui/app/shared/data/enums/supported_platform.dart';
-import 'package:flutterui/app/shared/data/models/component.dart';
-import 'package:flutterui/components/presentation/templates/fade_carousel/fade_carousel_code.dart';
-import 'package:flutterui/components/presentation/templates/fade_carousel/fade_carousel_setup.dart';
-import 'package:flutterui/components/presentation/templates/fade_carousel/fade_carousel_widget.dart';
+import 'package:fwh/app/shared/data/enums/component_category_enum.dart';
+import 'package:fwh/app/shared/data/enums/sub_component_category_enum.dart';
+import 'package:fwh/app/shared/data/enums/supported_platform.dart';
+import 'package:fwh/app/shared/data/models/component.dart';
+import 'package:fwh/components/presentation/templates/fade_carousel/fade_carousel_code.dart';
+import 'package:fwh/components/presentation/templates/fade_carousel/fade_carousel_setup.dart';
+import 'package:fwh/components/presentation/templates/fade_carousel/fade_carousel_widget.dart';
 
 class FadeCarouselTemplateData {
   static Widget widget = const FadeCarouselTemplate();

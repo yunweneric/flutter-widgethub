@@ -1,18 +1,18 @@
 // import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutterui/components/data/logic/component/component_bloc.dart';
-import 'package:flutterui/app/core/service_locators.dart';
-import 'package:flutterui/app/presentation/home/data/export/sidebar_categories.dart';
-import 'package:flutterui/app/presentation/home/model/component_block_model.dart';
-import 'package:flutterui/app/presentation/home/widgets/assets_section.dart';
-import 'package:flutterui/app/presentation/home/widgets/integration_section.dart';
-import 'package:flutterui/app/presentation/home/widgets/hero_section.dart';
-import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
-import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart';
-import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
-import 'package:flutterui/app/shared/presentation/widgets/layout/app_layout.dart';
+import 'package:fwh/components/data/logic/component/component_bloc.dart';
+import 'package:fwh/app/core/service_locators.dart';
+import 'package:fwh/app/presentation/home/data/export/sidebar_categories.dart';
+import 'package:fwh/app/presentation/home/model/component_block_model.dart';
+import 'package:fwh/app/presentation/home/widgets/assets_section.dart';
+import 'package:fwh/app/presentation/home/widgets/integration_section.dart';
+import 'package:fwh/app/presentation/home/widgets/hero_section.dart';
+import 'package:fwh/app/shared/data/enums/component_category_enum.dart';
+import 'package:fwh/app/shared/data/enums/sub_component_category_enum.dart';
+import 'package:fwh/app/shared/logic/theme/theme_bloc.dart';
+import 'package:fwh/app/shared/presentation/utils/sizing.dart';
+import 'package:fwh/app/shared/presentation/widgets/layout/app_layout.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -50,12 +50,12 @@ class _HomeScreenState extends State<HomeScreen> {
       description: "A wide range of pre-built UI templates from app clones to demo apps all in one place",
       items: [
         AppCategoryModel(
-          widget: const Text(""),
+          widget: const SelectableText(""),
           category: ComponentCategoryEnum.GETTING_STARTED,
           subCategory: SubComponentCategoryEnum.GETTING_STARTED,
         ),
         AppCategoryModel(
-          widget: const Text(""),
+          widget: const SelectableText(""),
           category: ComponentCategoryEnum.GETTING_STARTED,
           subCategory: SubComponentCategoryEnum.REQUEST_A_COMPONENT,
         ),

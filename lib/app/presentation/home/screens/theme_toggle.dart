@@ -1,11 +1,11 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutterui/app/core/service_locators.dart';
-import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
-import 'package:flutterui/app/shared/presentation/utils/icons.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
-import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
+import 'package:fwh/app/core/service_locators.dart';
+import 'package:fwh/app/shared/logic/theme/theme_bloc.dart';
+import 'package:fwh/app/shared/presentation/utils/icons.dart';
+import 'package:fwh/app/shared/presentation/utils/sizing.dart';
+import 'package:fwh/app/shared/presentation/widgets/icon.dart';
 
 class ThemeToggle extends StatefulWidget {
   const ThemeToggle({super.key});
@@ -106,7 +106,7 @@ class _ThemeToggleState extends State<ThemeToggle> {
                 top: 70,
                 left: 0,
                 right: 0,
-                child: Text(
+                child: SelectableText(
                   "Try to toggle!",
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.displayMedium,

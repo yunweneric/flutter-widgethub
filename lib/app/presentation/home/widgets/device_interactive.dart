@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutterui/app/shared/presentation/utils/colors.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
-import 'package:flutterui/app/shared/presentation/widgets/code_highlight.dart';
-import 'package:flutterui/app/shared/presentation/widgets/device_section_frame.dart';
+import 'package:fwh/app/shared/presentation/utils/colors.dart';
+import 'package:fwh/app/shared/presentation/utils/sizing.dart';
+import 'package:fwh/app/shared/presentation/widgets/code_highlight.dart';
+import 'package:fwh/app/shared/presentation/widgets/device_section_frame.dart';
 
 class DeviceInteractive extends StatefulWidget {
   const DeviceInteractive({super.key});
@@ -47,7 +47,7 @@ class _DeviceInteractiveState extends State<DeviceInteractive> {
                     builder: (context, value, child) {
                       return Transform(
                         transform: Matrix4.identity()..translate(0.0, -value * 200),
-                        child: Text(
+                        child: SelectableText(
                           currentIndex == 0
                               ? "RED"
                               : currentIndex == 1
@@ -96,12 +96,12 @@ class _DeviceInteractiveState extends State<DeviceInteractive> {
 
 const code = '''import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/components/ui/export/data.dart';
-import 'package:flutterui/shared/ui/utils/icons.dart';
-import 'package:flutterui/shared/ui/utils/sizing.dart';
-import 'package:flutterui/shared/ui/widgets/code_highlight.dart';
-import 'package:flutterui/shared/ui/widgets/device_section_frame.dart';
-import 'package:flutterui/shared/ui/widgets/icon.dart';
+import 'package:fwh/components/ui/export/data.dart';
+import 'package:fwh/shared/ui/utils/icons.dart';
+import 'package:fwh/shared/ui/utils/sizing.dart';
+import 'package:fwh/shared/ui/widgets/code_highlight.dart';
+import 'package:fwh/shared/ui/widgets/device_section_frame.dart';
+import 'package:fwh/shared/ui/widgets/icon.dart';
 
 class DeviceInteractive extends StatefulWidget {
   const DeviceInteractive({super.key});
@@ -149,7 +149,7 @@ class _DeviceInteractiveState extends State<DeviceInteractive> {
                       builder: (context, value, child) {
                         return Transform(
                           transform: Matrix4.identity()..translate(0.0, -value * 200),
-                          child: Text(
+                          child: SelectableText(
                             currentIndex == 0
                                 ? "RED"
                                 : currentIndex == 1

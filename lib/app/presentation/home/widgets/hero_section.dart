@@ -2,19 +2,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:flutterui/components/data/logic/component/component_bloc.dart';
-import 'package:flutterui/components/presentation/templates/leave_review/leave_a_review_widget.dart';
-import 'package:flutterui/components/presentation/templates/nike_zoomer/nike_zoomer_widget.dart';
-import 'package:flutterui/app/core/service_locators.dart';
-import 'package:flutterui/app/presentation/home/model/component_block_model.dart';
-import 'package:flutterui/app/presentation/home/screens/theme_toggle.dart';
-// import 'package:flutterui/screens/routes/app_router.gr.dart';
-import 'package:flutterui/app/core/routes/route_names.dart';
-import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
-import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart';
-import 'package:flutterui/app/shared/presentation/utils/colors.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
-import 'package:flutterui/app/shared/presentation/widgets/device_section_frame.dart';
+import 'package:fwh/components/data/logic/component/component_bloc.dart';
+import 'package:fwh/components/presentation/templates/leave_review/leave_a_review_widget.dart';
+import 'package:fwh/components/presentation/templates/nike_zoomer/nike_zoomer_widget.dart';
+import 'package:fwh/app/core/service_locators.dart';
+import 'package:fwh/app/presentation/home/model/component_block_model.dart';
+import 'package:fwh/app/presentation/home/screens/theme_toggle.dart';
+// import 'package:fwh/screens/routes/app_router.gr.dart';
+import 'package:fwh/app/core/routes/route_names.dart';
+import 'package:fwh/app/shared/data/enums/component_category_enum.dart';
+import 'package:fwh/app/shared/data/enums/sub_component_category_enum.dart';
+import 'package:fwh/app/shared/presentation/utils/colors.dart';
+import 'package:fwh/app/shared/presentation/utils/sizing.dart';
+import 'package:fwh/app/shared/presentation/widgets/device_section_frame.dart';
 import 'package:go_router/go_router.dart';
 
 class HeroSection extends StatefulWidget {
@@ -87,7 +87,7 @@ class _HeroSectionState extends State<HeroSection> {
                             );
                             context.go(RouteNames.components);
                           },
-                          child: const Text(
+                          child: const SelectableText(
                             "Explore Now!",
                             style: TextStyle(color: AppColors.BG),
                           ),
@@ -101,7 +101,7 @@ class _HeroSectionState extends State<HeroSection> {
                           iconAlignment: IconAlignment.end,
                           onPressed: widget.onBrowserAll,
                           icon: const Icon(Icons.arrow_forward_rounded),
-                          label: Text(
+                          label: SelectableText(
                             "Browse all assets",
                             style: TextStyle(color: Theme.of(context).primaryColorDark),
                           ),

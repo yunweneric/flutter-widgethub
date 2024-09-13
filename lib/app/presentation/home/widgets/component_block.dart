@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterui/app/presentation/home/model/component_block_model.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
+import 'package:fwh/app/presentation/home/model/component_block_model.dart';
+import 'package:fwh/app/shared/presentation/utils/sizing.dart';
 
 class ComponentBlock extends StatefulWidget {
   final AppCategoryGroupModel item;
@@ -24,12 +24,12 @@ class _ComponentBlockState extends State<ComponentBlock> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            SelectableText(
               widget.item.category.describe(),
               style: Theme.of(context).textTheme.displayMedium,
             ),
             AppSizing.kh10Spacer(),
-            Text(
+            SelectableText(
               widget.item.description,
               style: Theme.of(context).textTheme.bodySmall,
             ),

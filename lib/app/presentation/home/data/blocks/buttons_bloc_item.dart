@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import "package:flutterui/app/shared/presentation/utils/sizing.dart";
+import "package:fwh/app/shared/presentation/utils/sizing.dart";
 
 class ButtonsBlocItem extends StatefulWidget {
   const ButtonsBlocItem({super.key});
@@ -70,7 +70,7 @@ class _ButtonssideBarCategoriestate extends State<ButtonsBlocItem> {
                       borderRadius: BorderRadius.circular(50),
                     ),
                     child: Center(
-                      child: Text(
+                      child: SelectableText(
                         "$count%",
                         style: TextStyle(color: count > 60 ? Colors.white : Colors.black, fontSize: 18),
                       ),

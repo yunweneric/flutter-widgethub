@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/components/presentation/export/store.dart';
-import 'package:flutterui/app/shared/data/models/component.dart';
-import 'package:flutterui/app/shared/presentation/utils/icons.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
-import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
+import 'package:fwh/components/presentation/export/store.dart';
+import 'package:fwh/app/shared/data/models/component.dart';
+import 'package:fwh/app/shared/presentation/utils/icons.dart';
+import 'package:fwh/app/shared/presentation/utils/sizing.dart';
+import 'package:fwh/app/shared/presentation/widgets/icon.dart';
 import 'package:go_router/go_router.dart';
 
 class AppSearchBar extends StatefulWidget {
@@ -172,14 +172,14 @@ class _SearchBarState extends State<SearchBar> {
                                         final link = "/components/${component.category.link()}/${component.subcategory.link()}/${component.id}/";
                                         context.go(link);
                                       },
-                                      title: Text(
+                                      title: SelectableText(
                                         component.title,
                                         style: Theme.of(context).textTheme.displayMedium,
                                       ),
                                       subtitle: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          Text(
+                                          SelectableText(
                                             component.category.describe(),
                                             style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Theme.of(context).primaryColor),
                                           ),

@@ -13,15 +13,15 @@ class _ComponentFlipCardState extends State<ComponentFlipCard> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
-    Text(
+    SelectableText(
       'Index 0: Home',
       style: optionStyle,
     ),
-    Text(
+    SelectableText(
       'Index 1: Business',
       style: optionStyle,
     ),
-    Text(
+    SelectableText(
       'Index 2: School',
       style: optionStyle,
     ),
@@ -37,7 +37,7 @@ class _ComponentFlipCardState extends State<ComponentFlipCard> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: SelectableText(widget.title),
         leading: Builder(
           builder: (context) {
             return IconButton(
@@ -64,10 +64,10 @@ class _ComponentFlipCardState extends State<ComponentFlipCard> {
               decoration: BoxDecoration(
                 color: Colors.blue,
               ),
-              child: Text('Drawer Header'),
+              child: SelectableText('Drawer Header'),
             ),
             ListTile(
-              title: const Text('Home'),
+              title: const SelectableText('Home'),
               selected: _selectedIndex == 0,
               onTap: () {
                 // Update the state of the app
@@ -77,7 +77,7 @@ class _ComponentFlipCardState extends State<ComponentFlipCard> {
               },
             ),
             ListTile(
-              title: const Text('Business'),
+              title: const SelectableText('Business'),
               selected: _selectedIndex == 1,
               onTap: () {
                 // Update the state of the app
@@ -87,7 +87,7 @@ class _ComponentFlipCardState extends State<ComponentFlipCard> {
               },
             ),
             ListTile(
-              title: const Text('School'),
+              title: const SelectableText('School'),
               selected: _selectedIndex == 2,
               onTap: () {
                 // Update the state of the app

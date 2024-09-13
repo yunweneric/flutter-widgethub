@@ -3,9 +3,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
-import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
-import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart';
-import 'package:flutterui/app/shared/data/enums/supported_platform.dart';
+import 'package:fwh/app/shared/data/enums/component_category_enum.dart';
+import 'package:fwh/app/shared/data/enums/sub_component_category_enum.dart';
+import 'package:fwh/app/shared/data/enums/supported_platform.dart';
 
 class Component {
   final String id;

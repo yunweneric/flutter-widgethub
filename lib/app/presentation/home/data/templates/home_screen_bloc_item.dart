@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
+import 'package:fwh/app/shared/presentation/utils/sizing.dart';
 
 class HomeScreenBlocItem extends StatefulWidget {
   const HomeScreenBlocItem({super.key});
@@ -46,29 +46,29 @@ class _HomeScreensideBarCategoriestate extends State<HomeScreenBlocItem> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Trending", style: Theme.of(context).textTheme.displayMedium),
-                      const Text("See all"),
+                      SelectableText("Trending", style: Theme.of(context).textTheme.displayMedium),
+                      const SelectableText("See all"),
                     ],
                   ),
                   AppSizing.kh20Spacer(),
                   ListTile(
                     leading: ClipOval(child: Image.asset("assets/images/profile_0.jpg")),
-                    title: const Text("Mary BB"),
-                    subtitle: const Text("Hi, how have yoou been?"),
+                    title: const SelectableText("Mary BB"),
+                    subtitle: const SelectableText("Hi, how have yoou been?"),
                     trailing: Chip(
                       side: BorderSide.none,
-                      label: Text("20", style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Colors.white)),
+                      label: SelectableText("20", style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Colors.white)),
                       backgroundColor: Theme.of(context).primaryColor,
                     ),
                   ),
                   AppSizing.kh10Spacer(),
                   ListTile(
                     leading: ClipOval(child: Image.asset("assets/images/profile_1.jpg")),
-                    title: const Text("Mary BB"),
-                    subtitle: const Text("Hi, how have yoou been?"),
+                    title: const SelectableText("Mary BB"),
+                    subtitle: const SelectableText("Hi, how have yoou been?"),
                     trailing: Chip(
                       side: BorderSide.none,
-                      label: Text("20", style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Colors.white)),
+                      label: SelectableText("20", style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Colors.white)),
                       backgroundColor: Theme.of(context).primaryColor,
                     ),
                   )

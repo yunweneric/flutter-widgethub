@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class AppSizing {
@@ -104,7 +103,7 @@ class _SkewCardState extends State<SkewCard> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                SelectableText(
                   "Yunwen Eric",
                   style: Theme.of(context).textTheme.displayMedium!.copyWith(
                         color: Theme.of(context).primaryColor,
@@ -112,7 +111,7 @@ class _SkewCardState extends State<SkewCard> {
                         fontWeight: FontWeight.w600,
                       ),
                 ),
-                const Text(
+                const SelectableText(
                   "Flutter Developer",
                   style: TextStyle(
                     fontSize: 16,

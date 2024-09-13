@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
-import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
+import 'package:fwh/app/shared/presentation/utils/sizing.dart';
+import 'package:fwh/app/shared/presentation/widgets/icon.dart';
 
 class AppChip extends StatefulWidget {
   final String icon;
@@ -58,7 +58,7 @@ class _AppChipState extends State<AppChip> {
                     ),
                     if (widget.title != null) AppSizing.kwSpacer(5.w),
                     if (widget.title != null)
-                      Text(
+                      SelectableText(
                         widget.title!,
                         style: TextStyle(color: isActive ? Theme.of(context).primaryColor : Theme.of(context).highlightColor),
                       ),

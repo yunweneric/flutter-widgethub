@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/components/data/logic/component/component_bloc.dart';
-import 'package:flutterui/app/core/service_locators.dart';
-import 'package:flutterui/app/shared/logic/language/language_bloc.dart';
-import 'package:flutterui/app/shared/logic/navigation/navigation_bloc.dart';
-import 'package:flutterui/app/shared/logic/sidebar/sidebar_bloc.dart';
-import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
-import 'package:flutterui/app/shared/presentation/utils/theme.dart';
+import 'package:fwh/components/data/logic/component/component_bloc.dart';
+import 'package:fwh/app/core/service_locators.dart';
+import 'package:fwh/app/shared/logic/language/language_bloc.dart';
+import 'package:fwh/app/shared/logic/navigation/navigation_bloc.dart';
+import 'package:fwh/app/shared/logic/sidebar/sidebar_bloc.dart';
+import 'package:fwh/app/shared/logic/theme/theme_bloc.dart';
+import 'package:fwh/app/shared/presentation/utils/theme.dart';
 import 'package:go_router/go_router.dart';
 
 class MyApp extends StatelessWidget {

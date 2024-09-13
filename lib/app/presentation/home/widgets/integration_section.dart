@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutterui/app/presentation/home/widgets/device_interactive.dart';
-import 'package:flutterui/app/shared/presentation/utils/icons.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
+import 'package:fwh/app/presentation/home/widgets/device_interactive.dart';
+import 'package:fwh/app/shared/presentation/utils/icons.dart';
+import 'package:fwh/app/shared/presentation/utils/sizing.dart';
 
 class IntegrationSection extends StatefulWidget {
   const IntegrationSection({super.key});
@@ -26,7 +26,7 @@ class _IntegrationSectionState extends State<IntegrationSection> {
             children: [
               SvgPicture.asset(AppIcons.diamond),
               AppSizing.kwSpacer(5.w),
-              Text(
+              SelectableText(
                 "INTEGRATION",
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                       fontWeight: FontWeight.w500,
@@ -42,12 +42,12 @@ class _IntegrationSectionState extends State<IntegrationSection> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                SelectableText(
                   "Easy to use UI components",
                   style: Theme.of(context).textTheme.displayLarge!.copyWith(fontSize: 40.sp),
                 ),
                 AppSizing.kh20Spacer(),
-                Text(
+                SelectableText(
                   "Seamlessly integrate a wide range of customizable pre-built UI components to accelerate your development process.",
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),

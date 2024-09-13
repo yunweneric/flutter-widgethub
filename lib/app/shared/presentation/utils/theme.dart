@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/app/shared/presentation/utils/colors.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
+import 'package:fwh/app/shared/presentation/utils/colors.dart';
+import 'package:fwh/app/shared/presentation/utils/sizing.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {

@@ -1,6 +1,6 @@
 //// import 'package:flutter/material.dart';
-// import 'package:flutterui/core/service_locators.dart';
-// import 'package:flutterui/shared/logic/navigation/navigation_bloc.dart';
+// import 'package:fwh/core/service_locators.dart';
+// import 'package:fwh/shared/logic/navigation/navigation_bloc.dart';
 
 // class MyObserver extends AutoRouterObserver {
 //   final navigationBloc = getIt.get<NavigationBloc>();
