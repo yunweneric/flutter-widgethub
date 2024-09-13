@@ -32,7 +32,17 @@ From ready-to-use components and flexible layout blocks to smooth animations and
 
   Visual effects ranging from shadows and gradients to more complex transformations
 
-### New Component
+### Setup
+
+#### Version support
+
+FVM is compiled in flutter version **3.22.1**. You can use [FVM](https://fvm.app/) to manage your flutter version
+
+#### Running app
+
+You can find the **main_dev.dart** and **main_prod.dart** files in the lib/app/core folder. In the **.vscode** folder, you can find the launch config for dev and prod environment
+
+### Request New Component
 
 If you will like the community to build a custom component tailored for a specific use case, you can [Request a component](https://github.com/yunweneric/flutter-widgethub/issues) that and label it accordingly.
 
@@ -76,7 +86,7 @@ Please note that this project is governed by a Code of Conduct. We expect all co
 
 ### License
 
-This SDK is released under the MIT License. You can find the license details in the `LICENSE` file.
+This Library is released under the MIT License. You can find the license details in the `LICENSE` file.
 
 ### Support
 
