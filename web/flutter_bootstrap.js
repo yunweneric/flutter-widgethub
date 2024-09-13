@@ -7,8 +7,8 @@ button.addEventListener(("click"), async () => {
 })
 
 const initialize = () => {
-    { { flutter_js } }
-    { { flutter_build_config } }
+    {{flutter_js}}
+    {{flutter_build_config}}
     _flutter.loader.load({
         onEntrypointLoaded: async function (engineInitializer) {
             appRunner = await engineInitializer.initializeEngine();
