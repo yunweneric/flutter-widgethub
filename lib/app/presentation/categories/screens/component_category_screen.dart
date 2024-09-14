@@ -1,4 +1,3 @@
-// import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
@@ -7,7 +6,6 @@ import 'package:flutterui/app/shared/data/models/component.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/layout/main_content.dart';
 
-// @RoutePage()
 class ComponentCategoryScreen extends StatefulWidget {
   final String? subCategory;
   const ComponentCategoryScreen({super.key, this.subCategory});

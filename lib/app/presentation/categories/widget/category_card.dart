@@ -1,4 +1,3 @@
-// import 'package:auto_route/auto_route.dart';
 import 'package:device_frame/device_frame.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -44,15 +43,6 @@ class _CategoryCardState extends State<CategoryCard> {
                   scale: isHovered ? 1 : 0.95,
                   duration: const Duration(milliseconds: 200),
                   child: DeviceFrame(
-                    // width: 202,
-                    // height: 200,
-                    // device: DeviceInfo.genericPhone(
-                    //   platform: TargetPlatform.android,
-                    //   id: widget.component.title,
-                    //   name: widget.component.title,ß
-                    //   screenSize: Size(400, 700),
-                    // ),
-                    // isFrameVisible: false,
                     screen: componentDetails.widget,
                     device: Devices.ios.iPhone13,
                   ),
@@ -105,7 +95,6 @@ class _CategoryCardState extends State<CategoryCard> {
             ),
             decoration: BoxDecoration(
               borderRadius: AppSizing.radiusMd(),
-              // color: Colors.teal.withOpacity(0.3),
             ),
             height: AppSizing.kWPercentage(context, 25),
           ),

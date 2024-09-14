@@ -54,9 +54,7 @@ class _CodeHighlightState extends State<CodeHighlight> {
     return Stack(
       children: [
         Container(
-          // alignment: Alignment.center,
           width: AppSizing.width(context),
-          // constraints: BoxConstraints(minHeight: 50.h),
           decoration: BoxDecoration(
             color: Theme.of(context).cardColor,
             borderRadius: AppSizing.radiusMd(),
@@ -72,7 +70,6 @@ class _CodeHighlightState extends State<CodeHighlight> {
                   softWrap: false,
                   overflow: TextOverflow.clip,
                   style: GoogleFonts.sourceCodePro(
-                    // style: GoogleFonts.firaCode(
                     fontSize: widget.fontSize ?? (AppSizing.isMobile(context) ? 10.sp : 14.sp),
                     height: 1.7.h,
                     wordSpacing: 7.w,

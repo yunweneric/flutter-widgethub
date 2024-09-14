@@ -28,7 +28,7 @@ class _DetailedFooterState extends State<ComponentFooter> {
           SizedBox(
             width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 35),
             child: Text(
-              "Build with 💙 by yunwen",
+              "Build with 💙 for the Flutter Community",
               style: Theme.of(context).textTheme.bodySmall,
               textAlign: AppSizing.isMobile(context) ? TextAlign.center : TextAlign.left,
             ),
