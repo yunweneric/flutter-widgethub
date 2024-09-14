@@ -80,7 +80,7 @@ class _SideBarState extends State<SideBar> {
                                       componentBloc.add(UpdateActiveCategoryEvent(category: sideBarItem));
                                       setState(() => activeSideBar = sideBarItem);
                                       if (sideBarItem.subCategory == SubComponentCategoryEnum.REQUEST_A_COMPONENT) {
-                                        UtilHelper.openUrl("https://github.com/yunweneric");
+                                        UtilHelper.openUrl("https://github.com/yunweneric/flutter-widgethub/issues/new");
                                       } else {
                                         context.go("/components/${sideBarItem.category.link()}/${sideBarItem.subCategory.link()}");
                                       }
