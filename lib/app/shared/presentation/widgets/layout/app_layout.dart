@@ -62,7 +62,7 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
     return BlocListener<SidebarBloc, SidebarState>(
       listener: (context, state) {
         if (state is SidebarUpdateStatus) {
-          setState(() => isNavBarOpen = state.isOpen);
+           isNavBarOpen = state.isOpen;
           animateNavBar();
           // print(['state', state.isOpen]);
           // print(['isNavBarOpen', isNavBarOpen]);

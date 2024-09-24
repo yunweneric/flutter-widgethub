@@ -77,6 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return AppLayout(
       controller: _controller,
       children: [
+
         HeroSection(
           onBrowserAll: () {
             _controller.animateTo(
@@ -86,7 +87,8 @@ class _HomeScreenState extends State<HomeScreen> {
             );
           },
         ),
-        const IntegrationSection(),
+
+         const IntegrationSection(),
          const AssetsSection(),
       ],
     );
