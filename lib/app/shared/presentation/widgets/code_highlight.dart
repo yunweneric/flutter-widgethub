@@ -19,18 +19,12 @@ class CodeHighlight extends StatefulWidget {
 }
 
 class _CodeHighlightState extends State<CodeHighlight> {
-  Future<Text>? futureWidget;
   TextSpan? content;
   final duration = const Duration(seconds: 1);
   bool hasCopied = false;
   final themBloc = getIt.get<ThemeBloc>();
-  @override
-  initState() {
-    // setupHighLighter(Theme.of(context).brightness);
-    super.initState();
-  }
 
-  setupHighLighter(Brightness brightness) async {
+  Future setupHighLighter(Brightness brightness) async {
     await Highlighter.initialize(['dart', 'yaml']);
     var lightTheme = await HighlighterTheme.loadLightTheme();
     var darkTheme = await HighlighterTheme.loadDarkTheme();
@@ -39,15 +33,19 @@ class _CodeHighlightState extends State<CodeHighlight> {
       theme: brightness == Brightness.dark ? darkTheme : lightTheme,
     );
     var highlightedCode = highlighter.highlight(widget.code);
-    setState(() {
-      content = highlightedCode;
-    });
+    content = highlightedCode;
   }
 
   @override
   Widget build(BuildContext context) {
-    setupHighLighter(Theme.of(context).brightness);
-    return content == null ? loader(context) : codeAndPreview();
+    return FutureBuilder(
+        future: setupHighLighter(Theme.of(context).brightness),
+        builder: (ctx, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return loader(context);
+          }
+          return codeAndPreview();
+        });
   }
 
   Widget codeAndPreview() {
@@ -70,7 +68,8 @@ class _CodeHighlightState extends State<CodeHighlight> {
                   softWrap: false,
                   overflow: TextOverflow.clip,
                   style: GoogleFonts.sourceCodePro(
-                    fontSize: widget.fontSize ?? (AppSizing.isMobile(context) ? 10.sp : 14.sp),
+                    fontSize: widget.fontSize ??
+                        (AppSizing.isMobile(context) ? 10.sp : 14.sp),
                     height: 1.7.h,
                     wordSpacing: 7.w,
                   ),

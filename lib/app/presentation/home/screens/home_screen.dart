@@ -87,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
           },
         ),
         const IntegrationSection(),
-        const AssetsSection(),
+         const AssetsSection(),
       ],
     );
   }
