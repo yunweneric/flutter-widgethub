@@ -42,7 +42,8 @@ class _ButtonssideBarCategoriestate extends State<ButtonsBlocItem> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: AppSizing.kWPercentage(context, 20)),
+        padding: EdgeInsets.symmetric(
+            horizontal: AppSizing.kWPercentage(context, 20)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -72,7 +73,9 @@ class _ButtonssideBarCategoriestate extends State<ButtonsBlocItem> {
                     child: Center(
                       child: Text(
                         "$count%",
-                        style: TextStyle(color: count > 60 ? Colors.white : Colors.black, fontSize: 18),
+                        style: TextStyle(
+                            color: count > 60 ? Colors.white : Colors.black,
+                            fontSize: 18),
                       ),
                     ),
                   ),

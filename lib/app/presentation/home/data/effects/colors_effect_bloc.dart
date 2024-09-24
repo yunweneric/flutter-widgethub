@@ -8,7 +8,8 @@ class ColorsEffectBloc extends StatefulWidget {
   State<ColorsEffectBloc> createState() => _ColorsEffectBlocState();
 }
 
-class _ColorsEffectBlocState extends State<ColorsEffectBloc> with SingleTickerProviderStateMixin {
+class _ColorsEffectBlocState extends State<ColorsEffectBloc>
+    with SingleTickerProviderStateMixin {
   AnimationController? myAnimationController;
 
   Animation<Color>? animation;
@@ -24,25 +25,33 @@ class _ColorsEffectBlocState extends State<ColorsEffectBloc> with SingleTickerPr
     animation = TweenSequence<Color>(
       <TweenSequenceItem<Color>>[
         TweenSequenceItem<Color>(
-          tween: Tween<Color>(begin: Colors.teal.shade500, end: Colors.red.shade500).chain(
+          tween: Tween<Color>(
+                  begin: Colors.teal.shade500, end: Colors.red.shade500)
+              .chain(
             CurveTween(curve: curve),
           ),
           weight: 25.0,
         ),
         TweenSequenceItem<Color>(
-          tween: Tween<Color>(begin: Colors.teal.shade500, end: Colors.red.shade500).chain(
+          tween: Tween<Color>(
+                  begin: Colors.teal.shade500, end: Colors.red.shade500)
+              .chain(
             CurveTween(curve: curve),
           ),
           weight: 25.0,
         ),
         TweenSequenceItem<Color>(
-          tween: Tween<Color>(begin: Colors.blue.shade500, end: Colors.yellow.shade500).chain(
+          tween: Tween<Color>(
+                  begin: Colors.blue.shade500, end: Colors.yellow.shade500)
+              .chain(
             CurveTween(curve: curve),
           ),
           weight: 25.0,
         ),
         TweenSequenceItem<Color>(
-          tween: Tween<Color>(begin: Colors.orange.shade500, end: Colors.amber.shade500).chain(
+          tween: Tween<Color>(
+                  begin: Colors.orange.shade500, end: Colors.amber.shade500)
+              .chain(
             CurveTween(curve: curve),
           ),
           weight: 25.0,
@@ -70,7 +79,8 @@ class _ColorsEffectBlocState extends State<ColorsEffectBloc> with SingleTickerPr
                 height: AppSizing.kHPercentage(context, 30),
                 child: Center(
                   child: ColorFiltered(
-                    colorFilter: ColorFilter.mode(animation!.value, BlendMode.srcATop),
+                    colorFilter:
+                        ColorFilter.mode(animation!.value, BlendMode.srcATop),
                     child: Image.asset(
                       "assets/images/flutter_light.png",
                       width: AppSizing.kWPercentage(context, 50),

@@ -11,7 +11,8 @@ class ComponentCategoryScreen extends StatefulWidget {
   const ComponentCategoryScreen({super.key, this.subCategory});
 
   @override
-  State<ComponentCategoryScreen> createState() => _ComponentCategoryScreenState();
+  State<ComponentCategoryScreen> createState() =>
+      _ComponentCategoryScreenState();
 }
 
 class _ComponentCategoryScreenState extends State<ComponentCategoryScreen> {
@@ -29,14 +30,18 @@ class _ComponentCategoryScreenState extends State<ComponentCategoryScreen> {
                   ? const SizedBox()
                   : Column(
                       children: [
-                        Text(activeCategory.subCategory.describe(), style: Theme.of(context).textTheme.displayLarge),
+                        Text(activeCategory.subCategory.describe(),
+                            style: Theme.of(context).textTheme.displayLarge),
                         AppSizing.kh20Spacer(),
                       ],
                     ),
             ),
             Builder(
               builder: (context) {
-                List<Component> components = state.allComponents.where((item) => item.subcategory.link() == widget.subCategory).toList();
+                List<Component> components = state.allComponents
+                    .where(
+                        (item) => item.subcategory.link() == widget.subCategory)
+                    .toList();
                 if (widget.subCategory == null) {
                   components = state.allComponents;
                 }
@@ -45,13 +50,17 @@ class _ComponentCategoryScreenState extends State<ComponentCategoryScreen> {
                   child: components.isEmpty
                       ? SizedBox(
                           height: AppSizing.kHPercentage(context, 50),
-                          child: Center(child: Text("No Item in this ${widget.subCategory}!")),
+                          child: Center(
+                              child: Text(
+                                  "No Item in this ${widget.subCategory}!")),
                         )
                       : Wrap(
                           alignment: WrapAlignment.spaceBetween,
                           runAlignment: WrapAlignment.spaceBetween,
                           crossAxisAlignment: WrapCrossAlignment.center,
-                          spacing: AppSizing.isTablet(context) ? AppSizing.kWPercentage(context, 2) : AppSizing.kWPercentage(context, 5),
+                          spacing: AppSizing.isTablet(context)
+                              ? AppSizing.kWPercentage(context, 2)
+                              : AppSizing.kWPercentage(context, 5),
                           runSpacing: AppSizing.kWPercentage(context, 5),
                           children: [
                             ...components.map((item) {

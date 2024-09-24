@@ -15,12 +15,14 @@ class LeaveAReviewTemplateData {
     code: code,
     id: "leave-a-review",
     widget: widget,
-    description: 'A new and fun way of getting feedback from your flutter app. Inspired by @musabalfawal',
+    description:
+        'A new and fun way of getting feedback from your flutter app. Inspired by @musabalfawal',
     title: 'Animate Leave A Review',
     setup: setup,
     category: ComponentCategoryEnum.BLOCKS,
     subcategory: SubComponentCategoryEnum.SLIDERS_AND_CAROUSELS,
-    gitHubLink: "https://github.com/yunweneric/flutter-widgethub/flutter-open-ui/tree/leave_a_review",
+    gitHubLink:
+        "https://github.com/yunweneric/flutter-widgethub/flutter-open-ui/tree/leave_a_review",
     supportedPlatforms: [
       SupportedPlatform.ANDROID,
       SupportedPlatform.IOS,

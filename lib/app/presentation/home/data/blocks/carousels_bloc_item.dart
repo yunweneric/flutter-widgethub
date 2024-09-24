@@ -37,7 +37,8 @@ class _CarouselssideBarCategoriestate extends State<CarouselsBlocItem> {
       final maxOffset = controller?.position.maxScrollExtent;
       final currentOffset = maxOffset! / currentIndex;
       // print(["scrolling", currentOffset, maxOffset]);
-      controller?.animateTo(currentOffset, duration: duration, curve: Curves.easeInOut);
+      controller?.animateTo(currentOffset,
+          duration: duration, curve: Curves.easeInOut);
     });
   }
 

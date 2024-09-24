@@ -7,7 +7,8 @@ import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 class AppContainer extends StatefulWidget {
   final Widget child;
   final bool isHomeScreenLayout;
-  const AppContainer({super.key, required this.child, required this.isHomeScreenLayout});
+  const AppContainer(
+      {super.key, required this.child, required this.isHomeScreenLayout});
 
   @override
   State<AppContainer> createState() => _AppContainerState();
@@ -17,8 +18,11 @@ class _AppContainerState extends State<AppContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppSizing.kWPercentage(context, widget.isHomeScreenLayout ? 90 : 95),
-      margin: EdgeInsets.symmetric(horizontal: AppSizing.kWPercentage(context, widget.isHomeScreenLayout ? 5 : 2.5)),
+      width:
+          AppSizing.kWPercentage(context, widget.isHomeScreenLayout ? 90 : 95),
+      margin: EdgeInsets.symmetric(
+          horizontal: AppSizing.kWPercentage(
+              context, widget.isHomeScreenLayout ? 5 : 2.5)),
       decoration: BoxDecoration(
         color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.95),
         border: Border(

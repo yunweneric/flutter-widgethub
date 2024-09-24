@@ -45,9 +45,15 @@ class _SideBarState extends State<SideBar> {
     return BlocBuilder<ComponentBloc, ComponentState>(
       builder: (context, state) {
         if (state is UpdateActiveCategorySuccess) {
-          activeCategory = state.activeCategory!.category.link() + state.activeCategory!.subCategory.link();
+          activeCategory = state.activeCategory!.category.link() +
+              state.activeCategory!.subCategory.link();
         }
-        final activePath = getIt.get<GoRouter>().routeInformationProvider.value.uri.pathSegments;
+        final activePath = getIt
+            .get<GoRouter>()
+            .routeInformationProvider
+            .value
+            .uri
+            .pathSegments;
         return Scaffold(
           body: Container(
             padding: EdgeInsets.only(left: 40.w),
@@ -62,7 +68,8 @@ class _SideBarState extends State<SideBar> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(item.category.describe(), style: Theme.of(context).textTheme.displayMedium),
+                          Text(item.category.describe(),
+                              style: Theme.of(context).textTheme.displayMedium),
                           AppSizing.khSpacer(15.h),
                           Stack(
                             children: [
@@ -73,16 +80,26 @@ class _SideBarState extends State<SideBar> {
                                 itemBuilder: (context, index) {
                                   final sideBarItem = item.items[index];
                                   return SideBarItem(
-                                    isActive: activePath.contains(sideBarItem.subCategory.link()),
+                                    isActive: activePath.contains(
+                                        sideBarItem.subCategory.link()),
                                     title: sideBarItem.subCategory.describe(),
                                     onPressed: () {
-                                      if (AppSizing.isMobile(context)) sidebarBloc.add(UpdateSideBarEvent(newStatus: false));
-                                      componentBloc.add(UpdateActiveCategoryEvent(category: sideBarItem));
-                                      setState(() => activeSideBar = sideBarItem);
-                                      if (sideBarItem.subCategory == SubComponentCategoryEnum.REQUEST_A_COMPONENT) {
-                                        UtilHelper.openUrl("https://github.com/yunweneric/flutter-widgethub/issues/new");
+                                      if (AppSizing.isMobile(context))
+                                        sidebarBloc.add(UpdateSideBarEvent(
+                                            newStatus: false));
+                                      componentBloc.add(
+                                          UpdateActiveCategoryEvent(
+                                              category: sideBarItem));
+                                      setState(
+                                          () => activeSideBar = sideBarItem);
+                                      if (sideBarItem.subCategory ==
+                                          SubComponentCategoryEnum
+                                              .REQUEST_A_COMPONENT) {
+                                        UtilHelper.openUrl(
+                                            "https://github.com/yunweneric/flutter-widgethub/issues/new");
                                       } else {
-                                        context.go("/components/${sideBarItem.category.link()}/${sideBarItem.subCategory.link()}");
+                                        context.go(
+                                            "/components/${sideBarItem.category.link()}/${sideBarItem.subCategory.link()}");
                                       }
                                     },
                                   );

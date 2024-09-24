@@ -45,7 +45,8 @@ class _AuthsideBarCategoriestate extends State<AuthBlocItem> {
                     ElevatedButton.icon(
                       iconAlignment: IconAlignment.end,
                       style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
                         fixedSize: Size.fromWidth(AppSizing.width(context)),
                       ),
                       onPressed: () {},

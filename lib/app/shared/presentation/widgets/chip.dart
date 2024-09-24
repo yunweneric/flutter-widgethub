@@ -39,7 +39,9 @@ class _AppChipState extends State<AppChip> {
         return TweenAnimationBuilder(
             key: ValueKey(isActive),
             duration: const Duration(milliseconds: 500),
-            tween: ColorTween(begin: Theme.of(context).primaryColor, end: Theme.of(context).highlightColor),
+            tween: ColorTween(
+                begin: Theme.of(context).primaryColor,
+                end: Theme.of(context).highlightColor),
             builder: (context, color, child) {
               return ElevatedButton(
                 onHover: (value) {
@@ -53,14 +55,19 @@ class _AppChipState extends State<AppChip> {
                   children: [
                     AppIcon(
                       icon: widget.icon,
-                      color: isActive ? Theme.of(context).primaryColor : Theme.of(context).highlightColor,
+                      color: isActive
+                          ? Theme.of(context).primaryColor
+                          : Theme.of(context).highlightColor,
                       size: 20,
                     ),
                     if (widget.title != null) AppSizing.kwSpacer(5.w),
                     if (widget.title != null)
                       Text(
                         widget.title!,
-                        style: TextStyle(color: isActive ? Theme.of(context).primaryColor : Theme.of(context).highlightColor),
+                        style: TextStyle(
+                            color: isActive
+                                ? Theme.of(context).primaryColor
+                                : Theme.of(context).highlightColor),
                       ),
                   ],
                 ),

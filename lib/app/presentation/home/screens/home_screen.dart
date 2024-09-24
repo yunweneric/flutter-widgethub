@@ -46,7 +46,8 @@ class _HomeScreenState extends State<HomeScreen> {
   List<AppCategoryGroupModel> items = [
     AppCategoryGroupModel(
       category: ComponentCategoryEnum.GETTING_STARTED,
-      description: "A wide range of pre-built UI templates from app clones to demo apps all in one place",
+      description:
+          "A wide range of pre-built UI templates from app clones to demo apps all in one place",
       items: [
         AppCategoryModel(
           widget: const Text(""),
@@ -60,7 +61,8 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ],
     ),
-    ...sideBarCategories.where((item) => item.category.describe().toLowerCase() != "animations"),
+    ...sideBarCategories.where(
+        (item) => item.category.describe().toLowerCase() != "animations"),
   ];
   double generateScrollFactor(BuildContext context) {
     double factor = 1.0;
@@ -77,7 +79,6 @@ class _HomeScreenState extends State<HomeScreen> {
     return AppLayout(
       controller: _controller,
       children: [
-
         HeroSection(
           onBrowserAll: () {
             _controller.animateTo(
@@ -87,9 +88,8 @@ class _HomeScreenState extends State<HomeScreen> {
             );
           },
         ),
-
-         const IntegrationSection(),
-         const AssetsSection(),
+        const IntegrationSection(),
+        const AssetsSection(),
       ],
     );
   }

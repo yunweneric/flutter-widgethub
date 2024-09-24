@@ -56,9 +56,12 @@ class _CodePreviewState extends State<CodePreview> {
   }
 
   List<DropdownMenuEntry> menu = [
-    DropdownMenuEntry(value: AppDeviceType.MOBILE, label: AppDeviceType.MOBILE.describe()),
-    DropdownMenuEntry(value: AppDeviceType.TABLET, label: AppDeviceType.TABLET.describe()),
-    DropdownMenuEntry(value: AppDeviceType.DESKTOP, label: AppDeviceType.DESKTOP.describe()),
+    DropdownMenuEntry(
+        value: AppDeviceType.MOBILE, label: AppDeviceType.MOBILE.describe()),
+    DropdownMenuEntry(
+        value: AppDeviceType.TABLET, label: AppDeviceType.TABLET.describe()),
+    DropdownMenuEntry(
+        value: AppDeviceType.DESKTOP, label: AppDeviceType.DESKTOP.describe()),
   ];
 
   Widget generateDeviceIcon(AppDeviceType selectedDevice) {
@@ -112,10 +115,15 @@ class _CodePreviewState extends State<CodePreview> {
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: AppSizing.isMobile(context) ? 10.h : 20.h),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: 40.w,
+                      vertical: AppSizing.isMobile(context) ? 10.h : 20.h),
                   child: Text.rich(
                     content!,
-                    style: GoogleFonts.spaceMono(fontSize: AppSizing.isMobile(context) ? 10.sp : 14.sp, height: 1.7.h, wordSpacing: 7.w),
+                    style: GoogleFonts.spaceMono(
+                        fontSize: AppSizing.isMobile(context) ? 10.sp : 14.sp,
+                        height: 1.7.h,
+                        wordSpacing: 7.w),
                   ),
                 ),
               ),
@@ -130,7 +138,8 @@ class _CodePreviewState extends State<CodePreview> {
   Container topBar(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        border: Border(bottom: BorderSide(color: Theme.of(context).dividerColor)),
+        border:
+            Border(bottom: BorderSide(color: Theme.of(context).dividerColor)),
       ),
       padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 15.h),
       child: Row(
@@ -156,7 +165,9 @@ class _CodePreviewState extends State<CodePreview> {
           TweenAnimationBuilder(
             duration: const Duration(milliseconds: 500),
             key: ValueKey(isCode),
-            tween: isCode ? Tween<double>(begin: 1, end: 0) : Tween<double>(begin: -1, end: 0),
+            tween: isCode
+                ? Tween<double>(begin: 1, end: 0)
+                : Tween<double>(begin: -1, end: 0),
             builder: (context, value, child) {
               return Opacity(
                 opacity: isCode ? 1 - value : 1 + value,
@@ -173,7 +184,8 @@ class _CodePreviewState extends State<CodePreview> {
                                     : "Copy",
                             onTap: () async {
                               setState(() => hasCopied = true);
-                              UtilHelper.copy(context, data: widget.component.code);
+                              UtilHelper.copy(context,
+                                  data: widget.component.code);
                               Future.delayed(const Duration(seconds: 5), () {
                                 setState(() => hasCopied = false);
                               });
@@ -187,36 +199,50 @@ class _CodePreviewState extends State<CodePreview> {
                               : Row(
                                   children: [
                                     TweenAnimationBuilder(
-                                      duration: const Duration(milliseconds: 500),
+                                      duration:
+                                          const Duration(milliseconds: 500),
                                       key: ValueKey(hideSizers),
-                                      tween: !hideSizers ? Tween<double>(begin: 1, end: 0) : Tween<double>(begin: 0, end: 1),
+                                      tween: !hideSizers
+                                          ? Tween<double>(begin: 1, end: 0)
+                                          : Tween<double>(begin: 0, end: 1),
                                       builder: (context, value, child) {
                                         return Transform(
                                           alignment: Alignment.centerRight,
-                                          transform: Matrix4.identity()..scale(value),
+                                          transform: Matrix4.identity()
+                                            ..scale(value),
                                           child: Opacity(
                                             opacity: value,
                                             child: Row(
                                               children: [
                                                 AppChip(
-                                                  active: selectedDevice == AppDeviceType.MOBILE,
+                                                  active: selectedDevice ==
+                                                      AppDeviceType.MOBILE,
                                                   icon: AppIcons.mobile,
                                                   title: "Mobile",
-                                                  onTap: () => setState(() => selectedDevice = AppDeviceType.MOBILE),
+                                                  onTap: () => setState(() =>
+                                                      selectedDevice =
+                                                          AppDeviceType.MOBILE),
                                                 ),
                                                 AppSizing.kwSpacer(10.w),
                                                 AppChip(
-                                                  active: selectedDevice == AppDeviceType.TABLET,
+                                                  active: selectedDevice ==
+                                                      AppDeviceType.TABLET,
                                                   icon: AppIcons.tablet,
                                                   title: "Tablet",
-                                                  onTap: () => setState(() => selectedDevice = AppDeviceType.TABLET),
+                                                  onTap: () => setState(() =>
+                                                      selectedDevice =
+                                                          AppDeviceType.TABLET),
                                                 ),
                                                 AppSizing.kwSpacer(10.w),
                                                 AppChip(
-                                                  active: selectedDevice == AppDeviceType.DESKTOP,
+                                                  active: selectedDevice ==
+                                                      AppDeviceType.DESKTOP,
                                                   icon: AppIcons.desktop,
                                                   title: "Desktop",
-                                                  onTap: () => setState(() => selectedDevice = AppDeviceType.DESKTOP),
+                                                  onTap: () => setState(() =>
+                                                      selectedDevice =
+                                                          AppDeviceType
+                                                              .DESKTOP),
                                                 ),
                                               ],
                                             ),
@@ -285,7 +311,8 @@ class _CodePreviewState extends State<CodePreview> {
       onSelected: (device) => setState(() => selectedDevice = device),
       textStyle: Theme.of(context).textTheme.bodyMedium,
       leadingIcon: generateDeviceIcon(selectedDevice),
-      trailingIcon: AppIcon(icon: AppIcons.chevron_down, color: Theme.of(context).highlightColor),
+      trailingIcon: AppIcon(
+          icon: AppIcons.chevron_down, color: Theme.of(context).highlightColor),
       dropdownMenuEntries: menu,
       inputDecorationTheme: InputDecorationTheme(
         filled: true,

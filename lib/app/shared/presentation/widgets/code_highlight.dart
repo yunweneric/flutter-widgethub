@@ -81,32 +81,30 @@ class _CodeHighlightState extends State<CodeHighlight> {
         Positioned(
           right: 10,
           top: 10,
-          child: StatefulBuilder(
-            builder: (context,state) {
-              return AppChip(
-                onTap: () {
-                  state(() => hasCopied = true);
-                  UtilHelper.copy(context, data: widget.code);
-                  Future.delayed(const Duration(seconds: 5), () {
-                    state(() => hasCopied = false);
-                  });
-                },
-                active: hasCopied,
-                icon: AppIcons.clipboard,
-                title: AppSizing.isMobile(context)
-                    ? null
-                    : hasCopied
-                        ? "Copied"
-                        : "Copy",
-              );
-            }
-          ),
+          child: StatefulBuilder(builder: (context, state) {
+            return AppChip(
+              onTap: () {
+                state(() => hasCopied = true);
+                UtilHelper.copy(context, data: widget.code);
+                Future.delayed(const Duration(seconds: 5), () {
+                  state(() => hasCopied = false);
+                });
+              },
+              active: hasCopied,
+              icon: AppIcons.clipboard,
+              title: AppSizing.isMobile(context)
+                  ? null
+                  : hasCopied
+                      ? "Copied"
+                      : "Copy",
+            );
+          }),
         ),
       ],
     );
   }
 
   Widget loader(BuildContext context) {
-    return  const Center(child: CircularProgressIndicator());
+    return const Center(child: CircularProgressIndicator());
   }
 }
