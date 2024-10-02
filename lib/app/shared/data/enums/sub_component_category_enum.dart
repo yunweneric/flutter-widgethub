@@ -21,7 +21,8 @@ enum SubComponentCategoryEnum {
   LINEAR_GRADIENTS;
 
   String describe() {
-    return name[0].toUpperCase() + name.split("_").join(" ").substring(1).toLowerCase();
+    return name[0].toUpperCase() +
+        name.split("_").join(" ").substring(1).toLowerCase();
   }
 
   String link() {

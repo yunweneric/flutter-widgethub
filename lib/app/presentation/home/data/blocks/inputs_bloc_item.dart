@@ -15,7 +15,8 @@ class _InputssideBarCategoriestate extends State<InputsBlocItem> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: AppSizing.kWPercentage(context, 10)),
+        padding: EdgeInsets.symmetric(
+            horizontal: AppSizing.kWPercentage(context, 10)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

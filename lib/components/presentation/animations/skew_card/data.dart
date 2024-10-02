@@ -15,7 +15,8 @@ class SkewCardData {
     code: code,
     id: "3d-skew-card",
     widget: widget,
-    description: 'A card perspective effect, hover over the card to elevate card elements.',
+    description:
+        'A card perspective effect, hover over the card to elevate card elements.',
     title: '3D Skew Card',
     setup: setup,
     category: ComponentCategoryEnum.TEMPLATES,

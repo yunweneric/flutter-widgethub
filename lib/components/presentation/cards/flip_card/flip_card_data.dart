@@ -15,13 +15,16 @@ class AppFlipCard {
     code: code,
     id: "3d-flip-card",
     widget: widget,
-    description: 'A card perspective effect, hover over the card to elevate card elements.',
+    description:
+        'A card perspective effect, hover over the card to elevate card elements.',
     title: '3D Flip Card',
     setup: setup,
     category: ComponentCategoryEnum.BLOCKS,
     subcategory: SubComponentCategoryEnum.SLIDERS_AND_CAROUSELS,
-    assetLink: "https://www.figma.com/design/NIgvpP0UaRQoHT7VJg4DGg/Uicons-by-Flaticon-%7C-Free-interface-icons-(Community)?node-id=7-223&t=gXWvwkFdg6JhDyp9-0",
-    gitHubLink: "https://www.figma.com/design/NIgvpP0UaRQoHT7VJg4DGg/Uicons-by-Flaticon-%7C-Free-interface-icons-(Community)?node-id=7-223&t=gXWvwkFdg6JhDyp9-0",
+    assetLink:
+        "https://www.figma.com/design/NIgvpP0UaRQoHT7VJg4DGg/Uicons-by-Flaticon-%7C-Free-interface-icons-(Community)?node-id=7-223&t=gXWvwkFdg6JhDyp9-0",
+    gitHubLink:
+        "https://www.figma.com/design/NIgvpP0UaRQoHT7VJg4DGg/Uicons-by-Flaticon-%7C-Free-interface-icons-(Community)?node-id=7-223&t=gXWvwkFdg6JhDyp9-0",
     supportedPlatforms: [
       SupportedPlatform.ANDROID,
       SupportedPlatform.IOS,

@@ -13,7 +13,8 @@ class NikeZoomerTemplate extends StatefulWidget {
   State<NikeZoomerTemplate> createState() => _NikeZoomerTemplateState();
 }
 
-class _NikeZoomerTemplateState extends State<NikeZoomerTemplate> with SingleTickerProviderStateMixin {
+class _NikeZoomerTemplateState extends State<NikeZoomerTemplate>
+    with SingleTickerProviderStateMixin {
   int activeIndex = 5;
   final duration = const Duration(milliseconds: 1400);
   AnimationController? _controller;
@@ -39,8 +40,12 @@ class _NikeZoomerTemplateState extends State<NikeZoomerTemplate> with SingleTick
   setAnimatedValues(int index, BuildContext? context) {
     if (context != null) {
       _widthAnimation = Tween<double>(
-        begin: NZSizing.isMobile(context) ? NZSizing.height(context) / 3 : NZSizing.width(context) / 3,
-        end: NZSizing.isMobile(context) ? NZSizing.height(context) : NZSizing.width(context),
+        begin: NZSizing.isMobile(context)
+            ? NZSizing.height(context) / 3
+            : NZSizing.width(context) / 3,
+        end: NZSizing.isMobile(context)
+            ? NZSizing.height(context)
+            : NZSizing.width(context),
       ).animate(curve(_controller!));
 
       _textTranslationAnimation = Tween<double>(
@@ -49,7 +54,9 @@ class _NikeZoomerTemplateState extends State<NikeZoomerTemplate> with SingleTick
       ).animate(curve(_controller!));
 
       _widthReduceAnimation = Tween<double>(
-        begin: NZSizing.isMobile(context) ? NZSizing.height(context) / 3 : NZSizing.width(context) / 3,
+        begin: NZSizing.isMobile(context)
+            ? NZSizing.height(context) / 3
+            : NZSizing.width(context) / 3,
         end: 0,
       ).animate(curve(_controller!));
 
@@ -171,8 +178,12 @@ class _NikeZoomerTemplateState extends State<NikeZoomerTemplate> with SingleTick
                   child: Transform(
                     alignment: Alignment.center,
                     transform: Matrix4.identity()
-                      ..scale(index == activeIndex ? _textTranslationAnimation?.value ?? 1.8 : 1.0)
-                      ..rotateZ(index == activeIndex ? _textRotationAnimation?.value ?? 0.0 : 0.0),
+                      ..scale(index == activeIndex
+                          ? _textTranslationAnimation?.value ?? 1.8
+                          : 1.0)
+                      ..rotateZ(index == activeIndex
+                          ? _textRotationAnimation?.value ?? 0.0
+                          : 0.0),
                     child: Text(
                       index == 0
                           ? "BLUE"
@@ -199,7 +210,9 @@ class _NikeZoomerTemplateState extends State<NikeZoomerTemplate> with SingleTick
                   child: Transform(
                     alignment: Alignment.center,
                     transform: Matrix4.identity()
-                      ..rotateZ(index == activeIndex ? _shoeRotationAnimation?.value ?? -0.7 : -0.7)
+                      ..rotateZ(index == activeIndex
+                          ? _shoeRotationAnimation?.value ?? -0.7
+                          : -0.7)
                       ..scale(1.0),
                     child: Image.asset("assets/images/nike_$index.png"),
                   ),
@@ -227,7 +240,8 @@ class Follow extends StatelessWidget {
   Follow({super.key, required this.activeIndex});
 
   List<Link> links = [
-    Link(0, "github", "https://github.com/yunweneric/flutter-widgethub/", "Github"),
+    Link(0, "github", "https://github.com/yunweneric/flutter-widgethub/",
+        "Github"),
     Link(1, "x", "https://twitter.com/yunweneric", "X"),
     Link(2, "linkedIn", "https://www.linkedin.com/in/yunweneric", "LinkedIn"),
   ];
@@ -294,7 +308,8 @@ class Follow extends StatelessWidget {
               color: NZColors.white,
               borderRadius: BorderRadius.circular(5),
             ),
-            child: const Center(child: Text("Coded by Yunwen", style: TextStyle(fontSize: 12))),
+            child: const Center(
+                child: Text("Coded by Yunwen", style: TextStyle(fontSize: 12))),
           ),
         ],
       ),
@@ -328,7 +343,9 @@ class NavBar extends StatelessWidget {
               ...navItems.map((item) {
                 return TextButton(
                   onPressed: () {},
-                  child: Text(item, style: const TextStyle(color: NZColors.white, fontSize: 16)),
+                  child: Text(item,
+                      style:
+                          const TextStyle(color: NZColors.white, fontSize: 16)),
                 );
               })
             ],
@@ -344,9 +361,11 @@ class NavBar extends StatelessWidget {
                   onPressed: () {},
                   style: TextButton.styleFrom(
                     backgroundColor: Colors.transparent,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(40)),
                   ),
-                  child: SvgPicture.asset("assets/icons/$item.svg", width: 30, height: 30),
+                  child: SvgPicture.asset("assets/icons/$item.svg",
+                      width: 30, height: 30),
                 );
               })
             ],

@@ -20,7 +20,8 @@ class _HomeFooterState extends State<HomeFooter> {
     return Container(
       width: AppSizing.width(context),
       decoration: BoxDecoration(
-        border: BorderDirectional(top: BorderSide(color: Theme.of(context).dividerColor)),
+        border: BorderDirectional(
+            top: BorderSide(color: Theme.of(context).dividerColor)),
       ),
       child: Column(
         children: [
@@ -32,34 +33,46 @@ class _HomeFooterState extends State<HomeFooter> {
               alignment: WrapAlignment.spaceBetween,
               children: [
                 SizedBox(
-                  width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 40),
+                  width: AppSizing.kWPercentage(
+                      context, AppSizing.isMobile(context) ? 100 : 40),
                   child: Text(
                     "2024 © Build with 💙 by Yunwen",
                     style: Theme.of(context).textTheme.bodySmall,
-                    textAlign: AppSizing.isMobile(context) ? TextAlign.center : TextAlign.left,
+                    textAlign: AppSizing.isMobile(context)
+                        ? TextAlign.center
+                        : TextAlign.left,
                   ),
                 ),
 
                 Container(
-                  margin: EdgeInsets.only(top: AppSizing.isMobile(context) ? 20 : 0),
-                  width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 40),
+                  margin: EdgeInsets.only(
+                      top: AppSizing.isMobile(context) ? 20 : 0),
+                  width: AppSizing.kWPercentage(
+                      context, AppSizing.isMobile(context) ? 100 : 40),
                   child: Row(
-                    mainAxisAlignment: AppSizing.isMobile(context) ? MainAxisAlignment.center : MainAxisAlignment.end,
+                    mainAxisAlignment: AppSizing.isMobile(context)
+                        ? MainAxisAlignment.center
+                        : MainAxisAlignment.end,
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       AppSizing.kwSpacer(5.w),
                       TextButton(
-                        onPressed: () => UtilHelper.openUrl("https://github.com/yunweneric/flutter-widgethub/"),
+                        onPressed: () => UtilHelper.openUrl(
+                            "https://github.com/yunweneric/flutter-widgethub/"),
                         child: const AppIcon(icon: AppIcons.github),
                       ),
                       AppSizing.kwSpacer(5.w),
                       Builder(
                         builder: (context) {
                           final theme = getIt.get<ThemeBloc>();
-                          final isDark = Theme.of(context).brightness == Brightness.dark;
+                          final isDark =
+                              Theme.of(context).brightness == Brightness.dark;
                           return TextButton(
                             onPressed: () => theme.add(
-                              ChangeTheme(themeMode: isDark ? ThemeMode.light : ThemeMode.dark),
+                              ChangeTheme(
+                                  themeMode: isDark
+                                      ? ThemeMode.light
+                                      : ThemeMode.dark),
                             ),
                             child: AppIcon(
                               icon: isDark ? AppIcons.moon : AppIcons.sun,

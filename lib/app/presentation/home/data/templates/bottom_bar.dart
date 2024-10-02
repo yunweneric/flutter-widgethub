@@ -85,11 +85,15 @@ class _BottomBarsideBarCategoriestate extends State<BottomBarBlocItem> {
                   child: AnimatedContainer(
                     height: 10,
                     decoration: BoxDecoration(
-                      color: activeIndex == item ? Theme.of(context).primaryColor : Theme.of(context).primaryColor.withOpacity(0.2),
+                      color: activeIndex == item
+                          ? Theme.of(context).primaryColor
+                          : Theme.of(context).primaryColor.withOpacity(0.2),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     margin: const EdgeInsets.symmetric(horizontal: 10),
-                    width: activeIndex == item ? AppSizing.kWPercentage(context, 8) : AppSizing.kWPercentage(context, 2.5),
+                    width: activeIndex == item
+                        ? AppSizing.kWPercentage(context, 8)
+                        : AppSizing.kWPercentage(context, 2.5),
                     duration: const Duration(milliseconds: 200),
                   ),
                 );

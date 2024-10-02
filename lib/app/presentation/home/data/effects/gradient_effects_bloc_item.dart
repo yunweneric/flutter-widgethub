@@ -18,10 +18,12 @@ class GradientEffectsBlocItem extends StatefulWidget {
   const GradientEffectsBlocItem({super.key});
 
   @override
-  State<GradientEffectsBlocItem> createState() => _GradientEffectssideBarCategoriestate();
+  State<GradientEffectsBlocItem> createState() =>
+      _GradientEffectssideBarCategoriestate();
 }
 
-class _GradientEffectssideBarCategoriestate extends State<GradientEffectsBlocItem> with SingleTickerProviderStateMixin {
+class _GradientEffectssideBarCategoriestate
+    extends State<GradientEffectsBlocItem> with SingleTickerProviderStateMixin {
   AnimationController? myAnimationController;
 
   Animation<List<Color>>? animation;
@@ -37,25 +39,33 @@ class _GradientEffectssideBarCategoriestate extends State<GradientEffectsBlocIte
     animation = TweenSequence<List<Color>>(
       <TweenSequenceItem<List<Color>>>[
         TweenSequenceItem<List<Color>>(
-          tween: ListColorTween(begin: [Colors.teal, Colors.tealAccent], end: [Colors.green, Colors.greenAccent]).chain(
+          tween: ListColorTween(
+              begin: [Colors.teal, Colors.tealAccent],
+              end: [Colors.green, Colors.greenAccent]).chain(
             CurveTween(curve: curve),
           ),
           weight: 25.0,
         ),
         TweenSequenceItem<List<Color>>(
-          tween: ListColorTween(begin: [Colors.blue, Colors.blueAccent], end: [Colors.green, Colors.greenAccent]).chain(
+          tween: ListColorTween(
+              begin: [Colors.blue, Colors.blueAccent],
+              end: [Colors.green, Colors.greenAccent]).chain(
             CurveTween(curve: curve),
           ),
           weight: 25.0,
         ),
         TweenSequenceItem<List<Color>>(
-          tween: ListColorTween(begin: [Colors.red, Colors.redAccent], end: [Colors.orange, Colors.orangeAccent]).chain(
+          tween: ListColorTween(
+              begin: [Colors.red, Colors.redAccent],
+              end: [Colors.orange, Colors.orangeAccent]).chain(
             CurveTween(curve: curve),
           ),
           weight: 25.0,
         ),
         TweenSequenceItem<List<Color>>(
-          tween: ListColorTween(begin: [Colors.pink, Colors.pinkAccent], end: [Colors.amber, Colors.amberAccent]).chain(
+          tween: ListColorTween(
+              begin: [Colors.pink, Colors.pinkAccent],
+              end: [Colors.amber, Colors.amberAccent]).chain(
             CurveTween(curve: curve),
           ),
           weight: 25.0,

@@ -15,13 +15,16 @@ class NikeZoomerTemplateData {
     code: code,
     id: "nike-zoomer",
     widget: widget,
-    description: 'An animated UI for nike shoes, Animated with a full screen view on mobile and zoom effect on web!',
+    description:
+        'An animated UI for nike shoes, Animated with a full screen view on mobile and zoom effect on web!',
     title: 'Animated Nike Zoomer',
     setup: setup,
     category: ComponentCategoryEnum.BLOCKS,
     subcategory: SubComponentCategoryEnum.SLIDERS_AND_CAROUSELS,
-    assetLink: "https://github.com/yunweneric/flutter-widgethub/flutter-open-ui/raw/nike_zoomer/assets.zip",
-    gitHubLink: "https://github.com/yunweneric/flutter-widgethub/flutter-open-ui/tree/nike_zoomer",
+    assetLink:
+        "https://github.com/yunweneric/flutter-widgethub/flutter-open-ui/raw/nike_zoomer/assets.zip",
+    gitHubLink:
+        "https://github.com/yunweneric/flutter-widgethub/flutter-open-ui/tree/nike_zoomer",
     supportedPlatforms: [
       SupportedPlatform.ANDROID,
       SupportedPlatform.IOS,

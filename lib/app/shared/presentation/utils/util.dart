@@ -15,7 +15,8 @@ import 'package:device_frame/device_frame.dart';
 import 'package:flutterui/app/shared/data/enums/device_type.dart';
 
 class UtilHelper {
-  static String activeRoute = getIt.get<GoRouter>().routeInformationProvider.value.uri.path;
+  static String activeRoute =
+      getIt.get<GoRouter>().routeInformationProvider.value.uri.path;
 
   static dynamic getWindows() {
     final windows = getWindow();

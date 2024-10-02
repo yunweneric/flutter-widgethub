@@ -27,7 +27,9 @@ class _AppDeviceFrameState extends State<AppDeviceFrame> {
       clipBehavior: Clip.hardEdge,
       decoration: const BoxDecoration(),
       width: AppSizing.width(context),
-      height: AppSizing.isMobile(context) ? AppSizing.height(context) * 0.5 : AppSizing.height(context) * 0.6,
+      height: AppSizing.isMobile(context)
+          ? AppSizing.height(context) * 0.5
+          : AppSizing.height(context) * 0.6,
       child: AnimatedSwitcher(
         duration: const Duration(milliseconds: 500),
         child: widget.isFrameVisible == false

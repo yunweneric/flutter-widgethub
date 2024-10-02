@@ -16,7 +16,8 @@ class _ClassicButtonState extends State<ClassicButton> {
         onPressed: () {
           print("Clicked");
         },
-        child: Text("Hello world", style: Theme.of(context).textTheme.displaySmall),
+        child: Text("Hello world",
+            style: Theme.of(context).textTheme.displaySmall),
       ),
     );
   }

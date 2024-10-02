@@ -4,10 +4,12 @@ class BackgroundEffectsBlocItem extends StatefulWidget {
   const BackgroundEffectsBlocItem({super.key});
 
   @override
-  State<BackgroundEffectsBlocItem> createState() => _BackgroundEffectssideBarCategoriestate();
+  State<BackgroundEffectsBlocItem> createState() =>
+      _BackgroundEffectssideBarCategoriestate();
 }
 
-class _BackgroundEffectssideBarCategoriestate extends State<BackgroundEffectsBlocItem> {
+class _BackgroundEffectssideBarCategoriestate
+    extends State<BackgroundEffectsBlocItem> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold();

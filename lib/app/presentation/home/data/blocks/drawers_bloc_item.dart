@@ -73,12 +73,16 @@ class _DrawerssideBarCategoriestate extends State<DrawersBlocItem> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ...['Home', "About", "Cart", "Contact", "Settings"].map((item) {
+                    ...['Home', "About", "Cart", "Contact", "Settings"]
+                        .map((item) {
                       return Padding(
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         child: Text(
                           item,
-                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 22),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium!
+                              .copyWith(fontSize: 22),
                         ),
                       );
                     })
@@ -97,9 +101,12 @@ class _DrawerssideBarCategoriestate extends State<DrawersBlocItem> {
                 duration: duration,
                 width: AppSizing.width(context),
                 margin: const EdgeInsets.only(top: 30),
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
                 decoration: BoxDecoration(
-                  color: isExpanded ? Theme.of(context).primaryColor.withOpacity(0.4) : Theme.of(context).scaffoldBackgroundColor,
+                  color: isExpanded
+                      ? Theme.of(context).primaryColor.withOpacity(0.4)
+                      : Theme.of(context).scaffoldBackgroundColor,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Column(
@@ -112,7 +119,8 @@ class _DrawerssideBarCategoriestate extends State<DrawersBlocItem> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Latest chats", style: Theme.of(context).textTheme.displayMedium),
+                        Text("Latest chats",
+                            style: Theme.of(context).textTheme.displayMedium),
                         const Text("See all"),
                       ],
                     ),
@@ -122,14 +130,16 @@ class _DrawerssideBarCategoriestate extends State<DrawersBlocItem> {
                         child: Image.asset("assets/images/profile_0.jpg"),
                       ),
                       title: const Text("Lina Assoh"),
-                      subtitle: const Text("Hi Flutter dev, how have you been?"),
+                      subtitle:
+                          const Text("Hi Flutter dev, how have you been?"),
                     ),
                     ListTile(
                       leading: ClipOval(
                         child: Image.asset("assets/images/profile_1.jpg"),
                       ),
                       title: const Text("Lina Assoh"),
-                      subtitle: const Text("Hi Flutter dev, how have you been?"),
+                      subtitle:
+                          const Text("Hi Flutter dev, how have you been?"),
                     ),
                   ],
                 ),

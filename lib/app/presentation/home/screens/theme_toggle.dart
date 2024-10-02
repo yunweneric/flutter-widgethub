@@ -50,7 +50,8 @@ class _ThemeToggleState extends State<ThemeToggle> {
               Container(
                 width: width,
                 height: 60,
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 decoration: BoxDecoration(
                   border: Border.all(color: Theme.of(context).disabledColor),
                   borderRadius: BorderRadius.circular(80),
@@ -63,8 +64,10 @@ class _ThemeToggleState extends State<ThemeToggle> {
                       splashColor: Theme.of(context).scaffoldBackgroundColor,
                       focusColor: Theme.of(context).scaffoldBackgroundColor,
                       highlightColor: Theme.of(context).scaffoldBackgroundColor,
-                      onHover: (hover) => setState(() => sunScale = hover ? 1.5 : 1.0),
-                      onTap: () => theme.add(ChangeTheme(themeMode: ThemeMode.light)),
+                      onHover: (hover) =>
+                          setState(() => sunScale = hover ? 1.5 : 1.0),
+                      onTap: () =>
+                          theme.add(ChangeTheme(themeMode: ThemeMode.light)),
                       child: AnimatedScale(
                         duration: const Duration(milliseconds: 200),
                         scale: sunScale,
@@ -74,7 +77,9 @@ class _ThemeToggleState extends State<ThemeToggle> {
                           curve: Curves.elasticOut,
                           tween: Tween<double>(begin: 0.3, end: 0),
                           builder: (context, value, child) {
-                            return Transform.rotate(angle: pi * value, child: const AppIcon(icon: AppIcons.sun));
+                            return Transform.rotate(
+                                angle: pi * value,
+                                child: const AppIcon(icon: AppIcons.sun));
                           },
                         ),
                       ),
@@ -83,8 +88,10 @@ class _ThemeToggleState extends State<ThemeToggle> {
                       splashColor: Theme.of(context).scaffoldBackgroundColor,
                       focusColor: Theme.of(context).scaffoldBackgroundColor,
                       highlightColor: Theme.of(context).scaffoldBackgroundColor,
-                      onHover: (hover) => setState(() => moonScale = hover ? 1.5 : 1.0),
-                      onTap: () => theme.add(ChangeTheme(themeMode: ThemeMode.dark)),
+                      onHover: (hover) =>
+                          setState(() => moonScale = hover ? 1.5 : 1.0),
+                      onTap: () =>
+                          theme.add(ChangeTheme(themeMode: ThemeMode.dark)),
                       child: AnimatedScale(
                         duration: const Duration(milliseconds: 200),
                         scale: moonScale,
@@ -94,7 +101,9 @@ class _ThemeToggleState extends State<ThemeToggle> {
                           curve: Curves.elasticOut,
                           tween: Tween<double>(begin: -0.8, end: -0.1),
                           builder: (context, value, child) {
-                            return Transform.rotate(angle: pi * value, child: const AppIcon(icon: AppIcons.moon));
+                            return Transform.rotate(
+                                angle: pi * value,
+                                child: const AppIcon(icon: AppIcons.moon));
                           },
                         ),
                       ),

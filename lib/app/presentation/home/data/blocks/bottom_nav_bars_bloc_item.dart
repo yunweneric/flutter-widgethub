@@ -7,7 +7,8 @@ class BottomNavBarsBlocItem extends StatefulWidget {
   const BottomNavBarsBlocItem({super.key});
 
   @override
-  State<BottomNavBarsBlocItem> createState() => _BottomNavBarssideBarCategoriestate();
+  State<BottomNavBarsBlocItem> createState() =>
+      _BottomNavBarssideBarCategoriestate();
 }
 
 class _BottomNavBarssideBarCategoriestate extends State<BottomNavBarsBlocItem> {
@@ -67,8 +68,10 @@ class _BottomNavBarssideBarCategoriestate extends State<BottomNavBarsBlocItem> {
         currentIndex: currentIndex,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.notification_add), label: "Notifications"),
-          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: "Cart"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.notification_add), label: "Notifications"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_cart), label: "Cart"),
         ],
       ),
       body: Column(

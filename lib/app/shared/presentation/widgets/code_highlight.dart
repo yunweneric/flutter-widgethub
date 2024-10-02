@@ -70,7 +70,8 @@ class _CodeHighlightState extends State<CodeHighlight> {
                   softWrap: false,
                   overflow: TextOverflow.clip,
                   style: GoogleFonts.sourceCodePro(
-                    fontSize: widget.fontSize ?? (AppSizing.isMobile(context) ? 10.sp : 14.sp),
+                    fontSize: widget.fontSize ??
+                        (AppSizing.isMobile(context) ? 10.sp : 14.sp),
                     height: 1.7.h,
                     wordSpacing: 7.w,
                   ),

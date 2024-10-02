@@ -45,7 +45,8 @@ class Component {
       'subcategory': subcategory.describe(),
       'assetLink': assetLink,
       'gitHubLink': gitHubLink,
-      'supportedPlatforms': supportedPlatforms.map((x) => x.describe()).toList(),
+      'supportedPlatforms':
+          supportedPlatforms.map((x) => x.describe()).toList(),
     };
   }
 
@@ -57,10 +58,13 @@ class Component {
       title: map['title'] as String,
       setup: map['setup'] as String,
       description: map['description'] as String,
-      category: ComponentCategoryEnum.values.firstWhere((item) => item.describe() == map['category']),
-      subcategory: SubComponentCategoryEnum.values.firstWhere((item) => item.describe() == map['subcategory']),
+      category: ComponentCategoryEnum.values
+          .firstWhere((item) => item.describe() == map['category']),
+      subcategory: SubComponentCategoryEnum.values
+          .firstWhere((item) => item.describe() == map['subcategory']),
       assetLink: map['assetLink'] != null ? map['assetLink'] as String : null,
-      gitHubLink: map['gitHubLink'] != null ? map['gitHubLink'] as String : null,
+      gitHubLink:
+          map['gitHubLink'] != null ? map['gitHubLink'] as String : null,
       supportedPlatforms: List<SupportedPlatform>.from(
         (map['supportedPlatforms'] as List<String>).map<SupportedPlatform>(
           (x) => SupportedPlatform.values.firstWhere(
@@ -73,5 +77,6 @@ class Component {
 
   String toJson() => json.encode(toMap());
 
-  factory Component.fromJson(String source) => Component.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory Component.fromJson(String source) =>
+      Component.fromMap(json.decode(source) as Map<String, dynamic>);
 }

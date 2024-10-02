@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class AppSizing {
@@ -34,7 +33,9 @@ class _SkewCardState extends State<SkewCard> {
                     curve: Curves.fastOutSlowIn,
                     key: ValueKey(isVisible),
                     duration: const Duration(milliseconds: 1500),
-                    tween: isVisible ? Tween<double>(begin: 1, end: 0) : Tween<double>(begin: 0, end: 1),
+                    tween: isVisible
+                        ? Tween<double>(begin: 1, end: 0)
+                        : Tween<double>(begin: 0, end: 1),
                     builder: (context, value, child) {
                       return Transform(
                         alignment: Alignment.topCenter,
