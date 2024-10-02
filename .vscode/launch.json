@@ -49,6 +49,21 @@
         "lib/app/core/main_prod.dart",
         "--dart-define-from-file=../envs/fwh/env.json"
       ]
+    },
+
+    {
+      "name": "Launch profile",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/app/core/main_prod.dart",
+      "flutterMode": "profile",
+      "args": [
+        "--flavor",
+        "prod",
+        "--target",
+        "lib/app/core/main_prod.dart",
+        "--dart-define-from-file=../envs/fwh/env.json"
+      ]
     }
   ]
 }
