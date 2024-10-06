@@ -9,6 +9,7 @@ import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/utils/util.dart';
 import 'package:flutterui/app/shared/presentation/widgets/chip.dart';
+import 'package:flutterui/app/shared/presentation/widgets/code_highlight.dart';
 import 'package:flutterui/app/shared/presentation/widgets/device_frame.dart';
 import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -74,51 +75,47 @@ class _CodePreviewState extends State<CodePreview> {
 
   @override
   Widget build(BuildContext context) {
-    setupHighLighter(Theme.of(context).brightness);
-
-    return content == null
-        ? loader(context)
-        : BlocBuilder<ThemeBloc, ThemeState>(
-            builder: (context, state) {
-              setupHighLighter(Theme.of(context).brightness);
-              return Container(
-                decoration: BoxDecoration(
-                  color: Theme.of(context).scaffoldBackgroundColor,
-                  border: Border.all(color: Theme.of(context).dividerColor),
-                  borderRadius: AppSizing.radiusMd(),
+    return BlocBuilder<ThemeBloc, ThemeState>(
+      builder: (context, state) {
+        return Container(
+          decoration: BoxDecoration(
+            color: Theme.of(context).scaffoldBackgroundColor,
+            border: Border.all(color: Theme.of(context).dividerColor),
+            borderRadius: AppSizing.radiusMd(),
+          ),
+          width: AppSizing.width(context),
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                topBar(context),
+                codeAndPreview(
+                  code: widget.component.code,
                 ),
-                width: AppSizing.width(context),
-                child: Center(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // topBar(context),
-                      // codeAndPreview(),
-                    ],
-                  ),
-                ),
-              );
-            },
-          );
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 
-  Widget codeAndPreview() {
+  Widget codeAndPreview({required String code}) {
     return AnimatedSwitcher(
       duration: const Duration(milliseconds: 1300),
       child: isCode
           ? Container(
               width: AppSizing.width(context),
               decoration: BoxDecoration(borderRadius: AppSizing.radiusSm()),
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: AppSizing.isMobile(context) ? 10.h : 20.h),
-                  child: Text.rich(
-                    content!,
-                    style: GoogleFonts.spaceMono(fontSize: AppSizing.isMobile(context) ? 10.sp : 14.sp, height: 1.7.h, wordSpacing: 7.w),
+              child: SingleChildScrollView(scrollDirection: Axis.horizontal, child: CodeHighlight(code: code)
+                  // child: Padding(
+                  //   padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: AppSizing.isMobile(context) ? 10.h : 20.h),
+                  //   child: Text.rich(
+                  //     content!,
+                  //     style: GoogleFonts.spaceMono(fontSize: AppSizing.isMobile(context) ? 10.sp : 14.sp, height: 1.7.h, wordSpacing: 7.w),
+                  //   ),
+                  // ),
                   ),
-                ),
-              ),
             )
           : preview(
               child: widget.component.widget,
