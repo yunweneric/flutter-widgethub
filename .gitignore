@@ -34,6 +34,7 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
+pubspect.lock
 
 # Symbolication related
 app.*.symbols
