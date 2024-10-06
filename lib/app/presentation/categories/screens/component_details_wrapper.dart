@@ -29,15 +29,12 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
       listener: (context, state) {
         if (state is UpdateActiveComponentSuccess) {
           final componentDetails = state.activeComponent;
-          final link =
-              "/components/${componentDetails.category.link()}/${componentDetails.subcategory.link()}/${componentDetails.id}/";
+          final link = "/components/${componentDetails.category.link()}/${componentDetails.subcategory.link()}/${componentDetails.id}/";
           context.go(link);
         }
       },
       builder: (context, state) {
-        final component = state.allComponents
-            .where((item) => item.id == widget.id)
-            .firstOrNull;
+        final component = state.allComponents.where((item) => item.id == widget.id).firstOrNull;
         print(component?.id);
         if (component != null) {
           final activeIndex = state.allComponents.indexOf(component);
@@ -45,11 +42,9 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
           final canNext = activeIndex < state.allComponents.length - 1;
           return MainContent(
             children: [
-              Text(component.title,
-                  style: Theme.of(context).textTheme.displayLarge),
+              Text(component.title, style: Theme.of(context).textTheme.displayLarge),
               AppSizing.kh10Spacer(),
-              Text(component.description,
-                  style: Theme.of(context).textTheme.bodyMedium),
+              Text(component.description, style: Theme.of(context).textTheme.bodyMedium),
               AppSizing.kh20Spacer(),
               Text("Setup", style: Theme.of(context).textTheme.displayMedium),
               AppSizing.kh10Spacer(),
@@ -57,12 +52,11 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
               CodeHighlight(code: component.setup),
               AppSizing.kh20Spacer(),
               AppSizing.kh10Spacer(),
-              supportPlatformSection(component, context),
-              resourcesSection(component),
-              CodePreview(component: component),
+              // supportPlatformSection(component, context),
+              // resourcesSection(component),
+              // CodePreview(component: component),
               AppSizing.kh20Spacer(),
-              componentFooter(
-                  canPrevious, canNext, context, state, activeIndex),
+              componentFooter(canPrevious, canNext, context, state, activeIndex),
             ],
           );
         }
@@ -74,14 +68,11 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
                   child: RichText(
                 text: TextSpan(
                   text: "'${widget.id}' ",
-                  style: DefaultTextStyle.of(context)
-                      .style
-                      .copyWith(color: Theme.of(context).primaryColor),
+                  style: DefaultTextStyle.of(context).style.copyWith(color: Theme.of(context).primaryColor),
                   children: <TextSpan>[
                     TextSpan(
                       text: 'not found in collections!',
-                      style:
-                          TextStyle(color: Theme.of(context).primaryColorDark),
+                      style: TextStyle(color: Theme.of(context).primaryColorDark),
                     ),
                   ],
                 ),
@@ -122,8 +113,7 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
                 icon: const AppIcon(icon: AppIcons.back),
               ),
               AppSizing.kh10Spacer(),
-              Text(state.allComponents[activeIndex - 1].title,
-                  style: Theme.of(context).textTheme.displayMedium),
+              Text(state.allComponents[activeIndex - 1].title, style: Theme.of(context).textTheme.displayMedium),
             ],
           ),
         if (canNext)
@@ -144,8 +134,7 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
                 ),
               ),
               AppSizing.kh10Spacer(),
-              Text(state.allComponents[activeIndex + 1].title,
-                  style: Theme.of(context).textTheme.displayMedium),
+              Text(state.allComponents[activeIndex + 1].title, style: Theme.of(context).textTheme.displayMedium),
             ],
           )
       ],
@@ -204,8 +193,7 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
   }
 
   Widget resourcesSection(Component component) {
-    if (component.assetLink == null && component.gitHubLink == null)
-      return const SizedBox.shrink();
+    if (component.assetLink == null && component.gitHubLink == null) return const SizedBox.shrink();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -232,10 +220,7 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
     );
   }
 
-  Widget rowItem(
-      {required String leading,
-      required String title,
-      required VoidCallback onTap}) {
+  Widget rowItem({required String leading, required String title, required VoidCallback onTap}) {
     bool isHovered = false;
     return StatefulBuilder(builder: (context, setState) {
       return InkWell(
@@ -254,14 +239,11 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
             scale: isHovered ? 1.05 : 1.0,
             child: Row(
               children: [
-                AppIcon(
-                    icon: leading,
-                    color: isHovered ? Theme.of(context).primaryColor : null),
+                AppIcon(icon: leading, color: isHovered ? Theme.of(context).primaryColor : null),
                 AppSizing.kwSpacer(5),
                 Text(
                   title,
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                      color: isHovered ? Theme.of(context).primaryColor : null),
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(color: isHovered ? Theme.of(context).primaryColor : null),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
