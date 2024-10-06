@@ -19,18 +19,12 @@ class CodeHighlight extends StatefulWidget {
 }
 
 class _CodeHighlightState extends State<CodeHighlight> {
-  Future<Text>? futureWidget;
   TextSpan? content;
   final duration = const Duration(seconds: 1);
   bool hasCopied = false;
   final themBloc = getIt.get<ThemeBloc>();
-  @override
-  initState() {
-    // setupHighLighter(Theme.of(context).brightness);
-    super.initState();
-  }
 
-  setupHighLighter(Brightness brightness) async {
+  Future setupHighLighter(Brightness brightness) async {
     await Highlighter.initialize(['dart', 'yaml']);
     var lightTheme = await HighlighterTheme.loadLightTheme();
     var darkTheme = await HighlighterTheme.loadDarkTheme();
@@ -39,15 +33,19 @@ class _CodeHighlightState extends State<CodeHighlight> {
       theme: brightness == Brightness.dark ? darkTheme : lightTheme,
     );
     var highlightedCode = highlighter.highlight(widget.code);
-    setState(() {
-      content = highlightedCode;
-    });
+    content = highlightedCode;
   }
 
   @override
   Widget build(BuildContext context) {
-    setupHighLighter(Theme.of(context).brightness);
-    return content == null ? loader(context) : codeAndPreview();
+    return FutureBuilder(
+        future: setupHighLighter(Theme.of(context).brightness),
+        builder: (ctx, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return loader(context);
+          }
+          return codeAndPreview();
+        });
   }
 
   Widget codeAndPreview() {
@@ -83,32 +81,30 @@ class _CodeHighlightState extends State<CodeHighlight> {
         Positioned(
           right: 10,
           top: 10,
-          child: AppChip(
-            onTap: () {
-              setState(() => hasCopied = true);
-              UtilHelper.copy(context, data: widget.code);
-              Future.delayed(const Duration(seconds: 5), () {
-                setState(() => hasCopied = false);
-              });
-            },
-            active: hasCopied,
-            icon: AppIcons.clipboard,
-            title: AppSizing.isMobile(context)
-                ? null
-                : hasCopied
-                    ? "Copied"
-                    : "Copy",
-          ),
+          child: StatefulBuilder(builder: (context, state) {
+            return AppChip(
+              onTap: () {
+                state(() => hasCopied = true);
+                UtilHelper.copy(context, data: widget.code);
+                Future.delayed(const Duration(seconds: 5), () {
+                  state(() => hasCopied = false);
+                });
+              },
+              active: hasCopied,
+              icon: AppIcons.clipboard,
+              title: AppSizing.isMobile(context)
+                  ? null
+                  : hasCopied
+                      ? "Copied"
+                      : "Copy",
+            );
+          }),
         ),
       ],
     );
   }
 
-  Container loader(BuildContext context) {
-    return Container(
-      height: 500.h,
-      color: Theme.of(context).cardColor,
-      child: const Center(child: CircularProgressIndicator()),
-    );
+  Widget loader(BuildContext context) {
+    return const Center(child: CircularProgressIndicator());
   }
 }

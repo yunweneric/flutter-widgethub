@@ -38,7 +38,7 @@ class _IntegrationSectionState extends State<IntegrationSection> {
               ),
             ],
           ),
-          AppSizing.kh20Spacer(),
+          const SizedBox(height: 20),
           SizedBox(
             width: AppSizing.kHPercentage(context, 70),
             child: Column(
