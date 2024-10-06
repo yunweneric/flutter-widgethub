@@ -82,10 +82,10 @@ class _NikeZoomerTemplateState extends State<NikeZoomerTemplate>
     if (index == activeIndex) {
       if (hasReversed) {
         _controller?.forward();
-        setState(() => hasReversed = !hasReversed);
+        hasReversed = !hasReversed;
       } else {
         _controller?.reverse();
-        setState(() => hasReversed = !hasReversed);
+        hasReversed = !hasReversed;
       }
     } else {
       _controller?.forward();
