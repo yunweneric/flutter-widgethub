@@ -3,14 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/app/shared/presentation/utils/colors.dart';
 
 class AppSizing {
-  static double width(BuildContext context) =>
-      MediaQuery.of(context).size.width;
-  static double height(BuildContext context) =>
-      MediaQuery.of(context).size.height;
-  static double kHPercentage(BuildContext context, double value) =>
-      (height(context) * value) / 100;
-  static double kWPercentage(BuildContext context, double value) =>
-      (width(context) * value) / 100;
+  static double width(BuildContext context) => MediaQuery.of(context).size.width;
+  static double height(BuildContext context) => MediaQuery.of(context).size.height;
+  static double kHPercentage(BuildContext context, double value) => (height(context) * value) / 100;
+  static double kWPercentage(BuildContext context, double value) => (width(context) * value) / 100;
   static radiusMd() => BorderRadius.circular(10.r);
   static radiusSm() => BorderRadius.circular(5.r);
 
@@ -42,11 +38,9 @@ class AppSizing {
     );
   }
 
-  static EdgeInsets kMainPadding(BuildContext context) =>
-      EdgeInsets.symmetric(horizontal: isMobile(context) ? 15.w : 30.w);
+  static EdgeInsets kMainPadding(BuildContext context) => EdgeInsets.symmetric(horizontal: isMobile(context) ? 15.w : 30.w);
 
-  static EdgeInsets kpadding(double width, double height) =>
-      EdgeInsets.symmetric(horizontal: width.w, vertical: height.h);
+  static EdgeInsets kpadding(double width, double height) => EdgeInsets.symmetric(horizontal: width.w, vertical: height.h);
 
   static Widget kh20Spacer() => SizedBox(height: 20.h);
   static Widget kh10Spacer() => SizedBox(height: 10.h);

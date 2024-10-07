@@ -35,27 +35,6 @@ class _CodePreviewState extends State<CodePreview> {
   bool isFrameVisible = true;
   final themBloc = getIt.get<ThemeBloc>();
 
-  @override
-  initState() {
-    // setupHighLighter(Theme.of(context).brightness);
-    super.initState();
-  }
-
-  setupHighLighter(Brightness brightness) async {
-    await Highlighter.initialize(['dart', 'yaml']);
-    var lightTheme = await HighlighterTheme.loadLightTheme();
-    var darkTheme = await HighlighterTheme.loadDarkTheme();
-
-    var highlighter = Highlighter(
-      language: 'dart',
-      theme: brightness == Brightness.dark ? darkTheme : lightTheme,
-    );
-    var highlightedCode = highlighter.highlight(widget.component.code);
-    setState(() {
-      content = highlightedCode;
-    });
-  }
-
   List<DropdownMenuEntry> menu = [
     DropdownMenuEntry(value: AppDeviceType.MOBILE, label: AppDeviceType.MOBILE.describe()),
     DropdownMenuEntry(value: AppDeviceType.TABLET, label: AppDeviceType.TABLET.describe()),
@@ -90,7 +69,7 @@ class _CodePreviewState extends State<CodePreview> {
               children: [
                 topBar(context),
                 codeAndPreview(
-                  code: widget.component.code,
+                  code: widget.component.codeComponents.first.code,
                 ),
               ],
             ),
@@ -118,7 +97,7 @@ class _CodePreviewState extends State<CodePreview> {
                   ),
             )
           : preview(
-              child: widget.component.widget,
+              child: widget.component.codeComponents.first.widget,
               device: selectedDevice,
             ),
     );
@@ -170,7 +149,7 @@ class _CodePreviewState extends State<CodePreview> {
                                     : "Copy",
                             onTap: () async {
                               setState(() => hasCopied = true);
-                              UtilHelper.copy(context, data: widget.component.code);
+                              UtilHelper.copy(context, data: widget.component.codeComponents.first.code);
                               Future.delayed(const Duration(seconds: 5), () {
                                 setState(() => hasCopied = false);
                               });

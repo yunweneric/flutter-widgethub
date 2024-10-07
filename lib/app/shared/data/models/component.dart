@@ -1,32 +1,33 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
-
 import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
 import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart';
 import 'package:flutterui/app/shared/data/enums/supported_platform.dart';
+import 'package:flutterui/app/shared/data/models/code_component.dart';
 
 class Component {
   final String id;
-  final String code;
+  // final String code;
   final String title;
   final String setup;
   final String description;
-  final Widget widget;
+  // final Widget widget;
   final ComponentCategoryEnum category;
   final SubComponentCategoryEnum subcategory;
   final String? assetLink;
   final String? gitHubLink;
+  final List<CodeComponent> codeComponents;
   final List<SupportedPlatform> supportedPlatforms;
 
   Component({
     required this.id,
-    required this.code,
+    required this.codeComponents,
     required this.title,
     required this.setup,
     required this.description,
-    required this.widget,
+    // required this.widget,
+    // required this.code,
     required this.subcategory,
     required this.category,
     this.assetLink,
@@ -37,7 +38,6 @@ class Component {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'code': code,
       'title': title,
       'setup': setup,
       'description': description,
@@ -45,26 +45,52 @@ class Component {
       'subcategory': subcategory.describe(),
       'assetLink': assetLink,
       'gitHubLink': gitHubLink,
-      'supportedPlatforms':
-          supportedPlatforms.map((x) => x.describe()).toList(),
+      'codeComponents': codeComponents.map((x) => x.toMap()).toList(),
+      'supportedPlatforms': supportedPlatforms.map((x) => x.describe()).toList(),
     };
+  }
+
+  Component copyWith({
+    String? id,
+    String? title,
+    String? setup,
+    String? description,
+    ComponentCategoryEnum? category,
+    SubComponentCategoryEnum? subcategory,
+    String? assetLink,
+    String? gitHubLink,
+    List<CodeComponent>? codeComponents,
+    List<SupportedPlatform>? supportedPlatforms,
+  }) {
+    return Component(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      setup: setup ?? this.setup,
+      description: description ?? this.description,
+      category: category ?? this.category,
+      subcategory: subcategory ?? this.subcategory,
+      assetLink: assetLink ?? this.assetLink,
+      gitHubLink: gitHubLink ?? this.gitHubLink,
+      codeComponents: codeComponents ?? this.codeComponents,
+      supportedPlatforms: supportedPlatforms ?? this.supportedPlatforms,
+    );
   }
 
   factory Component.fromMap(Map<String, dynamic> map) {
     return Component(
-      widget: Container(),
       id: map['id'] as String,
-      code: map['code'] as String,
       title: map['title'] as String,
       setup: map['setup'] as String,
       description: map['description'] as String,
-      category: ComponentCategoryEnum.values
-          .firstWhere((item) => item.describe() == map['category']),
-      subcategory: SubComponentCategoryEnum.values
-          .firstWhere((item) => item.describe() == map['subcategory']),
+      category: ComponentCategoryEnum.values.firstWhere((item) => item.describe() == map['category']),
+      subcategory: SubComponentCategoryEnum.values.firstWhere((item) => item.describe() == map['subcategory']),
       assetLink: map['assetLink'] != null ? map['assetLink'] as String : null,
-      gitHubLink:
-          map['gitHubLink'] != null ? map['gitHubLink'] as String : null,
+      gitHubLink: map['gitHubLink'] != null ? map['gitHubLink'] as String : null,
+      codeComponents: List<CodeComponent>.from(
+        (map['codeComponents'] as List<int>).map<CodeComponent>(
+          (x) => CodeComponent.fromMap(x as Map<String, dynamic>),
+        ),
+      ),
       supportedPlatforms: List<SupportedPlatform>.from(
         (map['supportedPlatforms'] as List<String>).map<SupportedPlatform>(
           (x) => SupportedPlatform.values.firstWhere(
@@ -77,6 +103,5 @@ class Component {
 
   String toJson() => json.encode(toMap());
 
-  factory Component.fromJson(String source) =>
-      Component.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory Component.fromJson(String source) => Component.fromMap(json.decode(source) as Map<String, dynamic>);
 }

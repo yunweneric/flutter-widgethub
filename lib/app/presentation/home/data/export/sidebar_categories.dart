@@ -19,8 +19,7 @@ import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart
 final sideBarCategories = [
   AppCategoryGroupModel(
     category: ComponentCategoryEnum.INTRODUCTION,
-    description:
-        "A wide range of pre-built UI templates from app clones to demo apps all in one place",
+    description: "A wide range of pre-built UI templates from app clones to demo apps all in one place",
     items: [
       // AppCategoryModel(
       //   widget: const SizedBox.shrink(),
@@ -36,12 +35,11 @@ final sideBarCategories = [
   ),
   AppCategoryGroupModel(
     category: ComponentCategoryEnum.TEMPLATES,
-    description:
-        "A wide range of pre-built UI templates from app clones to demo apps all in one place",
+    description: "A wide range of pre-built UI templates from app clones to demo apps all in one place",
     items: [
       AppCategoryModel(
         widget: const AppCloneBlocItem(),
-        subCategory: SubComponentCategoryEnum.APP_CLONES,
+        subCategory: SubComponentCategoryEnum.APPS,
         category: ComponentCategoryEnum.TEMPLATES,
         alignment: Alignment.topCenter,
       ),
@@ -65,8 +63,7 @@ final sideBarCategories = [
   ),
   AppCategoryGroupModel(
     category: ComponentCategoryEnum.BLOCKS,
-    description:
-        "A collection of reusable layout blocks to help you create consistent and responsive layouts",
+    description: "A collection of reusable layout blocks to help you create consistent and responsive layouts",
     items: [
       AppCategoryModel(
         widget: const SwitchersBlocItem(),
@@ -117,8 +114,7 @@ final sideBarCategories = [
   ),
   AppCategoryGroupModel(
     category: ComponentCategoryEnum.ANIMATIONS,
-    description:
-        "Smooth and captivating animations that can be easily applied to any element.",
+    description: "Smooth and captivating animations that can be easily applied to any element.",
     items: [
       // AppCategoryModel(
       //   link: RouteNames.hoverAnimations,
@@ -139,8 +135,7 @@ final sideBarCategories = [
   ),
   AppCategoryGroupModel(
     category: ComponentCategoryEnum.EFFECTS,
-    description:
-        "Visual effects ranging from shadows and gradients to more complex transformations",
+    description: "Visual effects ranging from shadows and gradients to more complex transformations",
     items: [
       AppCategoryModel(
         widget: const GradientEffectsBlocItem(),

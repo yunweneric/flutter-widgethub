@@ -35,7 +35,6 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
       },
       builder: (context, state) {
         final component = state.allComponents.where((item) => item.id == widget.id).firstOrNull;
-        print(component?.id);
         if (component != null) {
           final activeIndex = state.allComponents.indexOf(component);
           final canPrevious = activeIndex > 0;

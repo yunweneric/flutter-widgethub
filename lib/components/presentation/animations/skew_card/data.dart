@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterui/app/shared/data/models/code_component.dart';
 import 'package:flutterui/components/presentation/animations/skew_card/skew_card_code.dart';
 import 'package:flutterui/components/presentation/animations/skew_card/skew_card_widget.dart';
 import 'package:flutterui/components/shared/setup.dart';
@@ -12,15 +13,13 @@ class SkewCardData {
   static String code = skewCardCode;
   static String setup = basicSetup;
   static Component component = Component(
-    code: code,
     id: "3d-skew-card",
-    widget: widget,
-    description:
-        'A card perspective effect, hover over the card to elevate card elements.',
+    codeComponents: [CodeComponent(code: code, widget: widget)],
+    description: 'A card perspective effect, hover over the card to elevate card elements.',
     title: '3D Skew Card',
     setup: setup,
-    category: ComponentCategoryEnum.TEMPLATES,
-    subcategory: SubComponentCategoryEnum.APP_CLONES,
+    category: ComponentCategoryEnum.BLOCKS,
+    subcategory: SubComponentCategoryEnum.SLIDERS_AND_CAROUSELS,
     supportedPlatforms: [SupportedPlatform.ANDROID, SupportedPlatform.IOS],
   );
 }
