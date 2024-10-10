@@ -107,7 +107,3 @@ For any questions, issues, or feature requests, feel free to create an issue in 
 ### Acknowledgements
 
 We would like to thank all contributors who have helped in making this SDK possible.
-
----
-
-Feel free to add any additional information specific to your SDK or your organization!
