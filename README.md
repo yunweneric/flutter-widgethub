@@ -106,4 +106,4 @@ For any questions, issues, or feature requests, feel free to create an issue in 
 
 ### Acknowledgements
 
-We would like to thank all contributors who have helped in making this SDK possible.
+We would like to thank all contributors who have helped in making flutter widget hub project possible.
