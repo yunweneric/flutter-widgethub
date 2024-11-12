@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://flutterwidgethub.com/" target="blank"><img src="https://raw.githubusercontent.com/yunweneric/flutter-widgethub/main/assets/images/fwh.png" width="320" alt="Flutter widget hub logo" /></a>
+  <a href="https://flutterwidgethub.com/" target="blank"><img src="https://raw.githubusercontent.com/yunweneric/flutter-widgethub/main/assets/images/fwh.png" width="320" alt="Flutter widget landing page" /></a>
 </p>
   <p align="center">Welcome to <a href="https://flutterwidgethub.com/" target="_blank"> Flutter Widget Hub </a>Build Stunning Flutter Apps with Ease</p>
     <p align="center">
