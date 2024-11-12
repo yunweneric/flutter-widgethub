@@ -2,6 +2,7 @@ import 'package:flutterui/app/shared/data/models/code_component.dart';
 import 'package:flutterui/components/presentation/templates/basuu/exports/basuu_choose_category_screen_code.dart';
 import 'package:flutterui/components/presentation/templates/basuu/exports/basuu_choose_language_screen_code.dart';
 import 'package:flutterui/components/presentation/templates/basuu/exports/basuu_home_screen_code.dart';
+import 'package:flutterui/components/presentation/templates/basuu/exports/basuu_setup.dart';
 import 'package:flutterui/components/presentation/templates/basuu/exports/basuu_splash_screen_code.dart';
 import 'package:flutterui/components/presentation/templates/basuu/models/basuu_category.dart';
 import 'package:flutterui/components/presentation/templates/basuu/screens/basuu_choose_category_screen.dart';
@@ -44,11 +45,13 @@ class BasuuData {
         widget: BasuuHomeScreen(level: categories.first),
       ),
     ],
-    description: 'An Animated Language learning App Template including, learning homescreen, Language screen, Word learning screen and more',
+    description: 'An Animated Language learning App Template including, learning Home screen, Language screen, Word learning screen and more',
     title: 'Basuu App',
-    setup: '',
+    setup: basuuSetup,
     category: ComponentCategoryEnum.TEMPLATES,
     subcategory: SubComponentCategoryEnum.APPS,
     supportedPlatforms: [SupportedPlatform.ANDROID, SupportedPlatform.IOS],
+    assetLink: 'https://github.com/yunweneric/flutter-open-ui/raw/refs/heads/language_app/assets.zip',
+    gitHubLink: 'https://github.com/yunweneric/flutter-open-ui/tree/language_app',
   );
 }

@@ -36,8 +36,6 @@ class _TemplateCategoryScreenState extends State<TemplateCategoryScreen> {
             Builder(
               builder: (context) {
                 final components = state.allComponents.where((item) => item.id == widget.id).toList();
-                print(["widget.id", widget.id]);
-                print(["component", components.length]);
                 return AnimatedSwitcher(
                   duration: const Duration(milliseconds: 500),
                   child: components.isEmpty
