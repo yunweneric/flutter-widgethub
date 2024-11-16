@@ -32,9 +32,6 @@ class MyApp extends StatelessWidget {
                 designSize: Size(constraints.maxWidth, constraints.maxHeight),
                 useInheritedMediaQuery: true,
                 builder: (context, child) {
-                  // final themeMode = state.themeMode == ThemeMode.system;
-                  // final isDark = state.themeMode == ThemeMode.dark;
-                  // print(["theme mode", themeMode, 'isLight', isDark]);
                   return MaterialApp.router(
                     routerConfig: getIt.get<GoRouter>(),
                     debugShowCheckedModeBanner: false,
@@ -49,10 +46,6 @@ class MyApp extends StatelessWidget {
                     //         : ThemeMode.light,
 
                     // themeMode: ThemeMode.system,
-
-                    // home: const HomeScreen(),
-                    // home: const ComponentCategoryScreen(),
-                    // home: const ComponentDetailsScreen(),
                   );
                 },
               );
