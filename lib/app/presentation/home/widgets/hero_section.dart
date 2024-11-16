@@ -29,8 +29,7 @@ class _HeroSectionState extends State<HeroSection> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin:
-          EdgeInsets.symmetric(horizontal: AppSizing.kWPercentage(context, 5)),
+      margin: EdgeInsets.symmetric(horizontal: AppSizing.kWPercentage(context, 5)),
       width: AppSizing.kWPercentage(context, 100),
       alignment: Alignment.topLeft,
       child: Column(
@@ -42,16 +41,13 @@ class _HeroSectionState extends State<HeroSection> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
-                width: AppSizing.kWPercentage(
-                    context, AppSizing.isMobile(context) ? 80 : 35),
+                width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 80 : 35),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SelectableText(
                       "Build Stunning Flutter Apps with Ease",
-                      style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                          fontSize:
-                              AppSizing.isMobile(context) ? 40.sp : 50.sp),
+                      style: Theme.of(context).textTheme.displayLarge!.copyWith(fontSize: AppSizing.isMobile(context) ? 40.sp : 50.sp),
                     ),
                     AppSizing.kh20Spacer(),
                     SelectableText(
@@ -60,17 +56,12 @@ class _HeroSectionState extends State<HeroSection> {
                     ),
                     AppSizing.kh20Spacer(),
                     Builder(builder: (context) {
-                      final theme =
-                          Theme.of(context).brightness == Brightness.dark
-                              ? 'dark'
-                              : 'light';
+                      final theme = Theme.of(context).brightness == Brightness.dark ? 'dark' : 'light';
                       return Row(
                         children: [
-                          Image.asset("assets/images/flutter_$theme.png",
-                              width: 100.w),
+                          Image.asset("assets/images/flutter_$theme.png", width: 100.w),
                           AppSizing.kwSpacer(20.w),
-                          Image.asset("assets/images/dart_$theme.png",
-                              width: 100.w),
+                          Image.asset("assets/images/dart_$theme.png", width: 100.w),
                         ],
                       );
                     }),
@@ -89,8 +80,7 @@ class _HeroSectionState extends State<HeroSection> {
                                 category: AppCategoryModel(
                                   widget: widget,
                                   category: ComponentCategoryEnum.INTRODUCTION,
-                                  subCategory:
-                                      SubComponentCategoryEnum.ALL_COMPONENTS,
+                                  subCategory: SubComponentCategoryEnum.ALL_COMPONENTS,
                                 ),
                               ),
                             );
@@ -104,18 +94,15 @@ class _HeroSectionState extends State<HeroSection> {
                         AppSizing.kwSpacer(20.w),
                         ElevatedButton.icon(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                Theme.of(context).scaffoldBackgroundColor,
-                            side: BorderSide(
-                                color: Theme.of(context).dividerColor),
+                            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                            side: BorderSide(color: Theme.of(context).dividerColor),
                           ),
                           iconAlignment: IconAlignment.end,
                           onPressed: widget.onBrowserAll,
                           icon: const Icon(Icons.arrow_forward_rounded),
                           label: Text(
                             "Browse all assets",
-                            style: TextStyle(
-                                color: Theme.of(context).primaryColorDark),
+                            style: TextStyle(color: Theme.of(context).primaryColorDark),
                           ),
                         ),
                       ],
@@ -150,8 +137,7 @@ class _HeroSectionState extends State<HeroSection> {
                         crossAxisCellCount: 2,
                         mainAxisCellCount: 3.6,
                         child: Container(
-                          decoration:
-                              BoxDecoration(borderRadius: AppSizing.radiusMd()),
+                          decoration: BoxDecoration(borderRadius: AppSizing.radiusMd()),
                           child: const DeviceSectionFrame(
                             deviceAlignment: Alignment.center,
                             child: LeaveReviewHomeScreen(),
@@ -163,8 +149,7 @@ class _HeroSectionState extends State<HeroSection> {
                         mainAxisCellCount: 1.0,
                         child: Builder(builder: (context) {
                           return Container(
-                            decoration: BoxDecoration(
-                                borderRadius: AppSizing.radiusMd()),
+                            decoration: BoxDecoration(borderRadius: AppSizing.radiusMd()),
                             child: const DeviceSectionFrame(
                               deviceAlignment: Alignment.topCenter,
                               child: ThemeToggle(),
