@@ -12,6 +12,7 @@ enum SubComponentCategoryEnum {
   SWITCHERS,
   INPUTS,
   TEXTS,
+  TABS,
   LOADERS,
   BUTTONS,
   BOTTOM_NAV_BARS,

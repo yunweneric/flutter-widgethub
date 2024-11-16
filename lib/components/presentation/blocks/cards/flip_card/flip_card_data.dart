@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutterui/app/shared/data/models/code_component.dart';
-import 'package:flutterui/components/presentation/cards/flip_card/flip_card_code.dart';
-import 'package:flutterui/components/presentation/cards/flip_card/flip_card_setup.dart';
-import 'package:flutterui/components/presentation/cards/flip_card/flip_card_widget.dart';
+import 'package:flutterui/components/presentation/blocks/cards/flip_card/flip_card_code.dart';
+import 'package:flutterui/components/presentation/blocks/cards/flip_card/flip_card_setup.dart';
+import 'package:flutterui/components/presentation/blocks/cards/flip_card/flip_card_widget.dart';
 import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
 import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart';
 import 'package:flutterui/app/shared/data/enums/supported_platform.dart';
@@ -13,6 +13,8 @@ class AppFlipCard {
   static String code = flipCardButtonCode;
   static String setup = flipCardButtonSetup;
   static Component component = Component(
+    createdAt: DateTime(2024, 10, 5),
+    updatedAt: DateTime(2024, 10, 5),
     id: "3d-flip-card",
     codeComponents: [
       CodeComponent(code: code, widget: widget),

@@ -13,6 +13,8 @@ class FruityLipsTemplateData {
   static String code = fruityLipsCode;
   static String setup = fruityLipsSetup;
   static Component component = Component(
+    createdAt: DateTime(2024, 7, 9),
+    updatedAt: DateTime(2024, 7, 9),
     // code: code,
     id: "fruity-lips-carousel",
     // widget: widget,

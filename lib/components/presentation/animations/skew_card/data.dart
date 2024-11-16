@@ -13,6 +13,8 @@ class SkewCardData {
   static String code = skewCardCode;
   static String setup = basicSetup;
   static Component component = Component(
+    createdAt: DateTime(2024, 9, 2),
+    updatedAt: DateTime(2024, 9, 2),
     id: "3d-skew-card",
     codeComponents: [CodeComponent(code: code, widget: widget)],
     description: 'A card perspective effect, hover over the card to elevate card elements.',

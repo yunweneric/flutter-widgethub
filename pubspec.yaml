@@ -68,8 +68,8 @@ flutter:
     - assets/images/fruity_lips/
     - assets/images/
     - assets/icons/
-    - assets/svgs/
-    - assets/animations/
+    # - assets/svgs/
+    # - assets/animations/
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

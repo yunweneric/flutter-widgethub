@@ -13,6 +13,8 @@ class FadeCarouselTemplateData {
   static String code = fadeCarouselCode;
   static String setup = fadeCarouselSetup;
   static Component component = Component(
+    createdAt: DateTime(2024, 8, 22),
+    updatedAt: DateTime(2024, 8, 22),
     id: "fade-carousel",
     codeComponents: [CodeComponent(code: code, widget: widget)],
     description: 'An animated carousel with a nice fade in effect!',

@@ -38,7 +38,7 @@ class ComponentDetailsFooter extends StatelessWidget {
                 children: [
                   ElevatedButton.icon(
                     onPressed: () {
-                      componentBloc.add(FindNextComponentBloc(isNext: false));
+                      componentBloc.add(FindNextComponentBlocEvent(isNext: false));
                     },
                     label: Text(
                       "Previous",
@@ -57,7 +57,7 @@ class ComponentDetailsFooter extends StatelessWidget {
                   ElevatedButton.icon(
                     iconAlignment: IconAlignment.end,
                     onPressed: () {
-                      componentBloc.add(FindNextComponentBloc(isNext: true));
+                      componentBloc.add(FindNextComponentBlocEvent(isNext: true));
                     },
                     label: Text(
                       "Next",

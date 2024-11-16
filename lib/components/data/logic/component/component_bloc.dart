@@ -7,9 +7,7 @@ part 'component_event.dart';
 part 'component_state.dart';
 
 class ComponentBloc extends Bloc<ComponentEvent, ComponentState> {
-  ComponentBloc()
-      : super(ComponentInitial(
-            activeComponent: AllComponents.widgets.first, allComponents: [])) {
+  ComponentBloc() : super(ComponentInitial(activeComponent: AllComponents.widgets.first, allComponents: [])) {
     on<UpdateActiveCategoryEvent>((event, emit) {
       emit(UpdateActiveCategorySuccess(
         activeComponent: state.activeComponent,
@@ -31,10 +29,9 @@ class ComponentBloc extends Bloc<ComponentEvent, ComponentState> {
         activeCategory: state.activeCategory,
       ));
     });
-    on<FindNextComponentBloc>((event, emit) {
+    on<FindNextComponentBlocEvent>((event, emit) {
       final allComponents = AllComponents.widgets;
-      final activeIndex = allComponents
-          .indexWhere((component) => component.id == state.activeComponent.id);
+      final activeIndex = allComponents.indexWhere((component) => component.id == state.activeComponent.id);
 
       if (activeIndex == -1) {
         emit(UpdateActiveComponentSuccess(

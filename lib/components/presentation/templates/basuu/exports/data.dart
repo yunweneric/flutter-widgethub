@@ -28,6 +28,8 @@ class BasuuData {
   ];
   static Component component = Component(
     id: "basuu-language-kit",
+    createdAt: DateTime(2024, 10, 15),
+    updatedAt: DateTime(2024, 10, 15),
     codeComponents: [
       CodeComponent(code: basuuSplashScreenCode, widget: const BasuuSplashScreen()),
       CodeComponent(code: basuuChooseCategoryScreenCode, widget: const BasuuChooseCategoryScreen()),

@@ -13,6 +13,8 @@ class LeaveAReviewTemplateData {
   static String code = leaveAReviewCode;
   static String setup = leaveAReviewSetup;
   static Component component = Component(
+    createdAt: DateTime(2024, 7, 2),
+    updatedAt: DateTime(2024, 7, 2),
     codeComponents: [CodeComponent(code: code, widget: widget)],
     id: "leave-a-review",
     description: 'A new and fun way of getting feedback from your flutter app. Inspired by @musabalfawal',

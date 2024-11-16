@@ -12,6 +12,8 @@ class Component {
   final String title;
   final String setup;
   final String description;
+  final DateTime createdAt;
+  final DateTime updatedAt;
   // final Widget widget;
   final ComponentCategoryEnum category;
   final SubComponentCategoryEnum subcategory;
@@ -25,6 +27,8 @@ class Component {
     required this.codeComponents,
     required this.title,
     required this.setup,
+    required this.createdAt,
+    required this.updatedAt,
     required this.description,
     // required this.widget,
     // required this.code,
@@ -41,6 +45,8 @@ class Component {
       'title': title,
       'setup': setup,
       'description': description,
+      'createdAt': createdAt.toIso8601String(),
+      'updatedAt': updatedAt.toIso8601String(),
       'category': category.describe(),
       'subcategory': subcategory.describe(),
       'assetLink': assetLink,
@@ -59,6 +65,8 @@ class Component {
     SubComponentCategoryEnum? subcategory,
     String? assetLink,
     String? gitHubLink,
+    DateTime? createdAt,
+    DateTime? updatedAt,
     List<CodeComponent>? codeComponents,
     List<SupportedPlatform>? supportedPlatforms,
   }) {
@@ -67,6 +75,8 @@ class Component {
       title: title ?? this.title,
       setup: setup ?? this.setup,
       description: description ?? this.description,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
       category: category ?? this.category,
       subcategory: subcategory ?? this.subcategory,
       assetLink: assetLink ?? this.assetLink,
@@ -81,6 +91,8 @@ class Component {
       id: map['id'] as String,
       title: map['title'] as String,
       setup: map['setup'] as String,
+      createdAt: DateTime.parse(map['createdAt'] as String),
+      updatedAt: DateTime.parse(map['updatedAt'] as String),
       description: map['description'] as String,
       category: ComponentCategoryEnum.values.firstWhere((item) => item.describe() == map['category']),
       subcategory: SubComponentCategoryEnum.values.firstWhere((item) => item.describe() == map['subcategory']),

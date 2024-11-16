@@ -13,6 +13,8 @@ class NikeZoomerTemplateData {
   static String code = nikeZoomerCode;
   static String setup = nikeZoomerSetup;
   static Component component = Component(
+    createdAt: DateTime(2024, 5, 19),
+    updatedAt: DateTime(2024, 5, 19),
     codeComponents: [CodeComponent(code: code, widget: widget)],
     id: "nike-zoomer",
     description: 'An animated UI for nike shoes, Animated with a full screen view on mobile and zoom effect on web!',

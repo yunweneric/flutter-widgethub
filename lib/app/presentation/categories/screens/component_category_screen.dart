@@ -40,6 +40,7 @@ class _ComponentCategoryScreenState extends State<ComponentCategoryScreen> {
                 if (widget.subCategory == null) {
                   components = state.allComponents;
                 }
+                components.sort((a, b) => b.createdAt.compareTo(a.createdAt));
                 return AnimatedSwitcher(
                   duration: const Duration(milliseconds: 500),
                   child: components.isEmpty

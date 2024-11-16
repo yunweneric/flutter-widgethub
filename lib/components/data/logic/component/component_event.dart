@@ -10,10 +10,10 @@ class UpdateActiveComponentEvent extends ComponentEvent {
 
 class GetAllComponentsEvent extends ComponentEvent {}
 
-class FindNextComponentBloc extends ComponentEvent {
+class FindNextComponentBlocEvent extends ComponentEvent {
   final bool isNext;
 
-  FindNextComponentBloc({required this.isNext});
+  FindNextComponentBlocEvent({required this.isNext});
 }
 
 class UpdateActiveCategoryEvent extends ComponentEvent {
