@@ -60,37 +60,7 @@ If you will like the community to build a custom component tailored for a specif
 
 ### Contribution Guide
 
-We welcome contributions from the community to make this SDK better! To contribute, follow these steps:
-
-1. Fork the repository and clone it to your local machine:
-
-```bash
-$ https://github.com/yunweneric/flutter-widgethub
-```
-
-2. Create a new branch for your changes:
-
-```bash
-$ git checkout -b feature/your-feature-name
-```
-
-3. Make your changes and test them thoroughly.
-
-4. Add tests for new features or changes, and ensure all tests pass:
-
-```bash
-$ flutter test
-```
-
-5. Commit your changes and push them to your fork:
-
-```bash
-$ git add .
-$ git commit -m "Your descriptive commit message"
-$ git push origin feature/your-feature-name
-```
-
-6. Create a pull request from your fork to the main repository.
+We welcome contributions from the community to make this SDK better! [Find the complete Contribution guide here](./CONTRIBUTION.md):
 
 ### Code of Conduct
 
