@@ -5,21 +5,21 @@ import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
 import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart';
 import 'package:flutterui/app/shared/data/enums/supported_platform.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
-import 'package:flutterui/components/presentation/blocks/tabs/expandable_tab/expandable_tab_code.dart';
-import 'package:flutterui/components/presentation/blocks/tabs/expandable_tab/expandable_tab_widget.dart';
+import 'package:flutterui/components/presentation/blocks/tabs/blurred_slide_tab/blurred_slide_tab_code.dart';
+import 'package:flutterui/components/presentation/blocks/tabs/blurred_slide_tab/blurred_slide_tab_widget.dart';
 
-class ExpandableTabData {
-  static const Widget widget = ExpandableTab();
-  static String code = expandableTabCode;
+class BlurredSlideTabData {
+  static const Widget widget = BlurredSlideTabWidget();
+  static String code = blurredSlideTabCode;
   static String setup = dockingBarSetup;
 
   static Component component = Component(
-    createdAt: DateTime(2024, 11, 20),
-    updatedAt: DateTime(2024, 11, 20),
-    id: "expandable-tab-bar",
+    createdAt: DateTime(2024, 11, 27),
+    updatedAt: DateTime(2024, 11, 27),
+    id: "blurred-slide-tab-bar",
     codeComponents: [CodeComponent(code: code, widget: widget)],
-    description: 'A tab bar that expands active item and shrinks inactive components',
-    title: 'Animated Expandable Tab Bar',
+    description: 'A tab bar with blurred effect when active item is sliding between the items in the tab list',
+    title: 'Animated Blurred Slide Tab Bar',
     setup: setup,
     category: ComponentCategoryEnum.BLOCKS,
     subcategory: SubComponentCategoryEnum.TABS,

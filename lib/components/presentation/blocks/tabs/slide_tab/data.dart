@@ -14,8 +14,8 @@ class SlideTabData {
   static String setup = dockingBarSetup;
 
   static Component component = Component(
-    createdAt: DateTime(2024, 11, 27),
-    updatedAt: DateTime(2024, 11, 27),
+    createdAt: DateTime(2024, 11, 24),
+    updatedAt: DateTime(2024, 11, 24),
     id: "slide-tab-bar",
     codeComponents: [CodeComponent(code: code, widget: widget)],
     description: 'A tab bar with active item sliding between the items in the tab list',

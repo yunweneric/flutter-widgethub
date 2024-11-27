@@ -1,3 +1,5 @@
+const blurredSlideTabCode = """
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -9,14 +11,14 @@ class TileItem {
   TileItem({required this.title, required this.icon, required this.color});
 }
 
-class SlideTabWidget extends StatefulWidget {
-  const SlideTabWidget({super.key});
+class BlurredSlideTabWidget extends StatefulWidget {
+  const BlurredSlideTabWidget({super.key});
 
   @override
-  State<SlideTabWidget> createState() => _SlideTabWidgetState();
+  State<BlurredSlideTabWidget> createState() => _BlurredSlideTabWidgetState();
 }
 
-class _SlideTabWidgetState extends State<SlideTabWidget> {
+class _BlurredSlideTabWidgetState extends State<BlurredSlideTabWidget> {
   int activeIndex = 0;
 
   double textWidth = 0;
@@ -85,21 +87,30 @@ class _SlideTabWidgetState extends State<SlideTabWidget> {
                               }),
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(vertical: 12),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SvgPicture.string(item.icon, height: 20),
-                                    SizedBox(width: AppSizing.width(context) * 0.02),
-                                    Text(
-                                      item.title,
-                                      softWrap: true,
-                                      maxLines: 1,
-                                      overflow: TextOverflow.clip,
-                                      textAlign: TextAlign.center,
-                                      style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
-                                    ),
-                                  ],
-                                ),
+                                child: TweenAnimationBuilder<double>(
+                                    key: ValueKey(activeIndex),
+                                    duration: const Duration(milliseconds: 500),
+                                    tween: Tween(begin: activeIndex == index ? 4.0 : 0.0, end: 0),
+                                    builder: (context, value, child) {
+                                      return ImageFiltered(
+                                        imageFilter: ImageFilter.blur(sigmaX: value, sigmaY: value, tileMode: TileMode.decal),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            SvgPicture.string(item.icon, height: 20),
+                                            SizedBox(width: AppSizing.width(context) * 0.02),
+                                            Text(
+                                              item.title,
+                                              softWrap: true,
+                                              maxLines: 1,
+                                              overflow: TextOverflow.clip,
+                                              textAlign: TextAlign.center,
+                                              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    }),
                               ),
                             ),
                           );
@@ -169,3 +180,4 @@ class AppSizing {
   static double width(BuildContext context) => MediaQuery.of(context).size.width;
   static double height(BuildContext context) => MediaQuery.of(context).size.height;
 }
+""";
