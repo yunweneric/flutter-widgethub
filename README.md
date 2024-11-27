@@ -60,7 +60,7 @@ If you will like the community to build a custom component tailored for a specif
 
 ### Contribution Guide
 
-We welcome contributions from the community to make this SDK better! [Find the complete Contribution guide here](./CONTRIBUTION.md):
+We welcome contributions from the community to make this SDK better! [Find the complete Contribution guide here](./CONTRIBUTION.md)
 
 ### Code of Conduct
 
