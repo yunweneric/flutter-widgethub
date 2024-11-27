@@ -78,6 +78,12 @@ final sideBarCategories = [
         alignment: Alignment.center,
       ),
       AppCategoryModel(
+        widget: const InputsBlocItem(),
+        subCategory: SubComponentCategoryEnum.TABS,
+        category: ComponentCategoryEnum.BLOCKS,
+        alignment: Alignment.center,
+      ),
+      AppCategoryModel(
         widget: const TextBlocItem(),
         subCategory: SubComponentCategoryEnum.TEXTS,
         category: ComponentCategoryEnum.BLOCKS,

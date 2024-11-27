@@ -46,8 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<AppCategoryGroupModel> items = [
     AppCategoryGroupModel(
       category: ComponentCategoryEnum.GETTING_STARTED,
-      description:
-          "A wide range of pre-built UI templates from app clones to demo apps all in one place",
+      description: "A wide range of pre-built UI templates from app clones to demo apps all in one place",
       items: [
         AppCategoryModel(
           widget: const Text(""),
@@ -62,7 +61,8 @@ class _HomeScreenState extends State<HomeScreen> {
       ],
     ),
     ...sideBarCategories.where(
-        (item) => item.category.describe().toLowerCase() != "animations"),
+      (item) => item.category.describe().toLowerCase() != "animations" || item.category.describe().toLowerCase() != "tabs",
+    ),
   ];
   double generateScrollFactor(BuildContext context) {
     double factor = 1.0;
