@@ -134,7 +134,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                   data()[activeIndex].image,
                                   fit: BoxFit.cover,
                                   errorBuilder: (c, i, e) {
-                                    return const CircularProgressIndicator();
+                                    return const CircularProgressIndicator.adaptive();
                                   },
                                 ),
                               ),
