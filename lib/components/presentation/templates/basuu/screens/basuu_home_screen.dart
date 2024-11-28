@@ -159,8 +159,8 @@ class _HomeScreenState extends State<BasuuHomeScreen> {
                                     child: Chip(
                                       backgroundColor: color,
                                       padding: EdgeInsets.symmetric(
-                                        vertical: 15.h,
-                                        horizontal: 12.w,
+                                        vertical: 12.h,
+                                        horizontal: 10.w,
                                       ),
                                       label: Text(
                                         "Learn",

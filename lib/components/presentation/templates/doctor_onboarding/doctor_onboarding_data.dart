@@ -4,26 +4,26 @@ import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart
 import 'package:flutterui/app/shared/data/enums/supported_platform.dart';
 import 'package:flutterui/app/shared/data/models/code_component.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
+import 'package:flutterui/components/presentation/templates/doctor_onboarding/doctor_onboarding_widget.dart';
 import 'package:flutterui/components/presentation/templates/fade_carousel/fade_carousel_code.dart';
 import 'package:flutterui/components/presentation/templates/fade_carousel/fade_carousel_setup.dart';
-import 'package:flutterui/components/presentation/templates/fade_carousel/fade_carousel_widget.dart';
 
-class FadeCarouselTemplateData {
-  static Widget widget = const FadeCarouselTemplate();
+class DoctorOnboardingData {
+  static Widget widget = const OnboardingScreen();
   static String code = fadeCarouselCode;
   static String setup = fadeCarouselSetup;
   static Component component = Component(
-    createdAt: DateTime(2024, 8, 22),
-    updatedAt: DateTime(2024, 8, 22),
-    id: "fade-carousel",
+    createdAt: DateTime(2024, 11, 28),
+    updatedAt: DateTime(2024, 11, 28),
+    id: "doctor-appointment-boarding",
     codeComponents: [CodeComponent(code: code, widget: widget)],
-    description: 'An animated carousel with a nice fade in effect!',
-    title: 'Fade Carousel',
+    description: 'An Animated Doctor Appointment Onboarding UI',
+    title: 'Doctor Appointment Onboarding',
     setup: setup,
-    category: ComponentCategoryEnum.BLOCKS,
-    subcategory: SubComponentCategoryEnum.SLIDERS_AND_CAROUSELS,
-    assetLink: "https://github.com/yunweneric/flutter-open-ui/raw/fade_caarousel/assets/images.zip",
-    gitHubLink: "https://github.com/yunweneric/flutter-open-ui/tree/fade_caarousel",
+    category: ComponentCategoryEnum.ANIMATIONS,
+    subcategory: SubComponentCategoryEnum.ONBOARDING_SCREENS,
+    assetLink: "https://github.com/yunweneric/flutter-open-ui/raw/9-implement-the-ui-for-doctor-onboarding/assets.zip",
+    gitHubLink: "https://github.com/yunweneric/flutter-open-ui/tree/9-implement-the-ui-for-doctor-onboarding",
     supportedPlatforms: [
       SupportedPlatform.ANDROID,
       SupportedPlatform.IOS,
