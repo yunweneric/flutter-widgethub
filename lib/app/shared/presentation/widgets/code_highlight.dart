@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutterui/app/core/app.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
@@ -92,11 +94,11 @@ class _CodeHighlightState extends State<CodeHighlight> {
               },
               active: hasCopied,
               icon: AppIcons.clipboard,
-              title: AppSizing.isMobile(context)
+              title: context.tr((AppSizing.isMobile(context)
                   ? null
                   : hasCopied
-                      ? "Copied"
-                      : "Copy",
+                      ? "copied"
+                      : "copy")!),
             );
           }),
         ),

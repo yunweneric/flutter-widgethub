@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutterui/app/core/app.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/components/presentation/templates/basuu/shared/basuu_icons.dart';
 import 'package:flutterui/components/presentation/templates/basuu/widgets/basuu_animated_child.dart';
@@ -56,16 +58,15 @@ class _SplashScreenState extends State<BasuuSplashScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Learn a language easily with cards",
+                            context.tr("learnLanguageEasilyWithCard"),
                             style: theme.textTheme.displayLarge!.copyWith(fontSize: 42.sp),
                             textAlign: TextAlign.center,
                           ),
                           AppSizing.kh20Spacer(),
                           Text(
-                            "Learn words using cards, choosing levels that are convenient for you",
+                            context.tr("learnWordUsingCard"),
                             style: theme.textTheme.labelMedium?.copyWith(fontSize: 18.sp),
-                            textAlign: TextAlign.center,
-                          ),
+                            textAlign: TextAlign.center          ),
                           AppSizing.khSpacer(AppSizing.kHPercentage(context, 8)),
                           BasuuButton(
                             onPressed: () async {
@@ -78,7 +79,7 @@ class _SplashScreenState extends State<BasuuSplashScreen> {
                               icon: BasuuIcons.flash,
                               size: 20,
                             ),
-                            text: "Get started",
+                            text: context.tr("getStarted"),
                           ),
                         ],
                       ),

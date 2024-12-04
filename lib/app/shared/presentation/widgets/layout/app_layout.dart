@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutterui/app/core/app.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/presentation/home/data/export/sidebar_categories.dart';
@@ -136,7 +138,7 @@ class _AppLayoutState extends State<AppLayout>
                               navbarSection(child: themingSection(context)),
                               AppSizing.kh20Spacer(),
                               Text(
-                                "Made with 💙 by Yunwen",
+                                context.tr("homeFooter", args:["Yunwen"] ),
                                 style: Theme.of(context).textTheme.bodySmall,
                               ),
                               AppSizing.kh20Spacer(),
@@ -316,19 +318,19 @@ class _AppLayoutState extends State<AppLayout>
                 onPressed: () =>
                     themeBloc.add(ChangeTheme(themeMode: ThemeMode.light)),
                 icon: AppIcons.sun,
-                title: "Light",
+                title: context.tr("light"),
               ),
               navItem(
                 onPressed: () =>
                     themeBloc.add(ChangeTheme(themeMode: ThemeMode.dark)),
                 icon: AppIcons.moon,
-                title: "Dark",
+                title: context.tr("dark"),
               ),
               navItem(
                 onPressed: () =>
                     themeBloc.add(ChangeTheme(themeMode: ThemeMode.system)),
                 icon: AppIcons.desktop,
-                title: "System",
+                title: context.tr("system"),
               ),
             ],
           ),

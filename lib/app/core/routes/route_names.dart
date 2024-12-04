@@ -13,6 +13,7 @@ class RouteNames {
   static const texts = "$blocks/texts";
   static const buttons = "$blocks/buttons";
   static const chips = "$blocks/chips";
+
   static const inputs = "$blocks/inputs";
   static const loaders = "$blocks/loaders";
   static const switchers = "$blocks/switchers";

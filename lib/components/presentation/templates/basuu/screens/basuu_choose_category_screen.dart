@@ -1,7 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutterui/app/core/app.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/components/presentation/templates/basuu/models/basuu_category.dart';
 import 'package:flutterui/components/presentation/templates/basuu/screens/basuu_pre_start_screen.dart';
@@ -60,7 +62,7 @@ class _ChooseCategoryScreenState extends State<BasuuChooseCategoryScreen> {
                       //   BasuuPreStartScreen(categories: categories.where((item) => item.isChecked == true).toList()),
                       // );
                     },
-              text: "Continue",
+              text: context.tr("continue"),
             ),
           ),
           body: SafeArea(
@@ -74,7 +76,7 @@ class _ChooseCategoryScreenState extends State<BasuuChooseCategoryScreen> {
                       animation: animation,
                       offset: -1,
                       child: Text(
-                        "Select categories for learning language",
+                        context.tr("selectCategory"),
                         style: theme.textTheme.displayLarge,
                         textAlign: TextAlign.center,
                       ),
@@ -112,7 +114,7 @@ class _ChooseCategoryScreenState extends State<BasuuChooseCategoryScreen> {
                                         ),
                                       ),
                                       title: Text(
-                                        "${category.title} words",
+                                        "${category.title} ${context.tr('words')}",
                                         style: theme.textTheme.displayMedium,
                                       ),
                                       trailing: SizedBox(
@@ -147,8 +149,8 @@ class _ChooseCategoryScreenState extends State<BasuuChooseCategoryScreen> {
                       ),
                     ),
                     AppSizing.kh10Spacer(),
-                    const Text(
-                      "5,000 words cover 97% of the English language",
+                     Text(
+                      context.tr("wordsCoverOfEnglishLanguage"),
                       textAlign: TextAlign.center,
                     )
                   ],

@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutterui/app/core/app.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/presentation/home/data/export/sidebar_categories.dart';
@@ -46,15 +48,15 @@ class _HomeScreenState extends State<HomeScreen> {
   List<AppCategoryGroupModel> items = [
     AppCategoryGroupModel(
       category: ComponentCategoryEnum.GETTING_STARTED,
-      description: "A wide range of pre-built UI templates from app clones to demo apps all in one place",
+      description: 'homeDescription'.tr(),
       items: [
         AppCategoryModel(
-          widget: const Text(""),
+          widget: const Text(("gettingStarted")).tr(),
           category: ComponentCategoryEnum.GETTING_STARTED,
           subCategory: SubComponentCategoryEnum.GETTING_STARTED,
         ),
         AppCategoryModel(
-          widget: const Text(""),
+          widget: const Text("gettingStarted").tr(),
           category: ComponentCategoryEnum.GETTING_STARTED,
           subCategory: SubComponentCategoryEnum.REQUEST_A_COMPONENT,
         ),

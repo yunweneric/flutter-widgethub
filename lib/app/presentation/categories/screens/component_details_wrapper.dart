@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterui/app/presentation/categories/widget/component_details_footer.dart';
@@ -73,7 +74,7 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
                   style: DefaultTextStyle.of(context).style.copyWith(color: Theme.of(context).primaryColor),
                   children: <TextSpan>[
                     TextSpan(
-                      text: 'not found in collections!',
+                      text: context.tr('notFoundInCollections'),
                       style: TextStyle(color: Theme.of(context).primaryColorDark),
                     ),
                   ],

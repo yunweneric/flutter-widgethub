@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterui/app/shared/data/models/code_component.dart';
 import 'package:flutterui/components/presentation/blocks/buttons/classic_button/classic_button_code.dart';
@@ -17,8 +18,8 @@ class ClassicButtonData {
     updatedAt: DateTime(2024, 8, 12),
     id: "classic-btn",
     codeComponents: [CodeComponent(code: code, widget: widget)],
-    description: 'A card perspective effect, hover over the card to elevate card elements.',
-    title: 'Classic Button',
+    description: 'classicButtonDescription'.tr(),
+    title: "classicButtonTitle".tr(),
     setup: setup,
     category: ComponentCategoryEnum.BLOCKS,
     subcategory: SubComponentCategoryEnum.BUTTONS,

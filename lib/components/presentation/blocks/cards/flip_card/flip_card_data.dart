@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterui/app/core/app.dart';
 import 'package:flutterui/app/shared/data/models/code_component.dart';
 import 'package:flutterui/components/presentation/blocks/cards/flip_card/flip_card_code.dart';
 import 'package:flutterui/components/presentation/blocks/cards/flip_card/flip_card_setup.dart';
@@ -19,8 +21,8 @@ class AppFlipCard {
     codeComponents: [
       CodeComponent(code: code, widget: widget),
     ],
-    description: 'A card perspective effect, hover over the card to elevate card elements.',
-    title: '3D Flip Card',
+    description: 'flipCardDescription'.tr(),
+    title: 'flipCardTitle'.tr(),
     setup: setup,
     category: ComponentCategoryEnum.BLOCKS,
     subcategory: SubComponentCategoryEnum.SLIDERS_AND_CAROUSELS,

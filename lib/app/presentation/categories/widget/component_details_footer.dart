@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterui/app/core/service_locators.dart';
@@ -41,7 +42,7 @@ class ComponentDetailsFooter extends StatelessWidget {
                       componentBloc.add(FindNextComponentBlocEvent(isNext: false));
                     },
                     label: Text(
-                      "Previous",
+                      context.tr("previous"),
                       style: TextStyle(color: Theme.of(context).highlightColor),
                     ),
                     icon: const AppIcon(icon: AppIcons.back),
@@ -60,7 +61,7 @@ class ComponentDetailsFooter extends StatelessWidget {
                       componentBloc.add(FindNextComponentBlocEvent(isNext: true));
                     },
                     label: Text(
-                      "Next",
+                      context.tr("next"),
                       style: TextStyle(color: Theme.of(context).highlightColor),
                     ),
                     icon: const AppIcon(

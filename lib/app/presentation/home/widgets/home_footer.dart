@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutterui/app/core/app.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
@@ -36,7 +38,7 @@ class _HomeFooterState extends State<HomeFooter> {
                   width: AppSizing.kWPercentage(
                       context, AppSizing.isMobile(context) ? 100 : 40),
                   child: Text(
-                    "2024 © Build with 💙 by Yunwen",
+                    context.tr("homeFooter", args: ["Yunwen"]),
                     style: Theme.of(context).textTheme.bodySmall,
                     textAlign: AppSizing.isMobile(context)
                         ? TextAlign.center

@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutterui/app/core/app.dart';
 import 'package:flutterui/components/presentation/export/store.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
@@ -37,7 +39,7 @@ class _AppSearchBarState extends State<AppSearchBar> {
                 },
                 decoration: InputDecoration(
                   contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-                  hintText: "Search component...",
+                  hintText: context.tr("searchComponent"),
                   prefixIcon: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: AppIcon(
@@ -131,7 +133,7 @@ class _SearchBarState extends State<SearchBar> {
                               borderSide: BorderSide.none),
                           contentPadding:
                               const EdgeInsets.symmetric(horizontal: 10),
-                          hintText: "Search component...",
+                          hintText: context.tr("searchComponent"),
                           hintStyle: const TextStyle(fontSize: 14),
                           prefixIcon: Transform.scale(
                             scale: 0.4,
@@ -180,7 +182,7 @@ class _SearchBarState extends State<SearchBar> {
                                                 Theme.of(context).primaryColor),
                                     children: <TextSpan>[
                                       TextSpan(
-                                        text: 'not found in collections',
+                                        text: context.tr('notFoundInCollections'),
                                         style: TextStyle(
                                             color: Theme.of(context)
                                                 .primaryColorDark),

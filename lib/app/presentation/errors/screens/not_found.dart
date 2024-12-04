@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterui/app/core/app.dart';
 // import 'package:flutterui/screens/routes/app_router.gr.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 
@@ -20,14 +22,14 @@ class _NotFoundScreenState extends State<NotFoundScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text("Page not found!"),
+             Text(context.tr("pageNotFound")),
             ElevatedButton(
               onPressed: () {
                 // final router = context.innerRouterOf<StackRouter>(ComponentLayoutRoute.name);
                 // print(router);
                 // context.router.pushNamed(RouteNames.home);
               },
-              child: const Text("Home"),
+              child:  Text(context.tr("home")),
             ),
           ],
         ),

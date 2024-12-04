@@ -1,6 +1,8 @@
 import 'dart:math';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterui/app/core/app.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
@@ -115,8 +117,8 @@ class _ThemeToggleState extends State<ThemeToggle> {
                 top: 70,
                 left: 0,
                 right: 0,
-                child: Text(
-                  "Try to toggle!",
+                child: Text(context.tr(
+                  'tryToToggle'),
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.displayMedium,
                 ),
