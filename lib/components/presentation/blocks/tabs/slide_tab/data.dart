@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterui/app/core/app.dart';
 import 'package:flutterui/app/shared/data/models/code_component.dart';
 import 'package:flutterui/components/presentation/blocks/bottom_nav_bars/docking_bar/docking_bar_setup.dart';
 import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
@@ -18,8 +20,8 @@ class SlideTabData {
     updatedAt: DateTime(2024, 11, 24),
     id: "slide-tab-bar",
     codeComponents: [CodeComponent(code: code, widget: widget)],
-    description: 'A tab bar with active item sliding between the items in the tab list',
-    title: 'Animated Slide Tab Bar',
+    description: 'slideTabDescription'.tr(),
+    title: 'slideTabTitle'.tr(),
     setup: setup,
     category: ComponentCategoryEnum.BLOCKS,
     subcategory: SubComponentCategoryEnum.TABS,

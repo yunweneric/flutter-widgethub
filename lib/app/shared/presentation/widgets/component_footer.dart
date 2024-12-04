@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutterui/app/core/app.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/utils/util.dart';
@@ -29,12 +31,13 @@ class _DetailedFooterState extends State<ComponentFooter> {
             width: AppSizing.kWPercentage(
                 context, AppSizing.isMobile(context) ? 100 : 35),
             child: Text(
-              "Build with 💙 for the Flutter Community",
+              context.tr("componentFooter"),
               style: Theme.of(context).textTheme.bodySmall,
               textAlign: AppSizing.isMobile(context)
                   ? TextAlign.center
                   : TextAlign.left,
-            ),
+            )
+,
           ),
           SizedBox(
             width: AppSizing.kWPercentage(

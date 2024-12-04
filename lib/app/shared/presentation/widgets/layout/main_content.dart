@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutterui/app/core/app.dart';
 import 'package:flutterui/app/core/routes/route_names.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
@@ -43,7 +45,7 @@ class _MainContentState extends State<MainContent> {
                 // onPressed: () {},
                 icon: const AppIcon(icon: AppIcons.back),
                 label:
-                    Text("Back", style: Theme.of(context).textTheme.bodyMedium),
+                    Text(context.tr("back"), style: Theme.of(context).textTheme.bodyMedium),
               ),
               AppSizing.khSpacer(30.h),
               ConstrainedBox(

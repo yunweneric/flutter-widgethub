@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterui/app/core/app.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/app/presentation/categories/widget/category_card.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
@@ -46,7 +48,7 @@ class _ComponentCategoryScreenState extends State<ComponentCategoryScreen> {
                   child: components.isEmpty
                       ? SizedBox(
                           height: AppSizing.kHPercentage(context, 50),
-                          child: Center(child: Text("No Item in this ${widget.subCategory}!")),
+                          child: Center(child: Text(context.tr("noItemInThis",args: [widget.subCategory??''] ))),
                         )
                       : Wrap(
                           alignment: WrapAlignment.spaceBetween,

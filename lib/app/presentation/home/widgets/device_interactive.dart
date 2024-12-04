@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterui/app/shared/presentation/utils/colors.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
@@ -51,16 +52,17 @@ class _DeviceInteractiveState extends State<DeviceInteractive> {
                         transform: Matrix4.identity()
                           ..translate(0.0, -value * 200),
                         child: Text(
-                          currentIndex == 0
-                              ? "RED"
+                          context.tr(currentIndex == 0
+                              ? "red"
                               : currentIndex == 1
-                                  ? "TEAL"
-                                  : "BLUE",
+                                  ? "teal"
+                                  : "blue"),
                           style: const TextStyle(
                               fontSize: 80,
                               fontWeight: FontWeight.w900,
                               color: AppColors.TEXTWHITE),
-                        ),
+                        )
+,
                       );
                     },
                   ),
@@ -81,12 +83,14 @@ class _DeviceInteractiveState extends State<DeviceInteractive> {
                 })
               },
               currentIndex: currentIndex,
-              items: const [
-                BottomNavigationBarItem(icon: Icon(Icons.home), label: "Red"),
+              items:  [
+                BottomNavigationBarItem(icon: const Icon(Icons.home), label: context.tr("read")
+
+                ),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.notification_add), label: "Teal"),
+                    icon: const Icon(Icons.notification_add), label: context.tr("teal")),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.verified_user), label: "Blue"),
+                    icon: const Icon(Icons.verified_user), label: context.tr("blue")),
               ],
             ),
           ),

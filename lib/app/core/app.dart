@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,43 +17,52 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return MultiBlocProvider(
-          providers: [
-            BlocProvider(create: (context) => getIt.get<ThemeBloc>()),
-            BlocProvider(create: (context) => getIt.get<LanguageBloc>()),
-            BlocProvider(create: (context) => getIt.get<ComponentBloc>()),
-            BlocProvider(create: (context) => getIt.get<NavigationBloc>()),
-            BlocProvider(create: (context) => getIt.get<SidebarBloc>()),
-          ],
-          child: BlocBuilder<ThemeBloc, ThemeState>(
-            builder: (context, state) {
-              return ScreenUtilInit(
-                designSize: Size(constraints.maxWidth, constraints.maxHeight),
-                useInheritedMediaQuery: true,
-                builder: (context, child) {
-                  return MaterialApp.router(
-                    routerConfig: getIt.get<GoRouter>(),
-                    debugShowCheckedModeBanner: false,
-                    title: 'Flutter WidgetHub',
-                    theme: AppTheme.light(),
-                    darkTheme: AppTheme.dark(),
-                    themeMode: state.themeMode,
-                    // themeMode: themeMode
-                    //     ? ThemeMode.system
-                    //     : isDark
-                    //         ? ThemeMode.dark
-                    //         : ThemeMode.light,
+    return EasyLocalization(
+      supportedLocales: [Locale('en'), Locale('fr')],
+      path: 'assets/translations', // <-- change the path of the translation files
+      fallbackLocale: Locale('en',),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (context) => getIt.get<ThemeBloc>()),
+              BlocProvider(create: (context) => getIt.get<LanguageBloc>()),
+              BlocProvider(create: (context) => getIt.get<ComponentBloc>()),
+              BlocProvider(create: (context) => getIt.get<NavigationBloc>()),
+              BlocProvider(create: (context) => getIt.get<SidebarBloc>()),
+            ],
+            child: BlocBuilder<ThemeBloc, ThemeState>(
+              builder: (context, state) {
+                return ScreenUtilInit(
+                  designSize: Size(constraints.maxWidth, constraints.maxHeight),
+                  useInheritedMediaQuery: true,
+                  builder: (context, child) {
+                    return MaterialApp.router(
+                      routerConfig: getIt.get<GoRouter>(),
+                      debugShowCheckedModeBanner: false,
+                      title: 'Flutter WidgetHub',
+                      theme: AppTheme.light(),
+                      
+                      darkTheme: AppTheme.dark(),
+                      localizationsDelegates: context.localizationDelegates,
+                      supportedLocales: context.supportedLocales,
+                      locale: context.locale,
+                      themeMode: state.themeMode,
+                      // themeMode: themeMode
+                      //     ? ThemeMode.system
+                      //     : isDark
+                      //         ? ThemeMode.dark
+                      //         : ThemeMode.light,
 
-                    // themeMode: ThemeMode.system,
-                  );
-                },
-              );
-            },
-          ),
-        );
-      },
+                      // themeMode: ThemeMode.system,
+                    );
+                  },
+                );
+              },
+            ),
+          );
+        },
+      ),
     );
   }
 }

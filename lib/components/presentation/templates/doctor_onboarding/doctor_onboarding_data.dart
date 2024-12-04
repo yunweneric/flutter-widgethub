@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterui/app/core/app.dart';
 import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
 import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart';
 import 'package:flutterui/app/shared/data/enums/supported_platform.dart';
@@ -17,8 +19,8 @@ class DoctorOnboardingData {
     updatedAt: DateTime(2024, 11, 28),
     id: "doctor-appointment-boarding",
     codeComponents: [CodeComponent(code: code, widget: widget)],
-    description: 'An Animated Doctor Appointment Onboarding UI',
-    title: 'Doctor Appointment Onboarding',
+    description: 'doctorOnBoardingDescription'.tr(),
+    title: 'doctorOnBoardingTitle'.tr(),
     setup: setup,
     category: ComponentCategoryEnum.ANIMATIONS,
     subcategory: SubComponentCategoryEnum.ONBOARDING_SCREENS,

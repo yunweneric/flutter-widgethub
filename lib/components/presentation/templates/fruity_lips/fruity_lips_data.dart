@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
 import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart';
@@ -19,8 +20,8 @@ class FruityLipsTemplateData {
     id: "fruity-lips-carousel",
     // widget: widget,
     codeComponents: [CodeComponent(code: code, widget: widget)],
-    description: 'An animated bottle carousel from figma community',
-    title: 'Fruity Lips Carousel',
+    description: 'fruityLipsDescription'.tr(),
+    title: 'fruityLipsTitle'.tr(),
     setup: setup,
     category: ComponentCategoryEnum.BLOCKS,
     subcategory: SubComponentCategoryEnum.SLIDERS_AND_CAROUSELS,

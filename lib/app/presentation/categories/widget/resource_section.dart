@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
@@ -11,7 +12,7 @@ Widget resourcesSection(Component component, BuildContext context) {
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Text(
-        "Resources",
+        context.tr("resources"),
         style: Theme.of(context).textTheme.displayMedium,
       ),
       AppSizing.khSpacer(5),
@@ -19,13 +20,13 @@ Widget resourcesSection(Component component, BuildContext context) {
         rowItem(
           onTap: () => UtilHelper.openUrl(component.gitHubLink!),
           leading: AppIcons.github,
-          title: "Open Github Repository",
+          title: context.tr("openGithubRepositor"),
         ),
       if (component.assetLink != null)
         rowItem(
           onTap: () => UtilHelper.openUrl(component.assetLink!),
           leading: AppIcons.download,
-          title: "Download assets",
+          title: context.tr("downloadAssets"),
         ),
       AppSizing.kh20Spacer(),
       AppSizing.kh10Spacer(),
