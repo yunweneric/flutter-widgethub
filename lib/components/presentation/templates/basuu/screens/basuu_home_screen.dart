@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/components/presentation/templates/basuu/models/basuu_category.dart';
 import 'package:flutterui/components/presentation/templates/basuu/models/basuu_word.dart';
 import 'package:flutterui/components/presentation/templates/basuu/shared/basuu_icons.dart';
 import 'package:flutterui/components/presentation/templates/basuu/shared/utils/basuu_colors.dart';
-import 'package:flutterui/components/presentation/templates/basuu/shared/utils/sizing.dart';
 import 'package:flutterui/components/presentation/templates/basuu/widgets/basuu_app_bar.dart';
 import 'package:flutterui/components/presentation/templates/basuu/widgets/basuu_app_button.dart';
 import 'package:flutterui/components/presentation/templates/basuu/widgets/basuu_app_icon.dart';
@@ -51,7 +51,7 @@ class _HomeScreenState extends State<BasuuHomeScreen> {
     final theme = Theme.of(context);
     return Scaffold(
       appBar: basuuAppBar(
-        title: "${widget.level.label} Level",
+        title: "${widget.level.label} ${LangUtil.trans('Level')}",
         theme: theme,
         rightIcon: BasuuIcons.close,
         onNext: () => Navigator.pop(context),
@@ -74,13 +74,13 @@ class _HomeScreenState extends State<BasuuHomeScreen> {
                     });
                   },
                   style: TextStyle(color: BasuuColors.RED, fontSize: 18.sp),
-                  text: 'Reset all progress',
+                  text: LangUtil.trans('resetAllProgress'),
                   side: BorderSide(color: theme.highlightColor),
                   icon: const BasuuIcon(icon: BasuuIcons.reset),
                 ),
                 AppSizing.kh20Spacer(),
-                const Text(
-                  "20 new words left  ·  80% complete",
+                 Text(
+                  LangUtil.trans("xNewWordsLeftXComplete"),
                   textAlign: TextAlign.center,
                 ),
                 AppSizing.kh20Spacer(),
@@ -163,7 +163,7 @@ class _HomeScreenState extends State<BasuuHomeScreen> {
                                         horizontal: 10.w,
                                       ),
                                       label: Text(
-                                        "Learn",
+                                        LangUtil.trans("learn"),
                                         style: TextStyle(
                                           color: item.hasLearned ? theme.primaryColorDark : theme.cardColor,
                                           fontWeight: FontWeight.w600,

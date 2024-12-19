@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterui/app/shared/presentation/utils/colors.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/code_highlight.dart';
 import 'package:flutterui/app/shared/presentation/widgets/device_section_frame.dart';
@@ -51,16 +52,17 @@ class _DeviceInteractiveState extends State<DeviceInteractive> {
                         transform: Matrix4.identity()
                           ..translate(0.0, -value * 200),
                         child: Text(
-                          currentIndex == 0
-                              ? "RED"
+                          LangUtil.trans(currentIndex == 0
+                              ? "red"
                               : currentIndex == 1
-                                  ? "TEAL"
-                                  : "BLUE",
+                                  ? "teal"
+                                  : "blue"),
                           style: const TextStyle(
                               fontSize: 80,
                               fontWeight: FontWeight.w900,
                               color: AppColors.TEXTWHITE),
-                        ),
+                        )
+,
                       );
                     },
                   ),
@@ -81,12 +83,14 @@ class _DeviceInteractiveState extends State<DeviceInteractive> {
                 })
               },
               currentIndex: currentIndex,
-              items: const [
-                BottomNavigationBarItem(icon: Icon(Icons.home), label: "Red"),
+              items:  [
+                BottomNavigationBarItem(icon: const Icon(Icons.home), label: LangUtil.trans("read")
+
+                ),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.notification_add), label: "Teal"),
+                    icon: const Icon(Icons.notification_add), label: LangUtil.trans("teal")),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.verified_user), label: "Blue"),
+                    icon: const Icon(Icons.verified_user), label: LangUtil.trans("blue")),
               ],
             ),
           ),

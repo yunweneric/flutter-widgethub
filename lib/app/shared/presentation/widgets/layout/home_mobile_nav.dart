@@ -6,6 +6,7 @@ import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/app_search_bar.dart';
 import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
+import 'package:flutterui/app/shared/presentation/widgets/language_button.dart';
 
 class HomeMobileNav extends StatefulWidget {
   final VoidCallback onTap;
@@ -51,6 +52,7 @@ class _HomeMobileNavState extends State<HomeMobileNav> {
                   ),
                 );
               }),
+                                       const LanguageButton(),
               TextButton(
                   onPressed: () => showSearchModal(context),
                   child: const AppIcon(icon: AppIcons.search)),

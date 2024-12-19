@@ -32,6 +32,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   currency_text_input_formatter: ^2.2.3
   device_frame: ^1.2.0
+  easy_localization: ^3.0.7
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.6
@@ -68,6 +69,7 @@ flutter:
     - assets/images/fruity_lips/
     - assets/images/
     - assets/icons/
+    - assets/translations/
     # - assets/svgs/
     # - assets/animations/
   #   - images/a_dot_ham.jpeg
