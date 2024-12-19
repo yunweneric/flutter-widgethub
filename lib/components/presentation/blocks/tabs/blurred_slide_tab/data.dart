@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterui/app/shared/data/models/code_component.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/components/presentation/blocks/bottom_nav_bars/docking_bar/docking_bar_setup.dart';
 import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
 import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart';
@@ -18,8 +19,8 @@ class BlurredSlideTabData {
     updatedAt: DateTime(2024, 11, 27),
     id: "blurred-slide-tab-bar",
     codeComponents: [CodeComponent(code: code, widget: widget)],
-    description: 'A tab bar with blurred effect when active item is sliding between the items in the tab list',
-    title: 'Animated Blurred Slide Tab Bar',
+    description: LangUtil.trans('blurredSlideTabDataDescription'),
+    title: LangUtil.trans('blurredSlideTabDataTitle'),
     setup: setup,
     category: ComponentCategoryEnum.BLOCKS,
     subcategory: SubComponentCategoryEnum.TABS,

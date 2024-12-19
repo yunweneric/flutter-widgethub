@@ -5,7 +5,6 @@ import 'package:flutterui/app/shared/data/models/code_component.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
-import 'package:go_router/go_router.dart';
 
 class TemplateCard extends StatefulWidget {
   final CodeComponent component;

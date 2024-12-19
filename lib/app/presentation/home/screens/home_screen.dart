@@ -13,6 +13,8 @@ import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/layout/app_layout.dart';
 
+import '../../../shared/presentation/utils/lang_util.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -46,15 +48,15 @@ class _HomeScreenState extends State<HomeScreen> {
   List<AppCategoryGroupModel> items = [
     AppCategoryGroupModel(
       category: ComponentCategoryEnum.GETTING_STARTED,
-      description: "A wide range of pre-built UI templates from app clones to demo apps all in one place",
+      description: LangUtil.trans('homeDescription'),
       items: [
         AppCategoryModel(
-          widget: const Text(""),
+          widget:  Text(LangUtil.trans(("gettingStarted"))),
           category: ComponentCategoryEnum.GETTING_STARTED,
           subCategory: SubComponentCategoryEnum.GETTING_STARTED,
         ),
         AppCategoryModel(
-          widget: const Text(""),
+          widget:  Text(LangUtil.trans("gettingStarted")),
           category: ComponentCategoryEnum.GETTING_STARTED,
           subCategory: SubComponentCategoryEnum.REQUEST_A_COMPONENT,
         ),

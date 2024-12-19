@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/layout/app_layout.dart';
 
@@ -15,14 +16,16 @@ class _RequestComponentScreenState extends State<RequestComponentScreen> {
     return AppLayout(
       children: [
         Text(
-          "Coming soon!",
+          LangUtil.trans("comingSoon"),
           style: Theme.of(context).textTheme.displayLarge,
-        ),
+        )
+,
         AppSizing.kh10Spacer(),
-        const Text(
-          "Is there a widget with custom behavior that you will really want us to build for you?\nIn the nearest future, this will be possible. Our focus for the moment is building reusable custom widgets for edge cases",
+         Text(
+          LangUtil.trans("requestComingSoonDescription"),
           textAlign: TextAlign.center,
-        ),
+        )
+,
       ],
     );
   }

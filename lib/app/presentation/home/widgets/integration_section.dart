@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterui/app/presentation/home/widgets/device_interactive.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 
 class IntegrationSection extends StatefulWidget {
@@ -29,13 +30,15 @@ class _IntegrationSectionState extends State<IntegrationSection> {
               SvgPicture.asset(AppIcons.diamond),
               AppSizing.kwSpacer(5.w),
               Text(
-                "INTEGRATION",
+                LangUtil.trans("integration"),
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                       fontWeight: FontWeight.w500,
                       fontSize: 18.sp,
                       color: Theme.of(context).primaryColor,
                     ),
-              ),
+              )
+
+              ,
             ],
           ),
           const SizedBox(height: 20),
@@ -45,15 +48,17 @@ class _IntegrationSectionState extends State<IntegrationSection> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Easy to use UI components",
+                  LangUtil.trans("integrationTitle"),
                   style: Theme.of(context)
                       .textTheme
                       .displayLarge!
                       .copyWith(fontSize: 40.sp),
-                ),
+                )
+
+                ,
                 AppSizing.kh20Spacer(),
                 Text(
-                  "Seamlessly integrate a wide range of customizable pre-built UI components to accelerate your development process.",
+                  LangUtil.trans("integrationDescription"),
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 AppSizing.kh20Spacer(),
