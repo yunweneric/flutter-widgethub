@@ -1,6 +1,5 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterui/app/core/app.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 
 class AppSizing {
   static double width(context) => MediaQuery.of(context).size.width;
@@ -115,12 +114,12 @@ class _SkewCardState extends State<SkewCard> {
                         fontWeight: FontWeight.w600,
                       ),
                 ),
-                const Text(
-                  "flutterDeveloper",
-                  style: TextStyle(
+                 Text(
+                  LangUtil.trans("flutterDeveloper"),
+                  style: const TextStyle(
                     fontSize: 16,
                   ),
-                ).tr(),
+                ),
               ],
             ),
           )

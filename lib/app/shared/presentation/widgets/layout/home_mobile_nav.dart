@@ -52,7 +52,7 @@ class _HomeMobileNavState extends State<HomeMobileNav> {
                   ),
                 );
               }),
-                                       LanguageButton(),
+                                       const LanguageButton(),
               TextButton(
                   onPressed: () => showSearchModal(context),
                   child: const AppIcon(icon: AppIcons.search)),

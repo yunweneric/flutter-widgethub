@@ -1,6 +1,5 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterui/app/core/app.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/layout/app_layout.dart';
 
@@ -17,13 +16,13 @@ class _RequestComponentScreenState extends State<RequestComponentScreen> {
     return AppLayout(
       children: [
         Text(
-          context.tr("comingSoon"),
+          LangUtil.trans("comingSoon"),
           style: Theme.of(context).textTheme.displayLarge,
         )
 ,
         AppSizing.kh10Spacer(),
          Text(
-          context.tr("requestComingSoonDescription"),
+          LangUtil.trans("requestComingSoonDescription"),
           textAlign: TextAlign.center,
         )
 ,

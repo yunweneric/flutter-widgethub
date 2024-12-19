@@ -1,12 +1,11 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/app/core/app.dart';
-import 'package:flutterui/components/presentation/export/store.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
+import 'package:flutterui/components/presentation/export/store.dart';
 import 'package:go_router/go_router.dart';
 
 class AppSearchBar extends StatefulWidget {
@@ -39,7 +38,7 @@ class _AppSearchBarState extends State<AppSearchBar> {
                 },
                 decoration: InputDecoration(
                   contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-                  hintText: context.tr("searchComponent"),
+                  hintText: LangUtil.trans("searchComponent"),
                   prefixIcon: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: AppIcon(
@@ -133,7 +132,7 @@ class _SearchBarState extends State<SearchBar> {
                               borderSide: BorderSide.none),
                           contentPadding:
                               const EdgeInsets.symmetric(horizontal: 10),
-                          hintText: context.tr("searchComponent"),
+                          hintText: LangUtil.trans("searchComponent"),
                           hintStyle: const TextStyle(fontSize: 14),
                           prefixIcon: Transform.scale(
                             scale: 0.4,
@@ -182,7 +181,7 @@ class _SearchBarState extends State<SearchBar> {
                                                 Theme.of(context).primaryColor),
                                     children: <TextSpan>[
                                       TextSpan(
-                                        text: context.tr('notFoundInCollections'),
+                                        text: LangUtil.trans('notFoundInCollections'),
                                         style: TextStyle(
                                             color: Theme.of(context)
                                                 .primaryColorDark),

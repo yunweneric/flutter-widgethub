@@ -1,7 +1,6 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterui/app/core/app.dart';
 import 'package:flutterui/app/shared/data/models/code_component.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/components/presentation/animations/skew_card/skew_card_code.dart';
 import 'package:flutterui/components/presentation/animations/skew_card/skew_card_widget.dart';
 import 'package:flutterui/components/shared/setup.dart';
@@ -19,8 +18,8 @@ class SkewCardData {
     updatedAt: DateTime(2024, 9, 2),
     id: "3d-skew-card",
     codeComponents: [CodeComponent(code: code, widget: widget)],
-    description: 'skewCardDescription'.tr(),
-    title: 'skewCardTitle'.tr(),
+    description: LangUtil.trans('skewCardDescription'),
+    title: LangUtil.trans('skewCardTitle'),
     setup: setup,
     category: ComponentCategoryEnum.BLOCKS,
     subcategory: SubComponentCategoryEnum.SLIDERS_AND_CAROUSELS,

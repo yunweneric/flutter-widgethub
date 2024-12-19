@@ -1,25 +1,23 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/app/core/app.dart';
-import 'package:flutterui/components/data/logic/component/component_bloc.dart';
+// import 'package:flutterui/screens/routes/app_router.gr.dart';
+import 'package:flutterui/app/core/routes/route_names.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/presentation/home/data/export/sidebar_categories.dart';
 import 'package:flutterui/app/presentation/home/model/component_block_model.dart';
 import 'package:flutterui/app/presentation/home/widgets/home_footer.dart';
-// import 'package:flutterui/screens/routes/app_router.gr.dart';
-import 'package:flutterui/app/core/routes/route_names.dart';
 import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
 import 'package:flutterui/app/shared/logic/sidebar/sidebar_bloc.dart';
 import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/images.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
-import 'package:flutterui/app/shared/presentation/utils/util.dart';
 import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 import 'package:flutterui/app/shared/presentation/widgets/layout/home_nav_bar.dart';
 import 'package:flutterui/app/shared/presentation/widgets/layout/side_bar_item.dart';
+import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class AppLayout extends StatefulWidget {
@@ -138,7 +136,7 @@ class _AppLayoutState extends State<AppLayout>
                               navbarSection(child: themingSection(context)),
                               AppSizing.kh20Spacer(),
                               Text(
-                                context.tr("homeFooter", args:["Yunwen"] ),
+                                LangUtil.trans("homeFooter", args:["Yunwen"] ),
                                 style: Theme.of(context).textTheme.bodySmall,
                               ),
                               AppSizing.kh20Spacer(),
@@ -318,19 +316,19 @@ class _AppLayoutState extends State<AppLayout>
                 onPressed: () =>
                     themeBloc.add(ChangeTheme(themeMode: ThemeMode.light)),
                 icon: AppIcons.sun,
-                title: context.tr("light"),
+                title: LangUtil.trans("light"),
               ),
               navItem(
                 onPressed: () =>
                     themeBloc.add(ChangeTheme(themeMode: ThemeMode.dark)),
                 icon: AppIcons.moon,
-                title: context.tr("dark"),
+                title: LangUtil.trans("dark"),
               ),
               navItem(
                 onPressed: () =>
                     themeBloc.add(ChangeTheme(themeMode: ThemeMode.system)),
                 icon: AppIcons.desktop,
-                title: context.tr("system"),
+                title: LangUtil.trans("system"),
               ),
             ],
           ),

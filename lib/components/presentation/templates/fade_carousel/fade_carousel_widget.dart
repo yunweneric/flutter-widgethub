@@ -109,7 +109,7 @@ class AppCard extends StatelessWidget {
                   height: FCSizing.height(context) * 0.3,
                   width: FCSizing.height(context) * 0.3,
                   // 'assets/images/city_${index}.jpg',
-                  'https://raw.githubusercontent.com/yunweneric/flutter-open-ui/fade_caarousel/assets/images/city_${index}.jpg',
+                  'https://raw.githubusercontent.com/yunweneric/flutter-open-ui/fade_caarousel/assets/images/city_$index.jpg',
                   fit: BoxFit.cover,
                 ),
                 Positioned(

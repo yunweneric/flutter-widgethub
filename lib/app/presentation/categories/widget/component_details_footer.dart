@@ -1,8 +1,8 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
@@ -42,7 +42,7 @@ class ComponentDetailsFooter extends StatelessWidget {
                       componentBloc.add(FindNextComponentBlocEvent(isNext: false));
                     },
                     label: Text(
-                      context.tr("previous"),
+                      LangUtil.trans("previous"),
                       style: TextStyle(color: Theme.of(context).highlightColor),
                     ),
                     icon: const AppIcon(icon: AppIcons.back),
@@ -61,7 +61,7 @@ class ComponentDetailsFooter extends StatelessWidget {
                       componentBloc.add(FindNextComponentBlocEvent(isNext: true));
                     },
                     label: Text(
-                      context.tr("next"),
+                      LangUtil.trans("next"),
                       style: TextStyle(color: Theme.of(context).highlightColor),
                     ),
                     icon: const AppIcon(

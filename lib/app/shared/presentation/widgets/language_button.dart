@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutterui/app/shared/logic/language/language_bloc.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 
 class LanguageButton extends StatefulWidget {
  const LanguageButton({ super.key });
@@ -33,7 +34,7 @@ void initState() {
     return BlocConsumer<LanguageBloc, LanguageState>(
       listener: (context, state) async{
         if(state is LanguageUpdated){
-        await  context.setLocale(Locale(state.language));
+          await LangUtil.setTrans(context, state.language);
         await WidgetsBinding.instance.performReassemble();
 
           dropdownValue = state.language;

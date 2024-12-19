@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,6 +7,7 @@ import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/app/shared/presentation/models/nav_link.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/images.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/utils/util.dart';
 import 'package:flutterui/app/shared/presentation/widgets/app_container.dart';
@@ -30,7 +30,7 @@ class HomeNavBar extends StatefulWidget {
 
 class _HomeNavBarState extends State<HomeNavBar> {
   List<NavLink> links = [
-    NavLink(title: ("components").tr(), path: RouteNames.components),
+    NavLink(title: LangUtil.trans(("components")), path: RouteNames.components),
   ];
   @override
   Widget build(BuildContext context) {
@@ -101,7 +101,7 @@ class _HomeNavBarState extends State<HomeNavBar> {
                     Row(
                       children: [
                         const AppSearchBar(),
-                         LanguageButton(),
+                         const LanguageButton(),
                         TextButton(
                           onPressed: () => UtilHelper.openUrl(
                               "https://github.com/yunweneric/flutter-widgethub/"),

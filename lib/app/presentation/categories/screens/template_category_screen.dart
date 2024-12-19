@@ -1,8 +1,8 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterui/app/presentation/categories/widget/component_details_footer.dart';
 import 'package:flutterui/app/presentation/categories/widget/template_card.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/layout/main_content.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
@@ -49,7 +49,7 @@ class _TemplateCategoryScreenState extends State<TemplateCategoryScreen> {
                     child: components.isEmpty
                         ? SizedBox(
                             height: AppSizing.kHPercentage(context, 50),
-                            child:  Center(child:  Text(context.tr('noItemInThisCategory')),
+                            child:  Center(child:  Text(LangUtil.trans('noItemInThisCategory')),
                           ))
                         : Wrap(
                             alignment: WrapAlignment.spaceBetween,
@@ -88,7 +88,7 @@ class _TemplateCategoryScreenState extends State<TemplateCategoryScreen> {
                     style: DefaultTextStyle.of(context).style.copyWith(color: Theme.of(context).primaryColor),
                     children: <TextSpan>[
                       TextSpan(
-                        text: context.tr('notFoundInCollections'),
+                        text: LangUtil.trans('notFoundInCollections'),
                         style: TextStyle(color: Theme.of(context).primaryColorDark),
                       ),
                     ],

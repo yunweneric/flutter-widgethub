@@ -1,12 +1,11 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterui/app/core/app.dart';
-import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/app/presentation/categories/widget/category_card.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/layout/main_content.dart';
+import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 
 class ComponentCategoryScreen extends StatefulWidget {
   final String? subCategory;
@@ -48,7 +47,7 @@ class _ComponentCategoryScreenState extends State<ComponentCategoryScreen> {
                   child: components.isEmpty
                       ? SizedBox(
                           height: AppSizing.kHPercentage(context, 50),
-                          child: Center(child: Text(context.tr("noItemInThis",args: [widget.subCategory??''] ))),
+                          child: Center(child: Text(LangUtil.trans("noItemInThis",args: [widget.subCategory??''] ))),
                         )
                       : Wrap(
                           alignment: WrapAlignment.spaceBetween,

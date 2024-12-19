@@ -1,6 +1,6 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/components/presentation/templates/basuu/models/basuu_category.dart';
 import 'package:flutterui/components/presentation/templates/basuu/shared/basuu_icons.dart';
@@ -54,7 +54,7 @@ class _PreStartScreenState extends State<BasuuPreStartScreen> {
               //   context,
               //   BasuuLearningScreen(selectedCategory: selectedCategory!),
               // ),
-              text: context.tr("startLearning"),
+              text: LangUtil.trans("startLearning"),
             ),
           ),
           body: SafeArea(
@@ -98,7 +98,7 @@ class _PreStartScreenState extends State<BasuuPreStartScreen> {
                                   ),
                                 ),
                                 title: Text(
-                                  "${category.title} ${context.tr('words')}",
+                                  "${category.title} ${LangUtil.trans('words')}",
                                   style: theme.textTheme.displayMedium,
                                 ),
                                 trailing: SizedBox(
@@ -137,7 +137,7 @@ class _PreStartScreenState extends State<BasuuPreStartScreen> {
                       }),
                       AppSizing.kh10Spacer(),
                       Text(
-                        context.tr("customizeYourProgress"),
+                        LangUtil.trans("customizeYourProgress"),
                         style: theme.textTheme.bodyMedium,
                         textAlign: TextAlign.center,
                       )

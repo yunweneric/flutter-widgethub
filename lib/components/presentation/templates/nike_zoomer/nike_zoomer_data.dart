@@ -1,11 +1,10 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterui/app/core/app.dart';
 import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
 import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart';
 import 'package:flutterui/app/shared/data/enums/supported_platform.dart';
 import 'package:flutterui/app/shared/data/models/code_component.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/components/presentation/templates/nike_zoomer/nike_zoomer_code.dart';
 import 'package:flutterui/components/presentation/templates/nike_zoomer/nike_zoomer_setup.dart';
 import 'package:flutterui/components/presentation/templates/nike_zoomer/nike_zoomer_widget.dart';
@@ -19,8 +18,8 @@ class NikeZoomerTemplateData {
     updatedAt: DateTime(2024, 5, 19),
     codeComponents: [CodeComponent(code: code, widget: widget)],
     id: "nike-zoomer",
-    description: 'nikeZoomerDescription'.tr(),
-    title: 'nikeZoomerTitle'.tr(),
+    description: LangUtil.trans('nikeZoomerDescription'),
+    title: LangUtil.trans('nikeZoomerTitle'),
     setup: setup,
     category: ComponentCategoryEnum.BLOCKS,
     subcategory: SubComponentCategoryEnum.SLIDERS_AND_CAROUSELS,

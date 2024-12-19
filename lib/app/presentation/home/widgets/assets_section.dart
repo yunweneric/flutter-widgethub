@@ -1,19 +1,18 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutterui/app/core/app.dart';
 import 'package:flutterui/app/core/routes/route_names.dart';
-import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart';
-import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/presentation/home/data/export/sidebar_categories.dart';
 import 'package:flutterui/app/presentation/home/model/component_block_model.dart';
 import 'package:flutterui/app/presentation/home/widgets/component_block.dart';
 import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
+import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/device_section_frame.dart';
+import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class AssetsSection extends StatefulWidget {
@@ -50,7 +49,7 @@ class _AssetsSectionState extends State<AssetsSection> {
               SvgPicture.asset(AppIcons.diamond),
               AppSizing.kwSpacer(5.w),
               Text(
-                context.tr("assets"),
+                LangUtil.trans("assets"),
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                       fontWeight: FontWeight.w500,
                       fontSize: 18.sp,
@@ -66,12 +65,12 @@ class _AssetsSectionState extends State<AssetsSection> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  context.tr("assetsTitle"),
+                  LangUtil.trans("assetsTitle"),
                   style: Theme.of(context).textTheme.displayLarge!.copyWith(fontSize: 40.sp),
                 ),
                 AppSizing.kh20Spacer(),
                 Text(
-                  context.tr("assetsDescription"),
+                  LangUtil.trans("assetsDescription"),
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 AppSizing.kh20Spacer(),
@@ -95,7 +94,7 @@ class _AssetsSectionState extends State<AssetsSection> {
               context.go(RouteNames.components);
             },
             icon: const Icon(Icons.arrow_forward_rounded),
-            label:  Text(context.tr("browseAllAssets"))
+            label:  Text(LangUtil.trans("browseAllAssets"))
 
           ),
           AppSizing.kh20Spacer(),
@@ -148,12 +147,12 @@ class _AssetsSectionState extends State<AssetsSection> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
-                                    context.tr("comingSoon"),
+                                    LangUtil.trans("comingSoon"),
                                     style: Theme.of(context).textTheme.displayLarge,
                                   )
 ,
                                   AppSizing.kh10Spacer(),
-                                   Text(context.tr("comingSoonDescription"))
+                                   Text(LangUtil.trans("comingSoonDescription"))
 
                                 ],
                               ),

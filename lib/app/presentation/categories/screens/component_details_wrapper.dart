@@ -1,15 +1,15 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/presentation/categories/widget/component_details_footer.dart';
 import 'package:flutterui/app/presentation/categories/widget/resource_section.dart';
 import 'package:flutterui/app/presentation/categories/widget/supported_platforms.dart';
-import 'package:flutterui/components/data/logic/component/component_bloc.dart';
-import 'package:flutterui/app/core/service_locators.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/code_highlight.dart';
 import 'package:flutterui/app/shared/presentation/widgets/code_preview.dart';
 import 'package:flutterui/app/shared/presentation/widgets/layout/main_content.dart';
+import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class ComponentDetailsWrapper extends StatefulWidget {
@@ -74,7 +74,7 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
                   style: DefaultTextStyle.of(context).style.copyWith(color: Theme.of(context).primaryColor),
                   children: <TextSpan>[
                     TextSpan(
-                      text: context.tr('notFoundInCollections'),
+                      text: LangUtil.trans('notFoundInCollections'),
                       style: TextStyle(color: Theme.of(context).primaryColorDark),
                     ),
                   ],

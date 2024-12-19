@@ -50,12 +50,12 @@ final appRouter = GoRouter(
     // Regular GoRoute for HomeScreen
     buildAnimatedRoute(
       path: "/",
-      builder: (context, state) => HomeScreen(),
+      builder: (context, state) => const HomeScreen(),
     ),
 
     buildAnimatedRoute(
       path: RouteNames.requestComponent,
-      builder: (context, state) => RequestComponentScreen(),
+      builder: (context, state) => const RequestComponentScreen(),
     ),
 
     // ShellRoute for routes with a shared layout

@@ -1,10 +1,9 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutterui/app/core/app.dart';
 import 'package:flutterui/app/presentation/home/widgets/device_interactive.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 
 class IntegrationSection extends StatefulWidget {
@@ -31,7 +30,7 @@ class _IntegrationSectionState extends State<IntegrationSection> {
               SvgPicture.asset(AppIcons.diamond),
               AppSizing.kwSpacer(5.w),
               Text(
-                context.tr("integration"),
+                LangUtil.trans("integration"),
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                       fontWeight: FontWeight.w500,
                       fontSize: 18.sp,
@@ -49,7 +48,7 @@ class _IntegrationSectionState extends State<IntegrationSection> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  context.tr("integrationTitle"),
+                  LangUtil.trans("integrationTitle"),
                   style: Theme.of(context)
                       .textTheme
                       .displayLarge!
@@ -59,7 +58,7 @@ class _IntegrationSectionState extends State<IntegrationSection> {
                 ,
                 AppSizing.kh20Spacer(),
                 Text(
-                  context.tr("integrationDescription"),
+                  LangUtil.trans("integrationDescription"),
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 AppSizing.kh20Spacer(),

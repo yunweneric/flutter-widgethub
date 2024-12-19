@@ -1,9 +1,8 @@
 import 'dart:math';
 
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/app/core/app.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/components/presentation/templates/basuu/models/basuu_category.dart';
 import 'package:flutterui/components/presentation/templates/basuu/models/basuu_word.dart';
@@ -24,13 +23,13 @@ class BasuuLearningScreen extends StatefulWidget {
 class _LearningScreenState extends State<BasuuLearningScreen> {
   final activeIndex = 0;
   List<BasuuWord> words = [
-    BasuuWord(title: "mother".tr(), hasLearned: true),
-    BasuuWord(title: "day".tr(), hasLearned: false),
-    BasuuWord(title: "put".tr(), hasLearned: false),
-    BasuuWord(title: "trailblazing".tr(), hasLearned: true),
-    BasuuWord(title: "start".tr(), hasLearned: false),
-    BasuuWord(title: "race".tr(), hasLearned: false),
-    BasuuWord(title: "race".tr(), hasLearned: false),
+    BasuuWord(title: LangUtil.trans("mother"), hasLearned: true),
+    BasuuWord(title: LangUtil.trans("day"), hasLearned: false),
+    BasuuWord(title: LangUtil.trans("put"), hasLearned: false),
+    BasuuWord(title: LangUtil.trans("trailblazing"), hasLearned: true),
+    BasuuWord(title: LangUtil.trans("start"), hasLearned: false),
+    BasuuWord(title: LangUtil.trans("race"), hasLearned: false),
+    BasuuWord(title: LangUtil.trans("race"), hasLearned: false),
   ];
   bool? isCorrect;
   bool isWordVisible = false;
@@ -51,7 +50,7 @@ class _LearningScreenState extends State<BasuuLearningScreen> {
       appBar: basuuAppBar(
         onBack: () => Navigator.pop(context),
         theme: theme,
-        title: context.tr("learnNewWords"),
+        title: LangUtil.trans("learnNewWords"),
       ),
       body: SingleChildScrollView(
         child: AnimatedContainer(
@@ -82,7 +81,7 @@ class _LearningScreenState extends State<BasuuLearningScreen> {
                   AppSizing.kh20Spacer(),
                   Column(
                     children: [
-                      Text("${widget.selectedCategory.label} ${context.tr('level')}"),
+                      Text("${widget.selectedCategory.label} ${LangUtil.trans('level')}"),
                       AppSizing.kh20Spacer(),
                       Text(
                         words[activeIndex].title,
@@ -152,7 +151,7 @@ class _LearningScreenState extends State<BasuuLearningScreen> {
             onPressed: () => setState(() {
               isCorrect = isLeft;
             }),
-            text: isLeft ? context.tr("iKnow") : context.tr("learn"),
+            text: isLeft ? LangUtil.trans("iKnow") : LangUtil.trans("learn"),
             width: AppSizing.kWPercentage(context, 35),
             bgColor: color,
             side: BorderSide(color: theme.highlightColor),

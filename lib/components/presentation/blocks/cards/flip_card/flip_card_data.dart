@@ -1,7 +1,6 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterui/app/core/app.dart';
 import 'package:flutterui/app/shared/data/models/code_component.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/components/presentation/blocks/cards/flip_card/flip_card_code.dart';
 import 'package:flutterui/components/presentation/blocks/cards/flip_card/flip_card_setup.dart';
 import 'package:flutterui/components/presentation/blocks/cards/flip_card/flip_card_widget.dart';
@@ -21,8 +20,8 @@ class AppFlipCard {
     codeComponents: [
       CodeComponent(code: code, widget: widget),
     ],
-    description: 'flipCardDescription'.tr(),
-    title: 'flipCardTitle'.tr(),
+    description: LangUtil.trans('flipCardDescription'),
+    title: LangUtil.trans('flipCardTitle'),
     setup: setup,
     category: ComponentCategoryEnum.BLOCKS,
     subcategory: SubComponentCategoryEnum.SLIDERS_AND_CAROUSELS,

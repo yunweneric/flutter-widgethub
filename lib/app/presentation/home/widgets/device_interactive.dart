@@ -1,6 +1,6 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterui/app/shared/presentation/utils/colors.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/code_highlight.dart';
 import 'package:flutterui/app/shared/presentation/widgets/device_section_frame.dart';
@@ -52,7 +52,7 @@ class _DeviceInteractiveState extends State<DeviceInteractive> {
                         transform: Matrix4.identity()
                           ..translate(0.0, -value * 200),
                         child: Text(
-                          context.tr(currentIndex == 0
+                          LangUtil.trans(currentIndex == 0
                               ? "red"
                               : currentIndex == 1
                                   ? "teal"
@@ -84,13 +84,13 @@ class _DeviceInteractiveState extends State<DeviceInteractive> {
               },
               currentIndex: currentIndex,
               items:  [
-                BottomNavigationBarItem(icon: const Icon(Icons.home), label: context.tr("read")
+                BottomNavigationBarItem(icon: const Icon(Icons.home), label: LangUtil.trans("read")
 
                 ),
                 BottomNavigationBarItem(
-                    icon: const Icon(Icons.notification_add), label: context.tr("teal")),
+                    icon: const Icon(Icons.notification_add), label: LangUtil.trans("teal")),
                 BottomNavigationBarItem(
-                    icon: const Icon(Icons.verified_user), label: context.tr("blue")),
+                    icon: const Icon(Icons.verified_user), label: LangUtil.trans("blue")),
               ],
             ),
           ),

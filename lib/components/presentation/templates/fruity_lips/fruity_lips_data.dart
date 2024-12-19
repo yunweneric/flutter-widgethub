@@ -1,10 +1,10 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
 import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart';
 import 'package:flutterui/app/shared/data/enums/supported_platform.dart';
 import 'package:flutterui/app/shared/data/models/code_component.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/components/presentation/templates/fruity_lips/fruity_lips_code.dart';
 import 'package:flutterui/components/presentation/templates/fruity_lips/fruity_lips_setup.dart';
 import 'package:flutterui/components/presentation/templates/fruity_lips/fruity_lips_widget.dart';
@@ -20,8 +20,8 @@ class FruityLipsTemplateData {
     id: "fruity-lips-carousel",
     // widget: widget,
     codeComponents: [CodeComponent(code: code, widget: widget)],
-    description: 'fruityLipsDescription'.tr(),
-    title: 'fruityLipsTitle'.tr(),
+    description: LangUtil.trans('fruityLipsDescription'),
+    title: LangUtil.trans('fruityLipsTitle'),
     setup: setup,
     category: ComponentCategoryEnum.BLOCKS,
     subcategory: SubComponentCategoryEnum.SLIDERS_AND_CAROUSELS,

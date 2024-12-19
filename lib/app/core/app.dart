@@ -18,9 +18,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return EasyLocalization(
-      supportedLocales: [Locale('en'), Locale('fr')],
+      supportedLocales: const [Locale('en'), Locale('fr')],
       path: 'assets/translations', // <-- change the path of the translation files
-      fallbackLocale: Locale('en',),
+      fallbackLocale: const Locale('en',),
       child: LayoutBuilder(
         builder: (context, constraints) {
           return MultiBlocProvider(

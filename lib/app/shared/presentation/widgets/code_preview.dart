@@ -1,13 +1,12 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/app/core/app.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/shared/data/enums/device_type.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
 import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/utils/util.dart';
 import 'package:flutterui/app/shared/presentation/widgets/chip.dart';
@@ -118,14 +117,14 @@ class _CodePreviewState extends State<CodePreview> {
                 onTap: () => setState(() => isCode = false),
                 active: !isCode,
                 icon: AppIcons.tab,
-                title: AppSizing.isMobile(context) ? null : context.tr("preview"),
+                title: AppSizing.isMobile(context) ? null : LangUtil.trans("preview"),
               ),
               AppSizing.kwSpacer(10.w),
               AppChip(
                 active: isCode,
                 onTap: () => setState(() => isCode = true),
                 icon: AppIcons.code,
-                title: AppSizing.isMobile(context) ? null : context.tr("code"),
+                title: AppSizing.isMobile(context) ? null : LangUtil.trans("code"),
               ),
             ],
           ),
@@ -145,8 +144,8 @@ class _CodePreviewState extends State<CodePreview> {
                             title: AppSizing.isMobile(context)
                                 ? null
                                 : hasCopied
-                                    ? context.tr('copied')
-                                    : context.tr("copy"),
+                                    ? LangUtil.trans('copied')
+                                    : LangUtil.trans("copy"),
                             onTap: () async {
                               setState(() => hasCopied = true);
                               UtilHelper.copy(context, data: widget.component.codeComponents.first.code);
@@ -177,21 +176,21 @@ class _CodePreviewState extends State<CodePreview> {
                                                 AppChip(
                                                   active: selectedDevice == AppDeviceType.MOBILE,
                                                   icon: AppIcons.mobile,
-                                                  title: context.tr("mobile"),
+                                                  title: LangUtil.trans("mobile"),
                                                   onTap: () => setState(() => selectedDevice = AppDeviceType.MOBILE),
                                                 ),
                                                 AppSizing.kwSpacer(10.w),
                                                 AppChip(
                                                   active: selectedDevice == AppDeviceType.TABLET,
                                                   icon: AppIcons.tablet,
-                                                  title: context.tr("tablet"),
+                                                  title: LangUtil.trans("tablet"),
                                                   onTap: () => setState(() => selectedDevice = AppDeviceType.TABLET),
                                                 ),
                                                 AppSizing.kwSpacer(10.w),
                                                 AppChip(
                                                   active: selectedDevice == AppDeviceType.DESKTOP,
                                                   icon: AppIcons.desktop,
-                                                  title: context.tr("desktop"),
+                                                  title: LangUtil.trans("desktop"),
                                                   onTap: () => setState(() => selectedDevice = AppDeviceType.DESKTOP),
                                                 ),
                                               ],
