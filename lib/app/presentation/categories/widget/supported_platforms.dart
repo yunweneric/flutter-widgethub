@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 
 Column supportPlatformSection(Component component, BuildContext context) {
@@ -8,7 +9,7 @@ Column supportPlatformSection(Component component, BuildContext context) {
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Text(
-        "Support on",
+        LangUtil.trans("supportOn"),
         style: Theme.of(context).textTheme.displayMedium,
       ),
       AppSizing.kh10Spacer(),

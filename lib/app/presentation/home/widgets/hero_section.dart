@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:flutterui/components/data/logic/component/component_bloc.dart';
-import 'package:flutterui/components/presentation/templates/leave_review/leave_a_review_widget.dart';
-import 'package:flutterui/components/presentation/templates/nike_zoomer/nike_zoomer_widget.dart';
+// import 'package:flutterui/screens/routes/app_router.gr.dart';
+import 'package:flutterui/app/core/routes/route_names.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/presentation/home/model/component_block_model.dart';
 import 'package:flutterui/app/presentation/home/screens/theme_toggle.dart';
-// import 'package:flutterui/screens/routes/app_router.gr.dart';
-import 'package:flutterui/app/core/routes/route_names.dart';
 import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
 import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart';
 import 'package:flutterui/app/shared/presentation/utils/colors.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/device_section_frame.dart';
+import 'package:flutterui/components/data/logic/component/component_bloc.dart';
+import 'package:flutterui/components/presentation/templates/leave_review/leave_a_review_widget.dart';
+import 'package:flutterui/components/presentation/templates/nike_zoomer/nike_zoomer_widget.dart';
 import 'package:go_router/go_router.dart';
 
 class HeroSection extends StatefulWidget {
@@ -46,12 +47,12 @@ class _HeroSectionState extends State<HeroSection> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SelectableText(
-                      "Build Stunning Flutter Apps with Ease",
+                      LangUtil.trans("heroTitle"),
                       style: Theme.of(context).textTheme.displayLarge!.copyWith(fontSize: AppSizing.isMobile(context) ? 40.sp : 50.sp),
                     ),
                     AppSizing.kh20Spacer(),
                     SelectableText(
-                      "From ready-to-use components and flexible layout blocks to smooth animations and striking effects, our tools help you create beautiful, functional apps quickly and efficiently.",
+                      LangUtil.trans("heroDescription"),
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                     AppSizing.kh20Spacer(),
@@ -86,9 +87,9 @@ class _HeroSectionState extends State<HeroSection> {
                             );
                             context.go(RouteNames.components);
                           },
-                          child: const Text(
-                            "Explore Now!",
-                            style: TextStyle(color: AppColors.BG),
+                          child:  Text(
+                            LangUtil.trans("exploreNow"),
+                            style: const TextStyle(color: AppColors.BG),
                           ),
                         ),
                         AppSizing.kwSpacer(20.w),
@@ -101,9 +102,10 @@ class _HeroSectionState extends State<HeroSection> {
                           onPressed: widget.onBrowserAll,
                           icon: const Icon(Icons.arrow_forward_rounded),
                           label: Text(
-                            "Browse all assets",
+                            LangUtil.trans("browseAllAssets"),
                             style: TextStyle(color: Theme.of(context).primaryColorDark),
-                          ),
+                          )
+,
                         ),
                       ],
                     )

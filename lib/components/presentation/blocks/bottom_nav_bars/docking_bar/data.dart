@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterui/app/shared/data/models/code_component.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/components/presentation/blocks/bottom_nav_bars/docking_bar/docking_bar_code.dart';
 import 'package:flutterui/components/presentation/blocks/bottom_nav_bars/docking_bar/docking_bar_setup.dart';
 import 'package:flutterui/components/presentation/blocks/bottom_nav_bars/docking_bar/docking_bar_widget.dart';
@@ -18,8 +19,8 @@ class DockingBarData {
     updatedAt: DateTime(2024, 11, 15),
     id: "docking-bottom-bar",
     codeComponents: [CodeComponent(code: code, widget: widget)],
-    description: 'An Animated docking bar, This is suitable to used as a sample bottom navigation bar.',
-    title: 'Animated Docking Bar',
+    description: LangUtil.trans('dockingBarDescription'),
+    title: LangUtil.trans('dockingBarTitle'),
     setup: setup,
     category: ComponentCategoryEnum.BLOCKS,
     subcategory: SubComponentCategoryEnum.BOTTOM_NAV_BARS,

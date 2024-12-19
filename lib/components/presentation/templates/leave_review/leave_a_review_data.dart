@@ -4,6 +4,7 @@ import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart
 import 'package:flutterui/app/shared/data/enums/supported_platform.dart';
 import 'package:flutterui/app/shared/data/models/code_component.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/components/presentation/templates/leave_review/leave_a_review_code.dart';
 import 'package:flutterui/components/presentation/templates/leave_review/leave_a_review_setup.dart';
 import 'package:flutterui/components/presentation/templates/leave_review/leave_a_review_widget.dart';
@@ -17,8 +18,8 @@ class LeaveAReviewTemplateData {
     updatedAt: DateTime(2024, 7, 2),
     codeComponents: [CodeComponent(code: code, widget: widget)],
     id: "leave-a-review",
-    description: 'A new and fun way of getting feedback from your flutter app. Inspired by @musabalfawal',
-    title: 'Animate Leave A Review',
+    description: LangUtil.trans('leaveAReviewDescription'),
+    title: LangUtil.trans('leaveAReviewTitle'),
     setup: setup,
     category: ComponentCategoryEnum.BLOCKS,
     subcategory: SubComponentCategoryEnum.SLIDERS_AND_CAROUSELS,

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/utils/util.dart';
 import 'package:flutterui/app/shared/presentation/widgets/chip.dart';
@@ -92,11 +93,11 @@ class _CodeHighlightState extends State<CodeHighlight> {
               },
               active: hasCopied,
               icon: AppIcons.clipboard,
-              title: AppSizing.isMobile(context)
+              title: LangUtil.trans((AppSizing.isMobile(context)
                   ? null
                   : hasCopied
-                      ? "Copied"
-                      : "Copy",
+                      ? "copied"
+                      : "copy")!),
             );
           }),
         ),

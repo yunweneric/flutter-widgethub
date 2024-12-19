@@ -196,7 +196,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             itemBuilder: (c, i) {
                               return AnimatedOpacity(
                                 opacity: activeIndex == i ? 1 : 0,
-                                duration: Duration(seconds: 5),
+                                duration: const Duration(seconds: 5),
                                 curve: curve,
                                 child: Column(
                                   children: [

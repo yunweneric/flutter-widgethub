@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/core/routes/route_names.dart';
+import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/app/shared/presentation/models/nav_link.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/images.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/utils/util.dart';
 import 'package:flutterui/app/shared/presentation/widgets/app_container.dart';
 import 'package:flutterui/app/shared/presentation/widgets/app_search_bar.dart';
 import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
+import 'package:flutterui/app/shared/presentation/widgets/language_button.dart';
 import 'package:flutterui/app/shared/presentation/widgets/layout/home_mobile_nav.dart';
 import 'package:go_router/go_router.dart';
 
@@ -28,7 +30,7 @@ class HomeNavBar extends StatefulWidget {
 
 class _HomeNavBarState extends State<HomeNavBar> {
   List<NavLink> links = [
-    NavLink(title: "Components", path: RouteNames.components),
+    NavLink(title: LangUtil.trans(("components")), path: RouteNames.components),
   ];
   @override
   Widget build(BuildContext context) {
@@ -99,6 +101,7 @@ class _HomeNavBarState extends State<HomeNavBar> {
                     Row(
                       children: [
                         const AppSearchBar(),
+                         const LanguageButton(),
                         TextButton(
                           onPressed: () => UtilHelper.openUrl(
                               "https://github.com/yunweneric/flutter-widgethub/"),

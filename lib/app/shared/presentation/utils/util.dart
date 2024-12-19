@@ -1,13 +1,10 @@
 // import 'dart:io';
-import 'dart:math';
 
-import 'package:flutter/animation.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutterui/app/shared/presentation/helpers/platform/platform.dart';
 import 'package:flutterui/app/core/service_locators.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
 

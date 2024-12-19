@@ -48,7 +48,7 @@ class _ExpandableTabState extends State<ExpandableTab> {
                         margin: const EdgeInsets.only(right: 10),
                         padding: const EdgeInsets.symmetric(vertical: 12),
                         decoration: BoxDecoration(
-                          color: isActive ? item.color : Color.fromARGB(255, 213, 212, 212),
+                          color: isActive ? item.color : const Color.fromARGB(255, 213, 212, 212),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         width: isActive ? textWidth : 50,
