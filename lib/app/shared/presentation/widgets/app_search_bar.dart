@@ -74,6 +74,7 @@ class SearchBar extends StatefulWidget {
 class _SearchBarState extends State<SearchBar> {
   bool isExpanded = false;
 
+  late FocusNode _focusNode;
   final allItems = AllComponents.widgets;
   List<Component> filteredData = [];
   String? searchTerm;
@@ -93,6 +94,19 @@ class _SearchBarState extends State<SearchBar> {
       searchTerm = title;
       filteredData = data;
     });
+  }
+
+  @override
+  void initState() {
+    _focusNode = FocusNode();
+    _focusNode.requestFocus();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
   }
 
   @override
@@ -121,6 +135,7 @@ class _SearchBarState extends State<SearchBar> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: TextField(
+                        focusNode: _focusNode,
                         onChanged: filter,
                         style: const TextStyle(fontSize: 14),
                         decoration: InputDecoration(
