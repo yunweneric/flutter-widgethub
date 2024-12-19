@@ -49,6 +49,9 @@ PODS:
     - Flutter
     - FlutterMacOS
   - PromisesObjC (2.4.0)
+  - shared_preferences_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
   - url_launcher_macos (0.0.1):
     - FlutterMacOS
 
@@ -56,6 +59,7 @@ DEPENDENCIES:
   - FirebaseFirestore (from `~/Documents/firestore-ios-sdk-frameworks-10.25.0`)
   - FlutterMacOS (from `Flutter/ephemeral`)
   - path_provider_foundation (from `Flutter/ephemeral/.symlinks/plugins/path_provider_foundation/darwin`)
+  - shared_preferences_foundation (from `Flutter/ephemeral/.symlinks/plugins/shared_preferences_foundation/darwin`)
   - url_launcher_macos (from `Flutter/ephemeral/.symlinks/plugins/url_launcher_macos/macos`)
 
 SPEC REPOS:
@@ -82,6 +86,8 @@ EXTERNAL SOURCES:
     :path: Flutter/ephemeral
   path_provider_foundation:
     :path: Flutter/ephemeral/.symlinks/plugins/path_provider_foundation/darwin
+  shared_preferences_foundation:
+    :path: Flutter/ephemeral/.symlinks/plugins/shared_preferences_foundation/darwin
   url_launcher_macos:
     :path: Flutter/ephemeral/.symlinks/plugins/url_launcher_macos/macos
 
@@ -103,6 +109,7 @@ SPEC CHECKSUMS:
   nanopb: 438bc412db1928dac798aa6fd75726007be04262
   path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
+  shared_preferences_foundation: fcdcbc04712aee1108ac7fda236f363274528f78
   url_launcher_macos: c82c93949963e55b228a30115bd219499a6fe404
 
 PODFILE CHECKSUM: d76184477a50fa796ab296c273ec1324f8c91ff0
