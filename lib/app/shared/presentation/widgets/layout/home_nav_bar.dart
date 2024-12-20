@@ -21,8 +21,7 @@ class HomeNavBar extends StatefulWidget {
   final bool isHomeScreenLayout;
   final VoidCallback onTap;
 
-  const HomeNavBar(
-      {super.key, required this.onTap, required this.isHomeScreenLayout});
+  const HomeNavBar({super.key, required this.onTap, required this.isHomeScreenLayout});
 
   @override
   State<HomeNavBar> createState() => _HomeNavBarState();
@@ -52,16 +51,15 @@ class _HomeNavBarState extends State<HomeNavBar> {
                           style: TextButton.styleFrom(padding: EdgeInsets.zero),
                           child: AnimatedSwitcher(
                             duration: const Duration(milliseconds: 500),
-                            child:
-                                Theme.of(context).brightness == Brightness.light
-                                    ? Image.asset(
-                                        AppImages.logoDark,
-                                        width: 130,
-                                      )
-                                    : Image.asset(
-                                        AppImages.logoLight,
-                                        width: 130,
-                                      ),
+                            child: Theme.of(context).brightness == Brightness.light
+                                ? Image.asset(
+                                    AppImages.logoDark,
+                                    width: 130,
+                                  )
+                                : Image.asset(
+                                    AppImages.logoLight,
+                                    width: 130,
+                                  ),
                           ),
                           onPressed: () => context.go(RouteNames.home),
                         ),
@@ -69,12 +67,7 @@ class _HomeNavBarState extends State<HomeNavBar> {
                         Row(
                           children: [
                             ...links.map((item) {
-                              final activeRoute = getIt
-                                  .get<GoRouter>()
-                                  .routeInformationProvider
-                                  .value
-                                  .uri
-                                  .path;
+                              final activeRoute = getIt.get<GoRouter>().routeInformationProvider.value.uri.path;
                               final isActive = activeRoute == item.path;
                               return Padding(
                                 padding: const EdgeInsets.all(8.0),
@@ -82,13 +75,8 @@ class _HomeNavBarState extends State<HomeNavBar> {
                                   onPressed: () => context.go(item.path),
                                   child: Text(
                                     item.title,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyMedium!
-                                        .copyWith(
-                                          color: isActive
-                                              ? Theme.of(context).primaryColor
-                                              : null,
+                                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                          color: isActive ? Theme.of(context).primaryColor : null,
                                         ),
                                   ),
                                 ),
@@ -101,24 +89,19 @@ class _HomeNavBarState extends State<HomeNavBar> {
                     Row(
                       children: [
                         const AppSearchBar(),
-                         const LanguageButton(),
+                        const LanguageButton(),
                         TextButton(
-                          onPressed: () => UtilHelper.openUrl(
-                              "https://github.com/yunweneric/flutter-widgethub/"),
+                          onPressed: () => UtilHelper.openUrl("https://github.com/yunweneric/flutter-widgethub/"),
                           child: const AppIcon(icon: AppIcons.github),
                         ),
                         AppSizing.kwSpacer(5.w),
                         Builder(
                           builder: (context) {
                             final theme = getIt.get<ThemeBloc>();
-                            final isDark =
-                                Theme.of(context).brightness == Brightness.dark;
+                            final isDark = Theme.of(context).brightness == Brightness.dark;
                             return TextButton(
                               onPressed: () => theme.add(
-                                ChangeTheme(
-                                    themeMode: isDark
-                                        ? ThemeMode.light
-                                        : ThemeMode.dark),
+                                ChangeTheme(themeMode: isDark ? ThemeMode.light : ThemeMode.dark),
                               ),
                               child: AppIcon(
                                 icon: isDark ? AppIcons.moon : AppIcons.sun,

@@ -11,8 +11,7 @@ import 'package:flutterui/app/shared/presentation/widgets/language_button.dart';
 class HomeMobileNav extends StatefulWidget {
   final VoidCallback onTap;
   final bool isHomeScreenLayout;
-  const HomeMobileNav(
-      {super.key, required this.onTap, required this.isHomeScreenLayout});
+  const HomeMobileNav({super.key, required this.onTap, required this.isHomeScreenLayout});
 
   @override
   State<HomeMobileNav> createState() => _HomeMobileNavState();
@@ -22,8 +21,7 @@ class _HomeMobileNavState extends State<HomeMobileNav> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin:
-          EdgeInsets.symmetric(horizontal: AppSizing.kWPercentage(context, 5)),
+      margin: EdgeInsets.symmetric(horizontal: AppSizing.kWPercentage(context, 5)),
       width: AppSizing.kWPercentage(context, 90),
       padding: EdgeInsets.symmetric(vertical: 30.h),
       color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.95),
@@ -47,15 +45,12 @@ class _HomeMobileNavState extends State<HomeMobileNav> {
                 return TextButton(
                   child: AppIcon(icon: isDark ? AppIcons.moon : AppIcons.sun),
                   onPressed: () => theme.add(
-                    ChangeTheme(
-                        themeMode: isDark ? ThemeMode.light : ThemeMode.dark),
+                    ChangeTheme(themeMode: isDark ? ThemeMode.light : ThemeMode.dark),
                   ),
                 );
               }),
-                                       const LanguageButton(),
-              TextButton(
-                  onPressed: () => showSearchModal(context),
-                  child: const AppIcon(icon: AppIcons.search)),
+              const LanguageButton(),
+              TextButton(onPressed: () => showSearchModal(context), child: const AppIcon(icon: AppIcons.search)),
             ],
           )
         ],

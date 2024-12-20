@@ -1,9 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutterui/app/shared/logic/language/language_bloc.dart';
-import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
+import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 
 class LanguageButton extends StatefulWidget {
   const LanguageButton({super.key});
@@ -12,14 +13,13 @@ class LanguageButton extends StatefulWidget {
   State<LanguageButton> createState() => _LanguageButtonState();
 }
 
-final languages = ["en", "fr"];
+List<Locale> languages = [
+  const Locale("en", "US"),
+  const Locale("fr", "FR"),
+];
 
 class _LanguageButtonState extends State<LanguageButton> {
-  _handleChangeLanguage(String? val) {
-    context.read<LanguageBloc>().add(UpdateLanguageEvent(val!));
-  }
-
-  String dropdownValue = 'en';
+  Locale dropdownValue = const Locale("en", "US");
   @override
   void initState() {
     // dropdownValue = context.locale.languageCode;
@@ -28,8 +28,13 @@ class _LanguageButtonState extends State<LanguageButton> {
 
   @override
   void didChangeDependencies() {
-    dropdownValue = context.locale.languageCode;
+    dropdownValue = context.locale;
     super.didChangeDependencies();
+  }
+
+  void handleChangeLanguage(Locale? locale) {
+    if (locale == null) return;
+    context.read<LanguageBloc>().add(UpdateLanguageEvent(locale));
   }
 
   @override
@@ -37,29 +42,32 @@ class _LanguageButtonState extends State<LanguageButton> {
     return BlocConsumer<LanguageBloc, LanguageState>(
       listener: (context, state) async {
         if (state is LanguageUpdated) {
-          // await LangUtil.setTrans(context, state.language);
-          // await WidgetsBinding.instance.performReassemble();
-          dropdownValue = state.language;
+          dropdownValue = state.locale;
         }
       },
-      builder: (context, state) => SizedBox(
-        width: 50,
-        child: DropdownButton(
-          value: dropdownValue,
-          icon: const SizedBox(),
-          items: languages
-              .map((lang) => DropdownMenuItem(
+      builder: (context, state) => Transform.scale(
+        scale: 0.8,
+        child: DropdownMenu(
+          width: 100.w,
+          initialSelection: dropdownValue,
+          onSelected: handleChangeLanguage,
+          dropdownMenuEntries: languages
+              .map((lang) => DropdownMenuEntry(
                     value: lang,
-                    child: SvgPicture.asset(
-                      'assets/icons/$lang.svg',
-                      height: 20,
-                      width: 20,
+                    label: lang.languageCode.toUpperCase(),
+                    labelWidget: Row(
+                      children: [
+                        SvgPicture.asset(
+                          'assets/icons/${lang.languageCode}.svg',
+                          width: 20.w,
+                          fit: BoxFit.cover,
+                        ),
+                        AppSizing.kwSpacer(5.w),
+                        Text(lang.languageCode.toUpperCase()),
+                      ],
                     ),
                   ))
               .toList(),
-          elevation: 16,
-          underline: const SizedBox(),
-          onChanged: _handleChangeLanguage,
         ),
       ),
     );
