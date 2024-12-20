@@ -44,8 +44,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder, {required AppEnv env
         Locale('fr', 'FR'),
       ],
       path: 'assets/translations',
-      // <-- change the path of the translation files
-      fallbackLocale: const Locale('en'),
+      fallbackLocale: const Locale('en', "US"),
       // assetLoader: const RemoteLocalesLoader(),
       child: await builder(),
     ),

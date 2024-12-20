@@ -10,7 +10,7 @@ class BasuuIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SvgPicture.asset(
+    return SvgPicture.string(
       icon,
       color: color,
       width: size?.w ?? 30.w,

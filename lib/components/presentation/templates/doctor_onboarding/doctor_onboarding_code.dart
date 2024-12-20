@@ -27,7 +27,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   PageController controller = PageController(initialPage: 1);
   final curve = Curves.fastOutSlowIn;
   final duration = const Duration(milliseconds: 700);
-  final baseURL = 'https://github.com/yunweneric/flutter-open-ui/blob/9-implement-the-ui-for-doctor-onboarding/assets/images';
   List<OnboardingData> data() => [
         OnboardingData(
           title: 'Meet Doctors Online',
@@ -130,12 +129,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                   topLeft: Radius.circular(20.r * value),
                                   topRight: Radius.circular(20.r * value),
                                 ),
-                                child: Image.network(
+                                child:  Image.network(
                                   width: AppSizing.width(context),
                                   height: AppSizing.height(context) * 0.6,
                                   data()[activeIndex].image,
                                   fit: BoxFit.cover,
                                   errorBuilder: (c, i, e) {
+                                    return const CircularProgressIndicator.adaptive();
+                                  },
+                                  loadingBuilder: (c, i, e) {
                                     return const CircularProgressIndicator.adaptive();
                                   },
                                 ),
@@ -165,7 +167,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         ),
                         child: Opacity(
                           opacity: 1 - value,
-                          child: Image.asset(
+                          child: Image.network(
                             width: AppSizing.width(context),
                             height: AppSizing.height(context) * 0.6,
                             data()[previousIndex].image,
@@ -198,7 +200,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             itemBuilder: (c, i) {
                               return AnimatedOpacity(
                                 opacity: activeIndex == i ? 1 : 0,
-                                duration: Duration(seconds: 5),
+                                duration: const Duration(seconds: 5),
                                 curve: curve,
                                 child: Column(
                                   children: [
@@ -378,4 +380,5 @@ class AppColors {
   static const Color TEXTWHITE = Color(0XFFFFFFFF);
   static const Color RED = Color(0xFFFF3F3F);
 }
+
 """;

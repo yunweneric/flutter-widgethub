@@ -15,7 +15,7 @@ class LangUtil {
     return context.deviceLocale.languageCode == 'fr';
   }
 
-  static Future<void> setTrans(BuildContext context, String lang) async {
-    await context.setLocale(Locale(lang));
+  static Future<void> setTrans(BuildContext context, Locale locale) async {
+    await context.setLocale(locale);
   }
 }

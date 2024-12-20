@@ -32,13 +32,15 @@ class MyApp extends StatelessWidget {
           ],
           child: BlocBuilder<ThemeBloc, ThemeState>(
             builder: (context, state) {
-              return BlocBuilder<LanguageBloc, LanguageState>(
-                builder: (context, langState) {
+              return BlocConsumer<LanguageBloc, LanguageState>(
+                listener: (context, langState) {
                   if (langState is LanguageUpdated) {
-                    LangUtil.setTrans(context, langState.language);
+                    LangUtil.setTrans(context, langState.locale);
                     print(["langState.language"]);
-                    print(["langState.language", langState.language]);
+                    print(["langState.language", langState.locale.languageCode]);
                   }
+                },
+                builder: (context, langState) {
                   return ScreenUtilInit(
                     designSize: Size(constraints.maxWidth, constraints.maxHeight),
                     useInheritedMediaQuery: true,
@@ -48,8 +50,8 @@ class MyApp extends StatelessWidget {
                         debugShowCheckedModeBanner: false,
                         localizationsDelegates: context.localizationDelegates,
                         supportedLocales: context.supportedLocales,
-                        // locale: context.locale,
-                        locale: Locale('fr'),
+                        locale: context.locale,
+                        // locale: Locale('fr', "FR"),
                         title: 'Flutter WidgetHub',
                         theme: AppTheme.light(),
                         darkTheme: AppTheme.dark(),
