@@ -7,6 +7,7 @@ import 'package:flutterui/app/shared/logic/language/language_bloc.dart';
 import 'package:flutterui/app/shared/logic/navigation/navigation_bloc.dart';
 import 'package:flutterui/app/shared/logic/sidebar/sidebar_bloc.dart';
 import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/theme.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -31,33 +32,45 @@ class MyApp extends StatelessWidget {
           ],
           child: BlocBuilder<ThemeBloc, ThemeState>(
             builder: (context, state) {
-              return ScreenUtilInit(
-                designSize: Size(constraints.maxWidth, constraints.maxHeight),
-                useInheritedMediaQuery: true,
-                builder: (context, child) {
-                  return MaterialApp.router(
-                    routerConfig: getIt.get<GoRouter>(),
-                    debugShowCheckedModeBanner: false,
-                    title: 'Flutter WidgetHub',
-                    theme: AppTheme.light(),
-                    darkTheme: AppTheme.dark(),
-                    themeMode: state.themeMode,
-                    scrollBehavior: AppScrollBehavior(),
-                    // themeMode: themeMode
-                    //     ? ThemeMode.system
-                    //     : isDark
-                    //         ? ThemeMode.dark
-                    //         : ThemeMode.light,
+              return BlocBuilder<LanguageBloc, LanguageState>(
+                builder: (context, langState) {
+                  if (langState is LanguageUpdated) {
+                    LangUtil.setTrans(context, langState.language);
+                    print(["langState.language"]);
+                    print(["langState.language", langState.language]);
+                  }
+                  return ScreenUtilInit(
+                    designSize: Size(constraints.maxWidth, constraints.maxHeight),
+                    useInheritedMediaQuery: true,
+                    builder: (context, child) {
+                      return MaterialApp.router(
+                        routerConfig: getIt.get<GoRouter>(),
+                        debugShowCheckedModeBanner: false,
+                        localizationsDelegates: context.localizationDelegates,
+                        supportedLocales: context.supportedLocales,
+                        // locale: context.locale,
+                        locale: Locale('fr'),
+                        title: 'Flutter WidgetHub',
+                        theme: AppTheme.light(),
+                        darkTheme: AppTheme.dark(),
+                        themeMode: state.themeMode,
+                        scrollBehavior: AppScrollBehavior(),
+                        // themeMode: themeMode
+                        //     ? ThemeMode.system
+                        //     : isDark
+                        //         ? ThemeMode.dark
+                        //         : ThemeMode.light,
 
-                      // themeMode: ThemeMode.system,
-                    );
-                  },
-                );
-              },
-            ),
-          );
-        },
-      
+                        // themeMode: ThemeMode.system,
+                      );
+                    },
+                  );
+                },
+              );
+            },
+          ),
+        );
+      },
     );
   }
 }
