@@ -140,7 +140,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                     if (loadingProgress?.cumulativeBytesLoaded == loadingProgress?.expectedTotalBytes) {
                                       return i;
                                     }
-                                    // return Text("");
+                                    return Text("");
                                     return const CircularProgressIndicator.adaptive();
                                   },
                                 ),
