@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/app/core/routes/route_names.dart';
 import 'package:flutterui/app/core/service_locators.dart';
+import 'package:flutterui/app/shared/logic/sidebar/sidebar_bloc.dart';
 import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/app/shared/presentation/models/nav_link.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
@@ -19,9 +20,8 @@ import 'package:go_router/go_router.dart';
 
 class HomeNavBar extends StatefulWidget {
   final bool isHomeScreenLayout;
-  final VoidCallback onTap;
 
-  const HomeNavBar({super.key, required this.onTap, required this.isHomeScreenLayout});
+  const HomeNavBar({super.key, required this.isHomeScreenLayout});
 
   @override
   State<HomeNavBar> createState() => _HomeNavBarState();
@@ -31,13 +31,13 @@ class _HomeNavBarState extends State<HomeNavBar> {
   List<NavLink> links = [
     NavLink(title: LangUtil.trans(("components")), path: RouteNames.components),
   ];
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeBloc, ThemeState>(
       builder: (context, state) {
         return AppSizing.isMobile(context)
             ? HomeMobileNav(
-                onTap: widget.onTap,
                 isHomeScreenLayout: widget.isHomeScreenLayout,
               )
             : AppContainer(

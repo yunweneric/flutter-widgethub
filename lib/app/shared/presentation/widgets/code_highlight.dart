@@ -69,8 +69,7 @@ class _CodeHighlightState extends State<CodeHighlight> {
                   softWrap: false,
                   overflow: TextOverflow.clip,
                   style: GoogleFonts.sourceCodePro(
-                    fontSize: widget.fontSize ??
-                        (AppSizing.isMobile(context) ? 10.sp : 14.sp),
+                    fontSize: widget.fontSize ?? (AppSizing.isMobile(context) ? 10.sp : 14.sp),
                     height: 1.7.h,
                     wordSpacing: 7.w,
                   ),
@@ -93,11 +92,13 @@ class _CodeHighlightState extends State<CodeHighlight> {
               },
               active: hasCopied,
               icon: AppIcons.clipboard,
-              title: LangUtil.trans((AppSizing.isMobile(context)
-                  ? null
-                  : hasCopied
-                      ? "copied"
-                      : "copy")!),
+              title: LangUtil.trans(
+                AppSizing.isMobile(context)
+                    ? null
+                    : hasCopied
+                        ? "copied"
+                        : "copy",
+              ),
             );
           }),
         ),
