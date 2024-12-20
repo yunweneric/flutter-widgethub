@@ -136,6 +136,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                   errorBuilder: (c, i, e) {
                                     return const CircularProgressIndicator.adaptive();
                                   },
+                                  loadingBuilder: (c, i, loadingProgress) {
+                                    if (loadingProgress?.cumulativeBytesLoaded == loadingProgress?.expectedTotalBytes) {
+                                      return i;
+                                    }
+                                    // return Text("");
+                                    return const CircularProgressIndicator.adaptive();
+                                  },
                                 ),
                               ),
                             ),
@@ -163,7 +170,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         ),
                         child: Opacity(
                           opacity: 1 - value,
-                          child: Image.asset(
+                          child: Image.network(
                             width: AppSizing.width(context),
                             height: AppSizing.height(context) * 0.6,
                             data()[previousIndex].image,

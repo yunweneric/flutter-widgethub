@@ -1,30 +1,105 @@
-// class BasuuIcons {
-//   static const flash = "assets/icons/flash.svg";
-//   static const arrow_back = "assets/icons/arrow_back.svg";
-//   static const book = "assets/icons/book.svg";
-//   static const check = "assets/icons/check.svg";
-//   static const chevron_right = "assets/icons/chevron_right.svg";
-//   static const close = "assets/icons/close.svg";
-//   static const eye_visible = "assets/icons/eye_visible.svg";
-//   static const reset = "assets/icons/reset.svg";
-//   static const flag_en = "assets/icons/flag_us.svg";
-//   static const flag_fr = "assets/icons/flag_fr.svg";
-//   static const flag_es = "assets/icons/flag_es.svg";
-//   static const flag_ru = "assets/icons/flag_ru.svg";
-// }
-
 class BasuuIcons {
-  static const url = "https://raw.githubusercontent.com/yunweneric/flutter-open-ui/b53201c1802865cb708d65a5ff2f286eb6ca317a";
-  static const flash = "$url/assets/icons/flash.svg";
-  static const arrow_back = "$url/assets/icons/arrow_back.svg";
-  static const book = "$url/assets/icons/book.svg";
-  static const check = "$url/assets/icons/check.svg";
-  static const chevron_right = "$url/assets/icons/chevron_right.svg";
-  static const close = "$url/assets/icons/close.svg";
-  static const eye_visible = "$url/assets/icons/eye_visible.svg";
-  static const reset = "$url/assets/icons/reset.svg";
-  static const flag_en = "$url/assets/icons/flag_us.svg";
-  static const flag_fr = "$url/assets/icons/flag_fr.svg";
-  static const flag_es = "$url/assets/icons/flag_es.svg";
-  static const flag_ru = "$url/assets/icons/flag_ru.svg";
+  static const flash = """<svg width="17" height="20" viewBox="0 0 17 20" fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <path d="M0.719789 11.3825L9.34861 0.390494C9.96886 -0.399623 11.2363 0.115528 11.1295 1.11432L10.5001 6.99999H15.5034C16.3376 6.99999 16.8051 7.96134 16.2899 8.61752L7.65094 19.6209C7.03069 20.4109 5.76335 19.8958 5.87005 18.8971L6.50005 13H1.50638C0.672147 13 0.204671 12.0387 0.719789 11.3825Z" fill="#14161B"/>
+</svg>
+    """;
+  static const arrow_back = """
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.0009 9.00019H7.41087L10.7109 5.71019C10.8992 5.52188 11.005 5.26649 11.005 5.00019C11.005 4.73388 10.8992 4.47849 10.7109 4.29019C10.5226 4.10188 10.2672 3.99609 10.0009 3.99609C9.73457 3.99609 9.47918 4.10188 9.29087 4.29019L4.29087 9.29019C4.19983 9.38529 4.12847 9.49743 4.08087 9.62019C3.98085 9.86365 3.98085 10.1367 4.08087 10.3802C4.12847 10.5029 4.19983 10.6151 4.29087 10.7102L9.29087 15.7102C9.38384 15.8039 9.49444 15.8783 9.6163 15.9291C9.73816 15.9798 9.86886 16.006 10.0009 16.006C10.1329 16.006 10.2636 15.9798 10.3854 15.9291C10.5073 15.8783 10.6179 15.8039 10.7109 15.7102C10.8046 15.6172 10.879 15.5066 10.9298 15.3848C10.9805 15.2629 11.0067 15.1322 11.0067 15.0002C11.0067 14.8682 10.9805 14.7375 10.9298 14.6156C10.879 14.4937 10.8046 14.3831 10.7109 14.2902L7.41087 11.0002H15.0009C15.2661 11.0002 15.5204 10.8948 15.708 10.7073C15.8955 10.5198 16.0009 10.2654 16.0009 10.0002C16.0009 9.73497 15.8955 9.48062 15.708 9.29308C15.5204 9.10554 15.2661 9.00019 15.0009 9.00019Z" fill="white"/>
+</svg>
+    """;
+  static const book = """<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <path d="M18.2891 20.3772H8.16476C5.82017 20.3772 5.00311 19.1339 5.00311 17.9971C5.00311 16.8603 5.82017 15.617 8.16476 15.617H18.2891C18.6799 15.617 18.9996 15.9367 18.9996 16.3275C18.9996 16.7183 18.6799 17.038 18.2891 17.038H8.16476C7.38323 17.038 6.42408 17.2156 6.42408 17.9971C6.42408 18.7786 7.38323 18.9563 8.16476 18.9563H18.2891C18.6799 18.9563 18.9996 19.276 18.9996 19.6667C18.9996 20.0575 18.6799 20.3772 18.2891 20.3772Z" fill="#14161B"/>
+    <path d="M9.82506 16.3525L6.3437 16.7877H5.90853L5.47336 5.4733L6.77887 4.16779H18.0933V16.3525H9.82506Z" fill="#14161B"/>
+    <path d="M5.78607 17.8237C5.39531 17.8237 5.07559 17.504 5.07559 17.1132V5.67448C5.07559 4.39562 6.07027 3.36542 7.31361 3.36542H18.255C18.6458 3.36542 18.9655 3.68513 18.9655 4.0759V16.1896C18.9655 16.5804 18.6458 16.9001 18.255 16.9001C17.8643 16.9001 17.5445 16.5804 17.5445 16.1896V4.78638H7.31361C6.88732 4.78638 6.49656 5.21267 6.49656 5.67448V17.1132C6.49656 17.504 6.17684 17.8237 5.78607 17.8237Z" fill="#14161B"/>
+    <path d="M18.2885 20.6319C17.4359 20.6319 16.903 19.6727 16.903 18.2162C16.903 16.7597 17.4714 15.8006 18.2885 15.8006C18.6793 15.8006 18.999 16.1203 18.999 16.5111C18.999 16.8308 18.7858 17.115 18.5016 17.186C18.4306 17.3281 18.324 17.6834 18.324 18.2162C18.324 18.7491 18.4306 19.1043 18.5016 19.2464C18.7858 19.353 18.999 19.6017 18.999 19.9214C18.999 20.3122 18.6793 20.6319 18.2885 20.6319Z" fill="#14161B"/>
+</svg>
+    """;
+  static const check = """<svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <path d="M4.5 10L8.5 14L16 5.5" stroke="#898A8D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+    """;
+  static const chevron_right = """<svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <path d="M10.9994 8.01085C10.9999 8.24403 10.9185 8.47001 10.7694 8.64955L6.76942 13.6394C6.59968 13.8432 6.35577 13.9713 6.09134 13.9957C5.82692 14.02 5.56364 13.9385 5.35942 13.7691C5.1552 13.5997 5.02678 13.3563 5.0024 13.0924C4.97802 12.8285 5.05968 12.5658 5.22942 12.362L8.70942 8.01085L5.38942 3.65974C5.30636 3.55766 5.24432 3.4402 5.20689 3.31412C5.16946 3.18804 5.15737 3.05582 5.17131 2.92506C5.18524 2.7943 5.22494 2.66757 5.28812 2.55217C5.35129 2.43677 5.43669 2.33497 5.53942 2.25261C5.64224 2.16122 5.76287 2.092 5.89374 2.0493C6.02462 2.00659 6.16292 1.99132 6.29998 2.00444C6.43704 2.01755 6.56992 2.05877 6.69027 2.12552C6.81063 2.19227 6.91588 2.2831 6.99942 2.39233L10.8294 7.38214C10.9549 7.56685 11.0148 7.78821 10.9994 8.01085Z" fill="white"/>
+</svg>""";
+  static const close = """<svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <path d="M11.175 10L16.425 4.75837C16.5819 4.60145 16.6701 4.38862 16.6701 4.1667C16.6701 3.94478 16.5819 3.73195 16.425 3.57503C16.2681 3.41811 16.0552 3.32996 15.8333 3.32996C15.6114 3.32996 15.3986 3.41811 15.2417 3.57503L9.99999 8.82503L4.75832 3.57503C4.6014 3.41811 4.38857 3.32996 4.16666 3.32996C3.94474 3.32996 3.73191 3.41811 3.57499 3.57503C3.41807 3.73195 3.32991 3.94478 3.32991 4.1667C3.32991 4.38862 3.41807 4.60145 3.57499 4.75837L8.82499 10L3.57499 15.2417C3.49688 15.3192 3.43489 15.4113 3.39258 15.5129C3.35027 15.6144 3.32849 15.7234 3.32849 15.8334C3.32849 15.9434 3.35027 16.0523 3.39258 16.1538C3.43489 16.2554 3.49688 16.3476 3.57499 16.425C3.65246 16.5031 3.74463 16.5651 3.84618 16.6074C3.94773 16.6497 4.05665 16.6715 4.16666 16.6715C4.27667 16.6715 4.38559 16.6497 4.48714 16.6074C4.58869 16.5651 4.68085 16.5031 4.75832 16.425L9.99999 11.175L15.2417 16.425C15.3191 16.5031 15.4113 16.5651 15.5128 16.6074C15.6144 16.6497 15.7233 16.6715 15.8333 16.6715C15.9433 16.6715 16.0523 16.6497 16.1538 16.6074C16.2554 16.5651 16.3475 16.5031 16.425 16.425C16.5031 16.3476 16.5651 16.2554 16.6074 16.1538C16.6497 16.0523 16.6715 15.9434 16.6715 15.8334C16.6715 15.7234 16.6497 15.6144 16.6074 15.5129C16.5651 15.4113 16.5031 15.3192 16.425 15.2417L11.175 10Z" fill="white"/>
+</svg>
+    """;
+  static const eye_visible = """<svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <g opacity="0.2">
+        <path d="M16.6667 11.9999C14.4 11.9999 12.6667 13.7333 12.6667 15.9999C12.6667 18.2666 14.4 19.9999 16.6667 19.9999C18.9334 19.9999 20.6667 18.2666 20.6667 15.9999C20.6667 13.7333 18.9334 11.9999 16.6667 11.9999ZM29.8667 15.4666C27.2 9.19992 22.1334 5.33325 16.6667 5.33325C11.2 5.33325 6.13337 9.19992 3.4667 15.4666C3.33337 15.8666 3.33337 16.1333 3.4667 16.5333C6.13337 22.7999 11.2 26.6666 16.6667 26.6666C22.1334 26.6666 27.2 22.7999 29.8667 16.5333C30 16.1333 30 15.8666 29.8667 15.4666ZM16.6667 22.6666C12.9334 22.6666 10 19.7333 10 15.9999C10 12.2666 12.9334 9.33325 16.6667 9.33325C20.4 9.33325 23.3334 12.2666 23.3334 15.9999C23.3334 19.7333 20.4 22.6666 16.6667 22.6666Z" fill="white"/>
+    </g>
+</svg>
+    """;
+  static const reset = """<svg width="25" height="24" viewBox="0 0 25 24" fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.5 3.3C13.6 1.1 8.8 1.8 5.6 4.7V3C5.6 2.4 5.2 2 4.6 2C4 2 3.6 2.4 3.6 3V7.5C3.6 8.1 4 8.5 4.6 8.5H9.1C9.7 8.5 10.1 8.1 10.1 7.5C10.1 6.9 9.7 6.5 9.1 6.5H6.7C8.2 4.9 10.3 4 12.5 4C16.9 4 20.5 7.6 20.5 12C20.5 12.6 20.9 13 21.5 13C22.1 13 22.5 12.6 22.5 12C22.5 8.4 20.6 5.1 17.5 3.3ZM20.4 15.5H15.9C15.3 15.5 14.9 15.9 14.9 16.5C14.9 17.1 15.3 17.5 15.9 17.5H18.3C16.8 19.1 14.7 20 12.5 20C8.1 20 4.5 16.4 4.5 12C4.5 11.4 4.1 11 3.5 11C2.9 11 2.5 11.4 2.5 12C2.5 17.5 7 22 12.5 22C15.1 22 17.5 21 19.4 19.2V21C19.4 21.6 19.8 22 20.4 22C21 22 21.4 21.6 21.4 21V16.5C21.4 15.9 20.9 15.5 20.4 15.5Z" fill="#FF5858"/>
+</svg>
+    """;
+  static const flag_en = """<svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_1_3942)">
+<rect y="0.5" width="21" height="15" rx="3" fill="white"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 0.5H9V7.5H0V0.5Z" fill="#1A47B8"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M9 0.5V1.5H21V0.5H9ZM9 2.5V3.5H21V2.5H9ZM9 4.5V5.5H21V4.5H9ZM9 6.5V7.5H21V6.5H9ZM0 8.5V9.5H21V8.5H0ZM0 10.5V11.5H21V10.5H0ZM0 12.5V13.5H21V12.5H0ZM0 14.5V15.5H21V14.5H0Z" fill="#F93939"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1 1.5V2.5H2V1.5H1ZM3 1.5V2.5H4V1.5H3ZM5 1.5V2.5H6V1.5H5ZM7 1.5V2.5H8V1.5H7ZM6 2.5V3.5H7V2.5H6ZM4 2.5V3.5H5V2.5H4ZM2 2.5V3.5H3V2.5H2ZM1 3.5V4.5H2V3.5H1ZM3 3.5V4.5H4V3.5H3ZM5 3.5V4.5H6V3.5H5ZM7 3.5V4.5H8V3.5H7ZM1 5.5V6.5H2V5.5H1ZM3 5.5V6.5H4V5.5H3ZM5 5.5V6.5H6V5.5H5ZM7 5.5V6.5H8V5.5H7ZM6 4.5V5.5H7V4.5H6ZM4 4.5V5.5H5V4.5H4ZM2 4.5V5.5H3V4.5H2Z" fill="white"/>
+</g>
+<defs>
+<clipPath id="clip0_1_3942">
+<rect y="0.5" width="21" height="15" rx="3" fill="white"/>
+</clipPath>
+</defs>
+</svg>""";
+  static const flag_fr = """<svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_1_3950)">
+<rect y="0.5" width="21" height="15" rx="3" fill="white"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M14 0.5H21V15.5H14V0.5Z" fill="#F93939"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 0.5H7V15.5H0V0.5Z" fill="#1A47B8"/>
+</g>
+<defs>
+<clipPath id="clip0_1_3950">
+<rect y="0.5" width="21" height="15" rx="3" fill="white"/>
+</clipPath>
+</defs>
+</svg>""";
+  static const flag_es = """<svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_1_3946)">
+<rect y="0.5" width="21" height="15" rx="3" fill="#F93939"/>
+<path d="M19 0.5H2C0.89543 0.5 0 1.39543 0 2.5V13.5C0 14.6046 0.89543 15.5 2 15.5H19C20.1046 15.5 21 14.6046 21 13.5V2.5C21 1.39543 20.1046 0.5 19 0.5Z" fill="#F93939"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 4.5H21V11.5H0V4.5Z" fill="#FFDA2C"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M9 6.72204V9.24204C9 9.94204 8.328 10.502 7.5 10.502H5.5C4.674 10.5 4 9.93704 4 9.24004V6.72004C4 6.14804 4.448 5.67004 5.064 5.51504C5.25 4.99504 5.822 5.46104 6.5 5.46104C7.182 5.46104 7.75 4.99804 7.936 5.51604C8.55 5.67504 9 6.15404 9 6.72204Z" fill="#D4AF2C"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M9 7.5H10V10.5H9V7.5ZM3 7.5H4V10.5H3V7.5Z" fill="#CBCBCB"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M9 9.5H10V10.5H9V9.5ZM3 9.5H4V10.5H3V9.5Z" fill="#1A47B8"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M9 6.5H10V7.5H9V6.5ZM3 6.5H4V7.5H3V6.5Z" fill="#D4AF2C"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M5 6.5H6V8H5V6.5ZM7 8.5H8V10H7V8.5Z" fill="#AF010D"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M5 8.5H6V10H5V8.5Z" fill="#FFDA2C"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M7 6.5H8V8H7V6.5Z" fill="#AE6A3E"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M6 6.5L5 5.5H8L7 6.5H6Z" fill="#AF010D"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M6 4.5H7V5.5H6V4.5Z" fill="#D4AF2C"/>
+</g>
+<defs>
+<clipPath id="clip0_1_3946">
+<rect y="0.5" width="21" height="15" rx="3" fill="white"/>
+</clipPath>
+</defs>
+</svg>""";
+  static const flag_ru = """<svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_1_3954)">
+<rect y="0.5" width="21" height="15" rx="3" fill="#1A47B8"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 10.5H21V15.5H0V10.5Z" fill="#F93939"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 0.5H21V5.5H0V0.5Z" fill="white"/>
+</g>
+<defs>
+<clipPath id="clip0_1_3954">
+<rect y="0.5" width="21" height="15" rx="3" fill="white"/>
+</clipPath>
+</defs>
+</svg>""";
 }

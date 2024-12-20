@@ -74,7 +74,7 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
               AnimatedBuilder(
                   animation: animationController!,
                   builder: (context, child) {
-                    final value = navBarAnimation?.value ?? 0.0;
+                    final value = AppSizing.isMobile(context) || AppSizing.isXMobile(context) ? navBarAnimation?.value ?? 0.0 : 0.0;
                     return Transform(
                       alignment: Alignment.center,
                       transform: Matrix4.identity()
