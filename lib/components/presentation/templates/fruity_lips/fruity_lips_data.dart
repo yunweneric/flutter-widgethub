@@ -16,9 +16,7 @@ class FruityLipsTemplateData {
   static Component component = Component(
     createdAt: DateTime(2024, 7, 9),
     updatedAt: DateTime(2024, 7, 9),
-    // code: code,
     id: "fruity-lips-carousel",
-    // widget: widget,
     codeComponents: [CodeComponent(code: code, widget: widget)],
     description: LangUtil.trans('fruityLipsDescription'),
     title: LangUtil.trans('fruityLipsTitle'),

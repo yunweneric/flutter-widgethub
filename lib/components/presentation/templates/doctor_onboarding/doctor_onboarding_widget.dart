@@ -26,38 +26,41 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   PageController controller = PageController(initialPage: 1);
   final curve = Curves.fastOutSlowIn;
   final duration = const Duration(milliseconds: 700);
-  List<OnboardingData> data() => [
-        OnboardingData(
-          title: 'Meet Doctors Online',
-          description: 'Connect with Specialized Doctors Online for Convenient and Comprehensive Medical Consultations.',
-          image: 'https://github.com/yunweneric/flutter-open-ui/blob/9-implement-the-ui-for-doctor-onboarding/assets/images/doctor_0.png?raw=true',
-        ),
-        OnboardingData(
-          title: "Connect with Specialists",
-          description: "Connect with Specialized Doctors Online for Convenient and Comprehensive Medical Consultations.",
-          image: 'https://github.com/yunweneric/flutter-open-ui/blob/9-implement-the-ui-for-doctor-onboarding/assets/images/doctor_1.png?raw=true',
-        ),
-        OnboardingData(
-          title: 'Thousands of Online Specialists',
-          description: ' Explore a Vast Array of Online Medical Specialists, Offering an Extensive Range of Expertise Tailored to Your Healthcare Needs.',
-          image: 'https://github.com/yunweneric/flutter-open-ui/blob/9-implement-the-ui-for-doctor-onboarding/assets/images/doctor_2.png?raw=true',
-        ),
-        OnboardingData(
-          title: 'Meet Doctors Online',
-          description: 'Connect with Specialized Doctors Online for Convenient and Comprehensive Medical Consultations.',
-          image: 'https://github.com/yunweneric/flutter-open-ui/blob/9-implement-the-ui-for-doctor-onboarding/assets/images/doctor_0.png?raw=true',
-        ),
-        OnboardingData(
-          title: "Connect with Specialists",
-          description: "Connect with Specialized Doctors Online for Convenient and Comprehensive Medical Consultations.",
-          image: 'https://github.com/yunweneric/flutter-open-ui/blob/9-implement-the-ui-for-doctor-onboarding/assets/images/doctor_1.png?raw=true',
-        ),
-        OnboardingData(
-          title: 'Thousands of Online Specialists',
-          description: ' Explore a Vast Array of Online Medical Specialists, Offering an Extensive Range of Expertise Tailored to Your Healthcare Needs.',
-          image: 'https://github.com/yunweneric/flutter-open-ui/blob/9-implement-the-ui-for-doctor-onboarding/assets/images/doctor_2.png?raw=true',
-        ),
-      ];
+  List<OnboardingData> data() {
+    const baseUrl = "https://raw.githubusercontent.com/yunweneric/flutter-open-ui/refs/heads/9-implement-the-ui-for-doctor-onboarding/assets/images/";
+    return [
+      OnboardingData(
+        title: 'Meet Doctors Online',
+        description: 'Connect with Specialized Doctors Online for Convenient and Comprehensive Medical Consultations.',
+        image: '$baseUrl/doctor_${0}.png',
+      ),
+      OnboardingData(
+        title: "Connect with Specialists",
+        description: "Connect with Specialized Doctors Online for Convenient and Comprehensive Medical Consultations.",
+        image: '$baseUrl/doctor_${1}.png',
+      ),
+      OnboardingData(
+        title: 'Thousands of Online Specialists',
+        description: ' Explore a Vast Array of Online Medical Specialists, Offering an Extensive Range of Expertise Tailored to Your Healthcare Needs.',
+        image: '$baseUrl/doctor_${2}.png',
+      ),
+      OnboardingData(
+        title: 'Meet Doctors Online',
+        description: 'Connect with Specialized Doctors Online for Convenient and Comprehensive Medical Consultations.',
+        image: '$baseUrl/doctor_${0}.png',
+      ),
+      OnboardingData(
+        title: "Connect with Specialists",
+        description: "Connect with Specialized Doctors Online for Convenient and Comprehensive Medical Consultations.",
+        image: '$baseUrl/doctor_${1}.png',
+      ),
+      OnboardingData(
+        title: 'Thousands of Online Specialists',
+        description: ' Explore a Vast Array of Online Medical Specialists, Offering an Extensive Range of Expertise Tailored to Your Healthcare Needs.',
+        image: '$baseUrl/doctor_${2}.png',
+      ),
+    ];
+  }
 
   @override
   void initState() {

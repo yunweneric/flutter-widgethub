@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 
 class SideBarItem extends StatefulWidget {
   final String title;
@@ -36,7 +37,14 @@ class _SideBarItemState extends State<SideBarItem> {
           alignment: Alignment.centerLeft,
         ),
         onPressed: widget.onPressed,
-        child: Text(widget.title, style: Theme.of(context).textTheme.bodyMedium),
+        child: Builder(builder: (context) {
+          final name = LangUtil.trans("SubComponentCategoryEnum.${widget.title}");
+          final formatted = name[0].toUpperCase() + name.split("_").join(" ").substring(1).toLowerCase();
+          return Text(
+            formatted,
+            style: Theme.of(context).textTheme.bodyMedium,
+          );
+        }),
       ),
     );
   }

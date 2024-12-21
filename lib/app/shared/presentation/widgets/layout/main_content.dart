@@ -22,11 +22,9 @@ class _MainContentState extends State<MainContent> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          width: AppSizing.kWPercentage(
-              context, AppSizing.isMobile(context) ? 100 : 100),
+          width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 100),
           margin: EdgeInsets.symmetric(
-            horizontal: AppSizing.kWPercentage(
-                context, AppSizing.isMobile(context) ? 5 : 2),
+            horizontal: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 5 : 2),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,22 +32,18 @@ class _MainContentState extends State<MainContent> {
               AppSizing.khSpacer(30.h),
               TextButton.icon(
                 style: TextButton.styleFrom(
-                  padding: AppSizing.isMobile(context)
-                      ? null
-                      : AppSizing.kpadding(15.w, 20.h),
+                  padding: AppSizing.isMobile(context) ? null : AppSizing.kpadding(15.w, 20.h),
                   side: BorderSide(color: Theme.of(context).dividerColor),
                 ),
                 onPressed: () => context.go(RouteNames.components),
                 // onPressed: () => context.pop(),
                 // onPressed: () {},
                 icon: const AppIcon(icon: AppIcons.back),
-                label:
-                    Text(LangUtil.trans("back"), style: Theme.of(context).textTheme.bodyMedium),
+                label: Text(LangUtil.trans("back"), style: Theme.of(context).textTheme.bodyMedium),
               ),
               AppSizing.khSpacer(30.h),
               ConstrainedBox(
-                constraints: BoxConstraints(
-                    minHeight: AppSizing.kHPercentage(context, 60)),
+                constraints: BoxConstraints(minHeight: AppSizing.kHPercentage(context, 60)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [...widget.children],

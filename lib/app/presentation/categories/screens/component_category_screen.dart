@@ -30,7 +30,11 @@ class _ComponentCategoryScreenState extends State<ComponentCategoryScreen> {
                   ? const SizedBox()
                   : Column(
                       children: [
-                        Text(activeCategory.subCategory.describe(), style: Theme.of(context).textTheme.displayLarge),
+                        Builder(builder: (context) {
+                          final name = LangUtil.trans("${activeCategory.subCategory}");
+                          final formatted = name[0].toUpperCase() + name.split("_").join(" ").substring(1).toLowerCase();
+                          return Text(formatted, style: Theme.of(context).textTheme.displayLarge);
+                        }),
                         AppSizing.kh20Spacer(),
                       ],
                     ),
@@ -47,7 +51,7 @@ class _ComponentCategoryScreenState extends State<ComponentCategoryScreen> {
                   child: components.isEmpty
                       ? SizedBox(
                           height: AppSizing.kHPercentage(context, 50),
-                          child: Center(child: Text(LangUtil.trans("noItemInThis",args: [widget.subCategory??''] ))),
+                          child: Center(child: Text(LangUtil.trans("noItemInThis", args: [widget.subCategory ?? '']))),
                         )
                       : Wrap(
                           alignment: WrapAlignment.spaceBetween,
