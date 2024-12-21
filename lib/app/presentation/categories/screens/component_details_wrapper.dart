@@ -40,11 +40,11 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
           final canNext = activeIndex < state.allComponents.length - 1;
           return MainContent(
             children: [
-              Text(component.title, style: Theme.of(context).textTheme.displayLarge),
+              Text(LangUtil.trans(component.title), style: Theme.of(context).textTheme.displayLarge),
               AppSizing.kh10Spacer(),
-              Text(component.description, style: Theme.of(context).textTheme.bodyMedium),
+              Text(LangUtil.trans(component.description), style: Theme.of(context).textTheme.bodyMedium),
               AppSizing.kh20Spacer(),
-              Text("Setup", style: Theme.of(context).textTheme.displayMedium),
+              Text(LangUtil.trans("Setup"), style: Theme.of(context).textTheme.displayMedium),
               AppSizing.kh10Spacer(),
               AppSizing.kh10Spacer(),
               CodeHighlight(code: component.setup),

@@ -1,5 +1,4 @@
-const doctorOnboardingCode = """
-import 'package:flutter/material.dart';
+const doctorOnboardingCode = """import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OnboardingData {
@@ -27,38 +26,41 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   PageController controller = PageController(initialPage: 1);
   final curve = Curves.fastOutSlowIn;
   final duration = const Duration(milliseconds: 700);
-  List<OnboardingData> data() => [
-        OnboardingData(
-          title: 'Meet Doctors Online',
-          description: 'Connect with Specialized Doctors Online for Convenient and Comprehensive Medical Consultations.',
-          image: 'https://github.com/yunweneric/flutter-open-ui/blob/9-implement-the-ui-for-doctor-onboarding/assets/images/doctor_0.png?raw=true',
-        ),
-        OnboardingData(
-          title: "Connect with Specialists",
-          description: "Connect with Specialized Doctors Online for Convenient and Comprehensive Medical Consultations.",
-          image: 'https://github.com/yunweneric/flutter-open-ui/blob/9-implement-the-ui-for-doctor-onboarding/assets/images/doctor_1.png?raw=true',
-        ),
-        OnboardingData(
-          title: 'Thousands of Online Specialists',
-          description: ' Explore a Vast Array of Online Medical Specialists, Offering an Extensive Range of Expertise Tailored to Your Healthcare Needs.',
-          image: 'https://github.com/yunweneric/flutter-open-ui/blob/9-implement-the-ui-for-doctor-onboarding/assets/images/doctor_2.png?raw=true',
-        ),
-        OnboardingData(
-          title: 'Meet Doctors Online',
-          description: 'Connect with Specialized Doctors Online for Convenient and Comprehensive Medical Consultations.',
-          image: 'https://github.com/yunweneric/flutter-open-ui/blob/9-implement-the-ui-for-doctor-onboarding/assets/images/doctor_0.png?raw=true',
-        ),
-        OnboardingData(
-          title: "Connect with Specialists",
-          description: "Connect with Specialized Doctors Online for Convenient and Comprehensive Medical Consultations.",
-          image: 'https://github.com/yunweneric/flutter-open-ui/blob/9-implement-the-ui-for-doctor-onboarding/assets/images/doctor_1.png?raw=true',
-        ),
-        OnboardingData(
-          title: 'Thousands of Online Specialists',
-          description: ' Explore a Vast Array of Online Medical Specialists, Offering an Extensive Range of Expertise Tailored to Your Healthcare Needs.',
-          image: 'https://github.com/yunweneric/flutter-open-ui/blob/9-implement-the-ui-for-doctor-onboarding/assets/images/doctor_2.png?raw=true',
-        ),
-      ];
+  List<OnboardingData> data() {
+    const baseUrl = "https://raw.githubusercontent.com/yunweneric/flutter-open-ui/refs/heads/9-implement-the-ui-for-doctor-onboarding/assets/images/";
+    return [
+      OnboardingData(
+        title: 'Meet Doctors Online',
+        description: 'Connect with Specialized Doctors Online for Convenient and Comprehensive Medical Consultations.',
+        image: '\$baseUrl/doctor_${0}.png',
+      ),
+      OnboardingData(
+        title: "Connect with Specialists",
+        description: "Connect with Specialized Doctors Online for Convenient and Comprehensive Medical Consultations.",
+        image: '\$baseUrl/doctor_${1}.png',
+      ),
+      OnboardingData(
+        title: 'Thousands of Online Specialists',
+        description: ' Explore a Vast Array of Online Medical Specialists, Offering an Extensive Range of Expertise Tailored to Your Healthcare Needs.',
+        image: '\$baseUrl/doctor_${2}.png',
+      ),
+      OnboardingData(
+        title: 'Meet Doctors Online',
+        description: 'Connect with Specialized Doctors Online for Convenient and Comprehensive Medical Consultations.',
+        image: '\$baseUrl/doctor_${0}.png',
+      ),
+      OnboardingData(
+        title: "Connect with Specialists",
+        description: "Connect with Specialized Doctors Online for Convenient and Comprehensive Medical Consultations.",
+        image: '\$baseUrl/doctor_${1}.png',
+      ),
+      OnboardingData(
+        title: 'Thousands of Online Specialists',
+        description: ' Explore a Vast Array of Online Medical Specialists, Offering an Extensive Range of Expertise Tailored to Your Healthcare Needs.',
+        image: '\$baseUrl/doctor_${2}.png',
+      ),
+    ];
+  }
 
   @override
   void initState() {
@@ -129,7 +131,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                   topLeft: Radius.circular(20.r * value),
                                   topRight: Radius.circular(20.r * value),
                                 ),
-                                child:  Image.network(
+                                child: Image.network(
                                   width: AppSizing.width(context),
                                   height: AppSizing.height(context) * 0.6,
                                   data()[activeIndex].image,
@@ -137,7 +139,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                   errorBuilder: (c, i, e) {
                                     return const CircularProgressIndicator.adaptive();
                                   },
-                                  loadingBuilder: (c, i, e) {
+                                  loadingBuilder: (c, i, loadingProgress) {
+                                    if (loadingProgress?.cumulativeBytesLoaded == loadingProgress?.expectedTotalBytes) {
+                                      return i;
+                                    }
+                                    // return Text("");
                                     return const CircularProgressIndicator.adaptive();
                                   },
                                 ),
@@ -380,5 +386,6 @@ class AppColors {
   static const Color TEXTWHITE = Color(0XFFFFFFFF);
   static const Color RED = Color(0xFFFF3F3F);
 }
+
 
 """;

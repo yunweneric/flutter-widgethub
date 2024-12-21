@@ -56,45 +56,48 @@ class _SideBarState extends State<SideBar> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   AppSizing.khSpacer(30.h),
-                  ...items.map((item) {
-                    return Container(
-                      margin: EdgeInsets.only(bottom: 30.h),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(item.category.describe(), style: Theme.of(context).textTheme.displayMedium),
-                          AppSizing.khSpacer(15.h),
-                          Stack(
-                            children: [
-                              ListView.builder(
-                                padding: EdgeInsets.zero,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemCount: item.items.length,
-                                shrinkWrap: true,
-                                itemBuilder: (context, index) {
-                                  final sideBarItem = item.items[index];
-                                  return SideBarItem(
-                                    isActive: activePath.contains(sideBarItem.subCategory.link()),
-                                    title: sideBarItem.subCategory.describe(),
-                                    onPressed: () {
-                                      if (AppSizing.isMobile(context)) sidebarBloc.add(UpdateSideBarEvent(newStatus: false));
-                                      componentBloc.add(UpdateActiveCategoryEvent(category: sideBarItem));
-                                      setState(() => activeSideBar = sideBarItem);
-                                      if (sideBarItem.subCategory == SubComponentCategoryEnum.REQUEST_A_COMPONENT) {
-                                        UtilHelper.openUrl("https://github.com/yunweneric/flutter-widgethub/issues/new");
-                                      } else {
-                                        context.go("/components/${sideBarItem.category.link()}/${sideBarItem.subCategory.link()}");
-                                      }
-                                    },
-                                  );
-                                },
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    );
-                  }),
+                  ...items.map(
+                    (item) {
+                      return Container(
+                        margin: EdgeInsets.only(bottom: 30.h),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(item.category.describe(), style: Theme.of(context).textTheme.displayMedium),
+                            AppSizing.khSpacer(15.h),
+                            Stack(
+                              children: [
+                                ListView.builder(
+                                  padding: EdgeInsets.zero,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  itemCount: item.items.length,
+                                  shrinkWrap: true,
+                                  itemBuilder: (context, index) {
+                                    final sideBarItem = item.items[index];
+                                    return SideBarItem(
+                                      isActive: activePath.contains(sideBarItem.subCategory.link()),
+                                      title: sideBarItem.subCategory.describe(),
+                                      onPressed: () {
+                                        if (AppSizing.isMobile(context)) sidebarBloc.add(UpdateSideBarEvent(newStatus: false));
+                                        componentBloc.add(UpdateActiveCategoryEvent(category: sideBarItem));
+                                        setState(() => activeSideBar = sideBarItem);
+                                        if (sideBarItem.subCategory == SubComponentCategoryEnum.REQUEST_A_COMPONENT) {
+                                          UtilHelper.openUrl("https://github.com/yunweneric/flutter-widgethub/issues/new");
+                                        } else {
+                                          context.go("/components/${sideBarItem.category.link()}/${sideBarItem.subCategory.link()}");
+                                        }
+                                      },
+                                    );
+                                  },
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                  AppSizing.khSpacer(100.h),
                 ],
               ),
             ),

@@ -79,24 +79,22 @@ class _AssetsSectionState extends State<AssetsSection> {
           ),
           AppSizing.kh20Spacer(),
           TextButton.icon(
-            style: TextButton.styleFrom(backgroundColor: Theme.of(context).scaffoldBackgroundColor),
-            iconAlignment: IconAlignment.end,
-            onPressed: () {
-              componentBloc.add(
-                UpdateActiveCategoryEvent(
-                  category: AppCategoryModel(
-                    widget: widget,
-                    category: ComponentCategoryEnum.INTRODUCTION,
-                    subCategory: SubComponentCategoryEnum.ALL_COMPONENTS,
+              style: TextButton.styleFrom(backgroundColor: Theme.of(context).scaffoldBackgroundColor),
+              iconAlignment: IconAlignment.end,
+              onPressed: () {
+                componentBloc.add(
+                  UpdateActiveCategoryEvent(
+                    category: AppCategoryModel(
+                      widget: widget,
+                      category: ComponentCategoryEnum.INTRODUCTION,
+                      subCategory: SubComponentCategoryEnum.ALL_COMPONENTS,
+                    ),
                   ),
-                ),
-              );
-              context.go(RouteNames.components);
-            },
-            icon: const Icon(Icons.arrow_forward_rounded),
-            label:  Text(LangUtil.trans("browseAllAssets"))
-
-          ),
+                );
+                context.go(RouteNames.components);
+              },
+              icon: const Icon(Icons.arrow_forward_rounded),
+              label: Text(LangUtil.trans("browseAllAssets"))),
           AppSizing.kh20Spacer(),
           Wrap(
             runSpacing: 40.h,
@@ -149,70 +147,69 @@ class _AssetsSectionState extends State<AssetsSection> {
                                   Text(
                                     LangUtil.trans("comingSoon"),
                                     style: Theme.of(context).textTheme.displayLarge,
-                                  )
-,
+                                  ),
                                   AppSizing.kh10Spacer(),
-                                   Text(LangUtil.trans("comingSoonDescription"))
-
+                                  Text(LangUtil.trans("comingSoonDescription"))
                                 ],
                               ),
                             )
-                          : Container(
-                              // color: Colors.teal,
-                              child: Wrap(
-                                // spacing: AppSizing.kWPercentage(context, 2.5),
-                                runSpacing: AppSizing.kWPercentage(context, 2.5),
-                                crossAxisAlignment: WrapCrossAlignment.start,
-                                alignment: AppSizing.isTablet(context) ? WrapAlignment.end : WrapAlignment.start,
-                                runAlignment: WrapAlignment.start,
-                                children: List.generate(
-                                  displayWidget.length,
-                                  (index) {
-                                    return Container(
-                                      margin: EdgeInsets.only(
-                                        left: AppSizing.isTablet(context) ? AppSizing.kWPercentage(context, 2.5) : 0,
-                                        right: AppSizing.isTablet(context) ? 0 : AppSizing.kWPercentage(context, 2.5),
-                                      ),
-                                      child: Builder(
-                                        builder: (context) {
-                                          final item = displayWidget[index];
-                                          return InkWell(
-                                            enableFeedback: false,
-                                            hoverColor: Theme.of(context).scaffoldBackgroundColor,
-                                            highlightColor: Theme.of(context).scaffoldBackgroundColor,
-                                            focusColor: Theme.of(context).scaffoldBackgroundColor,
-                                            splashColor: Theme.of(context).scaffoldBackgroundColor,
-                                            onTap: () {
-                                              context.go("/components/${item.category.link()}/${item.subCategory.link()}");
-                                            },
-                                            child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                DeviceSectionFrame(
-                                                  deviceAlignment: item.alignment,
-                                                  parentWidth: generateWidth(),
-                                                  parentHeight: AppSizing.kWPercentage(
-                                                    context,
-                                                    AppSizing.isXMobile(context)
-                                                        ? 60
-                                                        : AppSizing.isMobile(context)
-                                                            ? 35
-                                                            : 15,
-                                                  ),
-                                                  childWidth: AppSizing.kWPercentage(context, 10),
-                                                  childHeight: AppSizing.kWPercentage(context, 22),
-                                                  child: item.widget,
+                          : Wrap(
+                              // spacing: AppSizing.kWPercentage(context, 2.5),
+                              runSpacing: AppSizing.kWPercentage(context, 2.5),
+                              crossAxisAlignment: WrapCrossAlignment.start,
+                              alignment: AppSizing.isTablet(context) ? WrapAlignment.end : WrapAlignment.start,
+                              runAlignment: WrapAlignment.start,
+                              children: List.generate(
+                                displayWidget.length,
+                                (index) {
+                                  return Container(
+                                    margin: EdgeInsets.only(
+                                      left: AppSizing.isTablet(context) ? AppSizing.kWPercentage(context, 2.5) : 0,
+                                      right: AppSizing.isTablet(context) ? 0 : AppSizing.kWPercentage(context, 2.5),
+                                    ),
+                                    child: Builder(
+                                      builder: (context) {
+                                        final item = displayWidget[index];
+                                        return InkWell(
+                                          enableFeedback: false,
+                                          hoverColor: Theme.of(context).scaffoldBackgroundColor,
+                                          highlightColor: Theme.of(context).scaffoldBackgroundColor,
+                                          focusColor: Theme.of(context).scaffoldBackgroundColor,
+                                          splashColor: Theme.of(context).scaffoldBackgroundColor,
+                                          onTap: () {
+                                            context.go("/components/${item.category.link()}/${item.subCategory.link()}");
+                                          },
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              DeviceSectionFrame(
+                                                deviceAlignment: item.alignment,
+                                                parentWidth: generateWidth(),
+                                                parentHeight: AppSizing.kWPercentage(
+                                                  context,
+                                                  AppSizing.isXMobile(context)
+                                                      ? 60
+                                                      : AppSizing.isMobile(context)
+                                                          ? 35
+                                                          : 15,
                                                 ),
-                                                AppSizing.kh20Spacer(),
-                                                Text(item.subCategory.describe())
-                                              ],
-                                            ),
-                                          );
-                                        },
-                                      ),
-                                    );
-                                  },
-                                ),
+                                                childWidth: AppSizing.kWPercentage(context, 10),
+                                                childHeight: AppSizing.kWPercentage(context, 22),
+                                                child: item.widget,
+                                              ),
+                                              AppSizing.kh20Spacer(),
+                                              Builder(builder: (context) {
+                                                final name = LangUtil.trans("${item.subCategory}");
+                                                final formatted = name[0].toUpperCase() + name.split("_").join(" ").substring(1).toLowerCase();
+                                                return Text(formatted);
+                                              })
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  );
+                                },
                               ),
                             ),
                     ),

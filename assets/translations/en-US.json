@@ -1,9 +1,30 @@
 {
+   "SubComponentCategoryEnum": {
+      "GETTING_STARTED": "GETTING STARTED",
+      "REQUEST_A_COMPONENT": "REQUEST_A_COMPONENT",
+      "ALL_COMPONENTS": "ALL_COMPONENTS",
+      "APPS": "APPS",
+      "ONBOARDING_SCREENS": "ONBOARDING_SCREENS",
+      "HOME_SCREENS": "HOME_SCREENS",
+      "AUTHENTICATION_SCREENS": "AUTHENTICATION_SCREENS",
+      "KITS": "KITS",
+      "SWITCHERS": "SWITCHERS",
+      "INPUTS": "INPUTS",
+      "TEXTS": "TEXTS",
+      "TABS": "TABS",
+      "LOADERS": "LOADERS",
+      "BUTTONS": "BUTTONS",
+      "BOTTOM_NAV_BARS": "BOTTOM_NAV_BARS",
+      "DRAWERS": "DRAWERS",
+      "SLIDERS_AND_CAROUSELS": "SLIDERS_AND_CAROUSELS",
+      "LINEAR_GRADIENTS": "LINEAR_GRADIENTS"
+   },
    "noItemInThis": "No Item in this {}!",
    "notFoundInCollections!": "not found in collections!",
    "noItemInThisCategory": "No Item in this category!",
    "previous": "Previous",
    "next": "Next",
+   "Setup": "Setup",
    "resources": "Resources",
    "openGithubRepositor": "Open Github Repositor",
    "downloadAssets": "Download assets",
@@ -93,5 +114,18 @@
    "leaveAReviewTitle": "Animate Leave A Review",
    "leaveAReviewDescription": "A new and fun way of getting feedback from your flutter app. Inspired by @musabalfawal",
    "nikeZoomerTitle": "Animated Nike Zoomer",
-   "nikeZoomerDescription": "An animated UI for nike shoes, Animated with a full screen view on mobile and zoom effect on web!"
+   "nikeZoomerDescription": "An animated UI for nike shoes, Animated with a full screen view on mobile and zoom effect on web!",
+   "categories": {
+      "template_desc": "A wide range of pre-built UI templates from app clones to demo apps all in one place",
+      "introduction_desc": "A wide range of pre-built UI templates from app clones to demo apps all in one place",
+      "bloc_desc": "A collection of reusable layout blocks to help you create consistent and responsive layouts",
+      "animation_desc": "Smooth and captivating animations that can be easily applied to any element.",
+      "effects_desc": "Visual effects ranging from shadows and gradients to more complex transformations"
+   },
+   "app_components": {
+      "apple_books": {
+         "title": "Apple Books FAB",
+         "description": "The Apple Books Floating action button animation implemented with basic micro interaction"
+      }
+   }
 }

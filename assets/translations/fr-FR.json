@@ -1,9 +1,30 @@
 {
+   "SubComponentCategoryEnum": {
+      "GETTING_STARTED": "DÉMARRER",
+      "REQUEST_A_COMPONENT": "DEMANDER_UN_COMPOSANT",
+      "ALL_COMPONENTS": "TOUS_LES_COMPOSANTS",
+      "APPS": "APPLICATIONS",
+      "ONBOARDING_SCREENS": "ÉCRANS_D'ACCUEIL",
+      "HOME_SCREENS": "ÉCRANS_D'ACCUEIL",
+      "AUTHENTICATION_SCREENS": "ÉCRANS_D'AUTHENTIFICATION",
+      "KITS": "KITS",
+      "SWITCHERS": "COMMUTATEURS",
+      "INPUTS": "ENTRÉES",
+      "TEXTS": "TEXTES",
+      "TABS": "ONGLETS",
+      "LOADERS": "CHARGEURS",
+      "BUTTONS": "BOUTONS",
+      "BOTTOM_NAV_BARS": "BARRES_DE_NAVIGATION_INFÉRIEURE",
+      "DRAWERS": "TIROIRS",
+      "SLIDERS_AND_CAROUSELS": "CURSEURS_ET_CARROUSELS",
+      "LINEAR_GRADIENTS": "DÉGRADÉS_LINÉAIRES"
+   },
    "noItemInThis": "Aucun élément dans ce {}!",
    "notFoundInCollections!": "non trouvé dans les collections!",
    "noItemInThisCategory": "Aucun élément dans cette catégorie!",
    "previous": "Précédent",
    "next": "Suivant",
+   "Setup": "Instalation",
    "resources": "Ressources",
    "openGithubRepositor": "Ouvrir le dépôt Github",
    "downloadAssets": "Télécharger les ressources",
@@ -93,5 +114,18 @@
    "leaveAReviewTitle": "Laisser un avis animé",
    "leaveAReviewDescription": "Une nouvelle manière amusante de recueillir des retours sur votre application Flutter. Inspiré par @musabalfawal",
    "nikeZoomerTitle": "Nike Zoomer animé",
-   "nikeZoomerDescription": "Une interface animée pour les chaussures Nike, avec une vue plein écran sur mobile et un effet de zoom sur le web!"
+   "nikeZoomerDescription": "Une interface animée pour les chaussures Nike, avec une vue plein écran sur mobile et un effet de zoom sur le web!",
+   "categories": {
+      "template_desc": "Une large gamme de modèles d'interface utilisateur préconstruits, des clones d'applications aux applications de démonstration, tout en un seul endroit.",
+      "introduction_desc": "Une large gamme de modèles d'interface utilisateur préconstruits, des clones d'applications aux applications de démonstration, tout en un seul endroit.",
+      "bloc_desc": "Une collection de blocs de mise en page réutilisables pour vous aider à créer des mises en page cohérentes et réactives.",
+      "animation_desc": "Des animations fluides et captivantes qui peuvent être facilement appliquées à n'importe quel élément.",
+      "effects_desc": "Des effets visuels allant des ombres et dégradés à des transformations plus complexes."
+   },
+   "app_components": {
+      "apple_books": {
+         "title": "Bouton Flottant Apple Books",
+         "description": "L'animation du bouton d'action flottant Apple Books mise en œuvre avec une micro-interaction basique."
+      }
+   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/components/presentation/templates/basuu/models/basuu_category.dart';
+import 'package:flutterui/components/presentation/templates/basuu/screens/basuu_pre_start_screen.dart';
 import 'package:flutterui/components/presentation/templates/basuu/shared/utils/basuu_colors.dart';
 import 'package:flutterui/components/presentation/templates/basuu/widgets/basuu_animated_child.dart';
 import 'package:flutterui/components/presentation/templates/basuu/widgets/basuu_animated_screen.dart';
@@ -59,7 +60,7 @@ class _ChooseCategoryScreenState extends State<BasuuChooseCategoryScreen> {
                       //   BasuuPreStartScreen(categories: categories.where((item) => item.isChecked == true).toList()),
                       // );
                     },
-              text: LangUtil.trans("continue"),
+              text: "Continue",
             ),
           ),
           body: SafeArea(
@@ -73,7 +74,7 @@ class _ChooseCategoryScreenState extends State<BasuuChooseCategoryScreen> {
                       animation: animation,
                       offset: -1,
                       child: Text(
-                        LangUtil.trans("selectCategory"),
+                        "Select categories for learning language",
                         style: theme.textTheme.displayLarge,
                         textAlign: TextAlign.center,
                       ),
@@ -111,7 +112,7 @@ class _ChooseCategoryScreenState extends State<BasuuChooseCategoryScreen> {
                                         ),
                                       ),
                                       title: Text(
-                                        "${category.title} ${LangUtil.trans('words')}",
+                                        "${category.title} words",
                                         style: theme.textTheme.displayMedium,
                                       ),
                                       trailing: SizedBox(
@@ -146,8 +147,8 @@ class _ChooseCategoryScreenState extends State<BasuuChooseCategoryScreen> {
                       ),
                     ),
                     AppSizing.kh10Spacer(),
-                     Text(
-                      LangUtil.trans("wordsCoverOfEnglishLanguage"),
+                    const Text(
+                      "5,000 words cover 97% of the English language",
                       textAlign: TextAlign.center,
                     )
                   ],

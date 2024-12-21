@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/components/presentation/templates/basuu/shared/basuu_icons.dart';
 import 'package:flutterui/components/presentation/templates/basuu/widgets/basuu_animated_child.dart';
@@ -23,10 +22,10 @@ class BasuuChooseLanguageScreen extends StatefulWidget {
 
 class _ChooseLanguageScreenState extends State<BasuuChooseLanguageScreen> {
   List<BasuuLanguage> languages = [
-    BasuuLanguage(icon: BasuuIcons.flag_en, name: LangUtil.trans("english")),
-    BasuuLanguage(icon: BasuuIcons.flag_es, name: LangUtil.trans("spanish")),
-    BasuuLanguage(icon: BasuuIcons.flag_fr, name: LangUtil.trans("french")),
-    BasuuLanguage(icon: BasuuIcons.flag_ru, name: LangUtil.trans("russian")),
+    BasuuLanguage(icon: BasuuIcons.flag_en, name: "English"),
+    BasuuLanguage(icon: BasuuIcons.flag_es, name: "Spanish"),
+    BasuuLanguage(icon: BasuuIcons.flag_fr, name: "French"),
+    BasuuLanguage(icon: BasuuIcons.flag_ru, name: "Russian"),
   ];
   @override
   Widget build(BuildContext context) {
@@ -58,7 +57,7 @@ class _ChooseLanguageScreenState extends State<BasuuChooseLanguageScreen> {
                           child: const BasuuIcon(icon: BasuuIcons.arrow_back, size: 20),
                         ),
                         title: Text(
-                         LangUtil.trans( "whatLanguageYouWantStudy"),
+                          "What language are you want to study?",
                           style: theme.textTheme.displayLarge,
                         ),
                       ),

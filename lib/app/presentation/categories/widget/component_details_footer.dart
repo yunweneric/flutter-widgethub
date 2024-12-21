@@ -48,7 +48,10 @@ class ComponentDetailsFooter extends StatelessWidget {
                     icon: const AppIcon(icon: AppIcons.back),
                   ),
                   AppSizing.kh10Spacer(),
-                  Text(state.allComponents[activeIndex - 1].title, style: Theme.of(context).textTheme.displayMedium),
+                  Text(
+                    LangUtil.trans(state.allComponents[activeIndex - 1].title),
+                    style: Theme.of(context).textTheme.displayMedium,
+                  ),
                 ],
               ),
             if (canNext)
@@ -69,7 +72,10 @@ class ComponentDetailsFooter extends StatelessWidget {
                     ),
                   ),
                   AppSizing.kh10Spacer(),
-                  Text(state.allComponents[activeIndex + 1].title, style: Theme.of(context).textTheme.displayMedium),
+                  Text(
+                    LangUtil.trans(state.allComponents[activeIndex + 1].title),
+                    style: Theme.of(context).textTheme.displayMedium,
+                  ),
                 ],
               )
           ],

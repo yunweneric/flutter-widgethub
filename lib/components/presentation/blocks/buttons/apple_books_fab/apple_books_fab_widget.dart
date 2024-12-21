@@ -40,6 +40,20 @@ class _AppleBooksFABState extends State<AppleBooksFAB> with SingleTickerProvider
     });
   }
 
+  Widget title(String title) {
+    return Text(
+      title,
+      style: const TextStyle(fontSize: 32, height: 2.0, fontWeight: FontWeight.bold),
+    );
+  }
+
+  Widget subTitle(String title) {
+    return Text(
+      title,
+      style: const TextStyle(fontSize: 16, height: 1.5),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Theme(
@@ -95,57 +109,34 @@ class _AppleBooksFABState extends State<AppleBooksFAB> with SingleTickerProvider
                       child: Column(
                         children: [
                           AppSizing.k20(context),
-                          RichText(
-                            text: const TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: "The Journey of Flutura",
-                                  style: TextStyle(fontSize: 22, height: 2.5),
-                                ),
-                                TextSpan(
-                                  text:
-                                      "\nIn a quiet little town tucked amidst misty hills, there lived a young programmer named Kai. Though Kai was an adept coder, they felt constrained by the technology they used. Everything seemed overly complicated, fragmented, and, at times, soulless. Kai longed to create something beautiful, something that danced in people’s lives like a butterfly in a garden.",
-                                  style: TextStyle(fontSize: 16, height: 1.5),
-                                ),
-                                TextSpan(
-                                  text: "\nA New Beginning",
-                                  style: TextStyle(fontSize: 22, height: 2.5),
-                                ),
-                                TextSpan(
-                                  text:
-                                      "\nThe next day, Kai dived into Flutter, guided by its companion language, Dart. The syntax felt like a friendly invitation. Unlike some of the verbose languages they had used, Dart was clean, concise, and intuitive.",
-                                  style: TextStyle(fontSize: 16, height: 1.5),
-                                ),
-                                TextSpan(
-                                  text: "\n“Hello, world,” Kai typed eagerly, following the Flutter documentation. Within moments, a sleek app emerged on the emulator—a polished screen with a single centered text: Hello, Flutter!",
-                                  style: TextStyle(fontSize: 16, height: 1.5),
-                                ),
-                                TextSpan(
-                                  text:
-                                      "\nAs the days turned into weeks, Kai’s skills blossomed. Flutter’s hot reload became their favorite tool—an almost magical ability to see changes instantly, like a painter watching their strokes come alive on the canvas.",
-                                  style: TextStyle(fontSize: 16, height: 1.5),
-                                ),
-                                TextSpan(
-                                  text: "\nMeeting Flutura",
-                                  style: TextStyle(fontSize: 22, height: 2.5),
-                                ),
-                                TextSpan(
-                                  text:
-                                      "\nOne late evening, surrounded by empty coffee mugs and glowing screens, Kai began a new project: an app to help local farmers track their crops and predict harvest yields. They named the app Flutura, inspired by the Albanian word for butterfly.",
-                                  style: TextStyle(fontSize: 16, height: 1.5),
-                                ),
-                                TextSpan(
-                                  text:
-                                      "\nThe app needed to feel alive, so Kai ventured into Flutter’s animation library. They crafted elegant transitions between screens, buttons that gently pulsed when tapped, and cards that flipped like turning pages. With Dart’s type safety and powerful tooling, debugging was a breeze.",
-                                  style: TextStyle(fontSize: 16, height: 1.5),
-                                ),
-                                TextSpan(
-                                  text:
-                                      "\nAs the days turned into weeks, Kai’s skills blossomed. Flutter’s hot reload became their favorite tool—an almost magical ability to see changes instantly, like a painter watching their strokes come alive on the canvas.",
-                                  style: TextStyle(fontSize: 16, height: 1.5),
-                                ),
-                              ],
-                            ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              title("The Journey of Flutura"),
+                              subTitle(
+                                "\nIn a quiet little town tucked amidst misty hills, there lived a young programmer named Kai. Though Kai was an adept coder, they felt constrained by the technology they used. Everything seemed overly complicated, fragmented, and, at times, soulless. Kai longed to create something beautiful, something that danced in people’s lives like a butterfly in a garden.",
+                              ),
+                              subTitle("\nA New Beginning"),
+                              subTitle(
+                                "\nThe next day, Kai dived into Flutter, guided by its companion language, Dart. The syntax felt like a friendly invitation. Unlike some of the verbose languages they had used, Dart was clean, concise, and intuitive.",
+                              ),
+                              subTitle(
+                                "\n“Hello, world,” Kai typed eagerly, following the Flutter documentation. Within moments, a sleek app emerged on the emulator—a polished screen with a single centered text: Hello, Flutter!",
+                              ),
+                              subTitle(
+                                "\nAs the days turned into weeks, Kai’s skills blossomed. Flutter’s hot reload became their favorite tool—an almost magical ability to see changes instantly, like a painter watching their strokes come alive on the canvas.",
+                              ),
+                              subTitle("\nMeeting Flutura"),
+                              subTitle(
+                                "\nOne late evening, surrounded by empty coffee mugs and glowing screens, Kai began a new project: an app to help local farmers track their crops and predict harvest yields. They named the app Flutura, inspired by the Albanian word for butterfly.",
+                              ),
+                              subTitle(
+                                "\nThe app needed to feel alive, so Kai ventured into Flutter’s animation library. They crafted elegant transitions between screens, buttons that gently pulsed when tapped, and cards that flipped like turning pages. With Dart’s type safety and powerful tooling, debugging was a breeze.",
+                              ),
+                              subTitle(
+                                "\nAs the days turned into weeks, Kai’s skills blossomed. Flutter’s hot reload became their favorite tool—an almost magical ability to see changes instantly, like a painter watching their strokes come alive on the canvas.",
+                              ),
+                            ],
                           )
                         ],
                       ),

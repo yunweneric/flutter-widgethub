@@ -1,3 +1,5 @@
+import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
+
 enum SubComponentCategoryEnum {
   GETTING_STARTED,
   REQUEST_A_COMPONENT,
@@ -22,7 +24,10 @@ enum SubComponentCategoryEnum {
   LINEAR_GRADIENTS;
 
   String describe() {
-    return name[0].toUpperCase() + name.split("_").join(" ").substring(1).toLowerCase();
+    // return name[0].toUpperCase() + name.split("_").join(" ").substring(1).toLowerCase();
+    // final description = name[0].toUpperCase() + name.split("_").join(" ").substring(1).toLowerCase();
+    return LangUtil.trans(name);
+    // return name;
   }
 
   String link() {
