@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterui/app/shared/data/enums/device_type.dart';
 import 'package:flutterui/app/shared/data/models/code_component.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/components/presentation/animations/skew_card/skew_card_code.dart';
@@ -24,5 +25,6 @@ class SkewCardData {
     category: ComponentCategoryEnum.BLOCKS,
     subcategory: SubComponentCategoryEnum.SLIDERS_AND_CAROUSELS,
     supportedPlatforms: [SupportedPlatform.ANDROID, SupportedPlatform.IOS],
+    responsiveDevices: [AppDeviceType.MOBILE, AppDeviceType.TABLET],
   );
 }

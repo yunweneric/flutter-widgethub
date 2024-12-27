@@ -6,32 +6,38 @@ import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/utils/util.dart';
 import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 
-Widget resourcesSection(Component component, BuildContext context) {
-  if (component.assetLink == null && component.gitHubLink == null) return const SizedBox.shrink();
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Text(
-        LangUtil.trans("resources"),
-        style: Theme.of(context).textTheme.displayMedium,
-      ),
-      AppSizing.khSpacer(5),
-      if (component.gitHubLink != null)
-        rowItem(
-          onTap: () => UtilHelper.openUrl(component.gitHubLink!),
-          leading: AppIcons.github,
-          title: LangUtil.trans("openGithubRepositor"),
+class ResourceSection extends StatelessWidget {
+  final Component component;
+  const ResourceSection({super.key, required this.component});
+
+  @override
+  Widget build(BuildContext context) {
+    if (component.assetLink == null && component.gitHubLink == null) return const SizedBox.shrink();
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          LangUtil.trans("resources"),
+          style: Theme.of(context).textTheme.displayMedium,
         ),
-      if (component.assetLink != null)
-        rowItem(
-          onTap: () => UtilHelper.openUrl(component.assetLink!),
-          leading: AppIcons.download,
-          title: LangUtil.trans("downloadAssets"),
-        ),
-      AppSizing.kh20Spacer(),
-      AppSizing.kh10Spacer(),
-    ],
-  );
+        AppSizing.khSpacer(5),
+        if (component.gitHubLink != null)
+          rowItem(
+            onTap: () => UtilHelper.openUrl(component.gitHubLink!),
+            leading: AppIcons.github,
+            title: LangUtil.trans("openGithubRepositor"),
+          ),
+        if (component.assetLink != null)
+          rowItem(
+            onTap: () => UtilHelper.openUrl(component.assetLink!),
+            leading: AppIcons.download,
+            title: LangUtil.trans("downloadAssets"),
+          ),
+        AppSizing.kh20Spacer(),
+        AppSizing.kh10Spacer(),
+      ],
+    );
+  }
 }
 
 Widget rowItem({required String leading, required String title, required VoidCallback onTap}) {

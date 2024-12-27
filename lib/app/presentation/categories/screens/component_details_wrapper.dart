@@ -50,8 +50,8 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
               CodeHighlight(code: component.setup),
               AppSizing.kh20Spacer(),
               AppSizing.kh10Spacer(),
-              supportPlatformSection(component, context),
-              resourcesSection(component, context),
+              SupportPlatformSection(component: component),
+              ResourceSection(component: component),
               CodePreview(component: component),
               AppSizing.kh20Spacer(),
               ComponentDetailsFooter(

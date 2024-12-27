@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterui/app/shared/data/enums/device_type.dart';
 import 'package:flutterui/app/shared/data/models/code_component.dart';
 import 'package:flutterui/components/presentation/blocks/buttons/apple_books_fab/apple_books_fab_code.dart';
 import 'package:flutterui/components/presentation/blocks/buttons/apple_books_fab/apple_books_fab_widget.dart';
@@ -23,5 +24,6 @@ class AppleBooksFABData {
     category: ComponentCategoryEnum.BLOCKS,
     subcategory: SubComponentCategoryEnum.BUTTONS,
     supportedPlatforms: [SupportedPlatform.ANDROID, SupportedPlatform.IOS],
+    responsiveDevices: [AppDeviceType.MOBILE, AppDeviceType.TABLET, AppDeviceType.DESKTOP],
   );
 }

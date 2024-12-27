@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
+import 'package:flutterui/app/shared/data/enums/device_type.dart';
 import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart';
 import 'package:flutterui/app/shared/data/enums/supported_platform.dart';
 import 'package:flutterui/app/shared/data/models/code_component.dart';
@@ -29,5 +30,6 @@ class MentalHealthOnboardingData {
       SupportedPlatform.ANDROID,
       SupportedPlatform.IOS,
     ],
+    responsiveDevices: [AppDeviceType.MOBILE, AppDeviceType.TABLET],
   );
 }

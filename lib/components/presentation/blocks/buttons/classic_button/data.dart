@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterui/app/shared/data/enums/device_type.dart';
 import 'package:flutterui/app/shared/data/models/code_component.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/components/presentation/blocks/buttons/classic_button/classic_button_code.dart';
@@ -24,5 +25,6 @@ class ClassicButtonData {
     category: ComponentCategoryEnum.BLOCKS,
     subcategory: SubComponentCategoryEnum.BUTTONS,
     supportedPlatforms: [SupportedPlatform.ANDROID, SupportedPlatform.IOS],
+    responsiveDevices: [AppDeviceType.MOBILE, AppDeviceType.TABLET],
   );
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
+import 'package:flutterui/app/shared/data/enums/device_type.dart';
 import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart';
 import 'package:flutterui/app/shared/data/enums/supported_platform.dart';
 import 'package:flutterui/app/shared/data/models/code_component.dart';
@@ -25,9 +26,7 @@ class FadeCarouselTemplateData {
     subcategory: SubComponentCategoryEnum.SLIDERS_AND_CAROUSELS,
     assetLink: "https://github.com/yunweneric/flutter-open-ui/raw/fade_caarousel/assets/images.zip",
     gitHubLink: "https://github.com/yunweneric/flutter-open-ui/tree/fade_caarousel",
-    supportedPlatforms: [
-      SupportedPlatform.ANDROID,
-      SupportedPlatform.IOS,
-    ],
+    supportedPlatforms: [SupportedPlatform.ANDROID, SupportedPlatform.IOS],
+    responsiveDevices: [AppDeviceType.MOBILE],
   );
 }
