@@ -1,5 +1,4 @@
-const onlineOnboardingCode = """
-import 'package:flutter/material.dart';
+const onlineOnboardingCode = """import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class OnBoardingData {
@@ -37,6 +36,8 @@ class _OnlineOnboardingState extends State<OnlineOnboarding> {
 
   @override
   Widget build(BuildContext context) {
+    const baseUrl = "https://raw.githubusercontent.com/yunweneric/flutter-open-ui/refs/heads/onboarding_ui_ch_2/assets/images";
+
     return Scaffold(
       body: Column(
         children: [
@@ -57,8 +58,8 @@ class _OnlineOnboardingState extends State<OnlineOnboarding> {
                   padding: const EdgeInsets.symmetric(horizontal: 30),
                   child: Column(
                     children: [
-                      SvgPicture.asset(
-                        "assets/images/onboarding_\${i + 1}.svg",
+                      SvgPicture.network(
+                        "\$baseUrl/onboarding_\${i + 1}.svg",
                         height: AppSizing.height(context) * 0.5,
                       ),
                       Column(

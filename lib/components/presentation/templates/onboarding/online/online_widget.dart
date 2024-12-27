@@ -36,7 +36,7 @@ class _OnlineOnboardingState extends State<OnlineOnboarding> {
 
   @override
   Widget build(BuildContext context) {
-    const baseUrl = "https://raw.githubusercontent.com/yunweneric/flutter-open-ui/refs/heads/onboarding_ui_ch_2/assets/images/";
+    const baseUrl = "https://raw.githubusercontent.com/yunweneric/flutter-open-ui/refs/heads/onboarding_ui_ch_2/assets/images";
 
     return Scaffold(
       body: Column(
@@ -59,7 +59,7 @@ class _OnlineOnboardingState extends State<OnlineOnboarding> {
                   child: Column(
                     children: [
                       SvgPicture.network(
-                        "$baseUrl${i + 1}.svg",
+                        "$baseUrl/onboarding_${i + 1}.svg",
                         height: AppSizing.height(context) * 0.5,
                       ),
                       Column(
