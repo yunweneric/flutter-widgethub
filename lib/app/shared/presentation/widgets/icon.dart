@@ -16,8 +16,12 @@ class AppIcon extends StatelessWidget {
       height: size ?? 20.w,
       color: color ?? Theme.of(context).highlightColor,
       placeholderBuilder: (context) {
-        return const Center(
-          child: CircularProgressIndicator.adaptive(),
+        return Center(
+          child: SizedBox(
+            width: 10.w,
+            height: 10.w,
+            child: CircularProgressIndicator(strokeWidth: 1.w),
+          ),
         );
       },
     );

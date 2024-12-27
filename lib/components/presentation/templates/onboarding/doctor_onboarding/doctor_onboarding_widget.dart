@@ -13,14 +13,14 @@ class OnboardingData {
   });
 }
 
-class OnboardingScreen extends StatefulWidget {
-  const OnboardingScreen({super.key});
+class DoctorOnboardingScreen extends StatefulWidget {
+  const DoctorOnboardingScreen({super.key});
 
   @override
-  State<OnboardingScreen> createState() => _OnboardingScreenState();
+  State<DoctorOnboardingScreen> createState() => _DoctorOnboardingScreenState();
 }
 
-class _OnboardingScreenState extends State<OnboardingScreen> {
+class _DoctorOnboardingScreenState extends State<DoctorOnboardingScreen> {
   int activeIndex = 0;
   int previousIndex = 5;
   PageController controller = PageController(initialPage: 1);

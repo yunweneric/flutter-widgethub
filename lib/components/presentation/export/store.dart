@@ -11,6 +11,8 @@ import 'package:flutterui/components/presentation/templates/fade_carousel/fade_c
 import 'package:flutterui/components/presentation/templates/fruity_lips/fruity_lips_data.dart';
 import 'package:flutterui/components/presentation/templates/leave_review/leave_a_review_data.dart';
 import 'package:flutterui/components/presentation/templates/nike_zoomer/nike_zoomer_data.dart';
+import 'package:flutterui/components/presentation/templates/onboarding/mental_health/mental_health_data.dart';
+import 'package:flutterui/components/presentation/templates/onboarding/online/online_data.dart';
 
 class AllComponents {
   static List<Component> widgets = [
@@ -24,7 +26,9 @@ class AllComponents {
     ExpandableTabData.component,
     SlideTabData.component,
     BlurredSlideTabData.component,
-    DoctorOnboardingData.component,
     AppleBooksFABData.component,
+    OnlineOnboardingData.component,
+    MentalHealthOnboardingData.component,
+    DoctorOnboardingData.component,
   ];
 }

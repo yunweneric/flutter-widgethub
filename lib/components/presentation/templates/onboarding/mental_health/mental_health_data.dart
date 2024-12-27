@@ -14,14 +14,14 @@ class MentalHealthOnboardingData {
   static String code = mentalHealthOnboardingCode;
   static String setup = mentalHealthOnboardingSetup;
   static Component component = Component(
-    createdAt: DateTime(2024, 11, 28),
-    updatedAt: DateTime(2024, 11, 28),
+    createdAt: DateTime(2024, 12, 26),
+    updatedAt: DateTime(2024, 11, 26),
     id: "mental-health-onboarding",
     codeComponents: [CodeComponent(code: code, widget: widget)],
-    description: LangUtil.trans('doctorOnBoardingDescription'),
-    title: LangUtil.trans('doctorOnBoardingTitle'),
+    description: LangUtil.trans('mentalHealthOnBoardingDescription'),
+    title: LangUtil.trans('mentalHealthOnBoardingTitle'),
     setup: setup,
-    category: ComponentCategoryEnum.TEMPLATES,
+    category: ComponentCategoryEnum.ANIMATIONS,
     subcategory: SubComponentCategoryEnum.ONBOARDING_SCREENS,
     assetLink: "https://github.com/yunweneric/flutter-open-ui/raw/onboarding_ui_ch_3/assets.zip",
     gitHubLink: "https://github.com/yunweneric/flutter-open-ui/tree/onboarding_ui_ch_3",

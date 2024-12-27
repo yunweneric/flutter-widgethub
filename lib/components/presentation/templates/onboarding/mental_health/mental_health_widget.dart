@@ -38,6 +38,7 @@ class _MentalHealthOnboardingState extends State<MentalHealthOnboarding> {
 
   @override
   Widget build(BuildContext context) {
+    const baseUrl = "https://raw.githubusercontent.com/yunweneric/flutter-open-ui/refs/heads/onboarding_ui_ch_3/assets/images/";
     return Scaffold(
       backgroundColor: const Color(0xff7265E2),
       body: Stack(
@@ -80,8 +81,8 @@ class _MentalHealthOnboardingState extends State<MentalHealthOnboarding> {
                   itemBuilder: (c, i) {
                     return Column(
                       children: [
-                        Image.asset(
-                          "assets/images/boarding_$i.png",
+                        Image.network(
+                          "$baseUrl/boarding_$i.png",
                           height: AppSizing.height(context) * 0.5,
                           width: AppSizing.width(context),
                           fit: BoxFit.cover,

@@ -127,5 +127,9 @@
          "title": "Bouton Flottant Apple Books",
          "description": "L'animation du bouton d'action flottant Apple Books mise en œuvre avec une micro-interaction basique."
       }
-   }
+   },
+   "onlineOnBoardingTitle": "Introduction à l'apprentissage en ligne",
+   "onlineOnBoardingDescription": "Une interface animée pour l'introduction à l'apprentissage en ligne",
+   "mentalHealthOnBoardingTitle": "Introduction à la santé mentale",
+   "mentalHealthOnBoardingDescription": "Une interface animée pour l'introduction à la santé mentale"
 }

@@ -127,5 +127,9 @@
          "title": "Apple Books FAB",
          "description": "The Apple Books Floating action button animation implemented with basic micro interaction"
       }
-   }
+   },
+   "onlineOnBoardingTitle": "Online Learning Onboarding",
+   "onlineOnBoardingDescription": "An Animated Online Learning Onboarding UI",
+   "mentalHealthOnBoardingTitle": "Mental Health Onboarding",
+   "mentalHealthOnBoardingDescription": "An Animated Mental Health Onboarding UI"
 }
