@@ -5,14 +5,14 @@ import 'package:flutterui/app/shared/data/enums/supported_platform.dart';
 import 'package:flutterui/app/shared/data/models/code_component.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
-import 'package:flutterui/components/presentation/templates/doctor_onboarding/doctor_onboarding_widget.dart';
-import 'package:flutterui/components/presentation/templates/fade_carousel/fade_carousel_code.dart';
-import 'package:flutterui/components/presentation/templates/fade_carousel/fade_carousel_setup.dart';
+import 'package:flutterui/components/presentation/templates/onboarding/doctor_onboarding/doctor_onboarding_code.dart';
+import 'package:flutterui/components/presentation/templates/onboarding/doctor_onboarding/doctor_onboarding_setup.dart';
+import 'package:flutterui/components/presentation/templates/onboarding/doctor_onboarding/doctor_onboarding_widget.dart';
 
 class DoctorOnboardingData {
-  static Widget widget = const OnboardingScreen();
-  static String code = fadeCarouselCode;
-  static String setup = fadeCarouselSetup;
+  static Widget widget = const DoctorOnboardingScreen();
+  static String code = doctorOnboardingCode;
+  static String setup = doctorOnboardingSetup;
   static Component component = Component(
     createdAt: DateTime(2024, 11, 28),
     updatedAt: DateTime(2024, 11, 28),
@@ -21,7 +21,7 @@ class DoctorOnboardingData {
     description: LangUtil.trans('doctorOnBoardingDescription'),
     title: LangUtil.trans('doctorOnBoardingTitle'),
     setup: setup,
-    category: ComponentCategoryEnum.ANIMATIONS,
+    category: ComponentCategoryEnum.TEMPLATES,
     subcategory: SubComponentCategoryEnum.ONBOARDING_SCREENS,
     assetLink: "https://github.com/yunweneric/flutter-open-ui/raw/9-implement-the-ui-for-doctor-onboarding/assets.zip",
     gitHubLink: "https://github.com/yunweneric/flutter-open-ui/tree/9-implement-the-ui-for-doctor-onboarding",
