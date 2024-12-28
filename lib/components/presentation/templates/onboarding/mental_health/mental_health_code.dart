@@ -1,5 +1,4 @@
-const mentalHealthOnboardingCode = """
-import 'dart:ui';
+const mentalHealthOnboardingCode = """import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -82,28 +81,39 @@ class _MentalHealthOnboardingState extends State<MentalHealthOnboarding> {
                   itemBuilder: (c, i) {
                     return Column(
                       children: [
-                        Image.network(
-                          "\$baseUrl/boarding_\$i.png",
-                          height: AppSizing.height(context) * 0.5,
-                          width: AppSizing.width(context),
-                          fit: BoxFit.cover,
+                        AnimatedOpacity(
+                          duration: const Duration(milliseconds: 700),
+                          opacity: activeIndex == i ? 1.0 : 0.0,
+                          child: Image.network(
+                            "\$baseUrl/boarding_\$i.png",
+                            height: AppSizing.height(context) * 0.5,
+                            width: AppSizing.width(context),
+                            fit: BoxFit.cover,
+                          ),
                         ),
+                        AppSizing.k20(context),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 30),
-                          child: Column(
-                            children: [
-                              Text(
-                                data[i].title,
-                                style: Theme.of(context).textTheme.displayMedium?.copyWith(color: Colors.white),
-                                textAlign: TextAlign.center,
-                              ),
-                              AppSizing.k20(context),
-                              Text(
-                                data[i].description,
-                                style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white),
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
+                          child: AnimatedScale(
+                            curve: Curves.easeInOut,
+                            duration: const Duration(milliseconds: 700),
+                            alignment: Alignment.center,
+                            scale: activeIndex == i ? 1.0 : 0.0,
+                            child: Column(
+                              children: [
+                                Text(
+                                  data[i].title,
+                                  style: Theme.of(context).textTheme.displayMedium?.copyWith(color: Colors.white),
+                                  textAlign: TextAlign.center,
+                                ),
+                                AppSizing.k20(context),
+                                Text(
+                                  data[i].description,
+                                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
+                            ),
                           ),
                         )
                       ],
@@ -213,6 +223,5 @@ class AppSizing {
   static SizedBox k20(BuildContext context) => SizedBox(height: height(context) * 0.02);
   static SizedBox khSpacer(BuildContext context, double factor) => SizedBox(height: width(context) * factor);
 }
-
 
 """;

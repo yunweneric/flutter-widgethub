@@ -1,4 +1,6 @@
-const onlineOnboardingCode = """import 'package:flutter/material.dart';
+const onlineOnboardingCode = """
+
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class OnBoardingData {
@@ -58,24 +60,42 @@ class _OnlineOnboardingState extends State<OnlineOnboarding> {
                   padding: const EdgeInsets.symmetric(horizontal: 30),
                   child: Column(
                     children: [
-                      SvgPicture.network(
-                        "\$baseUrl/onboarding_\${i + 1}.svg",
-                        height: AppSizing.height(context) * 0.5,
+                      AnimatedRotation(
+                        curve: Curves.easeOut,
+                        duration: const Duration(milliseconds: 500),
+                        turns: activeIndex == i
+                            ? 0.0
+                            : activeIndex > i
+                                ? -0.1
+                                : 0.1,
+                        child: SvgPicture.network(
+                          "\$baseUrl/onboarding_\${i + 1}.svg",
+                          height: AppSizing.height(context) * 0.5,
+                        ),
                       ),
-                      Column(
-                        children: [
-                          Text(
-                            data[i].title,
-                            style: Theme.of(context).textTheme.displayMedium,
-                            textAlign: TextAlign.center,
+                      AnimatedOpacity(
+                        duration: const Duration(milliseconds: 1500),
+                        opacity: activeIndex == i ? 1 : 0,
+                        child: AnimatedScale(
+                          alignment: Alignment.topCenter,
+                          duration: const Duration(milliseconds: 500),
+                          scale: activeIndex == i ? 1 : 0,
+                          child: Column(
+                            children: [
+                              Text(
+                                data[i].title,
+                                style: Theme.of(context).textTheme.displayMedium,
+                                textAlign: TextAlign.center,
+                              ),
+                              AppSizing.k20(context),
+                              Text(
+                                data[i].description,
+                                style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.grey),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
                           ),
-                          AppSizing.k20(context),
-                          Text(
-                            data[i].description,
-                            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.grey),
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
+                        ),
                       )
                     ],
                   ),
