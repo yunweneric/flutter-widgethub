@@ -38,6 +38,7 @@ class _MentalHealthOnboardingState extends State<MentalHealthOnboarding> {
 
   @override
   Widget build(BuildContext context) {
+    const baseUrl = "https://raw.githubusercontent.com/yunweneric/flutter-open-ui/refs/heads/onboarding_ui_ch_3/assets/images/";
     return Scaffold(
       backgroundColor: const Color(0xff7265E2),
       body: Stack(
@@ -80,28 +81,39 @@ class _MentalHealthOnboardingState extends State<MentalHealthOnboarding> {
                   itemBuilder: (c, i) {
                     return Column(
                       children: [
-                        Image.asset(
-                          "assets/images/boarding_$i.png",
-                          height: AppSizing.height(context) * 0.5,
-                          width: AppSizing.width(context),
-                          fit: BoxFit.cover,
+                        AnimatedOpacity(
+                          duration: const Duration(milliseconds: 700),
+                          opacity: activeIndex == i ? 1.0 : 0.0,
+                          child: Image.network(
+                            "$baseUrl/boarding_$i.png",
+                            height: AppSizing.height(context) * 0.5,
+                            width: AppSizing.width(context),
+                            fit: BoxFit.cover,
+                          ),
                         ),
+                        AppSizing.k20(context),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 30),
-                          child: Column(
-                            children: [
-                              Text(
-                                data[i].title,
-                                style: Theme.of(context).textTheme.displayMedium?.copyWith(color: Colors.white),
-                                textAlign: TextAlign.center,
-                              ),
-                              AppSizing.k20(context),
-                              Text(
-                                data[i].description,
-                                style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white),
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
+                          child: AnimatedScale(
+                            curve: Curves.easeInOut,
+                            duration: const Duration(milliseconds: 700),
+                            alignment: Alignment.center,
+                            scale: activeIndex == i ? 1.0 : 0.0,
+                            child: Column(
+                              children: [
+                                Text(
+                                  data[i].title,
+                                  style: Theme.of(context).textTheme.displayMedium?.copyWith(color: Colors.white),
+                                  textAlign: TextAlign.center,
+                                ),
+                                AppSizing.k20(context),
+                                Text(
+                                  data[i].description,
+                                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
+                            ),
                           ),
                         )
                       ],
@@ -175,7 +187,7 @@ class _MentalHealthOnboardingState extends State<MentalHealthOnboarding> {
   }
 }
 
-final blob_1 = """<svg width="375" height="437" viewBox="0 0 375 437" fill="none" xmlns="http://www.w3.org/2000/svg">
+final blob_1 = '''<svg width="375" height="437" viewBox="0 0 375 437" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g opacity="0.5" filter="url(#filter0_f_1_100)">
 <path d="M366.423 201.996C292.701 224.903 254.714 186.946 206.389 297.799C158.064 408.652 -99.8316 197.344 46.3546 201.996C192.541 206.648 277.923 178.985 206.389 106.192C134.855 33.3996 440.145 179.089 366.423 201.996Z" fill="#D9D9D9"/>
 </g>
@@ -187,9 +199,9 @@ final blob_1 = """<svg width="375" height="437" viewBox="0 0 375 437" fill="none
 </filter>
 </defs>
 </svg>
-""";
+''';
 
-final blob_2 = """
+final blob_2 = '''
   <svg width="375" height="296" viewBox="0 0 375 296" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g opacity="0.5" filter="url(#filter0_f_1_99)">
 <path d="M305.423 222.996C231.701 245.903 193.714 207.946 145.389 318.799C97.0635 429.652 -160.832 218.344 -14.6454 222.996C131.541 227.648 216.923 199.985 145.389 127.192C73.8549 54.3996 379.145 200.089 305.423 222.996Z" fill="#D9D9D9"/>
@@ -203,7 +215,7 @@ final blob_2 = """
 </defs>
 </svg>
 
-""";
+''';
 
 class AppSizing {
   static double width(BuildContext context) => MediaQuery.of(context).size.width;

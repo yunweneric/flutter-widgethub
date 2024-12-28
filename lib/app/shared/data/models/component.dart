@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
+import 'package:flutterui/app/shared/data/enums/device_type.dart';
 import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart';
 import 'package:flutterui/app/shared/data/enums/supported_platform.dart';
 import 'package:flutterui/app/shared/data/models/code_component.dart';
@@ -21,6 +22,7 @@ class Component {
   final String? gitHubLink;
   final List<CodeComponent> codeComponents;
   final List<SupportedPlatform> supportedPlatforms;
+  final List<AppDeviceType> responsiveDevices;
 
   Component({
     required this.id,
@@ -36,6 +38,7 @@ class Component {
     required this.category,
     this.assetLink,
     this.gitHubLink,
+    required this.responsiveDevices,
     required this.supportedPlatforms,
   });
 
@@ -53,6 +56,7 @@ class Component {
       'gitHubLink': gitHubLink,
       'codeComponents': codeComponents.map((x) => x.toMap()).toList(),
       'supportedPlatforms': supportedPlatforms.map((x) => x.describe()).toList(),
+      'responsiveDevices': responsiveDevices.map((x) => x.describe()).toList(),
     };
   }
 
@@ -83,6 +87,7 @@ class Component {
       gitHubLink: gitHubLink ?? this.gitHubLink,
       codeComponents: codeComponents ?? this.codeComponents,
       supportedPlatforms: supportedPlatforms ?? this.supportedPlatforms,
+      responsiveDevices: responsiveDevices ?? this.responsiveDevices,
     );
   }
 
@@ -105,9 +110,12 @@ class Component {
       ),
       supportedPlatforms: List<SupportedPlatform>.from(
         (map['supportedPlatforms'] as List<String>).map<SupportedPlatform>(
-          (x) => SupportedPlatform.values.firstWhere(
-            (item) => item.describe() == x,
-          ),
+          (x) => SupportedPlatform.values.firstWhere((item) => item.describe() == x),
+        ),
+      ),
+      responsiveDevices: List<AppDeviceType>.from(
+        (map['responsiveDevices'] as List<String>).map<AppDeviceType>(
+          (x) => AppDeviceType.values.firstWhere((item) => item.describe() == x),
         ),
       ),
     );

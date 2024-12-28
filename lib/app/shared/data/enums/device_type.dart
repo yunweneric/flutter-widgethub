@@ -1,3 +1,5 @@
+import 'package:flutterui/app/shared/presentation/utils/icons.dart';
+
 enum AppDeviceType {
   MOBILE,
   TABLET,
@@ -11,6 +13,17 @@ enum AppDeviceType {
         return 'Tablet';
       case AppDeviceType.DESKTOP:
         return 'Desktop';
+    }
+  }
+
+  String generateIcon() {
+    switch (this) {
+      case AppDeviceType.MOBILE:
+        return AppIcons.mobile;
+      case AppDeviceType.TABLET:
+        return AppIcons.tablet;
+      case AppDeviceType.DESKTOP:
+        return AppIcons.desktop;
     }
   }
 }

@@ -1,4 +1,5 @@
 const mentalHealthOnboardingCode = """import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -9,14 +10,14 @@ class OnBoardingData {
   OnBoardingData({required this.title, required this.description});
 }
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class MentalHealthOnboarding extends StatefulWidget {
+  const MentalHealthOnboarding({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<MentalHealthOnboarding> createState() => _MentalHealthOnboardingState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _MentalHealthOnboardingState extends State<MentalHealthOnboarding> {
   final PageController _controller = PageController();
   int activeIndex = 0;
 
@@ -37,6 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    const baseUrl = "https://raw.githubusercontent.com/yunweneric/flutter-open-ui/refs/heads/onboarding_ui_ch_3/assets/images/";
     return Scaffold(
       backgroundColor: const Color(0xff7265E2),
       body: Stack(
@@ -79,28 +81,39 @@ class _HomeScreenState extends State<HomeScreen> {
                   itemBuilder: (c, i) {
                     return Column(
                       children: [
-                        Image.asset(
-                          "assets/images/boarding_\$i.png",
-                          height: AppSizing.height(context) * 0.5,
-                          width: AppSizing.width(context),
-                          fit: BoxFit.cover,
+                        AnimatedOpacity(
+                          duration: const Duration(milliseconds: 700),
+                          opacity: activeIndex == i ? 1.0 : 0.0,
+                          child: Image.network(
+                            "\$baseUrl/boarding_\$i.png",
+                            height: AppSizing.height(context) * 0.5,
+                            width: AppSizing.width(context),
+                            fit: BoxFit.cover,
+                          ),
                         ),
+                        AppSizing.k20(context),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 30),
-                          child: Column(
-                            children: [
-                              Text(
-                                data[i].title,
-                                style: Theme.of(context).textTheme.displayMedium?.copyWith(color: Colors.white),
-                                textAlign: TextAlign.center,
-                              ),
-                              AppSizing.k20(context),
-                              Text(
-                                data[i].description,
-                                style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white),
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
+                          child: AnimatedScale(
+                            curve: Curves.easeInOut,
+                            duration: const Duration(milliseconds: 700),
+                            alignment: Alignment.center,
+                            scale: activeIndex == i ? 1.0 : 0.0,
+                            child: Column(
+                              children: [
+                                Text(
+                                  data[i].title,
+                                  style: Theme.of(context).textTheme.displayMedium?.copyWith(color: Colors.white),
+                                  textAlign: TextAlign.center,
+                                ),
+                                AppSizing.k20(context),
+                                Text(
+                                  data[i].description,
+                                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
+                            ),
                           ),
                         )
                       ],
@@ -210,6 +223,5 @@ class AppSizing {
   static SizedBox k20(BuildContext context) => SizedBox(height: height(context) * 0.02);
   static SizedBox khSpacer(BuildContext context, double factor) => SizedBox(height: width(context) * factor);
 }
-
 
 """;

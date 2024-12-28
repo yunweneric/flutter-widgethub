@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
+import 'package:flutterui/app/shared/data/enums/device_type.dart';
 import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart';
 import 'package:flutterui/app/shared/data/enums/supported_platform.dart';
 import 'package:flutterui/app/shared/data/models/code_component.dart';
@@ -21,7 +22,7 @@ class DoctorOnboardingData {
     description: LangUtil.trans('doctorOnBoardingDescription'),
     title: LangUtil.trans('doctorOnBoardingTitle'),
     setup: setup,
-    category: ComponentCategoryEnum.TEMPLATES,
+    category: ComponentCategoryEnum.ANIMATIONS,
     subcategory: SubComponentCategoryEnum.ONBOARDING_SCREENS,
     assetLink: "https://github.com/yunweneric/flutter-open-ui/raw/9-implement-the-ui-for-doctor-onboarding/assets.zip",
     gitHubLink: "https://github.com/yunweneric/flutter-open-ui/tree/9-implement-the-ui-for-doctor-onboarding",
@@ -29,5 +30,6 @@ class DoctorOnboardingData {
       SupportedPlatform.ANDROID,
       SupportedPlatform.IOS,
     ],
+    responsiveDevices: [AppDeviceType.MOBILE, AppDeviceType.TABLET],
   );
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterui/app/shared/data/enums/device_type.dart';
 import 'package:flutterui/app/shared/data/models/code_component.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/components/presentation/blocks/cards/flip_card/flip_card_code.dart';
@@ -34,5 +35,6 @@ class AppFlipCard {
       SupportedPlatform.MACOS,
       SupportedPlatform.WEB,
     ],
+    responsiveDevices: [AppDeviceType.MOBILE, AppDeviceType.TABLET, AppDeviceType.DESKTOP],
   );
 }

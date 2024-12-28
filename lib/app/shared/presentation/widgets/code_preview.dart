@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/shared/data/enums/device_type.dart';
+import 'package:flutterui/app/shared/data/enums/supported_platform.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
 import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
@@ -85,15 +86,10 @@ class _CodePreviewState extends State<CodePreview> {
           ? Container(
               width: AppSizing.width(context),
               decoration: BoxDecoration(borderRadius: AppSizing.radiusSm()),
-              child: SingleChildScrollView(scrollDirection: Axis.horizontal, child: CodeHighlight(code: code)
-                  // child: Padding(
-                  //   padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: AppSizing.isMobile(context) ? 10.h : 20.h),
-                  //   child: Text.rich(
-                  //     content!,
-                  //     style: GoogleFonts.spaceMono(fontSize: AppSizing.isMobile(context) ? 10.sp : 14.sp, height: 1.7.h, wordSpacing: 7.w),
-                  //   ),
-                  // ),
-                  ),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: CodeHighlight(code: code),
+              ),
             )
           : preview(
               child: widget.component.codeComponents.first.widget,
@@ -166,6 +162,7 @@ class _CodePreviewState extends State<CodePreview> {
                                       key: ValueKey(hideSizers),
                                       tween: !hideSizers ? Tween<double>(begin: 1, end: 0) : Tween<double>(begin: 0, end: 1),
                                       builder: (context, value, child) {
+                                        List<AppDeviceType> platforms = widget.component.responsiveDevices;
                                         return Transform(
                                           alignment: Alignment.centerRight,
                                           transform: Matrix4.identity()..scale(value),
@@ -173,26 +170,37 @@ class _CodePreviewState extends State<CodePreview> {
                                             opacity: value,
                                             child: Row(
                                               children: [
-                                                AppChip(
-                                                  active: selectedDevice == AppDeviceType.MOBILE,
-                                                  icon: AppIcons.mobile,
-                                                  title: LangUtil.trans("mobile"),
-                                                  onTap: () => setState(() => selectedDevice = AppDeviceType.MOBILE),
-                                                ),
-                                                AppSizing.kwSpacer(10.w),
-                                                AppChip(
-                                                  active: selectedDevice == AppDeviceType.TABLET,
-                                                  icon: AppIcons.tablet,
-                                                  title: LangUtil.trans("tablet"),
-                                                  onTap: () => setState(() => selectedDevice = AppDeviceType.TABLET),
-                                                ),
-                                                AppSizing.kwSpacer(10.w),
-                                                AppChip(
-                                                  active: selectedDevice == AppDeviceType.DESKTOP,
-                                                  icon: AppIcons.desktop,
-                                                  title: LangUtil.trans("desktop"),
-                                                  onTap: () => setState(() => selectedDevice = AppDeviceType.DESKTOP),
-                                                ),
+                                                ...platforms.map((platform) {
+                                                  return Container(
+                                                    margin: EdgeInsets.only(right: 10.w),
+                                                    child: AppChip(
+                                                      active: selectedDevice == platform,
+                                                      icon: platform.generateIcon(),
+                                                      title: LangUtil.trans(platform.describe().toLowerCase()),
+                                                      onTap: () => setState(() => selectedDevice = platform),
+                                                    ),
+                                                  );
+                                                }),
+                                                // AppChip(
+                                                //   active: selectedDevice == AppDeviceType.MOBILE,
+                                                //   icon: AppIcons.mobile,
+                                                //   title: LangUtil.trans("mobile"),
+                                                //   onTap: () => setState(() => selectedDevice = AppDeviceType.MOBILE),
+                                                // ),
+                                                // AppSizing.kwSpacer(10.w),
+                                                // AppChip(
+                                                //   active: selectedDevice == AppDeviceType.TABLET,
+                                                //   icon: AppIcons.tablet,
+                                                //   title: LangUtil.trans("tablet"),
+                                                //   onTap: () => setState(() => selectedDevice = AppDeviceType.TABLET),
+                                                // ),
+                                                // AppSizing.kwSpacer(10.w),
+                                                // AppChip(
+                                                //   active: selectedDevice == AppDeviceType.DESKTOP,
+                                                //   icon: AppIcons.desktop,
+                                                //   title: LangUtil.trans("desktop"),
+                                                //   onTap: () => setState(() => selectedDevice = AppDeviceType.DESKTOP),
+                                                // ),
                                               ],
                                             ),
                                           ),

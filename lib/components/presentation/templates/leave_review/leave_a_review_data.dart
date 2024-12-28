@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
+import 'package:flutterui/app/shared/data/enums/device_type.dart';
 import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart';
 import 'package:flutterui/app/shared/data/enums/supported_platform.dart';
 import 'package:flutterui/app/shared/data/models/code_component.dart';
@@ -24,11 +25,7 @@ class LeaveAReviewTemplateData {
     category: ComponentCategoryEnum.BLOCKS,
     subcategory: SubComponentCategoryEnum.SLIDERS_AND_CAROUSELS,
     gitHubLink: "https://github.com/yunweneric/flutter-open-ui/tree/leave_a_review",
-    supportedPlatforms: [
-      SupportedPlatform.ANDROID,
-      SupportedPlatform.IOS,
-      SupportedPlatform.MACOS,
-      SupportedPlatform.WEB,
-    ],
+    supportedPlatforms: [SupportedPlatform.ANDROID, SupportedPlatform.IOS, SupportedPlatform.MACOS, SupportedPlatform.WEB],
+    responsiveDevices: [AppDeviceType.MOBILE, AppDeviceType.TABLET, AppDeviceType.DESKTOP],
   );
 }

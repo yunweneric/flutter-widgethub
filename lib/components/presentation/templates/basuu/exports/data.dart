@@ -1,3 +1,4 @@
+import 'package:flutterui/app/shared/data/enums/device_type.dart';
 import 'package:flutterui/app/shared/data/models/code_component.dart';
 import 'package:flutterui/components/presentation/templates/basuu/exports/basuu_choose_category_screen_code.dart';
 import 'package:flutterui/components/presentation/templates/basuu/exports/basuu_choose_language_screen_code.dart';
@@ -55,5 +56,6 @@ class BasuuData {
     supportedPlatforms: [SupportedPlatform.ANDROID, SupportedPlatform.IOS],
     assetLink: 'https://github.com/yunweneric/flutter-open-ui/raw/refs/heads/language_app/assets.zip',
     gitHubLink: 'https://github.com/yunweneric/flutter-open-ui/tree/language_app',
+    responsiveDevices: [AppDeviceType.MOBILE],
   );
 }
