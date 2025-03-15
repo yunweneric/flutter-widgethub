@@ -41,9 +41,7 @@ class _AppSearchBarState extends State<AppSearchBar> {
                   hintText: LangUtil.trans("searchComponent"),
                   prefixIcon: Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: AppIcon(
-                        icon: AppIcons.search,
-                        color: Theme.of(context).highlightColor),
+                    child: AppIcon(icon: AppIcons.search, color: Theme.of(context).highlightColor),
                   ),
                   // suffixIcon: AppIcon(icon:AppIcons.search1, size: 20.w, color: Theme.of(context).highlightColor),
                 ),
@@ -85,11 +83,7 @@ class _SearchBarState extends State<SearchBar> {
     }
 
     final term = title.toLowerCase();
-    final data = allItems
-        .where((item) =>
-            item.title.toLowerCase().contains(term) ||
-            item.description.toLowerCase().contains(term))
-        .toList();
+    final data = allItems.where((item) => item.title.toLowerCase().contains(term) || item.description.toLowerCase().contains(term)).toList();
     setState(() {
       searchTerm = title;
       filteredData = data;
@@ -139,21 +133,15 @@ class _SearchBarState extends State<SearchBar> {
                         onChanged: filter,
                         style: const TextStyle(fontSize: 14),
                         decoration: InputDecoration(
-                          border: const OutlineInputBorder(
-                              borderSide: BorderSide.none),
-                          enabledBorder: const OutlineInputBorder(
-                              borderSide: BorderSide.none),
-                          focusedBorder: const OutlineInputBorder(
-                              borderSide: BorderSide.none),
-                          contentPadding:
-                              const EdgeInsets.symmetric(horizontal: 10),
+                          border: const OutlineInputBorder(borderSide: BorderSide.none),
+                          enabledBorder: const OutlineInputBorder(borderSide: BorderSide.none),
+                          focusedBorder: const OutlineInputBorder(borderSide: BorderSide.none),
+                          contentPadding: const EdgeInsets.symmetric(horizontal: 10),
                           hintText: LangUtil.trans("searchComponent"),
                           hintStyle: const TextStyle(fontSize: 14),
                           prefixIcon: Transform.scale(
                             scale: 0.4,
-                            child: AppIcon(
-                                icon: AppIcons.search,
-                                color: Theme.of(context).highlightColor),
+                            child: AppIcon(icon: AppIcons.search, color: Theme.of(context).highlightColor),
                           ),
                         ),
                       ),
@@ -164,20 +152,11 @@ class _SearchBarState extends State<SearchBar> {
                     if (AppSizing.isMobile(context)) heightFactor = 8;
                     if (AppSizing.isTablet(context)) heightFactor = 7;
                     return AnimatedContainer(
-                      constraints: BoxConstraints(
-                          maxHeight: AppSizing.kHPercentage(context, 80)),
-                      height: isExpanded
-                          ? AppSizing.kHPercentage(
-                              context,
-                              filteredData.isEmpty
-                                  ? 20
-                                  : filteredData.length * heightFactor)
-                          : 0,
+                      constraints: BoxConstraints(maxHeight: AppSizing.kHPercentage(context, 60)),
+                      height: isExpanded ? AppSizing.kHPercentage(context, filteredData.isEmpty ? 20 : filteredData.length * heightFactor) : 0,
                       decoration: BoxDecoration(
                         color: Theme.of(context).scaffoldBackgroundColor,
-                        border: BorderDirectional(
-                            top: BorderSide(
-                                color: Theme.of(context).dividerColor)),
+                        border: BorderDirectional(top: BorderSide(color: Theme.of(context).dividerColor)),
                       ),
                       duration: const Duration(milliseconds: 300),
                       alignment: Alignment.center,
@@ -189,17 +168,11 @@ class _SearchBarState extends State<SearchBar> {
                               ? RichText(
                                   text: TextSpan(
                                     text: "'$searchTerm' ",
-                                    style: DefaultTextStyle.of(context)
-                                        .style
-                                        .copyWith(
-                                            color:
-                                                Theme.of(context).primaryColor),
+                                    style: DefaultTextStyle.of(context).style.copyWith(color: Theme.of(context).primaryColor),
                                     children: <TextSpan>[
                                       TextSpan(
                                         text: LangUtil.trans('notFoundInCollections'),
-                                        style: TextStyle(
-                                            color: Theme.of(context)
-                                                .primaryColorDark),
+                                        style: TextStyle(color: Theme.of(context).primaryColorDark),
                                       ),
                                     ],
                                   ),
@@ -212,36 +185,25 @@ class _SearchBarState extends State<SearchBar> {
                                       onTap: () async {
                                         context.pop();
 
-                                        final link =
-                                            "/components/${component.category.link()}/${component.subcategory.link()}/${component.id}/";
+                                        final link = "/components/${component.category.link()}/${component.subcategory.link()}/${component.id}/";
                                         context.go(link);
                                       },
                                       title: Text(
-                                        component.title,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .displayMedium,
+                                        LangUtil.trans(component.title),
+                                        style: Theme.of(context).textTheme.displayMedium,
                                       ),
                                       subtitle: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             component.category.describe(),
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodySmall!
-                                                .copyWith(
-                                                    color: Theme.of(context)
-                                                        .primaryColor),
+                                            style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Theme.of(context).primaryColor),
                                           ),
                                           Text(
-                                            component.description,
+                                            LangUtil.trans(component.description),
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodySmall,
+                                            style: Theme.of(context).textTheme.bodySmall,
                                           ),
                                         ],
                                       ),

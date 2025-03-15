@@ -51,7 +51,14 @@ class _ComponentCategoryScreenState extends State<ComponentCategoryScreen> {
                   child: components.isEmpty
                       ? SizedBox(
                           height: AppSizing.kHPercentage(context, 50),
-                          child: Center(child: Text(LangUtil.trans("noItemInThis", args: [widget.subCategory ?? '']))),
+                          child: Center(
+                            child: Text(
+                              LangUtil.trans(
+                                "noItemInThis",
+                                args: {'subCategory': widget.subCategory ?? ''},
+                              ),
+                            ),
+                          ),
                         )
                       : Wrap(
                           alignment: WrapAlignment.spaceBetween,

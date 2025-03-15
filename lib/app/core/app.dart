@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/app/core/service_locators.dart';
-import 'package:flutterui/app/shared/logic/language/language_bloc.dart';
+import 'package:flutterui/app/shared/logic/language_bloc/language_bloc.dart';
 import 'package:flutterui/app/shared/logic/navigation/navigation_bloc.dart';
 import 'package:flutterui/app/shared/logic/sidebar/sidebar_bloc.dart';
 import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
@@ -34,10 +34,10 @@ class MyApp extends StatelessWidget {
             builder: (context, state) {
               return BlocConsumer<LanguageBloc, LanguageState>(
                 listener: (context, langState) {
-                  if (langState is LanguageUpdated) {
-                    LangUtil.setTrans(context, langState.locale);
+                  if (langState is UpdateLanguage) {
+                    LangUtil.setTrans(context, langState.currentLocale);
                     print(["langState.language"]);
-                    print(["langState.language", langState.locale.languageCode]);
+                    print(["langState.language", langState.currentLocale.languageCode]);
                   }
                 },
                 builder: (context, langState) {

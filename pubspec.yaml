@@ -32,6 +32,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   currency_text_input_formatter: ^2.2.3
   device_frame: ^1.2.0
+  dropdown_button2: ^2.3.9
   easy_localization: ^3.0.7
   flutter:
     sdk: flutter
@@ -46,6 +47,7 @@ dependencies:
   google_fonts: ^6.2.1
   hydrated_bloc: ^9.1.5
   logger: ^2.4.0
+  mesh: ^0.4.2
   syncfusion_flutter_core: ^26.2.8
   syncfusion_flutter_sliders: ^26.2.8
   syntax_highlight: ^0.4.0

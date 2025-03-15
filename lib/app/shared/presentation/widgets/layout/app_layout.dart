@@ -122,7 +122,10 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
                                 navbarSection(child: themingSection(context)),
                                 AppSizing.kh20Spacer(),
                                 Text(
-                                  LangUtil.trans("homeFooter", args: ["Flutter Community"]),
+                                  LangUtil.trans("homeFooter", args: {
+                                    "year": DateTime.now().year.toString(),
+                                    "community": "flutter community",
+                                  }),
                                   style: Theme.of(context).textTheme.bodySmall,
                                 ),
                                 AppSizing.kh20Spacer(),

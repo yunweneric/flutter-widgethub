@@ -19,7 +19,7 @@
       "SLIDERS_AND_CAROUSELS": "SLIDERS_AND_CAROUSELS",
       "LINEAR_GRADIENTS": "LINEAR_GRADIENTS"
    },
-   "noItemInThis": "No Item in this {}!",
+   "noItemInThis": "No Item in this {subCategory}!",
    "notFoundInCollections!": "not found in collections!",
    "noItemInThisCategory": "No Item in this category!",
    "previous": "Previous",
@@ -45,7 +45,7 @@
    "heroTitle": "Build Stunning Flutter Apps with Ease",
    "heroDescription": "From ready-to-use components and flexible layout blocks to smooth animations and striking effects, our tools help you create beautiful, functional apps quickly and efficiently.",
    "exploreNow": "Explore Now!",
-   "homeFooter": "2024 © Build with 💙 for {}",
+   "homeFooter": "{year} Build with 💙 for {community}",
    "integration": "INTEGRATION",
    "integrationTitle": "Easy to use UI components",
    "integrationDescription": "Seamlessly integrate a wide range of customizable pre-built UI components to accelerate your development process.",
