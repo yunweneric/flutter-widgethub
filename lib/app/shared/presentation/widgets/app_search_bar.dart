@@ -37,13 +37,17 @@ class _AppSearchBarState extends State<AppSearchBar> {
                   showSearchModal(context);
                 },
                 decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 20),
                   hintText: LangUtil.trans("searchComponent"),
-                  prefixIcon: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: AppIcon(icon: AppIcons.search, color: Theme.of(context).highlightColor),
+                  prefixIcon: Transform.scale(
+                    scale: 0.5,
+                    child: AppIcon(
+                      icon: AppIcons.search,
+                      size: 10.w,
+                    ),
                   ),
-                  // suffixIcon: AppIcon(icon:AppIcons.search1, size: 20.w, color: Theme.of(context).highlightColor),
+                  filled: true,
+                  fillColor: Theme.of(context).cardColor,
                 ),
               ),
             ),
@@ -120,7 +124,10 @@ class _SearchBarState extends State<SearchBar> {
                         ? 50
                         : 35,
               ),
-              decoration: BoxDecoration(color: Theme.of(context).cardColor),
+              decoration: BoxDecoration(
+                color: Theme.of(context).scaffoldBackgroundColor,
+                border: Border.all(color: Theme.of(context).cardColor),
+              ),
               child: Column(
                 children: [
                   Material(

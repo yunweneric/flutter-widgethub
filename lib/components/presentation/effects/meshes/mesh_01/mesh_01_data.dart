@@ -21,8 +21,8 @@ class MeshGradient01Data {
     description: 'A sample implementation of a mesh gradient with OMesh',
     title: "Mesh Gradient 01",
     setup: setup,
-    category: ComponentCategoryEnum.ANIMATIONS,
-    subcategory: SubComponentCategoryEnum.ONBOARDING_SCREENS,
+    category: ComponentCategoryEnum.EFFECTS,
+    subcategory: SubComponentCategoryEnum.LINEAR_GRADIENTS,
     // assetLink: "https://github.com/yunweneric/flutter-open-ui/raw/9-implement-the-ui-for-doctor-onboarding/assets.zip",
     // gitHubLink: "https://github.com/yunweneric/flutter-open-ui/tree/9-implement-the-ui-for-doctor-onboarding",
     supportedPlatforms: [

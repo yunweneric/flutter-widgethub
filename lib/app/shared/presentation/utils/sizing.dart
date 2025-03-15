@@ -13,28 +13,28 @@ class AppSizing {
   static OutlineInputBorder mainBorder(Color color) {
     return OutlineInputBorder(
       borderSide: BorderSide(width: 0.6, color: color),
-      borderRadius: BorderRadius.all(Radius.circular(45.r)),
+      borderRadius: BorderRadius.all(Radius.circular(15.r)),
     );
   }
 
   static OutlineInputBorder mainFocusBorder() {
     return OutlineInputBorder(
       borderSide: const BorderSide(width: 0.6, color: AppColors.PRIMARY),
-      borderRadius: BorderRadius.all(Radius.circular(45.r)),
+      borderRadius: BorderRadius.all(Radius.circular(15.r)),
     );
   }
 
   static OutlineInputBorder focusedErrorBorder() {
     return OutlineInputBorder(
       borderSide: const BorderSide(width: 1, color: AppColors.RED),
-      borderRadius: BorderRadius.all(Radius.circular(45.r)),
+      borderRadius: BorderRadius.all(Radius.circular(15.r)),
     );
   }
 
   static OutlineInputBorder errorBorder() {
     return OutlineInputBorder(
       borderSide: const BorderSide(width: 0.6, color: AppColors.RED),
-      borderRadius: BorderRadius.all(Radius.circular(45.r)),
+      borderRadius: BorderRadius.all(Radius.circular(15.r)),
     );
   }
 
