@@ -453,6 +453,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  hydrated_bloc:
+    dependency: "direct main"
+    description:
+      name: hydrated_bloc
+      sha256: af35b357739fe41728df10bec03aad422cdc725a1e702e03af9d2a41ea05160c
+      url: "https://pub.dev"
+    source: hosted
+    version: "9.1.5"
   intl:
     dependency: transitive
     description:
@@ -858,6 +866,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "26.2.14"
+  synchronized:
+    dependency: transitive
+    description:
+      name: synchronized
+      sha256: "539ef412b170d65ecdafd780f924e5be3f60032a1128df156adad6c5b373d558"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.0+1"
   syntax_highlight:
     dependency: "direct main"
     description:
