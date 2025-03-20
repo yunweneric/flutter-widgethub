@@ -5,7 +5,7 @@ import 'package:flutterui/app/shared/data/models/component.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/layout/main_content.dart';
-import 'package:flutterui/components/data/logic/component/component_bloc.dart';
+import 'package:flutterui/src/data/logic/component/component_bloc.dart';
 
 class ComponentCategoryScreen extends StatefulWidget {
   final String? subCategory;

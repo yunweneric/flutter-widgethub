@@ -12,7 +12,7 @@ import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/device_section_frame.dart';
-import 'package:flutterui/components/data/logic/component/component_bloc.dart';
+import 'package:flutterui/src/data/logic/component/component_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class AssetsSection extends StatefulWidget {

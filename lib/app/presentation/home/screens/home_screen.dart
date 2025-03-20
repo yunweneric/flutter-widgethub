@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutterui/components/data/logic/component/component_bloc.dart';
+import 'package:flutterui/src/data/logic/component/component_bloc.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/presentation/home/data/export/sidebar_categories.dart';
 import 'package:flutterui/app/presentation/home/model/component_block_model.dart';
@@ -51,12 +51,12 @@ class _HomeScreenState extends State<HomeScreen> {
       description: LangUtil.trans('homeDescription'),
       items: [
         AppCategoryModel(
-          widget:  Text(LangUtil.trans(("gettingStarted"))),
+          widget: Text(LangUtil.trans(("gettingStarted"))),
           category: ComponentCategoryEnum.GETTING_STARTED,
           subCategory: SubComponentCategoryEnum.GETTING_STARTED,
         ),
         AppCategoryModel(
-          widget:  Text(LangUtil.trans("gettingStarted")),
+          widget: Text(LangUtil.trans("gettingStarted")),
           category: ComponentCategoryEnum.GETTING_STARTED,
           subCategory: SubComponentCategoryEnum.REQUEST_A_COMPONENT,
         ),

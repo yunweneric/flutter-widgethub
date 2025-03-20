@@ -5,7 +5,7 @@ import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
-import 'package:flutterui/components/data/logic/component/component_bloc.dart';
+import 'package:flutterui/src/data/logic/component/component_bloc.dart';
 
 class ComponentDetailsFooter extends StatelessWidget {
   final bool canPrevious;

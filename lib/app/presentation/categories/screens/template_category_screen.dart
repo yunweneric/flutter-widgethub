@@ -5,7 +5,7 @@ import 'package:flutterui/app/presentation/categories/widget/template_card.dart'
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/layout/main_content.dart';
-import 'package:flutterui/components/data/logic/component/component_bloc.dart';
+import 'package:flutterui/src/data/logic/component/component_bloc.dart';
 
 class TemplateCategoryScreen extends StatefulWidget {
   final String? id;
@@ -49,8 +49,9 @@ class _TemplateCategoryScreenState extends State<TemplateCategoryScreen> {
                     child: components.isEmpty
                         ? SizedBox(
                             height: AppSizing.kHPercentage(context, 50),
-                            child:  Center(child:  Text(LangUtil.trans('noItemInThisCategory')),
-                          ))
+                            child: Center(
+                              child: Text(LangUtil.trans('noItemInThisCategory')),
+                            ))
                         : Wrap(
                             alignment: WrapAlignment.spaceBetween,
                             runAlignment: WrapAlignment.spaceBetween,

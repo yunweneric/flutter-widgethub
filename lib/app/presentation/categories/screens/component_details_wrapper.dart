@@ -9,7 +9,7 @@ import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/code_highlight.dart';
 import 'package:flutterui/app/shared/presentation/widgets/code_preview.dart';
 import 'package:flutterui/app/shared/presentation/widgets/layout/main_content.dart';
-import 'package:flutterui/components/data/logic/component/component_bloc.dart';
+import 'package:flutterui/src/data/logic/component/component_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class ComponentDetailsWrapper extends StatefulWidget {

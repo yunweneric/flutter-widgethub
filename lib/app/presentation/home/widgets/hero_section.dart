@@ -12,9 +12,9 @@ import 'package:flutterui/app/shared/presentation/utils/colors.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/device_section_frame.dart';
-import 'package:flutterui/components/data/logic/component/component_bloc.dart';
-import 'package:flutterui/components/presentation/templates/leave_review/leave_a_review_widget.dart';
-import 'package:flutterui/components/presentation/templates/nike_zoomer/nike_zoomer_widget.dart';
+import 'package:flutterui/src/data/logic/component/component_bloc.dart';
+import 'package:flutterui/src/presentation/templates/leave_review/leave_a_review_widget.dart';
+import 'package:flutterui/src/presentation/templates/nike_zoomer/nike_zoomer_widget.dart';
 import 'package:go_router/go_router.dart';
 
 class HeroSection extends StatefulWidget {
@@ -87,7 +87,7 @@ class _HeroSectionState extends State<HeroSection> {
                             );
                             context.go(RouteNames.components);
                           },
-                          child:  Text(
+                          child: Text(
                             LangUtil.trans("exploreNow"),
                             style: const TextStyle(color: AppColors.BG),
                           ),
@@ -104,8 +104,7 @@ class _HeroSectionState extends State<HeroSection> {
                           label: Text(
                             LangUtil.trans("browseAllAssets"),
                             style: TextStyle(color: Theme.of(context).primaryColorDark),
-                          )
-,
+                          ),
                         ),
                       ],
                     )

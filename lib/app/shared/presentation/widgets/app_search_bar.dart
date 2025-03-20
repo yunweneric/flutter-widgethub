@@ -5,7 +5,7 @@ import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
-import 'package:flutterui/components/presentation/export/store.dart';
+import 'package:flutterui/src/presentation/export/store.dart';
 import 'package:go_router/go_router.dart';
 
 class AppSearchBar extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:flutterui/app/shared/logic/language_bloc/language_bloc.dart';
-import 'package:flutterui/components/data/logic/component/component_bloc.dart';
+import 'package:flutterui/src/data/logic/component/component_bloc.dart';
 import 'package:flutterui/app/core/routes/app_router.dart';
 import 'package:flutterui/app/shared/logic/navigation/navigation_bloc.dart';
 import 'package:flutterui/app/shared/logic/sidebar/sidebar_bloc.dart';

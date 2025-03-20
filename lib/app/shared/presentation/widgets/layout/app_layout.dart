@@ -17,7 +17,7 @@ import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 import 'package:flutterui/app/shared/presentation/widgets/layout/home_nav_bar.dart';
 import 'package:flutterui/app/shared/presentation/widgets/layout/side_bar_item.dart';
-import 'package:flutterui/components/data/logic/component/component_bloc.dart';
+import 'package:flutterui/src/data/logic/component/component_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class AppLayout extends StatefulWidget {

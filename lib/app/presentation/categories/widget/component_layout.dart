@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterui/components/data/logic/component/component_bloc.dart';
+import 'package:flutterui/src/data/logic/component/component_bloc.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/layout/app_layout.dart';
@@ -37,12 +37,9 @@ class _AppLayoutState extends State<ComponentLayoutScreen> {
               AnimatedContainer(
                 duration: duration,
                 decoration: BoxDecoration(
-                  border: Border(
-                      right: BorderSide(color: Theme.of(context).dividerColor)),
+                  border: Border(right: BorderSide(color: Theme.of(context).dividerColor)),
                 ),
-                width: AppSizing.isMobile(context)
-                    ? 0
-                    : AppSizing.width(context) * 0.2,
+                width: AppSizing.isMobile(context) ? 0 : AppSizing.width(context) * 0.2,
                 child: const SideBar(),
               ),
               Expanded(child: widget.child),
