@@ -6,6 +6,7 @@ import 'package:flutterui/components/presentation/blocks/tabs/blurred_slide_tab/
 import 'package:flutterui/components/presentation/blocks/tabs/expandable_tab/data.dart';
 import 'package:flutterui/components/presentation/blocks/tabs/slide_tab/data.dart';
 import 'package:flutterui/components/presentation/effects/meshes/mesh_01/mesh_01_data.dart';
+import 'package:flutterui/components/presentation/effects/meshes/mesh_02/mesh_02_data.dart';
 import 'package:flutterui/components/presentation/templates/basuu/exports/data.dart';
 import 'package:flutterui/components/presentation/templates/onboarding/doctor_onboarding/doctor_onboarding_data.dart';
 import 'package:flutterui/components/presentation/templates/fade_carousel/fade_carousel_data.dart';
@@ -32,5 +33,6 @@ class AllComponents {
     MentalHealthOnboardingData.component,
     DoctorOnboardingData.component,
     MeshGradient01Data.component,
+    MeshGradient02Data.component,
   ];
 }
