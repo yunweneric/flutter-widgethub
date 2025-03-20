@@ -1,5 +1,4 @@
-const meshGradient02 = """
-import 'package:flutter/material.dart';
+const meshGradient02 = """import 'package:flutter/material.dart';
 import 'package:flutterui/app/shared/presentation/utils/images.dart';
 import 'package:mesh/mesh.dart';
 
@@ -44,11 +43,11 @@ class MeshGradient02 extends StatefulWidget {
 
 class _MeshGradient02State extends State<MeshGradient02> with SingleTickerProviderStateMixin {
   late final AnimationController controller = AnimationController(vsync: this)
-    ..duration = const Duration(seconds: 5)
+    ..duration = const Duration(seconds: 2)
     ..forward()
     ..addListener(() {
       if (controller.value == 1.0) {
-        controller.animateTo(0, curve: Curves.easeInOutQuint);
+        controller.animateTo(0, curve: Curves.linearToEaseOut);
       }
       if (controller.value == 0.0) {
         controller.animateTo(1, curve: Curves.easeInOutCubic);
@@ -72,12 +71,13 @@ class _MeshGradient02State extends State<MeshGradient02> with SingleTickerProvid
             width: MediaQuery.sizeOf(context).width,
             height: MediaQuery.sizeOf(context).height,
             fit: BoxFit.cover,
-            color: Colors.white.withOpacity(0.3),
+            color: Colors.white.withOpacity(0.5),
           ),
         ),
       ],
     );
   }
 }
+
 
 """;
