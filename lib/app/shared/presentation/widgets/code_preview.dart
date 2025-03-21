@@ -79,7 +79,7 @@ class _CodePreviewState extends State<CodePreview> {
     );
   }
 
-  Widget codeAndPreview({required String code}) {
+  Widget codeAndPreview({required String code, BorderRadiusGeometry? borderRadius}) {
     return AnimatedSwitcher(
       duration: const Duration(milliseconds: 1300),
       child: isCode
@@ -88,7 +88,10 @@ class _CodePreviewState extends State<CodePreview> {
               decoration: BoxDecoration(borderRadius: AppSizing.radiusSm()),
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                child: CodeHighlight(code: code),
+                child: CodeHighlight(
+                  code: code,
+                  borderRadius: borderRadius ?? AppSizing.radiusSm(),
+                ),
               ),
             )
           : preview(

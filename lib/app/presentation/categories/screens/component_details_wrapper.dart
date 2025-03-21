@@ -47,7 +47,7 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
               Text(LangUtil.trans("Setup"), style: Theme.of(context).textTheme.displayMedium),
               AppSizing.kh10Spacer(),
               AppSizing.kh10Spacer(),
-              CodeHighlight(code: component.setup),
+              CodeHighlight(code: component.setup, borderRadius: AppSizing.radiusSm()),
               AppSizing.kh20Spacer(),
               AppSizing.kh10Spacer(),
               SupportPlatformSection(component: component),
