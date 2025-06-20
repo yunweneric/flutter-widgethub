@@ -21,10 +21,8 @@ class _DeviceInteractiveState extends State<DeviceInteractive> {
       runSpacing: 10,
       children: [
         DeviceSectionFrame(
-          parentWidth: AppSizing.kWPercentage(
-              context, AppSizing.isMobile(context) ? 100 : 44),
-          parentHeight: AppSizing.kHPercentage(
-              context, AppSizing.isDesktop(context) ? 60 : 40),
+          parentWidth: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 44),
+          parentHeight: AppSizing.kHPercentage(context, AppSizing.isDesktop(context) ? 60 : 40),
           deviceAlignment: Alignment.bottomCenter,
           child: Scaffold(
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -49,20 +47,15 @@ class _DeviceInteractiveState extends State<DeviceInteractive> {
                     curve: Curves.bounceOut,
                     builder: (context, value, child) {
                       return Transform(
-                        transform: Matrix4.identity()
-                          ..translate(0.0, -value * 200),
+                        transform: Matrix4.identity()..translate(0.0, -value * 200),
                         child: Text(
                           LangUtil.trans(currentIndex == 0
                               ? "red"
                               : currentIndex == 1
                                   ? "teal"
                                   : "blue"),
-                          style: const TextStyle(
-                              fontSize: 80,
-                              fontWeight: FontWeight.w900,
-                              color: AppColors.TEXTWHITE),
-                        )
-,
+                          style: const TextStyle(fontSize: 80, fontWeight: FontWeight.w900, color: AppColors.TEXTWHITE),
+                        ),
                       );
                     },
                   ),
@@ -83,26 +76,19 @@ class _DeviceInteractiveState extends State<DeviceInteractive> {
                 })
               },
               currentIndex: currentIndex,
-              items:  [
-                BottomNavigationBarItem(icon: const Icon(Icons.home), label: LangUtil.trans("read")
-
-                ),
-                BottomNavigationBarItem(
-                    icon: const Icon(Icons.notification_add), label: LangUtil.trans("teal")),
-                BottomNavigationBarItem(
-                    icon: const Icon(Icons.verified_user), label: LangUtil.trans("blue")),
+              items: [
+                BottomNavigationBarItem(icon: const Icon(Icons.home), label: LangUtil.trans("read")),
+                BottomNavigationBarItem(icon: const Icon(Icons.notification_add), label: LangUtil.trans("teal")),
+                BottomNavigationBarItem(icon: const Icon(Icons.verified_user), label: LangUtil.trans("blue")),
               ],
             ),
           ),
         ),
         AppSizing.kwSpacer(AppSizing.kWPercentage(context, 2)),
         SizedBox(
-          width: AppSizing.kWPercentage(
-              context, AppSizing.isMobile(context) ? 100 : 44),
-          height: AppSizing.kHPercentage(
-              context, AppSizing.isDesktop(context) ? 60 : 40),
-          child: CodeHighlight(
-              fontSize: AppSizing.isMobile(context) ? 10 : 14, code: code),
+          width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 44),
+          height: AppSizing.kHPercentage(context, AppSizing.isDesktop(context) ? 60 : 40),
+          child: CodeHighlight(fontSize: AppSizing.isMobile(context) ? 10 : 14, code: code),
         )
       ],
     );

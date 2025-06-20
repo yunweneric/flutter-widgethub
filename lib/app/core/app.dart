@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/app/core/service_locators.dart';
-import 'package:flutterui/app/shared/logic/language/language_bloc.dart';
+import 'package:flutterui/app/shared/logic/language_bloc/language_bloc.dart';
 import 'package:flutterui/app/shared/logic/navigation/navigation_bloc.dart';
 import 'package:flutterui/app/shared/logic/sidebar/sidebar_bloc.dart';
 import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/theme.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
+import 'package:flutterui/components/presentation/blocks/tabs/blurred_slide_tab/blurred_slide_tab_widget.dart';
+import 'package:flutterui/components/presentation/blocks/tabs/liquid_glass_tab/liquid_glass_tab_widget.dart';
 import 'package:go_router/go_router.dart';
 
 import 'app_scroll_behavior.dart';
@@ -34,10 +36,10 @@ class MyApp extends StatelessWidget {
             builder: (context, state) {
               return BlocConsumer<LanguageBloc, LanguageState>(
                 listener: (context, langState) {
-                  if (langState is LanguageUpdated) {
-                    LangUtil.setTrans(context, langState.locale);
+                  if (langState is UpdateLanguage) {
+                    LangUtil.setTrans(context, langState.currentLocale);
                     print(["langState.language"]);
-                    print(["langState.language", langState.locale.languageCode]);
+                    print(["langState.language", langState.currentLocale.languageCode]);
                   }
                 },
                 builder: (context, langState) {
@@ -57,13 +59,9 @@ class MyApp extends StatelessWidget {
                         darkTheme: AppTheme.dark(),
                         themeMode: state.themeMode,
                         scrollBehavior: AppScrollBehavior(),
-                        // themeMode: themeMode
-                        //     ? ThemeMode.system
-                        //     : isDark
-                        //         ? ThemeMode.dark
-                        //         : ThemeMode.light,
-
-                        // themeMode: ThemeMode.system,
+                        builder: (context, child) {
+                          return child!;
+                        },
                       );
                     },
                   );

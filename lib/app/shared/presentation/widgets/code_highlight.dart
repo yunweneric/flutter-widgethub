@@ -13,7 +13,13 @@ import 'package:syntax_highlight/syntax_highlight.dart';
 class CodeHighlight extends StatefulWidget {
   final String code;
   final double? fontSize;
-  const CodeHighlight({super.key, required this.code, this.fontSize});
+  final BorderRadiusGeometry? borderRadius;
+  const CodeHighlight({
+    required this.code,
+    super.key,
+    this.borderRadius,
+    this.fontSize,
+  });
 
   @override
   State<CodeHighlight> createState() => _CodeHighlightState();
@@ -43,7 +49,7 @@ class _CodeHighlightState extends State<CodeHighlight> {
         future: setupHighLighter(Theme.of(context).brightness),
         builder: (ctx, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return loader(context);
+            return Center(child: loader(context));
           }
           return codeAndPreview();
         });
@@ -53,10 +59,10 @@ class _CodeHighlightState extends State<CodeHighlight> {
     return Stack(
       children: [
         Container(
-          width: AppSizing.width(context),
+          // width: AppSizing.kWPercentage(context, 76),
           decoration: BoxDecoration(
             color: Theme.of(context).cardColor,
-            borderRadius: AppSizing.radiusMd(),
+            borderRadius: widget.borderRadius ?? AppSizing.radiusSm(),
           ),
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
@@ -81,13 +87,13 @@ class _CodeHighlightState extends State<CodeHighlight> {
         Positioned(
           right: 10,
           top: 10,
-          child: StatefulBuilder(builder: (context, state) {
+          child: StatefulBuilder(builder: (context, setState) {
             return AppChip(
               onTap: () {
-                state(() => hasCopied = true);
+                setState(() => hasCopied = true);
                 UtilHelper.copy(context, data: widget.code);
                 Future.delayed(const Duration(seconds: 5), () {
-                  state(() => hasCopied = false);
+                  setState(() => hasCopied = false);
                 });
               },
               active: hasCopied,

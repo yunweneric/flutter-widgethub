@@ -32,6 +32,8 @@ class _HomeNavBarState extends State<HomeNavBar> {
     NavLink(title: LangUtil.trans(("components")), path: RouteNames.components),
   ];
 
+  bool isLogoHovered = false;
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeBloc, ThemeState>(
@@ -48,20 +50,28 @@ class _HomeNavBarState extends State<HomeNavBar> {
                     Row(
                       children: [
                         TextButton(
-                          style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                          child: AnimatedSwitcher(
-                            duration: const Duration(milliseconds: 500),
-                            child: Theme.of(context).brightness == Brightness.light
-                                ? Image.asset(
-                                    AppImages.logoDark,
-                                    width: 130,
-                                  )
-                                : Image.asset(
-                                    AppImages.logoLight,
-                                    width: 130,
-                                  ),
+                          style: TextButton.styleFrom(
+                            padding: EdgeInsets.zero,
+                            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                            overlayColor: Theme.of(context).scaffoldBackgroundColor,
+                          ),
+                          child: AnimatedScale(
+                            duration: const Duration(milliseconds: 200),
+                            scale: isLogoHovered ? 1.2 : 1.0,
+                            child: AnimatedSwitcher(
+                              duration: const Duration(milliseconds: 500),
+                              child: Theme.of(context).brightness == Brightness.light
+                                  ? Image.asset(AppImages.logoDark, width: 130)
+                                  : Image.asset(
+                                      AppImages.logoLight,
+                                      width: 130,
+                                    ),
+                            ),
                           ),
                           onPressed: () => context.go(RouteNames.home),
+                          onHover: (value) => setState(() {
+                            isLogoHovered = value;
+                          }),
                         ),
                         AppSizing.kwSpacer(50.w),
                         Row(
@@ -89,6 +99,7 @@ class _HomeNavBarState extends State<HomeNavBar> {
                     Row(
                       children: [
                         const AppSearchBar(),
+                        AppSizing.kwSpacer(10.w),
                         const LanguageButton(),
                         TextButton(
                           onPressed: () => UtilHelper.openUrl("https://github.com/yunweneric/flutter-widgethub/"),

@@ -45,7 +45,7 @@
    "heroTitle": "Créez des applications Flutter éblouissantes facilement",
    "heroDescription": "Des composants prêts à l'emploi et blocs de mise en page flexibles aux animations fluides et effets saisissants, nos outils vous aident à créer rapidement des applications belles et fonctionnelles.",
    "exploreNow": "Explorer maintenant!",
-   "homeFooter": "2024 © Créé avec 💙 pour {}",
+   "homeFooter": "{year} Créé avec 💙 pour {community}",
    "integration": "INTÉGRATION",
    "integrationTitle": "Composants UI faciles à utiliser",
    "integrationDescription": "Intégrez facilement une large gamme de composants UI préconstruits et personnalisables pour accélérer votre processus de développement.",
@@ -131,5 +131,7 @@
    "onlineOnBoardingTitle": "Introduction à l'apprentissage en ligne",
    "onlineOnBoardingDescription": "Une interface animée pour l'introduction à l'apprentissage en ligne",
    "mentalHealthOnBoardingTitle": "Introduction à la santé mentale",
-   "mentalHealthOnBoardingDescription": "Une interface animée pour l'introduction à la santé mentale"
+   "mentalHealthOnBoardingDescription": "Une interface animée pour l'introduction à la santé mentale",
+   "liquidGlassTabDataDescription": "Une barre d'onglets avec un effet de verre liquide lorsque l'élément actif glisse entre les éléments.",
+   "liquidGlassTabDataTitle": "Barre d'onglets en verre liquide"
 }

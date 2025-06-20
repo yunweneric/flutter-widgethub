@@ -28,6 +28,7 @@ class _SideBarItemState extends State<SideBarItem> {
       ),
       child: TextButton(
         style: TextButton.styleFrom(
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
               topRight: Radius.circular(5.r),

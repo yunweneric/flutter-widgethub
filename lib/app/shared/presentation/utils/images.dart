@@ -12,4 +12,6 @@ class AppImages {
   static const macos = "assets/images/apple.png";
   static const linux = "assets/images/linux.png";
   static const web = "assets/images/globe.png";
+  static const rice = "assets/images/rice.png";
+  static const rice2 = "assets/images/rice_01.jpg";
 }
