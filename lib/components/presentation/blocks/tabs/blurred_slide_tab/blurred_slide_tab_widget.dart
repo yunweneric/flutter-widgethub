@@ -24,110 +24,101 @@ class _BlurredSlideTabWidgetState extends State<BlurredSlideTabWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage("https://images.unsplash.com/photo-1454391304352-2bf4678b1a7a?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
-            fit: BoxFit.cover,
-          ),
-          // color: Colors.red,
-        ),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: AppSizing.width(context) * 0.04),
-          child: Center(
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: AppSizing.width(context) * 0.02, vertical: 8),
-              decoration: BoxDecoration(
-                color: Colors.grey.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(30),
-              ),
-              child: Stack(
-                children: [
-                  Positioned(
-                    left: 0,
-                    right: 0,
-                    top: 0,
-                    bottom: 0,
-                    child: AnimatedAlign(
-                      curve: Curves.decelerate,
-                      duration: const Duration(milliseconds: 300),
-                      alignment: activeIndex == 0
-                          ? Alignment.centerLeft
-                          : activeIndex == 1
-                              ? Alignment.topCenter
-                              : Alignment.centerRight,
-                      child: Container(
-                        width: textWidth,
-                        padding: const EdgeInsets.symmetric(vertical: 12),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(30),
-                        ),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: AppSizing.width(context) * 0.04),
+        child: Center(
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: AppSizing.width(context) * 0.02, vertical: 8),
+            decoration: BoxDecoration(
+              color: Colors.grey.withOpacity(0.2),
+              borderRadius: BorderRadius.circular(30),
+            ),
+            child: Stack(
+              children: [
+                Positioned(
+                  left: 0,
+                  right: 0,
+                  top: 0,
+                  bottom: 0,
+                  child: AnimatedAlign(
+                    curve: Curves.decelerate,
+                    duration: const Duration(milliseconds: 300),
+                    alignment: activeIndex == 0
+                        ? Alignment.centerLeft
+                        : activeIndex == 1
+                            ? Alignment.topCenter
+                            : Alignment.centerRight,
+                    child: Container(
+                      width: textWidth,
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(30),
                       ),
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      ...items.map(
-                        (item) {
-                          final index = items.indexOf(item);
-                          return LayoutBuilder(builder: (context, c) {
-                            final textPainter = TextPainter(
-                              text: TextSpan(
-                                text: item.title,
-                                style: const TextStyle(color: Colors.black),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ...items.map(
+                      (item) {
+                        final index = items.indexOf(item);
+                        return LayoutBuilder(builder: (context, c) {
+                          final textPainter = TextPainter(
+                            text: TextSpan(
+                              text: item.title,
+                              style: const TextStyle(color: Colors.black),
+                            ),
+                            maxLines: 1,
+                            textDirection: TextDirection.ltr,
+                          )..layout();
+                          final width = textPainter.size.width + AppSizing.width(context) * 0.12;
+                          textWidth = width;
+                          return AnimatedContainer(
+                            duration: const Duration(milliseconds: 500),
+                            width: textWidth,
+                            child: InkWell(
+                              borderRadius: BorderRadius.circular(30),
+                              onTap: () => setState(() {
+                                activeIndex = index;
+                                textWidth = width;
+                              }),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 12),
+                                child: TweenAnimationBuilder<double>(
+                                    key: ValueKey(activeIndex),
+                                    duration: const Duration(milliseconds: 500),
+                                    tween: Tween(begin: activeIndex == index ? 4.0 : 0.0, end: 0),
+                                    builder: (context, value, child) {
+                                      return ImageFiltered(
+                                        imageFilter: ImageFilter.blur(sigmaX: value, sigmaY: value, tileMode: TileMode.decal),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            SvgPicture.string(item.icon, height: 20),
+                                            SizedBox(width: AppSizing.width(context) * 0.02),
+                                            Text(
+                                              item.title,
+                                              softWrap: true,
+                                              maxLines: 1,
+                                              overflow: TextOverflow.clip,
+                                              textAlign: TextAlign.center,
+                                              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    }),
                               ),
-                              maxLines: 1,
-                              textDirection: TextDirection.ltr,
-                            )..layout();
-                            final width = textPainter.size.width + AppSizing.width(context) * 0.12;
-                            textWidth = width;
-                            return AnimatedContainer(
-                              duration: const Duration(milliseconds: 500),
-                              width: textWidth,
-                              child: InkWell(
-                                borderRadius: BorderRadius.circular(30),
-                                onTap: () => setState(() {
-                                  activeIndex = index;
-                                  textWidth = width;
-                                }),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(vertical: 12),
-                                  child: TweenAnimationBuilder<double>(
-                                      key: ValueKey(activeIndex),
-                                      duration: const Duration(milliseconds: 500),
-                                      tween: Tween(begin: activeIndex == index ? 4.0 : 0.0, end: 0),
-                                      builder: (context, value, child) {
-                                        return ImageFiltered(
-                                          imageFilter: ImageFilter.blur(sigmaX: value, sigmaY: value, tileMode: TileMode.decal),
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              SvgPicture.string(item.icon, height: 20),
-                                              SizedBox(width: AppSizing.width(context) * 0.02),
-                                              Text(
-                                                item.title,
-                                                softWrap: true,
-                                                maxLines: 1,
-                                                overflow: TextOverflow.clip,
-                                                textAlign: TextAlign.center,
-                                                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
-                                              ),
-                                            ],
-                                          ),
-                                        );
-                                      }),
-                                ),
-                              ),
-                            );
-                          });
-                        },
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                            ),
+                          );
+                        });
+                      },
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
         ),
