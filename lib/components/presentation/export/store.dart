@@ -4,6 +4,7 @@ import 'package:flutterui/components/presentation/blocks/bottom_nav_bars/docking
 import 'package:flutterui/components/presentation/blocks/buttons/apple_books_fab/data.dart';
 import 'package:flutterui/components/presentation/blocks/tabs/blurred_slide_tab/data.dart';
 import 'package:flutterui/components/presentation/blocks/tabs/expandable_tab/data.dart';
+import 'package:flutterui/components/presentation/blocks/tabs/liquid_glass_tab/data.dart';
 import 'package:flutterui/components/presentation/blocks/tabs/slide_tab/data.dart';
 import 'package:flutterui/components/presentation/effects/meshes/mesh_01/mesh_01_data.dart';
 import 'package:flutterui/components/presentation/effects/meshes/mesh_02/mesh_02_data.dart';
@@ -34,5 +35,6 @@ class AllComponents {
     DoctorOnboardingData.component,
     MeshGradient01Data.component,
     MeshGradient02Data.component,
+    LiquidGlassTabData.component,
   ];
 }

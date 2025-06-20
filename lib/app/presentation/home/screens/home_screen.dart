@@ -51,12 +51,12 @@ class _HomeScreenState extends State<HomeScreen> {
       description: LangUtil.trans('homeDescription'),
       items: [
         AppCategoryModel(
-          widget:  Text(LangUtil.trans(("gettingStarted"))),
+          widget: Text(LangUtil.trans(("gettingStarted"))),
           category: ComponentCategoryEnum.GETTING_STARTED,
           subCategory: SubComponentCategoryEnum.GETTING_STARTED,
         ),
         AppCategoryModel(
-          widget:  Text(LangUtil.trans("gettingStarted")),
+          widget: Text(LangUtil.trans("gettingStarted")),
           category: ComponentCategoryEnum.GETTING_STARTED,
           subCategory: SubComponentCategoryEnum.REQUEST_A_COMPONENT,
         ),

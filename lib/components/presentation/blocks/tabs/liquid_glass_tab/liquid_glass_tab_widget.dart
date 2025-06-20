@@ -10,14 +10,14 @@ class TileItem {
   TileItem({required this.title, required this.icon, required this.color});
 }
 
-class BlurredSlideTabWidget extends StatefulWidget {
-  const BlurredSlideTabWidget({super.key});
+class LiquidGlassTab extends StatefulWidget {
+  const LiquidGlassTab({super.key});
 
   @override
-  State<BlurredSlideTabWidget> createState() => _BlurredSlideTabWidgetState();
+  State<LiquidGlassTab> createState() => _LiquidGlassTabState();
 }
 
-class _BlurredSlideTabWidgetState extends State<BlurredSlideTabWidget> {
+class _LiquidGlassTabState extends State<LiquidGlassTab> {
   int activeIndex = 0;
 
   double textWidth = 0;
@@ -29,6 +29,7 @@ class _BlurredSlideTabWidgetState extends State<BlurredSlideTabWidget> {
           image: DecorationImage(
             image: NetworkImage("https://images.unsplash.com/photo-1454391304352-2bf4678b1a7a?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
             fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.5), BlendMode.darken),
           ),
           // color: Colors.red,
         ),
@@ -38,7 +39,7 @@ class _BlurredSlideTabWidgetState extends State<BlurredSlideTabWidget> {
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: AppSizing.width(context) * 0.02, vertical: 8),
               decoration: BoxDecoration(
-                color: Colors.grey.withOpacity(0.2),
+                color: Colors.blueGrey.withOpacity(0.2),
                 borderRadius: BorderRadius.circular(30),
               ),
               child: Stack(
@@ -60,7 +61,7 @@ class _BlurredSlideTabWidgetState extends State<BlurredSlideTabWidget> {
                         width: textWidth,
                         padding: const EdgeInsets.symmetric(vertical: 12),
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Colors.blueGrey.withOpacity(0.3),
                           borderRadius: BorderRadius.circular(30),
                         ),
                       ),
@@ -76,7 +77,7 @@ class _BlurredSlideTabWidgetState extends State<BlurredSlideTabWidget> {
                             final textPainter = TextPainter(
                               text: TextSpan(
                                 text: item.title,
-                                style: const TextStyle(color: Colors.black),
+                                style: const TextStyle(color: Colors.white),
                               ),
                               maxLines: 1,
                               textDirection: TextDirection.ltr,
@@ -104,7 +105,7 @@ class _BlurredSlideTabWidgetState extends State<BlurredSlideTabWidget> {
                                           child: Row(
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
-                                              SvgPicture.string(item.icon, height: 20),
+                                              SvgPicture.string(item.icon, height: 20, color: Colors.white),
                                               SizedBox(width: AppSizing.width(context) * 0.02),
                                               Text(
                                                 item.title,
@@ -112,7 +113,7 @@ class _BlurredSlideTabWidgetState extends State<BlurredSlideTabWidget> {
                                                 maxLines: 1,
                                                 overflow: TextOverflow.clip,
                                                 textAlign: TextAlign.center,
-                                                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+                                                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Colors.white),
                                               ),
                                             ],
                                           ),

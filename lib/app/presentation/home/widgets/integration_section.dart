@@ -22,9 +22,7 @@ class _IntegrationSectionState extends State<IntegrationSection> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AppSizing.isMobile(context)
-              ? AppSizing.khSpacer(100)
-              : AppSizing.khSpacer(100),
+          AppSizing.isMobile(context) ? AppSizing.khSpacer(100) : AppSizing.khSpacer(100),
           Row(
             children: [
               SvgPicture.asset(AppIcons.diamond),
@@ -36,9 +34,7 @@ class _IntegrationSectionState extends State<IntegrationSection> {
                       fontSize: 18.sp,
                       color: Theme.of(context).primaryColor,
                     ),
-              )
-
-              ,
+              ),
             ],
           ),
           const SizedBox(height: 20),
@@ -49,13 +45,8 @@ class _IntegrationSectionState extends State<IntegrationSection> {
               children: [
                 Text(
                   LangUtil.trans("integrationTitle"),
-                  style: Theme.of(context)
-                      .textTheme
-                      .displayLarge!
-                      .copyWith(fontSize: 40.sp),
-                )
-
-                ,
+                  style: Theme.of(context).textTheme.displayLarge!.copyWith(fontSize: 40.sp),
+                ),
                 AppSizing.kh20Spacer(),
                 Text(
                   LangUtil.trans("integrationDescription"),

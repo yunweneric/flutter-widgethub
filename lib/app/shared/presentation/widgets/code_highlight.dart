@@ -59,7 +59,7 @@ class _CodeHighlightState extends State<CodeHighlight> {
     return Stack(
       children: [
         Container(
-          width: AppSizing.kWPercentage(context, 76),
+          // width: AppSizing.kWPercentage(context, 76),
           decoration: BoxDecoration(
             color: Theme.of(context).cardColor,
             borderRadius: widget.borderRadius ?? AppSizing.radiusSm(),

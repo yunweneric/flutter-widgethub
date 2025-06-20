@@ -131,5 +131,7 @@
    "onlineOnBoardingTitle": "Introduction à l'apprentissage en ligne",
    "onlineOnBoardingDescription": "Une interface animée pour l'introduction à l'apprentissage en ligne",
    "mentalHealthOnBoardingTitle": "Introduction à la santé mentale",
-   "mentalHealthOnBoardingDescription": "Une interface animée pour l'introduction à la santé mentale"
+   "mentalHealthOnBoardingDescription": "Une interface animée pour l'introduction à la santé mentale",
+   "liquidGlassTabDataDescription": "Une barre d'onglets avec un effet de verre liquide lorsque l'élément actif glisse entre les éléments.",
+   "liquidGlassTabDataTitle": "Barre d'onglets en verre liquide"
 }

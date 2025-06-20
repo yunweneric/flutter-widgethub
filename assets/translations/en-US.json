@@ -131,5 +131,7 @@
    "onlineOnBoardingTitle": "Online Learning Onboarding",
    "onlineOnBoardingDescription": "An Animated Online Learning Onboarding UI",
    "mentalHealthOnBoardingTitle": "Mental Health Onboarding",
-   "mentalHealthOnBoardingDescription": "An Animated Mental Health Onboarding UI"
+   "mentalHealthOnBoardingDescription": "An Animated Mental Health Onboarding UI",
+   "liquidGlassTabDataDescription": "A tab bar with liquid glass effect when active item is sliding between the items in the tab list",
+   "liquidGlassTabDataTitle": "Liquid Glass Tab Bar"
 }

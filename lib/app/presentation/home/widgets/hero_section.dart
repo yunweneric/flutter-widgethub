@@ -87,7 +87,7 @@ class _HeroSectionState extends State<HeroSection> {
                             );
                             context.go(RouteNames.components);
                           },
-                          child:  Text(
+                          child: Text(
                             LangUtil.trans("exploreNow"),
                             style: const TextStyle(color: AppColors.BG),
                           ),
@@ -104,8 +104,7 @@ class _HeroSectionState extends State<HeroSection> {
                           label: Text(
                             LangUtil.trans("browseAllAssets"),
                             style: TextStyle(color: Theme.of(context).primaryColorDark),
-                          )
-,
+                          ),
                         ),
                       ],
                     )
