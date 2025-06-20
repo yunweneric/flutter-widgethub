@@ -51,3 +51,6 @@ app.*.map.json
 .fvm/
 .firebaserc
 firebase.json
+
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
