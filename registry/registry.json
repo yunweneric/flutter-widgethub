@@ -1,0 +1,290 @@
+{
+    "version": "1.0.0",
+    "lastUpdated": "2024-06-01T00:00:00Z",
+    "components": [
+        {
+            "name": "skew_card",
+            "displayName": "Skew Card",
+            "description": "A card widget with skew animation effects",
+            "category": "animations",
+            "tags": [
+                "card",
+                "animation",
+                "skew",
+                "transform"
+            ],
+            "version": "1.0.0",
+            "author": "FlutterUI Team",
+            "license": "MIT",
+            "dependencies": [],
+            "properties": [
+                {
+                    "name": "child",
+                    "type": "Widget",
+                    "required": true,
+                    "description": "The widget to display inside the card"
+                },
+                {
+                    "name": "skewAngle",
+                    "type": "double",
+                    "required": false,
+                    "defaultValue": "0.1",
+                    "description": "The skew angle in radians"
+                }
+            ],
+            "files": [
+                "skew_card_widget.dart",
+                "skew_card_code.dart",
+                "data.dart"
+            ],
+            "examples": [
+                "examples/basic_example.dart"
+            ]
+        },
+        {
+            "name": "tabs",
+            "displayName": "Tabs",
+            "description": "Tab navigation components",
+            "category": "blocks",
+            "tags": [
+                "tabs",
+                "navigation",
+                "ui"
+            ],
+            "version": "1.0.0",
+            "author": "FlutterUI Team",
+            "license": "MIT",
+            "dependencies": [],
+            "properties": [],
+            "files": [],
+            "examples": [
+                "examples/basic_example.dart"
+            ]
+        },
+        {
+            "name": "buttons",
+            "displayName": "Buttons",
+            "description": "Button components including Apple Books FAB and Classic Button",
+            "category": "blocks",
+            "tags": [
+                "buttons",
+                "fab",
+                "ui"
+            ],
+            "version": "1.0.0",
+            "author": "FlutterUI Team",
+            "license": "MIT",
+            "dependencies": [],
+            "properties": [],
+            "files": [],
+            "examples": [
+                "examples/basic_example.dart"
+            ]
+        },
+        {
+            "name": "bottom_nav_bars",
+            "displayName": "Bottom Navigation Bars",
+            "description": "Bottom navigation bar components",
+            "category": "blocks",
+            "tags": [
+                "navigation",
+                "bottom",
+                "ui"
+            ],
+            "version": "1.0.0",
+            "author": "FlutterUI Team",
+            "license": "MIT",
+            "dependencies": [],
+            "properties": [],
+            "files": [],
+            "examples": [
+                "examples/basic_example.dart"
+            ]
+        },
+        {
+            "name": "cards",
+            "displayName": "Cards",
+            "description": "Card components and layouts",
+            "category": "blocks",
+            "tags": [
+                "cards",
+                "layout",
+                "ui"
+            ],
+            "version": "1.0.0",
+            "author": "FlutterUI Team",
+            "license": "MIT",
+            "dependencies": [],
+            "properties": [],
+            "files": [],
+            "examples": [
+                "examples/basic_example.dart"
+            ]
+        },
+        {
+            "name": "fruity_lips",
+            "displayName": "Fruity Lips",
+            "description": "Fruity Lips template component",
+            "category": "templates",
+            "tags": [
+                "template",
+                "fruity",
+                "lips"
+            ],
+            "version": "1.0.0",
+            "author": "FlutterUI Team",
+            "license": "MIT",
+            "dependencies": [],
+            "properties": [],
+            "files": [],
+            "examples": [
+                "examples/basic_example.dart"
+            ]
+        },
+        {
+            "name": "fade_carousel",
+            "displayName": "Fade Carousel",
+            "description": "Fade carousel template component",
+            "category": "templates",
+            "tags": [
+                "template",
+                "carousel",
+                "fade"
+            ],
+            "version": "1.0.0",
+            "author": "FlutterUI Team",
+            "license": "MIT",
+            "dependencies": [],
+            "properties": [],
+            "files": [],
+            "examples": [
+                "examples/basic_example.dart"
+            ]
+        },
+        {
+            "name": "basuu",
+            "displayName": "Basuu",
+            "description": "Basuu template component",
+            "category": "templates",
+            "tags": [
+                "template",
+                "basuu"
+            ],
+            "version": "1.0.0",
+            "author": "FlutterUI Team",
+            "license": "MIT",
+            "dependencies": [],
+            "properties": [],
+            "files": [],
+            "examples": [
+                "examples/basic_example.dart"
+            ]
+        },
+        {
+            "name": "nike_zoomer",
+            "displayName": "Nike Zoomer",
+            "description": "Nike Zoomer template component",
+            "category": "templates",
+            "tags": [
+                "template",
+                "nike",
+                "zoomer"
+            ],
+            "version": "1.0.0",
+            "author": "FlutterUI Team",
+            "license": "MIT",
+            "dependencies": [],
+            "properties": [],
+            "files": [],
+            "examples": [
+                "examples/basic_example.dart"
+            ]
+        },
+        {
+            "name": "leave_review",
+            "displayName": "Leave Review",
+            "description": "Leave Review template component",
+            "category": "templates",
+            "tags": [
+                "template",
+                "review",
+                "form"
+            ],
+            "version": "1.0.0",
+            "author": "FlutterUI Team",
+            "license": "MIT",
+            "dependencies": [],
+            "properties": [],
+            "files": [],
+            "examples": [
+                "examples/basic_example.dart"
+            ]
+        },
+        {
+            "name": "onboarding",
+            "displayName": "Onboarding",
+            "description": "Onboarding template component",
+            "category": "templates",
+            "tags": [
+                "template",
+                "onboarding",
+                "intro"
+            ],
+            "version": "1.0.0",
+            "author": "FlutterUI Team",
+            "license": "MIT",
+            "dependencies": [],
+            "properties": [],
+            "files": [],
+            "examples": [
+                "examples/basic_example.dart"
+            ]
+        },
+        {
+            "name": "meshes",
+            "displayName": "Meshes",
+            "description": "Mesh effects and gradients",
+            "category": "effects",
+            "tags": [
+                "effects",
+                "meshes",
+                "gradients"
+            ],
+            "version": "1.0.0",
+            "author": "FlutterUI Team",
+            "license": "MIT",
+            "dependencies": [],
+            "properties": [],
+            "files": [],
+            "examples": [
+                "examples/basic_example.dart"
+            ]
+        }
+    ],
+    "categories": [
+        {
+            "name": "animations",
+            "displayName": "Animations",
+            "description": "Animated components and effects",
+            "icon": "🎬"
+        },
+        {
+            "name": "blocks",
+            "displayName": "UI Blocks",
+            "description": "Reusable UI building blocks",
+            "icon": "🧱"
+        },
+        {
+            "name": "templates",
+            "displayName": "Templates",
+            "description": "Complete page templates",
+            "icon": "📄"
+        },
+        {
+            "name": "effects",
+            "displayName": "Visual Effects",
+            "description": "Visual effects and gradients",
+            "icon": "✨"
+        }
+    ]
+}

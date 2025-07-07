@@ -1,0 +1,20 @@
+{
+  "name": "bottom_nav_bars",
+  "displayName": "Bottom Nav Bars",
+  "description": "A blocks component",
+  "category": "blocks",
+  "tags": [
+    "blocks",
+    "bottom_nav_bars"
+  ],
+  "version": "1.0.0",
+  "author": "FlutterUI Team",
+  "license": "MIT",
+  "dependencies": [],
+  "properties": [],
+  "files": [],
+  "examples": [
+    "examples/basic_example.dart"
+  ],
+  "mainFile": null
+}

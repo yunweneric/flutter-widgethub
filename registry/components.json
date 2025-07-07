@@ -1,0 +1,308 @@
+[
+    {
+        "name": "skew_card",
+        "displayName": "Skew Card",
+        "description": "An animated card with skew transformation effects",
+        "category": "animations",
+        "tags": [
+            "animation",
+            "card",
+            "skew",
+            "transform"
+        ],
+        "version": "1.0.0",
+        "author": "FlutterUI Team",
+        "license": "MIT",
+        "dependencies": [],
+        "properties": [],
+        "files": [
+            "skew_card_widget.dart",
+            "skew_card_code.dart",
+            "data.dart"
+        ],
+        "examples": [
+            "examples/basic_example.dart"
+        ],
+        "mainFile": "skew_card_widget.dart"
+    },
+    {
+        "name": "fruity_lips",
+        "displayName": "Fruity Lips",
+        "description": "A colorful and playful template with fruity theme",
+        "category": "templates",
+        "tags": [
+            "template",
+            "colorful",
+            "playful",
+            "fruity"
+        ],
+        "version": "1.0.0",
+        "author": "FlutterUI Team",
+        "license": "MIT",
+        "dependencies": [],
+        "properties": [],
+        "files": [
+            "fruity_lips_widget.dart",
+            "fruity_lips_code.dart",
+            "data.dart"
+        ],
+        "examples": [
+            "examples/basic_example.dart"
+        ],
+        "mainFile": "fruity_lips_widget.dart"
+    },
+    {
+        "name": "fade_carousel",
+        "displayName": "Fade Carousel",
+        "description": "A smooth fade transition carousel component",
+        "category": "templates",
+        "tags": [
+            "template",
+            "carousel",
+            "fade",
+            "transition"
+        ],
+        "version": "1.0.0",
+        "author": "FlutterUI Team",
+        "license": "MIT",
+        "dependencies": [],
+        "properties": [],
+        "files": [
+            "fade_carousel_widget.dart",
+            "fade_carousel_code.dart",
+            "data.dart"
+        ],
+        "examples": [
+            "examples/basic_example.dart"
+        ],
+        "mainFile": "fade_carousel_widget.dart"
+    },
+    {
+        "name": "leave_review",
+        "displayName": "Leave Review",
+        "description": "A review submission template with rating system",
+        "category": "templates",
+        "tags": [
+            "template",
+            "review",
+            "rating",
+            "form"
+        ],
+        "version": "1.0.0",
+        "author": "FlutterUI Team",
+        "license": "MIT",
+        "dependencies": [],
+        "properties": [],
+        "files": [
+            "leave_a_review_widget.dart",
+            "leave_a_review_code.dart",
+            "data.dart"
+        ],
+        "examples": [
+            "examples/basic_example.dart"
+        ],
+        "mainFile": "leave_a_review_widget.dart"
+    },
+    {
+        "name": "nike_zoomer",
+        "displayName": "Nike Zoomer",
+        "description": "A dynamic template inspired by Nike's design language",
+        "category": "templates",
+        "tags": [
+            "template",
+            "nike",
+            "dynamic",
+            "sport"
+        ],
+        "version": "1.0.0",
+        "author": "FlutterUI Team",
+        "license": "MIT",
+        "dependencies": [],
+        "properties": [],
+        "files": [
+            "nike_zoomer_widget.dart",
+            "nike_zoomer_code.dart",
+            "data.dart"
+        ],
+        "examples": [
+            "examples/basic_example.dart"
+        ],
+        "mainFile": "nike_zoomer_widget.dart"
+    },
+    {
+        "name": "basuu",
+        "displayName": "Basuu",
+        "description": "A modern and clean template design",
+        "category": "templates",
+        "tags": [
+            "template",
+            "modern",
+            "clean",
+            "minimal"
+        ],
+        "version": "1.0.0",
+        "author": "FlutterUI Team",
+        "license": "MIT",
+        "dependencies": [],
+        "properties": [],
+        "files": [
+            "basuu_widget.dart",
+            "basuu_code.dart",
+            "data.dart"
+        ],
+        "examples": [
+            "examples/basic_example.dart"
+        ],
+        "mainFile": "basuu_widget.dart"
+    },
+    {
+        "name": "onboarding",
+        "displayName": "Onboarding",
+        "description": "A complete onboarding flow template",
+        "category": "templates",
+        "tags": [
+            "template",
+            "onboarding",
+            "flow",
+            "welcome"
+        ],
+        "version": "1.0.0",
+        "author": "FlutterUI Team",
+        "license": "MIT",
+        "dependencies": [],
+        "properties": [],
+        "files": [
+            "onboarding_widget.dart",
+            "onboarding_code.dart",
+            "data.dart"
+        ],
+        "examples": [
+            "examples/basic_example.dart"
+        ],
+        "mainFile": "onboarding_widget.dart"
+    },
+    {
+        "name": "buttons",
+        "displayName": "Buttons",
+        "description": "A collection of button components and styles",
+        "category": "blocks",
+        "tags": [
+            "blocks",
+            "buttons",
+            "interactive",
+            "ui"
+        ],
+        "version": "1.0.0",
+        "author": "FlutterUI Team",
+        "license": "MIT",
+        "dependencies": [],
+        "properties": [],
+        "files": [
+            "apple_books_fab.dart",
+            "apple_books_fab_code.dart",
+            "apple_books_fab_data.dart"
+        ],
+        "examples": [
+            "examples/basic_example.dart"
+        ],
+        "mainFile": "apple_books_fab.dart"
+    },
+    {
+        "name": "cards",
+        "displayName": "Cards",
+        "description": "A collection of card components and layouts",
+        "category": "blocks",
+        "tags": [
+            "blocks",
+            "cards",
+            "layout",
+            "ui"
+        ],
+        "version": "1.0.0",
+        "author": "FlutterUI Team",
+        "license": "MIT",
+        "dependencies": [],
+        "properties": [],
+        "files": [
+            "card_components.dart"
+        ],
+        "examples": [
+            "examples/basic_example.dart"
+        ],
+        "mainFile": "card_components.dart"
+    },
+    {
+        "name": "tabs",
+        "displayName": "Tabs",
+        "description": "A collection of tab navigation components",
+        "category": "blocks",
+        "tags": [
+            "blocks",
+            "tabs",
+            "navigation",
+            "ui"
+        ],
+        "version": "1.0.0",
+        "author": "FlutterUI Team",
+        "license": "MIT",
+        "dependencies": [],
+        "properties": [],
+        "files": [
+            "tab_components.dart"
+        ],
+        "examples": [
+            "examples/basic_example.dart"
+        ],
+        "mainFile": "tab_components.dart"
+    },
+    {
+        "name": "bottom_nav_bars",
+        "displayName": "Bottom Navigation Bars",
+        "description": "A collection of bottom navigation bar components",
+        "category": "blocks",
+        "tags": [
+            "blocks",
+            "navigation",
+            "bottom",
+            "ui"
+        ],
+        "version": "1.0.0",
+        "author": "FlutterUI Team",
+        "license": "MIT",
+        "dependencies": [],
+        "properties": [],
+        "files": [
+            "docking_bar.dart",
+            "docking_bar_code.dart",
+            "docking_bar_data.dart"
+        ],
+        "examples": [
+            "examples/basic_example.dart"
+        ],
+        "mainFile": "docking_bar.dart"
+    },
+    {
+        "name": "meshes",
+        "displayName": "Meshes",
+        "description": "A collection of mesh and gradient effect components",
+        "category": "effects",
+        "tags": [
+            "effects",
+            "mesh",
+            "gradient",
+            "visual"
+        ],
+        "version": "1.0.0",
+        "author": "FlutterUI Team",
+        "license": "MIT",
+        "dependencies": [],
+        "properties": [],
+        "files": [
+            "mesh_components.dart"
+        ],
+        "examples": [
+            "examples/basic_example.dart"
+        ],
+        "mainFile": "mesh_components.dart"
+    }
+]

@@ -1,0 +1,25 @@
+{
+  "name": "fade_carousel",
+  "displayName": "Fade Carousel",
+  "description": "A templates component",
+  "category": "templates",
+  "tags": [
+    "templates",
+    "fade_carousel"
+  ],
+  "version": "1.0.0",
+  "author": "FlutterUI Team",
+  "license": "MIT",
+  "dependencies": [],
+  "properties": [],
+  "files": [
+    "fade_carousel_widget.dart",
+    "fade_carousel_data.dart",
+    "fade_carousel_code.dart",
+    "fade_carousel_setup.dart"
+  ],
+  "examples": [
+    "examples/basic_example.dart"
+  ],
+  "mainFile": "fade_carousel_widget.dart"
+}

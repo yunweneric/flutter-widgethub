@@ -1,0 +1,25 @@
+{
+  "name": "leave_review",
+  "displayName": "Leave Review",
+  "description": "A templates component",
+  "category": "templates",
+  "tags": [
+    "templates",
+    "leave_review"
+  ],
+  "version": "1.0.0",
+  "author": "FlutterUI Team",
+  "license": "MIT",
+  "dependencies": [],
+  "properties": [],
+  "files": [
+    "leave_a_review_data.dart",
+    "leave_a_review_widget.dart",
+    "leave_a_review_code.dart",
+    "leave_a_review_setup.dart"
+  ],
+  "examples": [
+    "examples/basic_example.dart"
+  ],
+  "mainFile": "leave_a_review_widget.dart"
+}

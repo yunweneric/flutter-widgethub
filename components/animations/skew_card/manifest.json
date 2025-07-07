@@ -1,0 +1,24 @@
+{
+  "name": "skew_card",
+  "displayName": "Skew Card",
+  "description": "A animations component",
+  "category": "animations",
+  "tags": [
+    "animations",
+    "skew_card"
+  ],
+  "version": "1.0.0",
+  "author": "FlutterUI Team",
+  "license": "MIT",
+  "dependencies": [],
+  "properties": [],
+  "files": [
+    "data.dart",
+    "skew_card_widget.dart",
+    "skew_card_code.dart"
+  ],
+  "examples": [
+    "examples/basic_example.dart"
+  ],
+  "mainFile": "skew_card_widget.dart"
+}

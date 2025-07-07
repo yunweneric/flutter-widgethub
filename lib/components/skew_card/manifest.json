@@ -1,0 +1,38 @@
+{
+    "name": "skew_card",
+    "displayName": "Skew Card",
+    "description": "A card widget with skew animation effects",
+    "category": "animations",
+    "tags": [
+        "card",
+        "animation",
+        "skew",
+        "transform"
+    ],
+    "version": "1.0.0",
+    "author": "FlutterUI Team",
+    "license": "MIT",
+    "dependencies": [],
+    "properties": [
+        {
+            "name": "child",
+            "type": "Widget",
+            "required": true,
+            "description": "The widget to display inside the card"
+        },
+        {
+            "name": "skewAngle",
+            "type": "double",
+            "required": false,
+            "defaultValue": "0.1",
+            "description": "The skew angle in radians"
+        }
+    ],
+    "files": [
+        "skew_card.dart",
+        "README.md"
+    ],
+    "examples": [
+        "examples/basic_example.dart"
+    ]
+}

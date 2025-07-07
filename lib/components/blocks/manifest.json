@@ -1,0 +1,19 @@
+{
+  "name": "blocks",
+  "displayName": "Blocks",
+  "description": "A presentation component",
+  "category": "presentation",
+  "tags": [
+    "presentation",
+    "blocks"
+  ],
+  "version": "1.0.0",
+  "author": "FlutterUI Team",
+  "license": "MIT",
+  "dependencies": [],
+  "properties": [],
+  "files": [],
+  "examples": [
+    "examples/basic_example.dart"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "fruity_lips",
+  "displayName": "Fruity Lips",
+  "description": "A templates component",
+  "category": "templates",
+  "tags": [
+    "templates",
+    "fruity_lips"
+  ],
+  "version": "1.0.0",
+  "author": "FlutterUI Team",
+  "license": "MIT",
+  "dependencies": [],
+  "properties": [],
+  "files": [
+    "fruity_lips_code.dart",
+    "fruity_lips_widget.dart",
+    "fruity_lips_setup.dart",
+    "fruity_lips_data.dart"
+  ],
+  "examples": [
+    "examples/basic_example.dart"
+  ],
+  "mainFile": "fruity_lips_widget.dart"
+}

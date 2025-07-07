@@ -1,0 +1,20 @@
+{
+  "name": "tabs",
+  "displayName": "Tabs",
+  "description": "A blocks component",
+  "category": "blocks",
+  "tags": [
+    "blocks",
+    "tabs"
+  ],
+  "version": "1.0.0",
+  "author": "FlutterUI Team",
+  "license": "MIT",
+  "dependencies": [],
+  "properties": [],
+  "files": [],
+  "examples": [
+    "examples/basic_example.dart"
+  ],
+  "mainFile": null
+}

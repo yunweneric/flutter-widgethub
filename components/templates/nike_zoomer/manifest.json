@@ -1,0 +1,25 @@
+{
+  "name": "nike_zoomer",
+  "displayName": "Nike Zoomer",
+  "description": "A templates component",
+  "category": "templates",
+  "tags": [
+    "templates",
+    "nike_zoomer"
+  ],
+  "version": "1.0.0",
+  "author": "FlutterUI Team",
+  "license": "MIT",
+  "dependencies": [],
+  "properties": [],
+  "files": [
+    "nike_zoomer_code.dart",
+    "nike_zoomer_widget.dart",
+    "nike_zoomer_setup.dart",
+    "nike_zoomer_data.dart"
+  ],
+  "examples": [
+    "examples/basic_example.dart"
+  ],
+  "mainFile": "nike_zoomer_widget.dart"
+}

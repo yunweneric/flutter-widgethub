@@ -1,0 +1,20 @@
+{
+  "name": "onboarding",
+  "displayName": "Onboarding",
+  "description": "A templates component",
+  "category": "templates",
+  "tags": [
+    "templates",
+    "onboarding"
+  ],
+  "version": "1.0.0",
+  "author": "FlutterUI Team",
+  "license": "MIT",
+  "dependencies": [],
+  "properties": [],
+  "files": [],
+  "examples": [
+    "examples/basic_example.dart"
+  ],
+  "mainFile": null
+}

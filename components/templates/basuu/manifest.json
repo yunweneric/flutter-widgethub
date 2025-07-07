@@ -1,0 +1,20 @@
+{
+  "name": "basuu",
+  "displayName": "Basuu",
+  "description": "A templates component",
+  "category": "templates",
+  "tags": [
+    "templates",
+    "basuu"
+  ],
+  "version": "1.0.0",
+  "author": "FlutterUI Team",
+  "license": "MIT",
+  "dependencies": [],
+  "properties": [],
+  "files": [],
+  "examples": [
+    "examples/basic_example.dart"
+  ],
+  "mainFile": null
+}
