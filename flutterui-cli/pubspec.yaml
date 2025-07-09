@@ -1,0 +1,20 @@
+name: flutterui_cli
+description: "CLI tool for downloading Flutter Widget Hub components"
+version: 1.0.0
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  args: ^2.4.2
+  http: ^1.1.0
+  path: ^1.8.3
+  yaml: ^3.1.2
+  cli_util: ^0.3.5
+  file: ^7.0.0
+  io: ^1.0.4
+  collection: ^1.18.0
+
+dev_dependencies:
+  test: ^1.24.0
+  lints: ^3.0.0
