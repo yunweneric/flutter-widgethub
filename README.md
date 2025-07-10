@@ -1,7 +1,7 @@
 # Flutter Widget Hub 🚀
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/yunweneric/flutter-widgethub/main/assets/images/fwh.png" alt="Flutter Widget Hub" width="300"/>
+  <img src="https://raw.githubusercontent.com/yunweneric/flutter-widgethub/main/assets/images/fwh.png" alt="Flutter Widget Hub" width="1200"/>
   
   <p><strong>Build Stunning Flutter Apps with Ease</strong></p>
   
@@ -140,6 +140,6 @@ A huge thank you to all contributors who have made Flutter Widget Hub possible. 
 ---
 
 <div align="center">
-  <p>Made with ❤️ by the Flutter community</p>
+  <p>Made with ❤️ for the Flutter community</p>
   <p>⭐ Star this repo if you found it helpful!</p>
 </div>
