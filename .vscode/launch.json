@@ -12,7 +12,7 @@
       "args": [
         "--target",
         "lib/app/core/main_dev.dart",
-        "--dart-define-from-file=../envs/fwh/dev.env.json",
+        // "--dart-define-from-file=../envs/fwh/dev.env.json",
         "-d",
         "chrome",
         "--web-port",
@@ -32,8 +32,8 @@
         "--flavor",
         "dev",
         "--target",
-        "lib/app/core/main_dev.dart",
-        "--dart-define-from-file=../envs/fwh/dev.env.json"
+        "lib/app/core/main_dev.dart"
+        // "--dart-define-from-file=../envs/fwh/dev.env.json"
       ]
     },
 
@@ -46,8 +46,8 @@
         "--flavor",
         "prod",
         "--target",
-        "lib/app/core/main_prod.dart",
-        "--dart-define-from-file=../envs/fwh/env.json"
+        "lib/app/core/main_prod.dart"
+        // "--dart-define-from-file=../envs/fwh/env.json"
       ]
     }
   ]

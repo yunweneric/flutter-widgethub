@@ -7,15 +7,15 @@ enum AppEnv {
   final String value;
 }
 
-class AppConfig {
-  factory AppConfig() => instance;
+// class AppConfig {
+//   factory AppConfig() => instance;
 
-  AppConfig._privateConstructor();
-  late AppEnv env;
+//   AppConfig._privateConstructor();
+//   late AppEnv env;
 
-  static final AppConfig instance = AppConfig._privateConstructor();
+//   static final AppConfig instance = AppConfig._privateConstructor();
 
-  void init({required AppEnv env}) {
-    instance.env = env;
-  }
-}
+//   void init({required AppEnv env}) {
+//     instance.env = env;
+//   }
+// }

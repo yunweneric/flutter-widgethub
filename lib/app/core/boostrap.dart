@@ -36,8 +36,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder, {required AppEnv env
   Bloc.observer = SimpleBlocObserver();
 
   // Initialize the app storage
-
-  AppConfig.instance.init(env: env);
+  // AppConfig.instance.init(env: env);
 
   // Initialize the service locator
   await ServiceLocators.register();

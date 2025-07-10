@@ -13,7 +13,8 @@ clear
 
 echo "Building Flutter web with WASM..."
 # flutter build web --wasm --target lib/app/core/main_dev.dart --dart-define-from-file=../envs/fwh/dev.env.json
-flutter build web --wasm --target lib/app/core/main_prod.dart --dart-define-from-file=../envs/fwh/env.json
+flutter build web --wasm --target lib/app/core/main_prod.dart
+# --dart-define-from-file=../envs/fwh/env.json
 # flutter build web --web-renderer html --target lib/main_dev.dart --dart-define-from-file=../envs/fwh/dev.env.json
 
 echo "Deploying to Firebase..."
