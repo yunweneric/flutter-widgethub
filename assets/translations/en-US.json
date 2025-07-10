@@ -133,5 +133,15 @@
    "mentalHealthOnBoardingTitle": "Mental Health Onboarding",
    "mentalHealthOnBoardingDescription": "An Animated Mental Health Onboarding UI",
    "liquidGlassTabDataDescription": "A tab bar with liquid glass effect when active item is sliding between the items in the tab list",
-   "liquidGlassTabDataTitle": "Liquid Glass Tab Bar"
+   "liquidGlassTabDataTitle": "Liquid Glass Tab Bar",
+   "auth01Title": "Sign In 01",
+   "auth01Description": "A clean and modern sign-in page with email, password, and social login options",
+   "auth02Title": "Sign In 02",
+   "auth02Description": "A beautiful login page with card layout and social authentication",
+   "auth03Title": "Sign In 03",
+   "auth03Description": "A simple and elegant sign-in page for password recovery",
+   "auth04Title": "Sign In 04",
+   "auth04Description": "A 4-digit OTP login page for secure authentication",
+   "auth05Title": "Sign In 05",
+   "auth05Description": "A sign-in page with account information and logout functionality"
 }

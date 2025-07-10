@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterui/app/presentation/categories/screens/component_category_screen.dart';
 import 'package:flutterui/app/presentation/categories/screens/component_details_wrapper.dart';
 import 'package:flutterui/app/presentation/categories/screens/template_category_screen.dart';
+import 'package:flutterui/app/presentation/categories/screens/template_details_screen.dart';
 import 'package:flutterui/app/presentation/categories/widget/component_layout.dart';
 import 'package:flutterui/app/presentation/home/screens/home_screen.dart';
 import 'package:flutterui/app/presentation/request_component/request_component_screen.dart';
@@ -93,9 +94,17 @@ final appRouter = GoRouter(
           builder: (context, state) => buildTemplateLayout(state),
         ),
 
+        // Example URL for this route:
+        // /templates/{category}/{subCategory}/{id}/{index}
+        // For example:
+        // /templates/templates/apps/basuu-language-kit/0001920
+
         buildAnimatedRoute(
-          path: '${RouteNames.templates}/:id/:subCategory/:itemId',
-          builder: (context, state) => buildComponentDetailsWidget(state),
+          path: '${RouteNames.templates}/:subCategory/:id/:index',
+          builder: (context, state) => TemplateDetailsScreen(
+            id: state.pathParameters['id'] as String,
+            index: int.parse(state.pathParameters['index'] as String),
+          ),
         ),
 
         // **     ----------------------------------------------    //

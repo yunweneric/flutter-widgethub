@@ -1,19 +1,21 @@
-// import 'dart:io';
+// import 'dart:html' as platform_io;
 
+// ignore: conditional_import
+// import 'dart:io' if (dart.library.html) 'dart:html' as platform_io;
+
+import 'package:device_frame/device_frame.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutterui/app/shared/presentation/helpers/platform/platform.dart';
-import 'package:flutterui/app/core/service_locators.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:device_frame/device_frame.dart';
+import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/shared/data/enums/device_type.dart';
+import 'package:flutterui/app/shared/presentation/helpers/platform/platform.dart';
 
 class UtilHelper {
-  static String activeRoute =
-      getIt.get<GoRouter>().routeInformationProvider.value.uri.path;
+  static String activeRoute = getIt.get<GoRouter>().routeInformationProvider.value.uri.path;
 
   static dynamic getWindows() {
     final windows = getWindow();

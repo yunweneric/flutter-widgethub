@@ -1,0 +1,17 @@
+targets:
+  $default:
+    builders:
+      flutterui|widget_to_code_builder:
+        enabled: true
+        generate_for:
+          - lib/components/presentation/templates/auth/**_widget.dart
+
+builders:
+  widget_to_code_builder:
+    import: "package:flutterui/builders.dart"
+    builder_factories: ["widgetToCodeBuilder"]
+    build_extensions:
+      "_widget.dart": [".g.dart"]
+    auto_apply: dependents
+    build_to: source
+    applies_builders: ["source_gen|combining_builder"]

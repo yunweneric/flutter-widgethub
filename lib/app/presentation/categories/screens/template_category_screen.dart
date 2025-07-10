@@ -35,7 +35,10 @@ class _TemplateCategoryScreenState extends State<TemplateCategoryScreen> {
                     ? const SizedBox()
                     : Column(
                         children: [
-                          Text(activeCategory.subCategory.describe(), style: Theme.of(context).textTheme.displayLarge),
+                          Text(
+                            LangUtil.trans(component.title),
+                            style: Theme.of(context).textTheme.displayLarge,
+                          ),
                           AppSizing.kh20Spacer(),
                         ],
                       ),
@@ -49,17 +52,30 @@ class _TemplateCategoryScreenState extends State<TemplateCategoryScreen> {
                     child: components.isEmpty
                         ? SizedBox(
                             height: AppSizing.kHPercentage(context, 50),
-                            child:  Center(child:  Text(LangUtil.trans('noItemInThisCategory')),
-                          ))
+                            child: Center(
+                              child: Text(LangUtil.trans('noItemInThisCategory')),
+                            ))
                         : Wrap(
                             alignment: WrapAlignment.spaceBetween,
                             runAlignment: WrapAlignment.spaceBetween,
                             crossAxisAlignment: WrapCrossAlignment.center,
-                            spacing: AppSizing.isTablet(context) ? AppSizing.kWPercentage(context, 2) : AppSizing.kWPercentage(context, 5),
+                            spacing: AppSizing.isTablet(context)
+                                ? AppSizing.kWPercentage(context, 2)
+                                : AppSizing.kWPercentage(context, 5),
                             runSpacing: AppSizing.kWPercentage(context, 5),
                             children: [
-                              ...components.first.codeComponents.map((item) {
-                                return TemplateCard(component: item);
+                              // ...components.first.codeComponents.asMap().entries.map((entry) {
+                              //   return TemplateCard(
+                              //     component: components.first,
+                              //     index: entry.key,
+                              //   );
+                              // })
+
+                              ...component.codeComponents.map((item) {
+                                return TemplateCard(
+                                  component: component,
+                                  index: component.codeComponents.indexOf(item),
+                                );
                               })
                             ],
                           ),

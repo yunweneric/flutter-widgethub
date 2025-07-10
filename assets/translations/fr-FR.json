@@ -133,5 +133,15 @@
    "mentalHealthOnBoardingTitle": "Introduction à la santé mentale",
    "mentalHealthOnBoardingDescription": "Une interface animée pour l'introduction à la santé mentale",
    "liquidGlassTabDataDescription": "Une barre d'onglets avec un effet de verre liquide lorsque l'élément actif glisse entre les éléments.",
-   "liquidGlassTabDataTitle": "Barre d'onglets en verre liquide"
+   "liquidGlassTabDataTitle": "Barre d'onglets en verre liquide",
+   "auth01Title": "Connexion 01",
+   "auth01Description": "Un écran de connexion propre et moderne avec email, mot de passe et options de connexion sociale",
+   "auth02Title": "Connexion 02",
+   "auth02Description": "Un écran de connexion beau avec mise en page de carte et authentification sociale",
+   "auth03Title": "Connexion 03",
+   "auth03Description": "Un écran de connexion simple et élégant pour la récupération de mot de passe",
+   "auth04Title": "Connexion 04",
+   "auth04Description": "Un écran de connexion à 4 chiffres pour l'authentification sécurisée",
+   "auth05Title": "Connexion 05",
+   "auth05Description": "Un écran de connexion avec des informations de compte et des fonctionnalités de déconnexion"
 }

@@ -48,7 +48,8 @@ class BasuuData {
         widget: BasuuHomeScreen(level: categories.first),
       ),
     ],
-    description: 'An Animated Language learning App Template including, learning Home screen, Language screen, Word learning screen and more',
+    description:
+        'An Animated Language learning App Template including, learning Home screen, Language screen, Word learning screen and more',
     title: 'Basuu App',
     setup: basuuSetup,
     category: ComponentCategoryEnum.TEMPLATES,

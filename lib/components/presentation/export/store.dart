@@ -16,6 +16,11 @@ import 'package:flutterui/components/presentation/templates/leave_review/leave_a
 import 'package:flutterui/components/presentation/templates/nike_zoomer/nike_zoomer_data.dart';
 import 'package:flutterui/components/presentation/templates/onboarding/mental_health/mental_health_data.dart';
 import 'package:flutterui/components/presentation/templates/onboarding/online/online_data.dart';
+import 'package:flutterui/components/presentation/templates/auth/auth_01/auth_01_data.dart';
+import 'package:flutterui/components/presentation/templates/auth/auth_02/auth_02_data.dart';
+import 'package:flutterui/components/presentation/templates/auth/auth_03/auth_03_data.dart';
+import 'package:flutterui/components/presentation/templates/auth/auth_04/auth_04_data.dart';
+import 'package:flutterui/components/presentation/templates/auth/auth_05/auth_05_data.dart';
 
 class AllComponents {
   static List<Component> widgets = [
@@ -36,5 +41,10 @@ class AllComponents {
     MeshGradient01Data.component,
     MeshGradient02Data.component,
     LiquidGlassTabData.component,
+    Auth01Data.component,
+    Auth02Data.component,
+    Auth03Data.component,
+    Auth04Data.component,
+    Auth05Data.component,
   ];
 }
