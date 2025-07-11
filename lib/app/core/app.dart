@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
                         themeMode: state.themeMode,
                         scrollBehavior: AppScrollBehavior(),
                         builder: (context, child) {
-                          return Auth01RegisterWidget();
+                          // return Auth01RegisterWidget();
                           return child!;
                         },
                       );
