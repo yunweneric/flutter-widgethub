@@ -8,6 +8,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -62,5 +63,14 @@ class UtilHelper {
   static String formatNumber(int length) {
     final numberFormat = NumberFormat.decimalPattern();
     return numberFormat.format(length);
+  }
+
+  static String countComponents() {
+    final componentBloc = getIt.get<ComponentBloc>();
+    final count = componentBloc.state.allComponents.fold(0, (a, b) {
+      final codeComponentCount = b.codeComponents.length;
+      return a + codeComponentCount;
+    });
+    return formatNumber(count);
   }
 }

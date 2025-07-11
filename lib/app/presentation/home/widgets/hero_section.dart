@@ -48,13 +48,9 @@ class _HeroSectionState extends State<HeroSection> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Builder(builder: (context) {
-                      final count = componentBloc.state.allComponents.fold(0, (a, b) {
-                        final codeComponentCount = b.codeComponents.length;
-                        return a + codeComponentCount;
-                      });
                       return SelectableText(
                         LangUtil.trans("heroTitle", args: {
-                          "count": UtilHelper.formatNumber(count),
+                          "count": UtilHelper.countComponents(),
                         }),
                         style: Theme.of(context)
                             .textTheme
