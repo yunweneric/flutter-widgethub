@@ -47,15 +47,21 @@ class _HeroSectionState extends State<HeroSection> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SelectableText(
-                      LangUtil.trans("heroTitle", args: {
-                        "count": UtilHelper.formatNumber(componentBloc.state.allComponents.length),
-                      }),
-                      style: Theme.of(context)
-                          .textTheme
-                          .displayLarge!
-                          .copyWith(fontSize: AppSizing.isMobile(context) ? 40.sp : 50.sp),
-                    ),
+                    Builder(builder: (context) {
+                      final count = componentBloc.state.allComponents.fold(0, (a, b) {
+                        final codeComponentCount = b.codeComponents.length;
+                        return a + codeComponentCount;
+                      });
+                      return SelectableText(
+                        LangUtil.trans("heroTitle", args: {
+                          "count": UtilHelper.formatNumber(count),
+                        }),
+                        style: Theme.of(context)
+                            .textTheme
+                            .displayLarge!
+                            .copyWith(fontSize: AppSizing.isMobile(context) ? 40.sp : 50.sp),
+                      );
+                    }),
                     AppSizing.kh20Spacer(),
                     SelectableText(
                       LangUtil.trans("heroDescription"),

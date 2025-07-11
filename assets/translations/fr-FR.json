@@ -42,7 +42,7 @@
    "red": "ROUGE",
    "teal": "TURQUOISE",
    "blue": "BLEU",
-   "heroTitle": "Créez des applications Flutter éblouissantes facilement",
+   "heroTitle": "Explorez {count}+ applications Flutter éblouissantes",
    "heroDescription": "Des composants prêts à l'emploi et blocs de mise en page flexibles aux animations fluides et effets saisissants, nos outils vous aident à créer rapidement des applications belles et fonctionnelles.",
    "exploreNow": "Explorer maintenant!",
    "homeFooter": "{year} Créé avec 💙 pour {community}",

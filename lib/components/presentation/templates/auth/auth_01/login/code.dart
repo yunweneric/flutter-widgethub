@@ -1,14 +1,14 @@
-import 'package:flutter/material.dart';
+final authLoginCode = """import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class Auth01Widget extends StatefulWidget {
-  const Auth01Widget({super.key});
+class Auth01LoginWidget extends StatefulWidget {
+  const Auth01LoginWidget({super.key});
 
   @override
-  State<Auth01Widget> createState() => _Auth01WidgetState();
+  State<Auth01LoginWidget> createState() => _Auth01LoginWidgetState();
 }
 
-class _Auth01WidgetState extends State<Auth01Widget> {
+class _Auth01LoginWidgetState extends State<Auth01LoginWidget> {
   bool _obscurePassword = true;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -436,3 +436,4 @@ class AppSizing {
   static Widget khSpacer(double height) => SizedBox(height: height);
   static EdgeInsets kpadding(double width, double height) => EdgeInsets.symmetric(horizontal: width, vertical: height);
 }
+""";

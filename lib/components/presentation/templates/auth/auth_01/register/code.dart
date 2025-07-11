@@ -1,16 +1,14 @@
-const auth01Code = r"""
-
-import 'package:flutter/material.dart';
+final auth01RegisterCode = """import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class Auth01Widget extends StatefulWidget {
-  const Auth01Widget({super.key});
+class Auth01RegisterWidget extends StatefulWidget {
+  const Auth01RegisterWidget({super.key});
 
   @override
-  State<Auth01Widget> createState() => _Auth01WidgetState();
+  State<Auth01RegisterWidget> createState() => _Auth01RegisterWidgetState();
 }
 
-class _Auth01WidgetState extends State<Auth01Widget> {
+class _Auth01RegisterWidgetState extends State<Auth01RegisterWidget> {
   bool _obscurePassword = true;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -128,13 +126,13 @@ class _Auth01WidgetState extends State<Auth01Widget> {
                   AppSizing.khSpacer(8),
                   const ForgotPasswordButton(),
                   AppSizing.khSpacer(8),
-                  const LoginButton(),
+                  const RegisterButton(),
                   AppSizing.khSpacer(20),
                   const OrDivider(),
                   AppSizing.khSpacer(20),
-                  const GoogleLoginButton(),
+                  const GoogleRegisterButton(),
                   AppSizing.khSpacer(12),
-                  const FacebookLoginButton(),
+                  const FacebookRegisterButton(),
                   AppSizing.khSpacer(32),
                   const SignUpLink(),
                 ],
@@ -274,8 +272,8 @@ class ForgotPasswordButton extends StatelessWidget {
   }
 }
 
-class LoginButton extends StatelessWidget {
-  const LoginButton({super.key});
+class RegisterButton extends StatelessWidget {
+  const RegisterButton({super.key});
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -307,8 +305,8 @@ class OrDivider extends StatelessWidget {
   }
 }
 
-class GoogleLoginButton extends StatelessWidget {
-  const GoogleLoginButton({super.key});
+class GoogleRegisterButton extends StatelessWidget {
+  const GoogleRegisterButton({super.key});
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -323,8 +321,8 @@ class GoogleLoginButton extends StatelessWidget {
   }
 }
 
-class FacebookLoginButton extends StatelessWidget {
-  const FacebookLoginButton({super.key});
+class FacebookRegisterButton extends StatelessWidget {
+  const FacebookRegisterButton({super.key});
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -438,6 +436,4 @@ class AppSizing {
   static Widget khSpacer(double height) => SizedBox(height: height);
   static EdgeInsets kpadding(double width, double height) => EdgeInsets.symmetric(horizontal: width, vertical: height);
 }
-
-
 """;

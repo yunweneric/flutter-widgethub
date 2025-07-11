@@ -30,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     _controller.addListener(listenToScroll);
+    componentBloc.add(GetAllComponentsEvent());
     super.initState();
   }
 
@@ -63,7 +64,8 @@ class _HomeScreenState extends State<HomeScreen> {
       ],
     ),
     ...sideBarCategories.where(
-      (item) => item.category.describe().toLowerCase() != "animations" || item.category.describe().toLowerCase() != "tabs",
+      (item) =>
+          item.category.describe().toLowerCase() != "animations" || item.category.describe().toLowerCase() != "tabs",
     ),
   ];
   double generateScrollFactor(BuildContext context) {
