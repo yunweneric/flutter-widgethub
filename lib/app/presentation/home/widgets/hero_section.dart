@@ -11,6 +11,7 @@ import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart
 import 'package:flutterui/app/shared/presentation/utils/colors.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
+import 'package:flutterui/app/shared/presentation/utils/util.dart';
 import 'package:flutterui/app/shared/presentation/widgets/device_section_frame.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/components/presentation/templates/leave_review/leave_a_review_widget.dart';
@@ -47,8 +48,13 @@ class _HeroSectionState extends State<HeroSection> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SelectableText(
-                      LangUtil.trans("heroTitle"),
-                      style: Theme.of(context).textTheme.displayLarge!.copyWith(fontSize: AppSizing.isMobile(context) ? 40.sp : 50.sp),
+                      LangUtil.trans("heroTitle", args: {
+                        "count": UtilHelper.formatNumber(componentBloc.state.allComponents.length),
+                      }),
+                      style: Theme.of(context)
+                          .textTheme
+                          .displayLarge!
+                          .copyWith(fontSize: AppSizing.isMobile(context) ? 40.sp : 50.sp),
                     ),
                     AppSizing.kh20Spacer(),
                     SelectableText(

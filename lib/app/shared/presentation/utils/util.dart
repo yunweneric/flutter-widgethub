@@ -4,6 +4,7 @@
 // import 'dart:io' if (dart.library.html) 'dart:html' as platform_io;
 
 import 'package:device_frame/device_frame.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -56,5 +57,10 @@ class UtilHelper {
     // if (type == AppDeviceType.MOBILE) return Devices.ios.iPhone12ProMax;
     if (type == AppDeviceType.TABLET) return Devices.android.largeTablet;
     if (type == AppDeviceType.DESKTOP) return Devices.macOS.macBookPro;
+  }
+
+  static String formatNumber(int length) {
+    final numberFormat = NumberFormat.decimalPattern();
+    return numberFormat.format(length);
   }
 }

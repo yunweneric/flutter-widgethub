@@ -12,7 +12,6 @@
       "args": [
         "--target",
         "lib/app/core/main_dev.dart",
-        // "--dart-define-from-file=../envs/fwh/dev.env.json",
         "-d",
         "chrome",
         "--web-port",
