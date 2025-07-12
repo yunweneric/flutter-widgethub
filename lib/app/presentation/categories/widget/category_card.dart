@@ -77,7 +77,8 @@ class _CategoryCardState extends State<CategoryCard> {
           borderRadius: AppSizing.radiusMd(),
           onTap: () {
             componentBloc.add(UpdateActiveComponentEvent(newComponent: componentDetails));
-            final link = "/components/${componentDetails.category.link()}/${componentDetails.subcategory.link()}/${componentDetails.id}/";
+            final link =
+                "/components/${componentDetails.category.link()}/${componentDetails.subcategory.link()}/${componentDetails.id}/";
             context.go(link);
           },
           onHover: (status) {
@@ -100,6 +101,17 @@ class _CategoryCardState extends State<CategoryCard> {
             height: AppSizing.kWPercentage(context, 25),
           ),
         ),
+        if (componentDetails.codeComponents.length > 1)
+          Positioned(
+            top: 10,
+            right: 10,
+            child: Chip(
+              label: Text(
+                "${componentDetails.codeComponents.length} ${LangUtil.trans("components")}",
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+            ),
+          )
       ],
     );
   }

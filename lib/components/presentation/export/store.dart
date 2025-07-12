@@ -21,6 +21,7 @@ import 'package:flutterui/components/presentation/templates/auth/auth_02/auth_02
 import 'package:flutterui/components/presentation/templates/auth/auth_03/auth_03_data.dart';
 import 'package:flutterui/components/presentation/templates/auth/auth_04/auth_04_data.dart';
 import 'package:flutterui/components/presentation/templates/auth/auth_05/auth_05_data.dart';
+import 'package:flutterui/components/presentation/templates/spotify/spotify.dart';
 
 class AllComponents {
   static List<Component> widgets = [
@@ -46,5 +47,6 @@ class AllComponents {
     Auth03Data.component,
     Auth04Data.component,
     Auth05Data.component,
+    SpotifyData.component,
   ];
 }

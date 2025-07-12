@@ -42,7 +42,7 @@
    "red": "RED",
    "teal": "TEAL",
    "blue": "BLUE",
-   "heroTitle": "Explore {count}+ Stunning Flutter Templates",
+   "heroTitle": "Explore {count}+ Stunning Flutter Components",
    "heroDescription": "From ready-to-use components and flexible layout blocks to smooth animations and striking effects, our tools help you create beautiful, functional apps quickly and efficiently.",
    "exploreNow": "Explore Now!",
    "homeFooter": "{year} Build with 💙 for {community}",
@@ -143,5 +143,7 @@
    "auth04Title": "Sign In 04",
    "auth04Description": "A 4-digit OTP login page for secure authentication",
    "auth05Title": "Sign In 05",
-   "auth05Description": "A sign-in page with account information and logout functionality"
+   "auth05Description": "A sign-in page with account information and logout functionality",
+   "spotifyTitle": "Spotify Redesign UI",
+   "spotifyDescription": "A Spotify Redesign UI with a modern and clean design"
 }

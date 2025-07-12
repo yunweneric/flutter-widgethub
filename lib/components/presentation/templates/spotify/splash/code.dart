@@ -1,3 +1,4 @@
+const spotifySplashCode = """
 import 'package:flutter/material.dart';
 
 import '../index.dart';
@@ -22,3 +23,4 @@ class _SpotifySplashScreenState extends State<SpotifySplashScreen> {
     );
   }
 }
+""";

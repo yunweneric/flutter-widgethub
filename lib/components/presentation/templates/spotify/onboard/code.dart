@@ -1,3 +1,4 @@
+const spotifyOnboardCode = """
 import 'package:flutter/material.dart';
 import '../shared/logo.dart';
 import '../shared/button.dart';
@@ -58,3 +59,5 @@ class SpotifyOnboarding extends StatelessWidget {
     );
   }
 }
+  
+""";

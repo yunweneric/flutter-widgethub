@@ -163,7 +163,9 @@ class _CodePreviewState extends State<CodePreview> {
                                     TweenAnimationBuilder(
                                       duration: const Duration(milliseconds: 500),
                                       key: ValueKey(hideSizers),
-                                      tween: !hideSizers ? Tween<double>(begin: 1, end: 0) : Tween<double>(begin: 0, end: 1),
+                                      tween: !hideSizers
+                                          ? Tween<double>(begin: 1, end: 0)
+                                          : Tween<double>(begin: 0, end: 1),
                                       builder: (context, value, child) {
                                         List<AppDeviceType> platforms = widget.component.responsiveDevices;
                                         return Transform(
@@ -211,15 +213,15 @@ class _CodePreviewState extends State<CodePreview> {
                                       },
                                     ),
                                     AppSizing.kwSpacer(10.w),
-                                    Switch.adaptive(
-                                      value: isFrameVisible,
-                                      onChanged: (val) {
-                                        setState(() {
-                                          hideSizers = val;
-                                          isFrameVisible = val;
-                                        });
-                                      },
-                                    )
+                                    // Switch.adaptive(
+                                    //   value: isFrameVisible,
+                                    //   onChanged: (val) {
+                                    //     setState(() {
+                                    //       hideSizers = val;
+                                    //       isFrameVisible = val;
+                                    //     });
+                                    //   },
+                                    // )
                                   ],
                                 ),
                         ),

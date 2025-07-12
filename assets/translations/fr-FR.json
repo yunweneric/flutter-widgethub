@@ -42,7 +42,7 @@
    "red": "ROUGE",
    "teal": "TURQUOISE",
    "blue": "BLEU",
-   "heroTitle": "Explorez {count}+ applications Flutter éblouissantes",
+   "heroTitle": "Explorez {count}+ composants Flutter éblouissants",
    "heroDescription": "Des composants prêts à l'emploi et blocs de mise en page flexibles aux animations fluides et effets saisissants, nos outils vous aident à créer rapidement des applications belles et fonctionnelles.",
    "exploreNow": "Explorer maintenant!",
    "homeFooter": "{year} Créé avec 💙 pour {community}",
@@ -143,5 +143,7 @@
    "auth04Title": "Connexion 04",
    "auth04Description": "Un écran de connexion à 4 chiffres pour l'authentification sécurisée",
    "auth05Title": "Connexion 05",
-   "auth05Description": "Un écran de connexion avec des informations de compte et des fonctionnalités de déconnexion"
+   "auth05Description": "Un écran de connexion avec des informations de compte et des fonctionnalités de déconnexion",
+   "spotifyTitle": "Interface Spotify repensée",
+   "spotifyDescription": "Une interface Spotify repensée avec un design moderne et épuré"
 }

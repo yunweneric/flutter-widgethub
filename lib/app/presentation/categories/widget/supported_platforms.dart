@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
@@ -32,7 +33,7 @@ class SupportPlatformSection extends StatelessWidget {
                     setState(() => hasHovered = val);
                   },
                   child: AnimatedScale(
-                    scale: hasHovered ? 1.2 : 1.0,
+                    scale: hasHovered ? 1.1 : 1.0,
                     duration: const Duration(milliseconds: 300),
                     child: Container(
                       width: 40.w,
@@ -43,9 +44,11 @@ class SupportPlatformSection extends StatelessWidget {
                         color: Theme.of(context).cardColor,
                         borderRadius: AppSizing.radiusMd(),
                       ),
-                      child: Image.asset(
-                        "assets/images/${item.describe()}.png",
+                      child: SvgPicture.string(
+                        item.icon(),
                         color: Theme.of(context).primaryColorDark,
+                        width: 20.w,
+                        height: 20.w,
                       ),
                     ),
                   ),

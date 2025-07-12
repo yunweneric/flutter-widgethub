@@ -39,10 +39,16 @@ body.dark-mode {
   width: 100vw;
 }
 
-#skip_btn {
+#btn_container {
   position: fixed;
   right: 2rem;
   top: 2rem;
+  display: flex;
+  gap: 5px;
+}
+
+#skip_btn,
+#always_skip_btn {
   padding: 0.6rem 2rem;
   border-radius: 0.2rem;
   border: none;
@@ -50,7 +56,10 @@ body.dark-mode {
   transition: all 0.7s;
   opacity: 0;
 }
-#skip_btn.active {
+
+
+#skip_btn.active,
+#always_skip_btn.active {
   opacity: 1;
 }
 

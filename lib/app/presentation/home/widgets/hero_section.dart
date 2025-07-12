@@ -9,6 +9,7 @@ import 'package:flutterui/app/presentation/home/model/component_block_model.dart
 import 'package:flutterui/app/presentation/home/screens/theme_toggle.dart';
 import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
 import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart';
+import 'package:flutterui/app/shared/data/models/component.dart';
 import 'package:flutterui/app/shared/presentation/utils/colors.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
@@ -29,12 +30,35 @@ class HeroSection extends StatefulWidget {
 
 class _HeroSectionState extends State<HeroSection> {
   final componentBloc = getIt.get<ComponentBloc>();
+
   @override
+  void initState() {
+    componentBloc.add(GetAllComponentsEvent());
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ComponentBloc, ComponentState>(
       builder: (context, state) {
         final count = UtilHelper.countComponents(state.allComponents);
+        List<Component> last3Components = state.allComponents.length > 3
+            ? state.allComponents.sublist(state.allComponents.length - 3, state.allComponents.length).reversed.toList()
+            : [];
+        Widget? firstComponent;
+        Widget? secondComponent;
+        Widget? thirdComponent;
+        // print(["state.allComponents.length", state.allComponents.length]);
+        // print(["last3Components.length", last3Components.length]);
+        if (last3Components.isNotEmpty) {
+          // print(["last3Components first", last3Components.first]);
+          // print(["last3Components first", last3Components[1]]);
+          // print(["last3Components first", last3Components[2]]);
+          firstComponent = last3Components.first.codeComponents.first.widget;
+          secondComponent = last3Components[1].codeComponents.first.widget;
+          thirdComponent = last3Components[2].codeComponents.first.widget;
+        }
+
         return Container(
           margin: EdgeInsets.symmetric(horizontal: AppSizing.kWPercentage(context, 5)),
           width: AppSizing.kWPercentage(context, 100),
@@ -142,8 +166,11 @@ class _HeroSectionState extends State<HeroSection> {
                               decoration: BoxDecoration(
                                 borderRadius: AppSizing.radiusMd(),
                               ),
-                              child: const DeviceSectionFrame(
-                                child: NikeZoomerTemplate(),
+                              child: DeviceSectionFrame(
+                                child: AnimatedSwitcher(
+                                  duration: const Duration(seconds: 1),
+                                  child: firstComponent ?? const NikeZoomerTemplate(),
+                                ),
                               ),
                             ),
                           ),
@@ -152,9 +179,12 @@ class _HeroSectionState extends State<HeroSection> {
                             mainAxisCellCount: 3.6,
                             child: Container(
                               decoration: BoxDecoration(borderRadius: AppSizing.radiusMd()),
-                              child: const DeviceSectionFrame(
+                              child: DeviceSectionFrame(
                                 deviceAlignment: Alignment.center,
-                                child: LeaveReviewHomeScreen(),
+                                child: AnimatedSwitcher(
+                                  duration: const Duration(seconds: 2),
+                                  child: secondComponent ?? const LeaveReviewHomeScreen(),
+                                ),
                               ),
                             ),
                           ),
@@ -164,9 +194,12 @@ class _HeroSectionState extends State<HeroSection> {
                             child: Builder(builder: (context) {
                               return Container(
                                 decoration: BoxDecoration(borderRadius: AppSizing.radiusMd()),
-                                child: const DeviceSectionFrame(
+                                child: DeviceSectionFrame(
                                   deviceAlignment: Alignment.topCenter,
-                                  child: ThemeToggle(),
+                                  child: AnimatedSwitcher(
+                                    duration: const Duration(seconds: 3),
+                                    child: thirdComponent ?? const ThemeToggle(),
+                                  ),
                                 ),
                               );
                             }),
