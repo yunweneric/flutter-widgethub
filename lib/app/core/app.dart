@@ -13,6 +13,7 @@ import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/components/presentation/templates/auth/auth_01/register/widget.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../components/presentation/templates/spotify/index.dart';
 import 'app_scroll_behavior.dart';
 
 class MyApp extends StatelessWidget {
@@ -59,7 +60,7 @@ class MyApp extends StatelessWidget {
                         themeMode: state.themeMode,
                         scrollBehavior: AppScrollBehavior(),
                         builder: (context, child) {
-                          // return Auth01RegisterWidget();
+                          return SpotifySplashScreen();
                           return child!;
                         },
                       );
