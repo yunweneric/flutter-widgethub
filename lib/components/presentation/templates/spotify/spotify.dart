@@ -18,7 +18,10 @@ class SpotifyData {
     codeComponents: [
       CodeComponent(code: spotifyChooseThemeCode, widget: const SpotifyChooseTheme()),
       CodeComponent(code: spotifyOnboardCode, widget: const SpotifyOnboarding()),
+      CodeComponent(code: spotifyLoginCode, widget: const SpotifyLogin()),
+      CodeComponent(code: spotifyRegisterCode, widget: const SpotifyRegister()),
       CodeComponent(code: spotifySplashCode, widget: const SpotifySplashScreen()),
+      CodeComponent(code: spotifyHomepageCode, widget: const SpotifyHomepage()),
     ],
     description: LangUtil.trans('spotifyDescription'),
     title: LangUtil.trans('spotifyTitle'),

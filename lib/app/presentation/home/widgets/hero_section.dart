@@ -48,15 +48,18 @@ class _HeroSectionState extends State<HeroSection> {
         Widget? firstComponent;
         Widget? secondComponent;
         Widget? thirdComponent;
-        // print(["state.allComponents.length", state.allComponents.length]);
-        // print(["last3Components.length", last3Components.length]);
+
         if (last3Components.isNotEmpty) {
-          // print(["last3Components first", last3Components.first]);
-          // print(["last3Components first", last3Components[1]]);
-          // print(["last3Components first", last3Components[2]]);
-          firstComponent = last3Components.first.codeComponents.first.widget;
-          secondComponent = last3Components[1].codeComponents.first.widget;
-          thirdComponent = last3Components[2].codeComponents.first.widget;
+          // Flatten all codeComponents from the last 3 components, preserving order
+          final List<Widget> widgets = [];
+          for (final component in last3Components) {
+            for (final codeComponent in component.codeComponents) {
+              widgets.add(codeComponent.widget);
+            }
+          }
+          firstComponent = widgets.isNotEmpty ? widgets[0] : null;
+          secondComponent = widgets.length > 1 ? widgets[1] : null;
+          thirdComponent = widgets.length > 2 ? widgets[2] : null;
         }
 
         return Container(
