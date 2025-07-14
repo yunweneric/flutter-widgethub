@@ -16,12 +16,12 @@ class SpotifyData {
     updatedAt: DateTime(2025, 7, 12),
     id: "spotify-redesign-ui",
     codeComponents: [
+      CodeComponent(code: spotifyHomepageCode, widget: const SpotifyHomepage()),
       CodeComponent(code: spotifyChooseThemeCode, widget: const SpotifyChooseTheme()),
       CodeComponent(code: spotifyOnboardCode, widget: const SpotifyOnboarding()),
       CodeComponent(code: spotifyLoginCode, widget: const SpotifyLogin()),
       CodeComponent(code: spotifyRegisterCode, widget: const SpotifyRegister()),
       CodeComponent(code: spotifySplashCode, widget: const SpotifySplashScreen()),
-      CodeComponent(code: spotifyHomepageCode, widget: const SpotifyHomepage()),
     ],
     description: LangUtil.trans('spotifyDescription'),
     title: LangUtil.trans('spotifyTitle'),
