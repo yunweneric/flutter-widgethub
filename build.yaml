@@ -1,0 +1,7 @@
+targets:
+  $default:
+    builders:
+      fwh_codegen|codeStringBuilder:
+        generate_for:
+          - lib/components/presentation/**/widget.dart
+          - lib/components/presentation/**/test_widget.dart 

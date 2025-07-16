@@ -1,4 +1,9 @@
-import 'package:flutter/material.dart';
+// **************************************************************************
+// CodeStringGenerator
+// **************************************************************************
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+const String skewCardWidgetCode = r"""import 'package:flutter/material.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:fwh_codegen/annotations.dart';
 
@@ -130,3 +135,4 @@ class _SkewCardState extends State<SkewCard> {
     );
   }
 }
+""";

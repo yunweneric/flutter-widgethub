@@ -8,6 +8,8 @@ import 'package:flutterui/app/shared/data/models/component.dart';
 import 'package:flutterui/components/presentation/animations/skew_card/code.dart';
 import 'package:flutterui/components/presentation/animations/skew_card/widget.dart';
 
+part 'widget.g.dart';
+
 class SkewCardData {
   // Paths to documentation files
   static const String setupPath = 'setup.md';

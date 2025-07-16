@@ -1,6 +1,8 @@
-targets:
-  $default:
-    builders:
-      fwh_codegen|componentDocBuilder:
-        generate_for:
-          - lib/components/presentation/** 
+builders:
+  codeStringBuilder:
+    import: "package:fwh_codegen/builder.dart"
+    builder_factories: ["codeStringBuilder"]
+    build_extensions: {".dart": [".g.dart"]}
+    auto_apply: dependents
+    build_to: source
+    applies_builders: ["source_gen|combining_builder"] 
