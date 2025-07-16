@@ -1,0 +1,6 @@
+targets:
+  $default:
+    builders:
+      fwh_codegen|componentDocBuilder:
+        generate_for:
+          - lib/components/presentation/** 
