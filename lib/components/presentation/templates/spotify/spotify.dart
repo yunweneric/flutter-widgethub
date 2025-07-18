@@ -16,6 +16,8 @@ class SpotifyData {
     updatedAt: DateTime(2025, 7, 12),
     id: "spotify-redesign-ui",
     codeComponents: [
+      CodeComponent(code: spotifyLyricScreen, widget: const SpotifyLyricScreen()),
+      CodeComponent(code: spotifyMusicPlayer, widget: const SpotifyMusicPlayer()),
       CodeComponent(code: spotifyHomepageCode, widget: const SpotifyHomepage()),
       CodeComponent(code: spotifyChooseThemeCode, widget: const SpotifyChooseTheme()),
       CodeComponent(code: spotifyOnboardCode, widget: const SpotifyOnboarding()),
