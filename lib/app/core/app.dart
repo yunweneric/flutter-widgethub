@@ -10,6 +10,7 @@ import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/theme.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
+import 'package:flutterui/components/presentation/templates/spotify/lyric/widget.dart';
 import 'package:go_router/go_router.dart';
 
 import 'app_scroll_behavior.dart';
