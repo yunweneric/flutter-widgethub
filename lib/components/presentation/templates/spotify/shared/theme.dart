@@ -60,6 +60,9 @@ class SpotifyTheme {
           onPrimary: Colors.white,
           onSurface: Colors.white,
         ),
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          backgroundColor: Color.fromARGB(255, 26, 27, 27),
+        ),
         inputDecorationTheme: const InputDecorationTheme(
           contentPadding: EdgeInsets.symmetric(vertical: 20, horizontal: 24),
           filled: true,
@@ -79,7 +82,9 @@ class SpotifyTheme {
           hintStyle: TextStyle(color: Color(0xFFB3B3B3)),
         ),
         textTheme: const TextTheme(
-          displayLarge: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 10),
+          displayLarge: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 40),
+          displayMedium: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22),
+          displaySmall: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
           bodyMedium: TextStyle(color: Colors.white),
           titleMedium: TextStyle(color: Color(0xFFB3B3B3)),
           labelLarge: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
@@ -94,6 +99,9 @@ class SpotifyTheme {
             textStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
             padding: const EdgeInsets.symmetric(vertical: 16),
           ),
+        ),
+        iconTheme: const IconThemeData(
+          color: Colors.white,
         ),
       );
 }

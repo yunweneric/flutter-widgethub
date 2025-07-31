@@ -12,10 +12,12 @@ class SpotifyData {
   static String setup = spotifySetup;
 
   static Component component = Component(
-    createdAt: DateTime(2025, 7, 12),
-    updatedAt: DateTime(2025, 7, 12),
+    createdAt: DateTime(2025, 7, 19),
+    updatedAt: DateTime(2025, 7, 19),
     id: "spotify-redesign-ui",
     codeComponents: [
+      CodeComponent(code: artistScreenCode, widget: const SpotifyArtistScreen()),
+      CodeComponent(code: artistScreen2, widget: const SpotifyArtistScreen2()),
       CodeComponent(code: spotifyLyricScreen, widget: const SpotifyLyricScreen()),
       CodeComponent(code: spotifyMusicPlayer, widget: const SpotifyMusicPlayer()),
       CodeComponent(code: spotifyHomepageCode, widget: const SpotifyHomepage()),
