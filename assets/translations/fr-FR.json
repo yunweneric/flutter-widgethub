@@ -145,5 +145,7 @@
    "auth05Title": "Connexion 05",
    "auth05Description": "Un écran de connexion avec des informations de compte et des fonctionnalités de déconnexion",
    "spotifyTitle": "Interface Spotify repensée",
-   "spotifyDescription": "Une interface Spotify repensée avec un design moderne et épuré"
+   "spotifyDescription": "Une interface Spotify repensée avec un design moderne et épuré",
+   "airbnbTitle": "Modèle Clone Airbnb",
+   "airbnbDescription": "Un modèle complet de clone Airbnb avec des modèles UI/UX modernes pour les applications de réservation d'hébergement"
 }
