@@ -10,6 +10,8 @@ import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/theme.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
+import 'package:flutterui/components/presentation/templates/airbnb/home/home_screen.dart';
+import 'package:flutterui/components/presentation/templates/airbnb/shared/shared.dart';
 import 'package:flutterui/components/presentation/templates/spotify/index.dart';
 import 'package:go_router/go_router.dart';
 
@@ -59,7 +61,7 @@ class MyApp extends StatelessWidget {
                         themeMode: state.themeMode,
                         scrollBehavior: AppScrollBehavior(),
                         builder: (context, child) {
-                          // return SpotifyArtistScreen();
+                          return const AirbnbLayout();
                           return child!;
                         },
                       );
