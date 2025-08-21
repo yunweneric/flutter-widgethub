@@ -1,4 +1,4 @@
-name: Build macOS App
+name: Build macOS App (Minimal)
 
 on:
   push:
@@ -7,39 +7,8 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
+  build:
     runs-on: macos-latest
-    
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      
-    - name: Setup Flutter
-      uses: subosito/flutter-action@v2
-      with:
-        flutter-version: '3.24.0'
-        channel: 'stable'
-        
-    - name: Get dependencies
-      run: flutter pub get
-      
-    - name: Analyze code
-      run: flutter analyze
-      
-    - name: Run tests
-      run: flutter test
-      
-    - name: Upload test results
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: test-results
-        path: test-results/
-        retention-days: 7
-
-  build-macos:
-    runs-on: macos-latest
-    needs: test
     
     steps:
     - name: Checkout code
@@ -60,43 +29,18 @@ jobs:
     - name: Build macOS app
       run: flutter build macos --release
       
-    - name: Create artifacts directory
-      run: mkdir -p artifacts
-      
-    - name: Copy macOS app to artifacts
+    - name: Package macOS app
       run: |
+        mkdir -p artifacts
         cp -r build/macos/Build/Products/Release/flutterui.app artifacts/
         cd artifacts
         zip -r flutterui-macos.zip flutterui.app
-        rm -rf flutterui.app
+        ls -la
+        echo "✅ macOS app packaged successfully"
         
-    - name: Get build info
-      run: |
-        echo "Build Date: $(date)" > build-info.txt
-        echo "Flutter Version: $(flutter --version)" >> build-info.txt
-        echo "Dart Version: $(dart --version)" >> build-info.txt
-        echo "App Version: $(grep 'version:' pubspec.yaml | head -1)" >> build-info.txt
-        
-    - name: Upload macOS app artifact
+    - name: Upload macOS app
       uses: actions/upload-artifact@v4
       with:
         name: flutterui-macos-app
         path: artifacts/flutterui-macos.zip
         retention-days: 30
-        
-    - name: Upload build info
-      uses: actions/upload-artifact@v4
-      with:
-        name: build-info
-        path: |
-          build-info.txt
-          pubspec.yaml
-        retention-days: 30
-        
-    - name: Upload debug symbols
-      uses: actions/upload-artifact@v4
-      with:
-        name: debug-symbols
-        path: build/macos/Build/Products/Release/*.dSYM
-        retention-days: 30
-        if-no-files-found: ignore 

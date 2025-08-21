@@ -145,5 +145,7 @@
    "auth05Title": "Sign In 05",
    "auth05Description": "A sign-in page with account information and logout functionality",
    "spotifyTitle": "Spotify Redesign UI",
-   "spotifyDescription": "A Spotify Redesign UI with a modern and clean design"
+   "spotifyDescription": "A Spotify Redesign UI with a modern and clean design",
+   "airbnbTitle": "Airbnb Clone Template",
+   "airbnbDescription": "A complete Airbnb clone template with modern UI/UX patterns for accommodation booking applications"
 }

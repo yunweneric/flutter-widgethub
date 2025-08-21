@@ -8,6 +8,7 @@ import 'package:flutterui/components/presentation/blocks/tabs/liquid_glass_tab/d
 import 'package:flutterui/components/presentation/blocks/tabs/slide_tab/data.dart';
 import 'package:flutterui/components/presentation/effects/meshes/mesh_01/mesh_01_data.dart';
 import 'package:flutterui/components/presentation/effects/meshes/mesh_02/mesh_02_data.dart';
+import 'package:flutterui/components/presentation/templates/airbnb/airbnb.dart';
 import 'package:flutterui/components/presentation/templates/basuu/exports/data.dart';
 import 'package:flutterui/components/presentation/templates/onboarding/doctor_onboarding/doctor_onboarding_data.dart';
 import 'package:flutterui/components/presentation/templates/fade_carousel/fade_carousel_data.dart';
@@ -48,5 +49,6 @@ class AllComponents {
     Auth04Data.component,
     Auth05Data.component,
     SpotifyData.component,
+    AirbnbData.component,
   ];
 }
