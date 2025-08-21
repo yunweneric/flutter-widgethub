@@ -1,0 +1,80 @@
+name: Build Windows App
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.24.0'
+        channel: 'stable'
+        
+    - name: Get dependencies
+      run: flutter pub get
+      
+    - name: Enable Windows desktop
+      run: flutter config --enable-windows-desktop
+      
+    - name: Build Windows app
+      run: flutter build windows --release
+      
+    - name: List build output
+      run: |
+        echo "Build output directory contents:"
+        dir build\windows\runner\Release
+        echo "Executable files:"
+        dir build\windows\runner\Release\*.exe
+        
+    - name: Create artifacts directory
+      run: mkdir artifacts
+      
+    - name: Package Windows app
+      run: |
+        if exist "build\windows\runner\Release\flutterui.exe" (
+          echo "Found Windows executable, packaging..."
+          cd artifacts
+          powershell Compress-Archive -Path "..\build\windows\runner\Release\*" -DestinationPath "flutterui-windows.zip"
+          dir
+          echo "✅ Windows app packaged successfully"
+        ) else (
+          echo "❌ Windows executable not found"
+          dir build\windows\runner\Release
+          exit 1
+        )
+        
+    - name: Get build info
+      run: |
+        echo "Build Date: %date% %time%" > build-info.txt
+        echo "Flutter Version:" >> build-info.txt
+        flutter --version >> build-info.txt
+        echo "Dart Version:" >> build-info.txt
+        dart --version >> build-info.txt
+        echo "App Version:" >> build-info.txt
+        findstr "version:" pubspec.yaml >> build-info.txt
+        
+    - name: Upload Windows app artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: flutterui-windows-app
+        path: artifacts/flutterui-windows.zip
+        retention-days: 30
+        
+    - name: Upload build info
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-info
+        path: |
+          build-info.txt
+          pubspec.yaml
+        retention-days: 30
