@@ -1,28 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../home/home_screen.dart';
-import 'shared.dart';
+import '../index.dart';
 
 class AirbnbLayout extends StatefulWidget {
-  const AirbnbLayout({super.key});
+  final int? initialIndex;
+  const AirbnbLayout({super.key, this.initialIndex});
 
   @override
   State<AirbnbLayout> createState() => _AirbnbLayoutState();
 }
 
 class _AirbnbLayoutState extends State<AirbnbLayout> {
-  List<Widget> pages = [HomeScreen(), HomeScreen(), HomeScreen(), HomeScreen(), HomeScreen()];
+  List<Widget> pages = [HomeScreen(), HomeScreen2(), HomeScreen(), HomeScreen(), HomeScreen()];
   int currentIndex = 0;
+  @override
+  void initState() {
+    setState(() {
+      currentIndex = widget.initialIndex ?? 0;
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Theme(
       data: AirbnbTheme.light,
       child: Scaffold(
-        body: IndexedStack(
-          index: currentIndex,
-          children: pages,
+        body: Container(
+          child: pages[currentIndex],
         ),
         bottomNavigationBar: _BottomNavigationBar(),
       ),
