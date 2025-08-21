@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
                         themeMode: state.themeMode,
                         scrollBehavior: AppScrollBehavior(),
                         builder: (context, child) {
-                          return const AirbnbLayout();
+                          // return const AirbnbLayout();
                           return child!;
                         },
                       );
