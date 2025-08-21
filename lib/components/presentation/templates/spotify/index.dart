@@ -10,6 +10,10 @@ export 'login/widget.dart';
 export 'register/widget.dart';
 export 'choose_theme/widget.dart';
 export 'homepage/widget.dart';
+export 'music/widget.dart';
+export 'lyric/widget.dart';
+export 'artist_screen/widget.dart';
+export 'artist_screen_2/widget.dart';
 
 // Export all the Code
 export 'choose_theme/code.dart';
@@ -19,3 +23,7 @@ export 'splash/code.dart';
 export 'login/code.dart';
 export 'register/code.dart';
 export 'homepage/code.dart';
+export 'music/code.dart';
+export 'lyric/code.dart';
+export 'artist_screen/code.dart';
+export 'artist_screen_2/code.dart';
