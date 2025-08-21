@@ -2,9 +2,9 @@ name: Build Windows App
 
 on:
   push:
-    branches: [ main ]
+    branches: [ feat/workflows ]
   pull_request:
-    branches: [ main ]
+    branches: [ feat/workflows ]
 
 jobs:
   build-windows:
