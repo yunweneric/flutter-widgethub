@@ -19,7 +19,7 @@ class MainImageWidget extends StatelessWidget {
         children: [
           ClipRRect(
             child: Image.network(
-              'https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2068&q=80',
+              'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
               width: double.infinity,
               height: MediaQuery.of(context).size.height * 0.4,
               fit: BoxFit.cover,

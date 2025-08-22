@@ -32,7 +32,7 @@ class AirbnbSearchBar extends StatelessWidget {
             vertical: AirbnbConstants.paddingM,
           ),
           decoration: BoxDecoration(
-            color: theme.scaffoldBackgroundColor,
+            color: theme.cardColor,
             borderRadius: BorderRadius.circular(AirbnbConstants.radiusXXL),
             boxShadow: [
               BoxShadow(
@@ -49,7 +49,7 @@ class AirbnbSearchBar extends StatelessWidget {
                 width: 20,
                 height: 20,
                 colorFilter: ColorFilter.mode(
-                  theme.colorScheme.onSurface.withOpacity(0.6),
+                  theme.primaryColorDark,
                   BlendMode.srcIn,
                 ),
               ),
@@ -74,11 +74,18 @@ class AirbnbSearchBar extends StatelessWidget {
                 onTap: onFilterTap,
                 child: Container(
                   padding: const EdgeInsets.all(AirbnbConstants.paddingS),
-                  decoration: BoxDecoration(border: Border.all(), shape: BoxShape.circle),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: theme.primaryColorDark),
+                    shape: BoxShape.circle,
+                  ),
                   child: SvgPicture.string(
                     AirbnbIconManager.filter,
                     width: 20,
                     height: 20,
+                    colorFilter: ColorFilter.mode(
+                      theme.primaryColorDark,
+                      BlendMode.srcIn,
+                    ),
                   ),
                 ),
               ),

@@ -16,6 +16,7 @@ class AirbnbTheme {
         scaffoldBackgroundColor: white,
         primaryColor: primaryRed,
         primaryColorDark: black,
+        primaryColorLight: white,
         colorScheme: const ColorScheme.light(
           primary: primaryRed,
           secondary: secondaryTeal,
@@ -159,6 +160,8 @@ class AirbnbTheme {
         brightness: Brightness.dark,
         scaffoldBackgroundColor: const Color(0xFF121212),
         primaryColor: primaryRed,
+        primaryColorDark: white,
+        primaryColorLight: black,
         colorScheme: const ColorScheme.dark(
           primary: primaryRed,
           secondary: secondaryTeal,

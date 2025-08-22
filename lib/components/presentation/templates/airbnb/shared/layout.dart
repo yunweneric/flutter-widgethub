@@ -24,8 +24,9 @@ class _AirbnbLayoutState extends State<AirbnbLayout> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Theme(
-      data: AirbnbTheme.light,
+      data: isDark ? AirbnbTheme.dark : AirbnbTheme.light,
       child: Scaffold(
         body: Container(
           child: pages[currentIndex],
