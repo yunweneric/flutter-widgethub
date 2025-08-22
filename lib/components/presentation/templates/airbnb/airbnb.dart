@@ -18,8 +18,8 @@ class AirbnbData {
     id: "airbnb-redesign-ui",
     codeComponents: [
       CodeComponent(code: explore1Code, widget: const AirbnbLayout(initialIndex: 0)),
-      CodeComponent(code: explore2Code, widget: const AirbnbLayout(initialIndex: 1)),
       CodeComponent(code: explore3Code, widget: const Explore3()),
+      CodeComponent(code: explore2Code, widget: const AirbnbLayout(initialIndex: 1)),
     ],
     description: LangUtil.trans('airbnbDescription'),
     title: LangUtil.trans('airbnbTitle'),
