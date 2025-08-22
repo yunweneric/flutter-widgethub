@@ -7,8 +7,7 @@ import 'package:flutterui/app/shared/data/models/component.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 
 import 'airnbnb_setup.dart';
-import 'home/home_screen_code.dart';
-import 'shared/layout.dart';
+import 'index.dart';
 
 class AirbnbData {
   static String setup = airbnbSetup;
@@ -18,8 +17,9 @@ class AirbnbData {
     updatedAt: DateTime(2025, 8, 21),
     id: "airbnb-redesign-ui",
     codeComponents: [
-      CodeComponent(code: homeScreenCode, widget: const AirbnbLayout(initialIndex: 0)),
-      CodeComponent(code: homeScreenCode, widget: const AirbnbLayout(initialIndex: 1)),
+      CodeComponent(code: explore1Code, widget: const AirbnbLayout(initialIndex: 0)),
+      CodeComponent(code: explore2Code, widget: const AirbnbLayout(initialIndex: 1)),
+      CodeComponent(code: explore3Code, widget: const Explore3()),
     ],
     description: LangUtil.trans('airbnbDescription'),
     title: LangUtil.trans('airbnbTitle'),

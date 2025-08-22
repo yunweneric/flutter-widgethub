@@ -1,4 +1,4 @@
-const homeScreenCode = """import 'package:flutter/material.dart';
+const explore2Code = """import 'package:flutter/material.dart';
 import '../shared/shared.dart';
 
 class HomeScreen2 extends StatefulWidget {
@@ -13,8 +13,9 @@ class _HomeScreen2State extends State<HomeScreen2> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Theme(
-      data: AirbnbTheme.light,
+      data: isDark ? AirbnbTheme.dark : AirbnbTheme.light,
       child: Scaffold(
         body: SafeArea(
           child: Column(
@@ -417,5 +418,4 @@ class _HomeScreen2State extends State<HomeScreen2> {
     );
   }
 }
-
 """;

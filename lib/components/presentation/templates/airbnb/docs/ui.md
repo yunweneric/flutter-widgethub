@@ -8,31 +8,34 @@ The Airbnb Template is a complete Flutter UI implementation that replicates the 
 
 ### Color Palette
 
-| Color | Hex Code | Usage |
-|-------|----------|-------|
-| **Primary Red** | `#FF5A5F` | Main brand color, buttons, accents |
-| **Secondary Teal** | `#00A699` | Secondary actions, highlights |
-| **Dark Gray** | `#222222` | Primary text, selected states |
-| **Medium Gray** | `#717171` | Secondary text, icons |
-| **Light Gray** | `#DDDDDD` | Borders, dividers |
-| **Background Gray** | `#F7F7F7` | Secondary backgrounds |
-| **White** | `#FFFFFF` | Primary backgrounds, cards |
-| **Black** | `#000000` | Status bar text |
+The template uses a centralized color system defined in `AirbnbTheme`:
+
+| Color | Theme Reference | Usage |
+|-------|----------------|-------|
+| **Primary Red** | `AirbnbTheme.primaryRed` | Main brand color, buttons, accents |
+| **Secondary Teal** | `AirbnbTheme.secondaryTeal` | Secondary actions, highlights |
+| **Dark Gray** | `AirbnbTheme.darkGray` | Primary text, selected states |
+| **Medium Gray** | `AirbnbTheme.mediumGray` | Secondary text, icons |
+| **Light Gray** | `AirbnbTheme.lightGray` | Borders, dividers |
+| **Background Gray** | `AirbnbTheme.backgroundGray` | Secondary backgrounds |
+| **White** | `AirbnbTheme.white` | Primary backgrounds, cards |
+| **Black** | `AirbnbTheme.black` | Status bar text |
 
 ### Typography
 
-The template uses Flutter's built-in `TextTheme` system for consistent typography:
+The template uses Flutter's built-in `TextTheme` system for consistent typography, with all styles defined in `AirbnbTheme`:
 
-- **Display Large**: 32px, Bold - Main headings
-- **Display Medium**: 24px, Semi-bold - Section headings
-- **Display Small**: 18px, Semi-bold - Subsection headings
-- **Headline Medium**: 16px, Semi-bold - Card titles
-- **Body Large**: 16px, Medium - Primary text
-- **Body Medium**: 14px, Regular - Secondary text
-- **Body Small**: 14px, Regular - Captions, metadata
-- **Label Large**: 16px, Semi-bold - Button text
-- **Label Medium**: 14px, Medium - Small labels
-- **Label Small**: 12px, Regular - Category labels
+- **Display Large**: `Theme.of(context).textTheme.displayLarge` - Main headings
+- **Display Medium**: `Theme.of(context).textTheme.displayMedium` - Section headings
+- **Display Small**: `Theme.of(context).textTheme.displaySmall` - Subsection headings
+- **Headline Medium**: `Theme.of(context).textTheme.headlineMedium` - Card titles
+- **Body Large**: `Theme.of(context).textTheme.bodyLarge` - Primary text
+- **Body Medium**: `Theme.of(context).textTheme.bodyMedium` - Secondary text
+- **Body Small**: `Theme.of(context).textTheme.bodySmall` - Captions, metadata
+- **Label Large**: `Theme.of(context).textTheme.labelLarge` - Button text
+- **Label Medium**: `Theme.of(context).textTheme.labelMedium` - Small labels
+
+**Note**: Only use the text styles that are explicitly defined in `AirbnbTheme`. Do not reference undefined text styles like `labelSmall`.
 
 ### Spacing System
 
@@ -228,19 +231,38 @@ MapButton(
 
 ### Theme Integration
 
-All components use `Theme.of(context).textTheme` for typography:
+All components use `Theme.of(context).textTheme` for typography, referencing only the styles defined in `AirbnbTheme`:
 
 ```dart
 final textTheme = Theme.of(context).textTheme;
 
+// Use only defined text styles from theme.dart
 Text(
   'Sample Text',
   style: textTheme.bodyLarge?.copyWith(
-    color: AirbnbConstants.darkGray,
+    color: AirbnbTheme.darkGray,
     fontWeight: FontWeight.w600,
   ),
 )
+
+// For headings, use display styles
+Text(
+  'Section Title',
+  style: textTheme.displayMedium,
+)
+
+// For buttons, use label styles
+Text(
+  'Button Text',
+  style: textTheme.labelLarge,
+)
 ```
+
+**Important**: Only use these defined text styles:
+- `displayLarge`, `displayMedium`, `displaySmall`
+- `headlineMedium`
+- `bodyLarge`, `bodyMedium`, `bodySmall`
+- `labelLarge`, `labelMedium`
 
 ### State Management
 
@@ -266,7 +288,7 @@ Text(
 lib/components/presentation/templates/airbnb/
 ├── shared/
 │   ├── constants.dart              # Design tokens
-│   ├── theme.dart                  # App themes
+│   ├── theme.dart                  # App themes (use this for all styling)
 │   ├── layout.dart                 # Main layout
 │   ├── shared.dart                 # Exports
 │   ├── icon_manager.dart           # SVG icons
@@ -303,26 +325,59 @@ lib/components/presentation/templates/airbnb/
    onFavoriteTap: () => toggleFavorite(),
    ```
 
+### Styling Guidelines
+
+1. **Colors**: Always use `AirbnbTheme` color constants:
+   ```dart
+   // ✅ Correct
+   color: AirbnbTheme.primaryRed
+   color: AirbnbTheme.darkGray
+   
+   // ❌ Incorrect - hardcoded values
+   color: Color(0xFFFF5A5F)
+   ```
+
+2. **Typography**: Always use `Theme.of(context).textTheme` with defined styles:
+   ```dart
+   // ✅ Correct
+   style: Theme.of(context).textTheme.displayLarge
+   style: Theme.of(context).textTheme.bodyMedium
+   style: Theme.of(context).textTheme.labelLarge
+   
+   // ❌ Incorrect - undefined styles
+   style: Theme.of(context).textTheme.labelSmall
+   style: Theme.of(context).textTheme.headlineSmall
+   ```
+
+3. **Custom Styling**: When customizing defined styles, use `.copyWith()`:
+   ```dart
+   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+     color: AirbnbTheme.primaryRed,
+     fontWeight: FontWeight.w600,
+   )
+   ```
+
 ### Customization
 
-- **Colors**: Modify `AirbnbConstants` color values
-- **Typography**: Update theme text styles
+- **Colors**: Modify color values in `AirbnbTheme` class
+- **Typography**: Update theme text styles in `AirbnbTheme.light` and `AirbnbTheme.dark`
 - **Spacing**: Adjust padding and margin constants
 - **Icons**: Replace icon constants or add new ones
 
 ### Best Practices
 
-1. **Consistent Spacing**: Always use spacing constants
-2. **Theme Integration**: Use `Theme.of(context)` for text styles
-3. **Error Handling**: Implement fallbacks for all external resources
-4. **Performance**: Minimize rebuilds and optimize image loading
-5. **Accessibility**: Use semantic labels and proper contrast
+1. **Consistent Theming**: Always use `AirbnbTheme` for colors and typography
+2. **Theme Integration**: Use `Theme.of(context).textTheme` for all text styles
+3. **Style Validation**: Only reference text styles that exist in `AirbnbTheme`
+4. **Error Handling**: Implement fallbacks for all external resources
+5. **Performance**: Minimize rebuilds and optimize image loading
+6. **Accessibility**: Use semantic labels and proper contrast
 
 ## 🚀 Future Enhancements
 
 ### Planned Features
 
-- **Dark Theme**: Complete dark mode implementation
+- **Dark Theme**: Complete dark mode implementation (already defined in `AirbnbTheme.dark`)
 - **Animations**: Smooth transitions and micro-interactions
 - **Localization**: Multi-language support
 - **Accessibility**: Screen reader and keyboard navigation
@@ -342,7 +397,8 @@ lib/components/presentation/templates/airbnb/
 - **Flutter Documentation**: [flutter.dev](https://flutter.dev)
 - **Material Design**: [material.io](https://material.io)
 - **Project Guidelines**: [CONTRIBUTION.md](./CONTRIBUTION.md)
+- **Theme Reference**: `lib/components/presentation/templates/airbnb/shared/theme.dart`
 
 ---
 
-**Note**: This template serves as a foundation for building professional accommodation booking applications. Follow the design system and implementation patterns for consistent, high-quality UI components.
+**Note**: This template serves as a foundation for building professional accommodation booking applications. Always use the centralized theming system from `AirbnbTheme` for consistent, high-quality UI components. Follow the design system and implementation patterns for maintainable code.

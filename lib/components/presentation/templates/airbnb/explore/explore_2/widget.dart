@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../shared/shared.dart';
+import '../../shared/shared.dart';
 
 class HomeScreen2 extends StatefulWidget {
   const HomeScreen2({super.key});

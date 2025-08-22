@@ -2,9 +2,14 @@
 export 'shared/shared.dart';
 
 // Export all the Screens
-export 'home/home_screen.dart';
-export 'home/home_screen_2.dart';
+export 'explore/explore_1/widget.dart';
+export 'explore/explore_2/widget.dart';
 
 // Export all the Code
-export 'home/home_screen_code.dart';
+export 'explore/explore_1/code.dart';
+export 'explore/explore_2/code.dart';
+
+export 'explore/explore_3/widget.dart';
+export 'explore/explore_3/code.dart';
+
 export 'airnbnb_setup.dart';
