@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import '../index.dart';
 
 class AirbnbLayout extends StatefulWidget {
-  final int? initialIndex;
+  final int initialIndex;
   final Widget widget;
-  const AirbnbLayout({super.key, this.initialIndex, required this.widget});
+  const AirbnbLayout({super.key, required this.initialIndex, required this.widget});
 
   @override
   State<AirbnbLayout> createState() => _AirbnbLayoutState();
@@ -16,7 +16,7 @@ class _AirbnbLayoutState extends State<AirbnbLayout> {
   @override
   void initState() {
     setState(() {
-      currentIndex = widget.initialIndex ?? 0;
+      currentIndex = widget.initialIndex;
     });
     super.initState();
   }
