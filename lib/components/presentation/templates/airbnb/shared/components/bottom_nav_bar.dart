@@ -5,7 +5,8 @@ import 'package:flutter_svg/svg.dart';
 import '../shared.dart';
 
 class AirbnbBottomNavigationBar extends StatelessWidget {
-  const AirbnbBottomNavigationBar({super.key});
+  final int currentIndex;
+  const AirbnbBottomNavigationBar({super.key, required this.currentIndex});
 
   @override
   Widget build(BuildContext context) {
@@ -13,34 +14,34 @@ class AirbnbBottomNavigationBar extends StatelessWidget {
     return Container(
       height: 100,
       decoration: BoxDecoration(color: theme.scaffoldBackgroundColor),
-      child: const SafeArea(
+      child: SafeArea(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             _BottomNavItem(
               svgIcon: AirbnbIconManager.explore,
               label: 'Explore',
-              isActive: true,
+              isActive: currentIndex == 0,
             ),
             _BottomNavItem(
               svgIcon: AirbnbIconManager.wishlist,
               label: 'Wishlist',
-              isActive: false,
+              isActive: currentIndex == 1,
             ),
             _BottomNavItem(
               svgIcon: AirbnbIconManager.trips,
               label: 'Trips',
-              isActive: false,
+              isActive: currentIndex == 2,
             ),
             _BottomNavItem(
               svgIcon: AirbnbIconManager.inbox,
               label: 'Inbox',
-              isActive: false,
+              isActive: currentIndex == 3,
             ),
             _BottomNavItem(
               svgIcon: AirbnbIconManager.profile,
               label: 'Profile',
-              isActive: false,
+              isActive: currentIndex == 4,
             ),
           ],
         ),

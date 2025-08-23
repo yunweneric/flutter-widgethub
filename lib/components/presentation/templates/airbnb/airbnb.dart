@@ -17,10 +17,26 @@ class AirbnbData {
     updatedAt: DateTime(2025, 8, 21),
     id: "airbnb-redesign-ui",
     codeComponents: [
-      CodeComponent(code: explore2Code, widget: const AirbnbLayout(initialIndex: 1)),
-      CodeComponent(code: explore3Code, widget: const Explore3()),
-      CodeComponent(code: explore3Code, widget: const Wishlist01()),
-      CodeComponent(code: explore1Code, widget: const AirbnbLayout(initialIndex: 0)),
+      CodeComponent(
+        code: explore1Code,
+        widget: const AirbnbLayout(initialIndex: 0, widget: HomeScreen()),
+      ),
+      CodeComponent(
+        code: explore1Code,
+        widget: const AirbnbLayout(initialIndex: 1, widget: Wishlist02()),
+      ),
+      CodeComponent(
+        code: explore1Code,
+        widget: const AirbnbLayout(initialIndex: 2, widget: Wishlist01()),
+      ),
+      CodeComponent(
+        code: explore1Code,
+        widget: const AirbnbLayout(initialIndex: 3, widget: Explore3()),
+      ),
+      CodeComponent(
+        code: explore1Code,
+        widget: const AirbnbLayout(initialIndex: 4, widget: HomeScreen2()),
+      ),
     ],
     description: LangUtil.trans('airbnbDescription'),
     title: LangUtil.trans('airbnbTitle'),

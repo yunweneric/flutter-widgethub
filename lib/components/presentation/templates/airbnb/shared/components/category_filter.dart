@@ -51,7 +51,6 @@ class _CategoryFilterState extends State<CategoryFilter> {
       margin: const EdgeInsets.only(bottom: AirbnbConstants.paddingM),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.symmetric(horizontal: AirbnbConstants.paddingL),
         itemCount: categories.length,
         itemBuilder: (context, index) {
           final category = categories[index];

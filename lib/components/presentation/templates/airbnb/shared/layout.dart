@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../index.dart';
 
 class AirbnbLayout extends StatefulWidget {
   final int? initialIndex;
-  const AirbnbLayout({super.key, this.initialIndex});
+  final Widget widget;
+  const AirbnbLayout({super.key, this.initialIndex, required this.widget});
 
   @override
   State<AirbnbLayout> createState() => _AirbnbLayoutState();
 }
 
 class _AirbnbLayoutState extends State<AirbnbLayout> {
-  List<Widget> pages = [HomeScreen(), HomeScreen2(), HomeScreen(), HomeScreen(), HomeScreen()];
   int currentIndex = 0;
   @override
   void initState() {
@@ -29,9 +28,9 @@ class _AirbnbLayoutState extends State<AirbnbLayout> {
       data: isDark ? AirbnbTheme.dark : AirbnbTheme.light,
       child: Scaffold(
         body: Container(
-          child: pages[currentIndex],
+          child: widget.widget,
         ),
-        bottomNavigationBar: AirbnbBottomNavigationBar(),
+        bottomNavigationBar: AirbnbBottomNavigationBar(currentIndex: currentIndex),
       ),
     );
   }
