@@ -19,6 +19,7 @@ class AirbnbData {
     codeComponents: [
       CodeComponent(code: explore2Code, widget: const AirbnbLayout(initialIndex: 1)),
       CodeComponent(code: explore3Code, widget: const Explore3()),
+      CodeComponent(code: explore3Code, widget: const Wishlist01()),
       CodeComponent(code: explore1Code, widget: const AirbnbLayout(initialIndex: 0)),
     ],
     description: LangUtil.trans('airbnbDescription'),

@@ -8,6 +8,13 @@ class AirbnbConstants {
   static const double paddingL = 24.0;
   static const double paddingXL = 32.0;
 
+  static const double height5 = 5.0;
+  static const double height10 = 10.0;
+  static const double height20 = 20.0;
+  static const double height30 = 30.0;
+  static const double height40 = 40.0;
+  static const double height50 = 50.0;
+
   static const double radiusS = 8.0;
   static const double radiusM = 12.0;
   static const double radiusL = 16.0;

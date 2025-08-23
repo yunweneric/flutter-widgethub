@@ -12,6 +12,7 @@ import 'package:flutterui/app/shared/presentation/utils/theme.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'app_scroll_behavior.dart';
+import 'package:flutterui/components/presentation/templates/airbnb/index.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -57,7 +58,7 @@ class MyApp extends StatelessWidget {
                         themeMode: state.themeMode,
                         scrollBehavior: AppScrollBehavior(),
                         builder: (context, child) {
-                          // return const Explore3();
+                          return const Wishlist02();
                           return child!;
                         },
                       );
