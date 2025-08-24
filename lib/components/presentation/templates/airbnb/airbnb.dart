@@ -6,7 +6,6 @@ import 'package:flutterui/app/shared/data/models/code_component.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 
-import 'airnbnb_setup.dart';
 import 'index.dart';
 
 class AirbnbData {
@@ -22,19 +21,23 @@ class AirbnbData {
         widget: const AirbnbLayout(initialIndex: 0, widget: HomeScreen()),
       ),
       CodeComponent(
-        code: explore1Code,
+        code: tripsScreenCode,
+        widget: const AirbnbLayout(initialIndex: 2, widget: TripsScreen()),
+      ),
+      CodeComponent(
+        code: wishlist02Code,
         widget: const AirbnbLayout(initialIndex: 1, widget: Wishlist02()),
       ),
       CodeComponent(
-        code: explore1Code,
+        code: wishlist01Code,
         widget: const AirbnbLayout(initialIndex: 2, widget: Wishlist01()),
       ),
       CodeComponent(
-        code: explore1Code,
+        code: explore3Code,
         widget: const AirbnbLayout(initialIndex: 3, widget: Explore3()),
       ),
       CodeComponent(
-        code: explore1Code,
+        code: explore2Code,
         widget: const AirbnbLayout(initialIndex: 4, widget: HomeScreen2()),
       ),
     ],

@@ -1,21 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/app/core/routes/route_names.dart';
-import 'package:flutterui/app/core/service_locators.dart';
-import 'package:flutterui/app/shared/logic/sidebar/sidebar_bloc.dart';
-import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
-import 'package:flutterui/app/shared/presentation/models/nav_link.dart';
-import 'package:flutterui/app/shared/presentation/utils/icons.dart';
-import 'package:flutterui/app/shared/presentation/utils/images.dart';
-import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
-import 'package:flutterui/app/shared/presentation/utils/util.dart';
-import 'package:flutterui/app/shared/presentation/widgets/app_container.dart';
-import 'package:flutterui/app/shared/presentation/widgets/app_search_bar.dart';
-import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
-import 'package:flutterui/app/shared/presentation/widgets/language_button.dart';
-import 'package:flutterui/app/shared/presentation/widgets/layout/home_mobile_nav.dart';
+import 'package:flutterui/app/core/core.dart';
+import 'package:flutterui/app/shared/shared.dart';
 import 'package:go_router/go_router.dart';
 
 class HomeNavBar extends StatefulWidget {
@@ -56,15 +43,15 @@ class _HomeNavBarState extends State<HomeNavBar> {
                             overlayColor: Theme.of(context).scaffoldBackgroundColor,
                           ),
                           child: AnimatedScale(
-                            duration: const Duration(milliseconds: 200),
-                            scale: isLogoHovered ? 1.2 : 1.0,
+                            duration: const Duration(milliseconds: 100),
+                            scale: isLogoHovered ? 1.1 : 1.0,
                             child: AnimatedSwitcher(
-                              duration: const Duration(milliseconds: 500),
+                              duration: const Duration(milliseconds: 100),
                               child: Theme.of(context).brightness == Brightness.light
-                                  ? Image.asset(AppImages.logoDark, width: 130)
+                                  ? Image.asset(AppImages.logoDark, width: 100)
                                   : Image.asset(
                                       AppImages.logoLight,
-                                      width: 130,
+                                      width: 100,
                                     ),
                             ),
                           ),
@@ -77,7 +64,8 @@ class _HomeNavBarState extends State<HomeNavBar> {
                         Row(
                           children: [
                             ...links.map((item) {
-                              final activeRoute = getIt.get<GoRouter>().routeInformationProvider.value.uri.path;
+                              final activeRoute =
+                                  getIt.get<GoRouter>().routeInformationProvider.value.uri.path;
                               final isActive = activeRoute == item.path;
                               return Padding(
                                 padding: const EdgeInsets.all(8.0),
@@ -102,7 +90,8 @@ class _HomeNavBarState extends State<HomeNavBar> {
                         AppSizing.kwSpacer(10.w),
                         const LanguageButton(),
                         TextButton(
-                          onPressed: () => UtilHelper.openUrl("https://github.com/yunweneric/flutter-widgethub/"),
+                          onPressed: () => UtilHelper.openUrl(
+                              "https://github.com/yunweneric/flutter-widgethub/"),
                           child: const AppIcon(icon: AppIcons.github),
                         ),
                         AppSizing.kwSpacer(5.w),

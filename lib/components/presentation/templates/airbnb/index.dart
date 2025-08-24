@@ -16,5 +16,9 @@ export 'wishlist/wishlist_01/widget.dart';
 export 'wishlist/wishlist_01/code.dart';
 
 export 'wishlist/wishlist_02/widget.dart';
+export 'wishlist/wishlist_02/code.dart';
+
+export 'trips/widget.dart';
+export 'trips/code.dart';
 
 export 'airnbnb_setup.dart';

@@ -4,6 +4,8 @@
 
 The Airbnb Template is a complete Flutter UI implementation that replicates the modern accommodation booking app design. This template showcases professional UI/UX patterns, responsive design, and follows Flutter best practices.
 
+**Important**: This template uses a new spacing system with dedicated height and width constants (`height20`, `height30`, etc.) for vertical spacing and padding constants for horizontal spacing.
+
 ## 🎨 Design System
 
 ### Color Palette
@@ -39,15 +41,33 @@ The template uses Flutter's built-in `TextTheme` system for consistent typograph
 
 ### Spacing System
 
-Consistent 8px grid system:
+Consistent spacing system using height and width constants:
 
-| Size | Value | Usage |
-|------|-------|-------|
-| **XS** | 4px | Minimal spacing, dots |
-| **S** | 8px | Small spacing, icons |
-| **M** | 16px | Standard spacing |
-| **L** | 24px | Large spacing, margins |
-| **XL** | 32px | Extra large spacing |
+| Constant | Value | Usage |
+|----------|-------|-------|
+| **height5** | 5px | Minimal spacing, dots |
+| **height10** | 10px | Small spacing, icons |
+| **height20** | 20px | Standard spacing, margins |
+| **height30** | 30px | Medium spacing |
+| **height40** | 40px | Large spacing |
+| **height50** | 50px | Extra large spacing |
+| **height80** | 80px | Experience card images |
+| **height100** | 100px | List containers |
+| **height250** | 250px | Large images, cards |
+
+**Width Constants** (for horizontal dimensions):
+| Constant | Value | Usage |
+|----------|-------|-------|
+| **width200** | 200px | Experience card containers |
+
+**Padding Constants** (for horizontal spacing):
+| Constant | Value | Usage |
+|----------|-------|-------|
+| **paddingXS** | 4px | Minimal padding |
+| **paddingS** | 8px | Small padding |
+| **paddingM** | 16px | Standard padding |
+| **paddingL** | 24px | Large padding |
+| **paddingXL** | 32px | Extra large padding |
 
 ### Border Radius
 
@@ -479,11 +499,43 @@ lib/components/presentation/templates/airbnb/
    )
    ```
 
+6. **Height and Width Constants**: Always use the predefined height and width constants for spacing:
+   ```dart
+   // ✅ Correct - Use height constants for vertical spacing
+   const SizedBox(height: AirbnbConstants.height20),
+   const SizedBox(height: AirbnbConstants.height30),
+   const SizedBox(height: AirbnbConstants.height40),
+   
+   // ✅ Correct - Use height constants for container heights
+   height: AirbnbConstants.height100,
+   height: AirbnbConstants.height250,
+   
+   // ✅ Correct - Use width constants for container widths
+   width: AirbnbConstants.width200,
+   
+   // ✅ Correct - Use padding constants for horizontal spacing
+   padding: const EdgeInsets.symmetric(
+     horizontal: AirbnbConstants.paddingL,
+     vertical: AirbnbConstants.height20,
+   ),
+   
+   // ❌ Incorrect - Don't use old padding constants for height
+   const SizedBox(height: AirbnbConstants.paddingM),
+   const SizedBox(height: AirbnbConstants.paddingL),
+   
+   // ❌ Incorrect - Don't hardcode values
+   const SizedBox(height: 20),
+   const SizedBox(height: 30),
+   height: 100,
+   width: 200,
+   ```
+
 ### Customization
 
 - **Colors**: Modify color values in `AirbnbTheme` class
 - **Typography**: Update theme text styles in `AirbnbTheme.light` and `AirbnbTheme.dark`
-- **Spacing**: Adjust padding and margin constants
+- **Height and Width**: Adjust height constants (`height20`, `height30`, etc.) for vertical spacing
+- **Padding**: Adjust padding constants (`paddingM`, `paddingL`, etc.) for horizontal spacing
 - **Icons**: Replace icon constants or add new ones
 
 ### Best Practices
@@ -493,10 +545,12 @@ lib/components/presentation/templates/airbnb/
 3. **Theme Integration**: Use `Theme.of(context).textTheme` for all text styles
 4. **Container Colors**: Use `Theme.of(context).cardColor` for container backgrounds
 5. **Style Validation**: Only reference text styles that exist in `AirbnbTheme`
-6. **Component Reusability**: Create modular, reusable StatelessWidget components
-7. **Error Handling**: Implement fallbacks for all external resources
-8. **Performance**: Minimize rebuilds and optimize image loading
-9. **Accessibility**: Use semantic labels and proper contrast
+6. **Height and Width Constants**: Use `AirbnbConstants.height20`, `height30`, etc. for vertical spacing
+7. **Padding Constants**: Use `AirbnbConstants.paddingM`, `paddingL`, etc. for horizontal spacing
+8. **Component Reusability**: Create modular, reusable StatelessWidget components
+9. **Error Handling**: Implement fallbacks for all external resources
+10. **Performance**: Minimize rebuilds and optimize image loading
+11. **Accessibility**: Use semantic labels and proper contrast
 
 ## 🚀 Future Enhancements
 

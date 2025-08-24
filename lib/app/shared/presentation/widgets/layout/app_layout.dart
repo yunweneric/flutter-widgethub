@@ -1,22 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-// import 'package:flutterui/screens/routes/app_router.gr.dart';
 import 'package:flutterui/app/core/routes/route_names.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/presentation/home/data/export/sidebar_categories.dart';
 import 'package:flutterui/app/presentation/home/model/component_block_model.dart';
 import 'package:flutterui/app/presentation/home/widgets/home_footer.dart';
-import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
-import 'package:flutterui/app/shared/logic/sidebar/sidebar_bloc.dart';
-import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
-import 'package:flutterui/app/shared/presentation/utils/icons.dart';
-import 'package:flutterui/app/shared/presentation/utils/images.dart';
-import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
-import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
-import 'package:flutterui/app/shared/presentation/widgets/layout/home_nav_bar.dart';
-import 'package:flutterui/app/shared/presentation/widgets/layout/side_bar_item.dart';
+import 'package:flutterui/app/shared/shared.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -25,7 +15,13 @@ class AppLayout extends StatefulWidget {
   final bool? isHomeScreenLayout;
   final List<Widget> children;
   final ScrollController? controller;
-  const AppLayout({super.key, required this.children, this.hideFooter, this.controller, this.isHomeScreenLayout});
+  const AppLayout({
+    super.key,
+    required this.children,
+    this.hideFooter,
+    this.controller,
+    this.isHomeScreenLayout,
+  });
 
   @override
   State<AppLayout> createState() => _AppLayoutState();
@@ -74,7 +70,9 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
               AnimatedBuilder(
                   animation: animationController!,
                   builder: (context, child) {
-                    final value = AppSizing.isMobile(context) || AppSizing.isXMobile(context) ? navBarAnimation?.value ?? 0.0 : 0.0;
+                    final value = AppSizing.isMobile(context) || AppSizing.isXMobile(context)
+                        ? navBarAnimation?.value ?? 0.0
+                        : 0.0;
                     return Transform(
                       alignment: Alignment.center,
                       transform: Matrix4.identity()
@@ -88,13 +86,16 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
                           children: [
                             AppSizing.khSpacer(80),
                             ConstrainedBox(
-                              constraints: BoxConstraints(minHeight: AppSizing.kHPercentage(context, 80)),
+                              constraints:
+                                  BoxConstraints(minHeight: AppSizing.kHPercentage(context, 80)),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: widget.children,
                               ),
                             ),
-                            widget.hideFooter == true ? const SizedBox.shrink() : const HomeFooter(),
+                            widget.hideFooter == true
+                                ? const SizedBox.shrink()
+                                : const HomeFooter(),
                           ],
                         ),
                       ),
@@ -109,7 +110,10 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
                   width: AppSizing.kWPercentage(context, 100),
                   child: SafeArea(
                     child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: AppSizing.kHPercentage(context, 2), horizontal: 0),
+                      padding: EdgeInsets.symmetric(
+                        vertical: AppSizing.kHPercentage(context, 2),
+                        horizontal: 0,
+                      ),
                       child: SingleChildScrollView(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -194,7 +198,8 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
           BlocConsumer<ComponentBloc, ComponentState>(
             listener: (context, state) {},
             builder: (context, state) {
-              final activePath = getIt.get<GoRouter>().routeInformationProvider.value.uri.pathSegments;
+              final activePath =
+                  getIt.get<GoRouter>().routeInformationProvider.value.uri.pathSegments;
 
               return Builder(builder: (context) {
                 List<AppCategoryGroupModel> categoriesGroup = [
@@ -211,7 +216,8 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
                               onPressed: () {
                                 // animateNavBar();
                                 sidebarBloc.add(UpdateSideBarEvent(newStatus: false));
-                                context.go("/components/${categoryGroup.category.link()}/${categoryGroup.items.first.subCategory.link()}");
+                                context.go(
+                                    "/components/${categoryGroup.category.link()}/${categoryGroup.items.first.subCategory.link()}");
                               },
                               title: categoryGroup.category.describe(),
                             );
@@ -228,7 +234,8 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(item.category.describe(), style: Theme.of(context).textTheme.displayMedium),
+                                  Text(item.category.describe(),
+                                      style: Theme.of(context).textTheme.displayMedium),
                                   AppSizing.khSpacer(15.h),
                                   Stack(
                                     children: [
@@ -239,12 +246,15 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
                                         itemBuilder: (context, index) {
                                           final category = item.items[index];
                                           return SideBarItem(
-                                            isActive: activePath.contains(category.subCategory.link()),
+                                            isActive:
+                                                activePath.contains(category.subCategory.link()),
                                             title: category.subCategory.describe(),
                                             onPressed: () {
                                               sidebarBloc.add(UpdateSideBarEvent(newStatus: false));
-                                              componentBloc.add(UpdateActiveCategoryEvent(category: category));
-                                              context.go("/components/${category.category.link()}/${category.subCategory.link()}");
+                                              componentBloc.add(
+                                                  UpdateActiveCategoryEvent(category: category));
+                                              context.go(
+                                                  "/components/${category.category.link()}/${category.subCategory.link()}");
                                             },
                                           );
                                         },

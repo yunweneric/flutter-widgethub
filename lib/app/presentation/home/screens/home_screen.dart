@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutterui/app/shared/shared.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/presentation/home/data/export/sidebar_categories.dart';
@@ -7,13 +8,6 @@ import 'package:flutterui/app/presentation/home/model/component_block_model.dart
 import 'package:flutterui/app/presentation/home/widgets/assets_section.dart';
 import 'package:flutterui/app/presentation/home/widgets/integration_section.dart';
 import 'package:flutterui/app/presentation/home/widgets/hero_section.dart';
-import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
-import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart';
-import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
-import 'package:flutterui/app/shared/presentation/widgets/layout/app_layout.dart';
-
-import '../../../shared/presentation/utils/lang_util.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -65,7 +59,8 @@ class _HomeScreenState extends State<HomeScreen> {
     ),
     ...sideBarCategories.where(
       (item) =>
-          item.category.describe().toLowerCase() != "animations" || item.category.describe().toLowerCase() != "tabs",
+          item.category.describe().toLowerCase() != "animations" ||
+          item.category.describe().toLowerCase() != "tabs",
     ),
   ];
   double generateScrollFactor(BuildContext context) {

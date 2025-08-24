@@ -13,7 +13,16 @@ class AirbnbBottomNavigationBar extends StatelessWidget {
     final theme = Theme.of(context);
     return Container(
       height: 100,
-      decoration: BoxDecoration(color: theme.scaffoldBackgroundColor),
+      decoration: BoxDecoration(
+        color: theme.scaffoldBackgroundColor,
+        boxShadow: [
+          BoxShadow(
+            color: AirbnbTheme.black.withOpacity(0.1),
+            blurRadius: AirbnbConstants.elevationL,
+            offset: const Offset(0, -2),
+          ),
+        ],
+      ),
       child: SafeArea(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -37,6 +46,7 @@ class AirbnbBottomNavigationBar extends StatelessWidget {
               svgIcon: AirbnbIconManager.inbox,
               label: 'Inbox',
               isActive: currentIndex == 3,
+              showNotification: true,
             ),
             _BottomNavItem(
               svgIcon: AirbnbIconManager.profile,
@@ -55,11 +65,13 @@ class _BottomNavItem extends StatelessWidget {
   final String svgIcon;
   final String label;
   final bool isActive;
+  final bool showNotification;
 
   const _BottomNavItem({
     required this.svgIcon,
     required this.label,
     required this.isActive,
+    this.showNotification = false,
   });
 
   @override
@@ -68,18 +80,35 @@ class _BottomNavItem extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SvgPicture.string(
-          svgIcon,
-          colorFilter: ColorFilter.mode(
-            isActive ? theme.primaryColor : theme.primaryColorDark,
-            BlendMode.srcIn,
-          ),
+        Stack(
+          children: [
+            SvgPicture.string(
+              svgIcon,
+              colorFilter: ColorFilter.mode(
+                isActive ? AirbnbTheme.primaryRed : AirbnbTheme.mediumGray,
+                BlendMode.srcIn,
+              ),
+            ),
+            if (showNotification)
+              Positioned(
+                right: 0,
+                top: 0,
+                child: Container(
+                  width: 8,
+                  height: 8,
+                  decoration: BoxDecoration(
+                    color: AirbnbTheme.primaryRed,
+                    shape: BoxShape.circle,
+                  ),
+                ),
+              ),
+          ],
         ),
-        SizedBox(height: 4),
+        const SizedBox(height: 4),
         Text(
           label,
           style: TextStyle(
-            color: isActive ? theme.primaryColor : theme.primaryColorDark,
+            color: isActive ? AirbnbTheme.primaryRed : AirbnbTheme.mediumGray,
             fontSize: 10,
             fontWeight: isActive ? FontWeight.w600 : FontWeight.normal,
           ),

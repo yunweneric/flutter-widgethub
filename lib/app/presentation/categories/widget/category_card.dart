@@ -2,6 +2,7 @@ import 'package:device_frame/device_frame.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
+import 'package:flutterui/app/shared/shared.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
@@ -106,9 +107,12 @@ class _CategoryCardState extends State<CategoryCard> {
             top: 10,
             right: 10,
             child: Chip(
+              backgroundColor: Theme.of(context).primaryColor.withOpacity(0.1),
               label: Text(
                 "${componentDetails.codeComponents.length} ${LangUtil.trans("components")}",
-                style: Theme.of(context).textTheme.bodyMedium,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Theme.of(context).primaryColor,
+                    ),
               ),
             ),
           )
