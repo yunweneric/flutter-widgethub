@@ -59,12 +59,6 @@ export 'presentation/helpers/observers/bloc_observer.dart';
 export 'presentation/helpers/observers/nav_observer.dart';
 export 'presentation/helpers/platform/platform.dart';
 export 'presentation/helpers/platform/platform_enum.dart';
-export 'presentation/helpers/platform/platform_io.dart'
-    hide getPlatform, getWindow, checkConnection;
-export 'presentation/helpers/platform/platform_stub.dart'
-    hide getPlatform, getWindow, checkConnection;
-export 'presentation/helpers/platform/platform_web.dart'
-    hide getPlatform, getWindow, checkConnection;
 
 // =============================================================================
 // DATA - Data Models and Enums

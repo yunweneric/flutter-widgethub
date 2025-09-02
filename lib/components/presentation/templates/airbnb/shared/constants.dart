@@ -14,6 +14,7 @@ class AirbnbConstants {
   static const double height30 = 30.0;
   static const double height40 = 40.0;
   static const double height50 = 50.0;
+  static const double height60 = 60.0;
   static const double height80 = 80.0;
   static const double height100 = 100.0;
   static const double height250 = 250.0;

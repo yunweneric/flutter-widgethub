@@ -21,6 +21,10 @@ class AirbnbData {
         widget: const AirbnbLayout(initialIndex: 0, widget: HomeScreen()),
       ),
       CodeComponent(
+        code: inboxScreenCode,
+        widget: const AirbnbLayout(initialIndex: 3, widget: InboxScreen()),
+      ),
+      CodeComponent(
         code: tripsScreenCode,
         widget: const AirbnbLayout(initialIndex: 2, widget: TripsScreen()),
       ),

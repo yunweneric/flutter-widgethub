@@ -51,6 +51,7 @@ Consistent spacing system using height and width constants:
 | **height30** | 30px | Medium spacing |
 | **height40** | 40px | Large spacing |
 | **height50** | 50px | Extra large spacing |
+| **height60** | 60px | Profile images, avatars |
 | **height80** | 80px | Experience card images |
 | **height100** | 100px | List containers |
 | **height250** | 250px | Large images, cards |

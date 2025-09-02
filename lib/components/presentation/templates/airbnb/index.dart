@@ -18,6 +18,9 @@ export 'wishlist/wishlist_01/code.dart';
 export 'wishlist/wishlist_02/widget.dart';
 export 'wishlist/wishlist_02/code.dart';
 
+export 'inbox/widget.dart';
+export 'inbox/code.dart';
+
 export 'trips/widget.dart';
 export 'trips/code.dart';
 
