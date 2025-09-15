@@ -2,6 +2,7 @@ import 'package:flutterui/components/presentation/animations/skew_card/data.dart
 import 'package:flutterui/app/shared/data/models/component.dart';
 import 'package:flutterui/components/presentation/blocks/bottom_nav_bars/docking_bar/data.dart';
 import 'package:flutterui/components/presentation/blocks/buttons/apple_books_fab/data.dart';
+import 'package:flutterui/components/presentation/blocks/switches/switcher.dart';
 import 'package:flutterui/components/presentation/blocks/tabs/blurred_slide_tab/data.dart';
 import 'package:flutterui/components/presentation/blocks/tabs/expandable_tab/data.dart';
 import 'package:flutterui/components/presentation/blocks/tabs/liquid_glass_tab/data.dart';
@@ -50,5 +51,6 @@ class AllComponents {
     Auth05Data.component,
     SpotifyData.component,
     AirbnbData.component,
+    Switch01Data.component,
   ];
 }
