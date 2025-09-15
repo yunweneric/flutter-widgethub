@@ -12,8 +12,8 @@ class AirbnbData {
   static String setup = airbnbSetup;
 
   static Component component = Component(
-    createdAt: DateTime(2025, 8, 21),
-    updatedAt: DateTime(2025, 8, 21),
+    createdAt: DateTime(2025, 8, 22),
+    updatedAt: DateTime(2025, 8, 22),
     id: "airbnb-redesign-ui",
     codeComponents: [
       CodeComponent(
