@@ -6,3 +6,4 @@ export 'components/category_filter.dart';
 export 'components/property_card.dart';
 export 'components/map_button.dart';
 export 'icon_manager.dart';
+export 'components/bottom_nav_bar.dart';

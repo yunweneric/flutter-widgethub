@@ -32,12 +32,9 @@ class _MainContentState extends State<MainContent> {
               AppSizing.khSpacer(30.h),
               TextButton.icon(
                 style: TextButton.styleFrom(
-                  padding: AppSizing.isMobile(context) ? null : AppSizing.kpadding(15.w, 20.h),
                   side: BorderSide(color: Theme.of(context).dividerColor),
                 ),
                 onPressed: () => context.go(RouteNames.components),
-                // onPressed: () => context.pop(),
-                // onPressed: () {},
                 icon: const AppIcon(icon: AppIcons.back),
                 label: Text(LangUtil.trans("back"), style: Theme.of(context).textTheme.bodyMedium),
               ),

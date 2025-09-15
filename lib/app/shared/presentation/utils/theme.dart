@@ -127,14 +127,15 @@ class AppTheme {
       dividerColor: AppColors.BGGRAY2.withOpacity(0.3),
       appBarTheme: AppBarTheme(
         backgroundColor: AppColors.BG,
-        titleTextStyle: GoogleFonts.inter(color: AppColors.TEXTBLACK, fontWeight: FontWeight.w500, fontSize: 20.sp),
+        titleTextStyle: GoogleFonts.inter(
+            color: AppColors.TEXTBLACK, fontWeight: FontWeight.w500, fontSize: 20.sp),
         elevation: 0,
       ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
-          padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 10.w),
+          padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
           textStyle: lightTextTheme.bodySmall,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
           backgroundColor: AppColors.CARDCOLOR,
         ),
       ),
@@ -142,14 +143,15 @@ class AppTheme {
         style: ElevatedButton.styleFrom(
           elevation: 0,
           backgroundColor: AppColors.CARDCOLOR,
-          padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 10.w),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
+          padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
           textStyle: lightTextTheme.bodySmall,
         ),
       ),
       chipTheme: ChipThemeData(
         backgroundColor: AppColors.TEXTGREY,
-        side: const BorderSide(color: AppColors.BGGRAY2, width: 1),
+        // side: const BorderSide(color: AppColors.BGGRAY2, width: 1),
+        side: const BorderSide(color: Colors.transparent, width: 1),
         selectedColor: AppColors.PRIMARY,
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
         labelStyle: TextStyle(fontSize: 12.sp, color: AppColors.TEXTBLACK),
@@ -195,8 +197,8 @@ class AppTheme {
       dialogTheme: const DialogTheme(backgroundColor: AppColors.BGCARDDARK),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
-          padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 10.w),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
+          padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
           textStyle: darkTextTheme.bodySmall,
           backgroundColor: AppColors.BGCARDDARK,
           iconColor: AppColors.BGGRAY,
@@ -204,8 +206,8 @@ class AppTheme {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 10.w),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
+          padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
           backgroundColor: AppColors.BGCARDDARK,
           textStyle: darkTextTheme.bodySmall,
           iconColor: AppColors.BGGRAY,

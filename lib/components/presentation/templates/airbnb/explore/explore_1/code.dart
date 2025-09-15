@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import '../shared/shared.dart';
+const explore1Code = """import 'package:flutter/material.dart';
+import '../../shared/shared.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -158,3 +158,4 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+""";

@@ -4,47 +4,71 @@
 
 The Airbnb Template is a complete Flutter UI implementation that replicates the modern accommodation booking app design. This template showcases professional UI/UX patterns, responsive design, and follows Flutter best practices.
 
+**Important**: This template uses a new spacing system with dedicated height and width constants (`height20`, `height30`, etc.) for vertical spacing and padding constants for horizontal spacing.
+
 ## 🎨 Design System
 
 ### Color Palette
 
-| Color | Hex Code | Usage |
-|-------|----------|-------|
-| **Primary Red** | `#FF5A5F` | Main brand color, buttons, accents |
-| **Secondary Teal** | `#00A699` | Secondary actions, highlights |
-| **Dark Gray** | `#222222` | Primary text, selected states |
-| **Medium Gray** | `#717171` | Secondary text, icons |
-| **Light Gray** | `#DDDDDD` | Borders, dividers |
-| **Background Gray** | `#F7F7F7` | Secondary backgrounds |
-| **White** | `#FFFFFF` | Primary backgrounds, cards |
-| **Black** | `#000000` | Status bar text |
+The template uses a centralized color system defined in `AirbnbTheme`:
+
+| Color | Theme Reference | Usage |
+|-------|----------------|-------|
+| **Primary Red** | `AirbnbTheme.primaryRed` | Main brand color, buttons, accents |
+| **Secondary Teal** | `AirbnbTheme.secondaryTeal` | Secondary actions, highlights |
+| **Dark Gray** | `AirbnbTheme.darkGray` | Primary text, selected states |
+| **Medium Gray** | `AirbnbTheme.mediumGray` | Secondary text, icons |
+| **Light Gray** | `AirbnbTheme.lightGray` | Borders, dividers |
+| **Background Gray** | `AirbnbTheme.backgroundGray` | Secondary backgrounds |
+| **White** | `AirbnbTheme.white` | Primary backgrounds, cards |
+| **Black** | `AirbnbTheme.black` | Status bar text |
 
 ### Typography
 
-The template uses Flutter's built-in `TextTheme` system for consistent typography:
+The template uses Flutter's built-in `TextTheme` system for consistent typography, with all styles defined in `AirbnbTheme`:
 
-- **Display Large**: 32px, Bold - Main headings
-- **Display Medium**: 24px, Semi-bold - Section headings
-- **Display Small**: 18px, Semi-bold - Subsection headings
-- **Headline Medium**: 16px, Semi-bold - Card titles
-- **Body Large**: 16px, Medium - Primary text
-- **Body Medium**: 14px, Regular - Secondary text
-- **Body Small**: 14px, Regular - Captions, metadata
-- **Label Large**: 16px, Semi-bold - Button text
-- **Label Medium**: 14px, Medium - Small labels
-- **Label Small**: 12px, Regular - Category labels
+- **Display Large**: `Theme.of(context).textTheme.displayLarge` - Main headings
+- **Display Medium**: `Theme.of(context).textTheme.displayMedium` - Section headings
+- **Display Small**: `Theme.of(context).textTheme.displaySmall` - Subsection headings
+- **Headline Medium**: `Theme.of(context).textTheme.headlineMedium` - Card titles
+- **Body Large**: `Theme.of(context).textTheme.bodyLarge` - Primary text
+- **Body Medium**: `Theme.of(context).textTheme.bodyMedium` - Secondary text
+- **Body Small**: `Theme.of(context).textTheme.bodySmall` - Captions, metadata
+- **Label Large**: `Theme.of(context).textTheme.labelLarge` - Button text
+- **Label Medium**: `Theme.of(context).textTheme.labelMedium` - Small labels
+
+**Note**: Only use the text styles that are explicitly defined in `AirbnbTheme`. Do not reference undefined text styles like `labelSmall`.
 
 ### Spacing System
 
-Consistent 8px grid system:
+Consistent spacing system using height and width constants:
 
-| Size | Value | Usage |
-|------|-------|-------|
-| **XS** | 4px | Minimal spacing, dots |
-| **S** | 8px | Small spacing, icons |
-| **M** | 16px | Standard spacing |
-| **L** | 24px | Large spacing, margins |
-| **XL** | 32px | Extra large spacing |
+| Constant | Value | Usage |
+|----------|-------|-------|
+| **height5** | 5px | Minimal spacing, dots |
+| **height10** | 10px | Small spacing, icons |
+| **height20** | 20px | Standard spacing, margins |
+| **height30** | 30px | Medium spacing |
+| **height40** | 40px | Large spacing |
+| **height50** | 50px | Extra large spacing |
+| **height60** | 60px | Profile images, avatars |
+| **height80** | 80px | Experience card images |
+| **height100** | 100px | List containers |
+| **height250** | 250px | Large images, cards |
+
+**Width Constants** (for horizontal dimensions):
+| Constant | Value | Usage |
+|----------|-------|-------|
+| **width200** | 200px | Experience card containers |
+
+**Padding Constants** (for horizontal spacing):
+| Constant | Value | Usage |
+|----------|-------|-------|
+| **paddingXS** | 4px | Minimal padding |
+| **paddingS** | 8px | Small padding |
+| **paddingM** | 16px | Standard padding |
+| **paddingL** | 24px | Large padding |
+| **paddingXL** | 32px | Extra large padding |
 
 ### Border Radius
 
@@ -194,6 +218,7 @@ MapButton(
 - Elevation: 8px shadow
 - Fixed type navigation
 
+
 ## 📱 Screen Layout
 
 ### Home Screen Structure
@@ -217,6 +242,8 @@ MapButton(
 └─────────────────────────────────┘
 ```
 
+
+
 ### Responsive Behavior
 
 - **Width**: Adapts to screen width (320dp - 480dp)
@@ -226,21 +253,80 @@ MapButton(
 
 ## 🔧 Implementation Details
 
-### Theme Integration
+### Widget Architecture
 
-All components use `Theme.of(context).textTheme` for typography:
+All UI components should be implemented as **stateless widgets** instead of functions. This follows Flutter best practices for better performance, reusability, and maintainability.
 
 ```dart
-final textTheme = Theme.of(context).textTheme;
+// ✅ Correct - Use StatelessWidget
+class CustomHeader extends StatelessWidget {
+  const CustomHeader({super.key});
 
-Text(
-  'Sample Text',
-  style: textTheme.bodyLarge?.copyWith(
-    color: AirbnbConstants.darkGray,
-    fontWeight: FontWeight.w600,
-  ),
-)
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    return Container(
+      child: Text(
+        'Header Title',
+        style: textTheme.displayLarge,
+      ),
+    );
+  }
+}
+
+// ❌ Incorrect - Don't use functions for UI
+Widget _buildHeader() {
+  return Container(
+    child: Text('Header Title'),
+  );
+}
 ```
+
+### Theme Integration
+
+All components use `Theme.of(context).textTheme` for typography, referencing only the styles defined in `AirbnbTheme`:
+
+```dart
+class SampleWidget extends StatelessWidget {
+  const SampleWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
+    return Column(
+      children: [
+        // Use only defined text styles from theme.dart
+        Text(
+          'Sample Text',
+          style: textTheme.bodyLarge?.copyWith(
+            color: AirbnbTheme.darkGray,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        
+        // For headings, use display styles
+        Text(
+          'Section Title',
+          style: textTheme.displayMedium,
+        ),
+        
+        // For buttons, use label styles
+        Text(
+          'Button Text',
+          style: textTheme.labelLarge,
+        ),
+      ],
+    );
+  }
+}
+```
+
+**Important**: Only use these defined text styles:
+- `displayLarge`, `displayMedium`, `displaySmall`
+- `headlineMedium`
+- `bodyLarge`, `bodyMedium`, `bodySmall`
+- `labelLarge`, `labelMedium`
 
 ### State Management
 
@@ -266,7 +352,7 @@ Text(
 lib/components/presentation/templates/airbnb/
 ├── shared/
 │   ├── constants.dart              # Design tokens
-│   ├── theme.dart                  # App themes
+│   ├── theme.dart                  # App themes (use this for all styling)
 │   ├── layout.dart                 # Main layout
 │   ├── shared.dart                 # Exports
 │   ├── icon_manager.dart           # SVG icons
@@ -284,12 +370,40 @@ lib/components/presentation/templates/airbnb/
 
 ### Component Integration
 
-1. **Import Components**:
+1. **Check Existing Shared Components**: Always check `shared/components/` directory before creating new widgets:
+   ```dart
+   // Available shared components:
+   // - PropertyCard: Property display with image, rating, pricing
+   // - MapButton: Map view action button
+   // - AirbnbSearchBar: Search interface
+   // - CategoryFilter: Category selection
+   // - AirbnbBottomNavigationBar: Navigation tabs
+   ```
+
+2. **Import Components**:
    ```dart
    import '../shared/shared.dart';
    ```
 
-2. **Use Theme**:
+3. **Use Existing Components**:
+   ```dart
+   // ✅ Reuse existing PropertyCard
+   PropertyCard(
+     imageUrl: 'https://picsum.photos/400/300',
+     location: 'New York',
+     distance: '2 hours away',
+     dates: 'May 14 - 19',
+     price: '\$200 night',
+     rating: 4.8,
+     reviewCount: 45,
+     isFavorite: true,
+   )
+   
+   // ✅ Reuse existing MapButton
+   MapButton(onTap: () => showMap())
+   ```
+
+4. **Use Theme**:
    ```dart
    Theme(
      data: AirbnbTheme.light,
@@ -297,32 +411,153 @@ lib/components/presentation/templates/airbnb/
    )
    ```
 
-3. **Handle Interactions**:
+5. **Handle Interactions**:
    ```dart
    onTap: () => handleAction(),
    onFavoriteTap: () => toggleFavorite(),
    ```
 
+### Styling Guidelines
+
+1. **Widget Structure**: Always use StatelessWidget for UI components:
+   ```dart
+   // ✅ Correct - StatelessWidget approach
+   class MyCustomButton extends StatelessWidget {
+     final String text;
+     final VoidCallback? onTap;
+     
+     const MyCustomButton({
+       super.key,
+       required this.text,
+       this.onTap,
+     });
+     
+     @override
+     Widget build(BuildContext context) {
+       return GestureDetector(
+         onTap: onTap,
+         child: Container(
+           padding: const EdgeInsets.all(AirbnbConstants.paddingM),
+           decoration: BoxDecoration(
+             color: AirbnbTheme.primaryRed,
+             borderRadius: BorderRadius.circular(AirbnbConstants.radiusM),
+           ),
+           child: Text(text),
+         ),
+       );
+     }
+   }
+   
+   // ❌ Incorrect - Function approach
+   Widget _buildButton(String text, VoidCallback? onTap) {
+     return GestureDetector(onTap: onTap, child: Container(...));
+   }
+   ```
+
+2. **Colors**: Always use `AirbnbTheme` color constants and theme colors:
+   ```dart
+   // ✅ Correct
+   color: AirbnbTheme.primaryRed
+   color: AirbnbTheme.darkGray
+   color: Theme.of(context).cardColor  // For containers
+   
+   // ❌ Incorrect - hardcoded values
+   color: Color(0xFFFF5A5F)
+   ```
+
+3. **Icon Colors**: Don't specify colors for white/black icons - theming handles it automatically:
+   ```dart
+   // ✅ Correct - No color specified, theme handles it
+   Icon(Icons.arrow_back, size: 20)
+   Icon(Icons.share, size: 20)
+   Icon(Icons.more_vert, size: 20)
+   
+   // ❌ Avoid specifying white/black colors
+   Icon(Icons.arrow_back, color: Colors.white, size: 20)
+   Icon(Icons.share, color: Colors.black, size: 20)
+   
+   // ✅ Only specify custom colors when needed
+   Icon(Icons.favorite, color: AirbnbTheme.primaryRed, size: 20)
+   ```
+
+4. **Typography**: Always use `Theme.of(context).textTheme` with defined styles:
+   ```dart
+   // ✅ Correct
+   style: Theme.of(context).textTheme.displayLarge
+   style: Theme.of(context).textTheme.bodyMedium
+   style: Theme.of(context).textTheme.labelLarge
+   
+   // ❌ Incorrect - undefined styles
+   style: Theme.of(context).textTheme.labelSmall
+   style: Theme.of(context).textTheme.headlineSmall
+   ```
+
+5. **Custom Styling**: When customizing defined styles, use `.copyWith()`:
+   ```dart
+   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+     color: AirbnbTheme.primaryRed,
+     fontWeight: FontWeight.w600,
+   )
+   ```
+
+6. **Height and Width Constants**: Always use the predefined height and width constants for spacing:
+   ```dart
+   // ✅ Correct - Use height constants for vertical spacing
+   const SizedBox(height: AirbnbConstants.height20),
+   const SizedBox(height: AirbnbConstants.height30),
+   const SizedBox(height: AirbnbConstants.height40),
+   
+   // ✅ Correct - Use height constants for container heights
+   height: AirbnbConstants.height100,
+   height: AirbnbConstants.height250,
+   
+   // ✅ Correct - Use width constants for container widths
+   width: AirbnbConstants.width200,
+   
+   // ✅ Correct - Use padding constants for horizontal spacing
+   padding: const EdgeInsets.symmetric(
+     horizontal: AirbnbConstants.paddingL,
+     vertical: AirbnbConstants.height20,
+   ),
+   
+   // ❌ Incorrect - Don't use old padding constants for height
+   const SizedBox(height: AirbnbConstants.paddingM),
+   const SizedBox(height: AirbnbConstants.paddingL),
+   
+   // ❌ Incorrect - Don't hardcode values
+   const SizedBox(height: 20),
+   const SizedBox(height: 30),
+   height: 100,
+   width: 200,
+   ```
+
 ### Customization
 
-- **Colors**: Modify `AirbnbConstants` color values
-- **Typography**: Update theme text styles
-- **Spacing**: Adjust padding and margin constants
+- **Colors**: Modify color values in `AirbnbTheme` class
+- **Typography**: Update theme text styles in `AirbnbTheme.light` and `AirbnbTheme.dark`
+- **Height and Width**: Adjust height constants (`height20`, `height30`, etc.) for vertical spacing
+- **Padding**: Adjust padding constants (`paddingM`, `paddingL`, etc.) for horizontal spacing
 - **Icons**: Replace icon constants or add new ones
 
 ### Best Practices
 
-1. **Consistent Spacing**: Always use spacing constants
-2. **Theme Integration**: Use `Theme.of(context)` for text styles
-3. **Error Handling**: Implement fallbacks for all external resources
-4. **Performance**: Minimize rebuilds and optimize image loading
-5. **Accessibility**: Use semantic labels and proper contrast
+1. **Widget Architecture**: Always use StatelessWidget for UI components instead of functions
+2. **Consistent Theming**: Always use `AirbnbTheme` for colors and typography
+3. **Theme Integration**: Use `Theme.of(context).textTheme` for all text styles
+4. **Container Colors**: Use `Theme.of(context).cardColor` for container backgrounds
+5. **Style Validation**: Only reference text styles that exist in `AirbnbTheme`
+6. **Height and Width Constants**: Use `AirbnbConstants.height20`, `height30`, etc. for vertical spacing
+7. **Padding Constants**: Use `AirbnbConstants.paddingM`, `paddingL`, etc. for horizontal spacing
+8. **Component Reusability**: Create modular, reusable StatelessWidget components
+9. **Error Handling**: Implement fallbacks for all external resources
+10. **Performance**: Minimize rebuilds and optimize image loading
+11. **Accessibility**: Use semantic labels and proper contrast
 
 ## 🚀 Future Enhancements
 
 ### Planned Features
 
-- **Dark Theme**: Complete dark mode implementation
+- **Dark Theme**: Complete dark mode implementation (already defined in `AirbnbTheme.dark`)
 - **Animations**: Smooth transitions and micro-interactions
 - **Localization**: Multi-language support
 - **Accessibility**: Screen reader and keyboard navigation
@@ -342,7 +577,8 @@ lib/components/presentation/templates/airbnb/
 - **Flutter Documentation**: [flutter.dev](https://flutter.dev)
 - **Material Design**: [material.io](https://material.io)
 - **Project Guidelines**: [CONTRIBUTION.md](./CONTRIBUTION.md)
+- **Theme Reference**: `lib/components/presentation/templates/airbnb/shared/theme.dart`
 
 ---
 
-**Note**: This template serves as a foundation for building professional accommodation booking applications. Follow the design system and implementation patterns for consistent, high-quality UI components.
+**Note**: This template serves as a foundation for building professional accommodation booking applications. Always use the centralized theming system from `AirbnbTheme` for consistent, high-quality UI components. Follow the design system and implementation patterns for maintainable code.

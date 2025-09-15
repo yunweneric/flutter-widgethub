@@ -87,7 +87,11 @@ class _SearchBarState extends State<SearchBar> {
     }
 
     final term = title.toLowerCase();
-    final data = allItems.where((item) => item.title.toLowerCase().contains(term) || item.description.toLowerCase().contains(term)).toList();
+    final data = allItems
+        .where((item) =>
+            item.title.toLowerCase().contains(term) ||
+            item.description.toLowerCase().contains(term))
+        .toList();
     setState(() {
       searchTerm = title;
       filteredData = data;
@@ -148,7 +152,8 @@ class _SearchBarState extends State<SearchBar> {
                           hintStyle: const TextStyle(fontSize: 14),
                           prefixIcon: Transform.scale(
                             scale: 0.4,
-                            child: AppIcon(icon: AppIcons.search, color: Theme.of(context).highlightColor),
+                            child: AppIcon(
+                                icon: AppIcons.search, color: Theme.of(context).highlightColor),
                           ),
                         ),
                       ),
@@ -160,10 +165,14 @@ class _SearchBarState extends State<SearchBar> {
                     if (AppSizing.isTablet(context)) heightFactor = 7;
                     return AnimatedContainer(
                       constraints: BoxConstraints(maxHeight: AppSizing.kHPercentage(context, 60)),
-                      height: isExpanded ? AppSizing.kHPercentage(context, filteredData.isEmpty ? 20 : filteredData.length * heightFactor) : 0,
+                      height: isExpanded
+                          ? AppSizing.kHPercentage(context,
+                              filteredData.isEmpty ? 20 : filteredData.length * heightFactor)
+                          : 0,
                       decoration: BoxDecoration(
                         color: Theme.of(context).scaffoldBackgroundColor,
-                        border: BorderDirectional(top: BorderSide(color: Theme.of(context).dividerColor)),
+                        border: BorderDirectional(
+                            top: BorderSide(color: Theme.of(context).dividerColor)),
                       ),
                       duration: const Duration(milliseconds: 300),
                       alignment: Alignment.center,
@@ -175,7 +184,9 @@ class _SearchBarState extends State<SearchBar> {
                               ? RichText(
                                   text: TextSpan(
                                     text: "'$searchTerm' ",
-                                    style: DefaultTextStyle.of(context).style.copyWith(color: Theme.of(context).primaryColor),
+                                    style: DefaultTextStyle.of(context)
+                                        .style
+                                        .copyWith(color: Theme.of(context).primaryColor),
                                     children: <TextSpan>[
                                       TextSpan(
                                         text: LangUtil.trans('notFoundInCollections'),
@@ -192,7 +203,8 @@ class _SearchBarState extends State<SearchBar> {
                                       onTap: () async {
                                         context.pop();
 
-                                        final link = "/components/${component.category.link()}/${component.subcategory.link()}/${component.id}/";
+                                        final link =
+                                            "/components/${component.category.link()}/${component.subcategory.link()}/${component.id}/";
                                         context.go(link);
                                       },
                                       title: Text(
@@ -204,7 +216,10 @@ class _SearchBarState extends State<SearchBar> {
                                         children: [
                                           Text(
                                             component.category.describe(),
-                                            style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Theme.of(context).primaryColor),
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodySmall!
+                                                .copyWith(color: Theme.of(context).primaryColor),
                                           ),
                                           Text(
                                             LangUtil.trans(component.description),

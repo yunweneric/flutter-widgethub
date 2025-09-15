@@ -36,10 +36,6 @@ class PropertyCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: double.infinity,
-        margin: const EdgeInsets.symmetric(
-          horizontal: AirbnbConstants.paddingL,
-          vertical: AirbnbConstants.paddingS,
-        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

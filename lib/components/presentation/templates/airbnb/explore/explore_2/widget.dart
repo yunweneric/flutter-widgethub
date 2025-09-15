@@ -1,5 +1,5 @@
-const homeScreenCode = """import 'package:flutter/material.dart';
-import '../shared/shared.dart';
+import 'package:flutter/material.dart';
+import '../../shared/shared.dart';
 
 class HomeScreen2 extends StatefulWidget {
   const HomeScreen2({super.key});
@@ -13,8 +13,9 @@ class _HomeScreen2State extends State<HomeScreen2> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Theme(
-      data: AirbnbTheme.light,
+      data: isDark ? AirbnbTheme.dark : AirbnbTheme.light,
       child: Scaffold(
         body: SafeArea(
           child: Column(
@@ -38,7 +39,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
                         vertical: AirbnbConstants.paddingM,
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Theme.of(context).cardColor,
                         borderRadius: BorderRadius.circular(AirbnbConstants.radiusXXL),
                         boxShadow: [
                           BoxShadow(
@@ -52,7 +53,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
                         children: [
                           Icon(
                             AirbnbConstants.searchIcon,
-                            color: Colors.grey[600],
+                            color: Theme.of(context).primaryColorDark,
                             size: 20,
                           ),
                           const SizedBox(width: AirbnbConstants.paddingM),
@@ -63,16 +64,11 @@ class _HomeScreen2State extends State<HomeScreen2> {
                               children: [
                                 Text(
                                   'Manhattan',
-                                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w600,
-                                      ),
+                                  style: Theme.of(context).textTheme.displaySmall,
                                 ),
                                 Text(
                                   'Feb 13 - 14, 2023 (±1) • 1 guest',
-                                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                        color: Colors.grey[600],
-                                      ),
+                                  style: Theme.of(context).textTheme.labelSmall,
                                 ),
                               ],
                             ),
@@ -85,12 +81,12 @@ class _HomeScreen2State extends State<HomeScreen2> {
                             child: Container(
                               padding: const EdgeInsets.all(AirbnbConstants.paddingS),
                               decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey[400]!),
+                                border: Border.all(color: Theme.of(context).primaryColorDark),
                                 shape: BoxShape.circle,
                               ),
                               child: Icon(
                                 AirbnbConstants.filterIcon,
-                                color: Colors.grey[600],
+                                color: Theme.of(context).primaryColorDark,
                                 size: 16,
                               ),
                             ),
@@ -125,7 +121,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
                                   height: 250,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(AirbnbConstants.radiusM),
-                                    color: Colors.grey[200],
+                                    color: Theme.of(context).cardColor,
                                   ),
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(AirbnbConstants.radiusM),
@@ -134,24 +130,19 @@ class _HomeScreen2State extends State<HomeScreen2> {
                                       fit: BoxFit.cover,
                                       errorBuilder: (context, error, stackTrace) {
                                         return Container(
-                                          color: Colors.grey[200],
+                                          color: Theme.of(context).cardColor,
                                           child: Column(
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
                                               Icon(
                                                 Icons.bedroom_parent,
                                                 size: 48,
-                                                color: Colors.grey[600],
+                                                color: Theme.of(context).primaryColorDark,
                                               ),
                                               const SizedBox(height: AirbnbConstants.paddingS),
                                               Text(
                                                 'Private Room',
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .bodyMedium
-                                                    ?.copyWith(
-                                                      color: Colors.grey[600],
-                                                    ),
+                                                style: Theme.of(context).textTheme.labelMedium,
                                               ),
                                             ],
                                           ),
@@ -173,7 +164,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
                                     child: Container(
                                       padding: const EdgeInsets.all(AirbnbConstants.paddingS),
                                       decoration: BoxDecoration(
-                                        color: Colors.white,
+                                        color: Theme.of(context).cardColor,
                                         borderRadius:
                                             BorderRadius.circular(AirbnbConstants.radiusM),
                                         boxShadow: [
@@ -188,7 +179,9 @@ class _HomeScreen2State extends State<HomeScreen2> {
                                         isFavorite
                                             ? AirbnbConstants.heartFilledIcon
                                             : AirbnbConstants.heartIcon,
-                                        color: isFavorite ? Colors.red : Colors.black,
+                                        color: isFavorite
+                                            ? Colors.red
+                                            : Theme.of(context).primaryColorDark,
                                         size: 20,
                                       ),
                                     ),
@@ -207,7 +200,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
                                         width: 8,
                                         height: 8,
                                         decoration: BoxDecoration(
-                                          color: Colors.white,
+                                          color: Theme.of(context).cardColor,
                                           borderRadius: BorderRadius.circular(4),
                                         ),
                                       ),
@@ -216,7 +209,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
                                         width: 6,
                                         height: 6,
                                         decoration: BoxDecoration(
-                                          color: Colors.white.withOpacity(0.5),
+                                          color: Theme.of(context).cardColor,
                                           borderRadius: BorderRadius.circular(3),
                                         ),
                                       ),
@@ -225,7 +218,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
                                         width: 6,
                                         height: 6,
                                         decoration: BoxDecoration(
-                                          color: Colors.white.withOpacity(0.5),
+                                          color: Theme.of(context).cardColor,
                                           borderRadius: BorderRadius.circular(3),
                                         ),
                                       ),
@@ -234,7 +227,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
                                         width: 6,
                                         height: 6,
                                         decoration: BoxDecoration(
-                                          color: Colors.white.withOpacity(0.5),
+                                          color: Theme.of(context).cardColor,
                                           borderRadius: BorderRadius.circular(3),
                                         ),
                                       ),
@@ -243,7 +236,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
                                         width: 6,
                                         height: 6,
                                         decoration: BoxDecoration(
-                                          color: Colors.white.withOpacity(0.5),
+                                          color: Theme.of(context).cardColor,
                                           borderRadius: BorderRadius.circular(3),
                                         ),
                                       ),
@@ -276,13 +269,13 @@ class _HomeScreen2State extends State<HomeScreen2> {
                                         children: [
                                           Icon(
                                             AirbnbConstants.starIcon,
-                                            color: Colors.black,
+                                            color: Theme.of(context).primaryColorDark,
                                             size: 16,
                                           ),
                                           const SizedBox(width: AirbnbConstants.paddingXS),
                                           Text(
                                             '5.0 (3)',
-                                            style: Theme.of(context).textTheme.bodyMedium,
+                                            style: Theme.of(context).textTheme.labelMedium,
                                           ),
                                         ],
                                       ),
@@ -293,21 +286,21 @@ class _HomeScreen2State extends State<HomeScreen2> {
                                   // Description
                                   Text(
                                     'Private room in Yonkers close to bus...',
-                                    style: Theme.of(context).textTheme.bodySmall,
+                                    style: Theme.of(context).textTheme.labelSmall,
                                   ),
                                   const SizedBox(height: AirbnbConstants.paddingXS),
 
                                   // Bed type
                                   Text(
                                     '1 Queen Bed',
-                                    style: Theme.of(context).textTheme.bodySmall,
+                                    style: Theme.of(context).textTheme.labelSmall,
                                   ),
                                   const SizedBox(height: AirbnbConstants.paddingXS),
 
                                   // Dates
                                   Text(
                                     'Feb 13 - 14',
-                                    style: Theme.of(context).textTheme.bodySmall,
+                                    style: Theme.of(context).textTheme.labelSmall,
                                   ),
                                   const SizedBox(height: AirbnbConstants.paddingXS),
 
@@ -317,7 +310,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
                                       Text(
                                         '\$38 night',
                                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                              color: Colors.grey[600],
+                                              color: Theme.of(context).primaryColorDark,
                                             ),
                                       ),
                                       const SizedBox(width: AirbnbConstants.paddingS),
@@ -351,7 +344,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
                               height: 200,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(AirbnbConstants.radiusM),
-                                color: Colors.grey[200],
+                                color: Theme.of(context).cardColor,
                               ),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(AirbnbConstants.radiusM),
@@ -370,8 +363,8 @@ class _HomeScreen2State extends State<HomeScreen2> {
                                   // Handle map tap
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.black,
-                                  foregroundColor: Colors.white,
+                                  backgroundColor: Theme.of(context).primaryColorDark,
+                                  foregroundColor: Theme.of(context).cardColor,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(AirbnbConstants.radiusM),
                                   ),
@@ -384,15 +377,12 @@ class _HomeScreen2State extends State<HomeScreen2> {
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    Icon(
-                                      AirbnbConstants.mapIcon,
-                                      size: 20,
-                                    ),
+                                    Icon(AirbnbConstants.mapIcon, size: 20),
                                     const SizedBox(width: AirbnbConstants.paddingS),
                                     Text(
                                       'Map',
                                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                            color: Colors.white,
+                                            color: Theme.of(context).cardColor,
                                             fontWeight: FontWeight.w600,
                                           ),
                                     ),
@@ -417,5 +407,3 @@ class _HomeScreen2State extends State<HomeScreen2> {
     );
   }
 }
-
-""";
