@@ -5,9 +5,9 @@ import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart
 import 'package:flutterui/app/shared/data/enums/supported_platform.dart';
 import 'package:flutterui/app/shared/data/models/code_component.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
-import 'package:flutterui/components/presentation/effects/meshes/mesh_02/mesh_02_code.dart';
-import 'package:flutterui/components/presentation/effects/meshes/mesh_02/mesh_02_setup.dart';
-import 'package:flutterui/components/presentation/effects/meshes/mesh_02/mesh_02_widget.dart';
+import 'package:flutterui/components/presentation/effects/meshes/mesh_02/code.dart';
+import 'package:flutterui/components/presentation/effects/meshes/mesh_02/setup.dart';
+import 'package:flutterui/components/presentation/effects/meshes/mesh_02/widget.dart';
 
 class MeshGradient02Data {
   static Widget widget = const MeshGradient02();

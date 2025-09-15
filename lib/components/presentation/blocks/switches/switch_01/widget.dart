@@ -1,94 +1,98 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class Switch01 extends StatefulWidget {
-  const Switch01({super.key});
+class DiscloseSwitcher extends StatefulWidget {
+  const DiscloseSwitcher({super.key});
 
   @override
-  State<Switch01> createState() => _Switch01State();
+  State<DiscloseSwitcher> createState() => _DiscloseSwitcherState();
 }
 
-class _Switch01State extends State<Switch01> {
+class _DiscloseSwitcherState extends State<DiscloseSwitcher> {
   bool isOn = false;
   bool isChecked = false;
   @override
   Widget build(BuildContext context) {
+    final isTablet = MediaQuery.sizeOf(context).width > 600;
+    final theme = Theme.of(context);
     return Scaffold(
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 40.0),
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 100),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
-              border: Border.all(
-                color: isOn ? Colors.grey.withOpacity(0.2) : Colors.transparent,
+      body: LayoutBuilder(builder: (context, constraints) {
+        return Center(
+          child: SizedBox(
+            width: isTablet ? constraints.maxWidth * 0.3 : constraints.maxWidth * 0.8,
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 100),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                border: Border.all(
+                  color: isOn ? Colors.grey.withOpacity(0.2) : Colors.transparent,
+                ),
               ),
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 2),
-            child: AnimatedSize(
-              alignment: isOn ? Alignment.topRight : Alignment.topCenter,
-              duration: const Duration(milliseconds: 2000),
-              curve: Curves.elasticOut,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SwitchListTile.adaptive(
-                    activeColor: Colors.red,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    tileColor: const Color.fromARGB(125, 33, 107, 243).withOpacity(0.05),
-                    value: isOn,
-                    title: Row(
-                      children: [
-                        SvgPicture.string(svgIcon, color: Theme.of(context).highlightColor),
-                        const SizedBox(width: 10),
-                        const Text(
-                          "Predictive Completion",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
+              padding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 2),
+              child: AnimatedSize(
+                alignment: isOn ? Alignment.topRight : Alignment.topCenter,
+                duration: const Duration(milliseconds: 2000),
+                curve: Curves.elasticOut,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SwitchListTile.adaptive(
+                      activeColor: Colors.red,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      contentPadding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      tileColor: const Color.fromARGB(125, 33, 107, 243).withOpacity(0.05),
+                      value: isOn,
+                      title: Row(
+                        children: [
+                          SvgPicture.string(svgIcon, color: theme.highlightColor),
+                          const SizedBox(width: 10),
+                          const Text(
+                            "Predictive Completion",
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
+                      onChanged: (val) {
+                        setState(() => isOn = !isOn);
+                      },
                     ),
-                    onChanged: (val) {
-                      setState(() => isOn = !isOn);
-                    },
-                  ),
-                  if (isOn)
-                    Row(
-                      children: [
-                        Checkbox(
-                          value: isChecked,
-                          activeColor: Colors.black,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5),
+                    if (isOn)
+                      Row(
+                        children: [
+                          Checkbox(
+                            value: isChecked,
+                            activeColor: Colors.black,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            side: BorderSide(
+                              color: theme.highlightColor,
+                            ),
+                            onChanged: (val) {
+                              setState(() {
+                                isChecked = !isChecked;
+                              });
+                            },
                           ),
-                          side: BorderSide(
-                            color: Theme.of(context).highlightColor,
-                          ),
-                          onChanged: (val) {
-                            setState(() {
-                              isChecked = !isChecked;
-                            });
-                          },
-                        ),
-                        const Text(
-                          "Enable Inline Prediction",
-                          style: TextStyle(fontSize: 15),
-                        )
-                      ],
-                    ),
-                ],
+                          const Text(
+                            "Enable Inline Prediction",
+                            style: TextStyle(fontSize: 15),
+                          )
+                        ],
+                      ),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-      ),
+        );
+      }),
     );
   }
 }

@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutterui/app/shared/shared.dart';
+import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
+import 'package:flutterui/app/shared/data/enums/device_type.dart';
+import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart';
+import 'package:flutterui/app/shared/data/enums/supported_platform.dart';
+import 'package:flutterui/app/shared/data/models/code_component.dart';
+import 'package:flutterui/app/shared/data/models/component.dart';
 
-import 'code.dart';
-import 'widget.dart';
+import 'package:flutterui/components/presentation/blocks/switches/switch_01/code.dart';
+import 'package:flutterui/components/presentation/blocks/switches/switch_01/widget.dart';
 
-class Switch01Data {
-  static const Widget widget = Switch01();
+class DiscloseSwitcherData {
+  static const Widget widget = DiscloseSwitcher();
   static String code = switch01Code;
-  static String setup = setup;
+  static String setup = '''
+    flutter pub get
+    flutter pub add flutter_svg
+    ''';
 
   static Component component = Component(
     createdAt: DateTime(2025, 9, 15),
