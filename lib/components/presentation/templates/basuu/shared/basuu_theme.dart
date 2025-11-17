@@ -48,8 +48,10 @@ class BasuuTheme {
 
   static InputDecorationTheme lightInputDecoration = InputDecorationTheme(
     contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 2.h),
-    labelStyle: TextStyle(color: BasuuColors.TEXTGREY, fontSize: 16.sp, fontWeight: FontWeight.w400),
-    hintStyle: TextStyle(color: BasuuColors.TEXTGREY, fontSize: 16.sp, fontWeight: FontWeight.w400),
+    labelStyle: TextStyle(
+        color: BasuuColors.TEXTGREY, fontSize: 16.sp, fontWeight: FontWeight.w400),
+    hintStyle: TextStyle(
+        color: BasuuColors.TEXTGREY, fontSize: 16.sp, fontWeight: FontWeight.w400),
     floatingLabelStyle: TextStyle(color: BasuuColors.TEXTGREY, fontSize: 12.sp),
     errorStyle: TextStyle(color: BasuuColors.RED, fontSize: 11.sp),
     border: AppSizing.mainBorder(BasuuColors.BGGRAY),
@@ -61,8 +63,10 @@ class BasuuTheme {
 
   static InputDecorationTheme darkInputDecoration = InputDecorationTheme(
     contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 2.h),
-    labelStyle: TextStyle(color: BasuuColors.TEXTGREY, fontSize: 16.sp, fontWeight: FontWeight.w400),
-    hintStyle: TextStyle(color: BasuuColors.TEXTGREY, fontSize: 16.sp, fontWeight: FontWeight.w400),
+    labelStyle: TextStyle(
+        color: BasuuColors.TEXTGREY, fontSize: 16.sp, fontWeight: FontWeight.w400),
+    hintStyle: TextStyle(
+        color: BasuuColors.TEXTGREY, fontSize: 16.sp, fontWeight: FontWeight.w400),
     floatingLabelStyle: TextStyle(color: BasuuColors.TEXTGREY, fontSize: 12.sp),
     errorStyle: TextStyle(color: BasuuColors.RED, fontSize: 11.sp),
     border: AppSizing.mainBorder(BasuuColors.BGGRAY3),
@@ -79,8 +83,9 @@ class BasuuTheme {
       primaryColorDark: BasuuColors.TEXTWHITE,
       primaryColorLight: BasuuColors.TEXTBLACK,
       cardColor: BasuuColors.BGCARDDARK,
-      colorScheme: const ColorScheme.dark(primary: BasuuColors.PRIMARY, error: BasuuColors.RED),
-      cardTheme: const CardTheme(color: BasuuColors.BGCARDDARK),
+      colorScheme:
+          const ColorScheme.dark(primary: BasuuColors.PRIMARY, error: BasuuColors.RED),
+      cardTheme: const CardThemeData(color: BasuuColors.BGCARDDARK),
       textTheme: darkTextTheme,
       dividerColor: BasuuColors.BGCARDDARK,
       highlightColor: BasuuColors.BGGRAY,
@@ -105,7 +110,7 @@ class BasuuTheme {
         labelStyle: TextStyle(fontSize: 12.sp, color: BasuuColors.TEXTWHITE),
       ),
       dividerTheme: const DividerThemeData(color: BasuuColors.BGGRAY2),
-      dialogTheme: const DialogTheme(backgroundColor: BasuuColors.BGCARDDARK),
+      dialogTheme: const DialogThemeData(backgroundColor: BasuuColors.BGCARDDARK),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 10.w),

@@ -88,8 +88,10 @@ class AppTheme {
 
   static InputDecorationTheme lightInputDecoration = InputDecorationTheme(
     contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 2.h),
-    labelStyle: TextStyle(color: AppColors.TEXTGREY, fontSize: 16.sp, fontWeight: FontWeight.w400),
-    hintStyle: TextStyle(color: AppColors.TEXTGREY, fontSize: 16.sp, fontWeight: FontWeight.w400),
+    labelStyle: TextStyle(
+        color: AppColors.TEXTGREY, fontSize: 16.sp, fontWeight: FontWeight.w400),
+    hintStyle: TextStyle(
+        color: AppColors.TEXTGREY, fontSize: 16.sp, fontWeight: FontWeight.w400),
     floatingLabelStyle: TextStyle(color: AppColors.TEXTGREY, fontSize: 12.sp),
     errorStyle: TextStyle(color: AppColors.RED, fontSize: 11.sp),
     border: AppSizing.mainBorder(AppColors.BGGRAY),
@@ -101,8 +103,10 @@ class AppTheme {
 
   static InputDecorationTheme darkInputDecoration = InputDecorationTheme(
     contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 2.h),
-    labelStyle: TextStyle(color: AppColors.TEXTGREY, fontSize: 16.sp, fontWeight: FontWeight.w400),
-    hintStyle: TextStyle(color: AppColors.TEXTGREY, fontSize: 16.sp, fontWeight: FontWeight.w400),
+    labelStyle: TextStyle(
+        color: AppColors.TEXTGREY, fontSize: 16.sp, fontWeight: FontWeight.w400),
+    hintStyle: TextStyle(
+        color: AppColors.TEXTGREY, fontSize: 16.sp, fontWeight: FontWeight.w400),
     floatingLabelStyle: TextStyle(color: AppColors.TEXTGREY, fontSize: 12.sp),
     errorStyle: TextStyle(color: AppColors.RED, fontSize: 11.sp),
     border: AppSizing.mainBorder(AppColors.BGGRAY3),
@@ -114,12 +118,13 @@ class AppTheme {
 
   static ThemeData light() {
     return ThemeData(
-      colorScheme: const ColorScheme.light(primary: AppColors.PRIMARY, error: AppColors.RED),
+      colorScheme:
+          const ColorScheme.light(primary: AppColors.PRIMARY, error: AppColors.RED),
       primaryColor: AppColors.PRIMARY,
       primaryColorDark: AppColors.TEXTBLACK,
       primaryColorLight: AppColors.TEXTWHITE,
       scaffoldBackgroundColor: AppColors.BG,
-      cardTheme: const CardTheme(color: AppColors.CARDCOLOR),
+      cardTheme: const CardThemeData(color: AppColors.CARDCOLOR),
       highlightColor: AppColors.BGGRAY,
       cardColor: AppColors.CARDCOLOR,
       textTheme: lightTextTheme,
@@ -157,7 +162,7 @@ class AppTheme {
         labelStyle: TextStyle(fontSize: 12.sp, color: AppColors.TEXTBLACK),
       ),
       dividerTheme: const DividerThemeData(color: AppColors.BGGRAY2),
-      dialogTheme: const DialogTheme(backgroundColor: AppColors.CARDCOLOR),
+      dialogTheme: const DialogThemeData(backgroundColor: AppColors.CARDCOLOR),
       iconTheme: IconThemeData(color: AppColors.TEXTGREY, size: 20.w),
     );
   }
@@ -169,8 +174,9 @@ class AppTheme {
       primaryColorDark: AppColors.BGGRAY,
       primaryColorLight: AppColors.TEXTBLACK,
       cardColor: AppColors.BGCARDDARK,
-      colorScheme: const ColorScheme.dark(primary: AppColors.PRIMARY, error: AppColors.RED),
-      cardTheme: const CardTheme(color: AppColors.BGCARDDARK),
+      colorScheme:
+          const ColorScheme.dark(primary: AppColors.PRIMARY, error: AppColors.RED),
+      cardTheme: const CardThemeData(color: AppColors.BGCARDDARK),
       textTheme: darkTextTheme,
       dividerColor: AppColors.BGCARDDARK,
       highlightColor: AppColors.BGGRAY,
@@ -194,7 +200,7 @@ class AppTheme {
         labelStyle: TextStyle(fontSize: 12.sp, color: AppColors.TEXTWHITE),
       ),
       dividerTheme: const DividerThemeData(color: AppColors.BGGRAY2),
-      dialogTheme: const DialogTheme(backgroundColor: AppColors.BGCARDDARK),
+      dialogTheme: const DialogThemeData(backgroundColor: AppColors.BGCARDDARK),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),

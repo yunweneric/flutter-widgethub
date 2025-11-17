@@ -17,7 +17,9 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder, {required AppEnv env
   WidgetsFlutterBinding.ensureInitialized();
 
   HydratedBloc.storage = await HydratedStorage.build(
-    storageDirectory: kIsWeb ? HydratedStorage.webStorageDirectory : await getTemporaryDirectory(),
+    storageDirectory: kIsWeb
+        ? HydratedStorageDirectory.web
+        : HydratedStorageDirectory((await getTemporaryDirectory()).path),
   );
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 

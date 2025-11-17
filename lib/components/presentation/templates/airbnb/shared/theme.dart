@@ -136,7 +136,7 @@ class AirbnbTheme {
             fontWeight: FontWeight.w400,
           ),
         ),
-        cardTheme: CardTheme(
+        cardTheme: CardThemeData(
           color: white,
           elevation: 2,
           shape: RoundedRectangleBorder(
@@ -275,7 +275,7 @@ class AirbnbTheme {
         iconTheme: const IconThemeData(
           color: white,
         ),
-        cardTheme: CardTheme(
+        cardTheme: CardThemeData(
           color: const Color(0xFF232323),
           elevation: 2,
           shape: RoundedRectangleBorder(
