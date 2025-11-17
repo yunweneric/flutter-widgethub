@@ -10,6 +10,15 @@ import 'package:flutterui/components/presentation/templates/basuu/widgets/basuu_
 import 'package:flutterui/components/presentation/templates/basuu/widgets/basuu_app_button.dart';
 import 'package:flutterui/components/presentation/templates/basuu/widgets/basuu_app_icon.dart';
 
+/// Basuu home screen displaying learning categories and progress.
+///
+/// API Reference:
+/// - [level]: The selected learning category/level
+///
+/// Usage:
+/// ```dart
+/// BasuuHomeScreen(level: category)
+/// ```
 class BasuuHomeScreen extends StatefulWidget {
   final BasuuCategory level;
 

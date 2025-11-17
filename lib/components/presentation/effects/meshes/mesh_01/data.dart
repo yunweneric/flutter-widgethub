@@ -9,6 +9,13 @@ import 'package:flutterui/components/presentation/effects/meshes/mesh_01/code.da
 import 'package:flutterui/components/presentation/effects/meshes/mesh_01/setup.dart';
 import 'package:flutterui/components/presentation/effects/meshes/mesh_01/widget.dart';
 
+/// Component data definition for [MeshGradient01].
+///
+/// Provides the component metadata including:
+/// - Title and description
+/// - Category and subcategory
+/// - Supported platforms
+/// - Setup instructions
 class MeshGradient01Data {
   static Widget widget = const MeshGradient01();
   static String code = meshGradient01;

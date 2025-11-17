@@ -9,6 +9,13 @@ import 'package:flutterui/app/shared/data/enums/supported_platform.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
 import 'package:flutterui/components/shared/setup.dart';
 
+/// Component data definition for [AppleBooksFAB].
+///
+/// Provides the component metadata including:
+/// - Title and description
+/// - Category and subcategory
+/// - Supported platforms
+/// - Setup instructions
 class AppleBooksFABData {
   static const Widget widget = AppleBooksFAB();
   static String code = appleBooksFABCode;

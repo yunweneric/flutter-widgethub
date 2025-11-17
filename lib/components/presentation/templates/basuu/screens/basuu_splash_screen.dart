@@ -6,6 +6,15 @@ import 'package:flutterui/components/presentation/templates/basuu/widgets/basuu_
 import 'package:flutterui/components/presentation/templates/basuu/widgets/basuu_app_button.dart';
 import 'package:flutterui/components/presentation/templates/basuu/widgets/basuu_app_icon.dart';
 
+/// Basuu app splash screen with animated logo and transitions.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// BasuuSplashScreen()
+/// ```
 class BasuuSplashScreen extends StatefulWidget {
   const BasuuSplashScreen({super.key});
 

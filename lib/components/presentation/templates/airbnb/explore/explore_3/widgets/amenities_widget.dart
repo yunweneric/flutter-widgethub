@@ -23,11 +23,11 @@ class AmenitiesWidget extends StatelessWidget {
             style: textTheme.displaySmall,
           ),
           const SizedBox(height: AirbnbConstants.paddingM),
-          _buildAmenityItem(Icons.landscape, 'River view'),
-          _buildAmenityItem(Icons.kitchen, 'Kitchen'),
-          _buildAmenityItem(Icons.wifi, 'Wifi'),
-          _buildAmenityItem(Icons.local_parking, 'Free parking on premises'),
-          _buildAmenityItem(Icons.ac_unit, 'AC - split type ductless system'),
+          _AmenityItem(icon: Icons.landscape, text: 'River view'),
+          _AmenityItem(icon: Icons.kitchen, text: 'Kitchen'),
+          _AmenityItem(icon: Icons.wifi, text: 'Wifi'),
+          _AmenityItem(icon: Icons.local_parking, text: 'Free parking on premises'),
+          _AmenityItem(icon: Icons.ac_unit, text: 'AC - split type ductless system'),
           const SizedBox(height: AirbnbConstants.paddingM),
           Center(
             child: Text(
@@ -42,20 +42,30 @@ class AmenitiesWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildAmenityItem(IconData icon, String text) {
-    return Builder(
-      builder: (context) => Padding(
-        padding: const EdgeInsets.only(bottom: AirbnbConstants.paddingM),
-        child: Row(
-          children: [
-            Icon(icon, size: 20),
-            const SizedBox(width: AirbnbConstants.paddingM),
-            Text(
-              text,
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-          ],
-        ),
+}
+
+class _AmenityItem extends StatelessWidget {
+  final IconData icon;
+  final String text;
+
+  const _AmenityItem({
+    required this.icon,
+    required this.text,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: AirbnbConstants.paddingM),
+      child: Row(
+        children: [
+          Icon(icon, size: 20),
+          const SizedBox(width: AirbnbConstants.paddingM),
+          Text(
+            text,
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+        ],
       ),
     );
   }

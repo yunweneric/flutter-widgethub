@@ -34,6 +34,15 @@ OMeshRect grad2(double dt) => OMeshRect(
       ],
     );
 
+/// A second variant of animated mesh gradient with different color scheme.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// MeshGradient02()
+/// ```
 class MeshGradient02 extends StatefulWidget {
   const MeshGradient02({super.key});
 

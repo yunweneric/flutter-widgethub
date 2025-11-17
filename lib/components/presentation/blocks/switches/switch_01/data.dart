@@ -9,6 +9,13 @@ import 'package:flutterui/app/shared/data/models/component.dart';
 import 'package:flutterui/components/presentation/blocks/switches/switch_01/code.dart';
 import 'package:flutterui/components/presentation/blocks/switches/switch_01/widget.dart';
 
+/// Component data definition for [DiscloseSwitcher].
+///
+/// Provides the component metadata including:
+/// - Title and description
+/// - Category and subcategory
+/// - Supported platforms
+/// - Setup instructions
 class DiscloseSwitcherData {
   static const Widget widget = DiscloseSwitcher();
   static String code = switch01Code;

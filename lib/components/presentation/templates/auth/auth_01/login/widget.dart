@@ -3,6 +3,15 @@ import 'package:flutter_svg/svg.dart';
 
 import '../shared/shared.dart';
 
+/// Authentication login screen variant 1 with email/password form.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// Auth01LoginWidget()
+/// ```
 class Auth01LoginWidget extends StatefulWidget {
   const Auth01LoginWidget({super.key});
 

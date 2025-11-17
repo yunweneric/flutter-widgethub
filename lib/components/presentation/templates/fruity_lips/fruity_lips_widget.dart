@@ -3,6 +3,15 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 
+/// Fruity Lips template with animated fruit selection and product display.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// FruityLipsTemplate()
+/// ```
 class FruityLipsTemplate extends StatefulWidget {
   const FruityLipsTemplate({super.key});
 

@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import '../../shared/shared.dart';
 
+/// Airbnb wishlist screen variant 1 displaying saved properties.
+///
+/// API Reference:
+/// - No public properties
+///
+/// Usage:
+/// ```dart
+/// Wishlist01()
+/// ```
 class Wishlist01 extends StatelessWidget {
   const Wishlist01({super.key});
 

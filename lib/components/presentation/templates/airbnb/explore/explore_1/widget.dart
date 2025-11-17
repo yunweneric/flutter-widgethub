@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import '../../shared/shared.dart';
 
+/// Airbnb explore screen variant 1 with search bar and property listings.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// HomeScreen()
+/// ```
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 

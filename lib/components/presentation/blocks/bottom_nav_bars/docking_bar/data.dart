@@ -10,6 +10,13 @@ import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart
 import 'package:flutterui/app/shared/data/enums/supported_platform.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
 
+/// Component data definition for [DockingBarWidget].
+///
+/// Provides the component metadata including:
+/// - Title and description
+/// - Category and subcategory
+/// - Supported platforms
+/// - Setup instructions
 class DockingBarData {
   static const Widget widget = DockingBarWidget();
   static String code = dockingBarCode;

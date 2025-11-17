@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+/// An Apple Books-style floating action button with animated menu options.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// AppleBooksFAB()
+/// ```
 class AppleBooksFAB extends StatefulWidget {
   const AppleBooksFAB({super.key});
 

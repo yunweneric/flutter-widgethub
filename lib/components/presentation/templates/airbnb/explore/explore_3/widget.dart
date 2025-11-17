@@ -2,6 +2,15 @@ import 'package:flutter/material.dart';
 import '../../shared/shared.dart';
 import 'widgets/index.dart';
 
+/// Airbnb explore screen variant 3 with detailed property view and scrollable sections.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// Explore3()
+/// ```
 class Explore3 extends StatefulWidget {
   const Explore3({super.key});
 

@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+/// A flip card component with drawer navigation.
+///
+/// API Reference:
+/// - [title]: The title displayed in the app bar
+///
+/// Usage:
+/// ```dart
+/// ComponentFlipCard(title: "Hello World")
+/// ```
 class ComponentFlipCard extends StatefulWidget {
   const ComponentFlipCard({super.key, required this.title});
 

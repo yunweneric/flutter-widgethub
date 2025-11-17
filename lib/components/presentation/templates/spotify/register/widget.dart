@@ -4,6 +4,15 @@ import '../shared/logo.dart';
 import '../shared/button.dart';
 import '../shared/theme.dart';
 
+/// Spotify registration screen with sign-up form and social authentication.
+///
+/// API Reference:
+/// - No public properties
+///
+/// Usage:
+/// ```dart
+/// SpotifyRegister()
+/// ```
 class SpotifyRegister extends StatelessWidget {
   const SpotifyRegister({super.key});
 

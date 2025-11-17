@@ -10,6 +10,13 @@ import 'package:flutterui/app/shared/data/models/component.dart';
 import 'package:flutterui/components/presentation/blocks/tabs/blurred_slide_tab/blurred_slide_tab_code.dart';
 import 'package:flutterui/components/presentation/blocks/tabs/blurred_slide_tab/blurred_slide_tab_widget.dart';
 
+/// Component data definition for [BlurredSlideTabWidget].
+///
+/// Provides the component metadata including:
+/// - Title and description
+/// - Category and subcategory
+/// - Supported platforms
+/// - Setup instructions
 class BlurredSlideTabData {
   static const Widget widget = BlurredSlideTabWidget();
   static String code = blurredSlideTabCode;

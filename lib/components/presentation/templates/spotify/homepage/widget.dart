@@ -28,6 +28,15 @@ class PlaylistItemData {
 }
 
 // Main Widget
+/// Spotify homepage screen with featured albums, playlists, and category tabs.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// SpotifyHomepage()
+/// ```
 class SpotifyHomepage extends StatefulWidget {
   const SpotifyHomepage({super.key});
 
@@ -39,50 +48,6 @@ class _SpotifyHomepageState extends State<SpotifyHomepage> {
   // State variables
   int currentIndex = 0;
 
-  // Static data
-  static const List<String> categories = ['News', 'Video', 'Artists', 'Podcast'];
-
-  static const List<AlbumData> albums = [
-    AlbumData(
-      imageUrl: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=200',
-      title: 'Bad Guy',
-      artist: 'Billie Eilish',
-    ),
-    AlbumData(
-      imageUrl: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=200',
-      title: 'Scorpion',
-      artist: 'Drake',
-    ),
-    AlbumData(
-      imageUrl: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=200',
-      title: 'Midnight',
-      artist: 'Taylor Swift',
-    ),
-  ];
-
-  static const List<PlaylistItemData> playlist = [
-    PlaylistItemData(
-      title: 'As It Was',
-      artist: 'Harry Styles',
-      duration: '5:33',
-    ),
-    PlaylistItemData(
-      title: 'God Did',
-      artist: 'DJ Khaled',
-      duration: '3:43',
-    ),
-    PlaylistItemData(
-      title: 'Blinding Lights',
-      artist: 'The Weeknd',
-      duration: '3:20',
-    ),
-    PlaylistItemData(
-      title: 'Levitating',
-      artist: 'Dua Lipa',
-      duration: '3:23',
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Theme(
@@ -93,20 +58,23 @@ class _SpotifyHomepageState extends State<SpotifyHomepage> {
           body: SafeArea(
             child: Column(
               children: [
-                _buildTopNavigationBar(theme),
+                _TopNavigationBar(theme: theme),
                 Expanded(
                   child: SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const SizedBox(height: 16),
-                        _buildFeaturedAlbumBanner(theme),
+                        _FeaturedAlbumBanner(theme: theme),
                         const SizedBox(height: 24),
-                        _buildCategoryTabs(),
+                        _CategoryTabs(
+                          currentIndex: currentIndex,
+                          onIndexChanged: (index) => setState(() => currentIndex = index),
+                        ),
                         const SizedBox(height: 24),
-                        _buildAlbumCards(),
+                        _AlbumCards(),
                         const SizedBox(height: 32),
-                        _buildPlaylistSection(theme),
+                        _PlaylistSection(theme: theme),
                         const SizedBox(height: 100), // Space for bottom navigation
                       ],
                     ),
@@ -120,14 +88,21 @@ class _SpotifyHomepageState extends State<SpotifyHomepage> {
       }),
     );
   }
+}
 
-  // Top Navigation Bar
-  Widget _buildTopNavigationBar(ThemeData theme) {
+// Top Navigation Bar
+class _TopNavigationBar extends StatelessWidget {
+  final ThemeData theme;
+
+  const _TopNavigationBar({required this.theme});
+
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: Row(
         children: [
-          _buildCircularIconButton(
+          _CircularIconButton(
             icon: Icons.search,
             onPressed: () {},
             theme: theme,
@@ -135,7 +110,7 @@ class _SpotifyHomepageState extends State<SpotifyHomepage> {
           const Spacer(),
           const SpotifyLogo(width: 100, height: 32),
           const Spacer(),
-          _buildCircularIconButton(
+          _CircularIconButton(
             icon: Icons.more_vert,
             onPressed: () {},
             theme: theme,
@@ -144,12 +119,21 @@ class _SpotifyHomepageState extends State<SpotifyHomepage> {
       ),
     );
   }
+}
 
-  Widget _buildCircularIconButton({
-    required IconData icon,
-    required VoidCallback onPressed,
-    required ThemeData theme,
-  }) {
+class _CircularIconButton extends StatelessWidget {
+  final IconData icon;
+  final VoidCallback onPressed;
+  final ThemeData theme;
+
+  const _CircularIconButton({
+    required this.icon,
+    required this.onPressed,
+    required this.theme,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return IconButton(
       style: IconButton.styleFrom(
         backgroundColor: theme.cardColor,
@@ -162,9 +146,16 @@ class _SpotifyHomepageState extends State<SpotifyHomepage> {
       splashRadius: 24,
     );
   }
+}
 
-  // Featured Album Banner
-  Widget _buildFeaturedAlbumBanner(ThemeData theme) {
+// Featured Album Banner
+class _FeaturedAlbumBanner extends StatelessWidget {
+  final ThemeData theme;
+
+  const _FeaturedAlbumBanner({required this.theme});
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16.0),
       height: 150,
@@ -253,9 +244,22 @@ class _SpotifyHomepageState extends State<SpotifyHomepage> {
       ),
     );
   }
+}
 
-  // Category Tabs
-  Widget _buildCategoryTabs() {
+// Category Tabs
+class _CategoryTabs extends StatelessWidget {
+  final int currentIndex;
+  final ValueChanged<int> onIndexChanged;
+
+  const _CategoryTabs({
+    required this.currentIndex,
+    required this.onIndexChanged,
+  });
+
+  static const List<String> categories = ['News', 'Video', 'Artists', 'Podcast'];
+
+  @override
+  Widget build(BuildContext context) {
     return SizedBox(
       height: 40,
       child: ListView.builder(
@@ -269,7 +273,7 @@ class _SpotifyHomepageState extends State<SpotifyHomepage> {
             child: _CategoryTab(
               text: categories[index],
               isActive: index == currentIndex,
-              onTap: () => setState(() => currentIndex = index),
+              onTap: () => onIndexChanged(index),
             ),
           );
         },
@@ -277,9 +281,32 @@ class _SpotifyHomepageState extends State<SpotifyHomepage> {
       ),
     );
   }
+}
 
-  // Album Cards Section
-  Widget _buildAlbumCards() {
+// Album Cards Section
+class _AlbumCards extends StatelessWidget {
+  const _AlbumCards();
+
+  static const List<AlbumData> albums = [
+    AlbumData(
+      imageUrl: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=200',
+      title: 'Bad Guy',
+      artist: 'Billie Eilish',
+    ),
+    AlbumData(
+      imageUrl: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=200',
+      title: 'Scorpion',
+      artist: 'Drake',
+    ),
+    AlbumData(
+      imageUrl: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=200',
+      title: 'Midnight',
+      artist: 'Taylor Swift',
+    ),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
     return SizedBox(
       height: 250,
       child: ListView.builder(
@@ -302,9 +329,39 @@ class _SpotifyHomepageState extends State<SpotifyHomepage> {
       ),
     );
   }
+}
 
-  // Playlist Section
-  Widget _buildPlaylistSection(ThemeData theme) {
+// Playlist Section
+class _PlaylistSection extends StatelessWidget {
+  final ThemeData theme;
+
+  const _PlaylistSection({required this.theme});
+
+  static const List<PlaylistItemData> playlist = [
+    PlaylistItemData(
+      title: 'As It Was',
+      artist: 'Harry Styles',
+      duration: '5:33',
+    ),
+    PlaylistItemData(
+      title: 'God Did',
+      artist: 'DJ Khaled',
+      duration: '3:43',
+    ),
+    PlaylistItemData(
+      title: 'Blinding Lights',
+      artist: 'The Weeknd',
+      duration: '3:20',
+    ),
+    PlaylistItemData(
+      title: 'Levitating',
+      artist: 'Dua Lipa',
+      duration: '3:23',
+    ),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

@@ -2,6 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../shared/theme.dart';
 
+/// Spotify music player screen with album art, controls, and progress bar.
+///
+/// API Reference:
+/// - No public properties
+///
+/// Usage:
+/// ```dart
+/// SpotifyMusicPlayer()
+/// ```
 class SpotifyMusicPlayer extends StatelessWidget {
   const SpotifyMusicPlayer({super.key});
 

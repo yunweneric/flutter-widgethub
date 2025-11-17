@@ -6,6 +6,15 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+/// Nike product zoomer template with animated product showcase.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// NikeZoomerTemplate()
+/// ```
 class NikeZoomerTemplate extends StatefulWidget {
   const NikeZoomerTemplate({super.key});
 

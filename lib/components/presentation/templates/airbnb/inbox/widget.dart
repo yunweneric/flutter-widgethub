@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import '../shared/shared.dart';
 
+/// Airbnb inbox screen with tabbed interface for messages and notifications.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// InboxScreen()
+/// ```
 class InboxScreen extends StatefulWidget {
   const InboxScreen({super.key});
 

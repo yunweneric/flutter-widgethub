@@ -2,6 +2,15 @@ import 'package:flutter/material.dart';
 
 import '../index.dart';
 
+/// Spotify splash screen with logo display.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// SpotifySplashScreen()
+/// ```
 class SpotifySplashScreen extends StatefulWidget {
   const SpotifySplashScreen({super.key});
 

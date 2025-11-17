@@ -11,6 +11,15 @@ import 'package:flutterui/components/presentation/templates/basuu/widgets/basuu_
 import 'package:flutterui/components/presentation/templates/basuu/widgets/basuu_app_button.dart';
 import 'package:flutterui/components/presentation/templates/basuu/widgets/basuu_app_icon.dart';
 
+/// Basuu learning screen for interactive word learning and practice.
+///
+/// API Reference:
+/// - [selectedCategory]: The category being learned
+///
+/// Usage:
+/// ```dart
+/// BasuuLearningScreen(selectedCategory: category)
+/// ```
 class BasuuLearningScreen extends StatefulWidget {
   final BasuuCategory selectedCategory;
   const BasuuLearningScreen({super.key, required this.selectedCategory});

@@ -8,6 +8,13 @@ import 'package:flutterui/components/presentation/animations/skew_card/code.dart
 import 'package:flutterui/components/presentation/animations/skew_card/widget.dart';
 import 'package:flutterui/components/shared/setup.dart';
 
+/// Component data definition for [SkewCard].
+///
+/// Provides the component metadata including:
+/// - Title and description
+/// - Category and subcategory
+/// - Supported platforms
+/// - Setup instructions
 class SkewCardData {
   static final Component component = Component(
     id: "skew-card-01",

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+/// Data model for tab items.
 class TileItem {
   final String title;
   final String icon;
@@ -9,6 +10,15 @@ class TileItem {
   TileItem({required this.title, required this.icon, required this.color});
 }
 
+/// A sliding tab widget with animated background indicator.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// SlideTabWidget()
+/// ```
 class SlideTabWidget extends StatefulWidget {
   const SlideTabWidget({super.key});
 

@@ -43,6 +43,15 @@ OMeshRect meshRect(double dt) => OMeshRect(
       ],
     );
 
+/// An animated mesh gradient effect with color transitions.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// MeshGradient01()
+/// ```
 class MeshGradient01 extends StatefulWidget {
   const MeshGradient01({super.key});
 

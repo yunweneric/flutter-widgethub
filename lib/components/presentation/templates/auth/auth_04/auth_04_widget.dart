@@ -62,6 +62,15 @@ class Auth04Theme {
   );
 }
 
+/// Authentication screen variant 4 with clean white background and social login.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// Auth04Widget()
+/// ```
 class Auth04Widget extends StatefulWidget {
   const Auth04Widget({Key? key}) : super(key: key);
 

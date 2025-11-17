@@ -4,6 +4,15 @@ import '../shared/button.dart';
 import '../shared/constants.dart';
 import '../shared/theme.dart';
 
+/// Spotify onboarding screen with welcome message and get started button.
+///
+/// API Reference:
+/// - No public properties
+///
+/// Usage:
+/// ```dart
+/// SpotifyOnboarding()
+/// ```
 class SpotifyOnboarding extends StatelessWidget {
   const SpotifyOnboarding({super.key});
 

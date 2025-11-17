@@ -13,6 +13,15 @@ class BasuuLanguage {
   BasuuLanguage({required this.icon, required this.name});
 }
 
+/// Basuu language selection screen for choosing the learning language.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// BasuuChooseLanguageScreen()
+/// ```
 class BasuuChooseLanguageScreen extends StatefulWidget {
   const BasuuChooseLanguageScreen({super.key});
 
