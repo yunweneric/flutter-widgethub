@@ -1,46 +1,46 @@
-# name: Build macOS App (Minimal)
+name: Build macOS App (Minimal)
 
-# on:
-#   push:
-#     branches: [ main ]
-#   pull_request:
-#     branches: [ main ]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
-# jobs:
-#   build:
-#     runs-on: macos-latest
+jobs:
+  build:
+    runs-on: macos-latest
     
-#     steps:
-#     - name: Checkout code
-#       uses: actions/checkout@v4
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
       
-#     - name: Setup Flutter
-#       uses: subosito/flutter-action@v2
-#       with:
-#         flutter-version: '3.24.0'
-#         channel: 'stable'
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.24.0'
+        channel: 'stable'
         
-#     - name: Get dependencies
-#       run: flutter pub get
+    - name: Get dependencies
+      run: flutter pub get
       
-#     - name: Enable macOS desktop
-#       run: flutter config --enable-macos-desktop
+    - name: Enable macOS desktop
+      run: flutter config --enable-macos-desktop
       
-#     - name: Build macOS app
-#       run: flutter build macos --release
+    - name: Build macOS app
+      run: flutter build macos --release
       
-#     - name: Package macOS app
-#       run: |
-#         mkdir -p artifacts
-#         cp -r build/macos/Build/Products/Release/flutterui.app artifacts/
-#         cd artifacts
-#         zip -r flutterui-macos.zip flutterui.app
-#         ls -la
-#         echo "✅ macOS app packaged successfully"
+    - name: Package macOS app
+      run: |
+        mkdir -p artifacts
+        cp -r build/macos/Build/Products/Release/flutterui.app artifacts/
+        cd artifacts
+        zip -r flutterui-macos.zip flutterui.app
+        ls -la
+        echo "✅ macOS app packaged successfully"
         
-#     - name: Upload macOS app
-#       uses: actions/upload-artifact@v4
-#       with:
-#         name: flutterui-macos-app
-#         path: artifacts/flutterui-macos.zip
-#         retention-days: 30
+    - name: Upload macOS app
+      uses: actions/upload-artifact@v4
+      with:
+        name: flutterui-macos-app
+        path: artifacts/flutterui-macos.zip
+        retention-days: 30
