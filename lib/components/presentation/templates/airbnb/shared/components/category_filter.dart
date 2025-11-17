@@ -3,6 +3,15 @@ import 'package:flutter_svg/svg.dart';
 import '../constants.dart';
 import '../shared.dart';
 
+/// A horizontal scrolling category filter with icons and labels.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// CategoryFilter()
+/// ```
 class CategoryFilter extends StatefulWidget {
   const CategoryFilter({super.key});
 

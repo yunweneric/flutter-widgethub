@@ -5,6 +5,19 @@ import 'package:flutter_svg/svg.dart';
 import '../constants.dart';
 import '../shared.dart';
 
+/// A search bar component for property search with filter button.
+///
+/// API Reference:
+/// - [onTap]: Callback when search bar is tapped
+/// - [onFilterTap]: Callback when filter button is tapped
+///
+/// Usage:
+/// ```dart
+/// AirbnbSearchBar(
+///   onTap: () {},
+///   onFilterTap: () {},
+/// )
+/// ```
 class AirbnbSearchBar extends StatelessWidget {
   final VoidCallback? onTap;
   final VoidCallback? onFilterTap;

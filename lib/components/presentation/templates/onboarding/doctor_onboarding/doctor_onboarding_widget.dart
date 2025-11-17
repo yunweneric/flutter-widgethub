@@ -13,6 +13,15 @@ class OnboardingData {
   });
 }
 
+/// Doctor onboarding screen with multi-step introduction flow.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// DoctorOnboardingScreen()
+/// ```
 class DoctorOnboardingScreen extends StatefulWidget {
   const DoctorOnboardingScreen({super.key});
 

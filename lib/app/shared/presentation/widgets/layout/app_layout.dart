@@ -70,9 +70,10 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
               AnimatedBuilder(
                   animation: animationController!,
                   builder: (context, child) {
-                    final value = AppSizing.isMobile(context) || AppSizing.isXMobile(context)
-                        ? navBarAnimation?.value ?? 0.0
-                        : 0.0;
+                    final value =
+                        AppSizing.isMobile(context) || AppSizing.isXMobile(context)
+                            ? navBarAnimation?.value ?? 0.0
+                            : 0.0;
                     return Transform(
                       alignment: Alignment.center,
                       transform: Matrix4.identity()
@@ -86,8 +87,8 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
                           children: [
                             AppSizing.khSpacer(80),
                             ConstrainedBox(
-                              constraints:
-                                  BoxConstraints(minHeight: AppSizing.kHPercentage(context, 80)),
+                              constraints: BoxConstraints(
+                                  minHeight: AppSizing.kHPercentage(context, 80)),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: widget.children,
@@ -119,11 +120,13 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            sideBarComponents(context),
+                            _SideBarComponents(
+                              isHomeScreenLayout: widget.isHomeScreenLayout,
+                            ),
                             AppSizing.kh20Spacer(),
                             Column(
                               children: [
-                                navbarSection(child: themingSection(context)),
+                                _NavbarSection(child: _ThemingSection()),
                                 AppSizing.kh20Spacer(),
                                 Text(
                                   LangUtil.trans("homeFooter", args: {
@@ -157,7 +160,74 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
     );
   }
 
-  Container sideBarComponents(BuildContext context) {
+  Widget navbarSection({required Widget child}) {
+    return _NavbarSection(child: child);
+  }
+
+  Widget navItem({required String title, String? icon, required VoidCallback onPressed}) {
+    return _NavItem(title: title, icon: icon, onPressed: onPressed);
+  }
+}
+
+class _NavbarSection extends StatelessWidget {
+  final Widget child;
+
+  const _NavbarSection({required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: AppSizing.width(context),
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+      decoration: BoxDecoration(
+        border: BorderDirectional(top: BorderSide(color: Theme.of(context).dividerColor)),
+      ),
+      child: child,
+    );
+  }
+}
+
+class _NavItem extends StatelessWidget {
+  final String title;
+  final String? icon;
+  final VoidCallback onPressed;
+
+  const _NavItem({
+    required this.title,
+    this.icon,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onPressed,
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 10),
+        child: Row(
+          children: [
+            if (icon != null) ...[
+              AppIcon(icon: icon!, size: 20),
+              AppSizing.kwSpacer(5),
+            ],
+            Text(title, style: Theme.of(context).textTheme.bodyMedium),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _SideBarComponents extends StatelessWidget {
+  final bool? isHomeScreenLayout;
+
+  const _SideBarComponents({this.isHomeScreenLayout});
+
+  @override
+  Widget build(BuildContext context) {
+    final sidebarBloc = getIt.get<SidebarBloc>();
+    final componentBloc = getIt.get<ComponentBloc>();
+
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Column(
@@ -208,13 +278,12 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
                     return condition;
                   }),
                 ];
-                return widget.isHomeScreenLayout == true || widget.isHomeScreenLayout == null
+                return isHomeScreenLayout == true || isHomeScreenLayout == null
                     ? Column(
                         children: [
                           ...categoriesGroup.map((categoryGroup) {
-                            return navItem(
+                            return _NavItem(
                               onPressed: () {
-                                // animateNavBar();
                                 sidebarBloc.add(UpdateSideBarEvent(newStatus: false));
                                 context.go(
                                     "/components/${categoryGroup.category.link()}/${categoryGroup.items.first.subCategory.link()}");
@@ -246,13 +315,14 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
                                         itemBuilder: (context, index) {
                                           final category = item.items[index];
                                           return SideBarItem(
-                                            isActive:
-                                                activePath.contains(category.subCategory.link()),
+                                            isActive: activePath
+                                                .contains(category.subCategory.link()),
                                             title: category.subCategory.describe(),
                                             onPressed: () {
-                                              sidebarBloc.add(UpdateSideBarEvent(newStatus: false));
-                                              componentBloc.add(
-                                                  UpdateActiveCategoryEvent(category: category));
+                                              sidebarBloc.add(
+                                                  UpdateSideBarEvent(newStatus: false));
+                                              componentBloc.add(UpdateActiveCategoryEvent(
+                                                  category: category));
                                               context.go(
                                                   "/components/${category.category.link()}/${category.subCategory.link()}");
                                             },
@@ -274,8 +344,15 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
       ),
     );
   }
+}
 
-  Column themingSection(BuildContext context) {
+class _ThemingSection extends StatelessWidget {
+  const _ThemingSection();
+
+  @override
+  Widget build(BuildContext context) {
+    final themeBloc = getIt.get<ThemeBloc>();
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -289,17 +366,17 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              navItem(
+              _NavItem(
                 onPressed: () => themeBloc.add(ChangeTheme(themeMode: ThemeMode.light)),
                 icon: AppIcons.sun,
                 title: LangUtil.trans("light"),
               ),
-              navItem(
+              _NavItem(
                 onPressed: () => themeBloc.add(ChangeTheme(themeMode: ThemeMode.dark)),
                 icon: AppIcons.moon,
                 title: LangUtil.trans("dark"),
               ),
-              navItem(
+              _NavItem(
                 onPressed: () => themeBloc.add(ChangeTheme(themeMode: ThemeMode.system)),
                 icon: AppIcons.desktop,
                 title: LangUtil.trans("system"),
@@ -308,35 +385,6 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
           ),
         ),
       ],
-    );
-  }
-
-  Widget navbarSection({required Widget child}) {
-    return Container(
-      width: AppSizing.width(context),
-      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-      decoration: BoxDecoration(
-        border: BorderDirectional(top: BorderSide(color: Theme.of(context).dividerColor)),
-      ),
-      child: child,
-    );
-  }
-
-  Widget navItem({required String title, String? icon, required VoidCallback onPressed}) {
-    return InkWell(
-      onTap: onPressed,
-      child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 10),
-        child: Row(
-          children: [
-            if (icon != null) ...[
-              AppIcon(icon: icon, size: 20),
-              AppSizing.kwSpacer(5),
-            ],
-            Text(title, style: Theme.of(context).textTheme.bodyMedium),
-          ],
-        ),
-      ),
     );
   }
 }

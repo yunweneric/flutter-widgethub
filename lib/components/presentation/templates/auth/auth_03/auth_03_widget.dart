@@ -78,6 +78,15 @@ class Auth03Theme {
   );
 }
 
+/// Authentication screen variant 3 with gradient background and modern design.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// Auth03Widget()
+/// ```
 class Auth03Widget extends StatefulWidget {
   const Auth03Widget({Key? key}) : super(key: key);
 

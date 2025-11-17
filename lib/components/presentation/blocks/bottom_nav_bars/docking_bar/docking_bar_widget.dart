@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+/// A docking-style bottom navigation bar with animated icon scaling.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// DockingBarWidget()
+/// ```
 class DockingBarWidget extends StatefulWidget {
   const DockingBarWidget({super.key});
 

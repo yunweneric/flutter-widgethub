@@ -6,6 +6,15 @@ class AppSizing {
   static double height(context) => MediaQuery.of(context).size.height;
 }
 
+/// An animated card with skew and scale transformation effects.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// SkewCard()
+/// ```
 class SkewCard extends StatefulWidget {
   const SkewCard({super.key});
 

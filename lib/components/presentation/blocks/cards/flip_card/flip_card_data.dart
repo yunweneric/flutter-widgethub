@@ -10,6 +10,13 @@ import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart
 import 'package:flutterui/app/shared/data/enums/supported_platform.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
 
+/// Component data definition for [ComponentFlipCard].
+///
+/// Provides the component metadata including:
+/// - Title and description
+/// - Category and subcategory
+/// - Supported platforms
+/// - Setup instructions
 class AppFlipCard {
   static Widget widget = const ComponentFlipCard(title: "Hello Wold");
   static String code = flipCardButtonCode;

@@ -4,6 +4,15 @@ import '../shared/button.dart';
 import '../shared/constants.dart';
 import '../shared/theme.dart';
 
+/// Spotify theme selection screen for choosing dark or light mode.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// SpotifyChooseTheme()
+/// ```
 class SpotifyChooseTheme extends StatefulWidget {
   const SpotifyChooseTheme({super.key});
 

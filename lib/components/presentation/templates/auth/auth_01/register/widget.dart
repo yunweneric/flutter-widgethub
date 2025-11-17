@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutterui/components/presentation/templates/auth/auth_01/shared/shared.dart';
 
+/// Authentication registration screen variant 1 with sign-up form.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// Auth01RegisterWidget()
+/// ```
 class Auth01RegisterWidget extends StatefulWidget {
   const Auth01RegisterWidget({super.key});
 

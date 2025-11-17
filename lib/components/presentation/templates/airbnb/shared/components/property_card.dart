@@ -1,6 +1,35 @@
 import 'package:flutter/material.dart';
 import '../constants.dart';
 
+/// A property card component displaying property information with image, rating, and pricing.
+///
+/// API Reference:
+/// - [imageUrl]: URL of the property image
+/// - [location]: Property location text
+/// - [distance]: Distance from location text
+/// - [dates]: Available dates text
+/// - [price]: Price per night text
+/// - [rating]: Property rating (0.0 to 5.0)
+/// - [reviewCount]: Number of reviews
+/// - [isFavorite]: Whether the property is favorited
+/// - [onTap]: Callback when card is tapped
+/// - [onFavoriteTap]: Callback when favorite button is tapped
+///
+/// Usage:
+/// ```dart
+/// PropertyCard(
+///   imageUrl: 'https://example.com/image.jpg',
+///   location: 'New York',
+///   distance: '2 hours away',
+///   dates: 'May 14 - 19',
+///   price: '\$200 night',
+///   rating: 4.8,
+///   reviewCount: 45,
+///   isFavorite: true,
+///   onTap: () {},
+///   onFavoriteTap: () {},
+/// )
+/// ```
 class PropertyCard extends StatelessWidget {
   final String imageUrl;
   final String location;
@@ -130,15 +159,15 @@ class PropertyCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      _buildDot(true, colorScheme),
+                      _Dot(isActive: true, colorScheme: colorScheme),
                       const SizedBox(width: AirbnbConstants.paddingXS),
-                      _buildDot(false, colorScheme),
+                      _Dot(isActive: false, colorScheme: colorScheme),
                       const SizedBox(width: AirbnbConstants.paddingXS),
-                      _buildDot(false, colorScheme),
+                      _Dot(isActive: false, colorScheme: colorScheme),
                       const SizedBox(width: AirbnbConstants.paddingXS),
-                      _buildDot(false, colorScheme),
+                      _Dot(isActive: false, colorScheme: colorScheme),
                       const SizedBox(width: AirbnbConstants.paddingXS),
-                      _buildDot(false, colorScheme),
+                      _Dot(isActive: false, colorScheme: colorScheme),
                     ],
                   ),
                 ),
@@ -211,7 +240,19 @@ class PropertyCard extends StatelessWidget {
     );
   }
 
-  Widget _buildDot(bool isActive, ColorScheme colorScheme) {
+}
+
+class _Dot extends StatelessWidget {
+  final bool isActive;
+  final ColorScheme colorScheme;
+
+  const _Dot({
+    required this.isActive,
+    required this.colorScheme,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       width: 6,
       height: 6,

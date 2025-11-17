@@ -10,6 +10,13 @@ import 'package:flutterui/app/shared/data/models/component.dart';
 import 'package:flutterui/components/presentation/blocks/tabs/expandable_tab/expandable_tab_code.dart';
 import 'package:flutterui/components/presentation/blocks/tabs/expandable_tab/expandable_tab_widget.dart';
 
+/// Component data definition for [ExpandableTab].
+///
+/// Provides the component metadata including:
+/// - Title and description
+/// - Category and subcategory
+/// - Supported platforms
+/// - Setup instructions
 class ExpandableTabData {
   static const Widget widget = ExpandableTab();
   static String code = expandableTabCode;

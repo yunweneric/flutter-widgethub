@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+/// Data model for tab items.
 class TileItem {
   final String title;
   final String icon;
@@ -9,6 +10,15 @@ class TileItem {
   TileItem({required this.title, required this.icon, required this.color});
 }
 
+/// An expandable tab widget that shows icons and expands to show text labels.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// ExpandableTab()
+/// ```
 class ExpandableTab extends StatefulWidget {
   const ExpandableTab({super.key});
 

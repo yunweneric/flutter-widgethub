@@ -10,6 +10,15 @@ class OnBoardingData {
   OnBoardingData({required this.title, required this.description});
 }
 
+/// Mental health onboarding screen with blur effects and animations.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// MentalHealthOnboarding()
+/// ```
 class MentalHealthOnboarding extends StatefulWidget {
   const MentalHealthOnboarding({super.key});
 

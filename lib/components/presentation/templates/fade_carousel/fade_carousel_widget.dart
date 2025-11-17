@@ -3,6 +3,15 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+/// A fade carousel template with animated page transitions.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// FadeCarouselTemplate()
+/// ```
 class FadeCarouselTemplate extends StatefulWidget {
   const FadeCarouselTemplate({super.key});
 

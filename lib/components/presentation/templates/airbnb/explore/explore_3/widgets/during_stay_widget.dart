@@ -28,9 +28,9 @@ class DuringStayWidget extends StatelessWidget {
             style: textTheme.bodyMedium,
           ),
           const SizedBox(height: AirbnbConstants.paddingM),
-          _buildInfoRow('Language', 'English'),
-          _buildInfoRow('Response rate', '100%'),
-          _buildInfoRow('Response time', 'within an hour'),
+          _InfoRow(label: 'Language', value: 'English'),
+          _InfoRow(label: 'Response rate', value: '100%'),
+          _InfoRow(label: 'Response time', value: 'within an hour'),
           const SizedBox(height: AirbnbConstants.paddingM),
           SizedBox(
             width: double.infinity,
@@ -66,22 +66,32 @@ class DuringStayWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildInfoRow(String label, String value) {
-    return Builder(
-      builder: (context) => Padding(
-        padding: const EdgeInsets.only(bottom: AirbnbConstants.paddingS),
-        child: Row(
-          children: [
-            Text(
-              '$label: ',
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-            Text(
-              value,
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-          ],
-        ),
+}
+
+class _InfoRow extends StatelessWidget {
+  final String label;
+  final String value;
+
+  const _InfoRow({
+    required this.label,
+    required this.value,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: AirbnbConstants.paddingS),
+      child: Row(
+        children: [
+          Text(
+            '$label: ',
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+          Text(
+            value,
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+        ],
       ),
     );
   }

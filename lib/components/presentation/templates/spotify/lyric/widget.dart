@@ -18,6 +18,15 @@ class LyricLine {
   }
 }
 
+/// Spotify lyrics screen with synchronized lyric display and background effects.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// SpotifyLyricScreen()
+/// ```
 class SpotifyLyricScreen extends StatefulWidget {
   const SpotifyLyricScreen({super.key});
 
@@ -161,7 +170,7 @@ class _SpotifyLyricScreenState extends State<SpotifyLyricScreen> {
                           } else {
                             item = GestureDetector(
                               onTap: () => _setActive(index),
-                              child: _lyricLine(line.text, faded: true),
+                              child: _LyricLine(text: line.text, faded: true),
                             );
                           }
 
@@ -199,18 +208,29 @@ class _SpotifyLyricScreenState extends State<SpotifyLyricScreen> {
   }
 }
 
-Widget _lyricLine(String text, {bool faded = false}) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 4.0),
-    child: Text(
-      text,
-      style: TextStyle(
-        color: faded ? Colors.white.withOpacity(0.5) : Colors.white,
-        fontWeight: faded ? FontWeight.normal : FontWeight.bold,
-        fontSize: 20,
+class _LyricLine extends StatelessWidget {
+  final String text;
+  final bool faded;
+
+  const _LyricLine({
+    required this.text,
+    this.faded = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4.0),
+      child: Text(
+        text,
+        style: TextStyle(
+          color: faded ? Colors.white.withOpacity(0.5) : Colors.white,
+          fontWeight: faded ? FontWeight.normal : FontWeight.bold,
+          fontSize: 20,
+        ),
       ),
-    ),
-  );
+    );
+  }
 }
 
 class _SpotifyBottomBar extends StatelessWidget {

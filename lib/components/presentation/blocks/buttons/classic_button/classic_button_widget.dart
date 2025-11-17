@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+/// A classic elevated button component with customizable styling.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// ClassicButton()
+/// ```
 class ClassicButton extends StatefulWidget {
   const ClassicButton({super.key});
 

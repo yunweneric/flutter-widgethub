@@ -4,6 +4,15 @@ import 'package:flutter_svg/svg.dart';
 
 import '../shared.dart';
 
+/// Bottom navigation bar for Airbnb app with five main sections.
+///
+/// API Reference:
+/// - [currentIndex]: The currently selected tab index (0-4)
+///
+/// Usage:
+/// ```dart
+/// AirbnbBottomNavigationBar(currentIndex: 0)
+/// ```
 class AirbnbBottomNavigationBar extends StatelessWidget {
   final int currentIndex;
   const AirbnbBottomNavigationBar({super.key, required this.currentIndex});

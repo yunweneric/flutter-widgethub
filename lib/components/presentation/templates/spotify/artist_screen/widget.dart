@@ -2,6 +2,15 @@ import 'package:flutter/material.dart';
 import '../shared/theme.dart';
 import '../shared/spotify_icons.dart';
 
+/// Spotify artist screen variant 1 with collapsible header and playlists.
+///
+/// API Reference:
+/// - No public properties
+///
+/// Usage:
+/// ```dart
+/// SpotifyArtistScreen()
+/// ```
 class SpotifyArtistScreen extends StatelessWidget {
   const SpotifyArtistScreen({super.key});
 

@@ -10,6 +10,13 @@ import 'package:flutterui/app/shared/data/models/component.dart';
 import 'package:flutterui/components/presentation/blocks/tabs/slide_tab/slide_tab_code.dart';
 import 'package:flutterui/components/presentation/blocks/tabs/slide_tab/slide_tab_widget.dart';
 
+/// Component data definition for [SlideTabWidget].
+///
+/// Provides the component metadata including:
+/// - Title and description
+/// - Category and subcategory
+/// - Supported platforms
+/// - Setup instructions
 class SlideTabData {
   static const Widget widget = SlideTabWidget();
   static String code = slideTabCode;

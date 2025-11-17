@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+/// A switch component with a disclosure icon and expandable checkbox option.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// DiscloseSwitcher()
+/// ```
 class DiscloseSwitcher extends StatefulWidget {
   const DiscloseSwitcher({super.key});
 

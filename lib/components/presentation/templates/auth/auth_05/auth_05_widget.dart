@@ -60,6 +60,15 @@ class Auth05Theme {
   );
 }
 
+/// Authentication screen variant 5 with dark theme and modern UI.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// Auth05Widget()
+/// ```
 class Auth05Widget extends StatefulWidget {
   const Auth05Widget({Key? key}) : super(key: key);
 

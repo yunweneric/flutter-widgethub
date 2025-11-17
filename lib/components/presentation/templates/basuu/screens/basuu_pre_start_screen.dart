@@ -9,6 +9,15 @@ import 'package:flutterui/components/presentation/templates/basuu/widgets/basuu_
 import 'package:flutterui/components/presentation/templates/basuu/widgets/basuu_app_button.dart';
 import 'package:flutterui/components/presentation/templates/basuu/widgets/basuu_app_icon.dart';
 
+/// Basuu pre-start screen for selecting learning categories before starting.
+///
+/// API Reference:
+/// - [categories]: List of available learning categories
+///
+/// Usage:
+/// ```dart
+/// BasuuPreStartScreen(categories: categoryList)
+/// ```
 class BasuuPreStartScreen extends StatefulWidget {
   final List<BasuuCategory> categories;
   const BasuuPreStartScreen({super.key, required this.categories});

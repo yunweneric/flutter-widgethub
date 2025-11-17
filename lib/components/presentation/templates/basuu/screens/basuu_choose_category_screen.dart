@@ -10,6 +10,15 @@ import 'package:flutterui/components/presentation/templates/basuu/widgets/basuu_
 import 'package:flutterui/components/presentation/templates/basuu/widgets/basuu_animated_screen.dart';
 import 'package:flutterui/components/presentation/templates/basuu/widgets/basuu_app_button.dart';
 
+/// Basuu category selection screen for choosing learning topics.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// BasuuChooseCategoryScreen()
+/// ```
 class BasuuChooseCategoryScreen extends StatefulWidget {
   const BasuuChooseCategoryScreen({super.key});
 

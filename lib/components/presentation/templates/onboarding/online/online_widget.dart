@@ -8,6 +8,15 @@ class OnBoardingData {
   OnBoardingData({required this.title, required this.description});
 }
 
+/// Online onboarding screen with page-based introduction flow.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// OnlineOnboarding()
+/// ```
 class OnlineOnboarding extends StatefulWidget {
   const OnlineOnboarding({super.key});
 

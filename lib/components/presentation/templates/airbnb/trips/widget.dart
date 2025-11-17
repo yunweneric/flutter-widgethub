@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import '../shared/shared.dart';
 
+/// Airbnb trips screen displaying user's booked trips and reservations.
+///
+/// API Reference:
+/// - No public properties
+///
+/// Usage:
+/// ```dart
+/// TripsScreen()
+/// ```
 class TripsScreen extends StatelessWidget {
   const TripsScreen({super.key});
 

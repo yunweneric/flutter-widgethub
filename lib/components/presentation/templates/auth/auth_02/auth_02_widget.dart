@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+/// Authentication screen variant 2 with login form and social options.
+///
+/// API Reference:
+/// - No public properties (uses internal state)
+///
+/// Usage:
+/// ```dart
+/// Auth02Widget()
+/// ```
 class Auth02Widget extends StatefulWidget {
   const Auth02Widget({super.key});
 

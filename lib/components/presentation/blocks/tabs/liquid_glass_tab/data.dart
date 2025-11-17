@@ -11,6 +11,13 @@ import 'package:flutterui/components/presentation/blocks/tabs/liquid_glass_tab/l
 
 import 'liquid_glass_tab_widget.dart';
 
+/// Component data definition for [LiquidGlassTab].
+///
+/// Provides the component metadata including:
+/// - Title and description
+/// - Category and subcategory
+/// - Supported platforms
+/// - Setup instructions
 class LiquidGlassTabData {
   static const Widget widget = LiquidGlassTab();
   static String code = liquidGlassTabCode;

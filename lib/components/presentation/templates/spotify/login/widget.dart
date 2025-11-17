@@ -4,6 +4,15 @@ import '../shared/logo.dart';
 import '../shared/button.dart';
 import '../shared/theme.dart';
 
+/// Spotify login screen with email/password and social authentication options.
+///
+/// API Reference:
+/// - No public properties
+///
+/// Usage:
+/// ```dart
+/// SpotifyLogin()
+/// ```
 class SpotifyLogin extends StatelessWidget {
   const SpotifyLogin({super.key});
 
