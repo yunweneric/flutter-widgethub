@@ -46,7 +46,7 @@ Visual effects including shadows, gradients, and complex transformations
 
 ### Prerequisites
 
-- Flutter SDK (version 3.22.1 recommended)
+- Flutter SDK (version 3.38.0 recommended)
 - [FVM](https://fvm.app/) for Flutter version management (optional but recommended)
 
 ### Installation
