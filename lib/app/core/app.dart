@@ -58,8 +58,8 @@ class MyApp extends StatelessWidget {
                         themeMode: state.themeMode,
                         scrollBehavior: AppScrollBehavior(),
                         builder: (context, child) {
-                          // return child!;
-                          return SplitText();
+                          return child!;
+                          // return SplitText();
                         },
                       );
                     },
