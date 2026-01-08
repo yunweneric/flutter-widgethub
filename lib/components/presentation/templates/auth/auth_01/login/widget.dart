@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart' show KhSpacer;
+import 'package:flutterui/app/shared/presentation/utils/sizing.dart'
+    show KhSpacer;
 import '../shared/shared.dart';
 
 /// Authentication login screen variant 1 with email/password form.
@@ -116,7 +117,8 @@ class _Auth01LoginWidgetState extends State<Auth01LoginWidget> {
                   KhSpacer(height: 40),
                   const AuthTitle(title: 'Sign in to your\nAccount'),
                   KhSpacer(height: 16),
-                  const AuthSubtitle(title: 'Enter your email and password to log in'),
+                  const AuthSubtitle(
+                      title: 'Enter your email and password to log in'),
                   KhSpacer(height: 32),
                   Auth01TextField(
                     label: "Email",

@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/shared.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/app/core/service_locators.dart';
-import 'package:flutterui/app/shared/data/models/component.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:go_router/go_router.dart';
 
 class CategoryCard extends StatefulWidget {
@@ -27,7 +24,8 @@ class _CategoryCardState extends State<CategoryCard> {
         Container(
           clipBehavior: Clip.hardEdge,
           decoration: const BoxDecoration(),
-          width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 35),
+          width: AppSizing.kWPercentage(
+              context, AppSizing.isMobile(context) ? 100 : 35),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -77,7 +75,8 @@ class _CategoryCardState extends State<CategoryCard> {
           hoverColor: Theme.of(context).scaffoldBackgroundColor,
           borderRadius: AppSizing.radiusMd(),
           onTap: () {
-            componentBloc.add(UpdateActiveComponentEvent(newComponent: componentDetails));
+            componentBloc.add(
+                UpdateActiveComponentEvent(newComponent: componentDetails));
             final link =
                 "/components/${componentDetails.category.link()}/${componentDetails.subcategory.link()}/${componentDetails.id}/";
             context.go(link);

@@ -110,7 +110,9 @@ class _ReservationCard extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? Theme.of(context).cardColor : Theme.of(context).scaffoldBackgroundColor,
+        color: isDark
+            ? Theme.of(context).cardColor
+            : Theme.of(context).scaffoldBackgroundColor,
         borderRadius: BorderRadius.circular(AirbnbConstants.radiusM),
         boxShadow: [
           BoxShadow(
@@ -162,7 +164,8 @@ class _ReservationCard extends StatelessWidget {
                   ),
                   decoration: BoxDecoration(
                     color: Theme.of(context).cardColor,
-                    borderRadius: BorderRadius.circular(AirbnbConstants.radiusS),
+                    borderRadius:
+                        BorderRadius.circular(AirbnbConstants.radiusS),
                   ),
                   child: Text(
                     'Pending',
@@ -232,7 +235,8 @@ class _ReservationCard extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Yonkers, New York', style: textTheme.displaySmall),
+                          Text('Yonkers, New York',
+                              style: textTheme.displaySmall),
                           Text(
                             'United States',
                             style: textTheme.bodySmall,
@@ -323,7 +327,7 @@ class _ExperienceCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return Container(
+    return SizedBox(
       width: AirbnbConstants.width200,
       child: Row(
         children: [

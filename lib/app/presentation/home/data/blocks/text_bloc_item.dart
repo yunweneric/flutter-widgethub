@@ -23,7 +23,7 @@ class _TextsideBarCategoriestate extends State<TextBlocItem> {
     super.initState();
   }
 
-  startTimer() {
+  void startTimer() {
     timer = Timer.periodic(duration, (tick) {
       setState(() {
         if (count > 1000) count = 0;

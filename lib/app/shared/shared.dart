@@ -6,6 +6,7 @@
 /// - Data models and enums
 ///
 /// This file serves as a convenient import point for shared functionality.
+library;
 
 // =============================================================================
 // LOGIC - Business Logic and State Management

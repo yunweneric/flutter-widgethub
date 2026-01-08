@@ -7,6 +7,8 @@
 /// - Localization setup
 /// - Service locator registration
 /// - Error handling configuration
+library;
+
 import 'dart:async';
 import 'dart:developer';
 import 'package:easy_localization/easy_localization.dart';
@@ -36,7 +38,8 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 ///
 /// [builder] Function that returns the root widget of the application.
 /// [env] The application environment (DEV, PROD, or STAGING).
-Future<void> bootstrap(FutureOr<Widget> Function() builder, {required AppEnv env}) async {
+Future<void> bootstrap(FutureOr<Widget> Function() builder,
+    {required AppEnv env}) async {
   // Needs to be called so that we can await for EasyLocalization.ensureInitialized();
   WidgetsFlutterBinding.ensureInitialized();
 

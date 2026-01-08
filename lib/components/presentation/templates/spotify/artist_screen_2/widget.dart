@@ -56,7 +56,8 @@ class _CollapsibleHeader extends StatelessWidget {
           shape: BoxShape.circle,
         ),
         child: IconButton(
-          style: IconButton.styleFrom(backgroundColor: Theme.of(context).cardColor),
+          style: IconButton.styleFrom(
+              backgroundColor: Theme.of(context).cardColor),
           onPressed: () {},
           icon: SpotifyIcons.getIcon(
             SpotifyIcons.back,
@@ -66,7 +67,8 @@ class _CollapsibleHeader extends StatelessWidget {
       ),
       actions: [
         IconButton(
-          style: IconButton.styleFrom(backgroundColor: Theme.of(context).cardColor),
+          style: IconButton.styleFrom(
+              backgroundColor: Theme.of(context).cardColor),
           onPressed: () {},
           icon: SpotifyIcons.getIcon(
             SpotifyIcons.menu,
@@ -165,17 +167,20 @@ class _AlbumsSection extends StatelessWidget {
                 children: const [
                   _AlbumCard(
                     title: 'Lilbubblegum',
-                    imagePath: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=400&fit=crop',
+                    imagePath:
+                        'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=400&fit=crop',
                   ),
                   SizedBox(width: 16),
                   _AlbumCard(
                     title: 'Happier Than Ever',
-                    imagePath: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=400&h=400&fit=crop',
+                    imagePath:
+                        'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=400&h=400&fit=crop',
                   ),
                   SizedBox(width: 16),
                   _AlbumCard(
                     title: 'Dont S',
-                    imagePath: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=400&fit=crop',
+                    imagePath:
+                        'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=400&fit=crop',
                   ),
                 ],
               ),
@@ -313,7 +318,8 @@ class _SongItem extends StatelessWidget {
         children: [
           // Play Button
           IconButton(
-            style: IconButton.styleFrom(backgroundColor: Theme.of(context).cardColor),
+            style: IconButton.styleFrom(
+                backgroundColor: Theme.of(context).cardColor),
             padding: EdgeInsets.zero,
             icon: SpotifyIcons.getIcon(SpotifyIcons.play_arrow),
             onPressed: () {},
@@ -368,7 +374,8 @@ class _BottomNavigationBar extends StatelessWidget {
     return Container(
       color: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20).add(EdgeInsets.only(bottom: 15)),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20)
+            .add(EdgeInsets.only(bottom: 15)),
         child: const Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [

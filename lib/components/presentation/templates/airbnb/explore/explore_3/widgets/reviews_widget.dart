@@ -19,7 +19,8 @@ class ReviewsWidget extends StatelessWidget {
               const SizedBox(width: AirbnbConstants.paddingXS),
               Text(
                 '5.0 · 3 reviews',
-                style: textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
+                style:
+                    textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
               ),
             ],
           ),
@@ -38,7 +39,8 @@ class ReviewsWidget extends StatelessWidget {
                   children: [
                     Text(
                       'Blair',
-                      style: textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
+                      style: textTheme.bodyLarge
+                          ?.copyWith(fontWeight: FontWeight.w600),
                     ),
                     const Spacer(),
                     Text('2 weeks ago', style: textTheme.bodySmall),
@@ -56,7 +58,8 @@ class ReviewsWidget extends StatelessWidget {
           Center(
             child: Text(
               'Show all 3 reviews',
-              style: textTheme.bodyMedium?.copyWith(color: AirbnbTheme.primaryRed),
+              style:
+                  textTheme.bodyMedium?.copyWith(color: AirbnbTheme.primaryRed),
             ),
           ),
         ],

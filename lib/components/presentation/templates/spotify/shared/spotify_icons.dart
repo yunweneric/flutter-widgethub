@@ -75,7 +75,8 @@ class SpotifyIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return SvgPicture.string(
       svgString,
-      colorFilter: color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null,
+      colorFilter:
+          color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null,
       width: 24,
       height: 24,
     );

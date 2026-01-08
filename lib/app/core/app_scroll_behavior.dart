@@ -2,6 +2,8 @@
 ///
 /// Extends [MaterialScrollBehavior] to enable drag scrolling on multiple
 /// input device types including touch, mouse, and trackpad.
+library;
+
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -12,6 +14,7 @@ import 'package:flutter/material.dart';
 /// input, providing a consistent scrolling experience across platforms.
 class AppScrollBehavior extends MaterialScrollBehavior {
   @override
+
   /// Returns the set of pointer device kinds that support drag scrolling.
   ///
   /// Includes touch, mouse, and trackpad devices to enable drag scrolling

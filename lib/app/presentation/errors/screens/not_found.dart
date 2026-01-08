@@ -2,6 +2,8 @@
 ///
 /// Displays when a user navigates to a route that doesn't exist.
 /// Provides a way to navigate back to the home page.
+library;
+
 import 'package:flutter/material.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 // import 'package:flutterui/screens/routes/app_router.gr.dart';
@@ -29,14 +31,14 @@ class _NotFoundScreenState extends State<NotFoundScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-             Text(LangUtil.trans("pageNotFound")),
+            Text(LangUtil.trans("pageNotFound")),
             ElevatedButton(
               onPressed: () {
                 // final router = context.innerRouterOf<StackRouter>(ComponentLayoutRoute.name);
                 // print(router);
                 // context.router.pushNamed(RouteNames.home);
               },
-              child:  Text(LangUtil.trans("home")),
+              child: Text(LangUtil.trans("home")),
             ),
           ],
         ),

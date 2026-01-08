@@ -2,6 +2,8 @@
 ///
 /// Defines light and dark theme configurations including colors, text styles,
 /// and component themes for the entire application.
+library;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/app/shared/presentation/utils/colors.dart';
@@ -97,9 +99,13 @@ class AppTheme {
   static InputDecorationTheme lightInputDecoration = InputDecorationTheme(
     contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 2.h),
     labelStyle: TextStyle(
-        color: AppColors.TEXTGREY, fontSize: 16.sp, fontWeight: FontWeight.w400),
+        color: AppColors.TEXTGREY,
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w400),
     hintStyle: TextStyle(
-        color: AppColors.TEXTGREY, fontSize: 16.sp, fontWeight: FontWeight.w400),
+        color: AppColors.TEXTGREY,
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w400),
     floatingLabelStyle: TextStyle(color: AppColors.TEXTGREY, fontSize: 12.sp),
     errorStyle: TextStyle(color: AppColors.RED, fontSize: 11.sp),
     border: AppSizing.mainBorder(AppColors.BGGRAY),
@@ -112,9 +118,13 @@ class AppTheme {
   static InputDecorationTheme darkInputDecoration = InputDecorationTheme(
     contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 2.h),
     labelStyle: TextStyle(
-        color: AppColors.TEXTGREY, fontSize: 16.sp, fontWeight: FontWeight.w400),
+        color: AppColors.TEXTGREY,
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w400),
     hintStyle: TextStyle(
-        color: AppColors.TEXTGREY, fontSize: 16.sp, fontWeight: FontWeight.w400),
+        color: AppColors.TEXTGREY,
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w400),
     floatingLabelStyle: TextStyle(color: AppColors.TEXTGREY, fontSize: 12.sp),
     errorStyle: TextStyle(color: AppColors.RED, fontSize: 11.sp),
     border: AppSizing.mainBorder(AppColors.BGGRAY3),
@@ -126,8 +136,8 @@ class AppTheme {
 
   static ThemeData light() {
     return ThemeData(
-      colorScheme:
-          const ColorScheme.light(primary: AppColors.PRIMARY, error: AppColors.RED),
+      colorScheme: const ColorScheme.light(
+          primary: AppColors.PRIMARY, error: AppColors.RED),
       primaryColor: AppColors.PRIMARY,
       primaryColorDark: AppColors.TEXTBLACK,
       primaryColorLight: AppColors.TEXTWHITE,
@@ -141,14 +151,17 @@ class AppTheme {
       appBarTheme: AppBarTheme(
         backgroundColor: AppColors.BG,
         titleTextStyle: GoogleFonts.inter(
-            color: AppColors.TEXTBLACK, fontWeight: FontWeight.w500, fontSize: 20.sp),
+            color: AppColors.TEXTBLACK,
+            fontWeight: FontWeight.w500,
+            fontSize: 20.sp),
         elevation: 0,
       ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
           textStyle: lightTextTheme.bodySmall,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
           backgroundColor: AppColors.CARDCOLOR,
         ),
       ),
@@ -157,7 +170,8 @@ class AppTheme {
           elevation: 0,
           backgroundColor: AppColors.CARDCOLOR,
           padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
           textStyle: lightTextTheme.bodySmall,
         ),
       ),
@@ -168,6 +182,8 @@ class AppTheme {
         selectedColor: AppColors.PRIMARY,
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
         labelStyle: TextStyle(fontSize: 12.sp, color: AppColors.TEXTBLACK),
+        elevation: 0,
+        pressElevation: 0,
       ),
       dividerTheme: const DividerThemeData(color: AppColors.BGGRAY2),
       dialogTheme: const DialogThemeData(backgroundColor: AppColors.CARDCOLOR),
@@ -182,8 +198,8 @@ class AppTheme {
       primaryColorDark: AppColors.BGGRAY,
       primaryColorLight: AppColors.TEXTBLACK,
       cardColor: AppColors.BGCARDDARK,
-      colorScheme:
-          const ColorScheme.dark(primary: AppColors.PRIMARY, error: AppColors.RED),
+      colorScheme: const ColorScheme.dark(
+          primary: AppColors.PRIMARY, error: AppColors.RED),
       cardTheme: const CardThemeData(color: AppColors.BGCARDDARK),
       textTheme: darkTextTheme,
       dividerColor: AppColors.BGCARDDARK,
@@ -206,13 +222,16 @@ class AppTheme {
         selectedColor: AppColors.PRIMARY,
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
         labelStyle: TextStyle(fontSize: 12.sp, color: AppColors.TEXTWHITE),
+        elevation: 0,
+        pressElevation: 0,
       ),
       dividerTheme: const DividerThemeData(color: AppColors.BGGRAY2),
       dialogTheme: const DialogThemeData(backgroundColor: AppColors.BGCARDDARK),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
           textStyle: darkTextTheme.bodySmall,
           backgroundColor: AppColors.BGCARDDARK,
           iconColor: AppColors.BGGRAY,
@@ -220,8 +239,10 @@ class AppTheme {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
+          elevation: 0,
           padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
           backgroundColor: AppColors.BGCARDDARK,
           textStyle: darkTextTheme.bodySmall,
           iconColor: AppColors.BGGRAY,

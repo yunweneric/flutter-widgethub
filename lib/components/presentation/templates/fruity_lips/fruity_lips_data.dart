@@ -24,8 +24,10 @@ class FruityLipsTemplateData {
     setup: setup,
     category: ComponentCategoryEnum.BLOCKS,
     subcategory: SubComponentCategoryEnum.SLIDERS_AND_CAROUSELS,
-    assetLink: "https://github.com/yunweneric/flutter-open-ui/raw/fruity_lips/assets/images.zip",
-    gitHubLink: "https://github.com/yunweneric/flutter-open-ui/tree/fruity_lips",
+    assetLink:
+        "https://github.com/yunweneric/flutter-open-ui/raw/fruity_lips/assets/images.zip",
+    gitHubLink:
+        "https://github.com/yunweneric/flutter-open-ui/tree/fruity_lips",
     supportedPlatforms: [SupportedPlatform.ANDROID, SupportedPlatform.IOS],
     responsiveDevices: [AppDeviceType.MOBILE],
   );

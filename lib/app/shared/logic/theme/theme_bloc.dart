@@ -2,6 +2,8 @@
 ///
 /// Manages application theme state and handles theme changes between
 /// light, dark, and system modes.
+library;
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 

@@ -10,6 +10,7 @@ class SpotifyLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SvgPicture.string(SpotifyConstants.spotifyLogo, width: width, height: height);
+    return SvgPicture.string(SpotifyConstants.spotifyLogo,
+        width: width, height: height);
   }
 }

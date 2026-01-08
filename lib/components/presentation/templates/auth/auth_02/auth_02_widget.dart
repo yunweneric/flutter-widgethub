@@ -93,7 +93,7 @@ class _Auth02WidgetState extends State<Auth02Widget> {
       ),
     ),
     checkboxTheme: CheckboxThemeData(
-      fillColor: MaterialStatePropertyAll(Color(0xFF2563EB)),
+      fillColor: WidgetStatePropertyAll(Color(0xFF2563EB)),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
     ),
   );
@@ -281,7 +281,8 @@ class _GoogleButton extends StatelessWidget {
     return OutlinedButton.icon(
       onPressed: () {},
       icon: AppIcon.googleLogo(),
-      label: const Text('Continue with Google', style: TextStyle(color: Colors.black)),
+      label: const Text('Continue with Google',
+          style: TextStyle(color: Colors.black)),
       style: OutlinedButton.styleFrom(
         backgroundColor: Colors.white,
         side: const BorderSide(color: Color(0xFFE5E7EB)),
@@ -384,8 +385,8 @@ class _RememberMeRow extends StatelessWidget {
         const Spacer(),
         TextButton(
           onPressed: () {},
-          child: const Text('Forgot Password ?'),
           style: TextButton.styleFrom(padding: EdgeInsets.zero),
+          child: const Text('Forgot Password ?'),
         ),
       ],
     );
@@ -419,7 +420,8 @@ class _SignUpLink extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text("Don't have an account? ", style: TextStyle(color: Color(0xFF6B7280))),
+        const Text("Don't have an account? ",
+            style: TextStyle(color: Color(0xFF6B7280))),
         GestureDetector(
           onTap: () {},
           child: Text(
@@ -595,9 +597,12 @@ class AppIcon {
 }
 
 class AppSizing {
-  static double kwidth(BuildContext context) => MediaQuery.sizeOf(context).width;
-  static double kheight(BuildContext context) => MediaQuery.sizeOf(context).height;
+  static double kwidth(BuildContext context) =>
+      MediaQuery.sizeOf(context).width;
+  static double kheight(BuildContext context) =>
+      MediaQuery.sizeOf(context).height;
   static Widget khSpacer(double height) => SizedBox(height: height);
   static Widget kwSpacer(double width) => SizedBox(width: width);
-  static EdgeInsets kpadding(double width, double height) => EdgeInsets.symmetric(horizontal: width, vertical: height);
+  static EdgeInsets kpadding(double width, double height) =>
+      EdgeInsets.symmetric(horizontal: width, vertical: height);
 }

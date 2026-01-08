@@ -43,7 +43,8 @@ class SpotifyMusicPlayer extends StatelessWidget {
               IconButton(
                 icon: RotatedBox(
                   quarterTurns: 1,
-                  child: SvgPicture.string(PlayerIcons.more, width: 28, height: 28),
+                  child: SvgPicture.string(PlayerIcons.more,
+                      width: 28, height: 28),
                 ),
                 onPressed: () {},
                 splashRadius: 24,
@@ -55,7 +56,8 @@ class SpotifyMusicPlayer extends StatelessWidget {
               children: [
                 // Album Art
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0, vertical: 8.0),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(32),
                     child: Image.network(
@@ -98,7 +100,8 @@ class SpotifyMusicPlayer extends StatelessWidget {
                       ),
                       const SizedBox(width: 8),
                       IconButton(
-                        icon: SvgPicture.string(PlayerIcons.heart, width: 32, height: 32),
+                        icon: SvgPicture.string(PlayerIcons.heart,
+                            width: 32, height: 32),
                         onPressed: () {},
                         splashRadius: 24,
                       ),
@@ -122,8 +125,10 @@ class SpotifyMusicPlayer extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const [
-                          Text('2:25', style: TextStyle(color: Color(0xFFB3B3B3))),
-                          Text('4:02', style: TextStyle(color: Color(0xFFB3B3B3))),
+                          Text('2:25',
+                              style: TextStyle(color: Color(0xFFB3B3B3))),
+                          Text('4:02',
+                              style: TextStyle(color: Color(0xFFB3B3B3))),
                         ],
                       ),
                     ],
@@ -137,12 +142,14 @@ class SpotifyMusicPlayer extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       IconButton(
-                        icon: SvgPicture.string(PlayerIcons.repeat, width: 28, height: 28),
+                        icon: SvgPicture.string(PlayerIcons.repeat,
+                            width: 28, height: 28),
                         onPressed: () {},
                         splashRadius: 24,
                       ),
                       IconButton(
-                        icon: SvgPicture.string(PlayerIcons.previous, width: 36, height: 36),
+                        icon: SvgPicture.string(PlayerIcons.previous,
+                            width: 36, height: 36),
                         onPressed: () {},
                         splashRadius: 28,
                       ),
@@ -152,18 +159,21 @@ class SpotifyMusicPlayer extends StatelessWidget {
                           shape: BoxShape.circle,
                         ),
                         child: IconButton(
-                          icon: SvgPicture.string(PlayerIcons.pause, width: 36, height: 36),
+                          icon: SvgPicture.string(PlayerIcons.pause,
+                              width: 36, height: 36),
                           onPressed: () {},
                           splashRadius: 36,
                         ),
                       ),
                       IconButton(
-                        icon: SvgPicture.string(PlayerIcons.next, width: 36, height: 36),
+                        icon: SvgPicture.string(PlayerIcons.next,
+                            width: 36, height: 36),
                         onPressed: () {},
                         splashRadius: 28,
                       ),
                       IconButton(
-                        icon: SvgPicture.string(PlayerIcons.shuffle, width: 28, height: 28),
+                        icon: SvgPicture.string(PlayerIcons.shuffle,
+                            width: 28, height: 28),
                         onPressed: () {},
                         splashRadius: 24,
                       ),
@@ -176,8 +186,11 @@ class SpotifyMusicPlayer extends StatelessWidget {
                   onTap: () {},
                   child: Column(
                     children: [
-                      SvgPicture.string(PlayerIcons.arrowUp, width: 28, height: 28),
-                      const Text('Lyrics', style: TextStyle(color: Color(0xFFB3B3B3), fontSize: 16)),
+                      SvgPicture.string(PlayerIcons.arrowUp,
+                          width: 28, height: 28),
+                      const Text('Lyrics',
+                          style: TextStyle(
+                              color: Color(0xFFB3B3B3), fontSize: 16)),
                     ],
                   ),
                 ),

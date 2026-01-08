@@ -21,7 +21,7 @@ class _BottomBarsideBarCategoriestate extends State<BottomBarBlocItem> {
     super.initState();
   }
 
-  startTimer() {
+  void startTimer() {
     timer = Timer.periodic(duration, (tick) {
       setState(() {
         if (activeIndex == 4) {

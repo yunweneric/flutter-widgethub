@@ -1,7 +1,6 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 
 class IconDropdownButton<T> extends StatelessWidget {
   final Widget button;
@@ -29,7 +28,10 @@ class IconDropdownButton<T> extends StatelessWidget {
       customButton: button,
       onChanged: onChanged,
       isExpanded: true,
-      items: items.map((item) => DropdownMenuItem<T>(value: item, child: builder.call(item))).toList(),
+      items: items
+          .map((item) =>
+              DropdownMenuItem<T>(value: item, child: builder.call(item)))
+          .toList(),
       dropdownStyleData: DropdownStyleData(
         elevation: 1,
         width: btnWidthFraction,

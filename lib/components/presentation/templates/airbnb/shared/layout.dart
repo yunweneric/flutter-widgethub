@@ -5,7 +5,8 @@ import '../index.dart';
 class AirbnbLayout extends StatefulWidget {
   final int initialIndex;
   final Widget widget;
-  const AirbnbLayout({super.key, required this.initialIndex, required this.widget});
+  const AirbnbLayout(
+      {super.key, required this.initialIndex, required this.widget});
 
   @override
   State<AirbnbLayout> createState() => _AirbnbLayoutState();
@@ -30,7 +31,8 @@ class _AirbnbLayoutState extends State<AirbnbLayout> {
         body: Container(
           child: widget.widget,
         ),
-        bottomNavigationBar: AirbnbBottomNavigationBar(currentIndex: currentIndex),
+        bottomNavigationBar:
+            AirbnbBottomNavigationBar(currentIndex: currentIndex),
       ),
     );
   }

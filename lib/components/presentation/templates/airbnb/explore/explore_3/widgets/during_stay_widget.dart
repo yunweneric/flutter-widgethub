@@ -65,7 +65,6 @@ class DuringStayWidget extends StatelessWidget {
       ),
     );
   }
-
 }
 
 class _InfoRow extends StatelessWidget {

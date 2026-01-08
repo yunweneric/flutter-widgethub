@@ -58,7 +58,9 @@ class _ExpandableTabState extends State<ExpandableTab> {
                         margin: const EdgeInsets.only(right: 10),
                         padding: const EdgeInsets.symmetric(vertical: 12),
                         decoration: BoxDecoration(
-                          color: isActive ? item.color : const Color.fromARGB(255, 213, 212, 212),
+                          color: isActive
+                              ? item.color
+                              : const Color.fromARGB(255, 213, 212, 212),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         width: isActive ? textWidth : 50,
@@ -67,7 +69,9 @@ class _ExpandableTabState extends State<ExpandableTab> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              SvgPicture.string(item.icon, height: 15, color: isActive ? Colors.white : null),
+                              SvgPicture.string(item.icon,
+                                  height: 15,
+                                  color: isActive ? Colors.white : null),
                               if (isActive) ...[
                                 const SizedBox(width: 5),
                                 Flexible(
@@ -77,7 +81,9 @@ class _ExpandableTabState extends State<ExpandableTab> {
                                     maxLines: 1,
                                     overflow: TextOverflow.clip,
                                     textAlign: TextAlign.center,
-                                    style: TextStyle(fontSize: 12, color: isActive ? Colors.white : null),
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        color: isActive ? Colors.white : null),
                                   ),
                                 ),
                               ],

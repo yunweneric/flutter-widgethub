@@ -28,9 +28,12 @@ OMeshRect grad2(double dt) => OMeshRect(
         (0.0, 1.0).v, (0.33, 1.0).v, (0.67, 1.0).v, (1.0, 1.0).v, // Row 3
       ],
       colors: const [
-        Color(0xffe5fdff), Color(0xffe5fdff), Color(0xff80ceff), Color(0xff80ceff), // Row 1
-        Color(0xffffe7bf), Color.fromARGB(255, 23, 159, 227), Color(0xffffca56), Color(0xff80ceff), // Row 2
-        Color(0xffede6f3), Color(0xffede6f3), Color(0xffffca56), Color(0xffffca56), // Row 3
+        Color(0xffe5fdff), Color(0xffe5fdff), Color(0xff80ceff),
+        Color(0xff80ceff), // Row 1
+        Color(0xffffe7bf), Color.fromARGB(255, 23, 159, 227), Color(0xffffca56),
+        Color(0xff80ceff), // Row 2
+        Color(0xffede6f3), Color(0xffede6f3), Color(0xffffca56),
+        Color(0xffffca56), // Row 3
       ],
     );
 
@@ -50,7 +53,8 @@ class MeshGradient02 extends StatefulWidget {
   State<MeshGradient02> createState() => _MeshGradient02State();
 }
 
-class _MeshGradient02State extends State<MeshGradient02> with SingleTickerProviderStateMixin {
+class _MeshGradient02State extends State<MeshGradient02>
+    with SingleTickerProviderStateMixin {
   late final AnimationController controller = AnimationController(vsync: this)
     ..duration = const Duration(seconds: 2)
     ..forward()

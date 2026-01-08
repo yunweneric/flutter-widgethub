@@ -34,7 +34,8 @@ class SpotifyButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           text,
-          style: textStyle ?? Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 16),
+          style: textStyle ??
+              Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 16),
         ),
       ),
     );

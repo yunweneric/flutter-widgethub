@@ -41,7 +41,8 @@ class Wishlist01 extends StatelessWidget {
               // Wishlist Items
               Expanded(
                 child: ListView(
-                  padding: const EdgeInsets.symmetric(horizontal: AirbnbConstants.paddingL),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: AirbnbConstants.paddingL),
                   children: const [
                     WishlistItem(
                       imageUrl: 'https://picsum.photos/seed/nice/80/80',

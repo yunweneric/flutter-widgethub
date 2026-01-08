@@ -154,7 +154,7 @@ class _MessagesList extends StatelessWidget {
         _MessageItem(
           profileImage: 'https://picsum.photos/60/60?random=airbnb',
           sender: 'Craig',
-          message: 'Alright got it we\'ll make do thanks a lot',
+          message: 'Alright got it we'll make do thanks a lot',
           isSystemMessage: true,
         ),
         _MessageDivider(),

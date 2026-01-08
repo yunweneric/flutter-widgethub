@@ -24,7 +24,6 @@ class AirbnbTheme {
           surface: backgroundGray,
           onPrimary: white,
           onSurface: darkGray,
-          background: white,
         ),
         appBarTheme: AppBarTheme(
           backgroundColor: white,
@@ -39,10 +38,11 @@ class AirbnbTheme {
         ),
         inputDecorationTheme: InputDecorationTheme(
           filled: true,
-          contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
           fillColor: white,
           border: const OutlineInputBorder(
-            borderRadius: const BorderRadius.all(Radius.circular(32)),
+            borderRadius: BorderRadius.all(Radius.circular(32)),
             borderSide: BorderSide.none,
           ),
           enabledBorder: const OutlineInputBorder(
@@ -167,10 +167,9 @@ class AirbnbTheme {
         colorScheme: const ColorScheme.dark(
           primary: primaryRed,
           secondary: secondaryTeal,
-          surface: const Color(0xFF232323),
+          surface: Color(0xFF232323),
           onPrimary: white,
           onSurface: white,
-          background: const Color(0xFF121212),
         ),
         appBarTheme: AppBarTheme(
           backgroundColor: black,

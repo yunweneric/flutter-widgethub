@@ -2,6 +2,8 @@
 ///
 /// Shows template cards for a specific template category with navigation
 /// between templates and category information.
+library;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterui/app/presentation/categories/widget/component_details_footer.dart';
@@ -58,8 +60,9 @@ class _TemplateCategoryScreenState extends State<TemplateCategoryScreen> {
               ),
               Builder(
                 builder: (context) {
-                  final components =
-                      state.allComponents.where((item) => item.id == widget.id).toList();
+                  final components = state.allComponents
+                      .where((item) => item.id == widget.id)
+                      .toList();
                   components.sort((a, b) => b.createdAt.compareTo(a.createdAt));
                   return AnimatedSwitcher(
                     duration: const Duration(milliseconds: 500),
@@ -67,7 +70,8 @@ class _TemplateCategoryScreenState extends State<TemplateCategoryScreen> {
                         ? SizedBox(
                             height: AppSizing.kHPercentage(context, 50),
                             child: Center(
-                              child: Text(LangUtil.trans('noItemInThisCategory')),
+                              child:
+                                  Text(LangUtil.trans('noItemInThisCategory')),
                             ))
                         : Wrap(
                             alignment: WrapAlignment.spaceBetween,
@@ -121,7 +125,8 @@ class _TemplateCategoryScreenState extends State<TemplateCategoryScreen> {
                     children: <TextSpan>[
                       TextSpan(
                         text: LangUtil.trans('notFoundInCollections'),
-                        style: TextStyle(color: Theme.of(context).primaryColorDark),
+                        style: TextStyle(
+                            color: Theme.of(context).primaryColorDark),
                       ),
                     ],
                   ),

@@ -26,7 +26,8 @@ class _HomeMobileNavState extends State<HomeMobileNav> {
     return BlocBuilder<SidebarBloc, SidebarState>(
       builder: (context, sidebarState) {
         return Container(
-          margin: EdgeInsets.symmetric(horizontal: AppSizing.kWPercentage(context, 5)),
+          margin: EdgeInsets.symmetric(
+              horizontal: AppSizing.kWPercentage(context, 5)),
           width: AppSizing.kWPercentage(context, 90),
           padding: EdgeInsets.symmetric(vertical: 30.h),
           color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.95),
@@ -50,11 +51,15 @@ class _HomeMobileNavState extends State<HomeMobileNav> {
                 children: [
                   Builder(builder: (context) {
                     final theme = getIt.get<ThemeBloc>();
-                    final isDark = Theme.of(context).brightness == Brightness.dark;
+                    final isDark =
+                        Theme.of(context).brightness == Brightness.dark;
                     return TextButton(
-                      child: AppIcon(icon: isDark ? AppIcons.moon : AppIcons.sun),
+                      child:
+                          AppIcon(icon: isDark ? AppIcons.moon : AppIcons.sun),
                       onPressed: () => theme.add(
-                        ChangeTheme(themeMode: isDark ? ThemeMode.light : ThemeMode.dark),
+                        ChangeTheme(
+                            themeMode:
+                                isDark ? ThemeMode.light : ThemeMode.dark),
                       ),
                     );
                   }),

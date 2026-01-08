@@ -1,10 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/components/presentation/templates/basuu/models/basuu_category.dart';
-import 'package:flutterui/components/presentation/templates/basuu/screens/basuu_pre_start_screen.dart';
 import 'package:flutterui/components/presentation/templates/basuu/shared/utils/basuu_colors.dart';
 import 'package:flutterui/components/presentation/templates/basuu/widgets/basuu_animated_child.dart';
 import 'package:flutterui/components/presentation/templates/basuu/widgets/basuu_animated_screen.dart';
@@ -23,15 +21,33 @@ class BasuuChooseCategoryScreen extends StatefulWidget {
   const BasuuChooseCategoryScreen({super.key});
 
   @override
-  State<BasuuChooseCategoryScreen> createState() => _ChooseCategoryScreenState();
+  State<BasuuChooseCategoryScreen> createState() =>
+      _ChooseCategoryScreenState();
 }
 
 class _ChooseCategoryScreenState extends State<BasuuChooseCategoryScreen> {
   List<BasuuCategory> categories = [
-    BasuuCategory(label: "A1", title: "1 - 100", color: BasuuColors.TEAL, percentage: 80, isChecked: true),
-    BasuuCategory(label: "A2", title: '101 - 1K', color: BasuuColors.DGREEN, percentage: 44),
-    BasuuCategory(label: "B1", title: "1K - 2K", color: BasuuColors.DARKORANGE, percentage: 27),
-    BasuuCategory(label: "B2", title: "2K - 3K", color: BasuuColors.DARKRED, percentage: 9),
+    BasuuCategory(
+        label: "A1",
+        title: "1 - 100",
+        color: BasuuColors.TEAL,
+        percentage: 80,
+        isChecked: true),
+    BasuuCategory(
+        label: "A2",
+        title: '101 - 1K',
+        color: BasuuColors.DGREEN,
+        percentage: 44),
+    BasuuCategory(
+        label: "B1",
+        title: "1K - 2K",
+        color: BasuuColors.DARKORANGE,
+        percentage: 27),
+    BasuuCategory(
+        label: "B2",
+        title: "2K - 3K",
+        color: BasuuColors.DARKRED,
+        percentage: 9),
     BasuuCategory(label: "C1", title: "3K - 4K", color: BasuuColors.MIDRED),
     BasuuCategory(label: "C2", title: '4K - 5K', color: BasuuColors.DEEPRED),
   ];
@@ -60,15 +76,16 @@ class _ChooseCategoryScreenState extends State<BasuuChooseCategoryScreen> {
               right: 20.w,
             ),
             child: BasuuButton(
-              onPressed: categories.where((item) => item.isChecked == true).isEmpty
-                  ? null
-                  : () {
-                      setState(() => animatedStatus = false);
-                      // AppRouter.navigate(
-                      //   context,
-                      //   BasuuPreStartScreen(categories: categories.where((item) => item.isChecked == true).toList()),
-                      // );
-                    },
+              onPressed:
+                  categories.where((item) => item.isChecked == true).isEmpty
+                      ? null
+                      : () {
+                          setState(() => animatedStatus = false);
+                          // AppRouter.navigate(
+                          //   context,
+                          //   BasuuPreStartScreen(categories: categories.where((item) => item.isChecked == true).toList()),
+                          // );
+                        },
               text: "Continue",
             ),
           ),
@@ -98,8 +115,12 @@ class _ChooseCategoryScreenState extends State<BasuuChooseCategoryScreen> {
                           ...categories.map((category) {
                             return TweenAnimationBuilder(
                                 tween: ColorTween(
-                                  begin: category.isChecked == true ? theme.primaryColor : theme.cardColor,
-                                  end: category.isChecked == true ? theme.primaryColor : theme.cardColor,
+                                  begin: category.isChecked == true
+                                      ? theme.primaryColor
+                                      : theme.cardColor,
+                                  end: category.isChecked == true
+                                      ? theme.primaryColor
+                                      : theme.cardColor,
                                 ),
                                 duration: const Duration(milliseconds: 700),
                                 builder: (context, color, child) {
@@ -109,10 +130,12 @@ class _ChooseCategoryScreenState extends State<BasuuChooseCategoryScreen> {
                                       tileColor: theme.cardColor,
                                       onTap: () => updateCheckedItem(category),
                                       shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(12.r),
+                                        borderRadius:
+                                            BorderRadius.circular(12.r),
                                         side: BorderSide(color: color!),
                                       ),
-                                      contentPadding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 2.h),
+                                      contentPadding: EdgeInsets.symmetric(
+                                          horizontal: 15.w, vertical: 2.h),
                                       leading: Chip(
                                         backgroundColor: category.color,
                                         label: Text(
@@ -125,25 +148,39 @@ class _ChooseCategoryScreenState extends State<BasuuChooseCategoryScreen> {
                                         style: theme.textTheme.displayMedium,
                                       ),
                                       trailing: SizedBox(
-                                        width: AppSizing.kHPercentage(context, 10),
+                                        width:
+                                            AppSizing.kHPercentage(context, 10),
                                         child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.end,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
                                           children: [
                                             SizedBox(
-                                              width: AppSizing.kHPercentage(context, 4),
+                                              width: AppSizing.kHPercentage(
+                                                  context, 4),
                                               child: Text(
-                                                category.percentage == null ? '' : "${category.percentage}%",
-                                                style: theme.textTheme.displayMedium!.copyWith(color: theme.highlightColor),
+                                                category.percentage == null
+                                                    ? ''
+                                                    : "${category.percentage}%",
+                                                style: theme
+                                                    .textTheme.displayMedium!
+                                                    .copyWith(
+                                                        color: theme
+                                                            .highlightColor),
                                               ),
                                             ),
                                             Checkbox(
-                                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.r)),
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          4.r)),
                                               side: BorderSide(
                                                 color: theme.highlightColor,
                                                 width: 2.w,
                                               ),
-                                              value: category.isChecked ?? false,
-                                              onChanged: (val) => updateCheckedItem(category),
+                                              value:
+                                                  category.isChecked ?? false,
+                                              onChanged: (val) =>
+                                                  updateCheckedItem(category),
                                             ),
                                           ],
                                         ),

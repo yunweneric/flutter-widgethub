@@ -24,8 +24,10 @@ class DoctorOnboardingData {
     setup: setup,
     category: ComponentCategoryEnum.ANIMATIONS,
     subcategory: SubComponentCategoryEnum.ONBOARDING_SCREENS,
-    assetLink: "https://github.com/yunweneric/flutter-open-ui/raw/9-implement-the-ui-for-doctor-onboarding/assets.zip",
-    gitHubLink: "https://github.com/yunweneric/flutter-open-ui/tree/9-implement-the-ui-for-doctor-onboarding",
+    assetLink:
+        "https://github.com/yunweneric/flutter-open-ui/raw/9-implement-the-ui-for-doctor-onboarding/assets.zip",
+    gitHubLink:
+        "https://github.com/yunweneric/flutter-open-ui/tree/9-implement-the-ui-for-doctor-onboarding",
     supportedPlatforms: [
       SupportedPlatform.ANDROID,
       SupportedPlatform.IOS,

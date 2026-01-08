@@ -37,9 +37,12 @@ class _AppLayoutState extends State<ComponentLayoutScreen> {
               AnimatedContainer(
                 duration: duration,
                 decoration: BoxDecoration(
-                  border: Border(right: BorderSide(color: Theme.of(context).dividerColor)),
+                  border: Border(
+                      right: BorderSide(color: Theme.of(context).dividerColor)),
                 ),
-                width: AppSizing.isMobile(context) ? 0 : AppSizing.width(context) * 0.2,
+                width: AppSizing.isMobile(context)
+                    ? 0
+                    : AppSizing.width(context) * 0.2,
                 child: const SideBar(),
               ),
               Expanded(child: widget.child),

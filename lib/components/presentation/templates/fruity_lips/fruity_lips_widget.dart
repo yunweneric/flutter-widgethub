@@ -19,7 +19,8 @@ class FruityLipsTemplate extends StatefulWidget {
   State<FruityLipsTemplate> createState() => _FruityLipsTemplateState();
 }
 
-class _FruityLipsTemplateState extends State<FruityLipsTemplate> with TickerProviderStateMixin {
+class _FruityLipsTemplateState extends State<FruityLipsTemplate>
+    with TickerProviderStateMixin {
   int activeBgIndex = 12;
   int activeFruitIndex = 12;
 
@@ -40,15 +41,22 @@ class _FruityLipsTemplateState extends State<FruityLipsTemplate> with TickerProv
   List<FruitItem> fruits = generateItems();
   @override
   void initState() {
-    bottleController = AnimationController(vsync: this, duration: bottleAnimationDuration);
-    fruitController = AnimationController(vsync: this, duration: fruitAnimationDuration);
-    fruitMiniController = AnimationController(vsync: this, duration: bottleAnimationDuration);
-    Animation<double> fruitCurve = CurvedAnimation(parent: fruitController!, curve: Curves.easeInBack);
-    Animation<double> bottleCurve = CurvedAnimation(parent: bottleController!, curve: Curves.elasticOut);
-    Animation<double> fruitMinCurve = CurvedAnimation(parent: fruitMiniController!, curve: Curves.elasticOut);
+    bottleController =
+        AnimationController(vsync: this, duration: bottleAnimationDuration);
+    fruitController =
+        AnimationController(vsync: this, duration: fruitAnimationDuration);
+    fruitMiniController =
+        AnimationController(vsync: this, duration: bottleAnimationDuration);
+    Animation<double> fruitCurve =
+        CurvedAnimation(parent: fruitController!, curve: Curves.easeInBack);
+    Animation<double> bottleCurve =
+        CurvedAnimation(parent: bottleController!, curve: Curves.elasticOut);
+    Animation<double> fruitMinCurve =
+        CurvedAnimation(parent: fruitMiniController!, curve: Curves.elasticOut);
     bottleAnimation = Tween<double>(begin: 0.2, end: 1.5).animate(bottleCurve);
     fruitAnimation = Tween<double>(begin: 1.5, end: 0.0).animate(fruitCurve);
-    fruitMiniAnimation = Tween<double>(begin: 1.0, end: 0.0).animate(fruitMinCurve);
+    fruitMiniAnimation =
+        Tween<double>(begin: 1.0, end: 0.0).animate(fruitMinCurve);
     toggleAnimationAndUpdateFruitIndex();
     super.initState();
   }
@@ -62,7 +70,7 @@ class _FruityLipsTemplateState extends State<FruityLipsTemplate> with TickerProv
     super.dispose();
   }
 
-  _onStartScroll(ScrollStartNotification notification) {
+  void _onStartScroll(ScrollStartNotification notification) {
     setState(() {
       isScrolling = false;
       hasEndedScroll = false;
@@ -70,7 +78,7 @@ class _FruityLipsTemplateState extends State<FruityLipsTemplate> with TickerProv
     });
   }
 
-  _onUpdateScroll(ScrollUpdateNotification notification) {
+  void _onUpdateScroll(ScrollUpdateNotification notification) {
     setState(() {
       scrollDirection = pageController.position.userScrollDirection;
       isScrolling = true;
@@ -79,7 +87,7 @@ class _FruityLipsTemplateState extends State<FruityLipsTemplate> with TickerProv
     });
   }
 
-  _onEndScroll(ScrollEndNotification notification) {
+  void _onEndScroll(ScrollEndNotification notification) {
     toggleAnimationAndUpdateFruitIndex();
     setState(() {
       isScrolling = false;
@@ -88,7 +96,7 @@ class _FruityLipsTemplateState extends State<FruityLipsTemplate> with TickerProv
     });
   }
 
-  toggleAnimationAndUpdateFruitIndex() async {
+  Future<void> toggleAnimationAndUpdateFruitIndex() async {
     fruitController!.reset();
     bottleController!.reset();
 
@@ -219,7 +227,8 @@ class _FruityLipsTemplateState extends State<FruityLipsTemplate> with TickerProv
         animation: fruitController!,
         builder: (context, child) {
           return Transform.scale(
-            scale: isScrolling && activeFruitIndex == i ? 1 : fruitAnimation.value,
+            scale:
+                isScrolling && activeFruitIndex == i ? 1 : fruitAnimation.value,
             child: AnimatedOpacity(
               duration: fruitAnimationDuration,
               // opacity: isScrolling || hasEndedScroll && activeFruitIndex == i ? 1 : 0,
@@ -238,12 +247,18 @@ class _FruityLipsTemplateState extends State<FruityLipsTemplate> with TickerProv
                   ..scale(1.5),
                 child: Builder(
                   builder: (context) {
-                    bool condition = scrollDirection == ScrollDirection.reverse && activeFruitIndex == i;
-                    final newIndex = condition ? activeFruitIndex + 1 : (activeFruitIndex - 1).clamp(0, fruits.length - 1);
+                    bool condition =
+                        scrollDirection == ScrollDirection.reverse &&
+                            activeFruitIndex == i;
+                    final newIndex = condition
+                        ? activeFruitIndex + 1
+                        : (activeFruitIndex - 1).clamp(0, fruits.length - 1);
                     return Image.asset(
                       height: AppSizing.height(context),
                       width: AppSizing.width(context),
-                      isScrolling ? generateAssetName(newIndex, "slice") : generateAssetName(activeFruitIndex, "slice"),
+                      isScrolling
+                          ? generateAssetName(newIndex, "slice")
+                          : generateAssetName(activeFruitIndex, "slice"),
                     );
                   },
                 ),

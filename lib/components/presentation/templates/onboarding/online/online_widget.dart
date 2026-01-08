@@ -32,7 +32,8 @@ class _OnlineOnboardingState extends State<OnlineOnboarding> {
   List<OnBoardingData> data = [
     OnBoardingData(
       title: "Welcome to Stuff",
-      description: "I provide essential stuff for your ui designs every tuesday!",
+      description:
+          "I provide essential stuff for your ui designs every tuesday!",
     ),
     OnBoardingData(
       title: "Design Template uploads Every Tuesday!",
@@ -40,13 +41,15 @@ class _OnlineOnboardingState extends State<OnlineOnboarding> {
     ),
     OnBoardingData(
       title: "Download now!",
-      description: "You can follow me if you wantand comment on any to get some freebies",
+      description:
+          "You can follow me if you wantand comment on any to get some freebies",
     ),
   ];
 
   @override
   Widget build(BuildContext context) {
-    const baseUrl = "https://raw.githubusercontent.com/yunweneric/flutter-open-ui/refs/heads/onboarding_ui_ch_2/assets/images";
+    const baseUrl =
+        "https://raw.githubusercontent.com/yunweneric/flutter-open-ui/refs/heads/onboarding_ui_ch_2/assets/images";
 
     return Scaffold(
       body: Column(
@@ -92,13 +95,17 @@ class _OnlineOnboardingState extends State<OnlineOnboarding> {
                             children: [
                               Text(
                                 data[i].title,
-                                style: Theme.of(context).textTheme.displayMedium,
+                                style:
+                                    Theme.of(context).textTheme.displayMedium,
                                 textAlign: TextAlign.center,
                               ),
                               AppSizing.k20(context),
                               Text(
                                 data[i].description,
-                                style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.grey),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium
+                                    ?.copyWith(color: Colors.grey),
                                 textAlign: TextAlign.center,
                               ),
                             ],
@@ -127,7 +134,10 @@ class _OnlineOnboardingState extends State<OnlineOnboarding> {
                   },
                   child: const Text(
                     "Skip",
-                    style: TextStyle(color: Colors.grey, fontSize: 16, fontWeight: FontWeight.w400),
+                    style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400),
                   ),
                 ),
                 Expanded(
@@ -141,7 +151,8 @@ class _OnlineOnboardingState extends State<OnlineOnboarding> {
                           width: 10,
                           height: 10,
                           decoration: BoxDecoration(
-                            color: i == activeIndex ? Colors.black : Colors.grey,
+                            color:
+                                i == activeIndex ? Colors.black : Colors.grey,
                             borderRadius: BorderRadius.circular(10),
                           ),
                         );
@@ -172,8 +183,12 @@ class _OnlineOnboardingState extends State<OnlineOnboarding> {
 }
 
 class AppSizing {
-  static double width(BuildContext context) => MediaQuery.of(context).size.width;
-  static double height(BuildContext context) => MediaQuery.of(context).size.height;
-  static SizedBox k20(BuildContext context) => SizedBox(height: height(context) * 0.02);
-  static SizedBox khSpacer(BuildContext context, double factor) => SizedBox(height: width(context) * factor);
+  static double width(BuildContext context) =>
+      MediaQuery.of(context).size.width;
+  static double height(BuildContext context) =>
+      MediaQuery.of(context).size.height;
+  static SizedBox k20(BuildContext context) =>
+      SizedBox(height: height(context) * 0.02);
+  static SizedBox khSpacer(BuildContext context, double factor) =>
+      SizedBox(height: width(context) * factor);
 }

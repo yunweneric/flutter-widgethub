@@ -2,6 +2,8 @@
 ///
 /// This file manages the application's dependency injection using GetIt.
 /// It registers all singleton services including BLoCs and the router.
+library;
+
 import 'package:flutterui/app/shared/logic/language_bloc/language_bloc.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/app/core/routes/app_router.dart';

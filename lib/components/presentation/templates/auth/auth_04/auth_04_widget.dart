@@ -72,7 +72,7 @@ class Auth04Theme {
 /// Auth04Widget()
 /// ```
 class Auth04Widget extends StatefulWidget {
-  const Auth04Widget({Key? key}) : super(key: key);
+  const Auth04Widget({super.key});
 
   @override
   State<Auth04Widget> createState() => _Auth04WidgetState();
@@ -120,7 +120,9 @@ class _Auth04WidgetState extends State<Auth04Widget> {
                       obscureText: _obscurePassword,
                       suffixIcon: IconButton(
                         icon: Icon(
-                          _obscurePassword ? Icons.visibility_off : Icons.visibility,
+                          _obscurePassword
+                              ? Icons.visibility_off
+                              : Icons.visibility,
                           color: Auth04Theme.inputHint,
                         ),
                         onPressed: () {
@@ -161,12 +163,14 @@ class _Auth04Header extends StatelessWidget {
       children: [
         Positioned(top: 0, left: 30, child: const AppIconsGrid()),
         Padding(
-          padding: const EdgeInsets.only(top: 32, left: 30, right: 30, bottom: 0),
+          padding:
+              const EdgeInsets.only(top: 32, left: 30, right: 30, bottom: 0),
           child: Column(
             children: [
               const AppIconsLogo(width: 48, height: 48),
               const SizedBox(height: 32),
-              const Text('Get Started now', style: Auth04Theme.title, textAlign: TextAlign.center),
+              const Text('Get Started now',
+                  style: Auth04Theme.title, textAlign: TextAlign.center),
               const SizedBox(height: 12),
               const Text(
                 'Create an account or log in to explore about our app',
@@ -184,7 +188,8 @@ class _Auth04Header extends StatelessWidget {
 class _Auth04SegmentedControl extends StatelessWidget {
   final int selectedIndex;
   final ValueChanged<int> onChanged;
-  const _Auth04SegmentedControl({required this.selectedIndex, required this.onChanged});
+  const _Auth04SegmentedControl(
+      {required this.selectedIndex, required this.onChanged});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -216,7 +221,8 @@ class _Auth04SegmentedTab extends StatelessWidget {
   final String text;
   final bool selected;
   final VoidCallback onTap;
-  const _Auth04SegmentedTab({required this.text, required this.selected, required this.onTap});
+  const _Auth04SegmentedTab(
+      {required this.text, required this.selected, required this.onTap});
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -232,7 +238,8 @@ class _Auth04SegmentedTab extends StatelessWidget {
           child: Text(
             text,
             style: TextStyle(
-              color: selected ? Auth04Theme.primaryButton : Auth04Theme.textGray,
+              color:
+                  selected ? Auth04Theme.primaryButton : Auth04Theme.textGray,
               fontWeight: FontWeight.bold,
               fontSize: 16,
             ),
@@ -266,7 +273,9 @@ class _Auth04InputField extends StatelessWidget {
         TextField(
           controller: controller,
           obscureText: obscureText,
-          keyboardType: label == 'Email' ? TextInputType.emailAddress : TextInputType.text,
+          keyboardType: label == 'Email'
+              ? TextInputType.emailAddress
+              : TextInputType.text,
           style: Auth04Theme.input,
           decoration: InputDecoration(
             hintText: hintText,
@@ -281,9 +290,11 @@ class _Auth04InputField extends StatelessWidget {
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: Auth04Theme.primaryButton, width: 2),
+              borderSide:
+                  const BorderSide(color: Auth04Theme.primaryButton, width: 2),
             ),
-            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
             filled: true,
             fillColor: Colors.white,
             suffixIcon: suffixIcon,
@@ -297,7 +308,8 @@ class _Auth04InputField extends StatelessWidget {
 class _Auth04RememberForgotRow extends StatelessWidget {
   final bool rememberMe;
   final ValueChanged<bool?> onRememberMeChanged;
-  const _Auth04RememberForgotRow({required this.rememberMe, required this.onRememberMeChanged});
+  const _Auth04RememberForgotRow(
+      {required this.rememberMe, required this.onRememberMeChanged});
   @override
   Widget build(BuildContext context) {
     return Row(

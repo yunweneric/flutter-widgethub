@@ -9,7 +9,7 @@ class ThemeState {
 
   /// Creates a theme state.
   ThemeState({required this.themeMode});
-  
+
   /// Properties for equality comparison.
   List get props => [themeMode];
 }
@@ -27,8 +27,9 @@ class ThemeInitial extends ThemeState {
 /// Represents a theme state after a theme change has been applied.
 class UpdateTheme extends ThemeState {
   /// The updated theme mode.
+  @override
   final ThemeMode themeMode;
-  
+
   /// Creates an updated theme state.
   UpdateTheme({required this.themeMode}) : super(themeMode: themeMode);
 }

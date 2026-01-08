@@ -41,7 +41,9 @@ class _ComponentBlockState extends State<ComponentBlock> {
             children: [
               Divider(
                 endIndent: value * AppSizing.kWPercentage(context, 20),
-                color: widget.isActive ? Theme.of(context).primaryColor : Theme.of(context).scaffoldBackgroundColor,
+                color: widget.isActive
+                    ? Theme.of(context).primaryColor
+                    : Theme.of(context).scaffoldBackgroundColor,
               ),
               const Kh10Spacer(),
               child!,

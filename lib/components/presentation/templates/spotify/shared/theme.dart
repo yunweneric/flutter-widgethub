@@ -31,10 +31,12 @@ class SpotifyTheme {
           hintStyle: TextStyle(color: Color(0xFFB3B3B3)),
         ),
         textTheme: const TextTheme(
-          displayLarge: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 40),
+          displayLarge: TextStyle(
+              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 40),
           bodyMedium: TextStyle(color: Colors.black),
           titleMedium: TextStyle(color: Color(0xFFB3B3B3)),
-          labelLarge: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          labelLarge:
+              TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
@@ -43,7 +45,8 @@ class SpotifyTheme {
             shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(32)),
             ),
-            textStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+            textStyle:
+                const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
             padding: const EdgeInsets.symmetric(vertical: 16),
           ),
         ),
@@ -82,12 +85,16 @@ class SpotifyTheme {
           hintStyle: TextStyle(color: Color(0xFFB3B3B3)),
         ),
         textTheme: const TextTheme(
-          displayLarge: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 40),
-          displayMedium: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22),
-          displaySmall: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
+          displayLarge: TextStyle(
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 40),
+          displayMedium: TextStyle(
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22),
+          displaySmall: TextStyle(
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
           bodyMedium: TextStyle(color: Colors.white),
           titleMedium: TextStyle(color: Color(0xFFB3B3B3)),
-          labelLarge: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          labelLarge:
+              TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
@@ -96,7 +103,8 @@ class SpotifyTheme {
             shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(32)),
             ),
-            textStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+            textStyle:
+                const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
             padding: const EdgeInsets.symmetric(vertical: 16),
           ),
         ),

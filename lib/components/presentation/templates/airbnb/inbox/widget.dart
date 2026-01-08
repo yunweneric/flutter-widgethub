@@ -17,7 +17,8 @@ class InboxScreen extends StatefulWidget {
   State<InboxScreen> createState() => _InboxScreenState();
 }
 
-class _InboxScreenState extends State<InboxScreen> with SingleTickerProviderStateMixin {
+class _InboxScreenState extends State<InboxScreen>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
@@ -73,8 +74,9 @@ class _InboxScreenState extends State<InboxScreen> with SingleTickerProviderStat
                               shape: BoxShape.circle,
                             ),
                             child: Text('1',
-                                style: theme.textTheme.bodySmall
-                                    ?.copyWith(fontSize: 12, color: theme.primaryColorLight)),
+                                style: theme.textTheme.bodySmall?.copyWith(
+                                    fontSize: 12,
+                                    color: theme.primaryColorLight)),
                           ),
                         ],
                       ),

@@ -2,6 +2,8 @@
 ///
 /// Manages the current route state and tracks navigation changes
 /// throughout the application.
+library;
+
 import 'package:bloc/bloc.dart';
 import 'package:flutterui/app/core/routes/route_names.dart';
 import 'package:meta/meta.dart';

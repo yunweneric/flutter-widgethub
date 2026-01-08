@@ -33,8 +33,10 @@ class AppFlipCard {
     setup: setup,
     category: ComponentCategoryEnum.BLOCKS,
     subcategory: SubComponentCategoryEnum.SLIDERS_AND_CAROUSELS,
-    assetLink: "https://www.figma.com/design/NIgvpP0UaRQoHT7VJg4DGg/Uicons-by-Flaticon-%7C-Free-interface-icons-(Community)?node-id=7-223&t=gXWvwkFdg6JhDyp9-0",
-    gitHubLink: "https://www.figma.com/design/NIgvpP0UaRQoHT7VJg4DGg/Uicons-by-Flaticon-%7C-Free-interface-icons-(Community)?node-id=7-223&t=gXWvwkFdg6JhDyp9-0",
+    assetLink:
+        "https://www.figma.com/design/NIgvpP0UaRQoHT7VJg4DGg/Uicons-by-Flaticon-%7C-Free-interface-icons-(Community)?node-id=7-223&t=gXWvwkFdg6JhDyp9-0",
+    gitHubLink:
+        "https://www.figma.com/design/NIgvpP0UaRQoHT7VJg4DGg/Uicons-by-Flaticon-%7C-Free-interface-icons-(Community)?node-id=7-223&t=gXWvwkFdg6JhDyp9-0",
     supportedPlatforms: [
       SupportedPlatform.ANDROID,
       SupportedPlatform.IOS,
@@ -42,6 +44,10 @@ class AppFlipCard {
       SupportedPlatform.MACOS,
       SupportedPlatform.WEB,
     ],
-    responsiveDevices: [AppDeviceType.MOBILE, AppDeviceType.TABLET, AppDeviceType.DESKTOP],
+    responsiveDevices: [
+      AppDeviceType.MOBILE,
+      AppDeviceType.TABLET,
+      AppDeviceType.DESKTOP
+    ],
   );
 }

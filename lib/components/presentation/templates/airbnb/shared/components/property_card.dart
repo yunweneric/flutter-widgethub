@@ -63,7 +63,7 @@ class PropertyCard extends StatelessWidget {
 
     return GestureDetector(
       onTap: onTap,
-      child: Container(
+      child: SizedBox(
         width: double.infinity,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,17 +75,19 @@ class PropertyCard extends StatelessWidget {
                   width: double.infinity,
                   height: 250,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(AirbnbConstants.radiusM),
-                    color: colorScheme.surfaceVariant,
+                    borderRadius:
+                        BorderRadius.circular(AirbnbConstants.radiusM),
+                    color: colorScheme.surfaceContainerHighest,
                   ),
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(AirbnbConstants.radiusM),
+                    borderRadius:
+                        BorderRadius.circular(AirbnbConstants.radiusM),
                     child: Image.network(
                       imageUrl,
                       fit: BoxFit.cover,
                       errorBuilder: (context, error, stackTrace) {
                         return Container(
-                          color: colorScheme.surfaceVariant,
+                          color: colorScheme.surfaceContainerHighest,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -108,7 +110,7 @@ class PropertyCard extends StatelessWidget {
                       loadingBuilder: (context, child, loadingProgress) {
                         if (loadingProgress == null) return child;
                         return Container(
-                          color: colorScheme.surfaceVariant,
+                          color: colorScheme.surfaceContainerHighest,
                           child: Center(
                             child: CircularProgressIndicator(
                               value: loadingProgress.expectedTotalBytes != null
@@ -133,7 +135,8 @@ class PropertyCard extends StatelessWidget {
                       padding: const EdgeInsets.all(AirbnbConstants.paddingS),
                       decoration: BoxDecoration(
                         color: colorScheme.surface,
-                        borderRadius: BorderRadius.circular(AirbnbConstants.radiusM),
+                        borderRadius:
+                            BorderRadius.circular(AirbnbConstants.radiusM),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.black.withOpacity(0.1),
@@ -143,8 +146,12 @@ class PropertyCard extends StatelessWidget {
                         ],
                       ),
                       child: Icon(
-                        isFavorite ? AirbnbConstants.heartFilledIcon : AirbnbConstants.heartIcon,
-                        color: isFavorite ? colorScheme.primary : colorScheme.onSurface,
+                        isFavorite
+                            ? AirbnbConstants.heartFilledIcon
+                            : AirbnbConstants.heartIcon,
+                        color: isFavorite
+                            ? colorScheme.primary
+                            : colorScheme.onSurface,
                         size: 20,
                       ),
                     ),
@@ -177,7 +184,8 @@ class PropertyCard extends StatelessWidget {
 
             // Property details
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AirbnbConstants.paddingS),
+              padding: const EdgeInsets.symmetric(
+                  horizontal: AirbnbConstants.paddingS),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -239,7 +247,6 @@ class PropertyCard extends StatelessWidget {
       ),
     );
   }
-
 }
 
 class _Dot extends StatelessWidget {
@@ -257,7 +264,9 @@ class _Dot extends StatelessWidget {
       width: 6,
       height: 6,
       decoration: BoxDecoration(
-        color: isActive ? colorScheme.surface : colorScheme.surface.withOpacity(0.5),
+        color: isActive
+            ? colorScheme.surface
+            : colorScheme.surface.withOpacity(0.5),
         borderRadius: BorderRadius.circular(3),
       ),
     );

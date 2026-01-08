@@ -34,21 +34,25 @@ class _MentalHealthOnboardingState extends State<MentalHealthOnboarding> {
   List<OnBoardingData> data = [
     OnBoardingData(
       title: "Behavioral Health Service",
-      description: "Transforming lives by offering hope and opportunities for recovery, wellness, and independence.",
+      description:
+          "Transforming lives by offering hope and opportunities for recovery, wellness, and independence.",
     ),
     OnBoardingData(
       title: "Mental Health Service",
-      description: "If you think that you or someone you know has a mental health problem, there are a number of ways that you can seek advice.",
+      description:
+          "If you think that you or someone you know has a mental health problem, there are a number of ways that you can seek advice.",
     ),
     OnBoardingData(
       title: "Get Started",
-      description: "Take the first step on your journey to better mental health. Get started today!",
+      description:
+          "Take the first step on your journey to better mental health. Get started today!",
     ),
   ];
 
   @override
   Widget build(BuildContext context) {
-    const baseUrl = "https://raw.githubusercontent.com/yunweneric/flutter-open-ui/refs/heads/onboarding_ui_ch_3/assets/images/";
+    const baseUrl =
+        "https://raw.githubusercontent.com/yunweneric/flutter-open-ui/refs/heads/onboarding_ui_ch_3/assets/images/";
     return Scaffold(
       backgroundColor: const Color(0xff7265E2),
       body: Stack(
@@ -71,7 +75,8 @@ class _MentalHealthOnboardingState extends State<MentalHealthOnboarding> {
             right: -AppSizing.width(context) * 0.5,
             child: ImageFiltered(
               imageFilter: ImageFilter.blur(sigmaX: 30, sigmaY: 30),
-              child: SvgPicture.string(blob_1, color: Colors.white.withOpacity(0.7)),
+              child: SvgPicture.string(blob_1,
+                  color: Colors.white.withOpacity(0.7)),
             ),
           ),
           Column(
@@ -113,13 +118,19 @@ class _MentalHealthOnboardingState extends State<MentalHealthOnboarding> {
                               children: [
                                 Text(
                                   data[i].title,
-                                  style: Theme.of(context).textTheme.displayMedium?.copyWith(color: Colors.white),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .displayMedium
+                                      ?.copyWith(color: Colors.white),
                                   textAlign: TextAlign.center,
                                 ),
                                 AppSizing.k20(context),
                                 Text(
                                   data[i].description,
-                                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium
+                                      ?.copyWith(color: Colors.white),
                                   textAlign: TextAlign.center,
                                 ),
                               ],
@@ -153,7 +164,10 @@ class _MentalHealthOnboardingState extends State<MentalHealthOnboarding> {
                               },
                               child: const Text(
                                 "Skip",
-                                style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w400),
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400),
                               ),
                             ),
                     ),
@@ -168,7 +182,9 @@ class _MentalHealthOnboardingState extends State<MentalHealthOnboarding> {
                               width: i == activeIndex ? 30 : 10,
                               height: 10,
                               decoration: BoxDecoration(
-                                color: i == activeIndex ? Colors.white : Colors.grey,
+                                color: i == activeIndex
+                                    ? Colors.white
+                                    : Colors.grey,
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             );
@@ -184,7 +200,8 @@ class _MentalHealthOnboardingState extends State<MentalHealthOnboarding> {
                           curve: Curves.linear,
                         );
                       },
-                      child: const CircleAvatar(radius: 25, child: Icon(Icons.chevron_right)),
+                      child: const CircleAvatar(
+                          radius: 25, child: Icon(Icons.chevron_right)),
                     ),
                   ],
                 ),
@@ -197,7 +214,8 @@ class _MentalHealthOnboardingState extends State<MentalHealthOnboarding> {
   }
 }
 
-final blob_1 = '''<svg width="375" height="437" viewBox="0 0 375 437" fill="none" xmlns="http://www.w3.org/2000/svg">
+final blob_1 =
+    '''<svg width="375" height="437" viewBox="0 0 375 437" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g opacity="0.5" filter="url(#filter0_f_1_100)">
 <path d="M366.423 201.996C292.701 224.903 254.714 186.946 206.389 297.799C158.064 408.652 -99.8316 197.344 46.3546 201.996C192.541 206.648 277.923 178.985 206.389 106.192C134.855 33.3996 440.145 179.089 366.423 201.996Z" fill="#D9D9D9"/>
 </g>
@@ -228,8 +246,12 @@ final blob_2 = '''
 ''';
 
 class AppSizing {
-  static double width(BuildContext context) => MediaQuery.of(context).size.width;
-  static double height(BuildContext context) => MediaQuery.of(context).size.height;
-  static SizedBox k20(BuildContext context) => SizedBox(height: height(context) * 0.02);
-  static SizedBox khSpacer(BuildContext context, double factor) => SizedBox(height: width(context) * factor);
+  static double width(BuildContext context) =>
+      MediaQuery.of(context).size.width;
+  static double height(BuildContext context) =>
+      MediaQuery.of(context).size.height;
+  static SizedBox k20(BuildContext context) =>
+      SizedBox(height: height(context) * 0.02);
+  static SizedBox khSpacer(BuildContext context, double factor) =>
+      SizedBox(height: width(context) * factor);
 }

@@ -24,8 +24,10 @@ class MentalHealthOnboardingData {
     setup: setup,
     category: ComponentCategoryEnum.ANIMATIONS,
     subcategory: SubComponentCategoryEnum.ONBOARDING_SCREENS,
-    assetLink: "https://github.com/yunweneric/flutter-open-ui/raw/onboarding_ui_ch_3/assets.zip",
-    gitHubLink: "https://github.com/yunweneric/flutter-open-ui/tree/onboarding_ui_ch_3",
+    assetLink:
+        "https://github.com/yunweneric/flutter-open-ui/raw/onboarding_ui_ch_3/assets.zip",
+    gitHubLink:
+        "https://github.com/yunweneric/flutter-open-ui/tree/onboarding_ui_ch_3",
     supportedPlatforms: [
       SupportedPlatform.ANDROID,
       SupportedPlatform.IOS,

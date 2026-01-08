@@ -26,7 +26,8 @@ class BasuuChooseLanguageScreen extends StatefulWidget {
   const BasuuChooseLanguageScreen({super.key});
 
   @override
-  State<BasuuChooseLanguageScreen> createState() => _ChooseLanguageScreenState();
+  State<BasuuChooseLanguageScreen> createState() =>
+      _ChooseLanguageScreenState();
 }
 
 class _ChooseLanguageScreenState extends State<BasuuChooseLanguageScreen> {
@@ -63,7 +64,8 @@ class _ChooseLanguageScreenState extends State<BasuuChooseLanguageScreen> {
                             color: theme.cardColor,
                             borderRadius: BorderRadius.circular(10.r),
                           ),
-                          child: const BasuuIcon(icon: BasuuIcons.arrow_back, size: 20),
+                          child: const BasuuIcon(
+                              icon: BasuuIcons.arrow_back, size: 20),
                         ),
                         title: Text(
                           "What language are you want to study?",
@@ -86,10 +88,12 @@ class _ChooseLanguageScreenState extends State<BasuuChooseLanguageScreen> {
                                   // onTap: () => AppRouter.navigate(context, const BasuuChooseCategoryScreen()),
                                   onTap: () {},
                                   shape: RoundedRectangleBorder(
-                                    side: BorderSide(color: theme.highlightColor),
+                                    side:
+                                        BorderSide(color: theme.highlightColor),
                                     borderRadius: BorderRadius.circular(12.r),
                                   ),
-                                  contentPadding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 2.h),
+                                  contentPadding: EdgeInsets.symmetric(
+                                      horizontal: 15.w, vertical: 2.h),
                                   leading: BasuuIcon(icon: language.icon),
                                   title: Text(language.name),
                                 ),

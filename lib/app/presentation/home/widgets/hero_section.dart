@@ -3,6 +3,8 @@
 /// Displays the main hero content including title, description, action buttons,
 /// and a staggered grid of recent component previews. Automatically loads
 /// and displays the last 3 components from the component list.
+library;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,7 +34,7 @@ import 'package:go_router/go_router.dart';
 class HeroSection extends StatefulWidget {
   /// Callback invoked when the "Browse All Assets" button is pressed.
   final VoidCallback onBrowserAll;
-  
+
   /// Creates a hero section widget.
   const HeroSection({super.key, required this.onBrowserAll});
 
@@ -55,7 +57,11 @@ class _HeroSectionState extends State<HeroSection> {
       builder: (context, state) {
         final count = UtilHelper.countComponents(state.allComponents);
         List<Component> last3Components = state.allComponents.length > 3
-            ? state.allComponents.sublist(state.allComponents.length - 3, state.allComponents.length).reversed.toList()
+            ? state.allComponents
+                .sublist(
+                    state.allComponents.length - 3, state.allComponents.length)
+                .reversed
+                .toList()
             : [];
         Widget? firstComponent;
         Widget? secondComponent;
@@ -75,7 +81,8 @@ class _HeroSectionState extends State<HeroSection> {
         }
 
         return Container(
-          margin: EdgeInsets.symmetric(horizontal: AppSizing.kWPercentage(context, 5)),
+          margin: EdgeInsets.symmetric(
+              horizontal: AppSizing.kWPercentage(context, 5)),
           width: AppSizing.kWPercentage(context, 100),
           alignment: Alignment.topLeft,
           child: Column(
@@ -87,7 +94,8 @@ class _HeroSectionState extends State<HeroSection> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox(
-                    width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 80 : 35),
+                    width: AppSizing.kWPercentage(
+                        context, AppSizing.isMobile(context) ? 80 : 35),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -99,7 +107,10 @@ class _HeroSectionState extends State<HeroSection> {
                             style: Theme.of(context)
                                 .textTheme
                                 .displayLarge!
-                                .copyWith(fontSize: AppSizing.isMobile(context) ? 40.sp : 50.sp),
+                                .copyWith(
+                                    fontSize: AppSizing.isMobile(context)
+                                        ? 40.sp
+                                        : 50.sp),
                           );
                         }),
                         const Kh20Spacer(),
@@ -109,12 +120,17 @@ class _HeroSectionState extends State<HeroSection> {
                         ),
                         const Kh20Spacer(),
                         Builder(builder: (context) {
-                          final theme = Theme.of(context).brightness == Brightness.dark ? 'dark' : 'light';
+                          final theme =
+                              Theme.of(context).brightness == Brightness.dark
+                                  ? 'dark'
+                                  : 'light';
                           return Row(
                             children: [
-                              Image.asset("assets/images/flutter_$theme.png", width: 100.w),
+                              Image.asset("assets/images/flutter_$theme.png",
+                                  width: 100.w),
                               KwSpacer(width: 20.w),
-                              Image.asset("assets/images/dart_$theme.png", width: 100.w),
+                              Image.asset("assets/images/dart_$theme.png",
+                                  width: 100.w),
                             ],
                           );
                         }),
@@ -132,8 +148,10 @@ class _HeroSectionState extends State<HeroSection> {
                                   UpdateActiveCategoryEvent(
                                     category: AppCategoryModel(
                                       widget: widget,
-                                      category: ComponentCategoryEnum.INTRODUCTION,
-                                      subCategory: SubComponentCategoryEnum.ALL_COMPONENTS,
+                                      category:
+                                          ComponentCategoryEnum.INTRODUCTION,
+                                      subCategory: SubComponentCategoryEnum
+                                          .ALL_COMPONENTS,
                                     ),
                                   ),
                                 );
@@ -147,15 +165,18 @@ class _HeroSectionState extends State<HeroSection> {
                             KwSpacer(width: 20.w),
                             ElevatedButton.icon(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-                                side: BorderSide(color: Theme.of(context).dividerColor),
+                                backgroundColor:
+                                    Theme.of(context).scaffoldBackgroundColor,
+                                side: BorderSide(
+                                    color: Theme.of(context).dividerColor),
                               ),
                               iconAlignment: IconAlignment.end,
                               onPressed: widget.onBrowserAll,
                               icon: const Icon(Icons.arrow_forward_rounded),
                               label: Text(
                                 LangUtil.trans("browseAllAssets"),
-                                style: TextStyle(color: Theme.of(context).primaryColorDark),
+                                style: TextStyle(
+                                    color: Theme.of(context).primaryColorDark),
                               ),
                             ),
                           ],
@@ -184,7 +205,8 @@ class _HeroSectionState extends State<HeroSection> {
                               child: DeviceSectionFrame(
                                 child: AnimatedSwitcher(
                                   duration: const Duration(seconds: 1),
-                                  child: firstComponent ?? const NikeZoomerTemplate(),
+                                  child: firstComponent ??
+                                      const NikeZoomerTemplate(),
                                 ),
                               ),
                             ),
@@ -193,12 +215,14 @@ class _HeroSectionState extends State<HeroSection> {
                             crossAxisCellCount: 2,
                             mainAxisCellCount: 3.6,
                             child: Container(
-                              decoration: BoxDecoration(borderRadius: AppSizing.radiusMd()),
+                              decoration: BoxDecoration(
+                                  borderRadius: AppSizing.radiusMd()),
                               child: DeviceSectionFrame(
                                 deviceAlignment: Alignment.center,
                                 child: AnimatedSwitcher(
                                   duration: const Duration(seconds: 2),
-                                  child: secondComponent ?? const LeaveReviewHomeScreen(),
+                                  child: secondComponent ??
+                                      const LeaveReviewHomeScreen(),
                                 ),
                               ),
                             ),
@@ -208,12 +232,14 @@ class _HeroSectionState extends State<HeroSection> {
                             mainAxisCellCount: 1.0,
                             child: Builder(builder: (context) {
                               return Container(
-                                decoration: BoxDecoration(borderRadius: AppSizing.radiusMd()),
+                                decoration: BoxDecoration(
+                                    borderRadius: AppSizing.radiusMd()),
                                 child: DeviceSectionFrame(
                                   deviceAlignment: Alignment.topCenter,
                                   child: AnimatedSwitcher(
                                     duration: const Duration(seconds: 3),
-                                    child: thirdComponent ?? const ThemeToggle(),
+                                    child:
+                                        thirdComponent ?? const ThemeToggle(),
                                   ),
                                 ),
                               );

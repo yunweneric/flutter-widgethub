@@ -2,6 +2,8 @@
 ///
 /// Represents a single code variant of a component, pairing the Dart code
 /// string with its corresponding widget implementation.
+library;
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -44,5 +46,6 @@ class CodeComponent {
 
   String toJson() => json.encode(toMap());
 
-  factory CodeComponent.fromJson(String source) => CodeComponent.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory CodeComponent.fromJson(String source) =>
+      CodeComponent.fromMap(json.decode(source) as Map<String, dynamic>);
 }

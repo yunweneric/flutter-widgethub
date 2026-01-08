@@ -20,7 +20,7 @@ class _ButtonssideBarCategoriestate extends State<ButtonsBlocItem> {
     super.initState();
   }
 
-  startTimer() {
+  void startTimer() {
     timer = Timer.periodic(duration, (tick) {
       setState(() {
         if (count == 100) {

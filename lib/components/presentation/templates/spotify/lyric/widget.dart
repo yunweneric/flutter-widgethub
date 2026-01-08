@@ -7,7 +7,8 @@ class LyricLine {
   final String text;
   final bool isSection;
   final bool isActive;
-  const LyricLine({required this.text, this.isActive = false, this.isSection = false});
+  const LyricLine(
+      {required this.text, this.isActive = false, this.isSection = false});
 
   LyricLine copyWith({String? text, bool? isActive, bool? isSection}) {
     return LyricLine(
@@ -61,7 +62,9 @@ class _SpotifyLyricScreenState extends State<SpotifyLyricScreen> {
     setState(() {
       lyrics = [
         for (int i = 0; i < lyrics.length; i++)
-          lyrics[i].isSection ? lyrics[i] : lyrics[i].copyWith(isActive: i == index)
+          lyrics[i].isSection
+              ? lyrics[i]
+              : lyrics[i].copyWith(isActive: i == index)
       ];
     });
   }
@@ -98,12 +101,14 @@ class _SpotifyLyricScreenState extends State<SpotifyLyricScreen> {
                   children: [
                     // AppBar
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8.0, vertical: 8.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           IconButton(
-                            icon: SvgPicture.string(PlayerIcons.back, width: 28, height: 28),
+                            icon: SvgPicture.string(PlayerIcons.back,
+                                width: 28, height: 28),
                             onPressed: () {},
                             splashRadius: 24,
                           ),
@@ -118,7 +123,8 @@ class _SpotifyLyricScreenState extends State<SpotifyLyricScreen> {
                           IconButton(
                             icon: RotatedBox(
                               quarterTurns: 1,
-                              child: SvgPicture.string(PlayerIcons.more, width: 28, height: 28),
+                              child: SvgPicture.string(PlayerIcons.more,
+                                  width: 28, height: 28),
                             ),
                             onPressed: () {},
                             splashRadius: 24,
@@ -137,7 +143,8 @@ class _SpotifyLyricScreenState extends State<SpotifyLyricScreen> {
                           Widget item;
                           if (line.isSection) {
                             item = Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 16.0),
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 16.0),
                               child: Text(
                                 line.text,
                                 style: const TextStyle(
@@ -152,7 +159,10 @@ class _SpotifyLyricScreenState extends State<SpotifyLyricScreen> {
                               onTap: () => _setActive(index),
                               child: Row(
                                 children: [
-                                  SvgPicture.string(PlayerIcons.play, width: 24, height: 24, color: Color(0xFF1ED760)),
+                                  SvgPicture.string(PlayerIcons.play,
+                                      width: 24,
+                                      height: 24,
+                                      color: Color(0xFF1ED760)),
                                   const SizedBox(width: 8),
                                   Expanded(
                                     child: Text(
@@ -180,7 +190,9 @@ class _SpotifyLyricScreenState extends State<SpotifyLyricScreen> {
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
                                 item,
-                                SizedBox(height: MediaQuery.sizeOf(context).height * 0.5),
+                                SizedBox(
+                                    height: MediaQuery.sizeOf(context).height *
+                                        0.5),
                               ],
                             );
                           } else {
@@ -238,7 +250,8 @@ class _SpotifyBottomBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20).copyWith(bottom: kBottomNavigationBarHeight),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20)
+          .copyWith(bottom: kBottomNavigationBarHeight),
       decoration: BoxDecoration(color: Colors.black.withOpacity(0.85)),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -259,14 +272,21 @@ class _SpotifyBottomBar extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Bad Guy', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18)),
+                    Text('Bad Guy',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18)),
                     SizedBox(height: 2),
-                    Text('Billie Eilish', style: TextStyle(color: Color(0xFFB3B3B3), fontSize: 14)),
+                    Text('Billie Eilish',
+                        style:
+                            TextStyle(color: Color(0xFFB3B3B3), fontSize: 14)),
                   ],
                 ),
               ),
               IconButton(
-                icon: SvgPicture.string(PlayerIcons.heart, width: 28, height: 28),
+                icon:
+                    SvgPicture.string(PlayerIcons.heart, width: 28, height: 28),
                 onPressed: () {},
                 splashRadius: 24,
               ),
@@ -293,12 +313,14 @@ class _SpotifyBottomBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               IconButton(
-                icon: SvgPicture.string(PlayerIcons.repeat, width: 28, height: 28),
+                icon: SvgPicture.string(PlayerIcons.repeat,
+                    width: 28, height: 28),
                 onPressed: () {},
                 splashRadius: 28,
               ),
               IconButton(
-                icon: SvgPicture.string(PlayerIcons.previous, width: 36, height: 36),
+                icon: SvgPicture.string(PlayerIcons.previous,
+                    width: 36, height: 36),
                 onPressed: () {},
                 splashRadius: 36,
               ),
@@ -308,18 +330,21 @@ class _SpotifyBottomBar extends StatelessWidget {
                   shape: BoxShape.circle,
                 ),
                 child: IconButton(
-                  icon: SvgPicture.string(PlayerIcons.pause, width: 36, height: 36),
+                  icon: SvgPicture.string(PlayerIcons.pause,
+                      width: 36, height: 36),
                   onPressed: () {},
                   splashRadius: 36,
                 ),
               ),
               IconButton(
-                icon: SvgPicture.string(PlayerIcons.next, width: 36, height: 36),
+                icon:
+                    SvgPicture.string(PlayerIcons.next, width: 36, height: 36),
                 onPressed: () {},
                 splashRadius: 36,
               ),
               IconButton(
-                icon: SvgPicture.string(PlayerIcons.shuffle, width: 28, height: 28),
+                icon: SvgPicture.string(PlayerIcons.shuffle,
+                    width: 28, height: 28),
                 onPressed: () {},
                 splashRadius: 28,
               ),

@@ -1,6 +1,8 @@
 /// Splash screen widget.
 ///
 /// Placeholder for the application splash screen shown during app initialization.
+library;
+
 import 'package:flutter/material.dart';
 
 /// Splash screen widget.

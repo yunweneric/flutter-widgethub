@@ -2,6 +2,8 @@
 ///
 /// Manages the selected device frame state and handles device frame changes.
 /// Uses HydratedBloc to persist device frame preference across app restarts.
+library;
+
 import 'package:device_frame/device_frame.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
@@ -14,7 +16,8 @@ part 'device_frame_state.dart';
 /// HydratedBloc. Initializes with iPhone 13 as the default device.
 class DeviceFrameBloc extends HydratedBloc<DeviceFrameEvent, DeviceFrameState> {
   /// Creates a device frame bloc with iPhone 13 as initial device.
-  DeviceFrameBloc() : super(DeviceFrameState(selectedDeviceInfo: Devices.ios.iPhone13)) {
+  DeviceFrameBloc()
+      : super(DeviceFrameState(selectedDeviceInfo: Devices.ios.iPhone13)) {
     on<UpdateDeviceFrameEvent>((event, emit) {
       emit(state.copyWith(selectedDeviceInfo: event.deviceInfo));
     });

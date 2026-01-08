@@ -2,6 +2,8 @@
 ///
 /// Displays the main landing page with hero section, integration information,
 /// and assets section. Manages scroll behavior and component data loading.
+library;
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutterui/app/shared/shared.dart';
@@ -31,10 +33,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   /// Theme bloc instance for theme management.
   final themeBloc = getIt.get<ThemeBloc>();
-  
+
   /// Component bloc instance for component data management.
   final componentBloc = getIt.get<ComponentBloc>();
-  
+
   @override
   void initState() {
     _controller.addListener(listenToScroll);
@@ -80,6 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
           item.category.describe().toLowerCase() != "tabs",
     ),
   ];
+
   /// Generates a scroll factor based on device type.
   ///
   /// [context] The build context.

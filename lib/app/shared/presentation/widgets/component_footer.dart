@@ -35,8 +35,7 @@ class _DetailedFooterState extends State<ComponentFooter> {
               textAlign: AppSizing.isMobile(context)
                   ? TextAlign.center
                   : TextAlign.left,
-            )
-,
+            ),
           ),
           SizedBox(
             width: AppSizing.kWPercentage(

@@ -12,16 +12,19 @@ class AdditionalSectionsWidget extends StatelessWidget {
         children: [
           const SizedBox(height: AirbnbConstants.paddingXL),
           _CollapsibleSection(title: 'Availability', subtitle: 'Feb 13 - 14'),
-          _CollapsibleSection(title: 'House rules', subtitle: 'Check-in: After 1:00 PM'),
+          _CollapsibleSection(
+              title: 'House rules', subtitle: 'Check-in: After 1:00 PM'),
           _CollapsibleSection(
               title: 'Health & safety',
-              subtitle: 'Airbnb\'s COVID-19 safety practices apply\nSecurity camera/recording device'),
-          _CollapsibleSection(title: 'Cancellation policy', subtitle: 'Free cancellation before Feb 12'),
+              subtitle:
+                  'Airbnb\'s COVID-19 safety practices apply\nSecurity camera/recording device'),
+          _CollapsibleSection(
+              title: 'Cancellation policy',
+              subtitle: 'Free cancellation before Feb 12'),
         ],
       ),
     );
   }
-
 }
 
 class _CollapsibleSection extends StatelessWidget {
@@ -40,7 +43,8 @@ class _CollapsibleSection extends StatelessWidget {
       padding: const EdgeInsets.all(AirbnbConstants.paddingM),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(AirbnbConstants.radiusM),
-        border: Border.all(color: Theme.of(context).dividerColor.withOpacity(0.1)),
+        border:
+            Border.all(color: Theme.of(context).dividerColor.withOpacity(0.1)),
       ),
       child: Row(
         children: [

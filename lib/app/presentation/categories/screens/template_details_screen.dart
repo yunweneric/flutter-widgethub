@@ -15,7 +15,8 @@ import 'package:go_router/go_router.dart';
 class TemplateDetailsScreen extends StatefulWidget {
   final String id;
   final int index;
-  const TemplateDetailsScreen({super.key, required this.id, required this.index});
+  const TemplateDetailsScreen(
+      {super.key, required this.id, required this.index});
 
   @override
   State<TemplateDetailsScreen> createState() => _HomeScreenState();
@@ -35,9 +36,13 @@ class _HomeScreenState extends State<TemplateDetailsScreen> {
         }
       },
       builder: (context, state) {
-        final component = state.allComponents.where((item) => item.id == widget.id).firstOrNull;
+        final component = state.allComponents
+            .where((item) => item.id == widget.id)
+            .firstOrNull;
 
-        final indexItem = (component != null && widget.index >= 0 && widget.index < component.codeComponents.length)
+        final indexItem = (component != null &&
+                widget.index >= 0 &&
+                widget.index < component.codeComponents.length)
             ? component.codeComponents[widget.index]
             : null;
         if (indexItem == null) {
@@ -61,14 +66,18 @@ class _HomeScreenState extends State<TemplateDetailsScreen> {
           final canNext = activeIndex < state.allComponents.length - 1;
           return MainContent(
             children: [
-              Text(LangUtil.trans(component.title), style: Theme.of(context).textTheme.displayLarge),
+              Text(LangUtil.trans(component.title),
+                  style: Theme.of(context).textTheme.displayLarge),
               const Kh10Spacer(),
-              Text(LangUtil.trans(component.description), style: Theme.of(context).textTheme.bodyMedium),
+              Text(LangUtil.trans(component.description),
+                  style: Theme.of(context).textTheme.bodyMedium),
               const Kh20Spacer(),
-              Text(LangUtil.trans("Setup"), style: Theme.of(context).textTheme.displayMedium),
+              Text(LangUtil.trans("Setup"),
+                  style: Theme.of(context).textTheme.displayMedium),
               const Kh10Spacer(),
               const Kh10Spacer(),
-              CodeHighlight(code: component.setup, borderRadius: AppSizing.radiusSm()),
+              CodeHighlight(
+                  code: component.setup, borderRadius: AppSizing.radiusSm()),
               const Kh20Spacer(),
               const Kh10Spacer(),
               SupportPlatformSection(component: component),
@@ -96,11 +105,14 @@ class _HomeScreenState extends State<TemplateDetailsScreen> {
                   child: RichText(
                 text: TextSpan(
                   text: "'${widget.id}' ",
-                  style: DefaultTextStyle.of(context).style.copyWith(color: Theme.of(context).primaryColor),
+                  style: DefaultTextStyle.of(context)
+                      .style
+                      .copyWith(color: Theme.of(context).primaryColor),
                   children: <TextSpan>[
                     TextSpan(
                       text: LangUtil.trans('notFoundInCollections'),
-                      style: TextStyle(color: Theme.of(context).primaryColorDark),
+                      style:
+                          TextStyle(color: Theme.of(context).primaryColorDark),
                     ),
                   ],
                 ),

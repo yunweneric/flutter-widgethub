@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart' show AppSizing, Kh20Spacer, Kh10Spacer, KhSpacer, KwSpacer;
+import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/utils/util.dart';
 import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 
@@ -12,7 +12,8 @@ class ResourceSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (component.assetLink == null && component.gitHubLink == null) return const SizedBox.shrink();
+    if (component.assetLink == null && component.gitHubLink == null)
+      return const SizedBox.shrink();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -77,11 +78,16 @@ class _RowItemState extends State<RowItem> {
           scale: isHovered ? 1.05 : 1.0,
           child: Row(
             children: [
-              AppIcon(icon: widget.leading, color: isHovered ? Theme.of(context).primaryColor : null),
+              AppIcon(
+                  icon: widget.leading,
+                  color: isHovered ? Theme.of(context).primaryColor : null),
               const KwSpacer(width: 5),
               Text(
                 widget.title,
-                style: Theme.of(context).textTheme.bodySmall!.copyWith(color: isHovered ? Theme.of(context).primaryColor : null),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodySmall!
+                    .copyWith(color: isHovered ? Theme.of(context).primaryColor : null),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),

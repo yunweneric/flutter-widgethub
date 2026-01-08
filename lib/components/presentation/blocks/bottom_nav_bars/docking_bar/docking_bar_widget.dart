@@ -50,8 +50,11 @@ class _DockingBarWidgetState extends State<DockingBarWidget> {
               child: TweenAnimationBuilder(
                   key: ValueKey(activeIndex),
                   tween: tween,
-                  duration: Duration(milliseconds: animationCompleted ? 2000 : 200),
-                  curve: animationCompleted ? Curves.elasticOut : Curves.easeOut, // Using bounce out curve
+                  duration:
+                      Duration(milliseconds: animationCompleted ? 2000 : 200),
+                  curve: animationCompleted
+                      ? Curves.elasticOut
+                      : Curves.easeOut, // Using bounce out curve
                   onEnd: () {
                     setState(() {
                       animationCompleted = true;
@@ -66,7 +69,8 @@ class _DockingBarWidgetState extends State<DockingBarWidget> {
                           alignment: Alignment.bottomCenter,
                           transform: Matrix4.identity()
                             ..scale(i == activeIndex ? value : 1.0)
-                            ..translate(0.0, i == activeIndex ? 80.0 * (1 - value) : 0.0),
+                            ..translate(0.0,
+                                i == activeIndex ? 80.0 * (1 - value) : 0.0),
                           child: InkWell(
                             onTap: () {
                               setState(() {
@@ -98,14 +102,19 @@ class _DockingBarWidgetState extends State<DockingBarWidget> {
 }
 
 class DockingBarAppSizing {
-  static double width(BuildContext context) => MediaQuery.of(context).size.width;
-  static double height(BuildContext context) => MediaQuery.of(context).size.height;
-  static double kHPercentage(BuildContext context, double value) => (height(context) * value) / 100;
-  static double kWPercentage(BuildContext context, double value) => (width(context) * value) / 100;
+  static double width(BuildContext context) =>
+      MediaQuery.of(context).size.width;
+  static double height(BuildContext context) =>
+      MediaQuery.of(context).size.height;
+  static double kHPercentage(BuildContext context, double value) =>
+      (height(context) * value) / 100;
+  static double kWPercentage(BuildContext context, double value) =>
+      (width(context) * value) / 100;
 }
 
 class DockingIcon {
-  static const lense = '''<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+  static const lense =
+      '''<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
     xmlns="http://www.w3.org/2000/svg">
     <g clip-path="url(#clip0_403_3467)">
         <path d="M23.9998 22.5867L17.7378 16.3247C19.3644 14.3353 20.1642 11.7968 19.9716 9.23426C19.7791 6.67173 18.609 4.28123 16.7034 2.55722C14.7977 0.833208 12.3024 -0.0924103 9.73342 -0.0281784C7.16447 0.0360534 4.71848 1.08522 2.9014 2.90231C1.08431 4.7194 0.0351378 7.16539 -0.029094 9.73434C-0.0933258 12.3033 0.832292 14.7987 2.5563 16.7043C4.28031 18.6099 6.67081 19.78 9.23334 19.9725C11.7959 20.1651 14.3344 19.3653 16.3238 17.7387L22.5858 24.0007L23.9998 22.5867ZM9.99978 18.0007C8.41753 18.0007 6.87081 17.5315 5.55522 16.6525C4.23963 15.7734 3.21425 14.524 2.60875 13.0622C2.00324 11.6004 1.84482 9.99182 2.1535 8.43997C2.46218 6.88813 3.22411 5.46266 4.34293 4.34384C5.46175 3.22502 6.88721 2.4631 8.43906 2.15441C9.99091 1.84573 11.5994 2.00416 13.0612 2.60966C14.5231 3.21516 15.7725 4.24054 16.6515 5.55614C17.5306 6.87173 17.9998 8.41845 17.9998 10.0007C17.9974 12.1217 17.1538 14.1551 15.654 15.6549C14.1542 17.1547 12.1208 17.9983 9.99978 18.0007Z" fill="#374957"/>
@@ -117,7 +126,8 @@ class DockingIcon {
     </defs>
 </svg>
 ''';
-  static const chat = '''<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+  static const chat =
+      '''<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
     xmlns="http://www.w3.org/2000/svg">
     <g clip-path="url(#clip0_403_3671)">
         <path d="M23.9999 24H12.0179C9.67684 23.9989 7.38728 23.3131 5.43117 22.027C3.47506 20.7409 1.93785 18.9108 1.00886 16.762C0.0798767 14.6132 -0.200302 12.2396 0.202835 9.93353C0.605972 7.62749 1.67482 5.48972 3.27772 3.78354C4.88062 2.07737 6.94758 0.877292 9.22399 0.331138C11.5004 -0.215015 13.8869 -0.0833956 16.0894 0.709785C18.2919 1.50297 20.2144 2.92307 21.6199 4.79517C23.0255 6.66727 23.8528 8.90961 23.9999 11.246V11.309V24ZM12.0179 2C9.36569 2 6.82215 3.05357 4.94679 4.92893C3.07142 6.8043 2.01785 9.34784 2.01785 12C2.01785 14.6522 3.07142 17.1957 4.94679 19.0711C6.82215 20.9464 9.36569 22 12.0179 22H21.9999V11.341C21.8284 8.80932 20.7026 6.43703 18.8498 4.70323C16.997 2.96943 14.5553 2.00332 12.0179 2Z" fill="#374957"/>
@@ -145,7 +155,8 @@ class DockingIcon {
     </defs>
 </svg>
         ''';
-  static const color = '''<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+  static const color =
+      '''<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
     xmlns="http://www.w3.org/2000/svg">
     <g clip-path="url(#clip0_403_3735)">
         <path d="M17.4998 10.9997C18.3282 10.9997 18.9998 10.3281 18.9998 9.49969C18.9998 8.67127 18.3282 7.99969 17.4998 7.99969C16.6714 7.99969 15.9998 8.67127 15.9998 9.49969C15.9998 10.3281 16.6714 10.9997 17.4998 10.9997Z" fill="#374957"/>
@@ -161,7 +172,8 @@ class DockingIcon {
     </defs>
 </svg>
     ''';
-  static const setting = '''<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+  static const setting =
+      '''<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
     xmlns="http://www.w3.org/2000/svg">
     <g clip-path="url(#clip0_403_3223)">
         <path d="M12.0001 8.00061C11.209 8.00061 10.4356 8.23521 9.77781 8.67473C9.12002 9.11426 8.60733 9.73897 8.30458 10.4699C8.00182 11.2008 7.92261 12.005 8.07695 12.781C8.23129 13.5569 8.61226 14.2696 9.17167 14.829C9.73108 15.3884 10.4438 15.7694 11.2197 15.9238C11.9957 16.0781 12.7999 15.9989 13.5308 15.6961C14.2617 15.3934 14.8864 14.8807 15.326 14.2229C15.7655 13.5651 16.0001 12.7917 16.0001 12.0006C16.0001 10.9397 15.5787 9.92233 14.8285 9.17218C14.0784 8.42204 13.061 8.00061 12.0001 8.00061ZM12.0001 14.0006C11.6045 14.0006 11.2179 13.8833 10.889 13.6635C10.5601 13.4438 10.3037 13.1314 10.1523 12.766C10.001 12.4005 9.96135 11.9984 10.0385 11.6104C10.1157 11.2225 10.3062 10.8661 10.5859 10.5864C10.8656 10.3067 11.222 10.1162 11.6099 10.039C11.9979 9.96187 12.4 10.0015 12.7655 10.1529C13.1309 10.3042 13.4433 10.5606 13.663 10.8895C13.8828 11.2184 14.0001 11.605 14.0001 12.0006C14.0001 12.531 13.7894 13.0398 13.4143 13.4148C13.0392 13.7899 12.5305 14.0006 12.0001 14.0006Z" fill="#374957"/>

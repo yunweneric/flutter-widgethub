@@ -2,6 +2,8 @@
 ///
 /// Provides a visually appealing way to switch between light and dark themes
 /// with smooth animations and hover effects.
+library;
+
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -27,10 +29,10 @@ class ThemeToggle extends StatefulWidget {
 class _ThemeToggleState extends State<ThemeToggle> {
   /// Theme bloc instance for theme management.
   final theme = getIt.get<ThemeBloc>();
-  
+
   /// Scale factor for moon icon (used for hover effect).
   double moonScale = 1.0;
-  
+
   /// Scale factor for sun icon (used for hover effect).
   double sunScale = 1.0;
   @override
@@ -130,8 +132,8 @@ class _ThemeToggleState extends State<ThemeToggle> {
                 top: 70,
                 left: 0,
                 right: 0,
-                child: Text(LangUtil.trans(
-                  'tryToToggle'),
+                child: Text(
+                  LangUtil.trans('tryToToggle'),
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.displayMedium,
                 ),

@@ -2,6 +2,8 @@
 ///
 /// Provides helper methods for responsive sizing, device detection,
 /// and common layout calculations using ScreenUtil for responsive design.
+library;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/app/shared/presentation/utils/colors.dart';
@@ -12,11 +14,14 @@ import 'package:flutterui/app/shared/presentation/utils/colors.dart';
 /// creating borders, and detecting device types.
 class AppSizing {
   static double width(BuildContext context) => MediaQuery.sizeOf(context).width;
-  static double height(BuildContext context) => MediaQuery.sizeOf(context).height;
-  static double kHPercentage(BuildContext context, double value) => (height(context) * value) / 100;
-  static double kWPercentage(BuildContext context, double value) => (width(context) * value) / 100;
-  static radiusMd() => BorderRadius.circular(10.r);
-  static radiusSm() => BorderRadius.circular(5.r);
+  static double height(BuildContext context) =>
+      MediaQuery.sizeOf(context).height;
+  static double kHPercentage(BuildContext context, double value) =>
+      (height(context) * value) / 100;
+  static double kWPercentage(BuildContext context, double value) =>
+      (width(context) * value) / 100;
+  static BorderRadius radiusMd() => BorderRadius.circular(10.r);
+  static BorderRadius radiusSm() => BorderRadius.circular(5.r);
 
   static OutlineInputBorder mainBorder(Color color) {
     return OutlineInputBorder(
@@ -55,7 +60,7 @@ class AppSizing {
   // Deprecated: Use Kh20Spacer widget instead
   @Deprecated('Use Kh20Spacer widget instead')
   static Widget kh20Spacer() => const Kh20Spacer();
-  
+
   // Deprecated: Use Kh10Spacer widget instead
   @Deprecated('Use Kh10Spacer widget instead')
   static Widget kh10Spacer() => const Kh10Spacer();

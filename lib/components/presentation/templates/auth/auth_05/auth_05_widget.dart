@@ -70,7 +70,7 @@ class Auth05Theme {
 /// Auth05Widget()
 /// ```
 class Auth05Widget extends StatefulWidget {
-  const Auth05Widget({Key? key}) : super(key: key);
+  const Auth05Widget({super.key});
 
   @override
   State<Auth05Widget> createState() => _Auth05WidgetState();
@@ -149,16 +149,20 @@ class _Auth05Header extends StatelessWidget {
               children: [
                 const AppIconsLogo(width: 48, height: 48),
                 const SizedBox(height: 32),
-                const Text('Sign in to your', style: Auth05Theme.title, textAlign: TextAlign.center),
-                const Text('Account', style: Auth05Theme.title, textAlign: TextAlign.center),
+                const Text('Sign in to your',
+                    style: Auth05Theme.title, textAlign: TextAlign.center),
+                const Text('Account',
+                    style: Auth05Theme.title, textAlign: TextAlign.center),
                 const SizedBox(height: 12),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text("Don't have an account? ", style: Auth05Theme.subtitle),
+                    const Text("Don't have an account? ",
+                        style: Auth05Theme.subtitle),
                     GestureDetector(
                       onTap: () {},
-                      child: const Text('Sign Up', style: Auth05Theme.linkStyle),
+                      child:
+                          const Text('Sign Up', style: Auth05Theme.linkStyle),
                     ),
                   ],
                 ),
@@ -202,7 +206,8 @@ class _Auth05InputCard extends StatelessWidget {
           _Auth05InputField(
             controller: emailController,
             hintText: 'Loisbecket@gmail.com',
-            icon: const Icon(Icons.email_outlined, color: Auth05Theme.inputHint),
+            icon:
+                const Icon(Icons.email_outlined, color: Auth05Theme.inputHint),
             obscureText: false,
           ),
           const Divider(height: 1, color: Color(0xFFF0F0F0)),

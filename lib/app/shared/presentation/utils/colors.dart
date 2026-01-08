@@ -2,6 +2,8 @@
 ///
 /// Defines all color constants used throughout the application
 /// including primary colors, background colors, text colors, and card colors.
+library;
+
 import 'package:flutter/material.dart';
 
 /// Color constants for the application.
@@ -15,7 +17,7 @@ class AppColors {
   static const Color BG = Color(0xFFFFFFFF);
   static const Color BGDARK = Color(0xFF161616);
 
-  static const Color BGCARDDARK = Color(0xFF01A1F2A);
+  static const Color BGCARDDARK = Color(0xff01a1f2a);
   // static const Color BGCARDDARK = Color(0xFF262626);
 
   static const Color DARK_PRIMARY = Color(0xFF283C64);

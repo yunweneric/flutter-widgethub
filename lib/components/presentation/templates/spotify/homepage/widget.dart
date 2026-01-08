@@ -69,13 +69,15 @@ class _SpotifyHomepageState extends State<SpotifyHomepage> {
                         const SizedBox(height: 24),
                         _CategoryTabs(
                           currentIndex: currentIndex,
-                          onIndexChanged: (index) => setState(() => currentIndex = index),
+                          onIndexChanged: (index) =>
+                              setState(() => currentIndex = index),
                         ),
                         const SizedBox(height: 24),
                         _AlbumCards(),
                         const SizedBox(height: 32),
                         _PlaylistSection(theme: theme),
-                        const SizedBox(height: 100), // Space for bottom navigation
+                        const SizedBox(
+                            height: 100), // Space for bottom navigation
                       ],
                     ),
                   ),
@@ -256,7 +258,12 @@ class _CategoryTabs extends StatelessWidget {
     required this.onIndexChanged,
   });
 
-  static const List<String> categories = ['News', 'Video', 'Artists', 'Podcast'];
+  static const List<String> categories = [
+    'News',
+    'Video',
+    'Artists',
+    'Podcast'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -289,17 +296,20 @@ class _AlbumCards extends StatelessWidget {
 
   static const List<AlbumData> albums = [
     AlbumData(
-      imageUrl: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=200',
+      imageUrl:
+          'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=200',
       title: 'Bad Guy',
       artist: 'Billie Eilish',
     ),
     AlbumData(
-      imageUrl: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=200',
+      imageUrl:
+          'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=200',
       title: 'Scorpion',
       artist: 'Drake',
     ),
     AlbumData(
-      imageUrl: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=200',
+      imageUrl:
+          'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=200',
       title: 'Midnight',
       artist: 'Taylor Swift',
     ),

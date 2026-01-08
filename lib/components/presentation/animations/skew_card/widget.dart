@@ -2,6 +2,8 @@
 ///
 /// An animated card widget with skew and scale transformation effects.
 /// Responds to tap gestures to toggle visibility with smooth animations.
+library;
+
 import 'package:flutter/material.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 
@@ -127,7 +129,7 @@ class _SkewCardState extends State<SkewCard> {
                         fontWeight: FontWeight.w600,
                       ),
                 ),
-                 Text(
+                Text(
                   LangUtil.trans("flutterDeveloper"),
                   style: const TextStyle(
                     fontSize: 16,

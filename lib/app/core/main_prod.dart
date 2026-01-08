@@ -2,6 +2,8 @@
 ///
 /// This file initializes the application in production mode with
 /// production-optimized configurations and performance settings.
+library;
+
 import 'package:flutterui/app/core/app.dart';
 import 'package:flutterui/app/core/boostrap.dart';
 import 'package:flutterui/app/core/config.dart';

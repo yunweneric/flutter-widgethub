@@ -9,6 +9,8 @@
 ///
 /// Routes are organized using ShellRoute for shared layouts and
 /// include custom fade transitions for smooth navigation.
+library;
+
 import 'package:flutter/material.dart';
 import 'package:flutterui/app/presentation/categories/screens/component_category_screen.dart';
 import 'package:flutterui/app/presentation/categories/screens/component_details_wrapper.dart';
@@ -185,7 +187,8 @@ final appRouter = GoRouter(
         ),
         buildAnimatedRoute(
           path: '${RouteNames.blocks}/:id/:subCategory',
-          builder: (context, state) => BuildComponentDetailsWidget(state: state),
+          builder: (context, state) =>
+              BuildComponentDetailsWidget(state: state),
         ),
 
         // **     ----------------------------------------------    //
@@ -201,7 +204,8 @@ final appRouter = GoRouter(
         ),
         buildAnimatedRoute(
           path: '${RouteNames.animations}/:id/:subCategory',
-          builder: (context, state) => BuildComponentDetailsWidget(state: state),
+          builder: (context, state) =>
+              BuildComponentDetailsWidget(state: state),
         ),
 
         // **     ----------------------------------------------    //
@@ -217,7 +221,8 @@ final appRouter = GoRouter(
         ),
         buildAnimatedRoute(
           path: '${RouteNames.effects}/:id/:subCategory',
-          builder: (context, state) => BuildComponentDetailsWidget(state: state),
+          builder: (context, state) =>
+              BuildComponentDetailsWidget(state: state),
         ),
       ],
     ),

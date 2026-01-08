@@ -1,6 +1,8 @@
 /// Sidebar state management BLoC.
 ///
 /// Manages the open/closed state of the application sidebar navigation.
+library;
+
 import 'package:bloc/bloc.dart';
 
 part 'sidebar_event.dart';

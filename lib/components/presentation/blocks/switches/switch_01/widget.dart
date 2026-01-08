@@ -28,13 +28,16 @@ class _DiscloseSwitcherState extends State<DiscloseSwitcher> {
       body: LayoutBuilder(builder: (context, constraints) {
         return Center(
           child: SizedBox(
-            width: isTablet ? constraints.maxWidth * 0.3 : constraints.maxWidth * 0.8,
+            width: isTablet
+                ? constraints.maxWidth * 0.3
+                : constraints.maxWidth * 0.8,
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 100),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
                 border: Border.all(
-                  color: isOn ? Colors.grey.withOpacity(0.2) : Colors.transparent,
+                  color:
+                      isOn ? Colors.grey.withOpacity(0.2) : Colors.transparent,
                 ),
               ),
               padding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 2),
@@ -51,12 +54,15 @@ class _DiscloseSwitcherState extends State<DiscloseSwitcher> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      tileColor: const Color.fromARGB(125, 33, 107, 243).withOpacity(0.05),
+                      contentPadding:
+                          const EdgeInsets.symmetric(horizontal: 10.0),
+                      tileColor: const Color.fromARGB(125, 33, 107, 243)
+                          .withOpacity(0.05),
                       value: isOn,
                       title: Row(
                         children: [
-                          SvgPicture.string(svgIcon, color: theme.highlightColor),
+                          SvgPicture.string(svgIcon,
+                              color: theme.highlightColor),
                           const SizedBox(width: 10),
                           const Text(
                             "Predictive Completion",

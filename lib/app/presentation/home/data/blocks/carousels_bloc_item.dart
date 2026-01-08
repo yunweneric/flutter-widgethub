@@ -25,7 +25,7 @@ class _CarouselssideBarCategoriestate extends State<CarouselsBlocItem> {
 
   ScrollController? controller;
 
-  startTimer() {
+  void startTimer() {
     timer = Timer.periodic(duration, (tick) {
       setState(() {
         if (currentIndex == 10) {

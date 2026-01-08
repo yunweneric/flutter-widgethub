@@ -2,6 +2,8 @@
 ///
 /// Provides helper methods for loading translations, translating strings,
 /// and managing locale changes throughout the application.
+library;
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_localization/src/easy_localization_controller.dart';
 import 'package:easy_localization/src/localization.dart';
@@ -39,12 +41,14 @@ class LangUtil {
     return Localization.instance;
   }
 
-  static String trans(String? key, {Map<String, String>? args, BuildContext? context}) {
+  static String trans(String? key,
+      {Map<String, String>? args, BuildContext? context}) {
     if (key != '' && key != null) {
       String val = tr(key, namedArgs: args, context: context);
       return val;
-    } else
+    } else {
       return '';
+    }
   }
 
   static bool isFrench(BuildContext context) {

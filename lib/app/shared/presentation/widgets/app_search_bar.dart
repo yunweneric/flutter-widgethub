@@ -55,7 +55,7 @@ class _AppSearchBarState extends State<AppSearchBar> {
   }
 }
 
-showSearchModal(BuildContext context) {
+Future<dynamic> showSearchModal(BuildContext context) {
   return showDialog(
     barrierDismissible: true,
     context: context,
@@ -144,16 +144,21 @@ class _SearchBarState extends State<SearchBar> {
                         onChanged: filter,
                         style: const TextStyle(fontSize: 14),
                         decoration: InputDecoration(
-                          border: const OutlineInputBorder(borderSide: BorderSide.none),
-                          enabledBorder: const OutlineInputBorder(borderSide: BorderSide.none),
-                          focusedBorder: const OutlineInputBorder(borderSide: BorderSide.none),
-                          contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+                          border: const OutlineInputBorder(
+                              borderSide: BorderSide.none),
+                          enabledBorder: const OutlineInputBorder(
+                              borderSide: BorderSide.none),
+                          focusedBorder: const OutlineInputBorder(
+                              borderSide: BorderSide.none),
+                          contentPadding:
+                              const EdgeInsets.symmetric(horizontal: 10),
                           hintText: LangUtil.trans("searchComponent"),
                           hintStyle: const TextStyle(fontSize: 14),
                           prefixIcon: Transform.scale(
                             scale: 0.4,
                             child: AppIcon(
-                                icon: AppIcons.search, color: Theme.of(context).highlightColor),
+                                icon: AppIcons.search,
+                                color: Theme.of(context).highlightColor),
                           ),
                         ),
                       ),
@@ -164,15 +169,20 @@ class _SearchBarState extends State<SearchBar> {
                     if (AppSizing.isMobile(context)) heightFactor = 8;
                     if (AppSizing.isTablet(context)) heightFactor = 7;
                     return AnimatedContainer(
-                      constraints: BoxConstraints(maxHeight: AppSizing.kHPercentage(context, 60)),
+                      constraints: BoxConstraints(
+                          maxHeight: AppSizing.kHPercentage(context, 60)),
                       height: isExpanded
-                          ? AppSizing.kHPercentage(context,
-                              filteredData.isEmpty ? 20 : filteredData.length * heightFactor)
+                          ? AppSizing.kHPercentage(
+                              context,
+                              filteredData.isEmpty
+                                  ? 20
+                                  : filteredData.length * heightFactor)
                           : 0,
                       decoration: BoxDecoration(
                         color: Theme.of(context).scaffoldBackgroundColor,
                         border: BorderDirectional(
-                            top: BorderSide(color: Theme.of(context).dividerColor)),
+                            top: BorderSide(
+                                color: Theme.of(context).dividerColor)),
                       ),
                       duration: const Duration(milliseconds: 300),
                       alignment: Alignment.center,
@@ -186,11 +196,16 @@ class _SearchBarState extends State<SearchBar> {
                                     text: "'$searchTerm' ",
                                     style: DefaultTextStyle.of(context)
                                         .style
-                                        .copyWith(color: Theme.of(context).primaryColor),
+                                        .copyWith(
+                                            color:
+                                                Theme.of(context).primaryColor),
                                     children: <TextSpan>[
                                       TextSpan(
-                                        text: LangUtil.trans('notFoundInCollections'),
-                                        style: TextStyle(color: Theme.of(context).primaryColorDark),
+                                        text: LangUtil.trans(
+                                            'notFoundInCollections'),
+                                        style: TextStyle(
+                                            color: Theme.of(context)
+                                                .primaryColorDark),
                                       ),
                                     ],
                                   ),
@@ -209,23 +224,31 @@ class _SearchBarState extends State<SearchBar> {
                                       },
                                       title: Text(
                                         LangUtil.trans(component.title),
-                                        style: Theme.of(context).textTheme.displayMedium,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .displayMedium,
                                       ),
                                       subtitle: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             component.category.describe(),
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .bodySmall!
-                                                .copyWith(color: Theme.of(context).primaryColor),
+                                                .copyWith(
+                                                    color: Theme.of(context)
+                                                        .primaryColor),
                                           ),
                                           Text(
-                                            LangUtil.trans(component.description),
+                                            LangUtil.trans(
+                                                component.description),
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
-                                            style: Theme.of(context).textTheme.bodySmall,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodySmall,
                                           ),
                                         ],
                                       ),

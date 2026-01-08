@@ -2,6 +2,8 @@
 ///
 /// This file initializes the application in production mode by calling
 /// the bootstrap function with the production environment configuration.
+library;
+
 import 'package:flutterui/app/core/app.dart';
 import 'package:flutterui/app/core/boostrap.dart';
 import 'package:flutterui/app/core/config.dart';

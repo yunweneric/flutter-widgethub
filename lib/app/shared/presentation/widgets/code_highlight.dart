@@ -49,25 +49,66 @@ class _CodeHighlightState extends State<CodeHighlight> {
         future: setupHighLighter(Theme.of(context).brightness),
         builder: (ctx, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: loader(context));
+            return const _CodeLoader();
           }
-          return codeAndPreview();
+          return _CodeContent(
+            content: content!,
+            code: widget.code,
+            fontSize: widget.fontSize,
+            borderRadius: widget.borderRadius,
+            hasCopied: hasCopied,
+            onCopyTap: () {
+              setState(() => hasCopied = true);
+              UtilHelper.copy(context, data: widget.code);
+              Future.delayed(const Duration(seconds: 3), () {
+                if (mounted) {
+                  setState(() => hasCopied = false);
+                }
+              });
+            },
+          );
         });
   }
+}
 
-  Widget codeAndPreview() {
+class _CodeLoader extends StatelessWidget {
+  const _CodeLoader();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(child: CircularProgressIndicator());
+  }
+}
+
+class _CodeContent extends StatelessWidget {
+  final TextSpan content;
+  final String code;
+  final double? fontSize;
+  final BorderRadiusGeometry? borderRadius;
+  final bool hasCopied;
+  final VoidCallback onCopyTap;
+
+  const _CodeContent({
+    required this.content,
+    required this.code,
+    this.fontSize,
+    this.borderRadius,
+    required this.hasCopied,
+    required this.onCopyTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return Stack(
       children: [
         Container(
           width: AppSizing.kWPercentage(context, 100),
           decoration: BoxDecoration(
-            color: isDark
-                ? Theme.of(context).cardColor.withOpacity(0.6)
-                : Theme.of(context).cardColor,
-            borderRadius: widget.borderRadius ?? BorderRadius.circular(12.r),
+            color: Theme.of(context).cardColor.withValues(alpha: isDark ? 0.6 : 0.1),
+            borderRadius: borderRadius ?? BorderRadius.circular(12.r),
             border: Border.all(
-              color: Theme.of(context).dividerColor.withOpacity(0.2),
+              color: Theme.of(context).dividerColor.withValues(alpha: 0.2),
               width: 1,
             ),
           ),
@@ -78,11 +119,11 @@ class _CodeHighlightState extends State<CodeHighlight> {
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
                 child: Text.rich(
-                  content!,
+                  content,
                   softWrap: false,
                   overflow: TextOverflow.clip,
                   style: GoogleFonts.sourceCodePro(
-                    fontSize: widget.fontSize ?? (AppSizing.isMobile(context) ? 11.sp : 14.sp),
+                    fontSize: fontSize ?? (AppSizing.isMobile(context) ? 11.sp : 14.sp),
                     height: 1.8,
                     letterSpacing: 0.3,
                   ),
@@ -94,64 +135,70 @@ class _CodeHighlightState extends State<CodeHighlight> {
         Positioned(
           right: 16,
           top: 16,
-          child: StatefulBuilder(builder: (context, setState) {
-            return Material(
-              color: Colors.transparent,
-              child: InkWell(
-                onTap: () {
-                  setState(() => hasCopied = true);
-                  UtilHelper.copy(context, data: widget.code);
-                  Future.delayed(const Duration(seconds: 3), () {
-                    setState(() => hasCopied = false);
-                  });
-                },
-                borderRadius: BorderRadius.circular(8.r),
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
-                  decoration: BoxDecoration(
-                    color: isDark
-                        ? Colors.white.withOpacity(0.1)
-                        : Colors.black.withOpacity(0.05),
-                    borderRadius: BorderRadius.circular(8.r),
-                    border: Border.all(
-                      color: Theme.of(context).dividerColor.withOpacity(0.2),
-                      width: 1,
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      AppIcon(
-                        icon: AppIcons.clipboard,
-                        color: hasCopied
-                            ? Theme.of(context).primaryColor
-                            : Theme.of(context).highlightColor,
-                        size: 16,
-                      ),
-                      if (!AppSizing.isMobile(context)) ...[
-                        KwSpacer(width: 6.w),
-                        Text(
-                          LangUtil.trans(hasCopied ? "copied" : "copy"),
-                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                fontSize: 12.sp,
-                                color: hasCopied
-                                    ? Theme.of(context).primaryColor
-                                    : Theme.of(context).highlightColor,
-                              ),
-                        ),
-                      ],
-                    ],
-                  ),
-                ),
-              ),
-            );
-          }),
+          child: _CopyButton(
+            hasCopied: hasCopied,
+            onTap: onCopyTap,
+          ),
         ),
       ],
     );
   }
+}
 
-  Widget loader(BuildContext context) {
-    return const Center(child: CircularProgressIndicator());
+class _CopyButton extends StatelessWidget {
+  final bool hasCopied;
+  final VoidCallback onTap;
+
+  const _CopyButton({
+    required this.hasCopied,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(8.r),
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+          decoration: BoxDecoration(
+            color:
+                isDark ? Colors.white.withOpacity(0.1) : Colors.black.withOpacity(0.05),
+            borderRadius: BorderRadius.circular(8.r),
+            border: Border.all(
+              color: Theme.of(context).dividerColor.withOpacity(0.2),
+              width: 1,
+            ),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              AppIcon(
+                icon: AppIcons.clipboard,
+                color: hasCopied
+                    ? Theme.of(context).primaryColor
+                    : Theme.of(context).highlightColor,
+                size: 16,
+              ),
+              if (!AppSizing.isMobile(context)) ...[
+                KwSpacer(width: 6.w),
+                Text(
+                  LangUtil.trans(hasCopied ? "copied" : "copy"),
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        fontSize: 12.sp,
+                        color: hasCopied
+                            ? Theme.of(context).primaryColor
+                            : Theme.of(context).highlightColor,
+                      ),
+                ),
+              ],
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

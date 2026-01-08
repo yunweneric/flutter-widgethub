@@ -33,13 +33,16 @@ class _SplashScreenState extends State<BasuuSplashScreen> {
     super.initState();
   }
 
-  final url = "https://raw.githubusercontent.com/yunweneric/flutter-open-ui/b53201c1802865cb708d65a5ff2f286eb6ca317a";
+  final url =
+      "https://raw.githubusercontent.com/yunweneric/flutter-open-ui/b53201c1802865cb708d65a5ff2f286eb6ca317a";
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
       body: TweenAnimationBuilder(
-          tween: animated ? Tween<double>(begin: 1, end: 0) : Tween<double>(begin: 0, end: 1),
+          tween: animated
+              ? Tween<double>(begin: 1, end: 0)
+              : Tween<double>(begin: 0, end: 1),
           curve: Curves.fastOutSlowIn,
           key: ValueKey(animated),
           duration: const Duration(milliseconds: 700),
@@ -66,13 +69,15 @@ class _SplashScreenState extends State<BasuuSplashScreen> {
                         children: [
                           Text(
                             "Learn a language easily with cards",
-                            style: theme.textTheme.displayLarge!.copyWith(fontSize: 42.sp),
+                            style: theme.textTheme.displayLarge!
+                                .copyWith(fontSize: 42.sp),
                             textAlign: TextAlign.center,
                           ),
                           const Kh20Spacer(),
                           Text(
                             "Learn words using cards, choosing levels that are convenient for you",
-                            style: theme.textTheme.labelMedium?.copyWith(fontSize: 18.sp),
+                            style: theme.textTheme.labelMedium
+                                ?.copyWith(fontSize: 18.sp),
                             textAlign: TextAlign.center,
                           ),
                           KhSpacer(height: AppSizing.kHPercentage(context, 8)),

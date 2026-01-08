@@ -25,7 +25,7 @@ class _DrawerssideBarCategoriestate extends State<DrawersBlocItem> {
     super.initState();
   }
 
-  startTimer() {
+  void startTimer() {
     timer = Timer.periodic(duration, (tick) {
       setState(() {
         isExpanded = !isExpanded;

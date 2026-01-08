@@ -37,17 +37,21 @@ class _LiquidGlassTabState extends State<LiquidGlassTab> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: NetworkImage("https://images.unsplash.com/photo-1454391304352-2bf4678b1a7a?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
+            image: NetworkImage(
+                "https://images.unsplash.com/photo-1454391304352-2bf4678b1a7a?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
             fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.5), BlendMode.darken),
+            colorFilter: ColorFilter.mode(
+                Colors.black.withOpacity(0.5), BlendMode.darken),
           ),
           // color: Colors.red,
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: AppSizing.width(context) * 0.04),
+          padding:
+              EdgeInsets.symmetric(horizontal: AppSizing.width(context) * 0.04),
           child: Center(
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: AppSizing.width(context) * 0.02, vertical: 8),
+              padding: EdgeInsets.symmetric(
+                  horizontal: AppSizing.width(context) * 0.02, vertical: 8),
               decoration: BoxDecoration(
                 color: Colors.blueGrey.withOpacity(0.2),
                 borderRadius: BorderRadius.circular(30),
@@ -92,7 +96,8 @@ class _LiquidGlassTabState extends State<LiquidGlassTab> {
                               maxLines: 1,
                               textDirection: TextDirection.ltr,
                             )..layout();
-                            final width = textPainter.size.width + AppSizing.width(context) * 0.12;
+                            final width = textPainter.size.width +
+                                AppSizing.width(context) * 0.12;
                             textWidth = width;
                             return AnimatedContainer(
                               duration: const Duration(milliseconds: 500),
@@ -104,26 +109,43 @@ class _LiquidGlassTabState extends State<LiquidGlassTab> {
                                   textWidth = width;
                                 }),
                                 child: Padding(
-                                  padding: const EdgeInsets.symmetric(vertical: 12),
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 12),
                                   child: TweenAnimationBuilder<double>(
                                       key: ValueKey(activeIndex),
-                                      duration: const Duration(milliseconds: 500),
-                                      tween: Tween(begin: activeIndex == index ? 4.0 : 0.0, end: 0),
+                                      duration:
+                                          const Duration(milliseconds: 500),
+                                      tween: Tween(
+                                          begin:
+                                              activeIndex == index ? 4.0 : 0.0,
+                                          end: 0),
                                       builder: (context, value, child) {
                                         return ImageFiltered(
-                                          imageFilter: ImageFilter.blur(sigmaX: value, sigmaY: value, tileMode: TileMode.decal),
+                                          imageFilter: ImageFilter.blur(
+                                              sigmaX: value,
+                                              sigmaY: value,
+                                              tileMode: TileMode.decal),
                                           child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
                                             children: [
-                                              SvgPicture.string(item.icon, height: 20, color: Colors.white),
-                                              SizedBox(width: AppSizing.width(context) * 0.02),
+                                              SvgPicture.string(item.icon,
+                                                  height: 20,
+                                                  color: Colors.white),
+                                              SizedBox(
+                                                  width:
+                                                      AppSizing.width(context) *
+                                                          0.02),
                                               Text(
                                                 item.title,
                                                 softWrap: true,
                                                 maxLines: 1,
                                                 overflow: TextOverflow.clip,
                                                 textAlign: TextAlign.center,
-                                                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Colors.white),
+                                                style: const TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w600,
+                                                    color: Colors.white),
                                               ),
                                             ],
                                           ),
@@ -196,6 +218,8 @@ List<TileItem> items = [
 ];
 
 class AppSizing {
-  static double width(BuildContext context) => MediaQuery.of(context).size.width;
-  static double height(BuildContext context) => MediaQuery.of(context).size.height;
+  static double width(BuildContext context) =>
+      MediaQuery.of(context).size.width;
+  static double height(BuildContext context) =>
+      MediaQuery.of(context).size.height;
 }

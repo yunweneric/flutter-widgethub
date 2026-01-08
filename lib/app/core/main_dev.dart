@@ -2,6 +2,8 @@
 ///
 /// This file initializes the application in development mode with
 /// development-specific configurations and debugging features enabled.
+library;
+
 import 'package:flutterui/app/core/app.dart';
 import 'package:flutterui/app/core/boostrap.dart';
 import 'package:flutterui/app/core/config.dart';

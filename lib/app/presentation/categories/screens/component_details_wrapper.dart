@@ -2,6 +2,8 @@
 ///
 /// Manages the display of component details including code preview,
 /// supported platforms, resources, and navigation between components.
+library;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterui/app/core/service_locators.dart';
@@ -46,8 +48,9 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
         }
       },
       builder: (context, state) {
-        final component =
-            state.allComponents.where((item) => item.id == widget.id).firstOrNull;
+        final component = state.allComponents
+            .where((item) => item.id == widget.id)
+            .firstOrNull;
         if (component != null) {
           final activeIndex = state.allComponents.indexOf(component);
           final canPrevious = activeIndex > 0;
@@ -64,7 +67,8 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
                   style: Theme.of(context).textTheme.displayMedium),
               const Kh10Spacer(),
               const Kh10Spacer(),
-              CodeHighlight(code: component.setup, borderRadius: AppSizing.radiusSm()),
+              CodeHighlight(
+                  code: component.setup, borderRadius: AppSizing.radiusSm()),
               const Kh20Spacer(),
               const Kh10Spacer(),
               SupportPlatformSection(component: component),
@@ -94,7 +98,8 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
                   children: <TextSpan>[
                     TextSpan(
                       text: LangUtil.trans('notFoundInCollections'),
-                      style: TextStyle(color: Theme.of(context).primaryColorDark),
+                      style:
+                          TextStyle(color: Theme.of(context).primaryColorDark),
                     ),
                   ],
                 ),

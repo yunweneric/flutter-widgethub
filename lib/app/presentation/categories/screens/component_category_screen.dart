@@ -2,6 +2,8 @@
 ///
 /// Shows a grid of component cards filtered by the specified subcategory.
 /// Displays component count and handles category-based filtering and sorting.
+library;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterui/app/presentation/categories/widget/category_card.dart';
@@ -19,12 +21,13 @@ import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 class ComponentCategoryScreen extends StatefulWidget {
   /// Optional subcategory ID to filter components by.
   final String? subCategory;
-  
+
   /// Creates a component category screen.
   const ComponentCategoryScreen({super.key, this.subCategory});
 
   @override
-  State<ComponentCategoryScreen> createState() => _ComponentCategoryScreenState();
+  State<ComponentCategoryScreen> createState() =>
+      _ComponentCategoryScreenState();
 }
 
 class _ComponentCategoryScreenState extends State<ComponentCategoryScreen> {
@@ -34,8 +37,9 @@ class _ComponentCategoryScreenState extends State<ComponentCategoryScreen> {
       builder: (context, state) {
         final activeCategory = state.activeCategory;
 
-        List<Component> components =
-            state.allComponents.where((item) => item.subcategory.link() == widget.subCategory).toList();
+        List<Component> components = state.allComponents
+            .where((item) => item.subcategory.link() == widget.subCategory)
+            .toList();
         if (widget.subCategory == null) {
           components = state.allComponents;
         }
@@ -50,9 +54,14 @@ class _ComponentCategoryScreenState extends State<ComponentCategoryScreen> {
                   : Column(
                       children: [
                         Builder(builder: (context) {
-                          final name = LangUtil.trans("${activeCategory.subCategory}");
-                          final formatted =
-                              name[0].toUpperCase() + name.split("_").join(" ").substring(1).toLowerCase();
+                          final name =
+                              LangUtil.trans("${activeCategory.subCategory}");
+                          final formatted = name[0].toUpperCase() +
+                              name
+                                  .split("_")
+                                  .join(" ")
+                                  .substring(1)
+                                  .toLowerCase();
                           final count = components.fold(0, (a, b) {
                             final codeComponentCount = b.codeComponents.length;
                             return a + codeComponentCount;

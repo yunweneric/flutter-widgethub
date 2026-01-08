@@ -3,6 +3,8 @@
 /// Represents a component in the Flutter WidgetHub library with all its
 /// metadata including title, description, code components, supported platforms,
 /// and resource links.
+library;
+
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
@@ -64,7 +66,8 @@ class Component {
       'assetLink': assetLink,
       'gitHubLink': gitHubLink,
       'codeComponents': codeComponents.map((x) => x.toMap()).toList(),
-      'supportedPlatforms': supportedPlatforms.map((x) => x.describe()).toList(),
+      'supportedPlatforms':
+          supportedPlatforms.map((x) => x.describe()).toList(),
       'responsiveDevices': responsiveDevices.map((x) => x.describe()).toList(),
     };
   }
@@ -96,7 +99,7 @@ class Component {
       gitHubLink: gitHubLink ?? this.gitHubLink,
       codeComponents: codeComponents ?? this.codeComponents,
       supportedPlatforms: supportedPlatforms ?? this.supportedPlatforms,
-      responsiveDevices: responsiveDevices ?? this.responsiveDevices,
+      responsiveDevices: responsiveDevices ?? responsiveDevices,
     );
   }
 
@@ -108,10 +111,13 @@ class Component {
       createdAt: DateTime.parse(map['createdAt'] as String),
       updatedAt: DateTime.parse(map['updatedAt'] as String),
       description: map['description'] as String,
-      category: ComponentCategoryEnum.values.firstWhere((item) => item.describe() == map['category']),
-      subcategory: SubComponentCategoryEnum.values.firstWhere((item) => item.describe() == map['subcategory']),
+      category: ComponentCategoryEnum.values
+          .firstWhere((item) => item.describe() == map['category']),
+      subcategory: SubComponentCategoryEnum.values
+          .firstWhere((item) => item.describe() == map['subcategory']),
       assetLink: map['assetLink'] != null ? map['assetLink'] as String : null,
-      gitHubLink: map['gitHubLink'] != null ? map['gitHubLink'] as String : null,
+      gitHubLink:
+          map['gitHubLink'] != null ? map['gitHubLink'] as String : null,
       codeComponents: List<CodeComponent>.from(
         (map['codeComponents'] as List<int>).map<CodeComponent>(
           (x) => CodeComponent.fromMap(x as Map<String, dynamic>),
@@ -119,12 +125,14 @@ class Component {
       ),
       supportedPlatforms: List<SupportedPlatform>.from(
         (map['supportedPlatforms'] as List<String>).map<SupportedPlatform>(
-          (x) => SupportedPlatform.values.firstWhere((item) => item.describe() == x),
+          (x) => SupportedPlatform.values
+              .firstWhere((item) => item.describe() == x),
         ),
       ),
       responsiveDevices: List<AppDeviceType>.from(
         (map['responsiveDevices'] as List<String>).map<AppDeviceType>(
-          (x) => AppDeviceType.values.firstWhere((item) => item.describe() == x),
+          (x) =>
+              AppDeviceType.values.firstWhere((item) => item.describe() == x),
         ),
       ),
     );
@@ -132,5 +140,6 @@ class Component {
 
   String toJson() => json.encode(toMap());
 
-  factory Component.fromJson(String source) => Component.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory Component.fromJson(String source) =>
+      Component.fromMap(json.decode(source) as Map<String, dynamic>);
 }

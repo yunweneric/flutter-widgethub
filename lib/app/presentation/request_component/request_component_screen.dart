@@ -2,6 +2,8 @@
 ///
 /// Displays a placeholder screen for users to request new components
 /// to be added to the library. Currently shows a "coming soon" message.
+library;
+
 import 'package:flutter/material.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
@@ -27,14 +29,12 @@ class _RequestComponentScreenState extends State<RequestComponentScreen> {
         Text(
           LangUtil.trans("comingSoon"),
           style: Theme.of(context).textTheme.displayLarge,
-        )
-,
+        ),
         const Kh10Spacer(),
-         Text(
+        Text(
           LangUtil.trans("requestComingSoonDescription"),
           textAlign: TextAlign.center,
-        )
-,
+        ),
       ],
     );
   }

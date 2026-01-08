@@ -41,7 +41,8 @@ class _HomeScreen2State extends State<HomeScreen2> {
                     onTap: () {
                       // Handle search tap
                     },
-                    borderRadius: BorderRadius.circular(AirbnbConstants.radiusXXL),
+                    borderRadius:
+                        BorderRadius.circular(AirbnbConstants.radiusXXL),
                     child: Container(
                       padding: const EdgeInsets.symmetric(
                         horizontal: AirbnbConstants.paddingL,
@@ -49,7 +50,8 @@ class _HomeScreen2State extends State<HomeScreen2> {
                       ),
                       decoration: BoxDecoration(
                         color: Theme.of(context).cardColor,
-                        borderRadius: BorderRadius.circular(AirbnbConstants.radiusXXL),
+                        borderRadius:
+                            BorderRadius.circular(AirbnbConstants.radiusXXL),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.black.withOpacity(0.1),
@@ -73,7 +75,8 @@ class _HomeScreen2State extends State<HomeScreen2> {
                               children: [
                                 Text(
                                   'Manhattan',
-                                  style: Theme.of(context).textTheme.displaySmall,
+                                  style:
+                                      Theme.of(context).textTheme.displaySmall,
                                 ),
                                 Text(
                                   'Feb 13 - 14, 2023 (±1) • 1 guest',
@@ -88,9 +91,11 @@ class _HomeScreen2State extends State<HomeScreen2> {
                               // Handle filter tap
                             },
                             child: Container(
-                              padding: const EdgeInsets.all(AirbnbConstants.paddingS),
+                              padding: const EdgeInsets.all(
+                                  AirbnbConstants.paddingS),
                               decoration: BoxDecoration(
-                                border: Border.all(color: Theme.of(context).primaryColorDark),
+                                border: Border.all(
+                                    color: Theme.of(context).primaryColorDark),
                                 shape: BoxShape.circle,
                               ),
                               child: Icon(
@@ -129,29 +134,38 @@ class _HomeScreen2State extends State<HomeScreen2> {
                                   width: double.infinity,
                                   height: 250,
                                   decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(AirbnbConstants.radiusM),
+                                    borderRadius: BorderRadius.circular(
+                                        AirbnbConstants.radiusM),
                                     color: Theme.of(context).cardColor,
                                   ),
                                   child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(AirbnbConstants.radiusM),
+                                    borderRadius: BorderRadius.circular(
+                                        AirbnbConstants.radiusM),
                                     child: Image.network(
                                       'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
                                       fit: BoxFit.cover,
-                                      errorBuilder: (context, error, stackTrace) {
+                                      errorBuilder:
+                                          (context, error, stackTrace) {
                                         return Container(
                                           color: Theme.of(context).cardColor,
                                           child: Column(
-                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
                                             children: [
                                               Icon(
                                                 Icons.bedroom_parent,
                                                 size: 48,
-                                                color: Theme.of(context).primaryColorDark,
+                                                color: Theme.of(context)
+                                                    .primaryColorDark,
                                               ),
-                                              const SizedBox(height: AirbnbConstants.paddingS),
+                                              const SizedBox(
+                                                  height:
+                                                      AirbnbConstants.paddingS),
                                               Text(
                                                 'Private Room',
-                                                style: Theme.of(context).textTheme.labelMedium,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .labelMedium,
                                               ),
                                             ],
                                           ),
@@ -171,14 +185,16 @@ class _HomeScreen2State extends State<HomeScreen2> {
                                       });
                                     },
                                     child: Container(
-                                      padding: const EdgeInsets.all(AirbnbConstants.paddingS),
+                                      padding: const EdgeInsets.all(
+                                          AirbnbConstants.paddingS),
                                       decoration: BoxDecoration(
                                         color: Theme.of(context).cardColor,
-                                        borderRadius:
-                                            BorderRadius.circular(AirbnbConstants.radiusM),
+                                        borderRadius: BorderRadius.circular(
+                                            AirbnbConstants.radiusM),
                                         boxShadow: [
                                           BoxShadow(
-                                            color: Colors.black.withOpacity(0.1),
+                                            color:
+                                                Colors.black.withOpacity(0.1),
                                             blurRadius: 4,
                                             offset: const Offset(0, 1),
                                           ),
@@ -190,7 +206,8 @@ class _HomeScreen2State extends State<HomeScreen2> {
                                             : AirbnbConstants.heartIcon,
                                         color: isFavorite
                                             ? Colors.red
-                                            : Theme.of(context).primaryColorDark,
+                                            : Theme.of(context)
+                                                .primaryColorDark,
                                         size: 20,
                                       ),
                                     ),
@@ -210,43 +227,52 @@ class _HomeScreen2State extends State<HomeScreen2> {
                                         height: 8,
                                         decoration: BoxDecoration(
                                           color: Theme.of(context).cardColor,
-                                          borderRadius: BorderRadius.circular(4),
+                                          borderRadius:
+                                              BorderRadius.circular(4),
                                         ),
                                       ),
-                                      const SizedBox(width: AirbnbConstants.paddingXS),
+                                      const SizedBox(
+                                          width: AirbnbConstants.paddingXS),
                                       Container(
                                         width: 6,
                                         height: 6,
                                         decoration: BoxDecoration(
                                           color: Theme.of(context).cardColor,
-                                          borderRadius: BorderRadius.circular(3),
+                                          borderRadius:
+                                              BorderRadius.circular(3),
                                         ),
                                       ),
-                                      const SizedBox(width: AirbnbConstants.paddingXS),
+                                      const SizedBox(
+                                          width: AirbnbConstants.paddingXS),
                                       Container(
                                         width: 6,
                                         height: 6,
                                         decoration: BoxDecoration(
                                           color: Theme.of(context).cardColor,
-                                          borderRadius: BorderRadius.circular(3),
+                                          borderRadius:
+                                              BorderRadius.circular(3),
                                         ),
                                       ),
-                                      const SizedBox(width: AirbnbConstants.paddingXS),
+                                      const SizedBox(
+                                          width: AirbnbConstants.paddingXS),
                                       Container(
                                         width: 6,
                                         height: 6,
                                         decoration: BoxDecoration(
                                           color: Theme.of(context).cardColor,
-                                          borderRadius: BorderRadius.circular(3),
+                                          borderRadius:
+                                              BorderRadius.circular(3),
                                         ),
                                       ),
-                                      const SizedBox(width: AirbnbConstants.paddingXS),
+                                      const SizedBox(
+                                          width: AirbnbConstants.paddingXS),
                                       Container(
                                         width: 6,
                                         height: 6,
                                         decoration: BoxDecoration(
                                           color: Theme.of(context).cardColor,
-                                          borderRadius: BorderRadius.circular(3),
+                                          borderRadius:
+                                              BorderRadius.circular(3),
                                         ),
                                       ),
                                     ],
@@ -258,8 +284,8 @@ class _HomeScreen2State extends State<HomeScreen2> {
 
                             // Property details
                             Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: AirbnbConstants.paddingS),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: AirbnbConstants.paddingS),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -269,7 +295,10 @@ class _HomeScreen2State extends State<HomeScreen2> {
                                       Expanded(
                                         child: Text(
                                           'Private room in Yonkers',
-                                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyLarge
+                                              ?.copyWith(
                                                 fontWeight: FontWeight.w600,
                                               ),
                                         ),
@@ -278,56 +307,76 @@ class _HomeScreen2State extends State<HomeScreen2> {
                                         children: [
                                           Icon(
                                             AirbnbConstants.starIcon,
-                                            color: Theme.of(context).primaryColorDark,
+                                            color: Theme.of(context)
+                                                .primaryColorDark,
                                             size: 16,
                                           ),
-                                          const SizedBox(width: AirbnbConstants.paddingXS),
+                                          const SizedBox(
+                                              width: AirbnbConstants.paddingXS),
                                           Text(
                                             '5.0 (3)',
-                                            style: Theme.of(context).textTheme.labelMedium,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .labelMedium,
                                           ),
                                         ],
                                       ),
                                     ],
                                   ),
-                                  const SizedBox(height: AirbnbConstants.paddingXS),
+                                  const SizedBox(
+                                      height: AirbnbConstants.paddingXS),
 
                                   // Description
                                   Text(
                                     'Private room in Yonkers close to bus...',
-                                    style: Theme.of(context).textTheme.labelSmall,
+                                    style:
+                                        Theme.of(context).textTheme.labelSmall,
                                   ),
-                                  const SizedBox(height: AirbnbConstants.paddingXS),
+                                  const SizedBox(
+                                      height: AirbnbConstants.paddingXS),
 
                                   // Bed type
                                   Text(
                                     '1 Queen Bed',
-                                    style: Theme.of(context).textTheme.labelSmall,
+                                    style:
+                                        Theme.of(context).textTheme.labelSmall,
                                   ),
-                                  const SizedBox(height: AirbnbConstants.paddingXS),
+                                  const SizedBox(
+                                      height: AirbnbConstants.paddingXS),
 
                                   // Dates
                                   Text(
                                     'Feb 13 - 14',
-                                    style: Theme.of(context).textTheme.labelSmall,
+                                    style:
+                                        Theme.of(context).textTheme.labelSmall,
                                   ),
-                                  const SizedBox(height: AirbnbConstants.paddingXS),
+                                  const SizedBox(
+                                      height: AirbnbConstants.paddingXS),
 
                                   // Price
                                   Row(
                                     children: [
                                       Text(
                                         '\$38 night',
-                                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                              color: Theme.of(context).primaryColorDark,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodySmall
+                                            ?.copyWith(
+                                              color: Theme.of(context)
+                                                  .primaryColorDark,
                                             ),
                                       ),
-                                      const SizedBox(width: AirbnbConstants.paddingS),
+                                      const SizedBox(
+                                          width: AirbnbConstants.paddingS),
                                       Text(
                                         '\$48 total',
-                                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyLarge
+                                            ?.copyWith(
                                               fontWeight: FontWeight.w600,
-                                              decoration: TextDecoration.underline,
+                                              decoration:
+                                                  TextDecoration.underline,
                                             ),
                                       ),
                                     ],
@@ -352,11 +401,13 @@ class _HomeScreen2State extends State<HomeScreen2> {
                               width: double.infinity,
                               height: 200,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(AirbnbConstants.radiusM),
+                                borderRadius: BorderRadius.circular(
+                                    AirbnbConstants.radiusM),
                                 color: Theme.of(context).cardColor,
                               ),
                               child: ClipRRect(
-                                borderRadius: BorderRadius.circular(AirbnbConstants.radiusM),
+                                borderRadius: BorderRadius.circular(
+                                    AirbnbConstants.radiusM),
                                 child: Image.network(
                                   'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
                                   fit: BoxFit.cover,
@@ -372,10 +423,12 @@ class _HomeScreen2State extends State<HomeScreen2> {
                                   // Handle map tap
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: Theme.of(context).primaryColorDark,
+                                  backgroundColor:
+                                      Theme.of(context).primaryColorDark,
                                   foregroundColor: Theme.of(context).cardColor,
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(AirbnbConstants.radiusM),
+                                    borderRadius: BorderRadius.circular(
+                                        AirbnbConstants.radiusM),
                                   ),
                                   padding: const EdgeInsets.symmetric(
                                     vertical: AirbnbConstants.paddingM,
@@ -387,10 +440,14 @@ class _HomeScreen2State extends State<HomeScreen2> {
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     Icon(AirbnbConstants.mapIcon, size: 20),
-                                    const SizedBox(width: AirbnbConstants.paddingS),
+                                    const SizedBox(
+                                        width: AirbnbConstants.paddingS),
                                     Text(
                                       'Map',
-                                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyLarge
+                                          ?.copyWith(
                                             color: Theme.of(context).cardColor,
                                             fontWeight: FontWeight.w600,
                                           ),

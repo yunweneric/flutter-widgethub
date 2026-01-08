@@ -59,7 +59,8 @@ class MeshGradient01 extends StatefulWidget {
   State<MeshGradient01> createState() => _MeshGradient01State();
 }
 
-class _MeshGradient01State extends State<MeshGradient01> with SingleTickerProviderStateMixin {
+class _MeshGradient01State extends State<MeshGradient01>
+    with SingleTickerProviderStateMixin {
   late final AnimationController controller = AnimationController(vsync: this)
     ..duration = const Duration(seconds: 5)
     ..forward()

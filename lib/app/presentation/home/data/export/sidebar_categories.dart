@@ -3,6 +3,8 @@
 /// Defines the complete list of category groups and their associated
 /// subcategories for display in the application sidebar. This includes
 /// templates, blocks, animations, and effects categories.
+library;
+
 import 'package:flutter/material.dart';
 import 'package:flutterui/app/presentation/home/data/blocks/bottom_nav_bars_bloc_item.dart';
 import 'package:flutterui/app/presentation/home/data/blocks/buttons_bloc_item.dart';

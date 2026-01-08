@@ -2,6 +2,8 @@
 ///
 /// Manages application language state and handles language changes.
 /// Uses HydratedBloc to persist language preference across app restarts.
+library;
+
 import 'dart:ui';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';

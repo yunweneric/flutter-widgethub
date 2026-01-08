@@ -1,6 +1,8 @@
 /// Enumeration of device types for responsive design.
 ///
 /// Defines the different device form factors that components can target.
+library;
+
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 
 enum AppDeviceType {

@@ -44,6 +44,10 @@ class _AppChipState extends State<AppChip> {
                 end: Theme.of(context).highlightColor),
             builder: (context, color, child) {
               return ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  shadowColor: Colors.transparent,
+                ),
                 onHover: (value) {
                   // setState(() => isActive = !isActive);
                 },

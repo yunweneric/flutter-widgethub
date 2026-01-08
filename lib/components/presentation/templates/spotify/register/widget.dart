@@ -40,7 +40,8 @@ class SpotifyRegister extends StatelessWidget {
                               borderRadius: BorderRadius.circular(100),
                             ),
                           ),
-                          icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 24),
+                          icon: const Icon(Icons.arrow_back_ios_new_rounded,
+                              size: 24),
                           onPressed: () {},
                           splashRadius: 24,
                         ),
@@ -183,7 +184,8 @@ class _SpotifyInput extends StatefulWidget {
   final String hintText;
   final bool obscureText;
   final VoidCallback? onSuffixTap;
-  const _SpotifyInput({required this.hintText, this.obscureText = false, this.onSuffixTap});
+  const _SpotifyInput(
+      {required this.hintText, this.obscureText = false, this.onSuffixTap});
 
   @override
   State<_SpotifyInput> createState() => _SpotifyInputState();
@@ -230,7 +232,8 @@ class _SpotifySocialButton extends StatelessWidget {
         fit: BoxFit.contain,
         width: 32,
         height: 32,
-        colorFilter: color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null,
+        colorFilter:
+            color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null,
       ),
     );
   }

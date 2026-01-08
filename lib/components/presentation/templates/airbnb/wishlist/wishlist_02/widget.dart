@@ -23,7 +23,8 @@ class Wishlist02 extends StatelessWidget {
         appBar: const WishlistAppBar(),
         body: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: AirbnbConstants.paddingL),
+            padding: const EdgeInsets.symmetric(
+                horizontal: AirbnbConstants.paddingL),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -43,7 +44,8 @@ class Wishlist02 extends StatelessWidget {
                     children: [
                       // Main Listing Card
                       PropertyCard(
-                        imageUrl: 'https://picsum.photos/seed/modern-house/400/300',
+                        imageUrl:
+                            'https://picsum.photos/seed/modern-house/400/300',
                         location: 'Putnam Valley, New York',
                         distance: '2 hours away',
                         dates: 'May 14 - 19',
@@ -174,7 +176,8 @@ class WishlistSecondCard extends StatelessWidget {
                   height: 300,
                   decoration: BoxDecoration(
                     color: Theme.of(context).cardColor,
-                    borderRadius: BorderRadius.circular(AirbnbConstants.radiusM),
+                    borderRadius:
+                        BorderRadius.circular(AirbnbConstants.radiusM),
                   ),
                   child: Icon(Icons.home, size: 48),
                 );

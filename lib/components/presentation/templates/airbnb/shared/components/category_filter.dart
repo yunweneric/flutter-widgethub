@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../constants.dart';
 import '../shared.dart';
 
 /// A horizontal scrolling category filter with icons and labels.
@@ -80,8 +79,11 @@ class _CategoryFilterState extends State<CategoryFilter> {
                     height: 60,
                     padding: const EdgeInsets.all(AirbnbConstants.paddingM),
                     decoration: BoxDecoration(
-                      color: isSelected ? colorScheme.onSurface : colorScheme.surface,
-                      borderRadius: BorderRadius.circular(AirbnbConstants.radiusL),
+                      color: isSelected
+                          ? colorScheme.onSurface
+                          : colorScheme.surface,
+                      borderRadius:
+                          BorderRadius.circular(AirbnbConstants.radiusL),
                       // border: Border.all(
                       //   color: isSelected
                       //       ? colorScheme.onSurface
@@ -92,7 +94,9 @@ class _CategoryFilterState extends State<CategoryFilter> {
                     child: SvgPicture.string(
                       category['icon'],
                       colorFilter: ColorFilter.mode(
-                        isSelected ? colorScheme.surface : colorScheme.onSurface,
+                        isSelected
+                            ? colorScheme.surface
+                            : colorScheme.onSurface,
                         BlendMode.srcIn,
                       ),
                     ),
@@ -104,12 +108,14 @@ class _CategoryFilterState extends State<CategoryFilter> {
                       color: isSelected
                           ? colorScheme.onSurface
                           : colorScheme.onSurface.withOpacity(0.6),
-                      fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
+                      fontWeight:
+                          isSelected ? FontWeight.w600 : FontWeight.w400,
                     ),
                   ),
                   if (isSelected)
                     Container(
-                      margin: const EdgeInsets.only(top: AirbnbConstants.paddingXS),
+                      margin:
+                          const EdgeInsets.only(top: AirbnbConstants.paddingXS),
                       width: 20,
                       height: 2,
                       decoration: BoxDecoration(

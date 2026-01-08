@@ -5,13 +5,14 @@
 /// - Clipboard operations
 /// - Component counting and formatting
 /// - Window management (web)
+library;
+
 import 'package:device_frame/device_frame.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
-import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -21,7 +22,8 @@ import 'package:flutterui/app/shared/presentation/helpers/platform/platform.dart
 
 /// Utility class providing helper methods for common operations.
 class UtilHelper {
-  static String activeRoute = getIt.get<GoRouter>().routeInformationProvider.value.uri.path;
+  static String activeRoute =
+      getIt.get<GoRouter>().routeInformationProvider.value.uri.path;
 
   static dynamic getWindows() {
     final windows = getWindow();
@@ -57,11 +59,15 @@ class UtilHelper {
     // );
   }
 
-  static findDevice({required AppDeviceType type}) {
-    if (type == AppDeviceType.MOBILE) return Devices.ios.iPhone13;
-    // if (type == AppDeviceType.MOBILE) return Devices.ios.iPhone12ProMax;
-    if (type == AppDeviceType.TABLET) return Devices.android.largeTablet;
-    if (type == AppDeviceType.DESKTOP) return Devices.macOS.macBookPro;
+  static DeviceInfo findDevice({required AppDeviceType type}) {
+    switch (type) {
+      case AppDeviceType.MOBILE:
+        return Devices.ios.iPhone13;
+      case AppDeviceType.TABLET:
+        return Devices.android.largeTablet;
+      case AppDeviceType.DESKTOP:
+        return Devices.macOS.macBookPro;
+    }
   }
 
   static String formatNumber(int length) {

@@ -7,7 +7,12 @@ class SideBarItem extends StatefulWidget {
   final bool isActive;
   final String? link;
   final void Function()? onPressed;
-  const SideBarItem({super.key, required this.title, this.onPressed, this.link, required this.isActive});
+  const SideBarItem(
+      {super.key,
+      required this.title,
+      this.onPressed,
+      this.link,
+      required this.isActive});
 
   @override
   State<SideBarItem> createState() => _SideBarItemState();
@@ -22,7 +27,9 @@ class _SideBarItemState extends State<SideBarItem> {
         border: BorderDirectional(
           start: BorderSide(
             width: 2.w,
-            color: widget.isActive ? Theme.of(context).primaryColor : Theme.of(context).dividerColor,
+            color: widget.isActive
+                ? Theme.of(context).primaryColor
+                : Theme.of(context).dividerColor,
           ),
         ),
       ),
@@ -39,8 +46,10 @@ class _SideBarItemState extends State<SideBarItem> {
         ),
         onPressed: widget.onPressed,
         child: Builder(builder: (context) {
-          final name = LangUtil.trans("SubComponentCategoryEnum.${widget.title}");
-          final formatted = name[0].toUpperCase() + name.split("_").join(" ").substring(1).toLowerCase();
+          final name =
+              LangUtil.trans("SubComponentCategoryEnum.${widget.title}");
+          final formatted = name[0].toUpperCase() +
+              name.split("_").join(" ").substring(1).toLowerCase();
           return Text(
             formatted,
             style: Theme.of(context).textTheme.bodyMedium,

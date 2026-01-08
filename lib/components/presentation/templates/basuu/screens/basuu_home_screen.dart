@@ -5,7 +5,6 @@ import 'package:flutterui/components/presentation/templates/basuu/models/basuu_c
 import 'package:flutterui/components/presentation/templates/basuu/models/basuu_word.dart';
 import 'package:flutterui/components/presentation/templates/basuu/shared/basuu_icons.dart';
 import 'package:flutterui/components/presentation/templates/basuu/shared/utils/basuu_colors.dart';
-import 'package:flutterui/components/presentation/templates/basuu/shared/utils/sizing.dart';
 import 'package:flutterui/components/presentation/templates/basuu/widgets/basuu_app_bar.dart';
 import 'package:flutterui/components/presentation/templates/basuu/widgets/basuu_app_button.dart';
 import 'package:flutterui/components/presentation/templates/basuu/widgets/basuu_app_icon.dart';
@@ -79,7 +78,9 @@ class _HomeScreenState extends State<BasuuHomeScreen> {
                   width: AppSizing.width(context),
                   onPressed: () {
                     setState(() {
-                      words = words.map((item) => item.copyWith(hasLearned: false)).toList();
+                      words = words
+                          .map((item) => item.copyWith(hasLearned: false))
+                          .toList();
                     });
                   },
                   style: TextStyle(color: BasuuColors.RED, fontSize: 18.sp),
@@ -107,7 +108,9 @@ class _HomeScreenState extends State<BasuuHomeScreen> {
                       leading: Text(
                         item.title,
                         style: theme.textTheme.bodyLarge!.copyWith(
-                          color: item.hasLearned ? theme.primaryColorDark : theme.highlightColor,
+                          color: item.hasLearned
+                              ? theme.primaryColorDark
+                              : theme.highlightColor,
                         ),
                       ),
                       trailing: SizedBox(
@@ -121,7 +124,9 @@ class _HomeScreenState extends State<BasuuHomeScreen> {
                                   padding: EdgeInsets.only(right: 5.w),
                                   child: CircleAvatar(
                                     radius: 4.r,
-                                    backgroundColor: item.hasLearned ? BasuuColors.GREEN : theme.highlightColor,
+                                    backgroundColor: item.hasLearned
+                                        ? BasuuColors.GREEN
+                                        : theme.highlightColor,
                                   ),
                                 );
                               }),
@@ -129,8 +134,12 @@ class _HomeScreenState extends State<BasuuHomeScreen> {
                             KwSpacer(width: 5.w),
                             TweenAnimationBuilder(
                               tween: ColorTween(
-                                begin: item.hasLearned ? BasuuColors.GREEN : theme.cardColor,
-                                end: item.hasLearned ? BasuuColors.GREEN : theme.cardColor,
+                                begin: item.hasLearned
+                                    ? BasuuColors.GREEN
+                                    : theme.cardColor,
+                                end: item.hasLearned
+                                    ? BasuuColors.GREEN
+                                    : theme.cardColor,
                               ),
                               duration: const Duration(milliseconds: 700),
                               builder: (context, color, child) {
@@ -147,7 +156,9 @@ class _HomeScreenState extends State<BasuuHomeScreen> {
                                     label: BasuuIcon(
                                       icon: BasuuIcons.check,
                                       size: 20,
-                                      color: item.hasLearned ? theme.primaryColorDark : null,
+                                      color: item.hasLearned
+                                          ? theme.primaryColorDark
+                                          : null,
                                     ),
                                   ),
                                 );
@@ -156,8 +167,12 @@ class _HomeScreenState extends State<BasuuHomeScreen> {
                             KwSpacer(width: 5.w),
                             TweenAnimationBuilder(
                                 tween: ColorTween(
-                                  begin: item.hasLearned ? theme.cardColor : theme.primaryColorDark,
-                                  end: item.hasLearned ? theme.cardColor : theme.primaryColorDark,
+                                  begin: item.hasLearned
+                                      ? theme.cardColor
+                                      : theme.primaryColorDark,
+                                  end: item.hasLearned
+                                      ? theme.cardColor
+                                      : theme.primaryColorDark,
                                 ),
                                 duration: const Duration(milliseconds: 700),
                                 builder: (context, color, child) {
@@ -174,7 +189,9 @@ class _HomeScreenState extends State<BasuuHomeScreen> {
                                       label: Text(
                                         "Learn",
                                         style: TextStyle(
-                                          color: item.hasLearned ? theme.primaryColorDark : theme.cardColor,
+                                          color: item.hasLearned
+                                              ? theme.primaryColorDark
+                                              : theme.cardColor,
                                           fontWeight: FontWeight.w600,
                                         ),
                                       ),

@@ -21,7 +21,7 @@ class _LeaveReviewHomeScreenState extends State<LeaveReviewHomeScreen> {
 
   bool isForward = true;
 
-  startTimer() {
+  void startTimer() {
     timer = Timer.periodic(const Duration(milliseconds: 3000), (tick) {
       setState(() {
         value = isForward ? value + 1 : value - 1;

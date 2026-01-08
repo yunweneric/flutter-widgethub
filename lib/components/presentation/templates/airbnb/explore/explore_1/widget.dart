@@ -29,7 +29,8 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         body: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: AirbnbConstants.paddingM),
+            padding: const EdgeInsets.symmetric(
+                horizontal: AirbnbConstants.paddingM),
             child: Column(
               children: [
                 // Search Bar

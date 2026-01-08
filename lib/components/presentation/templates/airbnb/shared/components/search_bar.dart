@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../constants.dart';
 import '../shared.dart';
 
 /// A search bar component for property search with filter button.

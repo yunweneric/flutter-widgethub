@@ -43,7 +43,10 @@ class SpotifyOnboarding extends StatelessWidget {
                     Text(
                       "Enjoy listening to music",
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.displayLarge?.copyWith(color: Colors.white),
+                      style: Theme.of(context)
+                          .textTheme
+                          .displayLarge
+                          ?.copyWith(color: Colors.white),
                     ),
                     const SizedBox(height: 24),
                     Text(

@@ -44,7 +44,8 @@ class BookingSectionWidget extends StatelessWidget {
                   backgroundColor: AirbnbTheme.primaryRed,
                   foregroundColor: Theme.of(context).colorScheme.onPrimary,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(AirbnbConstants.radiusS),
+                    borderRadius:
+                        BorderRadius.circular(AirbnbConstants.radiusS),
                   ),
                 ),
                 child: Text(

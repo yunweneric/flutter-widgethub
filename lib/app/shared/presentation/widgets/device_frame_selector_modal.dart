@@ -209,65 +209,76 @@ class _DeviceCard extends StatelessWidget {
         Navigator.of(context).pop();
       },
       borderRadius: AppSizing.radiusSm(),
-      child: Container(
-        width: 100.w,
-        padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 10.h),
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: isSelected
-                ? Theme.of(context).primaryColor
-                : Theme.of(context).dividerColor,
-            width: isSelected ? 1.5 : 1,
-          ),
-          borderRadius: AppSizing.radiusSm(),
-          color: isSelected
-              ? Theme.of(context).primaryColor.withOpacity(0.08)
-              : Theme.of(context).cardColor,
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            SizedBox(
-              height: 60.h,
-              child: FittedBox(
-                fit: BoxFit.contain,
-                child: DeviceFrame(
-                  device: device,
-                  isFrameVisible: true,
-                  orientation: Orientation.portrait,
-                  screen: Container(
-                    color: Theme.of(context).scaffoldBackgroundColor,
-                    child: Center(
-                      child: Icon(
-                        Icons.phone_android,
-                        size: 12.w,
-                        color: Theme.of(context).iconTheme.color?.withOpacity(0.5),
+      child: Stack(
+        children: [
+          Container(
+            width: 100.w,
+            height: 120.h,
+            // alignment: Alignment.bottomCtopenter,
+            padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 10.h),
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: isSelected
+                    ? Theme.of(context).primaryColor
+                    : Theme.of(context).dividerColor,
+                width: isSelected ? 1.5 : 1,
+              ),
+              borderRadius: AppSizing.radiusSm(),
+              color: isSelected
+                  ? Theme.of(context).primaryColor.withOpacity(0.08)
+                  : Theme.of(context).cardColor,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 40.h,
+                  child: FittedBox(
+                    fit: BoxFit.contain,
+                    child: DeviceFrame(
+                      device: device,
+                      isFrameVisible: true,
+                      orientation: Orientation.portrait,
+                      screen: Container(
+                        color: Theme.of(context).scaffoldBackgroundColor,
+                        child: Center(
+                          child: Icon(
+                            Icons.phone_android,
+                            size: 12.w,
+                            color: Theme.of(context).iconTheme.color?.withOpacity(0.5),
+                          ),
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
+                SizedBox(height: 8.h),
+                Text(
+                  device.name,
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        fontSize: 10.sp,
+                      ),
+                  textAlign: TextAlign.center,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
             ),
-            SizedBox(height: 8.h),
-            Text(
-              device.name,
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    fontSize: 11.sp,
-                  ),
-              textAlign: TextAlign.center,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-            ),
-            if (isSelected) ...[
-              SizedBox(height: 4.h),
-              Icon(
+          ),
+          if (isSelected) ...[
+            Positioned(
+              bottom: 5,
+              left: 0,
+              right: 0,
+              child: Icon(
                 Icons.check_circle,
-                size: 14.w,
+                size: 18.w,
                 color: Theme.of(context).primaryColor,
               ),
-            ],
+            ),
           ],
-        ),
+        ],
       ),
     );
   }

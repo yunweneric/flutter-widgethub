@@ -4,6 +4,8 @@
 /// - Active component selection
 /// - Component filtering by category
 /// - Navigation between components
+library;
+
 import 'package:bloc/bloc.dart';
 import 'package:flutterui/components/presentation/export/store.dart';
 import 'package:flutterui/app/presentation/home/model/component_block_model.dart';
@@ -18,7 +20,9 @@ part 'component_state.dart';
 /// Initializes with the first component from the registry as the active component.
 class ComponentBloc extends Bloc<ComponentEvent, ComponentState> {
   /// Creates a component bloc with the first component as initial state.
-  ComponentBloc() : super(ComponentInitial(activeComponent: AllComponents.widgets.first, allComponents: [])) {
+  ComponentBloc()
+      : super(ComponentInitial(
+            activeComponent: AllComponents.widgets.first, allComponents: [])) {
     on<UpdateActiveCategoryEvent>((event, emit) {
       emit(UpdateActiveCategorySuccess(
         activeComponent: state.activeComponent,
@@ -42,7 +46,8 @@ class ComponentBloc extends Bloc<ComponentEvent, ComponentState> {
     });
     on<FindNextComponentBlocEvent>((event, emit) {
       final allComponents = AllComponents.widgets;
-      final activeIndex = allComponents.indexWhere((component) => component.id == state.activeComponent.id);
+      final activeIndex = allComponents
+          .indexWhere((component) => component.id == state.activeComponent.id);
 
       if (activeIndex == -1) {
         emit(UpdateActiveComponentSuccess(

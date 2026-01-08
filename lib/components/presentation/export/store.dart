@@ -6,6 +6,8 @@
 /// - Blocks (buttons, tabs, switches, navigation bars)
 /// - Effects (mesh gradients)
 /// - Templates (auth screens, onboarding, app clones)
+library;
+
 import 'package:flutterui/components/presentation/animations/skew_card/data.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
 import 'package:flutterui/components/presentation/blocks/bottom_nav_bars/docking_bar/data.dart';

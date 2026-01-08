@@ -26,8 +26,10 @@ class AmenitiesWidget extends StatelessWidget {
           _AmenityItem(icon: Icons.landscape, text: 'River view'),
           _AmenityItem(icon: Icons.kitchen, text: 'Kitchen'),
           _AmenityItem(icon: Icons.wifi, text: 'Wifi'),
-          _AmenityItem(icon: Icons.local_parking, text: 'Free parking on premises'),
-          _AmenityItem(icon: Icons.ac_unit, text: 'AC - split type ductless system'),
+          _AmenityItem(
+              icon: Icons.local_parking, text: 'Free parking on premises'),
+          _AmenityItem(
+              icon: Icons.ac_unit, text: 'AC - split type ductless system'),
           const SizedBox(height: AirbnbConstants.paddingM),
           Center(
             child: Text(
@@ -41,7 +43,6 @@ class AmenitiesWidget extends StatelessWidget {
       ),
     );
   }
-
 }
 
 class _AmenityItem extends StatelessWidget {

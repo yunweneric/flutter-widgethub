@@ -44,7 +44,8 @@ class _CollapsibleHeader extends StatelessWidget {
       collapsedHeight: 80, // Height when fully collapsed
       floating: false,
       pinned: true,
-      backgroundColor: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
+      backgroundColor:
+          Theme.of(context).bottomNavigationBarTheme.backgroundColor,
       elevation: 0,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
@@ -53,13 +54,15 @@ class _CollapsibleHeader extends StatelessWidget {
         ),
       ),
       leading: IconButton(
-        style: IconButton.styleFrom(backgroundColor: Theme.of(context).cardColor),
+        style:
+            IconButton.styleFrom(backgroundColor: Theme.of(context).cardColor),
         onPressed: () {},
         icon: SpotifyIcons.getIcon(SpotifyIcons.back, color: Colors.white),
       ),
       actions: [
         IconButton(
-          style: IconButton.styleFrom(backgroundColor: Theme.of(context).cardColor),
+          style: IconButton.styleFrom(
+              backgroundColor: Theme.of(context).cardColor),
           onPressed: () {},
           icon: SpotifyIcons.getIcon(SpotifyIcons.menu, color: Colors.white),
         ),
@@ -223,37 +226,43 @@ class _PlaylistsSliver extends StatelessWidget {
             title: 'Dont Smile At Me',
             artist: 'Billie Eilish',
             duration: '5:33',
-            imagePath: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=200&h=200&fit=crop',
+            imagePath:
+                'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=200&h=200&fit=crop',
           ),
           const _PlaylistItem(
             title: 'As It Was',
             artist: 'Harry Styles',
             duration: '5:33',
-            imagePath: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=200&h=200&fit=crop',
+            imagePath:
+                'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=200&h=200&fit=crop',
           ),
           const _PlaylistItem(
             title: 'Super Freaky Girl',
             artist: 'Nicki Minaj',
             duration: '5:33',
-            imagePath: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=200&h=200&fit=crop',
+            imagePath:
+                'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=200&h=200&fit=crop',
           ),
           const _PlaylistItem(
             title: 'Bad Habit',
             artist: 'Steve Lacy',
             duration: '5:33',
-            imagePath: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=200&h=200&fit=crop',
+            imagePath:
+                'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=200&h=200&fit=crop',
           ),
           const _PlaylistItem(
             title: 'Planet Her',
             artist: 'Doja Cat',
             duration: '5:33',
-            imagePath: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=200&h=200&fit=crop',
+            imagePath:
+                'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=200&h=200&fit=crop',
           ),
           const _PlaylistItem(
             title: 'Sweetest Pie',
             artist: 'Megan Thee Stallion',
             duration: '5:33',
-            imagePath: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=200&h=200&fit=crop',
+            imagePath:
+                'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=200&h=200&fit=crop',
           ),
 
           const SizedBox(height: 100), // Bottom padding
@@ -342,7 +351,8 @@ class _BottomNavigationBar extends StatelessWidget {
     return Container(
       color: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20).add(EdgeInsets.only(bottom: 15)),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20)
+            .add(EdgeInsets.only(bottom: 15)),
         child: const Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [

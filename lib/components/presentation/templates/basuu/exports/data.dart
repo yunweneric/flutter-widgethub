@@ -20,10 +20,27 @@ import 'package:flutterui/components/presentation/templates/basuu/shared/utils/b
 
 class BasuuData {
   static List<BasuuCategory> categories = [
-    BasuuCategory(label: "A1", title: "1 - 100", color: BasuuColors.TEAL, percentage: 80, isChecked: true),
-    BasuuCategory(label: "A2", title: '101 - 1K', color: BasuuColors.DGREEN, percentage: 44),
-    BasuuCategory(label: "B1", title: "1K - 2K", color: BasuuColors.DARKORANGE, percentage: 27),
-    BasuuCategory(label: "B2", title: "2K - 3K", color: BasuuColors.DARKRED, percentage: 9),
+    BasuuCategory(
+        label: "A1",
+        title: "1 - 100",
+        color: BasuuColors.TEAL,
+        percentage: 80,
+        isChecked: true),
+    BasuuCategory(
+        label: "A2",
+        title: '101 - 1K',
+        color: BasuuColors.DGREEN,
+        percentage: 44),
+    BasuuCategory(
+        label: "B1",
+        title: "1K - 2K",
+        color: BasuuColors.DARKORANGE,
+        percentage: 27),
+    BasuuCategory(
+        label: "B2",
+        title: "2K - 3K",
+        color: BasuuColors.DARKRED,
+        percentage: 9),
     BasuuCategory(label: "C1", title: "3K - 4K", color: BasuuColors.MIDRED),
     BasuuCategory(label: "C2", title: '4K - 5K', color: BasuuColors.DEEPRED),
   ];
@@ -32,9 +49,14 @@ class BasuuData {
     createdAt: DateTime(2024, 10, 15),
     updatedAt: DateTime(2024, 10, 15),
     codeComponents: [
-      CodeComponent(code: basuuSplashScreenCode, widget: const BasuuSplashScreen()),
-      CodeComponent(code: basuuChooseCategoryScreenCode, widget: const BasuuChooseCategoryScreen()),
-      CodeComponent(code: basuuChooseLanguageScreenCode, widget: const BasuuChooseLanguageScreen()),
+      CodeComponent(
+          code: basuuSplashScreenCode, widget: const BasuuSplashScreen()),
+      CodeComponent(
+          code: basuuChooseCategoryScreenCode,
+          widget: const BasuuChooseCategoryScreen()),
+      CodeComponent(
+          code: basuuChooseLanguageScreenCode,
+          widget: const BasuuChooseLanguageScreen()),
       CodeComponent(
         code: basuuChooseLanguageScreenCode,
         widget: BasuuLearningScreen(selectedCategory: categories.first),
@@ -55,8 +77,10 @@ class BasuuData {
     category: ComponentCategoryEnum.TEMPLATES,
     subcategory: SubComponentCategoryEnum.APPS,
     supportedPlatforms: [SupportedPlatform.ANDROID, SupportedPlatform.IOS],
-    assetLink: 'https://github.com/yunweneric/flutter-open-ui/raw/refs/heads/language_app/assets.zip',
-    gitHubLink: 'https://github.com/yunweneric/flutter-open-ui/tree/language_app',
+    assetLink:
+        'https://github.com/yunweneric/flutter-open-ui/raw/refs/heads/language_app/assets.zip',
+    gitHubLink:
+        'https://github.com/yunweneric/flutter-open-ui/tree/language_app',
     responsiveDevices: [AppDeviceType.MOBILE],
   );
 }

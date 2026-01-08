@@ -2,6 +2,8 @@
 ///
 /// Defines the subcategories within each main component category.
 /// These are used for more granular organization and filtering of components.
+library;
+
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 
 enum SubComponentCategoryEnum {

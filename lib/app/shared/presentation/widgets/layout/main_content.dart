@@ -22,9 +22,11 @@ class _MainContentState extends State<MainContent> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 100),
+          width: AppSizing.kWPercentage(
+              context, AppSizing.isMobile(context) ? 100 : 100),
           margin: EdgeInsets.symmetric(
-            horizontal: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 5 : 2),
+            horizontal: AppSizing.kWPercentage(
+                context, AppSizing.isMobile(context) ? 5 : 2),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,11 +38,13 @@ class _MainContentState extends State<MainContent> {
                 ),
                 onPressed: () => context.go(RouteNames.components),
                 icon: const AppIcon(icon: AppIcons.back),
-                label: Text(LangUtil.trans("back"), style: Theme.of(context).textTheme.bodyMedium),
+                label: Text(LangUtil.trans("back"),
+                    style: Theme.of(context).textTheme.bodyMedium),
               ),
               KhSpacer(height: 30.h),
               ConstrainedBox(
-                constraints: BoxConstraints(minHeight: AppSizing.kHPercentage(context, 60)),
+                constraints: BoxConstraints(
+                    minHeight: AppSizing.kHPercentage(context, 60)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [...widget.children],

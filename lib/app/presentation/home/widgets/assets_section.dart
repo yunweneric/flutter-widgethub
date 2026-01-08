@@ -25,7 +25,8 @@ class AssetsSection extends StatefulWidget {
 class _AssetsSectionState extends State<AssetsSection> {
   late AppCategoryGroupModel activeBlock;
   List<AppCategoryGroupModel> blocks = sideBarCategories.where((item) {
-    final condition = item.category != ComponentCategoryEnum.GETTING_STARTED && item.category != ComponentCategoryEnum.INTRODUCTION;
+    final condition = item.category != ComponentCategoryEnum.GETTING_STARTED &&
+        item.category != ComponentCategoryEnum.INTRODUCTION;
     return condition;
   }).toList();
   final componentBloc = getIt.get<ComponentBloc>();
@@ -66,7 +67,10 @@ class _AssetsSectionState extends State<AssetsSection> {
               children: [
                 Text(
                   LangUtil.trans("assetsTitle"),
-                  style: Theme.of(context).textTheme.displayLarge!.copyWith(fontSize: 40.sp),
+                  style: Theme.of(context)
+                      .textTheme
+                      .displayLarge!
+                      .copyWith(fontSize: 40.sp),
                 ),
                 const Kh20Spacer(),
                 Text(
@@ -79,7 +83,8 @@ class _AssetsSectionState extends State<AssetsSection> {
           ),
           const Kh20Spacer(),
           TextButton.icon(
-              style: TextButton.styleFrom(backgroundColor: Theme.of(context).scaffoldBackgroundColor),
+              style: TextButton.styleFrom(
+                  backgroundColor: Theme.of(context).scaffoldBackgroundColor),
               iconAlignment: IconAlignment.end,
               onPressed: () {
                 componentBloc.add(
@@ -103,7 +108,8 @@ class _AssetsSectionState extends State<AssetsSection> {
             children: [
               if (!AppSizing.isMobile(context))
                 SizedBox(
-                  width: AppSizing.kWPercentage(context, AppSizing.isTablet(context) ? 20 : 100),
+                  width: AppSizing.kWPercentage(
+                      context, AppSizing.isTablet(context) ? 20 : 100),
                   child: Wrap(
                     spacing: AppSizing.kWPercentage(context, 2.5),
                     crossAxisAlignment: WrapCrossAlignment.center,
@@ -113,12 +119,15 @@ class _AssetsSectionState extends State<AssetsSection> {
                         (item) => InkWell(
                           enableFeedback: false,
                           hoverColor: Theme.of(context).scaffoldBackgroundColor,
-                          highlightColor: Theme.of(context).scaffoldBackgroundColor,
+                          highlightColor:
+                              Theme.of(context).scaffoldBackgroundColor,
                           focusColor: Theme.of(context).scaffoldBackgroundColor,
-                          splashColor: Theme.of(context).scaffoldBackgroundColor,
+                          splashColor:
+                              Theme.of(context).scaffoldBackgroundColor,
                           onTap: () => setState(() => activeBlock = item),
                           onHover: (status) {},
-                          child: ComponentBlock(item: item, isActive: activeBlock == item),
+                          child: ComponentBlock(
+                              item: item, isActive: activeBlock == item),
                         ),
                       )
                     ],
@@ -126,27 +135,36 @@ class _AssetsSectionState extends State<AssetsSection> {
                 ),
               Builder(
                 builder: (context) {
-                  List<AppCategoryModel> allBlockItems = blocks.expand((item) => item.items).toList();
+                  List<AppCategoryModel> allBlockItems =
+                      blocks.expand((item) => item.items).toList();
                   List<AppCategoryModel> activeBlockItem = activeBlock.items;
-                  final displayWidget = AppSizing.isMobile(context) ? allBlockItems : activeBlockItem;
+                  final displayWidget = AppSizing.isMobile(context)
+                      ? allBlockItems
+                      : activeBlockItem;
                   return Container(
                     alignment: Alignment.centerLeft,
-                    constraints: BoxConstraints(minHeight: AppSizing.kHPercentage(context, 25)),
-                    width: AppSizing.kWPercentage(context, AppSizing.isTablet(context) ? 70 : 100),
+                    constraints: BoxConstraints(
+                        minHeight: AppSizing.kHPercentage(context, 25)),
+                    width: AppSizing.kWPercentage(
+                        context, AppSizing.isTablet(context) ? 70 : 100),
                     child: AnimatedSwitcher(
                       duration: const Duration(milliseconds: 1500),
                       key: ValueKey(activeBlock),
-                      child: displayWidget.isEmpty && !AppSizing.isMobile(context)
+                      child: displayWidget.isEmpty &&
+                              !AppSizing.isMobile(context)
                           ? SizedBox(
                               height: AppSizing.kHPercentage(context, 25),
-                              width: AppSizing.kWPercentage(context, AppSizing.isTablet(context) ? 70 : 100),
+                              width: AppSizing.kWPercentage(context,
+                                  AppSizing.isTablet(context) ? 70 : 100),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
                                     LangUtil.trans("comingSoon"),
-                                    style: Theme.of(context).textTheme.displayLarge,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .displayLarge,
                                   ),
                                   const Kh10Spacer(),
                                   Text(LangUtil.trans("comingSoonDescription"))
@@ -157,50 +175,76 @@ class _AssetsSectionState extends State<AssetsSection> {
                               // spacing: AppSizing.kWPercentage(context, 2.5),
                               runSpacing: AppSizing.kWPercentage(context, 2.5),
                               crossAxisAlignment: WrapCrossAlignment.start,
-                              alignment: AppSizing.isTablet(context) ? WrapAlignment.end : WrapAlignment.start,
+                              alignment: AppSizing.isTablet(context)
+                                  ? WrapAlignment.end
+                                  : WrapAlignment.start,
                               runAlignment: WrapAlignment.start,
                               children: List.generate(
                                 displayWidget.length,
                                 (index) {
                                   return Container(
                                     margin: EdgeInsets.only(
-                                      left: AppSizing.isTablet(context) ? AppSizing.kWPercentage(context, 2.5) : 0,
-                                      right: AppSizing.isTablet(context) ? 0 : AppSizing.kWPercentage(context, 2.5),
+                                      left: AppSizing.isTablet(context)
+                                          ? AppSizing.kWPercentage(context, 2.5)
+                                          : 0,
+                                      right: AppSizing.isTablet(context)
+                                          ? 0
+                                          : AppSizing.kWPercentage(
+                                              context, 2.5),
                                     ),
                                     child: Builder(
                                       builder: (context) {
                                         final item = displayWidget[index];
                                         return InkWell(
                                           enableFeedback: false,
-                                          hoverColor: Theme.of(context).scaffoldBackgroundColor,
-                                          highlightColor: Theme.of(context).scaffoldBackgroundColor,
-                                          focusColor: Theme.of(context).scaffoldBackgroundColor,
-                                          splashColor: Theme.of(context).scaffoldBackgroundColor,
+                                          hoverColor: Theme.of(context)
+                                              .scaffoldBackgroundColor,
+                                          highlightColor: Theme.of(context)
+                                              .scaffoldBackgroundColor,
+                                          focusColor: Theme.of(context)
+                                              .scaffoldBackgroundColor,
+                                          splashColor: Theme.of(context)
+                                              .scaffoldBackgroundColor,
                                           onTap: () {
-                                            context.go("/components/${item.category.link()}/${item.subCategory.link()}");
+                                            context.go(
+                                                "/components/${item.category.link()}/${item.subCategory.link()}");
                                           },
                                           child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
                                             children: [
                                               DeviceSectionFrame(
                                                 deviceAlignment: item.alignment,
                                                 parentWidth: generateWidth(),
-                                                parentHeight: AppSizing.kWPercentage(
+                                                parentHeight:
+                                                    AppSizing.kWPercentage(
                                                   context,
                                                   AppSizing.isXMobile(context)
                                                       ? 60
-                                                      : AppSizing.isMobile(context)
+                                                      : AppSizing.isMobile(
+                                                              context)
                                                           ? 35
                                                           : 15,
                                                 ),
-                                                childWidth: AppSizing.kWPercentage(context, 10),
-                                                childHeight: AppSizing.kWPercentage(context, 22),
+                                                childWidth:
+                                                    AppSizing.kWPercentage(
+                                                        context, 10),
+                                                childHeight:
+                                                    AppSizing.kWPercentage(
+                                                        context, 22),
                                                 child: item.widget,
                                               ),
                                               const Kh20Spacer(),
                                               Builder(builder: (context) {
-                                                final name = LangUtil.trans("${item.subCategory}");
-                                                final formatted = name[0].toUpperCase() + name.split("_").join(" ").substring(1).toLowerCase();
+                                                final name = LangUtil.trans(
+                                                    "${item.subCategory}");
+                                                final formatted =
+                                                    name[0].toUpperCase() +
+                                                        name
+                                                            .split("_")
+                                                            .join(" ")
+                                                            .substring(1)
+                                                            .toLowerCase();
                                                 return Text(formatted);
                                               })
                                             ],

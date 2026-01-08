@@ -9,6 +9,7 @@
 /// - Route configuration
 ///
 /// This file serves as a convenient import point for core functionality.
+library;
 
 // Main app components
 export 'app.dart';

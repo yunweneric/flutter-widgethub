@@ -78,7 +78,9 @@ class _PreStartScreenState extends State<BasuuPreStartScreen> {
                       ...widget.categories.map((category) {
                         return TweenAnimationBuilder(
                           tween: category == selectedCategory
-                              ? ColorTween(begin: theme.cardColor, end: theme.primaryColor)
+                              ? ColorTween(
+                                  begin: theme.cardColor,
+                                  end: theme.primaryColor)
                               : ColorTween(
                                   begin: theme.primaryColor,
                                   end: theme.cardColor,
@@ -97,7 +99,8 @@ class _PreStartScreenState extends State<BasuuPreStartScreen> {
                                   borderRadius: BorderRadius.circular(12.r),
                                   side: BorderSide(color: value!),
                                 ),
-                                contentPadding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 2.h),
+                                contentPadding: EdgeInsets.symmetric(
+                                    horizontal: 15.w, vertical: 2.h),
                                 leading: Chip(
                                   backgroundColor: category.color,
                                   label: Text(
@@ -115,17 +118,23 @@ class _PreStartScreenState extends State<BasuuPreStartScreen> {
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       SizedBox(
-                                        width: AppSizing.kHPercentage(context, 4),
+                                        width:
+                                            AppSizing.kHPercentage(context, 4),
                                         child: Text(
-                                          category.percentage == null ? '' : "${category.percentage}%",
-                                          style: theme.textTheme.displayMedium!.copyWith(color: theme.highlightColor),
+                                          category.percentage == null
+                                              ? ''
+                                              : "${category.percentage}%",
+                                          style: theme.textTheme.displayMedium!
+                                              .copyWith(
+                                                  color: theme.highlightColor),
                                         ),
                                       ),
                                       KwSpacer(width: 5.w),
                                       Container(
                                         decoration: BoxDecoration(
                                           color: theme.highlightColor,
-                                          borderRadius: BorderRadius.circular(8.r),
+                                          borderRadius:
+                                              BorderRadius.circular(8.r),
                                         ),
                                         child: const Padding(
                                           padding: EdgeInsets.all(3),

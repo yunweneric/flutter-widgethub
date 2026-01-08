@@ -181,7 +181,8 @@ class Auth01GoogleButton extends StatelessWidget {
       child: OutlinedButton.icon(
         onPressed: () {},
         icon: AppIcon.googleLogo(),
-        label: const Text('Continue with Google', style: TextStyle(color: Colors.black)),
+        label: const Text('Continue with Google',
+            style: TextStyle(color: Colors.black)),
       ),
     );
   }
@@ -197,7 +198,8 @@ class Auth01FacebookButton extends StatelessWidget {
       child: OutlinedButton.icon(
         onPressed: () {},
         icon: AppIcon.facebookLogo(),
-        label: const Text('Continue with Facebook', style: TextStyle(color: Colors.black)),
+        label: const Text('Continue with Facebook',
+            style: TextStyle(color: Colors.black)),
       ),
     );
   }
@@ -300,5 +302,6 @@ class AppIcon {
 
 class AppSizing {
   static Widget khSpacer(double height) => SizedBox(height: height);
-  static EdgeInsets kpadding(double width, double height) => EdgeInsets.symmetric(horizontal: width, vertical: height);
+  static EdgeInsets kpadding(double width, double height) =>
+      EdgeInsets.symmetric(horizontal: width, vertical: height);
 }

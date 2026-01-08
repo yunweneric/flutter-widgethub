@@ -178,9 +178,9 @@ class _CodeAndPreview extends StatelessWidget {
           : Container(
               key: const ValueKey('preview'),
               child: _Preview(
-                child: previewWidget,
                 isFrameVisible: isFrameVisible,
                 duration: duration,
+                child: previewWidget,
               ),
             ),
     );
@@ -246,7 +246,7 @@ class _TopBar extends StatelessWidget {
             width: 1,
           ),
         ),
-        color: Theme.of(context).scaffoldBackgroundColor,
+        // color: Theme.of(context).scaffoldBackgroundColor,
       ),
       padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 18.h),
       child: Row(

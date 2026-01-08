@@ -40,7 +40,8 @@ class SpotifyLogin extends StatelessWidget {
                               borderRadius: BorderRadius.circular(100),
                             ),
                           ),
-                          icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 24),
+                          icon: const Icon(Icons.arrow_back_ios_new_rounded,
+                              size: 24),
                           onPressed: () {},
                           splashRadius: 24,
                         ),
@@ -106,8 +107,10 @@ class SpotifyLogin extends StatelessWidget {
                         children: [
                           const OrDivider(),
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                            child: Text('Or', style: theme.textTheme.bodyMedium),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 16.0),
+                            child:
+                                Text('Or', style: theme.textTheme.bodyMedium),
                           ),
                           const OrDivider(),
                         ],
@@ -191,7 +194,8 @@ class _SpotifyInput extends StatefulWidget {
   final String hintText;
   final bool obscureText;
   final VoidCallback? onSuffixTap;
-  const _SpotifyInput({required this.hintText, this.obscureText = false, this.onSuffixTap});
+  const _SpotifyInput(
+      {required this.hintText, this.obscureText = false, this.onSuffixTap});
 
   @override
   State<_SpotifyInput> createState() => _SpotifyInputState();
@@ -238,13 +242,15 @@ class _SpotifySocialButton extends StatelessWidget {
         fit: BoxFit.contain,
         width: 32,
         height: 32,
-        colorFilter: color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null,
+        colorFilter:
+            color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null,
       ),
     );
   }
 }
 
-String googleIcon = '''<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+String googleIcon =
+    '''<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_17_40)">
 <path d="M23.9996 19.6363V28.9309H36.916C36.3488 31.9199 34.6468 34.4509 32.0941 36.1527L39.8831 42.1964C44.4213 38.0075 47.0395 31.8547 47.0395 24.5456C47.0395 22.8438 46.8868 21.2073 46.6031 19.6366L23.9996 19.6363Z" fill="#4285F4"/>
 <path d="M10.5494 28.568L8.79263 29.9128L2.57434 34.7564C6.52342 42.589 14.6174 48 23.9991 48C30.4789 48 35.9116 45.8618 39.8826 42.1964L32.0936 36.1528C29.9554 37.5927 27.2281 38.4656 23.9991 38.4656C17.7591 38.4656 12.4575 34.2547 10.5592 28.5819L10.5494 28.568Z" fill="#34A853"/>
@@ -261,7 +267,8 @@ String googleIcon = '''<svg width="48" height="48" viewBox="0 0 48 48" fill="non
 
 ''';
 
-String appleIcon = '''<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+String appleIcon =
+    '''<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_17_53)">
 <path d="M43.5839 37.4071C42.858 39.0841 41.9988 40.6277 41.0033 42.047C39.6463 43.9817 38.5352 45.3209 37.6789 46.0646C36.3516 47.2853 34.9294 47.9105 33.4065 47.946C32.3132 47.946 30.9947 47.6349 29.4599 47.0039C27.9201 46.3757 26.5051 46.0646 25.2112 46.0646C23.8542 46.0646 22.3988 46.3757 20.8421 47.0039C19.2831 47.6349 18.0271 47.9638 17.0668 47.9964C15.6064 48.0586 14.1508 47.4157 12.6978 46.0646C11.7704 45.2558 10.6105 43.8691 9.22087 41.9047C7.72995 39.807 6.50422 37.3745 5.54395 34.6013C4.51554 31.6058 4 28.7051 4 25.8969C4 22.6801 4.69509 19.9057 6.08734 17.5807C7.18153 15.7132 8.63718 14.2401 10.4591 13.1586C12.2809 12.0772 14.2495 11.5261 16.3694 11.4908C17.5293 11.4908 19.0505 11.8497 20.9408 12.5548C22.8258 13.2623 24.0361 13.6212 24.5667 13.6212C24.9635 13.6212 26.308 13.2016 28.5874 12.3652C30.7428 11.5895 32.562 11.2683 34.0524 11.3948C38.0908 11.7208 41.1247 13.3127 43.1425 16.1808C39.5307 18.3692 37.7441 21.4342 37.7797 25.3663C37.8123 28.429 38.9233 30.9777 41.107 33.0013C42.0966 33.9405 43.2017 34.6664 44.4313 35.182C44.1646 35.9553 43.8832 36.696 43.5839 37.4071ZM34.322 0.960792C34.322 3.36134 33.445 5.60273 31.6969 7.67733C29.5873 10.1436 27.0357 11.5688 24.2687 11.3439C24.2334 11.0559 24.213 10.7528 24.213 10.4343C24.213 8.12976 25.2162 5.66346 26.9978 3.64693C27.8872 2.62593 29.0185 1.77697 30.3903 1.09975C31.7591 0.432629 33.0539 0.0636968 34.2716 0.000518799C34.3072 0.321435 34.322 0.642371 34.322 0.960761V0.960792Z" fill="black"/>
 </g>

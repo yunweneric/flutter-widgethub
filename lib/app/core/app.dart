@@ -6,6 +6,8 @@
 /// - Theme management (light/dark mode)
 /// - Localization support (English and French)
 /// - ScreenUtil for responsive design
+library;
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -45,11 +47,15 @@ class MyApp extends StatelessWidget {
             builder: (context, state) {
               return BlocConsumer<LanguageBloc, LanguageState>(
                 listener: (context, langState) {
-                  LangUtil.setTrans(context, langState.currentLocale);
+                  // Ensure locale is set in easy_localization when bloc state changes
+                  if (context.locale != langState.currentLocale) {
+                    LangUtil.setTrans(context, langState.currentLocale);
+                  }
                 },
                 builder: (context, langState) {
                   return ScreenUtilInit(
-                    designSize: Size(constraints.maxWidth, constraints.maxHeight),
+                    designSize:
+                        Size(constraints.maxWidth, constraints.maxHeight),
                     useInheritedMediaQuery: true,
                     builder: (context, child) {
                       return MaterialApp.router(
@@ -57,8 +63,7 @@ class MyApp extends StatelessWidget {
                         debugShowCheckedModeBanner: false,
                         localizationsDelegates: context.localizationDelegates,
                         supportedLocales: context.supportedLocales,
-                        locale: context.locale,
-                        // locale: Locale('fr', "FR"),
+                        locale: langState.currentLocale,
                         title: 'Flutter WidgetHub',
                         theme: AppTheme.light(),
                         darkTheme: AppTheme.dark(),

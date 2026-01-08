@@ -21,7 +21,7 @@ class _TabssideBarCategoriestate extends State<SwitchersBlocItem> {
     super.initState();
   }
 
-  startTimer() {
+  void startTimer() {
     timer = Timer.periodic(duration, (tick) {
       setState(() {
         isOn = !isOn;

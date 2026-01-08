@@ -24,8 +24,18 @@ class LeaveAReviewTemplateData {
     setup: setup,
     category: ComponentCategoryEnum.BLOCKS,
     subcategory: SubComponentCategoryEnum.SLIDERS_AND_CAROUSELS,
-    gitHubLink: "https://github.com/yunweneric/flutter-open-ui/tree/leave_a_review",
-    supportedPlatforms: [SupportedPlatform.ANDROID, SupportedPlatform.IOS, SupportedPlatform.MACOS, SupportedPlatform.WEB],
-    responsiveDevices: [AppDeviceType.MOBILE, AppDeviceType.TABLET, AppDeviceType.DESKTOP],
+    gitHubLink:
+        "https://github.com/yunweneric/flutter-open-ui/tree/leave_a_review",
+    supportedPlatforms: [
+      SupportedPlatform.ANDROID,
+      SupportedPlatform.IOS,
+      SupportedPlatform.MACOS,
+      SupportedPlatform.WEB
+    ],
+    responsiveDevices: [
+      AppDeviceType.MOBILE,
+      AppDeviceType.TABLET,
+      AppDeviceType.DESKTOP
+    ],
   );
 }

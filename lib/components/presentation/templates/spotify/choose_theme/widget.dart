@@ -36,7 +36,9 @@ class _SpotifyChooseThemeState extends State<SpotifyChooseTheme> {
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: _selectedMode == ThemeMode.dark ? SpotifyTheme.dark : SpotifyTheme.light,
+      data: _selectedMode == ThemeMode.dark
+          ? SpotifyTheme.dark
+          : SpotifyTheme.light,
       child: Scaffold(
         body: Stack(
           fit: StackFit.expand,
@@ -60,7 +62,10 @@ class _SpotifyChooseThemeState extends State<SpotifyChooseTheme> {
                     Text(
                       "Choose Mode",
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.displayMedium?.copyWith(color: Colors.white),
+                      style: Theme.of(context)
+                          .textTheme
+                          .displayMedium
+                          ?.copyWith(color: Colors.white),
                     ),
                     const SizedBox(height: 32),
                     Row(
@@ -142,7 +147,10 @@ class _ThemeModeSelector extends StatelessWidget {
                   boxShadow: selected
                       ? [
                           BoxShadow(
-                            color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                            color: Theme.of(context)
+                                .colorScheme
+                                .primary
+                                .withOpacity(0.1),
                             blurRadius: 16,
                             spreadRadius: 2,
                           ),

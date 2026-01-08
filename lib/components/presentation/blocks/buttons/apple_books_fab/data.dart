@@ -31,6 +31,10 @@ class AppleBooksFABData {
     category: ComponentCategoryEnum.BLOCKS,
     subcategory: SubComponentCategoryEnum.BUTTONS,
     supportedPlatforms: [SupportedPlatform.ANDROID, SupportedPlatform.IOS],
-    responsiveDevices: [AppDeviceType.MOBILE, AppDeviceType.TABLET, AppDeviceType.DESKTOP],
+    responsiveDevices: [
+      AppDeviceType.MOBILE,
+      AppDeviceType.TABLET,
+      AppDeviceType.DESKTOP
+    ],
   );
 }

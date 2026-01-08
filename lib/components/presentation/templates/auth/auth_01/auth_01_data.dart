@@ -20,7 +20,8 @@ class Auth01Data {
     id: "auth-01-signin",
     codeComponents: [
       CodeComponent(code: authLoginCode, widget: const Auth01LoginWidget()),
-      CodeComponent(code: auth01RegisterCode, widget: const Auth01RegisterWidget())
+      CodeComponent(
+          code: auth01RegisterCode, widget: const Auth01RegisterWidget())
     ],
     description: LangUtil.trans('auth01Description'),
     title: LangUtil.trans('auth01Title'),

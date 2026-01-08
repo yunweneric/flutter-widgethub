@@ -194,7 +194,8 @@ class ActionBtn extends StatelessWidget {
           width: AppSizing.kWPercentage(context, 35),
           bgColor: color,
           side: BorderSide(color: theme.highlightColor),
-          style: theme.textTheme.displayMedium?.copyWith(color: theme.primaryColorDark),
+          style: theme.textTheme.displayMedium
+              ?.copyWith(color: theme.primaryColorDark),
           padding: EdgeInsets.symmetric(vertical: 25.h),
         );
       },

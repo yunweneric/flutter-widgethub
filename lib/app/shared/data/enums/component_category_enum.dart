@@ -13,7 +13,8 @@ enum ComponentCategoryEnum {
   ///
   /// Converts the enum name to a formatted string (e.g., "GETTING_STARTED" -> "Getting started").
   String describe() {
-    return name[0].toUpperCase() + name.split("_").join(" ").substring(1).toLowerCase();
+    return name[0].toUpperCase() +
+        name.split("_").join(" ").substring(1).toLowerCase();
   }
 
   /// Returns a URL-friendly link string for this category.

@@ -37,36 +37,43 @@ class _DoctorOnboardingScreenState extends State<DoctorOnboardingScreen> {
   final curve = Curves.fastOutSlowIn;
   final duration = const Duration(milliseconds: 700);
   List<OnboardingData> data() {
-    const baseUrl = "https://raw.githubusercontent.com/yunweneric/flutter-open-ui/refs/heads/9-implement-the-ui-for-doctor-onboarding/assets/images/";
+    const baseUrl =
+        "https://raw.githubusercontent.com/yunweneric/flutter-open-ui/refs/heads/9-implement-the-ui-for-doctor-onboarding/assets/images/";
     return [
       OnboardingData(
         title: 'Meet Doctors Online',
-        description: 'Connect with Specialized Doctors Online for Convenient and Comprehensive Medical Consultations.',
+        description:
+            'Connect with Specialized Doctors Online for Convenient and Comprehensive Medical Consultations.',
         image: '$baseUrl/doctor_${0}.png',
       ),
       OnboardingData(
         title: "Connect with Specialists",
-        description: "Connect with Specialized Doctors Online for Convenient and Comprehensive Medical Consultations.",
+        description:
+            "Connect with Specialized Doctors Online for Convenient and Comprehensive Medical Consultations.",
         image: '$baseUrl/doctor_${1}.png',
       ),
       OnboardingData(
         title: 'Thousands of Online Specialists',
-        description: ' Explore a Vast Array of Online Medical Specialists, Offering an Extensive Range of Expertise Tailored to Your Healthcare Needs.',
+        description:
+            ' Explore a Vast Array of Online Medical Specialists, Offering an Extensive Range of Expertise Tailored to Your Healthcare Needs.',
         image: '$baseUrl/doctor_${2}.png',
       ),
       OnboardingData(
         title: 'Meet Doctors Online',
-        description: 'Connect with Specialized Doctors Online for Convenient and Comprehensive Medical Consultations.',
+        description:
+            'Connect with Specialized Doctors Online for Convenient and Comprehensive Medical Consultations.',
         image: '$baseUrl/doctor_${0}.png',
       ),
       OnboardingData(
         title: "Connect with Specialists",
-        description: "Connect with Specialized Doctors Online for Convenient and Comprehensive Medical Consultations.",
+        description:
+            "Connect with Specialized Doctors Online for Convenient and Comprehensive Medical Consultations.",
         image: '$baseUrl/doctor_${1}.png',
       ),
       OnboardingData(
         title: 'Thousands of Online Specialists',
-        description: ' Explore a Vast Array of Online Medical Specialists, Offering an Extensive Range of Expertise Tailored to Your Healthcare Needs.',
+        description:
+            ' Explore a Vast Array of Online Medical Specialists, Offering an Extensive Range of Expertise Tailored to Your Healthcare Needs.',
         image: '$baseUrl/doctor_${2}.png',
       ),
     ];
@@ -82,7 +89,7 @@ class _DoctorOnboardingScreenState extends State<DoctorOnboardingScreen> {
     super.initState();
   }
 
-  moveToNext(int index) {
+  void moveToNext(int index) {
     //* If the index is the last item then move to the next screen
     if (index == data().length - 1) {
       //* Here, you will implement the routing to the next screen
@@ -95,7 +102,7 @@ class _DoctorOnboardingScreenState extends State<DoctorOnboardingScreen> {
     controller.animateToPage(activeIndex, duration: duration, curve: curve);
   }
 
-  reset() {
+  void reset() {
     setState(() {
       previousIndex = data().length - 1;
       activeIndex = 0;
@@ -147,14 +154,18 @@ class _DoctorOnboardingScreenState extends State<DoctorOnboardingScreen> {
                                   data()[activeIndex].image,
                                   fit: BoxFit.cover,
                                   errorBuilder: (c, i, e) {
-                                    return const CircularProgressIndicator.adaptive();
+                                    return const CircularProgressIndicator
+                                        .adaptive();
                                   },
                                   loadingBuilder: (c, i, loadingProgress) {
-                                    if (loadingProgress?.cumulativeBytesLoaded == loadingProgress?.expectedTotalBytes) {
+                                    if (loadingProgress
+                                            ?.cumulativeBytesLoaded ==
+                                        loadingProgress?.expectedTotalBytes) {
                                       return i;
                                     }
                                     // return Text("");
-                                    return const CircularProgressIndicator.adaptive();
+                                    return const CircularProgressIndicator
+                                        .adaptive();
                                   },
                                 ),
                               ),
@@ -223,14 +234,18 @@ class _DoctorOnboardingScreenState extends State<DoctorOnboardingScreen> {
                                     const Kh20Spacer(),
                                     Text(
                                       data()[activeIndex].title,
-                                      style: Theme.of(context).textTheme.displaySmall,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .displaySmall,
                                       textAlign: TextAlign.center,
                                     ),
                                     const Kh20Spacer(),
                                     Text(
                                       data()[activeIndex].description,
                                       textAlign: TextAlign.center,
-                                      style: Theme.of(context).textTheme.labelMedium,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .labelMedium,
                                     ),
                                     const Kh20Spacer(),
                                   ],
@@ -241,7 +256,9 @@ class _DoctorOnboardingScreenState extends State<DoctorOnboardingScreen> {
                         ),
                         AppButton(
                           padding: EdgeInsets.symmetric(vertical: 12.h),
-                          title: activeIndex >= data().length - 1 ? 'Get Started' : "Next",
+                          title: activeIndex >= data().length - 1
+                              ? 'Get Started'
+                              : "Next",
                           onPressed: () => moveToNext(activeIndex),
                           borderRadius: 30.r,
                         ),
@@ -249,17 +266,24 @@ class _DoctorOnboardingScreenState extends State<DoctorOnboardingScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            ...List.generate(data().length, (i) => i).map((index) {
+                            ...List.generate(data().length, (i) => i)
+                                .map((index) {
                               return InkWell(
-                                highlightColor: Theme.of(context).scaffoldBackgroundColor,
+                                highlightColor:
+                                    Theme.of(context).scaffoldBackgroundColor,
                                 onTap: () => moveToNext(index),
                                 child: AnimatedContainer(
                                   width: activeIndex == index ? 30.w : 10.w,
                                   height: activeIndex == index ? 8.w : 10.w,
                                   margin: EdgeInsets.only(right: 5.w),
                                   decoration: BoxDecoration(
-                                    color: activeIndex == index ? Theme.of(context).primaryColor : Theme.of(context).primaryColor.withOpacity(0.4),
-                                    borderRadius: BorderRadius.circular(activeIndex == index ? 8.r : 30.r),
+                                    color: activeIndex == index
+                                        ? Theme.of(context).primaryColor
+                                        : Theme.of(context)
+                                            .primaryColor
+                                            .withOpacity(0.4),
+                                    borderRadius: BorderRadius.circular(
+                                        activeIndex == index ? 8.r : 30.r),
                                   ),
                                   duration: const Duration(milliseconds: 500),
                                 ),
@@ -272,7 +296,8 @@ class _DoctorOnboardingScreenState extends State<DoctorOnboardingScreen> {
                           borderRadius: BorderRadius.circular(10.r),
                           onTap: reset,
                           child: Padding(
-                            padding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 8.w),
+                            padding: EdgeInsets.symmetric(
+                                vertical: 5.h, horizontal: 8.w),
                             child: const Text("Reset"),
                           ),
                         )
@@ -290,10 +315,14 @@ class _DoctorOnboardingScreenState extends State<DoctorOnboardingScreen> {
 }
 
 class AppSizing {
-  static double width(BuildContext context) => MediaQuery.of(context).size.width;
-  static double height(BuildContext context) => MediaQuery.of(context).size.height;
-  static double kHPercentage(BuildContext context, double value) => (height(context) * value) / 100;
-  static double kWPercentage(BuildContext context, double value) => (width(context) * value) / 100;
+  static double width(BuildContext context) =>
+      MediaQuery.of(context).size.width;
+  static double height(BuildContext context) =>
+      MediaQuery.of(context).size.height;
+  static double kHPercentage(BuildContext context, double value) =>
+      (height(context) * value) / 100;
+  static double kWPercentage(BuildContext context, double value) =>
+      (width(context) * value) / 100;
   static BorderRadius radiusMd = BorderRadius.circular(10.r);
   static BorderRadius radiusSm = BorderRadius.circular(5.r);
 
@@ -302,19 +331,24 @@ class AppSizing {
         horizontal: isMobile(context) ? 20.w : 30.w,
       );
 
-  static EdgeInsets kpadding(double width, double height) => EdgeInsets.symmetric(horizontal: width.w, vertical: height.h);
+  static EdgeInsets kpadding(double width, double height) =>
+      EdgeInsets.symmetric(horizontal: width.w, vertical: height.h);
 
   // Deprecated: Use Kh20Spacer, Kh10Spacer, KhSpacer, KwSpacer widgets from app/shared/presentation/utils/sizing.dart instead
-  @Deprecated('Use widgets from app/shared/presentation/utils/sizing.dart instead')
+  @Deprecated(
+      'Use widgets from app/shared/presentation/utils/sizing.dart instead')
   static Widget kh20Spacer() => const Kh20Spacer();
-  
-  @Deprecated('Use widgets from app/shared/presentation/utils/sizing.dart instead')
+
+  @Deprecated(
+      'Use widgets from app/shared/presentation/utils/sizing.dart instead')
   static Widget kh10Spacer() => const Kh10Spacer();
 
-  @Deprecated('Use widgets from app/shared/presentation/utils/sizing.dart instead')
+  @Deprecated(
+      'Use widgets from app/shared/presentation/utils/sizing.dart instead')
   static Widget khSpacer(double height) => KhSpacer(height: height);
 
-  @Deprecated('Use widgets from app/shared/presentation/utils/sizing.dart instead')
+  @Deprecated(
+      'Use widgets from app/shared/presentation/utils/sizing.dart instead')
   static Widget kwSpacer(double width) => KwSpacer(width: width);
 
   static bool isXMobile(context) => width(context) < 380;
@@ -368,7 +402,9 @@ class AppButton extends StatelessWidget {
         disabledBackgroundColor: disabledBgColor ?? bgColor?.withOpacity(.5),
         backgroundColor: bgColor ?? theme.colorScheme.primary,
         surfaceTintColor: bgColor,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius ?? 16.r), side: side ?? BorderSide.none),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(borderRadius ?? 16.r),
+            side: side ?? BorderSide.none),
         shadowColor: AppColors.TEXTBLACK.withOpacity(.1),
       ),
       child: Row(

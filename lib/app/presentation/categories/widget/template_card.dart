@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/app/shared/data/models/component.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/app/core/service_locators.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/shared.dart';
 import 'package:go_router/go_router.dart';
 
@@ -29,7 +27,8 @@ class _TemplateCardState extends State<TemplateCard> {
       hoverColor: Theme.of(context).scaffoldBackgroundColor,
       borderRadius: AppSizing.radiusMd(),
       onTap: () {
-        componentBloc.add(UpdateActiveComponentEvent(newComponent: widget.component));
+        componentBloc
+            .add(UpdateActiveComponentEvent(newComponent: widget.component));
         final link =
             "/components/${widget.component.category.link()}/${widget.component.subcategory.link()}/${widget.component.id}/${widget.index}";
 
@@ -45,14 +44,17 @@ class _TemplateCardState extends State<TemplateCard> {
           Container(
             clipBehavior: Clip.hardEdge,
             decoration: const BoxDecoration(),
-            width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 35),
+            width: AppSizing.kWPercentage(
+                context, AppSizing.isMobile(context) ? 100 : 35),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
                   padding: EdgeInsets.all(30.w),
-                  width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 35),
-                  height: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 80 : 25),
+                  width: AppSizing.kWPercentage(
+                      context, AppSizing.isMobile(context) ? 100 : 35),
+                  height: AppSizing.kWPercentage(
+                      context, AppSizing.isMobile(context) ? 80 : 25),
                   decoration: BoxDecoration(
                     color: Theme.of(context).scaffoldBackgroundColor,
                     border: Border.all(color: Theme.of(context).dividerColor),

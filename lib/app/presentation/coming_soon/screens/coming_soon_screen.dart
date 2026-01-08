@@ -1,6 +1,8 @@
 /// Coming soon placeholder screen.
 ///
 /// Placeholder screen displayed for features that are not yet implemented.
+library;
+
 import 'package:flutter/material.dart';
 
 /// Screen displayed for features that are coming soon.

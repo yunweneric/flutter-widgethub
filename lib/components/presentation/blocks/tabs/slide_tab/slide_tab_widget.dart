@@ -34,10 +34,12 @@ class _SlideTabWidgetState extends State<SlideTabWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: AppSizing.width(context) * 0.04),
+        padding:
+            EdgeInsets.symmetric(horizontal: AppSizing.width(context) * 0.04),
         child: Center(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: AppSizing.width(context) * 0.02, vertical: 8),
+            padding: EdgeInsets.symmetric(
+                horizontal: AppSizing.width(context) * 0.02, vertical: 8),
             decoration: BoxDecoration(
               color: Colors.grey.withOpacity(0.2),
               borderRadius: BorderRadius.circular(30),
@@ -82,7 +84,8 @@ class _SlideTabWidgetState extends State<SlideTabWidget> {
                             maxLines: 1,
                             textDirection: TextDirection.ltr,
                           )..layout();
-                          final width = textPainter.size.width + AppSizing.width(context) * 0.12;
+                          final width = textPainter.size.width +
+                              AppSizing.width(context) * 0.12;
                           textWidth = width;
                           return AnimatedContainer(
                             duration: const Duration(milliseconds: 500),
@@ -94,19 +97,23 @@ class _SlideTabWidgetState extends State<SlideTabWidget> {
                                 textWidth = width;
                               }),
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 12),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 12),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     SvgPicture.string(item.icon, height: 20),
-                                    SizedBox(width: AppSizing.width(context) * 0.02),
+                                    SizedBox(
+                                        width: AppSizing.width(context) * 0.02),
                                     Text(
                                       item.title,
                                       softWrap: true,
                                       maxLines: 1,
                                       overflow: TextOverflow.clip,
                                       textAlign: TextAlign.center,
-                                      style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+                                      style: const TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w600),
                                     ),
                                   ],
                                 ),
@@ -176,6 +183,8 @@ List<TileItem> items = [
 ];
 
 class AppSizing {
-  static double width(BuildContext context) => MediaQuery.of(context).size.width;
-  static double height(BuildContext context) => MediaQuery.of(context).size.height;
+  static double width(BuildContext context) =>
+      MediaQuery.of(context).size.width;
+  static double height(BuildContext context) =>
+      MediaQuery.of(context).size.height;
 }
