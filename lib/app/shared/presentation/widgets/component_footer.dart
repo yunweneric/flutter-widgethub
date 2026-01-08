@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
-import 'package:flutterui/app/shared/presentation/utils/util.dart';
-import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
+import 'package:flutterui/app/shared/presentation/widgets/github_icon_with_stars.dart';
 
 class ComponentFooter extends StatefulWidget {
   const ComponentFooter({super.key});
@@ -46,10 +44,10 @@ class _DetailedFooterState extends State<ComponentFooter> {
               children: [
                 CircleAvatar(
                   backgroundColor: Colors.transparent,
-                  child: TextButton(
-                    onPressed: () => UtilHelper.openUrl(
-                        "https://github.com/yunweneric/flutter-widgethub/"),
-                    child: const AppIcon(icon: AppIcons.github),
+                  child: const GitHubIconWithStars(
+                    owner: 'yunweneric',
+                    repo: 'flutter-widgethub',
+                    url: 'https://github.com/yunweneric/flutter-widgethub/',
                   ),
                 )
               ],

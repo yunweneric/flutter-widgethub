@@ -87,9 +87,10 @@ class _SideBarState extends State<SideBar> {
                                           sideBarItem.subCategory.link()),
                                       title: sideBarItem.subCategory.describe(),
                                       onPressed: () {
-                                        if (AppSizing.isMobile(context))
+                                        if (AppSizing.isMobile(context)) {
                                           sidebarBloc.add(UpdateSideBarEvent(
                                               newStatus: false));
+                                        }
                                         componentBloc.add(
                                             UpdateActiveCategoryEvent(
                                                 category: sideBarItem));

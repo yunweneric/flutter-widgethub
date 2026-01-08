@@ -52,6 +52,7 @@ export 'presentation/widgets/device_frame.dart';
 export 'presentation/widgets/device_section_frame.dart';
 export 'presentation/widgets/device_frame_selector_button.dart';
 export 'presentation/widgets/device_frame_selector_modal.dart';
+export 'presentation/widgets/github_icon_with_stars.dart';
 export 'presentation/widgets/icon.dart';
 export 'presentation/widgets/language_button.dart';
 

@@ -74,7 +74,7 @@ class _HomeScreenState extends State<BasuuHomeScreen> {
                       words = words.map((item) => item.copyWith(hasLearned: false)).toList();
                     });
                   },
-                  style: TextStyle(color: BasuuColors.RED, fontSize: 18.sp),
+                  style: TextStyle(color: BasuuColors.red, fontSize: 18.sp),
                   text: 'Reset all progress',
                   side: BorderSide(color: theme.highlightColor),
                   icon: const BasuuIcon(icon: BasuuIcons.reset),
@@ -113,7 +113,7 @@ class _HomeScreenState extends State<BasuuHomeScreen> {
                                   padding: EdgeInsets.only(right: 5.w),
                                   child: CircleAvatar(
                                     radius: 4.r,
-                                    backgroundColor: item.hasLearned ? BasuuColors.GREEN : theme.highlightColor,
+                                    backgroundColor: item.hasLearned ? BasuuColors.green : theme.highlightColor,
                                   ),
                                 );
                               }),
@@ -121,8 +121,8 @@ class _HomeScreenState extends State<BasuuHomeScreen> {
                             KwSpacer(width: 5.w),
                             TweenAnimationBuilder(
                               tween: ColorTween(
-                                begin: item.hasLearned ? BasuuColors.GREEN : theme.cardColor,
-                                end: item.hasLearned ? BasuuColors.GREEN : theme.cardColor,
+                                begin: item.hasLearned ? BasuuColors.green : theme.cardColor,
+                                end: item.hasLearned ? BasuuColors.green : theme.cardColor,
                               ),
                               duration: const Duration(milliseconds: 700),
                               builder: (context, color, child) {

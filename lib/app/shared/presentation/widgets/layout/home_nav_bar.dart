@@ -39,18 +39,15 @@ class _HomeNavBarState extends State<HomeNavBar> {
                         TextButton(
                           style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
-                            backgroundColor:
-                                Theme.of(context).scaffoldBackgroundColor,
-                            overlayColor:
-                                Theme.of(context).scaffoldBackgroundColor,
+                            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                            overlayColor: Theme.of(context).scaffoldBackgroundColor,
                           ),
                           child: AnimatedScale(
                             duration: const Duration(milliseconds: 100),
                             scale: isLogoHovered ? 1.1 : 1.0,
                             child: AnimatedSwitcher(
                               duration: const Duration(milliseconds: 100),
-                              child: Theme.of(context).brightness ==
-                                      Brightness.light
+                              child: Theme.of(context).brightness == Brightness.light
                                   ? Image.asset(AppImages.logoDark, width: 100)
                                   : Image.asset(
                                       AppImages.logoLight,
@@ -80,14 +77,12 @@ class _HomeNavBarState extends State<HomeNavBar> {
                                   onPressed: () => context.go(item.path),
                                   child: Text(
                                     item.title,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyMedium!
-                                        .copyWith(
-                                          color: isActive
-                                              ? Theme.of(context).primaryColor
-                                              : null,
-                                        ),
+                                    style:
+                                        Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                              color: isActive
+                                                  ? Theme.of(context).primaryColor
+                                                  : null,
+                                            ),
                                   ),
                                 ),
                               );
@@ -103,10 +98,10 @@ class _HomeNavBarState extends State<HomeNavBar> {
                         const DeviceFrameSelectorButton(),
                         KwSpacer(width: 10.w),
                         const LanguageButton(),
-                        TextButton(
-                          onPressed: () => UtilHelper.openUrl(
-                              "https://github.com/yunweneric/flutter-widgethub/"),
-                          child: const AppIcon(icon: AppIcons.github),
+                        const GitHubIconWithStars(
+                          owner: 'yunweneric',
+                          repo: 'flutter-widgethub',
+                          url: 'https://github.com/yunweneric/flutter-widgethub/',
                         ),
                         KwSpacer(width: 5.w),
                         Builder(
@@ -117,9 +112,7 @@ class _HomeNavBarState extends State<HomeNavBar> {
                             return TextButton(
                               onPressed: () => theme.add(
                                 ChangeTheme(
-                                    themeMode: isDark
-                                        ? ThemeMode.light
-                                        : ThemeMode.dark),
+                                    themeMode: isDark ? ThemeMode.light : ThemeMode.dark),
                               ),
                               child: AppIcon(
                                 icon: isDark ? AppIcons.moon : AppIcons.sun,

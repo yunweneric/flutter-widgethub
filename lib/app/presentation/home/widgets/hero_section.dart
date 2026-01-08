@@ -159,7 +159,7 @@ class _HeroSectionState extends State<HeroSection> {
                               },
                               child: Text(
                                 LangUtil.trans("exploreNow"),
-                                style: const TextStyle(color: AppColors.BG),
+                                style: const TextStyle(color: AppColors.bg),
                               ),
                             ),
                             KwSpacer(width: 20.w),

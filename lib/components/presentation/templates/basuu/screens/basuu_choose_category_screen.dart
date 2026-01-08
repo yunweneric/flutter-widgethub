@@ -30,26 +30,26 @@ class _ChooseCategoryScreenState extends State<BasuuChooseCategoryScreen> {
     BasuuCategory(
         label: "A1",
         title: "1 - 100",
-        color: BasuuColors.TEAL,
+        color: BasuuColors.teal,
         percentage: 80,
         isChecked: true),
     BasuuCategory(
         label: "A2",
         title: '101 - 1K',
-        color: BasuuColors.DGREEN,
+        color: BasuuColors.darkGreen,
         percentage: 44),
     BasuuCategory(
         label: "B1",
         title: "1K - 2K",
-        color: BasuuColors.DARKORANGE,
+        color: BasuuColors.darkOrange,
         percentage: 27),
     BasuuCategory(
         label: "B2",
         title: "2K - 3K",
-        color: BasuuColors.DARKRED,
+        color: BasuuColors.darkRed,
         percentage: 9),
-    BasuuCategory(label: "C1", title: "3K - 4K", color: BasuuColors.MIDRED),
-    BasuuCategory(label: "C2", title: '4K - 5K', color: BasuuColors.DEEPRED),
+    BasuuCategory(label: "C1", title: "3K - 4K", color: BasuuColors.midRed),
+    BasuuCategory(label: "C2", title: '4K - 5K', color: BasuuColors.deepRed),
   ];
   void updateCheckedItem(BasuuCategory category) {
     final index = categories.indexOf(category);

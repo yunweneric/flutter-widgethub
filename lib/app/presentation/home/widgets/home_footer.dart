@@ -5,7 +5,7 @@ import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
-import 'package:flutterui/app/shared/presentation/utils/util.dart';
+import 'package:flutterui/app/shared/presentation/widgets/github_icon_with_stars.dart';
 import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 
 class HomeFooter extends StatefulWidget {
@@ -60,10 +60,10 @@ class _HomeFooterState extends State<HomeFooter> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       KwSpacer(width: 5.w),
-                      TextButton(
-                        onPressed: () => UtilHelper.openUrl(
-                            "https://github.com/yunweneric/flutter-widgethub/"),
-                        child: const AppIcon(icon: AppIcons.github),
+                      const GitHubIconWithStars(
+                        owner: 'yunweneric',
+                        repo: 'flutter-widgethub',
+                        url: 'https://github.com/yunweneric/flutter-widgethub/',
                       ),
                       KwSpacer(width: 5.w),
                       Builder(

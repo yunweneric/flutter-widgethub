@@ -137,9 +137,9 @@ class _LearningScreenState extends State<BasuuLearningScreen> {
     return Builder(builder: (context) {
       Color color = theme.cardColor;
       if (isLeft && isCorrect == true) {
-        color = BasuuColors.GREEN;
+        color = BasuuColors.green;
       } else if (!isLeft && isCorrect == false) {
-        color = BasuuColors.RED;
+        color = BasuuColors.red;
       } else {
         color = theme.cardColor;
       }

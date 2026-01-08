@@ -178,9 +178,9 @@ class ActionBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     Color color = theme.cardColor;
     if (isLeft && isCorrect == true) {
-      color = BasuuColors.GREEN;
+      color = BasuuColors.green;
     } else if (!isLeft && isCorrect == false) {
-      color = BasuuColors.RED;
+      color = BasuuColors.red;
     } else {
       color = theme.cardColor;
     }

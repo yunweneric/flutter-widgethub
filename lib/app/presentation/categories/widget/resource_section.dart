@@ -12,8 +12,9 @@ class ResourceSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (component.assetLink == null && component.gitHubLink == null)
+    if (component.assetLink == null && component.gitHubLink == null) {
       return const SizedBox.shrink();
+    }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
