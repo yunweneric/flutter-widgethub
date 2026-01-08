@@ -139,7 +139,7 @@ class PropertyCard extends StatelessWidget {
                             BorderRadius.circular(AirbnbConstants.radiusM),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.1),
+                            color: Colors.black.withValues(alpha: 0.1),
                             blurRadius: 4,
                             offset: const Offset(0, 1),
                           ),
@@ -266,7 +266,7 @@ class _Dot extends StatelessWidget {
       decoration: BoxDecoration(
         color: isActive
             ? colorScheme.surface
-            : colorScheme.surface.withOpacity(0.5),
+            : colorScheme.surface.withValues(alpha: 0.5),
         borderRadius: BorderRadius.circular(3),
       ),
     );

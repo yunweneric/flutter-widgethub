@@ -25,7 +25,7 @@ class _DiscloseSwitcherState extends State<DiscloseSwitcher> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
                 border: Border.all(
-                  color: isOn ? Colors.grey.withOpacity(0.2) : Colors.transparent,
+                  color: isOn ? Colors.grey.withValues(alpha: 0.2) : Colors.transparent,
                 ),
               ),
               padding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 2),
@@ -43,7 +43,7 @@ class _DiscloseSwitcherState extends State<DiscloseSwitcher> {
                         borderRadius: BorderRadius.circular(30),
                       ),
                       contentPadding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      tileColor: const Color.fromARGB(125, 33, 107, 243).withOpacity(0.05),
+                      tileColor: const Color.fromARGB(125, 33, 107, 243).withValues(alpha: 0.05),
                       value: isOn,
                       title: Row(
                         children: [

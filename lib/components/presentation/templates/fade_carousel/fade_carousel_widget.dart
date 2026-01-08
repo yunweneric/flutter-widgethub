@@ -69,7 +69,7 @@ class _FadeCarouselTemplateState extends State<FadeCarouselTemplate> {
                     decoration: BoxDecoration(
                       color: activeIndex == item
                           ? Colors.grey
-                          : Colors.grey.withOpacity(0.2),
+                          : Colors.grey.withValues(alpha: 0.2),
                       shape: BoxShape.circle,
                     ),
                   );

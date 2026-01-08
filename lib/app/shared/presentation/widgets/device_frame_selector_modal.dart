@@ -225,7 +225,7 @@ class _DeviceCard extends StatelessWidget {
               ),
               borderRadius: AppSizing.radiusSm(),
               color: isSelected
-                  ? Theme.of(context).primaryColor.withOpacity(0.08)
+                  ? Theme.of(context).primaryColor.withValues(alpha: 0.08)
                   : Theme.of(context).cardColor,
             ),
             child: Column(
@@ -246,7 +246,8 @@ class _DeviceCard extends StatelessWidget {
                           child: Icon(
                             Icons.phone_android,
                             size: 12.w,
-                            color: Theme.of(context).iconTheme.color?.withOpacity(0.5),
+                            color:
+                                Theme.of(context).iconTheme.color?.withValues(alpha: 0.5),
                           ),
                         ),
                       ),

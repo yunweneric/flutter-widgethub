@@ -59,7 +59,7 @@ Future<dynamic> showSearchModal(BuildContext context) {
   return showDialog(
     barrierDismissible: true,
     context: context,
-    barrierColor: Colors.black.withOpacity(0.4),
+    barrierColor: Colors.black.withValues(alpha: 0.4),
     builder: (context) {
       return const SearchBar();
     },

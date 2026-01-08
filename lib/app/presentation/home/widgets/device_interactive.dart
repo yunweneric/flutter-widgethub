@@ -21,10 +21,10 @@ class _DeviceInteractiveState extends State<DeviceInteractive> {
       runSpacing: 10,
       children: [
         DeviceSectionFrame(
-          parentWidth: AppSizing.kWPercentage(
-              context, AppSizing.isMobile(context) ? 100 : 44),
-          parentHeight: AppSizing.kHPercentage(
-              context, AppSizing.isDesktop(context) ? 60 : 40),
+          parentWidth:
+              AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 44),
+          parentHeight:
+              AppSizing.kHPercentage(context, AppSizing.isDesktop(context) ? 60 : 40),
           deviceAlignment: Alignment.bottomCenter,
           child: Scaffold(
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -33,10 +33,10 @@ class _DeviceInteractiveState extends State<DeviceInteractive> {
               width: double.infinity,
               decoration: BoxDecoration(
                 color: currentIndex == 0
-                    ? Colors.red.withOpacity(0.8)
+                    ? Colors.red.withValues(alpha: 0.8)
                     : currentIndex == 1
-                        ? Colors.teal.withOpacity(0.8)
-                        : Colors.blue.withOpacity(0.8),
+                        ? Colors.teal.withValues(alpha: 0.8)
+                        : Colors.blue.withValues(alpha: 0.8),
               ),
               duration: const Duration(milliseconds: 800),
               child: Column(
@@ -49,8 +49,7 @@ class _DeviceInteractiveState extends State<DeviceInteractive> {
                     curve: Curves.bounceOut,
                     builder: (context, value, child) {
                       return Transform(
-                        transform: Matrix4.identity()
-                          ..translate(0.0, -value * 200),
+                        transform: Matrix4.identity()..translate(0.0, -value * 200),
                         child: Text(
                           LangUtil.trans(currentIndex == 0
                               ? "red"
@@ -60,7 +59,7 @@ class _DeviceInteractiveState extends State<DeviceInteractive> {
                           style: const TextStyle(
                               fontSize: 80,
                               fontWeight: FontWeight.w900,
-                              color: AppColors.TEXTWHITE),
+                              color: AppColors.textWhite),
                         ),
                       );
                     },
@@ -72,10 +71,10 @@ class _DeviceInteractiveState extends State<DeviceInteractive> {
             bottomNavigationBar: BottomNavigationBar(
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               selectedItemColor: currentIndex == 0
-                  ? Colors.red.withOpacity(1)
+                  ? Colors.red.withValues(alpha: 1)
                   : currentIndex == 1
-                      ? Colors.teal.withOpacity(1)
-                      : Colors.blue.withOpacity(1),
+                      ? Colors.teal.withValues(alpha: 1)
+                      : Colors.blue.withValues(alpha: 1),
               onTap: (index) => {
                 setState(() {
                   currentIndex = index;
@@ -84,26 +83,22 @@ class _DeviceInteractiveState extends State<DeviceInteractive> {
               currentIndex: currentIndex,
               items: [
                 BottomNavigationBarItem(
-                    icon: const Icon(Icons.home),
-                    label: LangUtil.trans("read")),
+                    icon: const Icon(Icons.home), label: LangUtil.trans("read")),
                 BottomNavigationBarItem(
                     icon: const Icon(Icons.notification_add),
                     label: LangUtil.trans("teal")),
                 BottomNavigationBarItem(
-                    icon: const Icon(Icons.verified_user),
-                    label: LangUtil.trans("blue")),
+                    icon: const Icon(Icons.verified_user), label: LangUtil.trans("blue")),
               ],
             ),
           ),
         ),
         KwSpacer(width: AppSizing.kWPercentage(context, 2)),
         SizedBox(
-          width: AppSizing.kWPercentage(
-              context, AppSizing.isMobile(context) ? 100 : 44),
-          height: AppSizing.kHPercentage(
-              context, AppSizing.isDesktop(context) ? 60 : 40),
-          child: CodeHighlight(
-              fontSize: AppSizing.isMobile(context) ? 10 : 14, code: code),
+          width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 44),
+          height: AppSizing.kHPercentage(context, AppSizing.isDesktop(context) ? 60 : 40),
+          child:
+              CodeHighlight(fontSize: AppSizing.isMobile(context) ? 10 : 14, code: code),
         )
       ],
     );
@@ -147,10 +142,10 @@ class _DeviceInteractiveState extends State<DeviceInteractive> {
                 // alignment: Alignment.bottomCenter,
                 decoration: BoxDecoration(
                   color: currentIndex == 0
-                      ? Colors.red.withOpacity(0.5)
+                      ? Colors.red.withValues(alpha: 0.5)
                       : currentIndex == 1
-                          ? Colors.teal.withOpacity(0.5)
-                          : Colors.blue.withOpacity(0.5),
+                          ? Colors.teal.withValues(alpha: 0.5)
+                          : Colors.blue.withValues(alpha: 0.5),
                   borderRadius: BorderRadius.circular(30),
                 ),
                 duration: const Duration(milliseconds: 800),
@@ -182,7 +177,7 @@ class _DeviceInteractiveState extends State<DeviceInteractive> {
               ),
               bottomNavigationBar: Container(
                 decoration: const BoxDecoration(
-                    // border: Border(top: BorderSide(color: Theme.of(context).dividerColor.withOpacity(0.5))),
+                    // border: Border(top: BorderSide(color: Theme.of(context).dividerColor.withValues(alpha: 0.5))),
                     ),
                 child: BottomNavigationBar(
                   backgroundColor: Theme.of(context).scaffoldBackgroundColor,

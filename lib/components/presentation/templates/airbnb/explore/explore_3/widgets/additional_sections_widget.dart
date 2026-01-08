@@ -44,7 +44,7 @@ class _CollapsibleSection extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(AirbnbConstants.radiusM),
         border:
-            Border.all(color: Theme.of(context).dividerColor.withOpacity(0.1)),
+            Border.all(color: Theme.of(context).dividerColor.withValues(alpha: 0.1)),
       ),
       child: Row(
         children: [

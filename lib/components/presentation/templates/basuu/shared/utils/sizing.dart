@@ -39,7 +39,7 @@
 
 //   static EdgeInsets kMainPadding(BuildContext context) => EdgeInsets.symmetric(horizontal: isMobile(context) ? 15.w : 30.w);
 
-//   static EdgeInsets kpadding(double width, double height) => EdgeInsets.symmetric(horizontal: width.w, vertical: height.h);
+//   static EdgeInsets kPadding(double width, double height) => EdgeInsets.symmetric(horizontal: width.w, vertical: height.h);
 
 //   static Widget kh20Spacer() => SizedBox(height: 20.h);
 //   static Widget kh10Spacer() => SizedBox(height: 10.h);

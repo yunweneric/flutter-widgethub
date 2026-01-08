@@ -101,7 +101,7 @@ class _LearningScreenState extends State<BasuuLearningScreen> {
                       padding: EdgeInsets.symmetric(vertical: 80.h),
                       decoration: BoxDecoration(
                         color: theme.cardColor,
-                        border: Border.all(color: isWordVisible ? theme.primaryColor.withOpacity(0.3) : theme.highlightColor),
+                        border: Border.all(color: isWordVisible ? theme.primaryColor.withValues(alpha: 0.3) : theme.highlightColor),
                         borderRadius: BorderRadius.circular(20.r),
                       ),
                       child: AnimatedSwitcher(

@@ -134,7 +134,7 @@ class _FruityLipsTemplateState extends State<FruityLipsTemplate>
                   end: Alignment.topRight,
                   colors: [
                     fruits[activeBgIndex].color,
-                    fruits[activeBgIndex].lightColor.withOpacity(0.9),
+                    fruits[activeBgIndex].lightColor.withValues(alpha: 0.9),
                   ],
                 ),
               ),
@@ -151,8 +151,8 @@ class _FruityLipsTemplateState extends State<FruityLipsTemplate>
                 decoration: BoxDecoration(
                   gradient: RadialGradient(
                     colors: [
-                      Colors.white.withOpacity(0.5),
-                      fruits[activeBgIndex].color.withOpacity(0.2),
+                      Colors.white.withValues(alpha: 0.5),
+                      fruits[activeBgIndex].color.withValues(alpha: 0.2),
                     ],
                   ),
                 ),

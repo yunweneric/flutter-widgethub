@@ -33,7 +33,7 @@ class _DeviceSectionFrameState extends State<DeviceSectionFrame> {
       width: widget.parentWidth ?? AppSizing.kWPercentage(context, 40),
       height: widget.parentHeight ?? AppSizing.kHPercentage(context, 35),
       decoration: BoxDecoration(
-        color: Theme.of(context).primaryColor.withOpacity(0.1),
+        color: Theme.of(context).primaryColor.withValues(alpha: 0.1),
         borderRadius: AppSizing.radiusMd(),
       ),
       child: FittedBox(

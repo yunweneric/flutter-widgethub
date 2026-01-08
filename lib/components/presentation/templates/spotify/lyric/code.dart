@@ -75,7 +75,7 @@ class _SpotifyLyricScreenState extends State<SpotifyLyricScreen> {
             Positioned.fill(
               child: ColorFiltered(
                 colorFilter: ColorFilter.mode(
-                  Colors.green.withOpacity(0.7),
+                  Colors.green.withValues(alpha: 0.7),
                   BlendMode.modulate,
                 ),
                 child: Image.network(
@@ -207,7 +207,7 @@ Widget _lyricLine(String text, {bool faded = false}) {
     child: Text(
       text,
       style: TextStyle(
-        color: faded ? Colors.white.withOpacity(0.5) : Colors.white,
+        color: faded ? Colors.white.withValues(alpha: 0.5) : Colors.white,
         fontWeight: faded ? FontWeight.normal : FontWeight.bold,
         fontSize: 20,
       ),
@@ -221,7 +221,7 @@ class _SpotifyBottomBar extends StatelessWidget {
     final theme = Theme.of(context);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20).copyWith(bottom: kBottomNavigationBarHeight),
-      decoration: BoxDecoration(color: Colors.black.withOpacity(0.85)),
+      decoration: BoxDecoration(color: Colors.black.withValues(alpha: 0.85)),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

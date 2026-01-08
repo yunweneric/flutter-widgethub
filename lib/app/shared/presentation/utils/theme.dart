@@ -17,17 +17,17 @@ import 'package:google_fonts/google_fonts.dart';
 class AppTheme {
   static TextTheme lightTextTheme = TextTheme(
     displayLarge: GoogleFonts.inter(
-      color: AppColors.TEXTBLACK,
+      color: AppColors.textBlack,
       fontWeight: FontWeight.w800,
       fontSize: 30.sp,
     ),
     displayMedium: GoogleFonts.inter(
-      color: AppColors.TEXTBLACK,
+      color: AppColors.textBlack,
       fontWeight: FontWeight.w600,
       fontSize: 16.sp,
     ),
     displaySmall: GoogleFonts.inter(
-      color: AppColors.TEXTBLACK,
+      color: AppColors.textBlack,
       fontWeight: FontWeight.w600,
       fontSize: 12.sp,
     ),
@@ -57,17 +57,17 @@ class AppTheme {
   );
   static TextTheme darkTextTheme = TextTheme(
     displayLarge: GoogleFonts.inter(
-      color: AppColors.TEXTWHITE,
+      color: AppColors.textWhite,
       fontWeight: FontWeight.w800,
       fontSize: 30.sp,
     ),
     displayMedium: GoogleFonts.inter(
-      color: AppColors.TEXTWHITE,
+      color: AppColors.textWhite,
       fontWeight: FontWeight.w600,
       fontSize: 16.sp,
     ),
     displaySmall: GoogleFonts.inter(
-      color: AppColors.TEXTWHITE,
+      color: AppColors.textWhite,
       fontWeight: FontWeight.w600,
       fontSize: 12.sp,
     ),
@@ -99,15 +99,11 @@ class AppTheme {
   static InputDecorationTheme lightInputDecoration = InputDecorationTheme(
     contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 2.h),
     labelStyle: TextStyle(
-        color: AppColors.TEXTGREY,
-        fontSize: 16.sp,
-        fontWeight: FontWeight.w400),
+        color: AppColors.TEXTGREY, fontSize: 16.sp, fontWeight: FontWeight.w400),
     hintStyle: TextStyle(
-        color: AppColors.TEXTGREY,
-        fontSize: 16.sp,
-        fontWeight: FontWeight.w400),
+        color: AppColors.TEXTGREY, fontSize: 16.sp, fontWeight: FontWeight.w400),
     floatingLabelStyle: TextStyle(color: AppColors.TEXTGREY, fontSize: 12.sp),
-    errorStyle: TextStyle(color: AppColors.RED, fontSize: 11.sp),
+    errorStyle: TextStyle(color: AppColors.red, fontSize: 11.sp),
     border: AppSizing.mainBorder(AppColors.BGGRAY),
     enabledBorder: AppSizing.mainBorder(AppColors.BGGRAY),
     focusedBorder: AppSizing.mainFocusBorder(),
@@ -118,15 +114,11 @@ class AppTheme {
   static InputDecorationTheme darkInputDecoration = InputDecorationTheme(
     contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 2.h),
     labelStyle: TextStyle(
-        color: AppColors.TEXTGREY,
-        fontSize: 16.sp,
-        fontWeight: FontWeight.w400),
+        color: AppColors.TEXTGREY, fontSize: 16.sp, fontWeight: FontWeight.w400),
     hintStyle: TextStyle(
-        color: AppColors.TEXTGREY,
-        fontSize: 16.sp,
-        fontWeight: FontWeight.w400),
+        color: AppColors.TEXTGREY, fontSize: 16.sp, fontWeight: FontWeight.w400),
     floatingLabelStyle: TextStyle(color: AppColors.TEXTGREY, fontSize: 12.sp),
-    errorStyle: TextStyle(color: AppColors.RED, fontSize: 11.sp),
+    errorStyle: TextStyle(color: AppColors.red, fontSize: 11.sp),
     border: AppSizing.mainBorder(AppColors.BGGRAY3),
     enabledBorder: AppSizing.mainBorder(AppColors.BGGRAY3),
     focusedBorder: AppSizing.mainFocusBorder(),
@@ -136,32 +128,29 @@ class AppTheme {
 
   static ThemeData light() {
     return ThemeData(
-      colorScheme: const ColorScheme.light(
-          primary: AppColors.PRIMARY, error: AppColors.RED),
+      colorScheme:
+          const ColorScheme.light(primary: AppColors.PRIMARY, error: AppColors.red),
       primaryColor: AppColors.PRIMARY,
-      primaryColorDark: AppColors.TEXTBLACK,
-      primaryColorLight: AppColors.TEXTWHITE,
+      primaryColorDark: AppColors.textBlack,
+      primaryColorLight: AppColors.textWhite,
       scaffoldBackgroundColor: AppColors.BG,
       cardTheme: const CardThemeData(color: AppColors.CARDCOLOR),
       highlightColor: AppColors.BGGRAY,
       cardColor: AppColors.CARDCOLOR,
       textTheme: lightTextTheme,
       inputDecorationTheme: lightInputDecoration,
-      dividerColor: AppColors.BGGRAY2.withOpacity(0.3),
+      dividerColor: AppColors.BGGRAY2.withValues(alpha: 0.3),
       appBarTheme: AppBarTheme(
         backgroundColor: AppColors.BG,
         titleTextStyle: GoogleFonts.inter(
-            color: AppColors.TEXTBLACK,
-            fontWeight: FontWeight.w500,
-            fontSize: 20.sp),
+            color: AppColors.textBlack, fontWeight: FontWeight.w500, fontSize: 20.sp),
         elevation: 0,
       ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
           textStyle: lightTextTheme.bodySmall,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
           backgroundColor: AppColors.CARDCOLOR,
         ),
       ),
@@ -170,8 +159,7 @@ class AppTheme {
           elevation: 0,
           backgroundColor: AppColors.CARDCOLOR,
           padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
           textStyle: lightTextTheme.bodySmall,
         ),
       ),
@@ -181,7 +169,7 @@ class AppTheme {
         side: const BorderSide(color: Colors.transparent, width: 1),
         selectedColor: AppColors.PRIMARY,
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
-        labelStyle: TextStyle(fontSize: 12.sp, color: AppColors.TEXTBLACK),
+        labelStyle: TextStyle(fontSize: 12.sp, color: AppColors.textBlack),
         elevation: 0,
         pressElevation: 0,
       ),
@@ -196,10 +184,10 @@ class AppTheme {
       primaryColor: AppColors.PRIMARY,
       scaffoldBackgroundColor: AppColors.BGDARK,
       primaryColorDark: AppColors.BGGRAY,
-      primaryColorLight: AppColors.TEXTBLACK,
+      primaryColorLight: AppColors.textBlack,
       cardColor: AppColors.BGCARDDARK,
-      colorScheme: const ColorScheme.dark(
-          primary: AppColors.PRIMARY, error: AppColors.RED),
+      colorScheme:
+          const ColorScheme.dark(primary: AppColors.PRIMARY, error: AppColors.red),
       cardTheme: const CardThemeData(color: AppColors.BGCARDDARK),
       textTheme: darkTextTheme,
       dividerColor: AppColors.BGCARDDARK,
@@ -208,7 +196,7 @@ class AppTheme {
       appBarTheme: AppBarTheme(
         backgroundColor: AppColors.BGDARK,
         titleTextStyle: GoogleFonts.inter(
-          color: AppColors.TEXTWHITE,
+          color: AppColors.textWhite,
           fontWeight: FontWeight.w500,
           fontSize: 20.sp,
         ),
@@ -221,7 +209,7 @@ class AppTheme {
         side: const BorderSide(color: AppColors.BGCARDDARK, width: 1),
         selectedColor: AppColors.PRIMARY,
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
-        labelStyle: TextStyle(fontSize: 12.sp, color: AppColors.TEXTWHITE),
+        labelStyle: TextStyle(fontSize: 12.sp, color: AppColors.textWhite),
         elevation: 0,
         pressElevation: 0,
       ),
@@ -230,8 +218,7 @@ class AppTheme {
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
           textStyle: darkTextTheme.bodySmall,
           backgroundColor: AppColors.BGCARDDARK,
           iconColor: AppColors.BGGRAY,
@@ -241,8 +228,7 @@ class AppTheme {
         style: ElevatedButton.styleFrom(
           elevation: 0,
           padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
           backgroundColor: AppColors.BGCARDDARK,
           textStyle: darkTextTheme.bodySmall,
           iconColor: AppColors.BGGRAY,

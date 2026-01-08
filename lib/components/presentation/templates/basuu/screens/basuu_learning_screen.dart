@@ -112,7 +112,7 @@ class _LearningScreenState extends State<BasuuLearningScreen> {
                         color: theme.cardColor,
                         border: Border.all(
                             color: isWordVisible
-                                ? theme.primaryColor.withOpacity(0.3)
+                                ? theme.primaryColor.withValues(alpha: 0.3)
                                 : theme.highlightColor),
                         borderRadius: BorderRadius.circular(20.r),
                       ),

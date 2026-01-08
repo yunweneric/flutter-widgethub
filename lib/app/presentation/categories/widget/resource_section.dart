@@ -26,7 +26,7 @@ class ResourceSection extends StatelessWidget {
           RowItem(
             onTap: () => UtilHelper.openUrl(component.gitHubLink!),
             leading: AppIcons.github,
-            title: LangUtil.trans("openGithubRepositor"),
+            title: LangUtil.trans("openGithubRepository"),
           ),
         if (component.assetLink != null)
           RowItem(

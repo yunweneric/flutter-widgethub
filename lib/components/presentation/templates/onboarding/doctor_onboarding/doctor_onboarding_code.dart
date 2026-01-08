@@ -248,7 +248,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                   height: activeIndex == index ? 8.w : 10.w,
                                   margin: EdgeInsets.only(right: 5.w),
                                   decoration: BoxDecoration(
-                                    color: activeIndex == index ? Theme.of(context).primaryColor : Theme.of(context).primaryColor.withOpacity(0.4),
+                                    color: activeIndex == index ? Theme.of(context).primaryColor : Theme.of(context).primaryColor.withValues(alpha: 0.4),
                                     borderRadius: BorderRadius.circular(activeIndex == index ? 8.r : 30.r),
                                   ),
                                   duration: const Duration(milliseconds: 500),
@@ -292,7 +292,7 @@ class AppSizing {
         horizontal: isMobile(context) ? 20.w : 30.w,
       );
 
-  static EdgeInsets kpadding(double width, double height) => EdgeInsets.symmetric(horizontal: width.w, vertical: height.h);
+  static EdgeInsets kPadding(double width, double height) => EdgeInsets.symmetric(horizontal: width.w, vertical: height.h);
 
   static Widget kh20Spacer() => SizedBox(height: 20.h);
   static Widget kh10Spacer() => SizedBox(height: 10.h);
@@ -349,11 +349,11 @@ class AppButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         elevation: isElevated ? null : 0,
         padding: padding ?? EdgeInsets.symmetric(horizontal: 20.w),
-        disabledBackgroundColor: disabledBgColor ?? bgColor?.withOpacity(.5),
+        disabledBackgroundColor: disabledBgColor ?? bgColor?.withValues(alpha: .5),
         backgroundColor: bgColor ?? theme.colorScheme.primary,
         surfaceTintColor: bgColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius ?? 16.r), side: side ?? BorderSide.none),
-        shadowColor: AppColors.TEXTBLACK.withOpacity(.1),
+        shadowColor: AppColors.textBlack.withValues(alpha: .1),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -368,7 +368,7 @@ class AppButton extends StatelessWidget {
               textAlign: TextAlign.center,
               style: textStyle ??
                   theme.textTheme.bodyMedium!.copyWith(
-                    color: textColor ?? AppColors.TEXTWHITE,
+                    color: textColor ?? AppColors.textWhite,
                     fontWeight: FontWeight.w600,
                     fontSize: 14.sp,
                   ),
@@ -382,8 +382,8 @@ class AppButton extends StatelessWidget {
 
 class AppColors {
   // Text colors
-  static const Color TEXTBLACK = Color(0xFF030303);
-  static const Color TEXTWHITE = Color(0XFFFFFFFF);
+  static const Color textBlack = Color(0xFF030303);
+  static const Color textWhite = Color(0XFFFFFFFF);
   static const Color RED = Color(0xFFFF3F3F);
 }
 

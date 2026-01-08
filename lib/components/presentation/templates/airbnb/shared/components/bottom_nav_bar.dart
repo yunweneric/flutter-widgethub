@@ -26,7 +26,7 @@ class AirbnbBottomNavigationBar extends StatelessWidget {
         color: theme.scaffoldBackgroundColor,
         boxShadow: [
           BoxShadow(
-            color: AirbnbTheme.black.withOpacity(0.1),
+            color: AirbnbTheme.black.withValues(alpha: 0.1),
             blurRadius: AirbnbConstants.elevationL,
             offset: const Offset(0, -2),
           ),

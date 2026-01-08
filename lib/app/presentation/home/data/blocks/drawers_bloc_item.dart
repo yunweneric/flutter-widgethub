@@ -105,7 +105,7 @@ class _DrawerssideBarCategoriestate extends State<DrawersBlocItem> {
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
                 decoration: BoxDecoration(
                   color: isExpanded
-                      ? Theme.of(context).primaryColor.withOpacity(0.4)
+                      ? Theme.of(context).primaryColor.withValues(alpha: 0.4)
                       : Theme.of(context).scaffoldBackgroundColor,
                   borderRadius: BorderRadius.circular(20),
                 ),

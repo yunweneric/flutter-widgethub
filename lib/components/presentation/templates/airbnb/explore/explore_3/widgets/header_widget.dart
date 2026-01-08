@@ -20,7 +20,7 @@ class HeaderWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(AirbnbConstants.radiusM),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.1),
+                  color: Colors.black.withValues(alpha: 0.1),
                   blurRadius: AirbnbConstants.elevationM,
                   offset: const Offset(0, 1),
                 ),
@@ -44,7 +44,7 @@ class HeaderWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(AirbnbConstants.radiusM),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.1),
+                  color: Colors.black.withValues(alpha: 0.1),
                   blurRadius: AirbnbConstants.elevationM,
                   offset: const Offset(0, 1),
                 ),
@@ -68,7 +68,7 @@ class HeaderWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(AirbnbConstants.radiusM),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.1),
+                  color: Colors.black.withValues(alpha: 0.1),
                   blurRadius: AirbnbConstants.elevationM,
                   offset: const Offset(0, 1),
                 ),

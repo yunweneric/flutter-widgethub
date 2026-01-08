@@ -17,7 +17,7 @@ class _DetailedFooterState extends State<ComponentFooter> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: AppSizing.kpadding(0, 30.h),
+      padding: AppSizing.kPadding(0, 30.h),
       width: AppSizing.width(context),
       child: Wrap(
         runSpacing: 20,
@@ -27,19 +27,17 @@ class _DetailedFooterState extends State<ComponentFooter> {
         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           SizedBox(
-            width: AppSizing.kWPercentage(
-                context, AppSizing.isMobile(context) ? 100 : 35),
+            width:
+                AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 35),
             child: Text(
               LangUtil.trans("componentFooter"),
               style: Theme.of(context).textTheme.bodySmall,
-              textAlign: AppSizing.isMobile(context)
-                  ? TextAlign.center
-                  : TextAlign.left,
+              textAlign: AppSizing.isMobile(context) ? TextAlign.center : TextAlign.left,
             ),
           ),
           SizedBox(
-            width: AppSizing.kWPercentage(
-                context, AppSizing.isMobile(context) ? 100 : 35),
+            width:
+                AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 35),
             child: Row(
               mainAxisAlignment: AppSizing.isMobile(context)
                   ? MainAxisAlignment.center

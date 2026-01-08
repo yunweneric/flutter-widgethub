@@ -592,7 +592,7 @@ class AppSizing {
   static double kheight(BuildContext context) => MediaQuery.sizeOf(context).height;
   static Widget khSpacer(double height) => SizedBox(height: height);
   static Widget kwSpacer(double width) => SizedBox(width: width);
-  static EdgeInsets kpadding(double width, double height) => EdgeInsets.symmetric(horizontal: width, vertical: height);
+  static EdgeInsets kPadding(double width, double height) => EdgeInsets.symmetric(horizontal: width, vertical: height);
 }
 
 """;

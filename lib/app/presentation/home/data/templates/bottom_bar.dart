@@ -87,7 +87,7 @@ class _BottomBarsideBarCategoriestate extends State<BottomBarBlocItem> {
                     decoration: BoxDecoration(
                       color: activeIndex == item
                           ? Theme.of(context).primaryColor
-                          : Theme.of(context).primaryColor.withOpacity(0.2),
+                          : Theme.of(context).primaryColor.withValues(alpha: 0.2),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     margin: const EdgeInsets.symmetric(horizontal: 10),

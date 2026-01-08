@@ -71,7 +71,7 @@ class _MeshGradient02State extends State<MeshGradient02> with SingleTickerProvid
             width: MediaQuery.sizeOf(context).width,
             height: MediaQuery.sizeOf(context).height,
             fit: BoxFit.cover,
-            color: Colors.white.withOpacity(0.5),
+            color: Colors.white.withValues(alpha: 0.5),
           ),
         ),
       ],

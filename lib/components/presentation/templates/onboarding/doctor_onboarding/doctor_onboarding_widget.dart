@@ -154,18 +154,15 @@ class _DoctorOnboardingScreenState extends State<DoctorOnboardingScreen> {
                                   data()[activeIndex].image,
                                   fit: BoxFit.cover,
                                   errorBuilder: (c, i, e) {
-                                    return const CircularProgressIndicator
-                                        .adaptive();
+                                    return const CircularProgressIndicator.adaptive();
                                   },
                                   loadingBuilder: (c, i, loadingProgress) {
-                                    if (loadingProgress
-                                            ?.cumulativeBytesLoaded ==
+                                    if (loadingProgress?.cumulativeBytesLoaded ==
                                         loadingProgress?.expectedTotalBytes) {
                                       return i;
                                     }
                                     // return Text("");
-                                    return const CircularProgressIndicator
-                                        .adaptive();
+                                    return const CircularProgressIndicator.adaptive();
                                   },
                                 ),
                               ),
@@ -234,18 +231,14 @@ class _DoctorOnboardingScreenState extends State<DoctorOnboardingScreen> {
                                     const Kh20Spacer(),
                                     Text(
                                       data()[activeIndex].title,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .displaySmall,
+                                      style: Theme.of(context).textTheme.displaySmall,
                                       textAlign: TextAlign.center,
                                     ),
                                     const Kh20Spacer(),
                                     Text(
                                       data()[activeIndex].description,
                                       textAlign: TextAlign.center,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .labelMedium,
+                                      style: Theme.of(context).textTheme.labelMedium,
                                     ),
                                     const Kh20Spacer(),
                                   ],
@@ -256,9 +249,8 @@ class _DoctorOnboardingScreenState extends State<DoctorOnboardingScreen> {
                         ),
                         AppButton(
                           padding: EdgeInsets.symmetric(vertical: 12.h),
-                          title: activeIndex >= data().length - 1
-                              ? 'Get Started'
-                              : "Next",
+                          title:
+                              activeIndex >= data().length - 1 ? 'Get Started' : "Next",
                           onPressed: () => moveToNext(activeIndex),
                           borderRadius: 30.r,
                         ),
@@ -266,11 +258,9 @@ class _DoctorOnboardingScreenState extends State<DoctorOnboardingScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            ...List.generate(data().length, (i) => i)
-                                .map((index) {
+                            ...List.generate(data().length, (i) => i).map((index) {
                               return InkWell(
-                                highlightColor:
-                                    Theme.of(context).scaffoldBackgroundColor,
+                                highlightColor: Theme.of(context).scaffoldBackgroundColor,
                                 onTap: () => moveToNext(index),
                                 child: AnimatedContainer(
                                   width: activeIndex == index ? 30.w : 10.w,
@@ -281,7 +271,7 @@ class _DoctorOnboardingScreenState extends State<DoctorOnboardingScreen> {
                                         ? Theme.of(context).primaryColor
                                         : Theme.of(context)
                                             .primaryColor
-                                            .withOpacity(0.4),
+                                            .withValues(alpha: 0.4),
                                     borderRadius: BorderRadius.circular(
                                         activeIndex == index ? 8.r : 30.r),
                                   ),
@@ -296,8 +286,7 @@ class _DoctorOnboardingScreenState extends State<DoctorOnboardingScreen> {
                           borderRadius: BorderRadius.circular(10.r),
                           onTap: reset,
                           child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 5.h, horizontal: 8.w),
+                            padding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 8.w),
                             child: const Text("Reset"),
                           ),
                         )
@@ -315,10 +304,8 @@ class _DoctorOnboardingScreenState extends State<DoctorOnboardingScreen> {
 }
 
 class AppSizing {
-  static double width(BuildContext context) =>
-      MediaQuery.of(context).size.width;
-  static double height(BuildContext context) =>
-      MediaQuery.of(context).size.height;
+  static double width(BuildContext context) => MediaQuery.of(context).size.width;
+  static double height(BuildContext context) => MediaQuery.of(context).size.height;
   static double kHPercentage(BuildContext context, double value) =>
       (height(context) * value) / 100;
   static double kWPercentage(BuildContext context, double value) =>
@@ -331,30 +318,27 @@ class AppSizing {
         horizontal: isMobile(context) ? 20.w : 30.w,
       );
 
-  static EdgeInsets kpadding(double width, double height) =>
+  static EdgeInsets kPadding(double width, double height) =>
       EdgeInsets.symmetric(horizontal: width.w, vertical: height.h);
 
   // Deprecated: Use Kh20Spacer, Kh10Spacer, KhSpacer, KwSpacer widgets from app/shared/presentation/utils/sizing.dart instead
-  @Deprecated(
-      'Use widgets from app/shared/presentation/utils/sizing.dart instead')
+  @Deprecated('Use widgets from app/shared/presentation/utils/sizing.dart instead')
   static Widget kh20Spacer() => const Kh20Spacer();
 
-  @Deprecated(
-      'Use widgets from app/shared/presentation/utils/sizing.dart instead')
+  @Deprecated('Use widgets from app/shared/presentation/utils/sizing.dart instead')
   static Widget kh10Spacer() => const Kh10Spacer();
 
-  @Deprecated(
-      'Use widgets from app/shared/presentation/utils/sizing.dart instead')
+  @Deprecated('Use widgets from app/shared/presentation/utils/sizing.dart instead')
   static Widget khSpacer(double height) => KhSpacer(height: height);
 
-  @Deprecated(
-      'Use widgets from app/shared/presentation/utils/sizing.dart instead')
+  @Deprecated('Use widgets from app/shared/presentation/utils/sizing.dart instead')
   static Widget kwSpacer(double width) => KwSpacer(width: width);
 
-  static bool isXMobile(context) => width(context) < 380;
-  static bool isMobile(context) => width(context) < 789;
-  static bool isTablet(context) => width(context) > 789 && width(context) < 992;
-  static bool isDesktop(context) => width(context) > 992;
+  static bool isXMobile(BuildContext context) => width(context) < 380;
+  static bool isMobile(BuildContext context) => width(context) < 789;
+  static bool isTablet(BuildContext context) =>
+      width(context) > 789 && width(context) < 992;
+  static bool isDesktop(BuildContext context) => width(context) > 992;
 }
 
 class AppButton extends StatelessWidget {
@@ -399,13 +383,13 @@ class AppButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         elevation: isElevated ? null : 0,
         padding: padding ?? EdgeInsets.symmetric(horizontal: 20.w),
-        disabledBackgroundColor: disabledBgColor ?? bgColor?.withOpacity(.5),
+        disabledBackgroundColor: disabledBgColor ?? bgColor?.withValues(alpha: .5),
         backgroundColor: bgColor ?? theme.colorScheme.primary,
         surfaceTintColor: bgColor,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius ?? 16.r),
             side: side ?? BorderSide.none),
-        shadowColor: AppColors.TEXTBLACK.withOpacity(.1),
+        shadowColor: AppColors.textBlack.withValues(alpha: .1),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -420,7 +404,7 @@ class AppButton extends StatelessWidget {
               textAlign: TextAlign.center,
               style: textStyle ??
                   theme.textTheme.bodyMedium!.copyWith(
-                    color: textColor ?? AppColors.TEXTWHITE,
+                    color: textColor ?? AppColors.textWhite,
                     fontWeight: FontWeight.w600,
                     fontSize: 14.sp,
                   ),
@@ -434,7 +418,7 @@ class AppButton extends StatelessWidget {
 
 class AppColors {
   // Text colors
-  static const Color TEXTBLACK = Color(0xFF030303);
-  static const Color TEXTWHITE = Color(0XFFFFFFFF);
-  static const Color RED = Color(0xFFFF3F3F);
+  static const Color textBlack = Color(0xFF030303);
+  static const Color textWhite = Color(0XFFFFFFFF);
+  static const Color red = Color(0xFFFF3F3F);
 }

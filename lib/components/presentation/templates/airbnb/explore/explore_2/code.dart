@@ -43,7 +43,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
                         borderRadius: BorderRadius.circular(AirbnbConstants.radiusXXL),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.1),
+                            color: Colors.black.withValues(alpha: 0.1),
                             blurRadius: 8,
                             offset: const Offset(0, 2),
                           ),
@@ -179,7 +179,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
                                             BorderRadius.circular(AirbnbConstants.radiusM),
                                         boxShadow: [
                                           BoxShadow(
-                                            color: Colors.black.withOpacity(0.1),
+                                            color: Colors.black.withValues(alpha: 0.1),
                                             blurRadius: 4,
                                             offset: const Offset(0, 1),
                                           ),
@@ -217,7 +217,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
                                         width: 6,
                                         height: 6,
                                         decoration: BoxDecoration(
-                                          color: Colors.white.withOpacity(0.5),
+                                          color: Colors.white.withValues(alpha: 0.5),
                                           borderRadius: BorderRadius.circular(3),
                                         ),
                                       ),
@@ -226,7 +226,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
                                         width: 6,
                                         height: 6,
                                         decoration: BoxDecoration(
-                                          color: Colors.white.withOpacity(0.5),
+                                          color: Colors.white.withValues(alpha: 0.5),
                                           borderRadius: BorderRadius.circular(3),
                                         ),
                                       ),
@@ -235,7 +235,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
                                         width: 6,
                                         height: 6,
                                         decoration: BoxDecoration(
-                                          color: Colors.white.withOpacity(0.5),
+                                          color: Colors.white.withValues(alpha: 0.5),
                                           borderRadius: BorderRadius.circular(3),
                                         ),
                                       ),
@@ -244,7 +244,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
                                         width: 6,
                                         height: 6,
                                         decoration: BoxDecoration(
-                                          color: Colors.white.withOpacity(0.5),
+                                          color: Colors.white.withValues(alpha: 0.5),
                                           borderRadius: BorderRadius.circular(3),
                                         ),
                                       ),

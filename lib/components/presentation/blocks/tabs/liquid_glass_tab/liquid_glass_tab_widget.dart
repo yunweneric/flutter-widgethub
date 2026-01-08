@@ -41,7 +41,7 @@ class _LiquidGlassTabState extends State<LiquidGlassTab> {
                 "https://images.unsplash.com/photo-1454391304352-2bf4678b1a7a?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
-                Colors.black.withOpacity(0.5), BlendMode.darken),
+                Colors.black.withValues(alpha: 0.5), BlendMode.darken),
           ),
           // color: Colors.red,
         ),
@@ -53,7 +53,7 @@ class _LiquidGlassTabState extends State<LiquidGlassTab> {
               padding: EdgeInsets.symmetric(
                   horizontal: AppSizing.width(context) * 0.02, vertical: 8),
               decoration: BoxDecoration(
-                color: Colors.blueGrey.withOpacity(0.2),
+                color: Colors.blueGrey.withValues(alpha: 0.2),
                 borderRadius: BorderRadius.circular(30),
               ),
               child: Stack(
@@ -75,7 +75,7 @@ class _LiquidGlassTabState extends State<LiquidGlassTab> {
                         width: textWidth,
                         padding: const EdgeInsets.symmetric(vertical: 12),
                         decoration: BoxDecoration(
-                          color: Colors.blueGrey.withOpacity(0.3),
+                          color: Colors.blueGrey.withValues(alpha: 0.3),
                           borderRadius: BorderRadius.circular(30),
                         ),
                       ),

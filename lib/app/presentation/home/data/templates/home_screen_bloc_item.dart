@@ -30,12 +30,11 @@ class _HomeScreensideBarCategoriestate extends State<HomeScreenBlocItem> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       const CircleAvatar(
-                          child:
-                              Icon(Icons.notifications, color: Colors.white)),
+                          child: Icon(Icons.notifications, color: Colors.white)),
                       KwSpacer(width: 10),
                       CircleAvatar(
-                        child: ClipOval(
-                            child: Image.asset("assets/images/profile_0.jpg")),
+                        child:
+                            ClipOval(child: Image.asset("assets/images/profile_0.jpg")),
                       ),
                     ],
                   ),
@@ -49,17 +48,15 @@ class _HomeScreensideBarCategoriestate extends State<HomeScreenBlocItem> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Trending",
-                          style: Theme.of(context).textTheme.displayMedium),
+                      Text("Trending", style: Theme.of(context).textTheme.displayMedium),
                       const Text("See all"),
                     ],
                   ),
                   const Kh20Spacer(),
                   ListTile(
-                    leading: ClipOval(
-                        child: Image.asset("assets/images/profile_0.jpg")),
+                    leading: ClipOval(child: Image.asset("assets/images/profile_0.jpg")),
                     title: const Text("Mary BB"),
-                    subtitle: const Text("Hi, how have yoou been?"),
+                    subtitle: const Text("Hi, how have you been?"),
                     trailing: Chip(
                       side: BorderSide.none,
                       label: Text("20",
@@ -72,8 +69,7 @@ class _HomeScreensideBarCategoriestate extends State<HomeScreenBlocItem> {
                   ),
                   const Kh10Spacer(),
                   ListTile(
-                    leading: ClipOval(
-                        child: Image.asset("assets/images/profile_1.jpg")),
+                    leading: ClipOval(child: Image.asset("assets/images/profile_1.jpg")),
                     title: const Text("Mary BB"),
                     subtitle: const Text("Hi, how have yoou been?"),
                     trailing: Chip(

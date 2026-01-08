@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart'
-    show KhSpacer;
+import 'package:flutterui/app/shared/presentation/utils/sizing.dart' show KhSpacer;
 import 'package:flutterui/components/presentation/templates/auth/auth_01/shared/shared.dart';
 
 /// Authentication registration screen variant 1 with sign-up form.
@@ -109,7 +108,7 @@ class _Auth01RegisterWidgetState extends State<Auth01RegisterWidget> {
         body: SafeArea(
           child: SingleChildScrollView(
             child: Padding(
-              padding: AppSizing.kpadding(24, 24),
+              padding: AppSizing.kPadding(24, 24),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -117,8 +116,7 @@ class _Auth01RegisterWidgetState extends State<Auth01RegisterWidget> {
                   KhSpacer(height: 40),
                   const AuthTitle(title: 'Sign up to your\nAccount'),
                   KhSpacer(height: 16),
-                  const AuthSubtitle(
-                      title: 'Enter your email and password to sign up'),
+                  const AuthSubtitle(title: 'Enter your email and password to sign up'),
                   KhSpacer(height: 32),
                   Auth01TextField(
                     label: "Full Names",

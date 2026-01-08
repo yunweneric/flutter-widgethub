@@ -35,8 +35,8 @@ class _BasuuButtonState extends State<BasuuButton> {
       width: widget.width,
       child: ElevatedButton.icon(
         style: ElevatedButton.styleFrom(
-          padding: widget.padding ??
-              EdgeInsets.symmetric(horizontal: 10.w, vertical: 15.h),
+          padding:
+              widget.padding ?? EdgeInsets.symmetric(horizontal: 10.w, vertical: 15.h),
           backgroundColor: widget.bgColor ?? Theme.of(context).primaryColor,
           side: widget.side,
           elevation: 0,
@@ -47,7 +47,7 @@ class _BasuuButtonState extends State<BasuuButton> {
           widget.text,
           style: widget.style ??
               Theme.of(context).textTheme.bodyMedium!.copyWith(
-                    color: BasuuColors.TEXTBLACK,
+                    color: BasuuColors.textBlack,
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w600,
                   ),

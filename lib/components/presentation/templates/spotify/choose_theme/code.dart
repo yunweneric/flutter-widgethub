@@ -134,7 +134,7 @@ class _ThemeModeSelector extends StatelessWidget {
                   boxShadow: selected
                       ? [
                           BoxShadow(
-                            color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                            color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
                             blurRadius: 16,
                             spreadRadius: 2,
                           ),

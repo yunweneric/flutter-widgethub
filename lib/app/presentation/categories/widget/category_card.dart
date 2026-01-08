@@ -24,8 +24,7 @@ class _CategoryCardState extends State<CategoryCard> {
         Container(
           clipBehavior: Clip.hardEdge,
           decoration: const BoxDecoration(),
-          width: AppSizing.kWPercentage(
-              context, AppSizing.isMobile(context) ? 100 : 35),
+          width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 35),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -49,7 +48,7 @@ class _CategoryCardState extends State<CategoryCard> {
                 ),
               ),
               Container(
-                padding: AppSizing.kpadding(0, 20.h),
+                padding: AppSizing.kPadding(0, 20.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -75,8 +74,7 @@ class _CategoryCardState extends State<CategoryCard> {
           hoverColor: Theme.of(context).scaffoldBackgroundColor,
           borderRadius: AppSizing.radiusMd(),
           onTap: () {
-            componentBloc.add(
-                UpdateActiveComponentEvent(newComponent: componentDetails));
+            componentBloc.add(UpdateActiveComponentEvent(newComponent: componentDetails));
             final link =
                 "/components/${componentDetails.category.link()}/${componentDetails.subcategory.link()}/${componentDetails.id}/";
             context.go(link);
@@ -106,7 +104,7 @@ class _CategoryCardState extends State<CategoryCard> {
             top: 10,
             right: 10,
             child: Chip(
-              backgroundColor: Theme.of(context).primaryColor.withOpacity(0.1),
+              backgroundColor: Theme.of(context).primaryColor.withValues(alpha: 0.1),
               label: Text(
                 "${componentDetails.codeComponents.length} ${LangUtil.trans("components")}",
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(

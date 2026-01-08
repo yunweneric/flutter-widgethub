@@ -14,8 +14,7 @@ import 'package:flutterui/app/shared/presentation/utils/colors.dart';
 /// creating borders, and detecting device types.
 class AppSizing {
   static double width(BuildContext context) => MediaQuery.sizeOf(context).width;
-  static double height(BuildContext context) =>
-      MediaQuery.sizeOf(context).height;
+  static double height(BuildContext context) => MediaQuery.sizeOf(context).height;
   static double kHPercentage(BuildContext context, double value) =>
       (height(context) * value) / 100;
   static double kWPercentage(BuildContext context, double value) =>
@@ -32,21 +31,21 @@ class AppSizing {
 
   static OutlineInputBorder mainFocusBorder() {
     return OutlineInputBorder(
-      borderSide: const BorderSide(width: 0.6, color: AppColors.PRIMARY),
+      borderSide: const BorderSide(width: 0.6, color: AppColors.primary),
       borderRadius: BorderRadius.all(Radius.circular(15.r)),
     );
   }
 
   static OutlineInputBorder focusedErrorBorder() {
     return OutlineInputBorder(
-      borderSide: const BorderSide(width: 1, color: AppColors.RED),
+      borderSide: const BorderSide(width: 1, color: AppColors.red),
       borderRadius: BorderRadius.all(Radius.circular(15.r)),
     );
   }
 
   static OutlineInputBorder errorBorder() {
     return OutlineInputBorder(
-      borderSide: const BorderSide(width: 0.6, color: AppColors.RED),
+      borderSide: const BorderSide(width: 0.6, color: AppColors.red),
       borderRadius: BorderRadius.all(Radius.circular(15.r)),
     );
   }
@@ -54,7 +53,7 @@ class AppSizing {
   static EdgeInsets kMainPadding(BuildContext context) =>
       EdgeInsets.symmetric(horizontal: isMobile(context) ? 15.w : 30.w);
 
-  static EdgeInsets kpadding(double width, double height) =>
+  static EdgeInsets kPadding(double width, double height) =>
       EdgeInsets.symmetric(horizontal: width.w, vertical: height.h);
 
   // Deprecated: Use Kh20Spacer widget instead
@@ -73,10 +72,11 @@ class AppSizing {
   @Deprecated('Use KwSpacer widget instead')
   static Widget kwSpacer(double width) => KwSpacer(width: width);
 
-  static bool isXMobile(context) => width(context) < 380;
-  static bool isMobile(context) => width(context) < 789;
-  static bool isTablet(context) => width(context) > 789 && width(context) < 992;
-  static bool isDesktop(context) => width(context) > 992;
+  static bool isXMobile(BuildContext context) => width(context) < 380;
+  static bool isMobile(BuildContext context) => width(context) < 789;
+  static bool isTablet(BuildContext context) =>
+      width(context) > 789 && width(context) < 992;
+  static bool isDesktop(BuildContext context) => width(context) > 992;
 }
 
 class Kh20Spacer extends StatelessWidget {

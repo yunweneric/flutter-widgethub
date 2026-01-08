@@ -90,7 +90,7 @@ class _MeshGradient01State extends State<MeshGradient01>
             width: MediaQuery.sizeOf(context).width,
             height: MediaQuery.sizeOf(context).height,
             fit: BoxFit.cover,
-            color: Colors.white.withOpacity(0.3),
+            color: Colors.white.withValues(alpha: 0.3),
           ),
         ),
       ],

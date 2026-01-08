@@ -50,7 +50,7 @@ class _MentalHealthOnboardingState extends State<MentalHealthOnboarding> {
               imageFilter: ImageFilter.blur(sigmaX: 30, sigmaY: 30),
               child: SvgPicture.string(
                 blob_1,
-                color: Colors.white.withOpacity(0.7),
+                color: Colors.white.withValues(alpha: 0.7),
                 width: AppSizing.width(context),
                 height: AppSizing.height(context) * 0.6,
               ),
@@ -61,7 +61,7 @@ class _MentalHealthOnboardingState extends State<MentalHealthOnboarding> {
             right: -AppSizing.width(context) * 0.5,
             child: ImageFiltered(
               imageFilter: ImageFilter.blur(sigmaX: 30, sigmaY: 30),
-              child: SvgPicture.string(blob_1, color: Colors.white.withOpacity(0.7)),
+              child: SvgPicture.string(blob_1, color: Colors.white.withValues(alpha: 0.7)),
             ),
           ),
           Column(

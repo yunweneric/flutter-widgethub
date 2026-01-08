@@ -229,7 +229,7 @@ class _AuthCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.04),
+            color: Colors.black.withValues(alpha: 0.04),
             blurRadius: 16,
             offset: const Offset(0, 8),
           ),
@@ -591,7 +591,7 @@ class AppSizing {
   static double kheight(BuildContext context) => MediaQuery.sizeOf(context).height;
   static Widget khSpacer(double height) => SizedBox(height: height);
   static Widget kwSpacer(double width) => SizedBox(width: width);
-  static EdgeInsets kpadding(double width, double height) => EdgeInsets.symmetric(horizontal: width, vertical: height);
+  static EdgeInsets kPadding(double width, double height) => EdgeInsets.symmetric(horizontal: width, vertical: height);
 }
 
 """;

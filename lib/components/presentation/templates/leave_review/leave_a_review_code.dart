@@ -113,12 +113,12 @@ class _LeaveReviewHomeScreenState extends State<LeaveReviewHomeScreen> {
             children: [
               CircleAvatar(
                 radius: 25,
-                backgroundColor: ReviewColors.bgBlack.withOpacity(0.1),
+                backgroundColor: ReviewColors.bgBlack.withValues(alpha: 0.1),
                 child: const Icon(Icons.close),
               ),
               CircleAvatar(
                 radius: 25,
-                backgroundColor: ReviewColors.bgBlack.withOpacity(0.1),
+                backgroundColor: ReviewColors.bgBlack.withValues(alpha: 0.1),
                 child: const Icon(Icons.info_outline),
               ),
             ],
@@ -229,7 +229,7 @@ class _LeaveReviewHomeScreenState extends State<LeaveReviewHomeScreen> {
                       child: Text(
                         items[i],
                         style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                              color: ReviewColors.bgBlack.withOpacity(0.3),
+                              color: ReviewColors.bgBlack.withValues(alpha: 0.3),
                             ),
                       ),
                     );
@@ -266,7 +266,7 @@ class _LeaveReviewHomeScreenState extends State<LeaveReviewHomeScreen> {
                       padding: const EdgeInsets.symmetric(horizontal: 40),
                       alignment: Alignment.centerLeft,
                       decoration: BoxDecoration(
-                        color: ReviewColors.bgBlack.withOpacity(0.2),
+                        color: ReviewColors.bgBlack.withValues(alpha: 0.2),
                         borderRadius: BorderRadius.circular(30),
                       ),
                       child: Text(
@@ -374,8 +374,8 @@ class _AppSliderState extends State<AppSlider> {
         activeLabelStyle: Theme.of(context).textTheme.displaySmall,
         inactiveLabelStyle: Theme.of(context).textTheme.displaySmall,
         labelOffset: const Offset(0.0, 30.0),
-        activeTrackColor: ReviewColors.bgBlack.withOpacity(0.2),
-        inactiveTrackColor: ReviewColors.bgBlack.withOpacity(0.2),
+        activeTrackColor: ReviewColors.bgBlack.withValues(alpha: 0.2),
+        inactiveTrackColor: ReviewColors.bgBlack.withValues(alpha: 0.2),
       ),
       child: SfSlider(
         min: 0.0,
@@ -513,7 +513,7 @@ class _SfThumbShape extends SfThumbShape {
     context.canvas.drawPath(
       path,
       Paint()
-        ..color = Colors.white.withOpacity(0.1)
+        ..color = Colors.white.withValues(alpha: 0.1)
         ..style = PaintingStyle.stroke
         ..strokeCap = StrokeCap.round
         ..strokeWidth = 5,

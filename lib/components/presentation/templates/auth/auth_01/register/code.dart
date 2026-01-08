@@ -98,7 +98,7 @@ class _Auth01RegisterWidgetState extends State<Auth01RegisterWidget> {
         body: SafeArea(
           child: SingleChildScrollView(
             child: Padding(
-              padding: AppSizing.kpadding(24, 24),
+              padding: AppSizing.kPadding(24, 24),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -434,6 +434,6 @@ class AppIcon {
 
 class AppSizing {
   static Widget khSpacer(double height) => SizedBox(height: height);
-  static EdgeInsets kpadding(double width, double height) => EdgeInsets.symmetric(horizontal: width, vertical: height);
+  static EdgeInsets kPadding(double width, double height) => EdgeInsets.symmetric(horizontal: width, vertical: height);
 }
 """;

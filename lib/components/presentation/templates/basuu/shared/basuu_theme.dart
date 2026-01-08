@@ -7,39 +7,39 @@ import 'package:google_fonts/google_fonts.dart';
 class BasuuTheme {
   static TextTheme darkTextTheme = TextTheme(
     displayLarge: GoogleFonts.inter(
-      color: BasuuColors.TEXTWHITE,
+      color: BasuuColors.textWhite,
       fontWeight: FontWeight.w800,
       fontSize: 28.sp,
     ),
     displayMedium: GoogleFonts.inter(
-      color: BasuuColors.TEXTWHITE,
+      color: BasuuColors.textWhite,
       fontWeight: FontWeight.w600,
       fontSize: 16.sp,
     ),
     displaySmall: GoogleFonts.inter(
-      color: BasuuColors.TEXTWHITE,
+      color: BasuuColors.textWhite,
       fontWeight: FontWeight.w600,
       fontSize: 12.sp,
     ),
     bodyMedium: GoogleFonts.inter(
-      color: BasuuColors.TEXTWHITE,
+      color: BasuuColors.textWhite,
       fontWeight: FontWeight.normal,
       fontSize: 14.sp,
       height: 1.5.h,
       letterSpacing: 0.1,
     ),
     bodySmall: GoogleFonts.inter(
-      color: BasuuColors.TEXTWHITE,
+      color: BasuuColors.textWhite,
       fontWeight: FontWeight.w500,
       fontSize: 12.sp,
     ),
     labelMedium: GoogleFonts.inter(
-      color: BasuuColors.TEXTGREY,
+      color: BasuuColors.textGrey,
       fontWeight: FontWeight.w500,
       fontSize: 14.sp,
     ),
     labelSmall: GoogleFonts.inter(
-      color: BasuuColors.TEXTGREY,
+      color: BasuuColors.textGrey,
       fontWeight: FontWeight.w500,
       fontSize: 12.sp,
       letterSpacing: 0,
@@ -49,17 +49,13 @@ class BasuuTheme {
   static InputDecorationTheme lightInputDecoration = InputDecorationTheme(
     contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 2.h),
     labelStyle: TextStyle(
-        color: BasuuColors.TEXTGREY,
-        fontSize: 16.sp,
-        fontWeight: FontWeight.w400),
+        color: BasuuColors.textGrey, fontSize: 16.sp, fontWeight: FontWeight.w400),
     hintStyle: TextStyle(
-        color: BasuuColors.TEXTGREY,
-        fontSize: 16.sp,
-        fontWeight: FontWeight.w400),
-    floatingLabelStyle: TextStyle(color: BasuuColors.TEXTGREY, fontSize: 12.sp),
-    errorStyle: TextStyle(color: BasuuColors.RED, fontSize: 11.sp),
-    border: AppSizing.mainBorder(BasuuColors.BGGRAY),
-    enabledBorder: AppSizing.mainBorder(BasuuColors.BGGRAY),
+        color: BasuuColors.textGrey, fontSize: 16.sp, fontWeight: FontWeight.w400),
+    floatingLabelStyle: TextStyle(color: BasuuColors.textGrey, fontSize: 12.sp),
+    errorStyle: TextStyle(color: BasuuColors.red, fontSize: 11.sp),
+    border: AppSizing.mainBorder(BasuuColors.bgGray),
+    enabledBorder: AppSizing.mainBorder(BasuuColors.bgGray),
     focusedBorder: AppSizing.mainFocusBorder(),
     focusedErrorBorder: AppSizing.focusedErrorBorder(),
     errorBorder: AppSizing.errorBorder(),
@@ -68,17 +64,13 @@ class BasuuTheme {
   static InputDecorationTheme darkInputDecoration = InputDecorationTheme(
     contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 2.h),
     labelStyle: TextStyle(
-        color: BasuuColors.TEXTGREY,
-        fontSize: 16.sp,
-        fontWeight: FontWeight.w400),
+        color: BasuuColors.textGrey, fontSize: 16.sp, fontWeight: FontWeight.w400),
     hintStyle: TextStyle(
-        color: BasuuColors.TEXTGREY,
-        fontSize: 16.sp,
-        fontWeight: FontWeight.w400),
-    floatingLabelStyle: TextStyle(color: BasuuColors.TEXTGREY, fontSize: 12.sp),
-    errorStyle: TextStyle(color: BasuuColors.RED, fontSize: 11.sp),
-    border: AppSizing.mainBorder(BasuuColors.BGGRAY3),
-    enabledBorder: AppSizing.mainBorder(BasuuColors.BGGRAY3),
+        color: BasuuColors.textGrey, fontSize: 16.sp, fontWeight: FontWeight.w400),
+    floatingLabelStyle: TextStyle(color: BasuuColors.textGrey, fontSize: 12.sp),
+    errorStyle: TextStyle(color: BasuuColors.red, fontSize: 11.sp),
+    border: AppSizing.mainBorder(BasuuColors.bgGray3),
+    enabledBorder: AppSizing.mainBorder(BasuuColors.bgGray3),
     focusedBorder: AppSizing.mainFocusBorder(),
     errorBorder: AppSizing.errorBorder(),
     focusedErrorBorder: AppSizing.focusedErrorBorder(),
@@ -86,57 +78,54 @@ class BasuuTheme {
 
   static ThemeData dark() {
     return ThemeData(
-      primaryColor: BasuuColors.PRIMARY,
-      scaffoldBackgroundColor: BasuuColors.BGDARK,
-      primaryColorDark: BasuuColors.TEXTWHITE,
-      primaryColorLight: BasuuColors.TEXTBLACK,
-      cardColor: BasuuColors.BGCARDDARK,
-      colorScheme: const ColorScheme.dark(
-          primary: BasuuColors.PRIMARY, error: BasuuColors.RED),
-      cardTheme: const CardThemeData(color: BasuuColors.BGCARDDARK),
+      primaryColor: BasuuColors.primary,
+      scaffoldBackgroundColor: BasuuColors.bgDark,
+      primaryColorDark: BasuuColors.textWhite,
+      primaryColorLight: BasuuColors.textBlack,
+      cardColor: BasuuColors.bgCardDark,
+      colorScheme:
+          const ColorScheme.dark(primary: BasuuColors.primary, error: BasuuColors.red),
+      cardTheme: const CardThemeData(color: BasuuColors.bgCardDark),
       textTheme: darkTextTheme,
-      dividerColor: BasuuColors.BGCARDDARK,
-      highlightColor: BasuuColors.BGGRAY,
+      dividerColor: BasuuColors.bgCardDark,
+      highlightColor: BasuuColors.bgGray,
       inputDecorationTheme: darkInputDecoration,
       appBarTheme: AppBarTheme(
-        backgroundColor: BasuuColors.BGDARK,
-        surfaceTintColor: BasuuColors.BGDARK,
+        backgroundColor: BasuuColors.bgDark,
+        surfaceTintColor: BasuuColors.bgDark,
         titleTextStyle: GoogleFonts.inter(
-          color: BasuuColors.TEXTWHITE,
+          color: BasuuColors.textWhite,
           fontWeight: FontWeight.w500,
           fontSize: 20.sp,
         ),
         elevation: 20,
       ),
-      iconTheme: IconThemeData(color: BasuuColors.TEXTGREY, size: 20.w),
-      primaryIconTheme: IconThemeData(color: BasuuColors.TEXTGREY, size: 20.w),
+      iconTheme: IconThemeData(color: BasuuColors.textGrey, size: 20.w),
+      primaryIconTheme: IconThemeData(color: BasuuColors.textGrey, size: 20.w),
       chipTheme: ChipThemeData(
-        backgroundColor: BasuuColors.BGCARDDARK,
-        side: const BorderSide(color: BasuuColors.BGCARDDARK, width: 1),
-        selectedColor: BasuuColors.PRIMARY,
+        backgroundColor: BasuuColors.bgCardDark,
+        side: const BorderSide(color: BasuuColors.bgCardDark, width: 1),
+        selectedColor: BasuuColors.primary,
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
-        labelStyle: TextStyle(fontSize: 12.sp, color: BasuuColors.TEXTWHITE),
+        labelStyle: TextStyle(fontSize: 12.sp, color: BasuuColors.textWhite),
       ),
-      dividerTheme: const DividerThemeData(color: BasuuColors.BGGRAY2),
-      dialogTheme:
-          const DialogThemeData(backgroundColor: BasuuColors.BGCARDDARK),
+      dividerTheme: const DividerThemeData(color: BasuuColors.bgGray2),
+      dialogTheme: const DialogThemeData(backgroundColor: BasuuColors.bgCardDark),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 10.w),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
           textStyle: darkTextTheme.bodySmall,
-          iconColor: BasuuColors.BGGRAY,
+          iconColor: BasuuColors.bgGray,
         ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 10.w),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
-          backgroundColor: BasuuColors.BGCARDDARK,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
+          backgroundColor: BasuuColors.bgCardDark,
           textStyle: darkTextTheme.bodySmall,
-          iconColor: BasuuColors.BGGRAY,
+          iconColor: BasuuColors.bgGray,
         ),
       ),
     );

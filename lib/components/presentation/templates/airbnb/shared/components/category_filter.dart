@@ -87,7 +87,7 @@ class _CategoryFilterState extends State<CategoryFilter> {
                       // border: Border.all(
                       //   color: isSelected
                       //       ? colorScheme.onSurface
-                      //       : colorScheme.outline.withOpacity(0.3),
+                      //       : colorScheme.outline.withValues(alpha: 0.3),
                       //   width: 1,
                       // ),
                     ),
@@ -107,7 +107,7 @@ class _CategoryFilterState extends State<CategoryFilter> {
                     style: textTheme.labelSmall?.copyWith(
                       color: isSelected
                           ? colorScheme.onSurface
-                          : colorScheme.onSurface.withOpacity(0.6),
+                          : colorScheme.onSurface.withValues(alpha: 0.6),
                       fontWeight:
                           isSelected ? FontWeight.w600 : FontWeight.w400,
                     ),

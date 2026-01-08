@@ -66,8 +66,7 @@ class Component {
       'assetLink': assetLink,
       'gitHubLink': gitHubLink,
       'codeComponents': codeComponents.map((x) => x.toMap()).toList(),
-      'supportedPlatforms':
-          supportedPlatforms.map((x) => x.describe()).toList(),
+      'supportedPlatforms': supportedPlatforms.map((x) => x.describe()).toList(),
       'responsiveDevices': responsiveDevices.map((x) => x.describe()).toList(),
     };
   }
@@ -99,7 +98,7 @@ class Component {
       gitHubLink: gitHubLink ?? this.gitHubLink,
       codeComponents: codeComponents ?? this.codeComponents,
       supportedPlatforms: supportedPlatforms ?? this.supportedPlatforms,
-      responsiveDevices: responsiveDevices ?? responsiveDevices,
+      responsiveDevices: responsiveDevices,
     );
   }
 
@@ -116,8 +115,7 @@ class Component {
       subcategory: SubComponentCategoryEnum.values
           .firstWhere((item) => item.describe() == map['subcategory']),
       assetLink: map['assetLink'] != null ? map['assetLink'] as String : null,
-      gitHubLink:
-          map['gitHubLink'] != null ? map['gitHubLink'] as String : null,
+      gitHubLink: map['gitHubLink'] != null ? map['gitHubLink'] as String : null,
       codeComponents: List<CodeComponent>.from(
         (map['codeComponents'] as List<int>).map<CodeComponent>(
           (x) => CodeComponent.fromMap(x as Map<String, dynamic>),
@@ -125,14 +123,12 @@ class Component {
       ),
       supportedPlatforms: List<SupportedPlatform>.from(
         (map['supportedPlatforms'] as List<String>).map<SupportedPlatform>(
-          (x) => SupportedPlatform.values
-              .firstWhere((item) => item.describe() == x),
+          (x) => SupportedPlatform.values.firstWhere((item) => item.describe() == x),
         ),
       ),
       responsiveDevices: List<AppDeviceType>.from(
         (map['responsiveDevices'] as List<String>).map<AppDeviceType>(
-          (x) =>
-              AppDeviceType.values.firstWhere((item) => item.describe() == x),
+          (x) => AppDeviceType.values.firstWhere((item) => item.describe() == x),
         ),
       ),
     );

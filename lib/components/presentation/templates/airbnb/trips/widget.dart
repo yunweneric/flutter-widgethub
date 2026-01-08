@@ -116,7 +116,7 @@ class _ReservationCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(AirbnbConstants.radiusM),
         boxShadow: [
           BoxShadow(
-            color: AirbnbTheme.black.withOpacity(0.1),
+            color: AirbnbTheme.black.withValues(alpha: 0.1),
             blurRadius: AirbnbConstants.elevationM,
             offset: const Offset(0, 2),
           ),

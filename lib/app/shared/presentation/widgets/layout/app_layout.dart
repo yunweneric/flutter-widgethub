@@ -27,8 +27,7 @@ class AppLayout extends StatefulWidget {
   State<AppLayout> createState() => _AppLayoutState();
 }
 
-class _AppLayoutState extends State<AppLayout>
-    with SingleTickerProviderStateMixin {
+class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMixin {
   AnimationController? animationController;
   Animation<double>? navBarAnimation;
   final themeBloc = getIt.get<ThemeBloc>();
@@ -41,8 +40,7 @@ class _AppLayoutState extends State<AppLayout>
       vsync: this,
       duration: const Duration(milliseconds: 500),
     );
-    navBarAnimation =
-        Tween<double>(begin: 1.0, end: 0.0).animate(animationController!);
+    navBarAnimation = Tween<double>(begin: 1.0, end: 0.0).animate(animationController!);
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       animationController?.forward();
@@ -51,8 +49,7 @@ class _AppLayoutState extends State<AppLayout>
   }
 
   void animateNavBar(bool isNavBarOpen) {
-    navBarAnimation =
-        Tween<double>(begin: 1.0, end: 0.0).animate(animationController!);
+    navBarAnimation = Tween<double>(begin: 1.0, end: 0.0).animate(animationController!);
     if (!isNavBarOpen) {
       animationController?.forward();
     } else {
@@ -73,18 +70,17 @@ class _AppLayoutState extends State<AppLayout>
               AnimatedBuilder(
                   animation: animationController!,
                   builder: (context, child) {
-                    final value = AppSizing.isMobile(context) ||
-                            AppSizing.isXMobile(context)
-                        ? navBarAnimation?.value ?? 0.0
-                        : 0.0;
+                    final value =
+                        AppSizing.isMobile(context) || AppSizing.isXMobile(context)
+                            ? navBarAnimation?.value ?? 0.0
+                            : 0.0;
                     return Transform(
                       alignment: Alignment.center,
                       transform: Matrix4.identity()
                         ..setEntry(3, 2, 0.01)
                         ..scale(1.0, 1.0, -0.5)
                         ..rotateY(0.2 * value)
-                        ..translate(
-                            AppSizing.kWPercentage(context, 120.0 * value)),
+                        ..translate(AppSizing.kWPercentage(context, 120.0 * value)),
                       child: SingleChildScrollView(
                         controller: widget.controller,
                         child: Column(
@@ -92,8 +88,7 @@ class _AppLayoutState extends State<AppLayout>
                             KhSpacer(height: 80),
                             ConstrainedBox(
                               constraints: BoxConstraints(
-                                  minHeight:
-                                      AppSizing.kHPercentage(context, 80)),
+                                  minHeight: AppSizing.kHPercentage(context, 80)),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: widget.children,
@@ -169,8 +164,7 @@ class _AppLayoutState extends State<AppLayout>
     return _NavbarSection(child: child);
   }
 
-  Widget navItem(
-      {required String title, String? icon, required VoidCallback onPressed}) {
+  Widget navItem({required String title, String? icon, required VoidCallback onPressed}) {
     return _NavItem(title: title, icon: icon, onPressed: onPressed);
   }
 }
@@ -186,8 +180,7 @@ class _NavbarSection extends StatelessWidget {
       width: AppSizing.width(context),
       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
       decoration: BoxDecoration(
-        border: BorderDirectional(
-            top: BorderSide(color: Theme.of(context).dividerColor)),
+        border: BorderDirectional(top: BorderSide(color: Theme.of(context).dividerColor)),
       ),
       child: child,
     );
@@ -275,18 +268,13 @@ class _SideBarComponents extends StatelessWidget {
           BlocConsumer<ComponentBloc, ComponentState>(
             listener: (context, state) {},
             builder: (context, state) {
-              final activePath = getIt
-                  .get<GoRouter>()
-                  .routeInformationProvider
-                  .value
-                  .uri
-                  .pathSegments;
+              final activePath =
+                  getIt.get<GoRouter>().routeInformationProvider.value.uri.pathSegments;
 
               return Builder(builder: (context) {
                 List<AppCategoryGroupModel> categoriesGroup = [
                   ...sideBarCategories.where((item) {
-                    final condition =
-                        item.category != ComponentCategoryEnum.ANIMATIONS;
+                    final condition = item.category != ComponentCategoryEnum.ANIMATIONS;
                     return condition;
                   }),
                 ];
@@ -296,8 +284,7 @@ class _SideBarComponents extends StatelessWidget {
                           ...categoriesGroup.map((categoryGroup) {
                             return _NavItem(
                               onPressed: () {
-                                sidebarBloc
-                                    .add(UpdateSideBarEvent(newStatus: false));
+                                sidebarBloc.add(UpdateSideBarEvent(newStatus: false));
                                 context.go(
                                     "/components/${categoryGroup.category.link()}/${categoryGroup.items.first.subCategory.link()}");
                               },
@@ -317,31 +304,25 @@ class _SideBarComponents extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(item.category.describe(),
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .displayMedium),
+                                      style: Theme.of(context).textTheme.displayMedium),
                                   KhSpacer(height: 15.h),
                                   Stack(
                                     children: [
                                       ListView.builder(
                                         itemCount: item.items.length,
-                                        physics:
-                                            const NeverScrollableScrollPhysics(),
+                                        physics: const NeverScrollableScrollPhysics(),
                                         shrinkWrap: true,
                                         itemBuilder: (context, index) {
                                           final category = item.items[index];
                                           return SideBarItem(
-                                            isActive: activePath.contains(
-                                                category.subCategory.link()),
-                                            title:
-                                                category.subCategory.describe(),
+                                            isActive: activePath
+                                                .contains(category.subCategory.link()),
+                                            title: category.subCategory.describe(),
                                             onPressed: () {
                                               sidebarBloc.add(
-                                                  UpdateSideBarEvent(
-                                                      newStatus: false));
-                                              componentBloc.add(
-                                                  UpdateActiveCategoryEvent(
-                                                      category: category));
+                                                  UpdateSideBarEvent(newStatus: false));
+                                              componentBloc.add(UpdateActiveCategoryEvent(
+                                                  category: category));
                                               context.go(
                                                   "/components/${category.category.link()}/${category.subCategory.link()}");
                                             },
@@ -386,20 +367,17 @@ class _ThemingSection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _NavItem(
-                onPressed: () =>
-                    themeBloc.add(ChangeTheme(themeMode: ThemeMode.light)),
+                onPressed: () => themeBloc.add(ChangeTheme(themeMode: ThemeMode.light)),
                 icon: AppIcons.sun,
                 title: LangUtil.trans("light"),
               ),
               _NavItem(
-                onPressed: () =>
-                    themeBloc.add(ChangeTheme(themeMode: ThemeMode.dark)),
+                onPressed: () => themeBloc.add(ChangeTheme(themeMode: ThemeMode.dark)),
                 icon: AppIcons.moon,
                 title: LangUtil.trans("dark"),
               ),
               _NavItem(
-                onPressed: () =>
-                    themeBloc.add(ChangeTheme(themeMode: ThemeMode.system)),
+                onPressed: () => themeBloc.add(ChangeTheme(themeMode: ThemeMode.system)),
                 icon: AppIcons.desktop,
                 title: LangUtil.trans("system"),
               ),

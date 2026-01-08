@@ -59,7 +59,7 @@ class _FadeCarouselTemplateState extends State<FadeCarouselTemplate> {
                     duration: duration,
                     margin: const EdgeInsets.symmetric(horizontal: 3),
                     decoration: BoxDecoration(
-                      color: activeIndex == item ? Colors.grey : Colors.grey.withOpacity(0.2),
+                      color: activeIndex == item ? Colors.grey : Colors.grey.withValues(alpha: 0.2),
                       shape: BoxShape.circle,
                     ),
                   );
