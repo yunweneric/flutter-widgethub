@@ -1,3 +1,8 @@
+/// Component data model.
+///
+/// Represents a component in the Flutter WidgetHub library with all its
+/// metadata including title, description, code components, supported platforms,
+/// and resource links.
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
@@ -7,6 +12,10 @@ import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart
 import 'package:flutterui/app/shared/data/enums/supported_platform.dart';
 import 'package:flutterui/app/shared/data/models/code_component.dart';
 
+/// Model representing a component in the library.
+///
+/// Contains all information about a component including its code variants,
+/// metadata, supported platforms, and resource links.
 class Component {
   final String id;
   // final String code;

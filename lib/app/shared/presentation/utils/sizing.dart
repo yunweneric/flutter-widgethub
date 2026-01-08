@@ -1,7 +1,15 @@
+/// Sizing and layout utilities.
+///
+/// Provides helper methods for responsive sizing, device detection,
+/// and common layout calculations using ScreenUtil for responsive design.
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/app/shared/presentation/utils/colors.dart';
 
+/// Utility class for sizing and responsive design calculations.
+///
+/// Provides methods for getting screen dimensions, calculating percentages,
+/// creating borders, and detecting device types.
 class AppSizing {
   static double width(BuildContext context) => MediaQuery.sizeOf(context).width;
   static double height(BuildContext context) => MediaQuery.sizeOf(context).height;

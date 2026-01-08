@@ -1,3 +1,7 @@
+/// Skew card animation widget.
+///
+/// An animated card widget with skew and scale transformation effects.
+/// Responds to tap gestures to toggle visibility with smooth animations.
 import 'package:flutter/material.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 
@@ -6,10 +10,10 @@ class AppSizing {
   static double height(context) => MediaQuery.of(context).size.height;
 }
 
-/// An animated card with skew and scale transformation effects.
+/// Animated card with skew and scale transformation effects.
 ///
-/// API Reference:
-/// - No public properties (uses internal state)
+/// This widget displays a card that can be toggled with tap gestures.
+/// When tapped, it animates with skew and scale transformations.
 ///
 /// Usage:
 /// ```dart

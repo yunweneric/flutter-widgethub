@@ -1,3 +1,7 @@
+/// Screen displaying components filtered by category.
+///
+/// Shows a grid of component cards filtered by the specified subcategory.
+/// Displays component count and handles category-based filtering and sorting.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterui/app/presentation/categories/widget/category_card.dart';
@@ -8,8 +12,15 @@ import 'package:flutterui/app/shared/presentation/utils/util.dart';
 import 'package:flutterui/app/shared/presentation/widgets/layout/main_content.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 
+/// Screen for displaying components in a specific category.
+///
+/// Filters and displays components based on the provided subcategory.
+/// Shows component count and renders component cards in a grid layout.
 class ComponentCategoryScreen extends StatefulWidget {
+  /// Optional subcategory ID to filter components by.
   final String? subCategory;
+  
+  /// Creates a component category screen.
   const ComponentCategoryScreen({super.key, this.subCategory});
 
   @override

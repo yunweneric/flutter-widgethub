@@ -1,3 +1,14 @@
+/// Application routing configuration using GoRouter.
+///
+/// This file defines all routes for the application including:
+/// - Home and landing pages
+/// - Component category screens
+/// - Template detail screens
+/// - Component detail screens
+/// - Request component screen
+///
+/// Routes are organized using ShellRoute for shared layouts and
+/// include custom fade transitions for smooth navigation.
 import 'package:flutter/material.dart';
 import 'package:flutterui/app/presentation/categories/screens/component_category_screen.dart';
 import 'package:flutterui/app/presentation/categories/screens/component_details_wrapper.dart';
@@ -9,9 +20,15 @@ import 'package:flutterui/app/presentation/request_component/request_component_s
 import 'package:flutterui/app/core/routes/route_names.dart';
 import 'package:go_router/go_router.dart';
 
+/// Widget builder for component category layouts.
+///
+/// Extracts the category ID from route parameters and displays
+/// the appropriate component category screen.
 class BuildComponentLayout extends StatelessWidget {
+  /// The current router state containing path parameters.
   final GoRouterState state;
 
+  /// Creates a component layout builder.
   const BuildComponentLayout({super.key, required this.state});
 
   @override
@@ -20,9 +37,15 @@ class BuildComponentLayout extends StatelessWidget {
   }
 }
 
+/// Widget builder for template category layouts.
+///
+/// Extracts the template category ID from route parameters and displays
+/// the appropriate template category screen.
 class BuildTemplateLayout extends StatelessWidget {
+  /// The current router state containing path parameters.
   final GoRouterState state;
 
+  /// Creates a template layout builder.
   const BuildTemplateLayout({super.key, required this.state});
 
   @override
@@ -31,9 +54,15 @@ class BuildTemplateLayout extends StatelessWidget {
   }
 }
 
+/// Widget builder for component detail screens.
+///
+/// Extracts the subcategory ID from route parameters and displays
+/// the component details wrapper.
 class BuildComponentDetailsWidget extends StatelessWidget {
+  /// The current router state containing path parameters.
   final GoRouterState state;
 
+  /// Creates a component details builder.
   const BuildComponentDetailsWidget({super.key, required this.state});
 
   @override
@@ -44,6 +73,11 @@ class BuildComponentDetailsWidget extends StatelessWidget {
   }
 }
 
+/// Creates a [GoRoute] with a custom fade transition animation.
+///
+/// [path] The route path pattern.
+/// [builder] Function that builds the widget for this route.
+/// Returns a configured [GoRoute] with fade transition.
 GoRoute buildAnimatedRoute({
   required String path,
   required Function(BuildContext context, GoRouterState state) builder,
@@ -65,7 +99,17 @@ GoRoute buildAnimatedRoute({
   );
 }
 
-// class AppRouter {
+/// Global application router instance.
+///
+/// Configured with all application routes including:
+/// - Home route
+/// - Component category routes (blocks, animations, effects)
+/// - Template category routes
+/// - Component detail routes
+/// - Template detail routes
+///
+/// Uses a ShellRoute to provide a shared layout for component-related routes
+/// and includes custom fade transitions for smooth navigation.
 final appRouter = GoRouter(
   initialLocation: '/',
   routes: [

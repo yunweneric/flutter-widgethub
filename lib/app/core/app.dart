@@ -1,3 +1,11 @@
+/// Main application widget that serves as the root of the Flutter WidgetHub app.
+///
+/// This widget sets up the application's core infrastructure including:
+/// - BLoC providers for state management (Theme, Language, Component, Navigation, Sidebar)
+/// - MaterialApp.router configuration with routing
+/// - Theme management (light/dark mode)
+/// - Localization support (English and French)
+/// - ScreenUtil for responsive design
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,10 +22,14 @@ import 'package:flutterui/components/presentation/blocks/text/split_text/widget.
 import 'package:go_router/go_router.dart';
 import 'app_scroll_behavior.dart';
 
+/// Root application widget.
+///
+/// Manages global state providers and application-wide configuration.
+/// Listens to theme and language changes and updates the UI accordingly.
 class MyApp extends StatelessWidget {
+  /// Creates the root application widget.
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(

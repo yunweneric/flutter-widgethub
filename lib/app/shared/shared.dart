@@ -1,4 +1,11 @@
-// Shared barrel file - exports all shared components
+/// Shared module barrel file.
+///
+/// Exports all shared components including:
+/// - Business logic and state management (BLoCs)
+/// - UI components and utilities
+/// - Data models and enums
+///
+/// This file serves as a convenient import point for shared functionality.
 
 // =============================================================================
 // LOGIC - Business Logic and State Management

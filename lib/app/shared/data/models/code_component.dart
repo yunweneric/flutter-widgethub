@@ -1,8 +1,17 @@
+/// Code component data model.
+///
+/// Represents a single code variant of a component, pairing the Dart code
+/// string with its corresponding widget implementation.
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+
+/// Model representing a code variant of a component.
+///
+/// Each component can have multiple code variants, each with its own
+/// code string and widget implementation.
 class CodeComponent {
   final String code;
   final Widget widget;

@@ -1,3 +1,6 @@
+/// Enumeration of supported platforms.
+///
+/// Defines the platforms that components can run on (Web, Android, iOS, etc.).
 enum SupportedPlatform {
   WEB,
   ANDROID,
@@ -5,6 +8,7 @@ enum SupportedPlatform {
   MACOS,
   IOS;
 
+  /// Returns a human-readable description of this platform.
   String describe() {
     switch (this) {
       case SupportedPlatform.WEB:
@@ -20,6 +24,9 @@ enum SupportedPlatform {
     }
   }
 
+  /// Returns the SVG icon string for this platform.
+  ///
+  /// Returns the raw SVG markup for displaying the platform icon.
   String icon() {
     switch (this) {
       case SupportedPlatform.WEB:

@@ -1,3 +1,11 @@
+/// Component registry and export store.
+///
+/// Central registry that contains all components available in the Flutter WidgetHub.
+/// This file imports and registers all components from different categories:
+/// - Animations
+/// - Blocks (buttons, tabs, switches, navigation bars)
+/// - Effects (mesh gradients)
+/// - Templates (auth screens, onboarding, app clones)
 import 'package:flutterui/components/presentation/animations/skew_card/data.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
 import 'package:flutterui/components/presentation/blocks/bottom_nav_bars/docking_bar/data.dart';
@@ -21,7 +29,12 @@ import 'package:flutterui/components/presentation/templates/auth/auth_04/auth_04
 import 'package:flutterui/components/presentation/templates/auth/auth_05/auth_05_data.dart';
 import 'package:flutterui/components/presentation/templates/spotify/spotify.dart';
 
+/// Registry containing all available components.
+///
+/// This class maintains a static list of all components registered in the system.
+/// Components are organized by category and can be accessed through this registry.
 class AllComponents {
+  /// List of all registered components in the system.
   static List<Component> widgets = [
     BasuuData.component,
     FruityLipsTemplateData.component,

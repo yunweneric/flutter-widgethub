@@ -1,5 +1,12 @@
+/// Application color constants.
+///
+/// Defines all color constants used throughout the application
+/// including primary colors, background colors, text colors, and card colors.
 import 'package:flutter/material.dart';
 
+/// Color constants for the application.
+///
+/// Provides static color constants for consistent theming across the app.
 class AppColors {
   static const Color PRIMARY = Color(0xFF3867D6);
   // static const Color PRIMARY = Colors.teal;

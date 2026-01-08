@@ -1,3 +1,7 @@
+/// Screen displaying template components filtered by category.
+///
+/// Shows template cards for a specific template category with navigation
+/// between templates and category information.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterui/app/presentation/categories/widget/component_details_footer.dart';
@@ -7,8 +11,15 @@ import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/layout/main_content.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 
+/// Screen for displaying templates in a specific category.
+///
+/// Filters templates by the provided category ID and displays them
+/// with navigation controls for moving between templates.
 class TemplateCategoryScreen extends StatefulWidget {
+  /// Optional template category ID to filter by.
   final String? id;
+
+  /// Creates a template category screen.
   const TemplateCategoryScreen({super.key, this.id});
 
   @override
@@ -21,7 +32,9 @@ class _TemplateCategoryScreenState extends State<TemplateCategoryScreen> {
     return BlocBuilder<ComponentBloc, ComponentState>(
       builder: (context, state) {
         final activeCategory = state.activeCategory;
-        final component = state.allComponents.where((component) => component.id == widget.id).firstOrNull;
+        final component = state.allComponents
+            .where((component) => component.id == widget.id)
+            .firstOrNull;
         if (component != null) {
           final activeIndex = state.allComponents.indexOf(component);
           final canPrevious = activeIndex > 0;
@@ -45,7 +58,8 @@ class _TemplateCategoryScreenState extends State<TemplateCategoryScreen> {
               ),
               Builder(
                 builder: (context) {
-                  final components = state.allComponents.where((item) => item.id == widget.id).toList();
+                  final components =
+                      state.allComponents.where((item) => item.id == widget.id).toList();
                   components.sort((a, b) => b.createdAt.compareTo(a.createdAt));
                   return AnimatedSwitcher(
                     duration: const Duration(milliseconds: 500),
@@ -101,7 +115,9 @@ class _TemplateCategoryScreenState extends State<TemplateCategoryScreen> {
                     child: RichText(
                   text: TextSpan(
                     text: "'${widget.id}' ",
-                    style: DefaultTextStyle.of(context).style.copyWith(color: Theme.of(context).primaryColor),
+                    style: DefaultTextStyle.of(context)
+                        .style
+                        .copyWith(color: Theme.of(context).primaryColor),
                     children: <TextSpan>[
                       TextSpan(
                         text: LangUtil.trans('notFoundInCollections'),

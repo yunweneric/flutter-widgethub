@@ -1,3 +1,7 @@
+/// Classic button component data definition.
+///
+/// Defines the metadata and configuration for the classic button component
+/// including its widget, code, setup instructions, and component model.
 import 'package:flutter/material.dart';
 import 'package:flutterui/app/shared/data/enums/device_type.dart';
 import 'package:flutterui/app/shared/data/models/code_component.dart';

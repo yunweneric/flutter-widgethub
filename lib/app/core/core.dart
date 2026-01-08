@@ -1,4 +1,14 @@
-// Core barrel file - exports all core components
+/// Core module barrel file.
+///
+/// Exports all core application components including:
+/// - Main app widget
+/// - Bootstrap function
+/// - Configuration
+/// - Service locators
+/// - Scroll behavior
+/// - Route configuration
+///
+/// This file serves as a convenient import point for core functionality.
 
 // Main app components
 export 'app.dart';

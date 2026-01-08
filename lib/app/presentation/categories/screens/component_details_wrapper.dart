@@ -1,3 +1,7 @@
+/// Wrapper screen for displaying component details.
+///
+/// Manages the display of component details including code preview,
+/// supported platforms, resources, and navigation between components.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterui/app/core/service_locators.dart';
@@ -12,8 +16,16 @@ import 'package:flutterui/app/shared/presentation/widgets/layout/main_content.da
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+/// Wrapper widget for component detail screens.
+///
+/// Displays detailed information about a component including its code,
+/// supported platforms, and related resources. Handles navigation to
+/// component detail pages.
 class ComponentDetailsWrapper extends StatefulWidget {
+  /// The component subcategory ID to display.
   final String id;
+
+  /// Creates a component details wrapper.
   const ComponentDetailsWrapper({super.key, required this.id});
 
   @override
@@ -28,23 +40,28 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
       listener: (context, state) {
         if (state is UpdateActiveComponentSuccess) {
           final componentDetails = state.activeComponent;
-          final link = "/components/${componentDetails.category.link()}/${componentDetails.subcategory.link()}/${componentDetails.id}/";
+          final link =
+              "/components/${componentDetails.category.link()}/${componentDetails.subcategory.link()}/${componentDetails.id}/";
           context.go(link);
         }
       },
       builder: (context, state) {
-        final component = state.allComponents.where((item) => item.id == widget.id).firstOrNull;
+        final component =
+            state.allComponents.where((item) => item.id == widget.id).firstOrNull;
         if (component != null) {
           final activeIndex = state.allComponents.indexOf(component);
           final canPrevious = activeIndex > 0;
           final canNext = activeIndex < state.allComponents.length - 1;
           return MainContent(
             children: [
-              Text(LangUtil.trans(component.title), style: Theme.of(context).textTheme.displayLarge),
+              Text(LangUtil.trans(component.title),
+                  style: Theme.of(context).textTheme.displayLarge),
               const Kh10Spacer(),
-              Text(LangUtil.trans(component.description), style: Theme.of(context).textTheme.bodyMedium),
+              Text(LangUtil.trans(component.description),
+                  style: Theme.of(context).textTheme.bodyMedium),
               const Kh20Spacer(),
-              Text(LangUtil.trans("Setup"), style: Theme.of(context).textTheme.displayMedium),
+              Text(LangUtil.trans("Setup"),
+                  style: Theme.of(context).textTheme.displayMedium),
               const Kh10Spacer(),
               const Kh10Spacer(),
               CodeHighlight(code: component.setup, borderRadius: AppSizing.radiusSm()),
@@ -71,7 +88,9 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
                   child: RichText(
                 text: TextSpan(
                   text: "'${widget.id}' ",
-                  style: DefaultTextStyle.of(context).style.copyWith(color: Theme.of(context).primaryColor),
+                  style: DefaultTextStyle.of(context)
+                      .style
+                      .copyWith(color: Theme.of(context).primaryColor),
                   children: <TextSpan>[
                     TextSpan(
                       text: LangUtil.trans('notFoundInCollections'),

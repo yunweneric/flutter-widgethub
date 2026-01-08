@@ -1,3 +1,7 @@
+/// Source code for the classic button component.
+///
+/// Contains the complete Dart code implementation of the [ClassicButton] widget
+/// that can be copied and used in other projects.
 const classicButtonCode = '''import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/shared/ui/utils/sizing.dart';

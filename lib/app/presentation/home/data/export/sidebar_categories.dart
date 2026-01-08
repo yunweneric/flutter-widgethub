@@ -1,3 +1,8 @@
+/// Sidebar category configuration.
+///
+/// Defines the complete list of category groups and their associated
+/// subcategories for display in the application sidebar. This includes
+/// templates, blocks, animations, and effects categories.
 import 'package:flutter/material.dart';
 import 'package:flutterui/app/presentation/home/data/blocks/bottom_nav_bars_bloc_item.dart';
 import 'package:flutterui/app/presentation/home/data/blocks/buttons_bloc_item.dart';
@@ -16,6 +21,10 @@ import 'package:flutterui/app/presentation/home/model/component_block_model.dart
 import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
 import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart';
 
+/// List of all sidebar category groups with their subcategories.
+///
+/// This list defines the complete navigation structure for the application,
+/// including all component categories, templates, blocks, animations, and effects.
 final sideBarCategories = [
   AppCategoryGroupModel(
     category: ComponentCategoryEnum.INTRODUCTION,

@@ -1,3 +1,7 @@
+/// Enumeration of subcomponent categories.
+///
+/// Defines the subcategories within each main component category.
+/// These are used for more granular organization and filtering of components.
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 
 enum SubComponentCategoryEnum {
@@ -23,6 +27,9 @@ enum SubComponentCategoryEnum {
 
   LINEAR_GRADIENTS;
 
+  /// Returns a localized description of this subcategory.
+  ///
+  /// Uses the translation system to return a human-readable, localized string.
   String describe() {
     // return name[0].toUpperCase() + name.split("_").join(" ").substring(1).toLowerCase();
     // final description = name[0].toUpperCase() + name.split("_").join(" ").substring(1).toLowerCase();
@@ -30,6 +37,9 @@ enum SubComponentCategoryEnum {
     // return name;
   }
 
+  /// Returns a URL-friendly link string for this subcategory.
+  ///
+  /// Converts the enum name to a kebab-case string.
   String link() {
     return name.split("_").join("-").toLowerCase();
   }

@@ -1,8 +1,10 @@
-// import 'dart:html' as platform_io;
-
-// ignore: conditional_import
-// import 'dart:io' if (dart.library.html) 'dart:html' as platform_io;
-
+/// General utility helper functions.
+///
+/// Provides various utility methods for common operations including:
+/// - URL launching
+/// - Clipboard operations
+/// - Component counting and formatting
+/// - Window management (web)
 import 'package:device_frame/device_frame.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
@@ -17,6 +19,7 @@ import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/shared/data/enums/device_type.dart';
 import 'package:flutterui/app/shared/presentation/helpers/platform/platform.dart';
 
+/// Utility class providing helper methods for common operations.
 class UtilHelper {
   static String activeRoute = getIt.get<GoRouter>().routeInformationProvider.value.uri.path;
 

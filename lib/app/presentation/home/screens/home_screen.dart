@@ -1,3 +1,7 @@
+/// Home screen of the Flutter WidgetHub application.
+///
+/// Displays the main landing page with hero section, integration information,
+/// and assets section. Manages scroll behavior and component data loading.
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutterui/app/shared/shared.dart';
@@ -9,7 +13,12 @@ import 'package:flutterui/app/presentation/home/widgets/assets_section.dart';
 import 'package:flutterui/app/presentation/home/widgets/integration_section.dart';
 import 'package:flutterui/app/presentation/home/widgets/hero_section.dart';
 
+/// Main home screen widget.
+///
+/// Manages the scroll controller and component data loading.
+/// Displays hero section, integration section, and assets section.
 class HomeScreen extends StatefulWidget {
+  /// Creates the home screen.
   const HomeScreen({super.key});
 
   @override
@@ -17,10 +26,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  /// Scroll controller for managing scroll position and animations.
   final ScrollController _controller = ScrollController();
 
+  /// Theme bloc instance for theme management.
   final themeBloc = getIt.get<ThemeBloc>();
+  
+  /// Component bloc instance for component data management.
   final componentBloc = getIt.get<ComponentBloc>();
+  
   @override
   void initState() {
     _controller.addListener(listenToScroll);
@@ -28,6 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
+  /// Scroll listener callback (currently empty, reserved for future use).
   void listenToScroll() {}
 
   @override
@@ -38,8 +53,10 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 
+  /// Whether the navigation bar is currently open.
   bool isNavBarOpen = false;
 
+  /// List of category groups to display in the sidebar.
   List<AppCategoryGroupModel> items = [
     AppCategoryGroupModel(
       category: ComponentCategoryEnum.GETTING_STARTED,
@@ -63,6 +80,10 @@ class _HomeScreenState extends State<HomeScreen> {
           item.category.describe().toLowerCase() != "tabs",
     ),
   ];
+  /// Generates a scroll factor based on device type.
+  ///
+  /// [context] The build context.
+  /// Returns a scroll factor multiplier for smooth scrolling animations.
   double generateScrollFactor(BuildContext context) {
     double factor = 1.0;
 

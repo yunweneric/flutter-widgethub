@@ -1,9 +1,17 @@
+/// 404 Not Found error screen.
+///
+/// Displays when a user navigates to a route that doesn't exist.
+/// Provides a way to navigate back to the home page.
 import 'package:flutter/material.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 // import 'package:flutterui/screens/routes/app_router.gr.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 
+/// Screen displayed when a route is not found.
+///
+/// Shows an error message and provides navigation back to the home page.
 class NotFoundScreen extends StatefulWidget {
+  /// Creates a not found screen.
   const NotFoundScreen({super.key});
 
   @override

@@ -1,9 +1,17 @@
+/// Application theme configuration.
+///
+/// Defines light and dark theme configurations including colors, text styles,
+/// and component themes for the entire application.
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/app/shared/presentation/utils/colors.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+/// Theme configuration class.
+///
+/// Provides static methods to create light and dark [ThemeData] instances
+/// with consistent styling across the application.
 class AppTheme {
   static TextTheme lightTextTheme = TextTheme(
     displayLarge: GoogleFonts.inter(

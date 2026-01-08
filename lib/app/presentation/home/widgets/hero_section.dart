@@ -1,3 +1,8 @@
+/// Hero section widget for the home screen.
+///
+/// Displays the main hero content including title, description, action buttons,
+/// and a staggered grid of recent component previews. Automatically loads
+/// and displays the last 3 components from the component list.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,8 +25,15 @@ import 'package:flutterui/components/presentation/templates/leave_review/leave_a
 import 'package:flutterui/components/presentation/templates/nike_zoomer/nike_zoomer_widget.dart';
 import 'package:go_router/go_router.dart';
 
+/// Hero section widget with component previews.
+///
+/// Displays the main hero content and a staggered grid showing the last
+/// 3 components from the component library.
 class HeroSection extends StatefulWidget {
+  /// Callback invoked when the "Browse All Assets" button is pressed.
   final VoidCallback onBrowserAll;
+  
+  /// Creates a hero section widget.
   const HeroSection({super.key, required this.onBrowserAll});
 
   @override

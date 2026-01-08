@@ -1,3 +1,6 @@
+/// Enumeration of device types for responsive design.
+///
+/// Defines the different device form factors that components can target.
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 
 enum AppDeviceType {
@@ -5,6 +8,7 @@ enum AppDeviceType {
   TABLET,
   DESKTOP;
 
+  /// Returns a human-readable description of this device type.
   String describe() {
     switch (this) {
       case AppDeviceType.MOBILE:
@@ -16,6 +20,9 @@ enum AppDeviceType {
     }
   }
 
+  /// Returns the icon identifier for this device type.
+  ///
+  /// Returns the icon name from [AppIcons] corresponding to this device type.
   String generateIcon() {
     switch (this) {
       case AppDeviceType.MOBILE:

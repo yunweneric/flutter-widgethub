@@ -1,3 +1,7 @@
+/// Interactive theme toggle widget with animated sun and moon icons.
+///
+/// Provides a visually appealing way to switch between light and dark themes
+/// with smooth animations and hover effects.
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -8,7 +12,12 @@ import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 
+/// Theme toggle widget with animated icons.
+///
+/// Displays sun and moon icons that can be tapped to switch themes.
+/// Includes hover effects and smooth rotation animations.
 class ThemeToggle extends StatefulWidget {
+  /// Creates a theme toggle widget.
   const ThemeToggle({super.key});
 
   @override
@@ -16,8 +25,13 @@ class ThemeToggle extends StatefulWidget {
 }
 
 class _ThemeToggleState extends State<ThemeToggle> {
+  /// Theme bloc instance for theme management.
   final theme = getIt.get<ThemeBloc>();
+  
+  /// Scale factor for moon icon (used for hover effect).
   double moonScale = 1.0;
+  
+  /// Scale factor for sun icon (used for hover effect).
   double sunScale = 1.0;
   @override
   Widget build(BuildContext context) {

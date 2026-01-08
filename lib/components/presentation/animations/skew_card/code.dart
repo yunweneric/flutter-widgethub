@@ -1,3 +1,7 @@
+/// Source code for the skew card component.
+///
+/// Contains the complete Dart code implementation of the [SkewCard] widget
+/// that can be copied and used in other projects.
 const skewCardCode = '''
 import 'dart:math';
 
