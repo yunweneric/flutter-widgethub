@@ -71,7 +71,7 @@ class _BottomBarsideBarCategoriestate extends State<BottomBarBlocItem> {
               borderRadius: BorderRadius.circular(20),
             ),
           ),
-          AppSizing.khSpacer(30),
+          KhSpacer(height: 30),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -100,12 +100,12 @@ class _BottomBarsideBarCategoriestate extends State<BottomBarBlocItem> {
               })
             ],
           ),
-          AppSizing.khSpacer(40),
+          KhSpacer(height: 40),
           ElevatedButton(
             onPressed: () {},
             child: const Text("Get started"),
           ),
-          AppSizing.khSpacer(40),
+          KhSpacer(height: 40),
         ],
       ),
     );

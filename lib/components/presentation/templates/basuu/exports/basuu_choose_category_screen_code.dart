@@ -69,7 +69,7 @@ class _ChooseCategoryScreenState extends State<BasuuChooseCategoryScreen> {
                 padding: AppSizing.kMainPadding(context),
                 child: Column(
                   children: [
-                    AppSizing.khSpacer(kToolbarHeight),
+                    KhSpacer(height: kToolbarHeight),
                     BasuuAnimatedChild(
                       animation: animation,
                       offset: -1,
@@ -79,8 +79,8 @@ class _ChooseCategoryScreenState extends State<BasuuChooseCategoryScreen> {
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    AppSizing.kh20Spacer(),
-                    AppSizing.kh20Spacer(),
+                    const Kh20Spacer(),
+                    const Kh20Spacer(),
                     BasuuAnimatedChild(
                       animation: animation,
                       offset: 1,
@@ -146,7 +146,7 @@ class _ChooseCategoryScreenState extends State<BasuuChooseCategoryScreen> {
                         ],
                       ),
                     ),
-                    AppSizing.kh10Spacer(),
+                    const Kh10Spacer(),
                     const Text(
                       "5,000 words cover 97% of the English language",
                       textAlign: TextAlign.center,

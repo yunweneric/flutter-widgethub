@@ -9,18 +9,39 @@ import 'package:flutterui/app/presentation/request_component/request_component_s
 import 'package:flutterui/app/core/routes/route_names.dart';
 import 'package:go_router/go_router.dart';
 
-Widget buildComponentLayout(GoRouterState state) {
-  return ComponentCategoryScreen(subCategory: state.pathParameters['id']);
+class BuildComponentLayout extends StatelessWidget {
+  final GoRouterState state;
+
+  const BuildComponentLayout({super.key, required this.state});
+
+  @override
+  Widget build(BuildContext context) {
+    return ComponentCategoryScreen(subCategory: state.pathParameters['id']);
+  }
 }
 
-Widget buildTemplateLayout(GoRouterState state) {
-  return TemplateCategoryScreen(id: state.pathParameters['id']);
+class BuildTemplateLayout extends StatelessWidget {
+  final GoRouterState state;
+
+  const BuildTemplateLayout({super.key, required this.state});
+
+  @override
+  Widget build(BuildContext context) {
+    return TemplateCategoryScreen(id: state.pathParameters['id']);
+  }
 }
 
-Widget buildComponentDetailsWidget(GoRouterState state) {
-  return ComponentDetailsWrapper(
-    id: state.pathParameters['subCategory'] as String,
-  );
+class BuildComponentDetailsWidget extends StatelessWidget {
+  final GoRouterState state;
+
+  const BuildComponentDetailsWidget({super.key, required this.state});
+
+  @override
+  Widget build(BuildContext context) {
+    return ComponentDetailsWrapper(
+      id: state.pathParameters['subCategory'] as String,
+    );
+  }
 }
 
 GoRoute buildAnimatedRoute({
@@ -67,15 +88,15 @@ final appRouter = GoRouter(
 
         buildAnimatedRoute(
           path: RouteNames.components,
-          builder: (context, state) => buildComponentLayout(state),
+          builder: (context, state) => BuildComponentLayout(state: state),
         ),
         buildAnimatedRoute(
           path: RouteNames.introduction,
-          builder: (context, state) => buildComponentLayout(state),
+          builder: (context, state) => BuildComponentLayout(state: state),
         ),
         buildAnimatedRoute(
           path: '${RouteNames.introduction}/:id',
-          builder: (context, state) => buildComponentLayout(state),
+          builder: (context, state) => BuildComponentLayout(state: state),
         ),
 
         // **     ----------------------------------------------    //
@@ -83,15 +104,15 @@ final appRouter = GoRouter(
         // **     ----------------------------------------------    //
         buildAnimatedRoute(
           path: RouteNames.templates,
-          builder: (context, state) => buildComponentLayout(state),
+          builder: (context, state) => BuildComponentLayout(state: state),
         ),
         buildAnimatedRoute(
           path: '${RouteNames.templates}/:id',
-          builder: (context, state) => buildComponentLayout(state),
+          builder: (context, state) => BuildComponentLayout(state: state),
         ),
         buildAnimatedRoute(
           path: '${RouteNames.templates}/:subCategory/:id',
-          builder: (context, state) => buildTemplateLayout(state),
+          builder: (context, state) => BuildTemplateLayout(state: state),
         ),
 
         // Example URL for this route:
@@ -112,15 +133,15 @@ final appRouter = GoRouter(
         // **     ----------------------------------------------    //
         buildAnimatedRoute(
           path: RouteNames.blocks,
-          builder: (context, state) => buildComponentLayout(state),
+          builder: (context, state) => BuildComponentLayout(state: state),
         ),
         buildAnimatedRoute(
           path: '${RouteNames.blocks}/:id',
-          builder: (context, state) => buildComponentLayout(state),
+          builder: (context, state) => BuildComponentLayout(state: state),
         ),
         buildAnimatedRoute(
           path: '${RouteNames.blocks}/:id/:subCategory',
-          builder: (context, state) => buildComponentDetailsWidget(state),
+          builder: (context, state) => BuildComponentDetailsWidget(state: state),
         ),
 
         // **     ----------------------------------------------    //
@@ -128,15 +149,15 @@ final appRouter = GoRouter(
         // **     ----------------------------------------------    //
         buildAnimatedRoute(
           path: RouteNames.animations,
-          builder: (context, state) => buildComponentLayout(state),
+          builder: (context, state) => BuildComponentLayout(state: state),
         ),
         buildAnimatedRoute(
           path: '${RouteNames.animations}/:id',
-          builder: (context, state) => buildComponentLayout(state),
+          builder: (context, state) => BuildComponentLayout(state: state),
         ),
         buildAnimatedRoute(
           path: '${RouteNames.animations}/:id/:subCategory',
-          builder: (context, state) => buildComponentDetailsWidget(state),
+          builder: (context, state) => BuildComponentDetailsWidget(state: state),
         ),
 
         // **     ----------------------------------------------    //
@@ -144,15 +165,15 @@ final appRouter = GoRouter(
         // **     ----------------------------------------------    //
         buildAnimatedRoute(
           path: RouteNames.effects,
-          builder: (context, state) => buildComponentLayout(state),
+          builder: (context, state) => BuildComponentLayout(state: state),
         ),
         buildAnimatedRoute(
           path: '${RouteNames.effects}/:id',
-          builder: (context, state) => buildComponentLayout(state),
+          builder: (context, state) => BuildComponentLayout(state: state),
         ),
         buildAnimatedRoute(
           path: '${RouteNames.effects}/:id/:subCategory',
-          builder: (context, state) => buildComponentDetailsWidget(state),
+          builder: (context, state) => BuildComponentDetailsWidget(state: state),
         ),
       ],
     ),

@@ -48,7 +48,7 @@ class _ChooseLanguageScreenState extends State<BasuuChooseLanguageScreen> {
                 padding: AppSizing.kMainPadding(context),
                 child: Column(
                   children: [
-                    AppSizing.khSpacer(kToolbarHeight / 2),
+                    KhSpacer(height: kToolbarHeight / 2),
                     BasuuAnimatedChild(
                       offset: -1,
                       animation: animation,
@@ -71,7 +71,7 @@ class _ChooseLanguageScreenState extends State<BasuuChooseLanguageScreen> {
                         ),
                       ),
                     ),
-                    AppSizing.kh20Spacer(),
+                    const Kh20Spacer(),
                     BasuuAnimatedChild(
                       offset: 1,
                       animation: animation,

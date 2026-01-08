@@ -78,19 +78,19 @@ class _LearningScreenState extends State<BasuuLearningScreen> {
             children: [
               Column(
                 children: [
-                  AppSizing.kh20Spacer(),
+                  const Kh20Spacer(),
                   Column(
                     children: [
                       Text("\${widget.selectedCategory.label} Level"),
-                      AppSizing.kh20Spacer(),
+                      const Kh20Spacer(),
                       Text(
                         words[activeIndex].title,
                         style: theme.textTheme.displayLarge,
                       ),
                     ],
                   ),
-                  AppSizing.kh20Spacer(),
-                  AppSizing.kh20Spacer(),
+                  const Kh20Spacer(),
+                  const Kh20Spacer(),
                   InkWell(
                     onTap: () => setState(() {
                       isWordVisible = !isWordVisible;

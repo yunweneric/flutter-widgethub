@@ -73,7 +73,8 @@ class _LearningScreenState extends State<BasuuLearningScreen> {
                       ? pi * -0.02
                       : pi * 0.02,
             ),
-          margin: AppSizing.kMainPadding(context) + EdgeInsets.symmetric(vertical: 20, horizontal: 10.w),
+          margin: AppSizing.kMainPadding(context) +
+              EdgeInsets.symmetric(vertical: 20, horizontal: 10.w),
           height: AppSizing.kHPercentage(context, 80),
           width: AppSizing.width(context),
           padding: EdgeInsets.symmetric(vertical: 40.h, horizontal: 30.w),
@@ -86,19 +87,19 @@ class _LearningScreenState extends State<BasuuLearningScreen> {
             children: [
               Column(
                 children: [
-                  AppSizing.kh20Spacer(),
+                  const Kh20Spacer(),
                   Column(
                     children: [
                       Text("${widget.selectedCategory.label} Level"),
-                      AppSizing.kh20Spacer(),
+                      const Kh20Spacer(),
                       Text(
                         words[activeIndex].title,
                         style: theme.textTheme.displayLarge,
                       ),
                     ],
                   ),
-                  AppSizing.kh20Spacer(),
-                  AppSizing.kh20Spacer(),
+                  const Kh20Spacer(),
+                  const Kh20Spacer(),
                   InkWell(
                     onTap: () => setState(() {
                       isWordVisible = !isWordVisible;
@@ -109,7 +110,10 @@ class _LearningScreenState extends State<BasuuLearningScreen> {
                       padding: EdgeInsets.symmetric(vertical: 80.h),
                       decoration: BoxDecoration(
                         color: theme.cardColor,
-                        border: Border.all(color: isWordVisible ? theme.primaryColor.withOpacity(0.3) : theme.highlightColor),
+                        border: Border.all(
+                            color: isWordVisible
+                                ? theme.primaryColor.withOpacity(0.3)
+                                : theme.highlightColor),
                         borderRadius: BorderRadius.circular(20.r),
                       ),
                       child: AnimatedSwitcher(
@@ -130,8 +134,22 @@ class _LearningScreenState extends State<BasuuLearningScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  actionBtn(context, theme, isLeft: true),
-                  actionBtn(context, theme, isLeft: false),
+                  ActionBtn(
+                    theme: theme,
+                    isLeft: true,
+                    isCorrect: isCorrect,
+                    onPressed: () => setState(() {
+                      isCorrect = true;
+                    }),
+                  ),
+                  ActionBtn(
+                    theme: theme,
+                    isLeft: false,
+                    isCorrect: isCorrect,
+                    onPressed: () => setState(() {
+                      isCorrect = false;
+                    }),
+                  ),
                 ],
               )
             ],
@@ -140,34 +158,46 @@ class _LearningScreenState extends State<BasuuLearningScreen> {
       ),
     );
   }
+}
 
-  Widget actionBtn(BuildContext context, ThemeData theme, {required bool isLeft}) {
-    return Builder(builder: (context) {
-      Color color = theme.cardColor;
-      if (isLeft && isCorrect == true) {
-        color = BasuuColors.GREEN;
-      } else if (!isLeft && isCorrect == false) {
-        color = BasuuColors.RED;
-      } else {
-        color = theme.cardColor;
-      }
-      return TweenAnimationBuilder(
-        tween: ColorTween(begin: theme.cardColor, end: color),
-        duration: const Duration(milliseconds: 700),
-        builder: (context, color, child) {
-          return BasuuButton(
-            onPressed: () => setState(() {
-              isCorrect = isLeft;
-            }),
-            text: isLeft ? "I Know" : "Learn",
-            width: AppSizing.kWPercentage(context, 35),
-            bgColor: color,
-            side: BorderSide(color: theme.highlightColor),
-            style: theme.textTheme.displayMedium?.copyWith(color: theme.primaryColorDark),
-            padding: EdgeInsets.symmetric(vertical: 25.h),
-          );
-        },
-      );
-    });
+class ActionBtn extends StatelessWidget {
+  final ThemeData theme;
+  final bool isLeft;
+  final bool? isCorrect;
+  final VoidCallback onPressed;
+
+  const ActionBtn({
+    super.key,
+    required this.theme,
+    required this.isLeft,
+    required this.isCorrect,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    Color color = theme.cardColor;
+    if (isLeft && isCorrect == true) {
+      color = BasuuColors.GREEN;
+    } else if (!isLeft && isCorrect == false) {
+      color = BasuuColors.RED;
+    } else {
+      color = theme.cardColor;
+    }
+    return TweenAnimationBuilder(
+      tween: ColorTween(begin: theme.cardColor, end: color),
+      duration: const Duration(milliseconds: 700),
+      builder: (context, color, child) {
+        return BasuuButton(
+          onPressed: onPressed,
+          text: isLeft ? "I Know" : "Learn",
+          width: AppSizing.kWPercentage(context, 35),
+          bgColor: color,
+          side: BorderSide(color: theme.highlightColor),
+          style: theme.textTheme.displayMedium?.copyWith(color: theme.primaryColorDark),
+          padding: EdgeInsets.symmetric(vertical: 25.h),
+        );
+      },
+    );
   }
 }

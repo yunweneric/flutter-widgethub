@@ -39,7 +39,7 @@ class _TemplateCategoryScreenState extends State<TemplateCategoryScreen> {
                             LangUtil.trans(component.title),
                             style: Theme.of(context).textTheme.displayLarge,
                           ),
-                          AppSizing.kh20Spacer(),
+                          const Kh20Spacer(),
                         ],
                       ),
               ),
@@ -82,8 +82,8 @@ class _TemplateCategoryScreenState extends State<TemplateCategoryScreen> {
                   );
                 },
               ),
-              AppSizing.kh20Spacer(),
-              AppSizing.kh20Spacer(),
+              const Kh20Spacer(),
+              const Kh20Spacer(),
               ComponentDetailsFooter(
                 canPrevious: canPrevious,
                 canNext: canNext,

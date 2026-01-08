@@ -60,7 +60,7 @@ class _AppChipState extends State<AppChip> {
                           : Theme.of(context).highlightColor,
                       size: 20,
                     ),
-                    if (widget.title != null) AppSizing.kwSpacer(5.w),
+                    if (widget.title != null) KwSpacer(width: 5.w),
                     if (widget.title != null)
                       Text(
                         widget.title!,

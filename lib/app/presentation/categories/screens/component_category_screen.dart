@@ -51,7 +51,7 @@ class _ComponentCategoryScreenState extends State<ComponentCategoryScreen> {
                             style: Theme.of(context).textTheme.displayLarge,
                           );
                         }),
-                        AppSizing.kh20Spacer(),
+                        const Kh20Spacer(),
                       ],
                     ),
             ),

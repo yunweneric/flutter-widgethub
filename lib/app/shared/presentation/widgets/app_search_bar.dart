@@ -116,7 +116,7 @@ class _SearchBarState extends State<SearchBar> {
     return StatefulBuilder(builder: (context, child) {
       return Column(
         children: [
-          AppSizing.khSpacer(AppSizing.kHPercentage(context, 25)),
+          KhSpacer(height: AppSizing.kHPercentage(context, 25)),
           ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: Container(

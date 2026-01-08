@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 
 class OnboardingData {
   final String title;
@@ -201,7 +202,7 @@ class _DoctorOnboardingScreenState extends State<DoctorOnboardingScreen> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  AppSizing.kh10Spacer(),
+                  const Kh10Spacer(),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Column(
@@ -219,19 +220,19 @@ class _DoctorOnboardingScreenState extends State<DoctorOnboardingScreen> {
                                 curve: curve,
                                 child: Column(
                                   children: [
-                                    AppSizing.kh20Spacer(),
+                                    const Kh20Spacer(),
                                     Text(
                                       data()[activeIndex].title,
                                       style: Theme.of(context).textTheme.displaySmall,
                                       textAlign: TextAlign.center,
                                     ),
-                                    AppSizing.kh20Spacer(),
+                                    const Kh20Spacer(),
                                     Text(
                                       data()[activeIndex].description,
                                       textAlign: TextAlign.center,
                                       style: Theme.of(context).textTheme.labelMedium,
                                     ),
-                                    AppSizing.kh20Spacer(),
+                                    const Kh20Spacer(),
                                   ],
                                 ),
                               );
@@ -244,7 +245,7 @@ class _DoctorOnboardingScreenState extends State<DoctorOnboardingScreen> {
                           onPressed: () => moveToNext(activeIndex),
                           borderRadius: 30.r,
                         ),
-                        AppSizing.kh20Spacer(),
+                        const Kh20Spacer(),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -266,7 +267,7 @@ class _DoctorOnboardingScreenState extends State<DoctorOnboardingScreen> {
                             })
                           ],
                         ),
-                        AppSizing.kh20Spacer(),
+                        const Kh20Spacer(),
                         InkWell(
                           borderRadius: BorderRadius.circular(10.r),
                           onTap: reset,
@@ -303,12 +304,18 @@ class AppSizing {
 
   static EdgeInsets kpadding(double width, double height) => EdgeInsets.symmetric(horizontal: width.w, vertical: height.h);
 
-  static Widget kh20Spacer() => SizedBox(height: 20.h);
-  static Widget kh10Spacer() => SizedBox(height: 10.h);
+  // Deprecated: Use Kh20Spacer, Kh10Spacer, KhSpacer, KwSpacer widgets from app/shared/presentation/utils/sizing.dart instead
+  @Deprecated('Use widgets from app/shared/presentation/utils/sizing.dart instead')
+  static Widget kh20Spacer() => const Kh20Spacer();
+  
+  @Deprecated('Use widgets from app/shared/presentation/utils/sizing.dart instead')
+  static Widget kh10Spacer() => const Kh10Spacer();
 
-  static Widget khSpacer(double height) => SizedBox(height: height);
+  @Deprecated('Use widgets from app/shared/presentation/utils/sizing.dart instead')
+  static Widget khSpacer(double height) => KhSpacer(height: height);
 
-  static Widget kwSpacer(double width) => SizedBox(width: width);
+  @Deprecated('Use widgets from app/shared/presentation/utils/sizing.dart instead')
+  static Widget kwSpacer(double width) => KwSpacer(width: width);
 
   static bool isXMobile(context) => width(context) < 380;
   static bool isMobile(context) => width(context) < 789;

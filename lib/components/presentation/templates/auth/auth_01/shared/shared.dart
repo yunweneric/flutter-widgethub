@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 
 class AppLogoWidget extends StatelessWidget {
   const AppLogoWidget({super.key});
@@ -64,7 +65,7 @@ class Auth01TextField extends StatelessWidget {
             color: Colors.black,
           ),
         ),
-        AppSizing.khSpacer(8),
+        KhSpacer(height: 8),
         TextFormField(
           controller: controller,
           decoration: InputDecoration(hintText: placeholder),
@@ -102,7 +103,7 @@ class Auth01PasswordField extends StatelessWidget {
             color: Colors.black,
           ),
         ),
-        AppSizing.khSpacer(8),
+        KhSpacer(height: 8),
         TextFormField(
           controller: controller,
           obscureText: obscureText,

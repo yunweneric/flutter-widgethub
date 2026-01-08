@@ -123,7 +123,7 @@ class _Auth05Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Positioned(top: 0, left: 0, right: 0, child: AppIcons.grid()),
+        Positioned(top: 0, left: 0, right: 0, child: const AppIconsGrid()),
         Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -139,7 +139,7 @@ class _Auth05Header extends StatelessWidget {
           child: SafeArea(
             child: Column(
               children: [
-                AppIcons.logo(width: 48, height: 48),
+                const AppIconsLogo(width: 48, height: 48),
                 const SizedBox(height: 32),
                 const Text('Sign in to your', style: Auth05Theme.title, textAlign: TextAlign.center),
                 const Text('Account', style: Auth05Theme.title, textAlign: TextAlign.center),

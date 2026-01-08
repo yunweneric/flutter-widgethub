@@ -192,7 +192,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  AppSizing.kh10Spacer(),
+                  const Kh10Spacer(),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Column(
@@ -210,19 +210,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 curve: curve,
                                 child: Column(
                                   children: [
-                                    AppSizing.kh20Spacer(),
+                                    const Kh20Spacer(),
                                     Text(
                                       data()[activeIndex].title,
                                       style: Theme.of(context).textTheme.displaySmall,
                                       textAlign: TextAlign.center,
                                     ),
-                                    AppSizing.kh20Spacer(),
+                                    const Kh20Spacer(),
                                     Text(
                                       data()[activeIndex].description,
                                       textAlign: TextAlign.center,
                                       style: Theme.of(context).textTheme.labelMedium,
                                     ),
-                                    AppSizing.kh20Spacer(),
+                                    const Kh20Spacer(),
                                   ],
                                 ),
                               );
@@ -235,7 +235,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           onPressed: () => moveToNext(activeIndex),
                           borderRadius: 30.r,
                         ),
-                        AppSizing.kh20Spacer(),
+                        const Kh20Spacer(),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -257,7 +257,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             })
                           ],
                         ),
-                        AppSizing.kh20Spacer(),
+                        const Kh20Spacer(),
                         InkWell(
                           borderRadius: BorderRadius.circular(10.r),
                           onTap: reset,

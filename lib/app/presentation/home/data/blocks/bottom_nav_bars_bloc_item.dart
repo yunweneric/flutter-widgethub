@@ -85,7 +85,7 @@ class _BottomNavBarssideBarCategoriestate extends State<BottomNavBarsBlocItem> {
               borderRadius: BorderRadius.circular(10),
             ),
           ),
-          AppSizing.khSpacer(AppSizing.kHPercentage(context, 2)),
+          KhSpacer(height: AppSizing.kHPercentage(context, 2)),
         ],
       ),
     );

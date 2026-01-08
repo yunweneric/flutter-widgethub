@@ -62,15 +62,15 @@ class _HomeScreenState extends State<TemplateDetailsScreen> {
           return MainContent(
             children: [
               Text(LangUtil.trans(component.title), style: Theme.of(context).textTheme.displayLarge),
-              AppSizing.kh10Spacer(),
+              const Kh10Spacer(),
               Text(LangUtil.trans(component.description), style: Theme.of(context).textTheme.bodyMedium),
-              AppSizing.kh20Spacer(),
+              const Kh20Spacer(),
               Text(LangUtil.trans("Setup"), style: Theme.of(context).textTheme.displayMedium),
-              AppSizing.kh10Spacer(),
-              AppSizing.kh10Spacer(),
+              const Kh10Spacer(),
+              const Kh10Spacer(),
               CodeHighlight(code: component.setup, borderRadius: AppSizing.radiusSm()),
-              AppSizing.kh20Spacer(),
-              AppSizing.kh10Spacer(),
+              const Kh20Spacer(),
+              const Kh10Spacer(),
               SupportPlatformSection(component: component),
               ResourceSection(component: component),
               CodePreview(
@@ -78,7 +78,7 @@ class _HomeScreenState extends State<TemplateDetailsScreen> {
                   codeComponents: [component.codeComponents[widget.index]],
                 ),
               ),
-              AppSizing.kh20Spacer(),
+              const Kh20Spacer(),
               ComponentDetailsFooter(
                 canPrevious: canPrevious,
                 canNext: canNext,

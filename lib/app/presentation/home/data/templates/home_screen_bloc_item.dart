@@ -32,20 +32,20 @@ class _HomeScreensideBarCategoriestate extends State<HomeScreenBlocItem> {
                       const CircleAvatar(
                           child:
                               Icon(Icons.notifications, color: Colors.white)),
-                      AppSizing.kwSpacer(10),
+                      KwSpacer(width: 10),
                       CircleAvatar(
                         child: ClipOval(
                             child: Image.asset("assets/images/profile_0.jpg")),
                       ),
                     ],
                   ),
-                  AppSizing.kh20Spacer(),
+                  const Kh20Spacer(),
                   const TextField(
                     decoration: InputDecoration(
                       hintText: "Search chats...",
                     ),
                   ),
-                  AppSizing.kh20Spacer(),
+                  const Kh20Spacer(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -54,7 +54,7 @@ class _HomeScreensideBarCategoriestate extends State<HomeScreenBlocItem> {
                       const Text("See all"),
                     ],
                   ),
-                  AppSizing.kh20Spacer(),
+                  const Kh20Spacer(),
                   ListTile(
                     leading: ClipOval(
                         child: Image.asset("assets/images/profile_0.jpg")),
@@ -70,7 +70,7 @@ class _HomeScreensideBarCategoriestate extends State<HomeScreenBlocItem> {
                       backgroundColor: Theme.of(context).primaryColor,
                     ),
                   ),
-                  AppSizing.kh10Spacer(),
+                  const Kh10Spacer(),
                   ListTile(
                     leading: ClipOval(
                         child: Image.asset("assets/images/profile_1.jpg")),

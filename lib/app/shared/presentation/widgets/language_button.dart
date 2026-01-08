@@ -63,7 +63,7 @@ class _LanguageButtonState extends State<LanguageButton> {
                           width: 20.w,
                           fit: BoxFit.cover,
                         ),
-                        AppSizing.kwSpacer(5.w),
+                        KwSpacer(width: 5.w),
                         Text(lang.languageCode.toUpperCase()),
                       ],
                     ),
@@ -99,7 +99,7 @@ class _LanguageButtonState extends State<LanguageButton> {
       //           width: 20.w,
       //           fit: BoxFit.cover,
       //         ),
-      //         AppSizing.kwSpacer(5.w),
+      //         KwSpacer(width: 5.w),
       //         Text(
       //           lang.languageCode.toUpperCase(),
       //           style: Theme.of(context).textTheme.bodyMedium,

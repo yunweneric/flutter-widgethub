@@ -55,7 +55,7 @@ class _SideBarState extends State<SideBar> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AppSizing.khSpacer(30.h),
+                  KhSpacer(height: 30.h),
                   ...items.map(
                     (item) {
                       return Container(
@@ -64,7 +64,7 @@ class _SideBarState extends State<SideBar> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(item.category.describe(), style: Theme.of(context).textTheme.displayMedium),
-                            AppSizing.khSpacer(15.h),
+                            KhSpacer(height: 15.h),
                             Stack(
                               children: [
                                 ListView.builder(
@@ -97,7 +97,7 @@ class _SideBarState extends State<SideBar> {
                       );
                     },
                   ),
-                  AppSizing.khSpacer(100.h),
+                  KhSpacer(height: 100.h),
                 ],
               ),
             ),

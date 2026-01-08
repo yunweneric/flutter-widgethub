@@ -131,7 +131,7 @@ class _Auth05Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Positioned(top: 0, left: 0, right: 0, child: AppIcons.grid()),
+        Positioned(top: 0, left: 0, right: 0, child: const AppIconsGrid()),
         Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -147,7 +147,7 @@ class _Auth05Header extends StatelessWidget {
           child: SafeArea(
             child: Column(
               children: [
-                AppIcons.logo(width: 48, height: 48),
+                const AppIconsLogo(width: 48, height: 48),
                 const SizedBox(height: 32),
                 const Text('Sign in to your', style: Auth05Theme.title, textAlign: TextAlign.center),
                 const Text('Account', style: Auth05Theme.title, textAlign: TextAlign.center),
@@ -282,8 +282,18 @@ class _Auth05LoginButton extends StatelessWidget {
   }
 }
 
-class AppIcons {
-  static Widget logo({double width = 48, double height = 48}) {
+class AppIconsLogo extends StatelessWidget {
+  final double width;
+  final double height;
+
+  const AppIconsLogo({
+    super.key,
+    this.width = 48,
+    this.height = 48,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return SvgPicture.string(
       '''<svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
  <path d="M13.5 27C20.9561 27 27 20.956 27 13.5V4.05C27 2.97587 26.5733 1.94574 25.8138 1.18622C25.0543 0.426695 24.0241 0 22.95 0H14.175V5.92245C14.175 7.2738 14.2574 8.67375 14.9661 9.82395C15.4735 10.6483 16.1523 11.3538 16.9563 11.8927C17.7604 12.4316 18.671 12.7912 19.6263 12.9472L19.8848 12.989C19.9914 13.0255 20.0839 13.0943 20.1495 13.1859C20.215 13.2775 20.2502 13.3874 20.2502 13.5C20.2502 13.6126 20.215 13.7225 20.1495 13.8141C20.0839 13.9057 19.9914 13.9745 19.8848 14.011L19.6263 14.0528C18.2305 14.2808 16.9416 14.9415 15.9416 15.9416C14.9415 16.9416 14.2808 18.2305 14.0528 19.6263L14.011 19.8848C13.9746 19.9914 13.9057 20.0839 13.8141 20.1494C13.7225 20.2149 13.6126 20.2502 13.5 20.2502C13.3874 20.2502 13.2776 20.2149 13.1859 20.1494C13.0943 20.0839 13.0255 19.9914 12.989 19.8848L12.9472 19.6263C12.7912 18.671 12.4315 17.7604 11.8926 16.9564C11.3538 16.1523 10.6483 15.4735 9.82397 14.9661C8.67377 14.2574 7.27382 14.175 5.92247 14.175H0.016217C0.369242 21.3172 6.27077 27 13.5 27Z" fill="#375DFB"/>
@@ -294,9 +304,13 @@ class AppIcons {
       height: height,
     );
   }
+}
 
-  /// Grid logo
-  static Widget grid() {
+class AppIconsGrid extends StatelessWidget {
+  const AppIconsGrid({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     return SvgPicture.string(
       r'''<svg width="375" height="387" viewBox="0 0 375 387" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_23_2416)">

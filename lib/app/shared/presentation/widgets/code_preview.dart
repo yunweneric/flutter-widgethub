@@ -118,7 +118,7 @@ class _CodePreviewState extends State<CodePreview> {
                 icon: AppIcons.tab,
                 title: AppSizing.isMobile(context) ? null : LangUtil.trans("preview"),
               ),
-              AppSizing.kwSpacer(10.w),
+              KwSpacer(width: 10.w),
               AppChip(
                 active: isCode,
                 onTap: () => setState(() => isCode = true),
@@ -192,14 +192,14 @@ class _CodePreviewState extends State<CodePreview> {
                                                 //   title: LangUtil.trans("mobile"),
                                                 //   onTap: () => setState(() => selectedDevice = AppDeviceType.MOBILE),
                                                 // ),
-                                                // AppSizing.kwSpacer(10.w),
+                                                // KwSpacer(width: 10.w),
                                                 // AppChip(
                                                 //   active: selectedDevice == AppDeviceType.TABLET,
                                                 //   icon: AppIcons.tablet,
                                                 //   title: LangUtil.trans("tablet"),
                                                 //   onTap: () => setState(() => selectedDevice = AppDeviceType.TABLET),
                                                 // ),
-                                                // AppSizing.kwSpacer(10.w),
+                                                // KwSpacer(width: 10.w),
                                                 // AppChip(
                                                 //   active: selectedDevice == AppDeviceType.DESKTOP,
                                                 //   icon: AppIcons.desktop,
@@ -212,7 +212,7 @@ class _CodePreviewState extends State<CodePreview> {
                                         );
                                       },
                                     ),
-                                    AppSizing.kwSpacer(10.w),
+                                    KwSpacer(width: 10.w),
                                     // Switch.adaptive(
                                     //   value: isFrameVisible,
                                     //   onChanged: (val) {

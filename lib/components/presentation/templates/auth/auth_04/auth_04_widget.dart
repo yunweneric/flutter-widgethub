@@ -159,12 +159,12 @@ class _Auth04Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Positioned(top: 0, left: 30, child: AppIcons.grid()),
+        Positioned(top: 0, left: 30, child: const AppIconsGrid()),
         Padding(
           padding: const EdgeInsets.only(top: 32, left: 30, right: 30, bottom: 0),
           child: Column(
             children: [
-              AppIcons.logo(width: 48, height: 48),
+              const AppIconsLogo(width: 48, height: 48),
               const SizedBox(height: 32),
               const Text('Get Started now', style: Auth04Theme.title, textAlign: TextAlign.center),
               const SizedBox(height: 12),
@@ -364,10 +364,10 @@ class _Auth04SocialButtonsRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        _Auth04SocialButton(icon: AppIcons.googleLogo(), onTap: () {}),
-        _Auth04SocialButton(icon: AppIcons.facebookLogo(), onTap: () {}),
-        _Auth04SocialButton(icon: AppIcons.appleLogo(), onTap: () {}),
-        _Auth04SocialButton(icon: AppIcons.phoneLogo(), onTap: () {}),
+        _Auth04SocialButton(icon: const AppIconsGoogleLogo(), onTap: () {}),
+        _Auth04SocialButton(icon: const AppIconsFacebookLogo(), onTap: () {}),
+        _Auth04SocialButton(icon: const AppIconsAppleLogo(), onTap: () {}),
+        _Auth04SocialButton(icon: const AppIconsPhoneLogo(), onTap: () {}),
       ],
     );
   }
@@ -400,8 +400,18 @@ class _Auth04SocialButton extends StatelessWidget {
   }
 }
 
-class AppIcons {
-  static Widget logo({double width = 48, double height = 48}) {
+class AppIconsLogo extends StatelessWidget {
+  final double width;
+  final double height;
+
+  const AppIconsLogo({
+    super.key,
+    this.width = 48,
+    this.height = 48,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return SvgPicture.string(
       '''<svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M13.5 27C20.9561 27 27 20.956 27 13.5V4.05C27 2.97587 26.5733 1.94574 25.8138 1.18622C25.0543 0.426695 24.0241 0 22.95 0H14.175V5.92245C14.175 7.2738 14.2574 8.67375 14.9661 9.82395C15.4735 10.6483 16.1523 11.3538 16.9563 11.8927C17.7604 12.4316 18.671 12.7912 19.6263 12.9472L19.8848 12.989C19.9914 13.0255 20.0839 13.0943 20.1495 13.1859C20.215 13.2775 20.2502 13.3874 20.2502 13.5C20.2502 13.6126 20.215 13.7225 20.1495 13.8141C20.0839 13.9057 19.9914 13.9745 19.8848 14.011L19.6263 14.0528C18.2305 14.2808 16.9416 14.9415 15.9416 15.9416C14.9415 16.9416 14.2808 18.2305 14.0528 19.6263L14.011 19.8848C13.9746 19.9914 13.9057 20.0839 13.8141 20.1494C13.7225 20.2149 13.6126 20.2502 13.5 20.2502C13.3874 20.2502 13.2776 20.2149 13.1859 20.1494C13.0943 20.0839 13.0255 19.9914 12.989 19.8848L12.9472 19.6263C12.7912 18.671 12.4315 17.7604 11.8926 16.9564C11.3538 16.1523 10.6483 15.4735 9.82397 14.9661C8.67377 14.2574 7.27382 14.175 5.92247 14.175H0.016217C0.369242 21.3172 6.27077 27 13.5 27Z" fill="#375DFB"/>
@@ -412,24 +422,39 @@ class AppIcons {
       height: height,
     );
   }
+}
 
-  static Widget googleLogo() {
+class AppIconsGoogleLogo extends StatelessWidget {
+  const AppIconsGoogleLogo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     return SvgPicture.string(
       '''<svg width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_17_40)"><path d="M23.9996 19.6363V28.9309H36.916C36.3488 31.9199 34.6468 34.4509 32.0941 36.1527L39.8831 42.1964C44.4213 38.0075 47.0395 31.8547 47.0395 24.5456C47.0395 22.8438 46.8868 21.2073 46.6031 19.6366L23.9996 19.6363Z" fill="#4285F4"/><path d="M10.5494 28.568L8.79263 29.9128L2.57434 34.7564C6.52342 42.589 14.6174 48 23.9991 48C30.4789 48 35.9116 45.8618 39.8826 42.1964L32.0936 36.1528C29.9554 37.5927 27.2281 38.4656 23.9991 38.4656C17.7591 38.4656 12.4575 34.2547 10.5592 28.5819L10.5494 28.568Z" fill="#34A853"/><path d="M2.57436 13.2436C0.938084 16.4726 0 20.1163 0 23.9999C0 27.8834 0.938084 31.5271 2.57436 34.7561C2.57436 34.7777 10.5599 28.5597 10.5599 28.5597C10.08 27.1197 9.79624 25.5925 9.79624 23.9996C9.79624 22.4067 10.08 20.8795 10.5599 19.4395L2.57436 13.2436Z" fill="#FBBC05"/><path d="M23.9996 9.55636C27.5342 9.55636 30.676 10.7781 33.1851 13.1345L40.0577 6.2619C35.8904 2.37833 30.4797 0 23.9996 0C14.6179 0 6.52342 5.38908 2.57434 13.2437L10.5597 19.44C12.4578 13.7672 17.7596 9.55636 23.9996 9.55636Z" fill="#EA4335"/></g><defs><clipPath id="clip0_17_40"><rect width="48" height="48" fill="white"/></clipPath></defs></svg>''',
       width: 24,
       height: 24,
     );
   }
+}
 
-  static Widget facebookLogo() {
+class AppIconsFacebookLogo extends StatelessWidget {
+  const AppIconsFacebookLogo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     return SvgPicture.string(
       '''<svg width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_17_24)"><path d="M48 24C48 10.7453 37.2547 0 24 0C10.7453 0 0 10.7453 0 24C0 35.255 7.74912 44.6995 18.2026 47.2934V31.3344H13.2538V24H18.2026V20.8397C18.2026 12.671 21.8995 8.8848 29.9194 8.8848C31.44 8.8848 34.0637 9.18336 35.137 9.48096V16.129C34.5706 16.0694 33.5866 16.0397 32.3645 16.0397C28.4294 16.0397 26.9088 17.5306 26.9088 21.4061V24H34.7482L33.4013 31.3344H26.9088V47.8243C38.7926 46.3891 48.001 36.2707 48.001 24H48Z" fill="#0866FF"/><path d="M33.4003 31.3344L34.7472 24H26.9078V21.4061C26.9078 17.5306 28.4285 16.0397 32.3635 16.0397C33.5856 16.0397 34.5696 16.0694 35.136 16.129V9.48096C34.0627 9.1824 31.439 8.8848 29.9184 8.8848C21.8986 8.8848 18.2016 12.671 18.2016 20.8397V24H13.2528V31.3344H18.2016V47.2934C20.0582 47.7542 22.0003 48 23.999 48C24.983 48 25.9536 47.9395 26.9069 47.8243V31.3344H33.3994H33.4003Z" fill="white"/></g><defs><clipPath id="clip0_17_24"><rect width="48" height="48" fill="white"/></clipPath></defs></svg>''',
       width: 24,
       height: 24,
     );
   }
+}
 
-  static Widget appleLogo() {
+class AppIconsAppleLogo extends StatelessWidget {
+  const AppIconsAppleLogo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     return SvgPicture.string(
       '''<svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M12.714 0C12.7559 0 12.7978 0 12.842 0C12.9448 1.2694 12.4603 2.21789 11.8714 2.90476C11.2936 3.58688 10.5024 4.24845 9.22273 4.14807C9.13737 2.89685 9.62268 2.01871 10.2107 1.33342C10.7561 0.69477 11.756 0.126466 12.714 0Z" fill="black"/>
@@ -440,8 +465,13 @@ class AppIcons {
       height: 24,
     );
   }
+}
 
-  static Widget phoneLogo() {
+class AppIconsPhoneLogo extends StatelessWidget {
+  const AppIconsPhoneLogo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     return SvgPicture.string(
       '''<svg width="11" height="16" viewBox="0 0 11 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M5 2H6.5M5.75 11.75V11.7575M1.25 2.75C1.25 2.35218 1.40804 1.97064 1.68934 1.68934C1.97064 1.40804 2.35218 1.25 2.75 1.25H8.75C9.14782 1.25 9.52936 1.40804 9.81066 1.68934C10.092 1.97064 10.25 2.35218 10.25 2.75V13.25C10.25 13.6478 10.092 14.0294 9.81066 14.3107C9.52936 14.592 9.14782 14.75 8.75 14.75H2.75C2.35218 14.75 1.97064 14.592 1.68934 14.3107C1.40804 14.0294 1.25 13.6478 1.25 13.25V2.75Z" stroke="#04070E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -450,8 +480,13 @@ class AppIcons {
 ''',
     );
   }
+}
 
-  static Widget grid() {
+class AppIconsGrid extends StatelessWidget {
+  const AppIconsGrid({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     return SvgPicture.string(
       '''<svg width="356" height="230" viewBox="0 0 356 230" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_23_2414)">

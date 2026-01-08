@@ -114,7 +114,18 @@ class _NikeZoomerTemplateState extends State<NikeZoomerTemplate> with SingleTick
                     return AnimatedBuilder(
                       animation: _controller!,
                       builder: (context, _) {
-                        return nikeSlide(context, index, isMobile);
+                        return NikeSlide(
+                          index: index,
+                          isMobile: isMobile,
+                          activeIndex: activeIndex,
+                          widthAnimation: _widthAnimation,
+                          widthReduceAnimation: _widthReduceAnimation,
+                          textTranslationAnimation: _textTranslationAnimation,
+                          textRotationAnimation: _textRotationAnimation,
+                          shoeRotationAnimation: _shoeRotationAnimation,
+                          duration: duration,
+                          onTap: () => _toggleAnimation(index),
+                        );
                       },
                     );
                   })
@@ -140,84 +151,108 @@ class _NikeZoomerTemplateState extends State<NikeZoomerTemplate> with SingleTick
       ),
     );
   }
+}
 
-  Widget nikeSlide(BuildContext context, int index, bool isMobile) {
-    return Builder(
-      builder: (context) {
-        final width = isMobile
-            ? NZSizing.width(context)
-            : index == activeIndex
-                ? _widthAnimation?.value ?? NZSizing.width(context) / 3
-                : _widthReduceAnimation?.value ?? NZSizing.width(context) / 3;
-        final height = isMobile
-            ? index == activeIndex
-                ? _widthAnimation?.value ?? NZSizing.height(context) / 3
-                : _widthReduceAnimation?.value ?? NZSizing.height(context) / 3
-            : NZSizing.height(context);
+class NikeSlide extends StatelessWidget {
+  final int index;
+  final bool isMobile;
+  final int activeIndex;
+  final Animation<double>? widthAnimation;
+  final Animation<double>? widthReduceAnimation;
+  final Animation<double>? textTranslationAnimation;
+  final Animation<double>? textRotationAnimation;
+  final Animation<double>? shoeRotationAnimation;
+  final Duration duration;
+  final VoidCallback onTap;
 
-        return AnimatedContainer(
-          duration: duration,
-          curve: Curves.bounceOut,
-          clipBehavior: Clip.hardEdge,
-          decoration: BoxDecoration(
-            color: index == 0
-                ? NZColors.blue
-                : index == 1
-                    ? NZColors.red
-                    : NZColors.yellow,
-          ),
-          width: width,
-          height: height,
-          child: Stack(
-            clipBehavior: Clip.none,
-            children: [
-              Positioned(
-                top: 0,
-                bottom: 0,
-                left: 0,
-                right: 0,
-                child: Center(
-                  child: Transform(
-                    alignment: Alignment.center,
-                    transform: Matrix4.identity()
-                      ..scale(index == activeIndex ? _textTranslationAnimation?.value ?? 1.8 : 1.0)
-                      ..rotateZ(index == activeIndex ? _textRotationAnimation?.value ?? 0.0 : 0.0),
-                    child: Text(
-                      index == 0
-                          ? "BLUE"
-                          : index == 1
-                              ? "RED"
-                              : "YELLOW",
-                      style: GoogleFonts.poppins(
-                        fontSize: 90,
-                        fontWeight: FontWeight.w900,
-                        color: NZColors.white,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
+  const NikeSlide({
+    super.key,
+    required this.index,
+    required this.isMobile,
+    required this.activeIndex,
+    required this.widthAnimation,
+    required this.widthReduceAnimation,
+    required this.textTranslationAnimation,
+    required this.textRotationAnimation,
+    required this.shoeRotationAnimation,
+    required this.duration,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final width = isMobile
+        ? NZSizing.width(context)
+        : index == activeIndex
+            ? widthAnimation?.value ?? NZSizing.width(context) / 3
+            : widthReduceAnimation?.value ?? NZSizing.width(context) / 3;
+    final height = isMobile
+        ? index == activeIndex
+            ? widthAnimation?.value ?? NZSizing.height(context) / 3
+            : widthReduceAnimation?.value ?? NZSizing.height(context) / 3
+        : NZSizing.height(context);
+
+    return AnimatedContainer(
+      duration: duration,
+      curve: Curves.bounceOut,
+      clipBehavior: Clip.hardEdge,
+      decoration: BoxDecoration(
+        color: index == 0
+            ? NZColors.blue
+            : index == 1
+                ? NZColors.red
+                : NZColors.yellow,
+      ),
+      width: width,
+      height: height,
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          Positioned(
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: Transform(
+                alignment: Alignment.center,
+                transform: Matrix4.identity()
+                  ..scale(index == activeIndex ? textTranslationAnimation?.value ?? 1.8 : 1.0)
+                  ..rotateZ(index == activeIndex ? textRotationAnimation?.value ?? 0.0 : 0.0),
+                child: Text(
+                  index == 0
+                      ? "BLUE"
+                      : index == 1
+                          ? "RED"
+                          : "YELLOW",
+                  style: GoogleFonts.poppins(
+                    fontSize: 90,
+                    fontWeight: FontWeight.w900,
+                    color: NZColors.white,
+                    fontStyle: FontStyle.italic,
                   ),
                 ),
               ),
-              Positioned(
-                top: 0,
-                bottom: 0,
-                left: 0,
-                right: 0,
-                child: InkWell(
-                  onTap: () => _toggleAnimation(index),
-                  child: Transform(
-                    alignment: Alignment.center,
-                    transform: Matrix4.identity()
-                      ..rotateZ(index == activeIndex ? _shoeRotationAnimation?.value ?? -0.7 : -0.7)
-                      ..scale(1.0),
-                    child: Image.asset("assets/images/nike_$index.png"),
-                  ),
-                ),
-              ),
-            ],
+            ),
           ),
-        );
-      },
+          Positioned(
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: InkWell(
+              onTap: onTap,
+              child: Transform(
+                alignment: Alignment.center,
+                transform: Matrix4.identity()
+                  ..rotateZ(index == activeIndex ? shoeRotationAnimation?.value ?? -0.7 : -0.7)
+                  ..scale(1.0),
+                child: Image.asset("assets/images/nike_$index.png"),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

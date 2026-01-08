@@ -47,7 +47,7 @@ class _AssetsSectionState extends State<AssetsSection> {
           Row(
             children: [
               SvgPicture.asset(AppIcons.diamond),
-              AppSizing.kwSpacer(5.w),
+              KwSpacer(width: 5.w),
               Text(
                 LangUtil.trans("assets"),
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(
@@ -58,7 +58,7 @@ class _AssetsSectionState extends State<AssetsSection> {
               ),
             ],
           ),
-          AppSizing.kh20Spacer(),
+          const Kh20Spacer(),
           SizedBox(
             width: AppSizing.kHPercentage(context, 90),
             child: Column(
@@ -68,16 +68,16 @@ class _AssetsSectionState extends State<AssetsSection> {
                   LangUtil.trans("assetsTitle"),
                   style: Theme.of(context).textTheme.displayLarge!.copyWith(fontSize: 40.sp),
                 ),
-                AppSizing.kh20Spacer(),
+                const Kh20Spacer(),
                 Text(
                   LangUtil.trans("assetsDescription"),
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
-                AppSizing.kh20Spacer(),
+                const Kh20Spacer(),
               ],
             ),
           ),
-          AppSizing.kh20Spacer(),
+          const Kh20Spacer(),
           TextButton.icon(
               style: TextButton.styleFrom(backgroundColor: Theme.of(context).scaffoldBackgroundColor),
               iconAlignment: IconAlignment.end,
@@ -95,7 +95,7 @@ class _AssetsSectionState extends State<AssetsSection> {
               },
               icon: const Icon(Icons.arrow_forward_rounded),
               label: Text(LangUtil.trans("browseAllAssets"))),
-          AppSizing.kh20Spacer(),
+          const Kh20Spacer(),
           Wrap(
             runSpacing: 40.h,
             runAlignment: WrapAlignment.spaceBetween,
@@ -148,7 +148,7 @@ class _AssetsSectionState extends State<AssetsSection> {
                                     LangUtil.trans("comingSoon"),
                                     style: Theme.of(context).textTheme.displayLarge,
                                   ),
-                                  AppSizing.kh10Spacer(),
+                                  const Kh10Spacer(),
                                   Text(LangUtil.trans("comingSoonDescription"))
                                 ],
                               ),
@@ -197,7 +197,7 @@ class _AssetsSectionState extends State<AssetsSection> {
                                                 childHeight: AppSizing.kWPercentage(context, 22),
                                                 child: item.widget,
                                               ),
-                                              AppSizing.kh20Spacer(),
+                                              const Kh20Spacer(),
                                               Builder(builder: (context) {
                                                 final name = LangUtil.trans("${item.subCategory}");
                                                 final formatted = name[0].toUpperCase() + name.split("_").join(" ").substring(1).toLowerCase();
@@ -218,7 +218,7 @@ class _AssetsSectionState extends State<AssetsSection> {
               ),
             ],
           ),
-          AppSizing.khSpacer(60),
+          KhSpacer(height: 60),
         ],
       ),
     );

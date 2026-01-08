@@ -43,7 +43,7 @@ class _OnlineOnboardingState extends State<OnlineOnboarding> {
     return Scaffold(
       body: Column(
         children: [
-          AppSizing.khSpacer(context, 0.2),
+          KhSpacer(height: AppSizing.height(context) * 0.2),
           SizedBox(
             height: AppSizing.height(context) * 0.8,
             width: AppSizing.width(context),

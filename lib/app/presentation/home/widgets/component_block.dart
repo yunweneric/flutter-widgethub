@@ -27,7 +27,7 @@ class _ComponentBlockState extends State<ComponentBlock> {
             widget.item.category.describe(),
             style: Theme.of(context).textTheme.displayMedium,
           ),
-          AppSizing.kh10Spacer(),
+          const Kh10Spacer(),
           Text(
             LangUtil.trans(widget.item.description),
             style: Theme.of(context).textTheme.bodySmall,
@@ -43,7 +43,7 @@ class _ComponentBlockState extends State<ComponentBlock> {
                 endIndent: value * AppSizing.kWPercentage(context, 20),
                 color: widget.isActive ? Theme.of(context).primaryColor : Theme.of(context).scaffoldBackgroundColor,
               ),
-              AppSizing.kh10Spacer(),
+              const Kh10Spacer(),
               child!,
             ],
           ),

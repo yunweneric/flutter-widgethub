@@ -129,7 +129,7 @@ class _LeaveReviewHomeScreenState extends State<LeaveReviewHomeScreen> {
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.displayMedium,
           ),
-          LeaveReviewAppSizing.khSpacer(LeaveReviewAppSizing.height(context) * 0.05),
+          LeaveReviewKhSpacer(height: LeaveReviewAppSizing.height(context) * 0.05),
         ],
       ),
     );
@@ -235,7 +235,7 @@ class _LeaveReviewHomeScreenState extends State<LeaveReviewHomeScreen> {
                     );
                   }),
             ),
-            LeaveReviewAppSizing.khSpacer(LeaveReviewAppSizing.height(context) * 0.05),
+            LeaveReviewKhSpacer(height: LeaveReviewAppSizing.height(context) * 0.05),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: AppSlider(
@@ -253,7 +253,7 @@ class _LeaveReviewHomeScreenState extends State<LeaveReviewHomeScreen> {
                 },
               ),
             ),
-            LeaveReviewAppSizing.khSpacer(LeaveReviewAppSizing.height(context) * 0.1),
+            LeaveReviewKhSpacer(height: LeaveReviewAppSizing.height(context) * 0.1),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Stack(
@@ -298,7 +298,7 @@ class _LeaveReviewHomeScreenState extends State<LeaveReviewHomeScreen> {
                 ],
               ),
             ),
-            LeaveReviewAppSizing.khSpacer(LeaveReviewAppSizing.height(context) * 0.05),
+            LeaveReviewKhSpacer(height: LeaveReviewAppSizing.height(context) * 0.05),
           ],
         );
       },

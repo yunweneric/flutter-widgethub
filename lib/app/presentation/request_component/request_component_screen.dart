@@ -20,7 +20,7 @@ class _RequestComponentScreenState extends State<RequestComponentScreen> {
           style: Theme.of(context).textTheme.displayLarge,
         )
 ,
-        AppSizing.kh10Spacer(),
+        const Kh10Spacer(),
          Text(
           LangUtil.trans("requestComingSoonDescription"),
           textAlign: TextAlign.center,

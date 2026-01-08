@@ -44,15 +44,64 @@ class AppSizing {
   static EdgeInsets kpadding(double width, double height) =>
       EdgeInsets.symmetric(horizontal: width.w, vertical: height.h);
 
-  static Widget kh20Spacer() => SizedBox(height: 20.h);
-  static Widget kh10Spacer() => SizedBox(height: 10.h);
+  // Deprecated: Use Kh20Spacer widget instead
+  @Deprecated('Use Kh20Spacer widget instead')
+  static Widget kh20Spacer() => const Kh20Spacer();
+  
+  // Deprecated: Use Kh10Spacer widget instead
+  @Deprecated('Use Kh10Spacer widget instead')
+  static Widget kh10Spacer() => const Kh10Spacer();
 
-  static Widget khSpacer(double height) => SizedBox(height: height);
+  // Deprecated: Use KhSpacer widget instead
+  @Deprecated('Use KhSpacer widget instead')
+  static Widget khSpacer(double height) => KhSpacer(height: height);
 
-  static Widget kwSpacer(double width) => SizedBox(width: width);
+  // Deprecated: Use KwSpacer widget instead
+  @Deprecated('Use KwSpacer widget instead')
+  static Widget kwSpacer(double width) => KwSpacer(width: width);
 
   static bool isXMobile(context) => width(context) < 380;
   static bool isMobile(context) => width(context) < 789;
   static bool isTablet(context) => width(context) > 789 && width(context) < 992;
   static bool isDesktop(context) => width(context) > 992;
+}
+
+class Kh20Spacer extends StatelessWidget {
+  const Kh20Spacer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(height: 20.h);
+  }
+}
+
+class Kh10Spacer extends StatelessWidget {
+  const Kh10Spacer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(height: 10.h);
+  }
+}
+
+class KhSpacer extends StatelessWidget {
+  final double height;
+
+  const KhSpacer({super.key, required this.height});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(height: height);
+  }
+}
+
+class KwSpacer extends StatelessWidget {
+  final double width;
+
+  const KwSpacer({super.key, required this.width});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(width: width);
+  }
 }

@@ -73,7 +73,7 @@ class _HomeScreenState extends State<BasuuHomeScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                AppSizing.kh20Spacer(),
+                const Kh20Spacer(),
                 BasuuButton(
                   bgColor: theme.scaffoldBackgroundColor,
                   width: AppSizing.width(context),
@@ -87,12 +87,12 @@ class _HomeScreenState extends State<BasuuHomeScreen> {
                   side: BorderSide(color: theme.highlightColor),
                   icon: const BasuuIcon(icon: BasuuIcons.reset),
                 ),
-                AppSizing.kh20Spacer(),
+                const Kh20Spacer(),
                 const Text(
                   "20 new words left  ·  80% complete",
                   textAlign: TextAlign.center,
                 ),
-                AppSizing.kh20Spacer(),
+                const Kh20Spacer(),
                 ...words.map((item) {
                   return Container(
                     margin: EdgeInsets.only(bottom: 10.h),
@@ -126,7 +126,7 @@ class _HomeScreenState extends State<BasuuHomeScreen> {
                                 );
                               }),
                             ),
-                            AppSizing.kwSpacer(5.w),
+                            KwSpacer(width: 5.w),
                             TweenAnimationBuilder(
                               tween: ColorTween(
                                 begin: item.hasLearned ? BasuuColors.GREEN : theme.cardColor,
@@ -153,7 +153,7 @@ class _HomeScreenState extends State<BasuuHomeScreen> {
                                 );
                               },
                             ),
-                            AppSizing.kwSpacer(5.w),
+                            KwSpacer(width: 5.w),
                             TweenAnimationBuilder(
                                 tween: ColorTween(
                                   begin: item.hasLearned ? theme.cardColor : theme.primaryColorDark,

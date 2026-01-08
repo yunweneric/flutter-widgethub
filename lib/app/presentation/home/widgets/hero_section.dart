@@ -70,7 +70,7 @@ class _HeroSectionState extends State<HeroSection> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              AppSizing.kh20Spacer(),
+              const Kh20Spacer(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -90,24 +90,24 @@ class _HeroSectionState extends State<HeroSection> {
                                 .copyWith(fontSize: AppSizing.isMobile(context) ? 40.sp : 50.sp),
                           );
                         }),
-                        AppSizing.kh20Spacer(),
+                        const Kh20Spacer(),
                         SelectableText(
                           LangUtil.trans("heroDescription"),
                           style: Theme.of(context).textTheme.bodyMedium,
                         ),
-                        AppSizing.kh20Spacer(),
+                        const Kh20Spacer(),
                         Builder(builder: (context) {
                           final theme = Theme.of(context).brightness == Brightness.dark ? 'dark' : 'light';
                           return Row(
                             children: [
                               Image.asset("assets/images/flutter_$theme.png", width: 100.w),
-                              AppSizing.kwSpacer(20.w),
+                              KwSpacer(width: 20.w),
                               Image.asset("assets/images/dart_$theme.png", width: 100.w),
                             ],
                           );
                         }),
-                        AppSizing.kh20Spacer(),
-                        AppSizing.kh20Spacer(),
+                        const Kh20Spacer(),
+                        const Kh20Spacer(),
                         Wrap(
                           runSpacing: 20,
                           children: [
@@ -132,7 +132,7 @@ class _HeroSectionState extends State<HeroSection> {
                                 style: const TextStyle(color: AppColors.BG),
                               ),
                             ),
-                            AppSizing.kwSpacer(20.w),
+                            KwSpacer(width: 20.w),
                             ElevatedButton.icon(
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Theme.of(context).scaffoldBackgroundColor,

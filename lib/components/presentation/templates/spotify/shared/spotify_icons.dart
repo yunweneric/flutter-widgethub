@@ -54,11 +54,28 @@ class SpotifyIcons {
 </svg>
 ''';
 
-  // Method to get SVG widget with color
+  // Deprecated: Use SpotifyIcon widget instead
+  @Deprecated('Use SpotifyIcon widget instead')
   static Widget getIcon(String svgString, {Color? color}) {
+    return SpotifyIcon(svgString: svgString, color: color);
+  }
+}
+
+class SpotifyIcon extends StatelessWidget {
+  final String svgString;
+  final Color? color;
+
+  const SpotifyIcon({
+    super.key,
+    required this.svgString,
+    this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return SvgPicture.string(
       svgString,
-      colorFilter: color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,
+      colorFilter: color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null,
       width: 24,
       height: 24,
     );

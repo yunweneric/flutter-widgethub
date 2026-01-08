@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterui/app/shared/presentation/utils/sizing.dart' show KhSpacer;
 import 'package:flutterui/components/presentation/templates/auth/auth_01/shared/shared.dart';
 
 /// Authentication registration screen variant 1 with sign-up form.
@@ -112,25 +113,25 @@ class _Auth01RegisterWidgetState extends State<Auth01RegisterWidget> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const AppLogoWidget(),
-                  AppSizing.khSpacer(40),
+                  KhSpacer(height: 40),
                   const AuthTitle(title: 'Sign up to your\nAccount'),
-                  AppSizing.khSpacer(16),
+                  KhSpacer(height: 16),
                   const AuthSubtitle(title: 'Enter your email and password to sign up'),
-                  AppSizing.khSpacer(32),
+                  KhSpacer(height: 32),
                   Auth01TextField(
                     label: "Full Names",
                     placeholder: "John Doe",
                     controller: _emailController,
                     theme: _customTheme,
                   ),
-                  AppSizing.khSpacer(20),
+                  KhSpacer(height: 20),
                   Auth01TextField(
                     label: "Email",
                     placeholder: "mail@mail.com",
                     controller: _emailController,
                     theme: _customTheme,
                   ),
-                  AppSizing.khSpacer(20),
+                  KhSpacer(height: 20),
                   Auth01PasswordField(
                     label: "Password",
                     controller: _passwordController,
@@ -142,7 +143,7 @@ class _Auth01RegisterWidgetState extends State<Auth01RegisterWidget> {
                     },
                     theme: _customTheme,
                   ),
-                  AppSizing.khSpacer(8),
+                  KhSpacer(height: 8),
                   Auth01PasswordField(
                     label: "Confirm Password",
                     controller: _passwordController,
@@ -154,17 +155,17 @@ class _Auth01RegisterWidgetState extends State<Auth01RegisterWidget> {
                     },
                     theme: _customTheme,
                   ),
-                  AppSizing.khSpacer(8),
+                  KhSpacer(height: 8),
                   const ForgotPasswordButton(),
-                  AppSizing.khSpacer(8),
+                  KhSpacer(height: 8),
                   const Auth01Button(title: "Register"),
-                  AppSizing.khSpacer(20),
+                  KhSpacer(height: 20),
                   const OrDivider(),
-                  AppSizing.khSpacer(20),
+                  KhSpacer(height: 20),
                   const Auth01GoogleButton(),
-                  AppSizing.khSpacer(12),
+                  KhSpacer(height: 12),
                   const Auth01FacebookButton(),
-                  AppSizing.khSpacer(32),
+                  KhSpacer(height: 32),
                   const SignUpLink(),
                 ],
               ),

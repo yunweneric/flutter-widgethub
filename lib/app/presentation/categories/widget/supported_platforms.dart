@@ -18,7 +18,7 @@ class SupportPlatformSection extends StatelessWidget {
           LangUtil.trans("supportOn"),
           style: Theme.of(context).textTheme.displayMedium,
         ),
-        AppSizing.kh10Spacer(),
+        const Kh10Spacer(),
         Row(
           children: [
             ...component.supportedPlatforms.map((item) {
@@ -57,8 +57,8 @@ class SupportPlatformSection extends StatelessWidget {
             })
           ],
         ),
-        AppSizing.kh20Spacer(),
-        AppSizing.kh10Spacer(),
+        const Kh20Spacer(),
+        const Kh10Spacer(),
       ],
     );
   }

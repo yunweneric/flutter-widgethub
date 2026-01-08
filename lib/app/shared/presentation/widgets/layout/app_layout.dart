@@ -85,7 +85,7 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
                         controller: widget.controller,
                         child: Column(
                           children: [
-                            AppSizing.khSpacer(80),
+                            KhSpacer(height: 80),
                             ConstrainedBox(
                               constraints: BoxConstraints(
                                   minHeight: AppSizing.kHPercentage(context, 80)),
@@ -123,11 +123,11 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
                             _SideBarComponents(
                               isHomeScreenLayout: widget.isHomeScreenLayout,
                             ),
-                            AppSizing.kh20Spacer(),
+                            const Kh20Spacer(),
                             Column(
                               children: [
                                 _NavbarSection(child: _ThemingSection()),
-                                AppSizing.kh20Spacer(),
+                                const Kh20Spacer(),
                                 Text(
                                   LangUtil.trans("homeFooter", args: {
                                     "year": DateTime.now().year.toString(),
@@ -135,7 +135,7 @@ class _AppLayoutState extends State<AppLayout> with SingleTickerProviderStateMix
                                   }),
                                   style: Theme.of(context).textTheme.bodySmall,
                                 ),
-                                AppSizing.kh20Spacer(),
+                                const Kh20Spacer(),
                               ],
                             ),
                           ],
@@ -208,7 +208,7 @@ class _NavItem extends StatelessWidget {
           children: [
             if (icon != null) ...[
               AppIcon(icon: icon!, size: 20),
-              AppSizing.kwSpacer(5),
+              KwSpacer(width: 5),
             ],
             Text(title, style: Theme.of(context).textTheme.bodyMedium),
           ],
@@ -264,7 +264,7 @@ class _SideBarComponents extends StatelessWidget {
               ),
             ],
           ),
-          AppSizing.khSpacer(30),
+          KhSpacer(height: 30),
           BlocConsumer<ComponentBloc, ComponentState>(
             listener: (context, state) {},
             builder: (context, state) {
@@ -296,7 +296,7 @@ class _SideBarComponents extends StatelessWidget {
                     : Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          AppSizing.khSpacer(30.h),
+                          KhSpacer(height: 30.h),
                           ...categoriesGroup.map((item) {
                             return Container(
                               margin: EdgeInsets.only(bottom: 30.h),
@@ -305,7 +305,7 @@ class _SideBarComponents extends StatelessWidget {
                                 children: [
                                   Text(item.category.describe(),
                                       style: Theme.of(context).textTheme.displayMedium),
-                                  AppSizing.khSpacer(15.h),
+                                  KhSpacer(height: 15.h),
                                   Stack(
                                     children: [
                                       ListView.builder(
@@ -360,7 +360,7 @@ class _ThemingSection extends StatelessWidget {
           "Choose Theming",
           style: Theme.of(context).textTheme.displayMedium,
         ),
-        AppSizing.kh10Spacer(),
+        const Kh10Spacer(),
         Padding(
           padding: const EdgeInsets.only(left: 5),
           child: Column(

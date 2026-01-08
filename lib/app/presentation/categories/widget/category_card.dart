@@ -59,7 +59,7 @@ class _CategoryCardState extends State<CategoryCard> {
                       LangUtil.trans(componentDetails.title),
                       style: Theme.of(context).textTheme.displayMedium,
                     ),
-                    AppSizing.kh10Spacer(),
+                    const Kh10Spacer(),
                     Text(
                       LangUtil.trans(componentDetails.description),
                       style: Theme.of(context).textTheme.bodyMedium,

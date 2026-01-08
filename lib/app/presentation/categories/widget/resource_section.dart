@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
+import 'package:flutterui/app/shared/presentation/utils/sizing.dart' show AppSizing, Kh20Spacer, Kh10Spacer, KhSpacer, KwSpacer;
 import 'package:flutterui/app/shared/presentation/utils/util.dart';
 import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 
@@ -20,34 +20,52 @@ class ResourceSection extends StatelessWidget {
           LangUtil.trans("resources"),
           style: Theme.of(context).textTheme.displayMedium,
         ),
-        AppSizing.khSpacer(5),
+        const KhSpacer(height: 5),
         if (component.gitHubLink != null)
-          rowItem(
+          RowItem(
             onTap: () => UtilHelper.openUrl(component.gitHubLink!),
             leading: AppIcons.github,
             title: LangUtil.trans("openGithubRepositor"),
           ),
         if (component.assetLink != null)
-          rowItem(
+          RowItem(
             onTap: () => UtilHelper.openUrl(component.assetLink!),
             leading: AppIcons.download,
             title: LangUtil.trans("downloadAssets"),
           ),
-        AppSizing.kh20Spacer(),
-        AppSizing.kh10Spacer(),
+        const Kh20Spacer(),
+        const Kh10Spacer(),
       ],
     );
   }
 }
 
-Widget rowItem({required String leading, required String title, required VoidCallback onTap}) {
+class RowItem extends StatefulWidget {
+  final String leading;
+  final String title;
+  final VoidCallback onTap;
+
+  const RowItem({
+    super.key,
+    required this.leading,
+    required this.title,
+    required this.onTap,
+  });
+
+  @override
+  State<RowItem> createState() => _RowItemState();
+}
+
+class _RowItemState extends State<RowItem> {
   bool isHovered = false;
-  return StatefulBuilder(builder: (context, setState) {
+
+  @override
+  Widget build(BuildContext context) {
     return InkWell(
       highlightColor: Theme.of(context).scaffoldBackgroundColor,
       splashColor: Theme.of(context).scaffoldBackgroundColor,
       hoverColor: Theme.of(context).scaffoldBackgroundColor,
-      onTap: onTap,
+      onTap: widget.onTap,
       onHover: (val) {
         setState(() => isHovered = val);
       },
@@ -59,10 +77,10 @@ Widget rowItem({required String leading, required String title, required VoidCal
           scale: isHovered ? 1.05 : 1.0,
           child: Row(
             children: [
-              AppIcon(icon: leading, color: isHovered ? Theme.of(context).primaryColor : null),
-              AppSizing.kwSpacer(5),
+              AppIcon(icon: widget.leading, color: isHovered ? Theme.of(context).primaryColor : null),
+              const KwSpacer(width: 5),
               Text(
-                title,
+                widget.title,
                 style: Theme.of(context).textTheme.bodySmall!.copyWith(color: isHovered ? Theme.of(context).primaryColor : null),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
@@ -72,5 +90,5 @@ Widget rowItem({required String leading, required String title, required VoidCal
         ),
       ),
     );
-  });
+  }
 }

@@ -175,7 +175,7 @@ class _Auth03Header extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AppIcons.logo(),
+                const AppIconsLogo(),
                 const SizedBox(height: 32),
                 const Text('Sign in to your', style: Auth03Theme.title),
                 const Text('Account', style: Auth03Theme.title),
@@ -193,7 +193,7 @@ class _Auth03Header extends StatelessWidget {
             ),
           ),
         ),
-        Positioned(top: 0, child: AppIcons.grid()),
+        Positioned(top: 0, child: const AppIconsGrid()),
       ],
     );
   }
@@ -338,7 +338,7 @@ class _Auth03SocialButtonsRow extends StatelessWidget {
         Expanded(
           child: OutlinedButton.icon(
             onPressed: () {},
-            icon: AppIcons.googleLogo(),
+            icon: const AppIconsGoogleLogo(),
             label: const Text('Google', style: TextStyle(color: Auth03Theme.textDark)),
             style: OutlinedButton.styleFrom(
               padding: const EdgeInsets.symmetric(vertical: 14),
@@ -354,7 +354,7 @@ class _Auth03SocialButtonsRow extends StatelessWidget {
         Expanded(
           child: OutlinedButton.icon(
             onPressed: () {},
-            icon: AppIcons.facebookLogo(),
+            icon: const AppIconsFacebookLogo(),
             label: const Text('Facebook', style: TextStyle(color: Auth03Theme.textDark)),
             style: OutlinedButton.styleFrom(
               padding: const EdgeInsets.symmetric(vertical: 14),

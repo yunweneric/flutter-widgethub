@@ -60,7 +60,7 @@ class _HomeNavBarState extends State<HomeNavBar> {
                             isLogoHovered = value;
                           }),
                         ),
-                        AppSizing.kwSpacer(50.w),
+                        KwSpacer(width: 50.w),
                         Row(
                           children: [
                             ...links.map((item) {
@@ -87,14 +87,14 @@ class _HomeNavBarState extends State<HomeNavBar> {
                     Row(
                       children: [
                         const AppSearchBar(),
-                        AppSizing.kwSpacer(10.w),
+                        KwSpacer(width: 10.w),
                         const LanguageButton(),
                         TextButton(
                           onPressed: () => UtilHelper.openUrl(
                               "https://github.com/yunweneric/flutter-widgethub/"),
                           child: const AppIcon(icon: AppIcons.github),
                         ),
-                        AppSizing.kwSpacer(5.w),
+                        KwSpacer(width: 5.w),
                         Builder(
                           builder: (context) {
                             final theme = getIt.get<ThemeBloc>();

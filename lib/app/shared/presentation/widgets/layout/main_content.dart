@@ -29,7 +29,7 @@ class _MainContentState extends State<MainContent> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AppSizing.khSpacer(30.h),
+              KhSpacer(height: 30.h),
               TextButton.icon(
                 style: TextButton.styleFrom(
                   side: BorderSide(color: Theme.of(context).dividerColor),
@@ -38,7 +38,7 @@ class _MainContentState extends State<MainContent> {
                 icon: const AppIcon(icon: AppIcons.back),
                 label: Text(LangUtil.trans("back"), style: Theme.of(context).textTheme.bodyMedium),
               ),
-              AppSizing.khSpacer(30.h),
+              KhSpacer(height: 30.h),
               ConstrainedBox(
                 constraints: BoxConstraints(minHeight: AppSizing.kHPercentage(context, 60)),
                 child: Column(
@@ -46,11 +46,11 @@ class _MainContentState extends State<MainContent> {
                   children: [...widget.children],
                 ),
               ),
-              AppSizing.khSpacer(30.h),
+              KhSpacer(height: 30.h),
               Divider(color: Theme.of(context).dividerColor),
-              AppSizing.khSpacer(30.h),
+              KhSpacer(height: 30.h),
               const ComponentFooter(),
-              AppSizing.khSpacer(AppSizing.kHPercentage(context, 15)),
+              KhSpacer(height: AppSizing.kHPercentage(context, 15)),
             ],
           ),
         ),

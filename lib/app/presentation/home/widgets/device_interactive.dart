@@ -59,7 +59,7 @@ class _DeviceInteractiveState extends State<DeviceInteractive> {
                       );
                     },
                   ),
-                  AppSizing.khSpacer(AppSizing.kHPercentage(context, 6)),
+                  KhSpacer(height: AppSizing.kHPercentage(context, 6)),
                 ],
               ),
             ),
@@ -84,7 +84,7 @@ class _DeviceInteractiveState extends State<DeviceInteractive> {
             ),
           ),
         ),
-        AppSizing.kwSpacer(AppSizing.kWPercentage(context, 2)),
+        KwSpacer(width: AppSizing.kWPercentage(context, 2)),
         SizedBox(
           width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 44),
           height: AppSizing.kHPercentage(context, AppSizing.isDesktop(context) ? 60 : 40),
@@ -161,7 +161,7 @@ class _DeviceInteractiveState extends State<DeviceInteractive> {
                         );
                       },
                     ),
-                    AppSizing.khSpacer(AppSizing.kHPercentage(context, 6)),
+                    KhSpacer(height: AppSizing.kHPercentage(context, 6)),
                   ],
                 ),
               ),
@@ -186,7 +186,7 @@ class _DeviceInteractiveState extends State<DeviceInteractive> {
               ),
             ),
           ),
-          AppSizing.kwSpacer(AppSizing.kWPercentage(context, 2)),
+          KwSpacer(width: AppSizing.kWPercentage(context, 2)),
           SizedBox(
             width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 44),
             height: AppSizing.kHPercentage(context, 60),

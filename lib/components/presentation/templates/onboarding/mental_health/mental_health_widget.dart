@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class OnBoardingData {
@@ -75,7 +76,7 @@ class _MentalHealthOnboardingState extends State<MentalHealthOnboarding> {
           ),
           Column(
             children: [
-              AppSizing.khSpacer(context, 0.2),
+              KhSpacer(height: AppSizing.height(context) * 0.2),
               SizedBox(
                 height: AppSizing.height(context) * 0.8,
                 width: AppSizing.width(context),

@@ -51,12 +51,12 @@ class _HomeFooterState extends State<HomeFooter> {
                     mainAxisAlignment: AppSizing.isMobile(context) ? MainAxisAlignment.center : MainAxisAlignment.end,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      AppSizing.kwSpacer(5.w),
+                      KwSpacer(width: 5.w),
                       TextButton(
                         onPressed: () => UtilHelper.openUrl("https://github.com/yunweneric/flutter-widgethub/"),
                         child: const AppIcon(icon: AppIcons.github),
                       ),
-                      AppSizing.kwSpacer(5.w),
+                      KwSpacer(width: 5.w),
                       Builder(
                         builder: (context) {
                           final theme = getIt.get<ThemeBloc>();

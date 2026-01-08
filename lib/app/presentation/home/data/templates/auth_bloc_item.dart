@@ -35,13 +35,13 @@ class _AuthsideBarCategoriestate extends State<AuthBlocItem> {
                         hintText: "Email",
                       ),
                     ),
-                    AppSizing.kh20Spacer(),
+                    const Kh20Spacer(),
                     const TextField(
                       decoration: InputDecoration(
                         hintText: "Password",
                       ),
                     ),
-                    AppSizing.kh20Spacer(),
+                    const Kh20Spacer(),
                     ElevatedButton.icon(
                       iconAlignment: IconAlignment.end,
                       style: ElevatedButton.styleFrom(
@@ -56,10 +56,10 @@ class _AuthsideBarCategoriestate extends State<AuthBlocItem> {
                   ],
                 ),
               ),
-              AppSizing.kh20Spacer(),
-              AppSizing.kh10Spacer(),
+              const Kh20Spacer(),
+              const Kh10Spacer(),
               const Text("Or login with social"),
-              AppSizing.kh10Spacer(),
+              const Kh10Spacer(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

@@ -22,11 +22,11 @@ class _IntegrationSectionState extends State<IntegrationSection> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AppSizing.isMobile(context) ? AppSizing.khSpacer(100) : AppSizing.khSpacer(100),
+          AppSizing.isMobile(context) ? KhSpacer(height: 100) : KhSpacer(height: 100),
           Row(
             children: [
               SvgPicture.asset(AppIcons.diamond),
-              AppSizing.kwSpacer(5.w),
+              KwSpacer(width: 5.w),
               Text(
                 LangUtil.trans("integration"),
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(
@@ -47,18 +47,18 @@ class _IntegrationSectionState extends State<IntegrationSection> {
                   LangUtil.trans("integrationTitle"),
                   style: Theme.of(context).textTheme.displayLarge!.copyWith(fontSize: 40.sp),
                 ),
-                AppSizing.kh20Spacer(),
+                const Kh20Spacer(),
                 Text(
                   LangUtil.trans("integrationDescription"),
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
-                AppSizing.kh20Spacer(),
+                const Kh20Spacer(),
               ],
             ),
           ),
-          AppSizing.khSpacer(30.h),
+          KhSpacer(height: 30.h),
           const DeviceInteractive(),
-          AppSizing.khSpacer(100.h),
+          KhSpacer(height: 100.h),
         ],
       ),
     );

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-
+import 'package:flutterui/app/shared/presentation/utils/sizing.dart' show KhSpacer;
 import '../shared/shared.dart';
 
 /// Authentication login screen variant 1 with email/password form.
@@ -114,18 +113,18 @@ class _Auth01LoginWidgetState extends State<Auth01LoginWidget> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const AppLogoWidget(),
-                  AppSizing.khSpacer(40),
+                  KhSpacer(height: 40),
                   const AuthTitle(title: 'Sign in to your\nAccount'),
-                  AppSizing.khSpacer(16),
+                  KhSpacer(height: 16),
                   const AuthSubtitle(title: 'Enter your email and password to log in'),
-                  AppSizing.khSpacer(32),
+                  KhSpacer(height: 32),
                   Auth01TextField(
                     label: "Email",
                     placeholder: "mail@mail.com",
                     controller: _emailController,
                     theme: _customTheme,
                   ),
-                  AppSizing.khSpacer(20),
+                  KhSpacer(height: 20),
                   Auth01PasswordField(
                     label: "Password",
                     controller: _passwordController,
@@ -137,17 +136,17 @@ class _Auth01LoginWidgetState extends State<Auth01LoginWidget> {
                     },
                     theme: _customTheme,
                   ),
-                  AppSizing.khSpacer(8),
+                  KhSpacer(height: 8),
                   const ForgotPasswordButton(),
-                  AppSizing.khSpacer(8),
+                  KhSpacer(height: 8),
                   const Auth01Button(title: "Log In"),
-                  AppSizing.khSpacer(20),
+                  KhSpacer(height: 20),
                   const OrDivider(),
-                  AppSizing.khSpacer(20),
+                  KhSpacer(height: 20),
                   const Auth01GoogleButton(),
-                  AppSizing.khSpacer(12),
+                  KhSpacer(height: 12),
                   const Auth01FacebookButton(),
-                  AppSizing.khSpacer(32),
+                  KhSpacer(height: 32),
                   const SignUpLink(),
                 ],
               ),

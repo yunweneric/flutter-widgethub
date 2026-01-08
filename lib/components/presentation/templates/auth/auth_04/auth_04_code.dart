@@ -151,12 +151,12 @@ class _Auth04Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Positioned(top: 0, left: 30, child: AppIcons.grid()),
+        Positioned(top: 0, left: 30, child: const AppIconsGrid()),
         Padding(
           padding: const EdgeInsets.only(top: 32, left: 30, right: 30, bottom: 0),
           child: Column(
             children: [
-              AppIcons.logo(width: 48, height: 48),
+              const AppIconsLogo(width: 48, height: 48),
               const SizedBox(height: 32),
               const Text('Get Started now', style: Auth04Theme.title, textAlign: TextAlign.center),
               const SizedBox(height: 12),
@@ -356,10 +356,10 @@ class _Auth04SocialButtonsRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        _Auth04SocialButton(icon: AppIcons.googleLogo(), onTap: () {}),
-        _Auth04SocialButton(icon: AppIcons.facebookLogo(), onTap: () {}),
-        _Auth04SocialButton(icon: AppIcons.appleLogo(), onTap: () {}),
-        _Auth04SocialButton(icon: AppIcons.phoneLogo(), onTap: () {}),
+        _Auth04SocialButton(icon: const AppIconsGoogleLogo(), onTap: () {}),
+        _Auth04SocialButton(icon: const AppIconsFacebookLogo(), onTap: () {}),
+        _Auth04SocialButton(icon: const AppIconsAppleLogo(), onTap: () {}),
+        _Auth04SocialButton(icon: const AppIconsPhoneLogo(), onTap: () {}),
       ],
     );
   }

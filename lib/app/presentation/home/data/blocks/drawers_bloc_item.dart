@@ -115,7 +115,7 @@ class _DrawerssideBarCategoriestate extends State<DrawersBlocItem> {
                     const TextField(
                       decoration: InputDecoration(hintText: "Search chats"),
                     ),
-                    AppSizing.kh20Spacer(),
+                    const Kh20Spacer(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -124,7 +124,7 @@ class _DrawerssideBarCategoriestate extends State<DrawersBlocItem> {
                         const Text("See all"),
                       ],
                     ),
-                    AppSizing.kh20Spacer(),
+                    const Kh20Spacer(),
                     ListTile(
                       leading: ClipOval(
                         child: Image.asset("assets/images/profile_0.jpg"),

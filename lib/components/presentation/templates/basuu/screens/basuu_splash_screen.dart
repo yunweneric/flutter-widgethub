@@ -57,7 +57,7 @@ class _SplashScreenState extends State<BasuuSplashScreen> {
                         height: AppSizing.kHPercentage(context, 40),
                       ),
                     ),
-                    AppSizing.khSpacer(AppSizing.kHPercentage(context, 10)),
+                    KhSpacer(height: AppSizing.kHPercentage(context, 10)),
                     BasuuAnimatedChild(
                       animation: animation,
                       offset: 1,
@@ -69,13 +69,13 @@ class _SplashScreenState extends State<BasuuSplashScreen> {
                             style: theme.textTheme.displayLarge!.copyWith(fontSize: 42.sp),
                             textAlign: TextAlign.center,
                           ),
-                          AppSizing.kh20Spacer(),
+                          const Kh20Spacer(),
                           Text(
                             "Learn words using cards, choosing levels that are convenient for you",
                             style: theme.textTheme.labelMedium?.copyWith(fontSize: 18.sp),
                             textAlign: TextAlign.center,
                           ),
-                          AppSizing.khSpacer(AppSizing.kHPercentage(context, 8)),
+                          KhSpacer(height: AppSizing.kHPercentage(context, 8)),
                           BasuuButton(
                             onPressed: () async {
                               setState(() => animated = false);

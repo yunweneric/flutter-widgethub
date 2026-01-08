@@ -74,7 +74,7 @@ class _PreStartScreenState extends State<BasuuPreStartScreen> {
                   padding: AppSizing.kMainPadding(context),
                   child: Column(
                     children: [
-                      AppSizing.kh20Spacer(),
+                      const Kh20Spacer(),
                       ...widget.categories.map((category) {
                         return TweenAnimationBuilder(
                           tween: category == selectedCategory
@@ -121,7 +121,7 @@ class _PreStartScreenState extends State<BasuuPreStartScreen> {
                                           style: theme.textTheme.displayMedium!.copyWith(color: theme.highlightColor),
                                         ),
                                       ),
-                                      AppSizing.kwSpacer(5.w),
+                                      KwSpacer(width: 5.w),
                                       Container(
                                         decoration: BoxDecoration(
                                           color: theme.highlightColor,
@@ -143,7 +143,7 @@ class _PreStartScreenState extends State<BasuuPreStartScreen> {
                           },
                         );
                       }),
-                      AppSizing.kh10Spacer(),
+                      const Kh10Spacer(),
                       Text(
                         "Customize your progress if you wish",
                         style: theme.textTheme.bodyMedium,
