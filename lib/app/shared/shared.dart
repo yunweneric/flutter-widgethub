@@ -23,6 +23,9 @@ export 'logic/sidebar/sidebar_bloc.dart';
 // Navigation Bloc
 export 'logic/navigation/navigation_bloc.dart';
 
+// Device Frame Bloc
+export 'logic/device_frame/device_frame_bloc.dart';
+
 // =============================================================================
 // PRESENTATION - UI Components and Utilities
 // =============================================================================
@@ -46,6 +49,8 @@ export 'presentation/widgets/code_highlighter2.dart';
 export 'presentation/widgets/component_footer.dart';
 export 'presentation/widgets/device_frame.dart';
 export 'presentation/widgets/device_section_frame.dart';
+export 'presentation/widgets/device_frame_selector_button.dart';
+export 'presentation/widgets/device_frame_selector_modal.dart';
 export 'presentation/widgets/icon.dart';
 export 'presentation/widgets/language_button.dart';
 

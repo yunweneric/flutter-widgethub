@@ -1,11 +1,10 @@
-import 'package:device_frame/device_frame.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/app/shared/data/models/code_component.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
+import 'package:flutterui/app/shared/shared.dart';
 import 'package:go_router/go_router.dart';
 
 class TemplateCard extends StatefulWidget {
@@ -62,9 +61,8 @@ class _TemplateCardState extends State<TemplateCard> {
                   child: AnimatedScale(
                     scale: isHovered ? 1 : 0.95,
                     duration: const Duration(milliseconds: 200),
-                    child: DeviceFrame(
-                      screen: componentDetails.widget,
-                      device: Devices.ios.iPhone13,
+                    child: AppDeviceFrame(
+                      child: componentDetails.widget,
                     ),
                   ),
                 ),

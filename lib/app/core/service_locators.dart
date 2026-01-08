@@ -8,6 +8,7 @@ import 'package:flutterui/app/core/routes/app_router.dart';
 import 'package:flutterui/app/shared/logic/navigation/navigation_bloc.dart';
 import 'package:flutterui/app/shared/logic/sidebar/sidebar_bloc.dart';
 import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
+import 'package:flutterui/app/shared/logic/device_frame/device_frame_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
@@ -38,12 +39,14 @@ class ServiceLocators {
     final languageBloc = LanguageBloc();
     final componentBloc = ComponentBloc();
     final navigationBloc = NavigationBloc();
+    final deviceFrameBloc = DeviceFrameBloc();
     getIt
       ..registerSingleton<ThemeBloc>(themBloc)
       ..registerSingleton<ComponentBloc>(componentBloc)
       ..registerSingleton<SidebarBloc>(sidebarBloc)
       ..registerSingleton<NavigationBloc>(navigationBloc)
-      ..registerSingleton<LanguageBloc>(languageBloc);
+      ..registerSingleton<LanguageBloc>(languageBloc)
+      ..registerSingleton<DeviceFrameBloc>(deviceFrameBloc);
 
     print('Service Locators registered!');
   }

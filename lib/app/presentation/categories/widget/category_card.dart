@@ -1,4 +1,3 @@
-import 'package:device_frame/device_frame.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
@@ -34,8 +33,10 @@ class _CategoryCardState extends State<CategoryCard> {
             children: [
               Container(
                 padding: EdgeInsets.all(30.w),
-                width: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 35),
-                height: AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 80 : 25),
+                width: AppSizing.kWPercentage(
+                    context, AppSizing.isMobile(context) ? 100 : 35),
+                height: AppSizing.kWPercentage(
+                    context, AppSizing.isMobile(context) ? 80 : 25),
                 decoration: BoxDecoration(
                   color: Theme.of(context).scaffoldBackgroundColor,
                   border: Border.all(color: Theme.of(context).dividerColor),
@@ -44,9 +45,8 @@ class _CategoryCardState extends State<CategoryCard> {
                 child: AnimatedScale(
                   scale: isHovered ? 1 : 0.95,
                   duration: const Duration(milliseconds: 200),
-                  child: DeviceFrame(
-                    screen: componentDetails.codeComponents.first.widget,
-                    device: Devices.ios.iPhone13,
+                  child: AppDeviceFrame(
+                    child: componentDetails.codeComponents.first.widget,
                   ),
                 ),
               ),

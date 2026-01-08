@@ -45,7 +45,6 @@ class _DeviceSectionFrameState extends State<DeviceSectionFrame> {
           width: widget.childWidth ?? AppSizing.kWPercentage(context, 10),
           height: widget.childHeight ?? AppSizing.kWPercentage(context, 22),
           child: AppDeviceFrame(
-            deviceInfo: Devices.ios.iPhone13,
             child: Scaffold(
               body: widget.child,
             ),

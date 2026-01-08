@@ -88,6 +88,8 @@ class _HomeNavBarState extends State<HomeNavBar> {
                       children: [
                         const AppSearchBar(),
                         KwSpacer(width: 10.w),
+                        const DeviceFrameSelectorButton(),
+                        KwSpacer(width: 10.w),
                         const LanguageButton(),
                         TextButton(
                           onPressed: () => UtilHelper.openUrl(
