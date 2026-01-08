@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/shared/data/enums/device_type.dart';
-import 'package:flutterui/app/shared/data/enums/supported_platform.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
 import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
@@ -18,6 +17,15 @@ import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 class CodePreview extends StatefulWidget {
   final Component component;
   const CodePreview({super.key, required this.component});
+
+  static List<DropdownMenuEntry> get menu => [
+        DropdownMenuEntry(
+            value: AppDeviceType.MOBILE, label: AppDeviceType.MOBILE.describe()),
+        DropdownMenuEntry(
+            value: AppDeviceType.TABLET, label: AppDeviceType.TABLET.describe()),
+        DropdownMenuEntry(
+            value: AppDeviceType.DESKTOP, label: AppDeviceType.DESKTOP.describe()),
+      ];
 
   @override
   State<CodePreview> createState() => _CodePreviewState();
@@ -35,88 +43,219 @@ class _CodePreviewState extends State<CodePreview> {
   bool isFrameVisible = true;
   final themBloc = getIt.get<ThemeBloc>();
 
-  List<DropdownMenuEntry> menu = [
-    DropdownMenuEntry(
-        value: AppDeviceType.MOBILE, label: AppDeviceType.MOBILE.describe()),
-    DropdownMenuEntry(
-        value: AppDeviceType.TABLET, label: AppDeviceType.TABLET.describe()),
-    DropdownMenuEntry(
-        value: AppDeviceType.DESKTOP, label: AppDeviceType.DESKTOP.describe()),
-  ];
-
-  Widget generateDeviceIcon(AppDeviceType selectedDevice) {
-    if (selectedDevice == AppDeviceType.MOBILE) return icon(AppIcons.mobile);
-    if (selectedDevice == AppDeviceType.TABLET) return icon(AppIcons.tablet);
-    if (selectedDevice == AppDeviceType.DESKTOP) return icon(AppIcons.desktop);
-    return icon(AppIcons.mobile);
-  }
-
-  Widget icon(String file) {
-    return Transform.scale(scale: 0.6, child: AppIcon(icon: file, size: 10.w));
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeBloc, ThemeState>(
       builder: (context, state) {
+        final isDark = Theme.of(context).brightness == Brightness.dark;
         return Container(
           decoration: BoxDecoration(
             color: Theme.of(context).scaffoldBackgroundColor,
-            border: Border.all(color: Theme.of(context).dividerColor),
-            borderRadius: AppSizing.radiusMd(),
+            border: Border.all(
+              color: Theme.of(context).dividerColor.withOpacity(0.5),
+              width: 1,
+            ),
+            borderRadius: BorderRadius.circular(16.r),
+            boxShadow: [
+              BoxShadow(
+                color: isDark
+                    ? Colors.black.withOpacity(0.3)
+                    : Colors.black.withOpacity(0.05),
+                blurRadius: 20,
+                offset: const Offset(0, 4),
+              ),
+            ],
           ),
           width: AppSizing.width(context),
-          child: Center(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                topBar(context),
-                codeAndPreview(
-                  code: widget.component.codeComponents.first.code,
-                ),
-              ],
-            ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _TopBar(
+                isCode: isCode,
+                hasCopied: hasCopied,
+                selectedDevice: selectedDevice,
+                hideSizers: hideSizers,
+                component: widget.component,
+                onPreviewTap: () => setState(() => isCode = false),
+                onCodeTap: () => setState(() => isCode = true),
+                onCopyTap: () {
+                  setState(() => hasCopied = true);
+                  UtilHelper.copy(context,
+                      data: widget.component.codeComponents.first.code);
+                  Future.delayed(const Duration(seconds: 5), () {
+                    setState(() => hasCopied = false);
+                  });
+                },
+                onDeviceSelected: (device) => setState(() => selectedDevice = device),
+              ),
+              _CodeAndPreview(
+                isCode: isCode,
+                code: widget.component.codeComponents.first.code,
+                previewWidget: widget.component.codeComponents.first.widget,
+                selectedDevice: selectedDevice,
+                isFrameVisible: isFrameVisible,
+                duration: duration,
+              ),
+            ],
           ),
         );
       },
     );
   }
+}
 
-  Widget codeAndPreview({required String code, BorderRadiusGeometry? borderRadius}) {
+class _DeviceIcon extends StatelessWidget {
+  final AppDeviceType deviceType;
+  const _DeviceIcon({required this.deviceType});
+
+  @override
+  Widget build(BuildContext context) {
+    String iconPath;
+    switch (deviceType) {
+      case AppDeviceType.MOBILE:
+        iconPath = AppIcons.mobile;
+        break;
+      case AppDeviceType.TABLET:
+        iconPath = AppIcons.tablet;
+        break;
+      case AppDeviceType.DESKTOP:
+        iconPath = AppIcons.desktop;
+        break;
+    }
+    return Transform.scale(
+      scale: 0.6,
+      child: AppIcon(icon: iconPath, size: 10.w),
+    );
+  }
+}
+
+class _CodeAndPreview extends StatelessWidget {
+  final bool isCode;
+  final String code;
+  final Widget previewWidget;
+  final AppDeviceType selectedDevice;
+  final bool isFrameVisible;
+  final Duration duration;
+
+  const _CodeAndPreview({
+    required this.isCode,
+    required this.code,
+    required this.previewWidget,
+    required this.selectedDevice,
+    required this.isFrameVisible,
+    required this.duration,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return AnimatedSwitcher(
-      duration: const Duration(milliseconds: 1300),
+      duration: const Duration(milliseconds: 300),
+      transitionBuilder: (child, animation) {
+        return FadeTransition(
+          opacity: animation,
+          child: SlideTransition(
+            position: Tween<Offset>(
+              begin: const Offset(0, 0.02),
+              end: Offset.zero,
+            ).animate(CurvedAnimation(
+              parent: animation,
+              curve: Curves.easeOutCubic,
+            )),
+            child: child,
+          ),
+        );
+      },
       child: isCode
           ? Container(
+              key: const ValueKey('code'),
               width: AppSizing.width(context),
-              decoration: BoxDecoration(borderRadius: AppSizing.radiusSm()),
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: CodeHighlight(
-                  code: code,
-                  borderRadius: borderRadius ?? AppSizing.radiusSm(),
-                ),
+              padding: EdgeInsets.all(16.w),
+              child: CodeHighlight(
+                code: code,
+                borderRadius: BorderRadius.circular(12.r),
               ),
             )
-          : preview(
-              child: widget.component.codeComponents.first.widget,
-              device: selectedDevice,
+          : Container(
+              key: const ValueKey('preview'),
+              child: _Preview(
+                child: previewWidget,
+                isFrameVisible: isFrameVisible,
+                duration: duration,
+              ),
             ),
     );
   }
+}
 
-  Container topBar(BuildContext context) {
+class _Preview extends StatelessWidget {
+  final Widget child;
+  final bool isFrameVisible;
+  final Duration duration;
+
+  const _Preview({
+    required this.child,
+    required this.isFrameVisible,
+    required this.duration,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 0.w, vertical: 40.h),
+      child: AnimatedSwitcher(
+        duration: duration,
+        child: AppDeviceFrame(
+          isFrameVisible: isFrameVisible,
+          child: child,
+        ),
+      ),
+    );
+  }
+}
+
+class _TopBar extends StatelessWidget {
+  final bool isCode;
+  final bool hasCopied;
+  final AppDeviceType selectedDevice;
+  final bool hideSizers;
+  final Component component;
+  final VoidCallback onPreviewTap;
+  final VoidCallback onCodeTap;
+  final VoidCallback onCopyTap;
+  final void Function(AppDeviceType) onDeviceSelected;
+
+  const _TopBar({
+    required this.isCode,
+    required this.hasCopied,
+    required this.selectedDevice,
+    required this.hideSizers,
+    required this.component,
+    required this.onPreviewTap,
+    required this.onCodeTap,
+    required this.onCopyTap,
+    required this.onDeviceSelected,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        border: Border(bottom: BorderSide(color: Theme.of(context).dividerColor)),
+        border: Border(
+          bottom: BorderSide(
+            color: Theme.of(context).dividerColor.withOpacity(0.3),
+            width: 1,
+          ),
+        ),
+        color: Theme.of(context).scaffoldBackgroundColor,
       ),
-      padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 15.h),
+      padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 18.h),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             children: [
               AppChip(
-                onTap: () => setState(() => isCode = false),
+                onTap: onPreviewTap,
                 active: !isCode,
                 icon: AppIcons.tab,
                 title: AppSizing.isMobile(context) ? null : LangUtil.trans("preview"),
@@ -124,7 +263,7 @@ class _CodePreviewState extends State<CodePreview> {
               KwSpacer(width: 10.w),
               AppChip(
                 active: isCode,
-                onTap: () => setState(() => isCode = true),
+                onTap: onCodeTap,
                 icon: AppIcons.code,
                 title: AppSizing.isMobile(context) ? null : LangUtil.trans("code"),
               ),
@@ -150,20 +289,16 @@ class _CodePreviewState extends State<CodePreview> {
                                 : hasCopied
                                     ? LangUtil.trans('copied')
                                     : LangUtil.trans("copy"),
-                            onTap: () async {
-                              setState(() => hasCopied = true);
-                              UtilHelper.copy(context,
-                                  data: widget.component.codeComponents.first.code);
-                              Future.delayed(const Duration(seconds: 5), () {
-                                setState(() => hasCopied = false);
-                              });
-                            },
+                            onTap: onCopyTap,
                           ),
                         )
                       : Transform.translate(
                           offset: Offset(0, value * 20),
                           child: !AppSizing.isDesktop(context)
-                              ? selectDevices()
+                              ? _SelectDevices(
+                                  selectedDevice: selectedDevice,
+                                  onDeviceSelected: onDeviceSelected,
+                                )
                               : Row(
                                   children: [
                                     TweenAnimationBuilder(
@@ -174,7 +309,7 @@ class _CodePreviewState extends State<CodePreview> {
                                           : Tween<double>(begin: 0, end: 1),
                                       builder: (context, value, child) {
                                         List<AppDeviceType> platforms =
-                                            widget.component.responsiveDevices;
+                                            component.responsiveDevices;
                                         return Transform(
                                           alignment: Alignment.centerRight,
                                           transform: Matrix4.identity()..scale(value),
@@ -191,31 +326,11 @@ class _CodePreviewState extends State<CodePreview> {
                                                       title: LangUtil.trans(platform
                                                           .describe()
                                                           .toLowerCase()),
-                                                      onTap: () => setState(() =>
-                                                          selectedDevice = platform),
+                                                      onTap: () =>
+                                                          onDeviceSelected(platform),
                                                     ),
                                                   );
                                                 }),
-                                                // AppChip(
-                                                //   active: selectedDevice == AppDeviceType.MOBILE,
-                                                //   icon: AppIcons.mobile,
-                                                //   title: LangUtil.trans("mobile"),
-                                                //   onTap: () => setState(() => selectedDevice = AppDeviceType.MOBILE),
-                                                // ),
-                                                // KwSpacer(width: 10.w),
-                                                // AppChip(
-                                                //   active: selectedDevice == AppDeviceType.TABLET,
-                                                //   icon: AppIcons.tablet,
-                                                //   title: LangUtil.trans("tablet"),
-                                                //   onTap: () => setState(() => selectedDevice = AppDeviceType.TABLET),
-                                                // ),
-                                                // KwSpacer(width: 10.w),
-                                                // AppChip(
-                                                //   active: selectedDevice == AppDeviceType.DESKTOP,
-                                                //   icon: AppIcons.desktop,
-                                                //   title: LangUtil.trans("desktop"),
-                                                //   onTap: () => setState(() => selectedDevice = AppDeviceType.DESKTOP),
-                                                // ),
                                               ],
                                             ),
                                           ),
@@ -223,15 +338,6 @@ class _CodePreviewState extends State<CodePreview> {
                                       },
                                     ),
                                     KwSpacer(width: 10.w),
-                                    // Switch.adaptive(
-                                    //   value: isFrameVisible,
-                                    //   onChanged: (val) {
-                                    //     setState(() {
-                                    //       hideSizers = val;
-                                    //       isFrameVisible = val;
-                                    //     });
-                                    //   },
-                                    // )
                                   ],
                                 ),
                         ),
@@ -243,29 +349,19 @@ class _CodePreviewState extends State<CodePreview> {
       ),
     );
   }
+}
 
-  Container loader(BuildContext context) {
-    return Container(
-      height: 500.h,
-      color: Theme.of(context).cardColor,
-      child: const Center(child: CircularProgressIndicator()),
-    );
-  }
+class _SelectDevices extends StatelessWidget {
+  final AppDeviceType selectedDevice;
+  final void Function(AppDeviceType) onDeviceSelected;
 
-  Widget preview({required Widget child, required AppDeviceType device}) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 0.w, vertical: 45.h),
-      child: AnimatedSwitcher(
-        duration: duration,
-        child: AppDeviceFrame(
-          isFrameVisible: isFrameVisible,
-          child: child,
-        ),
-      ),
-    );
-  }
+  const _SelectDevices({
+    required this.selectedDevice,
+    required this.onDeviceSelected,
+  });
 
-  Widget selectDevices() {
+  @override
+  Widget build(BuildContext context) {
     return DropdownMenu(
       width: 150.w,
       menuStyle: MenuStyle(
@@ -279,12 +375,12 @@ class _CodePreviewState extends State<CodePreview> {
         ),
       ),
       initialSelection: selectedDevice,
-      onSelected: (device) => setState(() => selectedDevice = device),
+      onSelected: (device) => onDeviceSelected(device ?? selectedDevice),
       textStyle: Theme.of(context).textTheme.bodyMedium,
-      leadingIcon: generateDeviceIcon(selectedDevice),
+      leadingIcon: _DeviceIcon(deviceType: selectedDevice),
       trailingIcon:
           AppIcon(icon: AppIcons.chevron_down, color: Theme.of(context).highlightColor),
-      dropdownMenuEntries: menu,
+      dropdownMenuEntries: CodePreview.menu,
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: Theme.of(context).cardColor,

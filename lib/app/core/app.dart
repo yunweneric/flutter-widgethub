@@ -18,7 +18,6 @@ import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/theme.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
-import 'package:flutterui/components/presentation/blocks/text/split_text/widget.dart';
 import 'package:go_router/go_router.dart';
 import 'app_scroll_behavior.dart';
 
@@ -46,11 +45,7 @@ class MyApp extends StatelessWidget {
             builder: (context, state) {
               return BlocConsumer<LanguageBloc, LanguageState>(
                 listener: (context, langState) {
-                  if (langState is UpdateLanguage) {
-                    LangUtil.setTrans(context, langState.currentLocale);
-                    print(["langState.language"]);
-                    print(["langState.language", langState.currentLocale.languageCode]);
-                  }
+                  LangUtil.setTrans(context, langState.currentLocale);
                 },
                 builder: (context, langState) {
                   return ScreenUtilInit(

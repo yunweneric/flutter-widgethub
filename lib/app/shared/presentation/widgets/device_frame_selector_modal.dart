@@ -19,7 +19,7 @@ class DeviceFrameSelectorModal extends StatelessWidget {
       bloc: getIt.get<DeviceFrameBloc>(),
       builder: (context, state) {
         final selectedDevice = state.selectedDeviceInfo;
-        
+
         // Group devices by platform based on device name patterns
         final allDevices = Devices.all;
         final iosDevices = allDevices.where((d) {
@@ -28,8 +28,9 @@ class DeviceFrameSelectorModal extends StatelessWidget {
         }).toList();
         final androidDevices = allDevices.where((d) {
           final name = d.name.toLowerCase();
-          return name.contains('galaxy') || name.contains('pixel') || 
-                 (name.contains('android') && !name.contains('iphone'));
+          return name.contains('galaxy') ||
+              name.contains('pixel') ||
+              (name.contains('android') && !name.contains('iphone'));
         }).toList();
         final macOSDevices = allDevices.where((d) {
           final name = d.name.toLowerCase();
@@ -51,30 +52,46 @@ class DeviceFrameSelectorModal extends StatelessWidget {
           ),
           child: Container(
             constraints: BoxConstraints(
-              maxWidth: 800.w,
-              maxHeight: MediaQuery.of(context).size.height * 0.8,
+              maxWidth: 700.w,
+              maxHeight: MediaQuery.of(context).size.height * 0.75,
             ),
-            padding: EdgeInsets.all(20.w),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Select Device Frame',
-                      style: Theme.of(context).textTheme.headlineSmall,
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
+                  decoration: BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: Theme.of(context).dividerColor,
+                        width: 1,
+                      ),
                     ),
-                    IconButton(
-                      icon: const Icon(Icons.close),
-                      onPressed: () => Navigator.of(context).pop(),
-                    ),
-                  ],
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Select Device Frame',
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
+                      IconButton(
+                        icon: Icon(
+                          Icons.close,
+                          size: 20.w,
+                          color: Theme.of(context).iconTheme.color,
+                        ),
+                        onPressed: () => Navigator.of(context).pop(),
+                        padding: EdgeInsets.zero,
+                        constraints: const BoxConstraints(),
+                      ),
+                    ],
+                  ),
                 ),
-                const Divider(),
                 Flexible(
                   child: SingleChildScrollView(
+                    padding: EdgeInsets.all(20.w),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -84,7 +101,7 @@ class DeviceFrameSelectorModal extends StatelessWidget {
                             devices: iosDevices,
                             selectedDevice: selectedDevice,
                           ),
-                          const SizedBox(height: 20),
+                          SizedBox(height: 24.h),
                         ],
                         if (androidDevices.isNotEmpty) ...[
                           _PlatformSection(
@@ -92,7 +109,7 @@ class DeviceFrameSelectorModal extends StatelessWidget {
                             devices: androidDevices,
                             selectedDevice: selectedDevice,
                           ),
-                          const SizedBox(height: 20),
+                          SizedBox(height: 24.h),
                         ],
                         if (macOSDevices.isNotEmpty) ...[
                           _PlatformSection(
@@ -100,7 +117,7 @@ class DeviceFrameSelectorModal extends StatelessWidget {
                             devices: macOSDevices,
                             selectedDevice: selectedDevice,
                           ),
-                          const SizedBox(height: 20),
+                          SizedBox(height: 24.h),
                         ],
                         if (windowsDevices.isNotEmpty) ...[
                           _PlatformSection(
@@ -108,7 +125,7 @@ class DeviceFrameSelectorModal extends StatelessWidget {
                             devices: windowsDevices,
                             selectedDevice: selectedDevice,
                           ),
-                          const SizedBox(height: 20),
+                          SizedBox(height: 24.h),
                         ],
                         if (linuxDevices.isNotEmpty) ...[
                           _PlatformSection(
@@ -147,14 +164,18 @@ class _PlatformSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          title,
-          style: Theme.of(context).textTheme.titleLarge,
+        Padding(
+          padding: EdgeInsets.only(bottom: 12.h),
+          child: Text(
+            title,
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
+          ),
         ),
-        const SizedBox(height: 12),
         Wrap(
-          spacing: 12.w,
-          runSpacing: 12.h,
+          spacing: 10.w,
+          runSpacing: 10.h,
           children: devices.map((device) {
             final isSelected = device.name == selectedDevice.name;
             return _DeviceCard(
@@ -181,62 +202,67 @@ class _DeviceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final deviceFrameBloc = getIt.get<DeviceFrameBloc>();
-    
+
     return InkWell(
       onTap: () {
         deviceFrameBloc.add(UpdateDeviceFrameEvent(deviceInfo: device));
         Navigator.of(context).pop();
       },
-      borderRadius: AppSizing.radiusMd(),
+      borderRadius: AppSizing.radiusSm(),
       child: Container(
-        width: 120.w,
-        padding: EdgeInsets.all(12.w),
+        width: 100.w,
+        padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 10.h),
         decoration: BoxDecoration(
           border: Border.all(
             color: isSelected
                 ? Theme.of(context).primaryColor
                 : Theme.of(context).dividerColor,
-            width: isSelected ? 2 : 1,
+            width: isSelected ? 1.5 : 1,
           ),
-          borderRadius: AppSizing.radiusMd(),
+          borderRadius: AppSizing.radiusSm(),
           color: isSelected
-              ? Theme.of(context).primaryColor.withOpacity(0.1)
+              ? Theme.of(context).primaryColor.withOpacity(0.08)
               : Theme.of(context).cardColor,
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(
-              height: 80.h,
-              child: DeviceFrame(
-                device: device,
-                isFrameVisible: true,
-                orientation: Orientation.portrait,
-                screen: Container(
-                  color: Theme.of(context).scaffoldBackgroundColor,
-                  child: Center(
-                    child: Icon(
-                      Icons.phone_android,
-                      size: 20.w,
-                      color: Theme.of(context).iconTheme.color,
+              height: 60.h,
+              child: FittedBox(
+                fit: BoxFit.contain,
+                child: DeviceFrame(
+                  device: device,
+                  isFrameVisible: true,
+                  orientation: Orientation.portrait,
+                  screen: Container(
+                    color: Theme.of(context).scaffoldBackgroundColor,
+                    child: Center(
+                      child: Icon(
+                        Icons.phone_android,
+                        size: 12.w,
+                        color: Theme.of(context).iconTheme.color?.withOpacity(0.5),
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
-            const SizedBox(height: 8),
+            SizedBox(height: 8.h),
             Text(
               device.name,
-              style: Theme.of(context).textTheme.bodySmall,
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    fontSize: 11.sp,
+                  ),
               textAlign: TextAlign.center,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
             if (isSelected) ...[
-              const SizedBox(height: 4),
+              SizedBox(height: 4.h),
               Icon(
                 Icons.check_circle,
-                size: 16.w,
+                size: 14.w,
                 color: Theme.of(context).primaryColor,
               ),
             ],

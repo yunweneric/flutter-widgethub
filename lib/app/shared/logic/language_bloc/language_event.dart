@@ -11,15 +11,14 @@ sealed class LanguageEvent extends Equatable {
 
 /// Event to update the application language.
 ///
-/// [context] The build context for setting the locale.
 /// [newLocale] The new locale to apply.
 class UpdateAppLanguageEvent extends LanguageEvent {
-  /// The build context for locale changes.
-  final BuildContext context;
-  
   /// The new locale to apply.
   final Locale newLocale;
 
   /// Creates an update app language event.
-  const UpdateAppLanguageEvent({required this.context, required this.newLocale});
+  const UpdateAppLanguageEvent({required this.newLocale});
+
+  @override
+  List<Object> get props => [newLocale];
 }

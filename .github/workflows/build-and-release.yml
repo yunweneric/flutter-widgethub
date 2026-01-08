@@ -1,0 +1,193 @@
+name: Build and Release
+
+# This workflow builds Windows .exe and macOS .dmg files
+# and creates GitHub releases when tags are pushed.
+#
+# LOCAL TESTING INSTRUCTIONS:
+# 1. Test Windows build locally:
+#    flutter build windows --release
+#    # Check: build/windows/runner/Release/flutterui.exe
+#
+# 2. Test macOS build locally:
+#    flutter build macos --release
+#    # Check: build/macos/Build/Products/Release/flutterui.app
+#
+# 3. Test macOS .dmg creation locally:
+#    cd build/macos/Build/Products/Release
+#    hdiutil create -volname "FlutterUI" -srcfolder flutterui.app -ov -format UDZO flutterui.dmg
+#
+# 4. Test with act (GitHub Actions locally):
+#    act push  # For regular push
+#    act push --tag v1.0.0  # For release
+
+on:
+  push:
+    branches: [ main ]
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    name: Build Windows
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.24.0'
+        channel: 'stable'
+        
+    - name: Get dependencies
+      run: flutter pub get
+      
+    - name: Enable Windows desktop
+      run: flutter config --enable-windows-desktop
+      
+    - name: Build Windows app
+      run: flutter build windows --release
+      
+    - name: Verify Windows executable
+      run: |
+        if (Test-Path "build\windows\runner\Release\flutterui.exe") {
+          Write-Host "✅ Windows executable found"
+          Get-Item "build\windows\runner\Release\flutterui.exe" | Select-Object Name, Length, LastWriteTime
+        } else {
+          Write-Host "❌ Windows executable not found"
+          Get-ChildItem -Recurse "build\windows" | Where-Object { $_.Extension -eq ".exe" } | Select-Object FullName
+          exit 1
+        }
+        
+    - name: Create artifacts directory
+      run: mkdir artifacts
+      
+    - name: Copy Windows executable
+      run: |
+        Copy-Item "build\windows\runner\Release\flutterui.exe" -Destination "artifacts\flutterui-windows.exe"
+        Write-Host "✅ Windows executable copied to artifacts"
+        
+    - name: Upload Windows artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: flutterui-windows-exe
+        path: artifacts/flutterui-windows.exe
+        retention-days: 30
+
+  build-macos:
+    name: Build macOS
+    runs-on: macos-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.24.0'
+        channel: 'stable'
+        
+    - name: Get dependencies
+      run: flutter pub get
+      
+    - name: Enable macOS desktop
+      run: flutter config --enable-macos-desktop
+      
+    - name: Build macOS app
+      run: flutter build macos --release
+      
+    - name: Verify macOS app bundle
+      run: |
+        if [ -d "build/macos/Build/Products/Release/flutterui.app" ]; then
+          echo "✅ macOS app bundle found"
+          ls -lh "build/macos/Build/Products/Release/flutterui.app"
+        else
+          echo "❌ macOS app bundle not found"
+          find build/macos -name "*.app" -type d
+          exit 1
+        fi
+        
+    - name: Create artifacts directory
+      run: mkdir -p artifacts
+      
+    - name: Create macOS DMG
+      run: |
+        APP_PATH="build/macos/Build/Products/Release/flutterui.app"
+        DMG_PATH="artifacts/flutterui-macos.dmg"
+        hdiutil create -volname "FlutterUI" -srcfolder "$APP_PATH" -ov -format UDZO "$DMG_PATH"
+        echo "✅ macOS DMG created"
+        
+    - name: Verify DMG file
+      run: |
+        if [ -f "artifacts/flutterui-macos.dmg" ]; then
+          echo "✅ DMG file created successfully"
+          ls -lh artifacts/flutterui-macos.dmg
+        else
+          echo "❌ DMG file not found"
+          exit 1
+        fi
+        
+    - name: Upload macOS artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: flutterui-macos-dmg
+        path: artifacts/flutterui-macos.dmg
+        retention-days: 30
+
+  create-release:
+    name: Create Release
+    needs: [build-windows, build-macos]
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Download Windows artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: flutterui-windows-exe
+        path: release-assets
+        
+    - name: Download macOS artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: flutterui-macos-dmg
+        path: release-assets
+        
+    - name: Extract version from tag
+      id: tag_version
+      run: |
+        TAG_NAME=${GITHUB_REF#refs/tags/}
+        echo "tag_name=$TAG_NAME" >> $GITHUB_OUTPUT
+        echo "Version: $TAG_NAME"
+        
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          release-assets/flutterui-windows.exe
+          release-assets/flutterui-macos.dmg
+        name: Release ${{ steps.tag_version.outputs.tag_name }}
+        body: |
+          ## Release ${{ steps.tag_version.outputs.tag_name }}
+          
+          ### Downloads
+          - **Windows**: [flutterui-windows.exe](https://github.com/${{ github.repository }}/releases/download/${{ steps.tag_version.outputs.tag_name }}/flutterui-windows.exe)
+          - **macOS**: [flutterui-macos.dmg](https://github.com/${{ github.repository }}/releases/download/${{ steps.tag_version.outputs.tag_name }}/flutterui-macos.dmg)
+          
+          ### Installation
+          - **Windows**: Download and run `flutterui-windows.exe`
+          - **macOS**: Download and open `flutterui-macos.dmg`, then drag the app to Applications folder
+          
+          ---
+          *Built with Flutter 3.24.0*
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
