@@ -30,7 +30,8 @@ class _HomeMobileNavState extends State<HomeMobileNav> {
               horizontal: AppSizing.kWPercentage(context, 5)),
           width: AppSizing.kWPercentage(context, 90),
           padding: EdgeInsets.symmetric(vertical: 30.h),
-          color: Theme.of(context).scaffoldBackgroundColor.withValues(alpha: 0.95),
+          color:
+              Theme.of(context).scaffoldBackgroundColor.withValues(alpha: 0.95),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

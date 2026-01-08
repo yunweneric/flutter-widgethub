@@ -60,7 +60,8 @@ class DeviceFrameSelectorModal extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
                   decoration: BoxDecoration(
                     border: Border(
                       bottom: BorderSide(
@@ -246,8 +247,10 @@ class _DeviceCard extends StatelessWidget {
                           child: Icon(
                             Icons.phone_android,
                             size: 12.w,
-                            color:
-                                Theme.of(context).iconTheme.color?.withValues(alpha: 0.5),
+                            color: Theme.of(context)
+                                .iconTheme
+                                .color
+                                ?.withValues(alpha: 0.5),
                           ),
                         ),
                       ),

@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/app/core/core.dart';
+import 'package:flutterui/app/shared/presentation/utils/icons.dart';
+import 'package:flutterui/app/shared/presentation/widgets/app_icon_button.dart';
+import 'package:flutterui/app/shared/presentation/widgets/app_search_bar.dart';
+import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 import 'package:flutterui/app/shared/shared.dart';
 import 'package:go_router/go_router.dart';
 
@@ -36,18 +40,18 @@ class _HomeNavBarState extends State<HomeNavBar> {
                   children: [
                     Row(
                       children: [
-                        TextButton(
-                          style: TextButton.styleFrom(
-                            padding: EdgeInsets.zero,
-                            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-                            overlayColor: Theme.of(context).scaffoldBackgroundColor,
-                          ),
-                          child: AnimatedScale(
-                            duration: const Duration(milliseconds: 100),
+                        IconButton(
+                          onPressed: () => context.go(RouteNames.home),
+                          onHover: (value) => setState(() {
+                            isLogoHovered = value;
+                          }),
+                          icon: AnimatedScale(
+                            duration: const Duration(milliseconds: 200),
                             scale: isLogoHovered ? 1.1 : 1.0,
                             child: AnimatedSwitcher(
                               duration: const Duration(milliseconds: 100),
-                              child: Theme.of(context).brightness == Brightness.light
+                              child: Theme.of(context).brightness ==
+                                      Brightness.light
                                   ? Image.asset(AppImages.logoDark, width: 100)
                                   : Image.asset(
                                       AppImages.logoLight,
@@ -55,10 +59,6 @@ class _HomeNavBarState extends State<HomeNavBar> {
                                     ),
                             ),
                           ),
-                          onPressed: () => context.go(RouteNames.home),
-                          onHover: (value) => setState(() {
-                            isLogoHovered = value;
-                          }),
                         ),
                         KwSpacer(width: 50.w),
                         Row(
@@ -77,12 +77,14 @@ class _HomeNavBarState extends State<HomeNavBar> {
                                   onPressed: () => context.go(item.path),
                                   child: Text(
                                     item.title,
-                                    style:
-                                        Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                              color: isActive
-                                                  ? Theme.of(context).primaryColor
-                                                  : null,
-                                            ),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .copyWith(
+                                          color: isActive
+                                              ? Theme.of(context).primaryColor
+                                              : null,
+                                        ),
                                   ),
                                 ),
                               );
@@ -93,26 +95,32 @@ class _HomeNavBarState extends State<HomeNavBar> {
                     ),
                     Row(
                       children: [
-                        const AppSearchBar(),
-                        KwSpacer(width: 10.w),
-                        const DeviceFrameSelectorButton(),
-                        KwSpacer(width: 10.w),
                         const LanguageButton(),
+                        AppIconButton(
+                          onPressed: () => showSearchModal(context),
+                          child: const AppIcon(icon: AppIcons.search),
+                        ),
+                        KwSpacer(width: 8.w),
+                        const DeviceFrameSelectorButton(),
+                        KwSpacer(width: 8.w),
                         const GitHubIconWithStars(
                           owner: 'yunweneric',
                           repo: 'flutter-widgethub',
-                          url: 'https://github.com/yunweneric/flutter-widgethub/',
+                          url:
+                              'https://github.com/yunweneric/flutter-widgethub/',
                         ),
-                        KwSpacer(width: 5.w),
+                        KwSpacer(width: 8.w),
                         Builder(
                           builder: (context) {
                             final theme = getIt.get<ThemeBloc>();
                             final isDark =
                                 Theme.of(context).brightness == Brightness.dark;
-                            return TextButton(
+                            return AppIconButton(
                               onPressed: () => theme.add(
                                 ChangeTheme(
-                                    themeMode: isDark ? ThemeMode.light : ThemeMode.dark),
+                                    themeMode: isDark
+                                        ? ThemeMode.light
+                                        : ThemeMode.dark),
                               ),
                               child: AppIcon(
                                 icon: isDark ? AppIcons.moon : AppIcons.sun,

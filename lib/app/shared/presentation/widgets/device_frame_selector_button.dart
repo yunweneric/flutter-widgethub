@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/shared/logic/device_frame/device_frame_bloc.dart';
+import 'package:flutterui/app/shared/presentation/widgets/app_icon_button.dart';
 import 'package:flutterui/app/shared/presentation/widgets/device_frame_selector_modal.dart';
 import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
@@ -19,7 +20,7 @@ class DeviceFrameSelectorButton extends StatelessWidget {
     return BlocBuilder<DeviceFrameBloc, DeviceFrameState>(
       bloc: getIt.get<DeviceFrameBloc>(),
       builder: (context, state) {
-        return TextButton(
+        return AppIconButton(
           onPressed: () {
             showDialog(
               context: context,

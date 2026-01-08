@@ -5,6 +5,7 @@ import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
+import 'package:flutterui/app/shared/presentation/widgets/app_icon_button.dart';
 import 'package:flutterui/app/shared/presentation/widgets/github_icon_with_stars.dart';
 import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 
@@ -71,7 +72,7 @@ class _HomeFooterState extends State<HomeFooter> {
                           final theme = getIt.get<ThemeBloc>();
                           final isDark =
                               Theme.of(context).brightness == Brightness.dark;
-                          return TextButton(
+                          return AppIconButton(
                             onPressed: () => theme.add(
                               ChangeTheme(
                                   themeMode: isDark

@@ -65,7 +65,10 @@ class _Explore3State extends State<Explore3> {
               pinned: false,
               snap: true,
               backgroundColor: _showHeader
-                  ? Theme.of(context).colorScheme.surface.withValues(alpha: 0.95)
+                  ? Theme.of(context)
+                      .colorScheme
+                      .surface
+                      .withValues(alpha: 0.95)
                   : Colors.transparent,
               elevation: _showHeader ? 2 : 0,
               shadowColor: Colors.black.withValues(alpha: 0.1),

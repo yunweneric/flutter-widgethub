@@ -42,7 +42,8 @@ class _LeaveReviewHomeScreenState extends State<LeaveReviewHomeScreen> {
         value = 2.0;
         activeIndex = 2;
       });
-      pageController.animateToPage(2, duration: duration, curve: Curves.elasticOut);
+      pageController.animateToPage(2,
+          duration: duration, curve: Curves.elasticOut);
     });
     // startTimer();
 
@@ -78,7 +79,10 @@ class _LeaveReviewHomeScreenState extends State<LeaveReviewHomeScreen> {
                   builder: (context, doubleVal, child) {
                     return Transform.translate(
                       offset: Offset(
-                          0, doubleVal * -LeaveReviewAppSizing.height(context) / 2),
+                          0,
+                          doubleVal *
+                              -LeaveReviewAppSizing.height(context) /
+                              2),
                       child: Column(
                         children: [
                           headerSection(),
@@ -93,8 +97,8 @@ class _LeaveReviewHomeScreenState extends State<LeaveReviewHomeScreen> {
                 curve: Curves.easeOutBack,
                 builder: (context, doubleVal, child) {
                   return Transform.translate(
-                    offset:
-                        Offset(0, doubleVal * LeaveReviewAppSizing.height(context) / 2),
+                    offset: Offset(0,
+                        doubleVal * LeaveReviewAppSizing.height(context) / 2),
                     child: textAndSliderSection(),
                   );
                 },
@@ -132,7 +136,8 @@ class _LeaveReviewHomeScreenState extends State<LeaveReviewHomeScreen> {
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.displayMedium,
           ),
-          LeaveReviewAppSizing.khSpacer(LeaveReviewAppSizing.height(context) * 0.05),
+          LeaveReviewAppSizing.khSpacer(
+              LeaveReviewAppSizing.height(context) * 0.05),
         ],
       ),
     );
@@ -231,14 +236,19 @@ class _LeaveReviewHomeScreenState extends State<LeaveReviewHomeScreen> {
                     return Center(
                       child: Text(
                         items[i],
-                        style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                              color: ReviewColors.bgBlack.withValues(alpha: 0.3),
+                        style: Theme.of(context)
+                            .textTheme
+                            .displayLarge!
+                            .copyWith(
+                              color:
+                                  ReviewColors.bgBlack.withValues(alpha: 0.3),
                             ),
                       ),
                     );
                   }),
             ),
-            LeaveReviewAppSizing.khSpacer(LeaveReviewAppSizing.height(context) * 0.05),
+            LeaveReviewAppSizing.khSpacer(
+                LeaveReviewAppSizing.height(context) * 0.05),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: AppSlider(
@@ -256,7 +266,8 @@ class _LeaveReviewHomeScreenState extends State<LeaveReviewHomeScreen> {
                 },
               ),
             ),
-            LeaveReviewAppSizing.khSpacer(LeaveReviewAppSizing.height(context) * 0.1),
+            LeaveReviewAppSizing.khSpacer(
+                LeaveReviewAppSizing.height(context) * 0.1),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Stack(
@@ -301,7 +312,8 @@ class _LeaveReviewHomeScreenState extends State<LeaveReviewHomeScreen> {
                 ],
               ),
             ),
-            LeaveReviewAppSizing.khSpacer(LeaveReviewAppSizing.height(context) * 0.05),
+            LeaveReviewAppSizing.khSpacer(
+                LeaveReviewAppSizing.height(context) * 0.05),
           ],
         );
       },
@@ -330,8 +342,10 @@ class ReviewColors {
 }
 
 class LeaveReviewAppSizing {
-  static double width(BuildContext context) => MediaQuery.of(context).size.width;
-  static double height(BuildContext context) => MediaQuery.of(context).size.height;
+  static double width(BuildContext context) =>
+      MediaQuery.of(context).size.width;
+  static double height(BuildContext context) =>
+      MediaQuery.of(context).size.height;
   static bool isMobile(BuildContext context) => width(context) < 480;
   static bool isTablet(BuildContext context) =>
       width(context) > 480 && width(context) < 895;
@@ -353,7 +367,8 @@ class ArcPainter extends CustomPainter {
 
     Path path = Path();
     path.moveTo(0, size.height / 2);
-    path.quadraticBezierTo(size.width / 2, size.height, size.width, size.height / 2);
+    path.quadraticBezierTo(
+        size.width / 2, size.height, size.width, size.height / 2);
     canvas.drawPath(path, paint);
   }
 
@@ -396,7 +411,8 @@ class _AppSliderState extends State<AppSlider> {
                   : 'Good';
         },
         dividerShape: _DividerShape(),
-        thumbShape: _SfThumbShape(animateAngle: widget.value >= 1 ? widget.value * 1 : 1),
+        thumbShape: _SfThumbShape(
+            animateAngle: widget.value >= 1 ? widget.value * 1 : 1),
         onChanged: (dynamic newValue) {
           if (widget.onChanged != null) widget.onChanged!(newValue);
           setState(() {

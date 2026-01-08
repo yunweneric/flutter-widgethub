@@ -20,11 +20,14 @@ class CodePreview extends StatefulWidget {
 
   static List<DropdownMenuEntry> get menu => [
         DropdownMenuEntry(
-            value: AppDeviceType.MOBILE, label: AppDeviceType.MOBILE.describe()),
+            value: AppDeviceType.MOBILE,
+            label: AppDeviceType.MOBILE.describe()),
         DropdownMenuEntry(
-            value: AppDeviceType.TABLET, label: AppDeviceType.TABLET.describe()),
+            value: AppDeviceType.TABLET,
+            label: AppDeviceType.TABLET.describe()),
         DropdownMenuEntry(
-            value: AppDeviceType.DESKTOP, label: AppDeviceType.DESKTOP.describe()),
+            value: AppDeviceType.DESKTOP,
+            label: AppDeviceType.DESKTOP.describe()),
       ];
 
   @override
@@ -86,7 +89,8 @@ class _CodePreviewState extends State<CodePreview> {
                     setState(() => hasCopied = false);
                   });
                 },
-                onDeviceSelected: (device) => setState(() => selectedDevice = device),
+                onDeviceSelected: (device) =>
+                    setState(() => selectedDevice = device),
               ),
               _CodeAndPreview(
                 isCode: isCode,
@@ -258,14 +262,17 @@ class _TopBar extends StatelessWidget {
                 onTap: onPreviewTap,
                 active: !isCode,
                 icon: AppIcons.tab,
-                title: AppSizing.isMobile(context) ? null : LangUtil.trans("preview"),
+                title: AppSizing.isMobile(context)
+                    ? null
+                    : LangUtil.trans("preview"),
               ),
               KwSpacer(width: 10.w),
               AppChip(
                 active: isCode,
                 onTap: onCodeTap,
                 icon: AppIcons.code,
-                title: AppSizing.isMobile(context) ? null : LangUtil.trans("code"),
+                title:
+                    AppSizing.isMobile(context) ? null : LangUtil.trans("code"),
               ),
             ],
           ),
@@ -302,7 +309,8 @@ class _TopBar extends StatelessWidget {
                               : Row(
                                   children: [
                                     TweenAnimationBuilder(
-                                      duration: const Duration(milliseconds: 500),
+                                      duration:
+                                          const Duration(milliseconds: 500),
                                       key: ValueKey(hideSizers),
                                       tween: !hideSizers
                                           ? Tween<double>(begin: 1, end: 0)
@@ -312,22 +320,28 @@ class _TopBar extends StatelessWidget {
                                             component.responsiveDevices;
                                         return Transform(
                                           alignment: Alignment.centerRight,
-                                          transform: Matrix4.identity()..scale(value),
+                                          transform: Matrix4.identity()
+                                            ..scale(value),
                                           child: Opacity(
                                             opacity: value,
                                             child: Row(
                                               children: [
                                                 ...platforms.map((platform) {
                                                   return Container(
-                                                    margin: EdgeInsets.only(right: 10.w),
+                                                    margin: EdgeInsets.only(
+                                                        right: 10.w),
                                                     child: AppChip(
-                                                      active: selectedDevice == platform,
-                                                      icon: platform.generateIcon(),
-                                                      title: LangUtil.trans(platform
-                                                          .describe()
-                                                          .toLowerCase()),
+                                                      active: selectedDevice ==
+                                                          platform,
+                                                      icon: platform
+                                                          .generateIcon(),
+                                                      title: LangUtil.trans(
+                                                          platform
+                                                              .describe()
+                                                              .toLowerCase()),
                                                       onTap: () =>
-                                                          onDeviceSelected(platform),
+                                                          onDeviceSelected(
+                                                              platform),
                                                     ),
                                                   );
                                                 }),
@@ -378,8 +392,8 @@ class _SelectDevices extends StatelessWidget {
       onSelected: (device) => onDeviceSelected(device ?? selectedDevice),
       textStyle: Theme.of(context).textTheme.bodyMedium,
       leadingIcon: _DeviceIcon(deviceType: selectedDevice),
-      trailingIcon:
-          AppIcon(icon: AppIcons.chevron_down, color: Theme.of(context).highlightColor),
+      trailingIcon: AppIcon(
+          icon: AppIcons.chevron_down, color: Theme.of(context).highlightColor),
       dropdownMenuEntries: CodePreview.menu,
       inputDecorationTheme: InputDecorationTheme(
         filled: true,

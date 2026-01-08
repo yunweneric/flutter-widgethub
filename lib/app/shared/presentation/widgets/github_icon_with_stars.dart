@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/app/shared/data/services/github_service.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/util.dart';
+import 'package:flutterui/app/shared/presentation/widgets/app_icon_button.dart';
 import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 
 /// Widget that displays a GitHub icon with a badge showing the repository star count.
@@ -55,14 +56,8 @@ class _GitHubIconWithStarsState extends State<GitHubIconWithStars> {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
+    return AppIconButton(
       onPressed: () => UtilHelper.openUrl(widget.url),
-      style: TextButton.styleFrom(
-        padding: EdgeInsets.zero,
-        minimumSize: Size.zero,
-        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        backgroundColor: Theme.of(context).cardColor,
-      ),
       child: Stack(
         clipBehavior: Clip.none,
         children: [

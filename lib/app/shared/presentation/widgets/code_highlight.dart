@@ -105,7 +105,9 @@ class _CodeContent extends StatelessWidget {
         Container(
           width: AppSizing.kWPercentage(context, 100),
           decoration: BoxDecoration(
-            color: Theme.of(context).cardColor.withValues(alpha: isDark ? 0.6 : 0.1),
+            color: Theme.of(context)
+                .cardColor
+                .withValues(alpha: isDark ? 0.6 : 0.1),
             borderRadius: borderRadius ?? BorderRadius.circular(12.r),
             border: Border.all(
               color: Theme.of(context).dividerColor.withValues(alpha: 0.2),
@@ -123,7 +125,8 @@ class _CodeContent extends StatelessWidget {
                   softWrap: false,
                   overflow: TextOverflow.clip,
                   style: GoogleFonts.sourceCodePro(
-                    fontSize: fontSize ?? (AppSizing.isMobile(context) ? 11.sp : 14.sp),
+                    fontSize: fontSize ??
+                        (AppSizing.isMobile(context) ? 11.sp : 14.sp),
                     height: 1.8,
                     letterSpacing: 0.3,
                   ),

@@ -36,6 +36,7 @@ class _LanguageButtonState extends State<LanguageButton> {
 
       builder: (context, state) => Transform.scale(
         scale: 0.8,
+        alignment: Alignment.center,
         child: DropdownMenu(
           enableSearch: false,
           width: 100.w,
@@ -44,13 +45,13 @@ class _LanguageButtonState extends State<LanguageButton> {
           inputDecorationTheme: InputDecorationTheme(
             border: OutlineInputBorder(
                 borderSide: BorderSide.none,
-                borderRadius: BorderRadius.all(Radius.circular(10.r))),
+                borderRadius: AppSizing.radiusSm()),
             enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide.none,
-                borderRadius: BorderRadius.all(Radius.circular(10.r))),
+                borderRadius: AppSizing.radiusSm()),
             focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide.none,
-                borderRadius: BorderRadius.all(Radius.circular(10.r))),
+                borderRadius: AppSizing.radiusSm()),
             filled: true,
             contentPadding: EdgeInsets.symmetric(horizontal: 20.w),
             fillColor: Theme.of(context).cardColor,

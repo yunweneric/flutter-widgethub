@@ -24,7 +24,8 @@ class _AppContainerState extends State<AppContainer> {
           horizontal: AppSizing.kWPercentage(
               context, widget.isHomeScreenLayout ? 5 : 2.5)),
       decoration: BoxDecoration(
-        color: Theme.of(context).scaffoldBackgroundColor.withValues(alpha: 0.95),
+        color:
+            Theme.of(context).scaffoldBackgroundColor.withValues(alpha: 0.95),
         border: Border(
           bottom: BorderSide(color: Theme.of(context).dividerColor),
         ),

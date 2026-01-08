@@ -4,6 +4,7 @@ import 'package:flutterui/app/shared/data/models/component.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
+import 'package:flutterui/app/shared/presentation/widgets/app_icon_button.dart';
 import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 import 'package:flutterui/components/presentation/export/store.dart';
 import 'package:go_router/go_router.dart';
@@ -19,13 +20,9 @@ class _AppSearchBarState extends State<AppSearchBar> {
   @override
   Widget build(BuildContext context) {
     return AppSizing.isTablet(context)
-        ? CircleAvatar(
-            backgroundColor: Colors.transparent,
-            child: TextButton(
-              style: TextButton.styleFrom(fixedSize: Size(25.w, 25.w)),
-              onPressed: () => showSearchModal(context),
-              child: const AppIcon(icon: AppIcons.search),
-            ),
+        ? AppIconButton(
+            onPressed: () => showSearchModal(context),
+            child: const AppIcon(icon: AppIcons.search),
           )
         : SizedBox(
             width: AppSizing.kWPercentage(context, 15),

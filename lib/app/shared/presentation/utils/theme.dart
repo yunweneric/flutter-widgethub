@@ -99,9 +99,13 @@ class AppTheme {
   static InputDecorationTheme lightInputDecoration = InputDecorationTheme(
     contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 2.h),
     labelStyle: TextStyle(
-        color: AppColors.textGrey, fontSize: 16.sp, fontWeight: FontWeight.w400),
+        color: AppColors.textGrey,
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w400),
     hintStyle: TextStyle(
-        color: AppColors.textGrey, fontSize: 16.sp, fontWeight: FontWeight.w400),
+        color: AppColors.textGrey,
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w400),
     floatingLabelStyle: TextStyle(color: AppColors.textGrey, fontSize: 12.sp),
     errorStyle: TextStyle(color: AppColors.red, fontSize: 11.sp),
     border: AppSizing.mainBorder(AppColors.bgGray),
@@ -114,9 +118,13 @@ class AppTheme {
   static InputDecorationTheme darkInputDecoration = InputDecorationTheme(
     contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 2.h),
     labelStyle: TextStyle(
-        color: AppColors.textGrey, fontSize: 16.sp, fontWeight: FontWeight.w400),
+        color: AppColors.textGrey,
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w400),
     hintStyle: TextStyle(
-        color: AppColors.textGrey, fontSize: 16.sp, fontWeight: FontWeight.w400),
+        color: AppColors.textGrey,
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w400),
     floatingLabelStyle: TextStyle(color: AppColors.textGrey, fontSize: 12.sp),
     errorStyle: TextStyle(color: AppColors.red, fontSize: 11.sp),
     border: AppSizing.mainBorder(AppColors.bgGray3),
@@ -128,8 +136,8 @@ class AppTheme {
 
   static ThemeData light() {
     return ThemeData(
-      colorScheme:
-          const ColorScheme.light(primary: AppColors.primary, error: AppColors.red),
+      colorScheme: const ColorScheme.light(
+          primary: AppColors.primary, error: AppColors.red),
       primaryColor: AppColors.primary,
       primaryColorDark: AppColors.textBlack,
       primaryColorLight: AppColors.textWhite,
@@ -143,14 +151,17 @@ class AppTheme {
       appBarTheme: AppBarTheme(
         backgroundColor: AppColors.bg,
         titleTextStyle: GoogleFonts.inter(
-            color: AppColors.textBlack, fontWeight: FontWeight.w500, fontSize: 20.sp),
+            color: AppColors.textBlack,
+            fontWeight: FontWeight.w500,
+            fontSize: 20.sp),
         elevation: 0,
       ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
           textStyle: lightTextTheme.bodySmall,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
           backgroundColor: AppColors.cardColor,
         ),
       ),
@@ -159,7 +170,8 @@ class AppTheme {
           elevation: 0,
           backgroundColor: AppColors.cardColor,
           padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
           textStyle: lightTextTheme.bodySmall,
         ),
       ),
@@ -186,8 +198,8 @@ class AppTheme {
       primaryColorDark: AppColors.bgGray,
       primaryColorLight: AppColors.textBlack,
       cardColor: AppColors.bgCardDark,
-      colorScheme:
-          const ColorScheme.dark(primary: AppColors.primary, error: AppColors.red),
+      colorScheme: const ColorScheme.dark(
+          primary: AppColors.primary, error: AppColors.red),
       cardTheme: const CardThemeData(color: AppColors.bgCardDark),
       textTheme: darkTextTheme,
       dividerColor: AppColors.bgCardDark,
@@ -218,7 +230,8 @@ class AppTheme {
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
           textStyle: darkTextTheme.bodySmall,
           backgroundColor: AppColors.bgCardDark,
           iconColor: AppColors.bgGray,
@@ -228,7 +241,8 @@ class AppTheme {
         style: ElevatedButton.styleFrom(
           elevation: 0,
           padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
           backgroundColor: AppColors.bgCardDark,
           textStyle: darkTextTheme.bodySmall,
           iconColor: AppColors.bgGray,

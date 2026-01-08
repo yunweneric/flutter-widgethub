@@ -14,13 +14,14 @@ import 'package:flutterui/app/shared/presentation/utils/colors.dart';
 /// creating borders, and detecting device types.
 class AppSizing {
   static double width(BuildContext context) => MediaQuery.sizeOf(context).width;
-  static double height(BuildContext context) => MediaQuery.sizeOf(context).height;
+  static double height(BuildContext context) =>
+      MediaQuery.sizeOf(context).height;
   static double kHPercentage(BuildContext context, double value) =>
       (height(context) * value) / 100;
   static double kWPercentage(BuildContext context, double value) =>
       (width(context) * value) / 100;
   static BorderRadius radiusMd() => BorderRadius.circular(10.r);
-  static BorderRadius radiusSm() => BorderRadius.circular(5.r);
+  static BorderRadius radiusSm() => BorderRadius.circular(8.r);
 
   static OutlineInputBorder mainBorder(Color color) {
     return OutlineInputBorder(

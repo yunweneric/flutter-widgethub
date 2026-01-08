@@ -129,7 +129,9 @@ class _Auth03WidgetState extends State<Auth03Widget> {
                     obscureText: _obscurePassword,
                     suffixIcon: IconButton(
                       icon: Icon(
-                        _obscurePassword ? Icons.visibility_off : Icons.visibility,
+                        _obscurePassword
+                            ? Icons.visibility_off
+                            : Icons.visibility,
                         color: Auth03Theme.inputHint,
                       ),
                       onPressed: () {
@@ -178,7 +180,8 @@ class _Auth03Header extends StatelessWidget {
         Container(
           width: AppSizing.kwidth(context),
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
-          decoration: const BoxDecoration(gradient: Auth03Theme.backgroundGradient),
+          decoration:
+              const BoxDecoration(gradient: Auth03Theme.backgroundGradient),
           child: SafeArea(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -190,7 +193,8 @@ class _Auth03Header extends StatelessWidget {
                 const SizedBox(height: 12),
                 Row(
                   children: [
-                    const Text("Don't have an account? ", style: Auth03Theme.subtitle),
+                    const Text("Don't have an account? ",
+                        style: Auth03Theme.subtitle),
                     GestureDetector(
                       onTap: () {},
                       child: const Text('Sign Up', style: Auth03Theme.link),
@@ -233,8 +237,9 @@ class _Auth03InputField extends StatelessWidget {
         TextField(
           controller: controller,
           obscureText: obscureText,
-          keyboardType:
-              label == 'Email' ? TextInputType.emailAddress : TextInputType.text,
+          keyboardType: label == 'Email'
+              ? TextInputType.emailAddress
+              : TextInputType.text,
           style: Auth03Theme.input,
           decoration: InputDecoration(
             hintText: hintText,
@@ -249,9 +254,11 @@ class _Auth03InputField extends StatelessWidget {
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: Auth03Theme.primaryButton, width: 2),
+              borderSide:
+                  const BorderSide(color: Auth03Theme.primaryButton, width: 2),
             ),
-            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
             filled: true,
             fillColor: Colors.white,
             suffixIcon: suffixIcon,
@@ -348,7 +355,8 @@ class _Auth03SocialButtonsRow extends StatelessWidget {
           child: OutlinedButton.icon(
             onPressed: () {},
             icon: const AppIconsGoogleLogo(),
-            label: const Text('Google', style: TextStyle(color: Auth03Theme.textDark)),
+            label: const Text('Google',
+                style: TextStyle(color: Auth03Theme.textDark)),
             style: OutlinedButton.styleFrom(
               padding: const EdgeInsets.symmetric(vertical: 14),
               side: const BorderSide(color: Auth03Theme.dividerColor),
@@ -364,7 +372,8 @@ class _Auth03SocialButtonsRow extends StatelessWidget {
           child: OutlinedButton.icon(
             onPressed: () {},
             icon: const AppIconsFacebookLogo(),
-            label: const Text('Facebook', style: TextStyle(color: Auth03Theme.textDark)),
+            label: const Text('Facebook',
+                style: TextStyle(color: Auth03Theme.textDark)),
             style: OutlinedButton.styleFrom(
               padding: const EdgeInsets.symmetric(vertical: 14),
               side: const BorderSide(color: Auth03Theme.dividerColor),
@@ -633,8 +642,10 @@ class AppIconsGrid extends StatelessWidget {
 }
 
 class AppSizing {
-  static double kwidth(BuildContext context) => MediaQuery.sizeOf(context).width;
-  static double kheight(BuildContext context) => MediaQuery.sizeOf(context).height;
+  static double kwidth(BuildContext context) =>
+      MediaQuery.sizeOf(context).width;
+  static double kheight(BuildContext context) =>
+      MediaQuery.sizeOf(context).height;
   static Widget khSpacer(double height) => SizedBox(height: height);
   static Widget kwSpacer(double width) => SizedBox(width: width);
   static EdgeInsets kPadding(double width, double height) =>

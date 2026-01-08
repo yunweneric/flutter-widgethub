@@ -36,8 +36,9 @@ class _DiscloseSwitcherState extends State<DiscloseSwitcher> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
                 border: Border.all(
-                  color:
-                      isOn ? Colors.grey.withValues(alpha: 0.2) : Colors.transparent,
+                  color: isOn
+                      ? Colors.grey.withValues(alpha: 0.2)
+                      : Colors.transparent,
                 ),
               ),
               padding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 2),

@@ -85,10 +85,8 @@ class _RowItemState extends State<RowItem> {
               const KwSpacer(width: 5),
               Text(
                 widget.title,
-                style: Theme.of(context)
-                    .textTheme
-                    .bodySmall!
-                    .copyWith(color: isHovered ? Theme.of(context).primaryColor : null),
+                style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                    color: isHovered ? Theme.of(context).primaryColor : null),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),

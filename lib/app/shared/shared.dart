@@ -42,6 +42,7 @@ export 'presentation/widgets/layout/side_bar_item.dart';
 // UI Widgets
 export 'presentation/widgets/app_container.dart';
 export 'presentation/widgets/app_dropdown_button.dart';
+export 'presentation/widgets/app_icon_button.dart';
 export 'presentation/widgets/app_search_bar.dart';
 export 'presentation/widgets/chip.dart';
 export 'presentation/widgets/code_highlight.dart';

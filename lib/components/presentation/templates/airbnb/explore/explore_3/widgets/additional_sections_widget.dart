@@ -43,8 +43,8 @@ class _CollapsibleSection extends StatelessWidget {
       padding: const EdgeInsets.all(AirbnbConstants.paddingM),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(AirbnbConstants.radiusM),
-        border:
-            Border.all(color: Theme.of(context).dividerColor.withValues(alpha: 0.1)),
+        border: Border.all(
+            color: Theme.of(context).dividerColor.withValues(alpha: 0.1)),
       ),
       child: Row(
         children: [
