@@ -19,6 +19,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/shared/data/enums/device_type.dart';
 import 'package:flutterui/app/shared/presentation/helpers/platform/platform.dart';
+import 'util_stub.dart' if (dart.library.html) 'util_web.dart' as util_platform;
 
 /// Utility class providing helper methods for common operations.
 class UtilHelper {
@@ -26,8 +27,7 @@ class UtilHelper {
       getIt.get<GoRouter>().routeInformationProvider.value.uri.path;
 
   static dynamic getWindows() {
-    final windows = getWindow();
-    return windows;
+    return getWindow();
   }
 
   static Future<void> openUrl(String? link) async {
@@ -36,11 +36,11 @@ class UtilHelper {
     }
 
     if (kIsWeb) {
-      final windows = getWindows();
-      windows.location.href = link;
+      // On web, use window.open directly to open in new tab
+      util_platform.openUrlWeb(link);
     } else {
       final uri = Uri.parse(link);
-      if (!await launchUrl(uri)) {
+      if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
         throw Exception('Could not launch $uri');
       }
     }

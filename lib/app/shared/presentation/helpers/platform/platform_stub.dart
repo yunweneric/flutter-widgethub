@@ -8,6 +8,10 @@ dynamic getWindow() {
   throw UnimplementedError('Unsupported');
 }
 
+void openUrl(String url) {
+  throw UnimplementedError('Unsupported');
+}
+
 //The test to actually see if there is a connection
 Future<bool> checkConnection() async {
   throw UnimplementedError('Unsupported');

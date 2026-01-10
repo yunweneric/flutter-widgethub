@@ -30,3 +30,7 @@ Future<bool> checkConnection() async {
 
   return hasConnection;
 }
+
+void openUrl(String url) {
+  throw UnimplementedError('Unsupported on this platform');
+}
