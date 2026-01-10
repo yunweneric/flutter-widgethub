@@ -29,11 +29,11 @@ class DeviceFrameBloc extends HydratedBloc<DeviceFrameEvent, DeviceFrameState> {
       final deviceName = json['deviceName'] as String;
       final device = Devices.all.firstWhere(
         (d) => d.name == deviceName,
-        orElse: () => Devices.ios.iPhone12,
+        orElse: () => Devices.ios.iPhone12Mini,
       );
       return DeviceFrameState(selectedDeviceInfo: device);
     } catch (e) {
-      return DeviceFrameState(selectedDeviceInfo: Devices.ios.iPhone12);
+      return DeviceFrameState(selectedDeviceInfo: Devices.ios.iPhone12ProMax);
     }
   }
 
