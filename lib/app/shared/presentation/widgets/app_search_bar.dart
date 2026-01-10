@@ -21,8 +21,8 @@ class _AppSearchBarState extends State<AppSearchBar> {
   Widget build(BuildContext context) {
     return AppSizing.isTablet(context)
         ? AppIconButton(
-            onPressed: () => showSearchModal(context),
-            child: const AppIcon(icon: AppIcons.search),
+              onPressed: () => showSearchModal(context),
+              child: const AppIcon(icon: AppIcons.search),
           )
         : SizedBox(
             width: AppSizing.kWPercentage(context, 15),
