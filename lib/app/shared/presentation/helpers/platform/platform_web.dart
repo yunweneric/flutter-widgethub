@@ -1,34 +1,19 @@
 import 'package:flutterui/app/shared/presentation/helpers/platform/platform_enum.dart';
-import "dart:html" as html;
+import 'package:web/web.dart' as web;
 
 AppPlatform getPlatform() {
   return AppPlatform.web;
 }
 
 dynamic getWindow() {
-  return html.window;
+  return web.window;
 }
 
 void openUrl(String url) {
-  html.window.open(url, '_blank');
+  web.window.open(url, '_blank', 'noopener,noreferrer');
 }
 
 //The test to actually see if there is a connection
 Future<bool> checkConnection() async {
-  const hasConnection = true;
-
-  // try {
-  //   final result = await InternetAddress.lookup('google.com');
-  //   if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-  //     hasConnection = true;
-  //   } else {
-  //     hasConnection = false;
-  //   }
-  //   // } on SocketException catch (_) {
-  //   //   hasConnection = false;
-  //   // }
-  // } catch (_) {
-  //   hasConnection = false;
-  // }
-  return hasConnection;
+  return true;
 }

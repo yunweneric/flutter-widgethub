@@ -15,6 +15,7 @@ class LeaveAReviewTemplateData {
   static String code = leaveAReviewCode;
   static String setup = leaveAReviewSetup;
   static Component component = Component(
+    isFeatured: true,
     createdAt: DateTime(2024, 7, 2),
     updatedAt: DateTime(2024, 7, 2),
     codeComponents: [CodeComponent(code: code, widget: widget)],
@@ -24,8 +25,7 @@ class LeaveAReviewTemplateData {
     setup: setup,
     category: ComponentCategoryEnum.BLOCKS,
     subcategory: SubComponentCategoryEnum.SLIDERS_AND_CAROUSELS,
-    gitHubLink:
-        "https://github.com/yunweneric/flutter-open-ui/tree/leave_a_review",
+    gitHubLink: "https://github.com/yunweneric/flutter-open-ui/tree/leave_a_review",
     supportedPlatforms: [
       SupportedPlatform.ANDROID,
       SupportedPlatform.IOS,

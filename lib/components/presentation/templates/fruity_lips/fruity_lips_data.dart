@@ -30,5 +30,6 @@ class FruityLipsTemplateData {
         "https://github.com/yunweneric/flutter-open-ui/tree/fruity_lips",
     supportedPlatforms: [SupportedPlatform.ANDROID, SupportedPlatform.IOS],
     responsiveDevices: [AppDeviceType.MOBILE],
+    isFeatured: true,
   );
 }

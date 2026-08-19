@@ -69,13 +69,15 @@ class _HeroSectionState extends State<HeroSection> {
     );
   }
 
-  /// Full-screen templates first (they play best as apps), newest first,
-  /// capped so the stage stays cheap to build.
+  /// Featured components only, templates first (they play best as apps),
+  /// newest first, capped so the stage stays cheap to build.
+  ///
+  /// Flip `isFeatured` on a component's data to add or remove it here.
   List<Component> _showcase(List<Component> all) {
     final templates = <Component>[];
     final rest = <Component>[];
     for (final component in all.reversed) {
-      if (component.codeComponents.isEmpty) continue;
+      if (!component.isFeatured || component.codeComponents.isEmpty) continue;
       (component.category == ComponentCategoryEnum.TEMPLATES ? templates : rest)
           .add(component);
     }

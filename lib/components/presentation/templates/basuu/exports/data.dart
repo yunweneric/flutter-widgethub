@@ -27,20 +27,11 @@ class BasuuData {
         percentage: 80,
         isChecked: true),
     BasuuCategory(
-        label: "A2",
-        title: '101 - 1K',
-        color: BasuuColors.darkGreen,
-        percentage: 44),
+        label: "A2", title: '101 - 1K', color: BasuuColors.darkGreen, percentage: 44),
     BasuuCategory(
-        label: "B1",
-        title: "1K - 2K",
-        color: BasuuColors.darkOrange,
-        percentage: 27),
+        label: "B1", title: "1K - 2K", color: BasuuColors.darkOrange, percentage: 27),
     BasuuCategory(
-        label: "B2",
-        title: "2K - 3K",
-        color: BasuuColors.darkRed,
-        percentage: 9),
+        label: "B2", title: "2K - 3K", color: BasuuColors.darkRed, percentage: 9),
     BasuuCategory(label: "C1", title: "3K - 4K", color: BasuuColors.midRed),
     BasuuCategory(label: "C2", title: '4K - 5K', color: BasuuColors.deepRed),
   ];
@@ -49,14 +40,11 @@ class BasuuData {
     createdAt: DateTime(2024, 10, 15),
     updatedAt: DateTime(2024, 10, 15),
     codeComponents: [
+      CodeComponent(code: basuuSplashScreenCode, widget: const BasuuSplashScreen()),
       CodeComponent(
-          code: basuuSplashScreenCode, widget: const BasuuSplashScreen()),
+          code: basuuChooseCategoryScreenCode, widget: const BasuuChooseCategoryScreen()),
       CodeComponent(
-          code: basuuChooseCategoryScreenCode,
-          widget: const BasuuChooseCategoryScreen()),
-      CodeComponent(
-          code: basuuChooseLanguageScreenCode,
-          widget: const BasuuChooseLanguageScreen()),
+          code: basuuChooseLanguageScreenCode, widget: const BasuuChooseLanguageScreen()),
       CodeComponent(
         code: basuuChooseLanguageScreenCode,
         widget: BasuuLearningScreen(selectedCategory: categories.first),
@@ -79,8 +67,7 @@ class BasuuData {
     supportedPlatforms: [SupportedPlatform.ANDROID, SupportedPlatform.IOS],
     assetLink:
         'https://github.com/yunweneric/flutter-open-ui/raw/refs/heads/language_app/assets.zip',
-    gitHubLink:
-        'https://github.com/yunweneric/flutter-open-ui/tree/language_app',
+    gitHubLink: 'https://github.com/yunweneric/flutter-open-ui/tree/language_app',
     responsiveDevices: [AppDeviceType.MOBILE],
   );
 }

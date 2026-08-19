@@ -19,7 +19,6 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/shared/data/enums/device_type.dart';
 import 'package:flutterui/app/shared/presentation/helpers/platform/platform.dart';
-import 'util_stub.dart' if (dart.library.html) 'util_web.dart' as util_platform;
 
 /// Utility class providing helper methods for common operations.
 class UtilHelper {
@@ -30,19 +29,24 @@ class UtilHelper {
     return getWindow();
   }
 
+  /// Opens [link] outside the app — a new browser tab on web, the platform
+  /// browser elsewhere.
+  ///
+  /// Web goes through `url_launcher` rather than `dart:html` directly: the
+  /// html shim is unavailable in the `--wasm` build the site ships, so the
+  /// conditional import fell back to a stub that threw and every external
+  /// link (the GitHub button included) silently did nothing.
   static Future<void> openUrl(String? link) async {
     if (link == null) {
       throw Exception('Could not launch $link');
     }
 
-    if (kIsWeb) {
-      // On web, use window.open directly to open in new tab
-      util_platform.openUrlWeb(link);
-    } else {
-      final uri = Uri.parse(link);
-      if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
-        throw Exception('Could not launch $uri');
-      }
+    final uri = Uri.parse(link);
+    final bool launched = kIsWeb
+        ? await launchUrl(uri, webOnlyWindowName: '_blank')
+        : await launchUrl(uri, mode: LaunchMode.externalApplication);
+    if (!launched) {
+      throw Exception('Could not launch $uri');
     }
   }
 

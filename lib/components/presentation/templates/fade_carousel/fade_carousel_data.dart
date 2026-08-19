@@ -26,9 +26,9 @@ class FadeCarouselTemplateData {
     subcategory: SubComponentCategoryEnum.SLIDERS_AND_CAROUSELS,
     assetLink:
         "https://github.com/yunweneric/flutter-open-ui/raw/fade_caarousel/assets/images.zip",
-    gitHubLink:
-        "https://github.com/yunweneric/flutter-open-ui/tree/fade_caarousel",
+    gitHubLink: "https://github.com/yunweneric/flutter-open-ui/tree/fade_caarousel",
     supportedPlatforms: [SupportedPlatform.ANDROID, SupportedPlatform.IOS],
     responsiveDevices: [AppDeviceType.MOBILE],
+    isFeatured: true,
   );
 }

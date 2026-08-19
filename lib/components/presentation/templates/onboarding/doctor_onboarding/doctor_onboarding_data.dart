@@ -33,5 +33,6 @@ class DoctorOnboardingData {
       SupportedPlatform.IOS,
     ],
     responsiveDevices: [AppDeviceType.MOBILE, AppDeviceType.TABLET],
+    isFeatured: true,
   );
 }

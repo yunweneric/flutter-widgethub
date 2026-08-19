@@ -35,6 +35,13 @@ class Component {
   final List<SupportedPlatform> supportedPlatforms;
   final List<AppDeviceType> responsiveDevices;
 
+  /// Whether this component is showcased on the landing page hero stage.
+  ///
+  /// Only a curated handful should be featured — the hero dock lists every
+  /// featured component, so flip this on for the demos that read well as a
+  /// full-screen app and leave it off for everything else.
+  final bool isFeatured;
+
   Component({
     required this.id,
     required this.codeComponents,
@@ -51,6 +58,7 @@ class Component {
     this.gitHubLink,
     required this.responsiveDevices,
     required this.supportedPlatforms,
+    this.isFeatured = false,
   });
 
   Map<String, dynamic> toMap() {
@@ -69,6 +77,7 @@ class Component {
       'supportedPlatforms':
           supportedPlatforms.map((x) => x.describe()).toList(),
       'responsiveDevices': responsiveDevices.map((x) => x.describe()).toList(),
+      'isFeatured': isFeatured,
     };
   }
 
@@ -85,6 +94,7 @@ class Component {
     DateTime? updatedAt,
     List<CodeComponent>? codeComponents,
     List<SupportedPlatform>? supportedPlatforms,
+    bool? isFeatured,
   }) {
     return Component(
       id: id ?? this.id,
@@ -100,6 +110,7 @@ class Component {
       codeComponents: codeComponents ?? this.codeComponents,
       supportedPlatforms: supportedPlatforms ?? this.supportedPlatforms,
       responsiveDevices: responsiveDevices,
+      isFeatured: isFeatured ?? this.isFeatured,
     );
   }
 
@@ -135,6 +146,7 @@ class Component {
               AppDeviceType.values.firstWhere((item) => item.describe() == x),
         ),
       ),
+      isFeatured: map['isFeatured'] as bool? ?? false,
     );
   }
 
