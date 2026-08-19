@@ -2,6 +2,7 @@
 library;
 
 import 'package:flutter/material.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_motion.dart';
 import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
 
 /// Bordered surface with a large radius — the shadcn card.
@@ -39,20 +40,21 @@ class _AppCardState extends State<AppCard> {
     final tokens = context.tokens;
     final bool interactive = widget.hoverable || widget.onTap != null;
 
+    final bool lifted = interactive && _hovered;
     Widget card = AnimatedContainer(
-      duration: const Duration(milliseconds: 150),
-      curve: Curves.easeOut,
+      duration: AppMotion.fast,
+      curve: AppMotion.curve,
       padding: widget.padding,
       clipBehavior: widget.clipBehavior,
+      transform: Matrix4.translationValues(
+          0, lifted ? -AppMotion.hoverLift : 0, 0),
       decoration: BoxDecoration(
         color: widget.color ?? tokens.card,
-        borderRadius: widget.borderRadius ?? AppRadii.lgAll,
+        borderRadius: widget.borderRadius ?? AppRadii.mdAll,
         border: Border.all(
-          color: interactive && _hovered
-              ? tokens.mutedForeground.withValues(alpha: 0.5)
-              : tokens.border,
+          color: lifted ? tokens.accent : tokens.border,
         ),
-        boxShadow: interactive && _hovered
+        boxShadow: lifted
             ? [
                 BoxShadow(
                   color: Colors.black.withValues(alpha: 0.06),

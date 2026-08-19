@@ -81,7 +81,7 @@ class _LanguageButtonState extends State<LanguageButton> {
               padding: const EdgeInsets.symmetric(horizontal: AppSpace.md),
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: _hovered ? tokens.accent : Colors.transparent,
+                color: _hovered ? tokens.active : Colors.transparent,
                 borderRadius: AppRadii.mdAll,
               ),
               child: Row(

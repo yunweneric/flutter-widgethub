@@ -38,8 +38,8 @@ class SupportPlatformSection extends StatelessWidget {
                   children: [
                     SvgPicture.string(
                       item.icon(),
-                      colorFilter: ColorFilter.mode(
-                          tokens.foreground, BlendMode.srcIn),
+                      colorFilter:
+                          ColorFilter.mode(tokens.accent, BlendMode.srcIn),
                       width: 14,
                       height: 14,
                     ),

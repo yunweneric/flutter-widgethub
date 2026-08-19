@@ -114,12 +114,12 @@ class _HeroSectionState extends State<HeroSection> {
                           children: [
                             AppBadge(
                               label: LangUtil.trans("heroBadge"),
-                              variant: AppBadgeVariant.outline,
+                              variant: AppBadgeVariant.secondary,
                               leading: Container(
                                 width: 6,
                                 height: 6,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFF22C55E),
+                                  color: tokens.accent,
                                   borderRadius: BorderRadius.circular(999),
                                 ),
                               ),
@@ -266,7 +266,7 @@ class _PreviewTile extends StatelessWidget {
     return Container(
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
-        color: tokens.muted.withValues(alpha: 0.4),
+        color: tokens.active.withValues(alpha: 0.4),
         borderRadius: AppRadii.lgAll,
         border: Border.all(color: tokens.border),
       ),
@@ -318,10 +318,9 @@ class _StatsStrip extends StatelessWidget {
                 Text(
                   stat.$1,
                   style: AppTypography.sans(
-                    color: tokens.foreground,
+                    color: tokens.accent,
                     fontSize: 28,
                     fontWeight: FontWeight.w700,
-                    letterSpacing: -0.6,
                   ),
                 ),
                 const SizedBox(height: 2),

@@ -1,11 +1,14 @@
-/// shadcn-style button primitive.
+/// Button primitive (LingoDesk design language).
 ///
-/// A single button widget with `variant` + `size` axes, mirroring the
-/// shadcn/ui button API: primary, secondary, outline, ghost, destructive
-/// and link variants in sm / md / lg / icon sizes.
+/// A single button widget with `variant` + `size` axes: primary,
+/// secondary, outline, ghost, destructive and link variants in
+/// sm / md / lg / icon sizes. Primary buttons pick up a soft brand glow
+/// under the pointer; outline buttons answer hover by swapping their
+/// border to the accent.
 library;
 
 import 'package:flutter/material.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_motion.dart';
 import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
 import 'package:flutterui/app/shared/presentation/theme/app_typography.dart';
 
@@ -86,50 +89,51 @@ class _AppButtonState extends State<AppButton> {
 
   double get _fontSize => widget.size == AppButtonSize.sm ? 13 : 14;
 
-  ({Color bg, Color fg, Color? border}) _colors(AppTokens tokens) {
+  ({Color bg, Color fg, Color? border, Color? glow}) _colors(
+      AppTokens tokens) {
     final bool hovered = _hovered;
     switch (widget.variant) {
       case AppButtonVariant.primary:
         return (
-          bg: hovered
-              ? tokens.primary.withValues(alpha: 0.9)
-              : tokens.primary,
-          fg: tokens.primaryForeground,
+          bg: tokens.brand,
+          fg: tokens.onBrand,
           border: null,
+          glow: hovered ? tokens.brand.withValues(alpha: 0.45) : null,
         );
       case AppButtonVariant.secondary:
         return (
-          bg: hovered
-              ? tokens.secondary.withValues(alpha: 0.8)
-              : tokens.secondary,
-          fg: tokens.secondaryForeground,
-          border: null,
+          bg: tokens.brandFill,
+          fg: tokens.onBrandFill,
+          border: hovered ? tokens.brandFillBorder : null,
+          glow: null,
         );
       case AppButtonVariant.outline:
         return (
-          bg: hovered ? tokens.accent : tokens.background,
-          fg: hovered ? tokens.accentForeground : tokens.foreground,
-          border: tokens.input,
+          bg: tokens.card,
+          fg: tokens.foreground,
+          border: hovered ? tokens.accent : tokens.border,
+          glow: null,
         );
       case AppButtonVariant.ghost:
         return (
-          bg: hovered ? tokens.accent : Colors.transparent,
-          fg: hovered ? tokens.accentForeground : tokens.foreground,
+          bg: hovered ? tokens.active : Colors.transparent,
+          fg: tokens.foreground,
           border: null,
+          glow: null,
         );
       case AppButtonVariant.destructive:
         return (
-          bg: hovered
-              ? tokens.destructive.withValues(alpha: 0.9)
-              : tokens.destructive,
-          fg: tokens.destructiveForeground,
+          bg: tokens.destructive,
+          fg: Colors.white,
           border: null,
+          glow: hovered ? tokens.destructive.withValues(alpha: 0.45) : null,
         );
       case AppButtonVariant.link:
         return (
           bg: Colors.transparent,
-          fg: tokens.foreground,
+          fg: hovered ? tokens.accent : tokens.foreground,
           border: null,
+          glow: null,
         );
     }
   }
@@ -162,7 +166,7 @@ class _AppButtonState extends State<AppButton> {
             style: AppTypography.sans(
               color: colors.fg,
               fontSize: _fontSize,
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w700,
               height: 1.0,
             ).copyWith(
               decoration: widget.variant == AppButtonVariant.link && _hovered
@@ -183,11 +187,11 @@ class _AppButtonState extends State<AppButton> {
     }
 
     Widget button = AnimatedOpacity(
-      duration: const Duration(milliseconds: 120),
+      duration: AppMotion.fast,
       opacity: disabled ? 0.5 : (_pressed ? 0.85 : 1.0),
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 120),
-        curve: Curves.easeOut,
+        duration: AppMotion.fast,
+        curve: AppMotion.curve,
         height: widget.size == AppButtonSize.icon ? 36 : null,
         width: widget.size == AppButtonSize.icon ? 36 : null,
         padding: _padding,
@@ -198,6 +202,16 @@ class _AppButtonState extends State<AppButton> {
           borderRadius: AppRadii.mdAll,
           border:
               colors.border != null ? Border.all(color: colors.border!) : null,
+          // Soft brand glow under the pointer; settles flat when pressed.
+          boxShadow: colors.glow != null && !_pressed
+              ? [
+                  BoxShadow(
+                    color: colors.glow!,
+                    blurRadius: 14,
+                    offset: const Offset(0, 4),
+                  ),
+                ]
+              : null,
         ),
         child: content,
       ),

@@ -3,17 +3,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterui/app/core/core.dart';
 import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
 import 'package:flutterui/app/shared/presentation/theme/app_typography.dart';
-import 'package:flutterui/app/shared/presentation/utils/icons.dart';
-import 'package:flutterui/app/shared/presentation/widgets/app_icon_button.dart';
+import 'package:flutterui/app/shared/presentation/widgets/app_logo.dart';
 import 'package:flutterui/app/shared/presentation/widgets/app_search_bar.dart';
 import 'package:flutterui/app/shared/presentation/widgets/device_frame_selector_button.dart';
 import 'package:flutterui/app/shared/presentation/widgets/github_icon_with_stars.dart';
-import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 import 'package:flutterui/app/shared/presentation/widgets/language_button.dart';
+import 'package:flutterui/app/shared/presentation/widgets/theme_variant_button.dart';
 import 'package:flutterui/app/shared/shared.dart';
 import 'package:go_router/go_router.dart';
 
-/// Top navigation bar (desktop) — 64px, hairline border, shadcn docs style.
+/// Floating top navigation (desktop): logo on the left, links centered,
+/// actions on the right — one pill, LingoDesk style.
 class HomeNavBar extends StatefulWidget {
   final bool isHomeScreenLayout;
 
@@ -25,7 +25,9 @@ class HomeNavBar extends StatefulWidget {
 
 class _HomeNavBarState extends State<HomeNavBar> {
   List<NavLink> links = [
-    NavLink(title: LangUtil.trans(("components")), path: RouteNames.components),
+    NavLink(title: LangUtil.trans("components"), path: RouteNames.components),
+    NavLink(title: LangUtil.trans("templates"), path: RouteNames.templates),
+    NavLink(title: LangUtil.trans("effects"), path: RouteNames.effects),
   ];
 
   @override
@@ -36,63 +38,46 @@ class _HomeNavBarState extends State<HomeNavBar> {
             ? HomeMobileNav(isHomeScreenLayout: widget.isHomeScreenLayout)
             : AppContainer(
                 isHomeScreenLayout: widget.isHomeScreenLayout,
-                child: Row(
+                child: Stack(
+                  alignment: Alignment.center,
                   children: [
-                    _Logo(onTap: () => context.go(RouteNames.home)),
-                    const SizedBox(width: AppSpace.xl),
-                    ...links.map((item) => _NavLinkItem(item: item)),
-                    const Spacer(),
-                    const AppSearchBar(),
-                    const SizedBox(width: AppSpace.sm),
-                    const LanguageButton(),
-                    const SizedBox(width: AppSpace.xs),
-                    const DeviceFrameSelectorButton(),
-                    const SizedBox(width: AppSpace.xs),
-                    const GitHubIconWithStars(
-                      owner: 'yunweneric',
-                      repo: 'flutter-widgethub',
-                      url: 'https://github.com/yunweneric/flutter-widgethub/',
+                    // Center: nav links.
+                    Center(
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          ...links.map((item) => _NavLinkItem(item: item)),
+                        ],
+                      ),
                     ),
-                    const SizedBox(width: AppSpace.xs),
-                    const _ThemeToggleButton(),
+                    // Left: logo. Right: actions.
+                    Row(
+                      children: [
+                        AppLogo(
+                          width: 96,
+                          onTap: () => context.go(RouteNames.home),
+                        ),
+                        const Spacer(),
+                        const AppSearchBar(),
+                        const SizedBox(width: AppSpace.sm),
+                        const LanguageButton(),
+                        const SizedBox(width: AppSpace.xs),
+                        const DeviceFrameSelectorButton(),
+                        const SizedBox(width: AppSpace.xs),
+                        const GitHubIconWithStars(
+                          owner: 'yunweneric',
+                          repo: 'flutter-widgethub',
+                          url:
+                              'https://github.com/yunweneric/flutter-widgethub/',
+                        ),
+                        const SizedBox(width: AppSpace.xs),
+                        const ThemeControlButton(),
+                      ],
+                    ),
                   ],
                 ),
               );
       },
-    );
-  }
-}
-
-class _Logo extends StatefulWidget {
-  final VoidCallback onTap;
-
-  const _Logo({required this.onTap});
-
-  @override
-  State<_Logo> createState() => _LogoState();
-}
-
-class _LogoState extends State<_Logo> {
-  bool _hovered = false;
-
-  @override
-  Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      onEnter: (_) => setState(() => _hovered = true),
-      onExit: (_) => setState(() => _hovered = false),
-      child: GestureDetector(
-        onTap: widget.onTap,
-        child: AnimatedOpacity(
-          duration: const Duration(milliseconds: 150),
-          opacity: _hovered ? 0.8 : 1.0,
-          child: Image.asset(
-            isDark ? AppImages.logoLight : AppImages.logoDark,
-            width: 96,
-          ),
-        ),
-      ),
     );
   }
 }
@@ -114,7 +99,12 @@ class _NavLinkItemState extends State<_NavLinkItem> {
     final tokens = context.tokens;
     final activeRoute =
         getIt.get<GoRouter>().routeInformationProvider.value.uri.path;
-    final bool isActive = activeRoute.startsWith(widget.item.path);
+    // Longest-prefix match, so /components/templates doesn't also light
+    // up the plain /components link.
+    final bool isActive = activeRoute.startsWith(widget.item.path) &&
+        !(widget.item.path == RouteNames.components &&
+            (activeRoute.startsWith(RouteNames.templates) ||
+                activeRoute.startsWith(RouteNames.effects)));
 
     return MouseRegion(
       cursor: SystemMouseCursors.click,
@@ -127,32 +117,18 @@ class _NavLinkItemState extends State<_NavLinkItem> {
           child: Text(
             widget.item.title,
             style: AppTypography.sans(
-              color: isActive || _hovered
-                  ? tokens.foreground
-                  : tokens.mutedForeground,
+              color: isActive
+                  ? tokens.accent
+                  : _hovered
+                      ? tokens.foreground
+                      : tokens.muted,
               fontSize: 14,
-              fontWeight: FontWeight.w500,
+              fontWeight: isActive ? FontWeight.w700 : FontWeight.w600,
               height: 1.0,
             ),
           ),
         ),
       ),
-    );
-  }
-}
-
-class _ThemeToggleButton extends StatelessWidget {
-  const _ThemeToggleButton();
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = getIt.get<ThemeBloc>();
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    return AppIconButton(
-      onPressed: () => theme.add(
-        ChangeTheme(themeMode: isDark ? ThemeMode.light : ThemeMode.dark),
-      ),
-      child: AppIcon(icon: isDark ? AppIcons.moon : AppIcons.sun, size: 16),
     );
   }
 }

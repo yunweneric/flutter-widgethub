@@ -59,7 +59,7 @@ class _ComponentBlockState extends State<ComponentBlock> {
               Divider(
                 endIndent: value * AppSizing.kWPercentage(context, 20),
                 thickness: 2,
-                color: widget.isActive ? tokens.foreground : tokens.border,
+                color: widget.isActive ? tokens.accent : tokens.border,
               ),
               const SizedBox(height: AppSpace.md),
               child!,

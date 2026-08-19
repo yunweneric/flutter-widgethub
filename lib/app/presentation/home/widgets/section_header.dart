@@ -25,9 +25,9 @@ class SectionHeader extends StatelessWidget {
         Text(
           eyebrow.toUpperCase(),
           style: AppTypography.sans(
-            color: tokens.mutedForeground,
+            color: tokens.accent,
             fontSize: 12,
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w700,
             letterSpacing: 1.2,
           ),
         ),

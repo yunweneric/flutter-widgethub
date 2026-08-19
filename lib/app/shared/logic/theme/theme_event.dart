@@ -13,3 +13,12 @@ class ChangeTheme extends ThemeEvent {
   /// Creates a change theme event.
   ChangeTheme({required this.themeMode});
 }
+
+/// Event to switch the active palette variant (whole-look theme).
+class ChangeThemeVariant extends ThemeEvent {
+  /// The variant to switch to.
+  final AppThemeVariant variant;
+
+  /// Creates a change variant event.
+  ChangeThemeVariant({required this.variant});
+}

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_motion.dart';
 import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
 import 'package:flutterui/app/shared/presentation/theme/app_typography.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 
-/// Sidebar navigation row (shadcn docs style).
+/// Sidebar navigation row (LingoDesk dashboard style).
 ///
-/// 32px tall rounded row: muted text, accent surface on hover, and
-/// accent surface + foreground text when active.
+/// 36px rounded row: muted text, `active` wash on hover; the selected row
+/// gets the tinted brand fill, brand ink and a small accent bar on the
+/// left edge.
 class SideBarItem extends StatefulWidget {
   final String title;
   final bool isActive;
@@ -29,11 +31,16 @@ class _SideBarItemState extends State<SideBarItem> {
   @override
   Widget build(BuildContext context) {
     final tokens = context.tokens;
-    final bool emphasized = widget.isActive || _hovered;
 
     final name = LangUtil.trans("SubComponentCategoryEnum.${widget.title}");
     final formatted = name[0].toUpperCase() +
         name.split("_").join(" ").substring(1).toLowerCase();
+
+    final Color fg = widget.isActive
+        ? tokens.onBrandFill
+        : _hovered
+            ? tokens.foreground
+            : tokens.muted;
 
     return MouseRegion(
       cursor: SystemMouseCursors.click,
@@ -42,30 +49,47 @@ class _SideBarItemState extends State<SideBarItem> {
       child: GestureDetector(
         onTap: widget.onPressed,
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 120),
-          height: 32,
+          duration: AppMotion.fast,
+          height: 36,
           margin: const EdgeInsets.only(bottom: 2),
-          padding: const EdgeInsets.symmetric(horizontal: AppSpace.md),
-          alignment: Alignment.centerLeft,
+          clipBehavior: Clip.hardEdge,
           decoration: BoxDecoration(
             color: widget.isActive
-                ? tokens.accent
+                ? tokens.brandFill
                 : _hovered
-                    ? tokens.accent.withValues(alpha: 0.6)
+                    ? tokens.active
                     : Colors.transparent,
             borderRadius: AppRadii.smAll,
           ),
-          child: Text(
-            formatted,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: AppTypography.sans(
-              color: emphasized ? tokens.foreground : tokens.mutedForeground,
-              fontSize: 14,
-              fontWeight:
-                  widget.isActive ? FontWeight.w500 : FontWeight.w400,
-              height: 1.0,
-            ),
+          child: Row(
+            children: [
+              // Accent bar on the selected row.
+              AnimatedContainer(
+                duration: AppMotion.fast,
+                width: 3,
+                height: 20,
+                decoration: BoxDecoration(
+                  color:
+                      widget.isActive ? tokens.accent : Colors.transparent,
+                  borderRadius: BorderRadius.circular(2),
+                ),
+              ),
+              const SizedBox(width: AppSpace.md - 3),
+              Expanded(
+                child: Text(
+                  formatted,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppTypography.sans(
+                    color: fg,
+                    fontSize: 14,
+                    fontWeight:
+                        widget.isActive ? FontWeight.w700 : FontWeight.w500,
+                    height: 1.0,
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

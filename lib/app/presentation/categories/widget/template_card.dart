@@ -53,11 +53,9 @@ class _TemplateCardState extends State<TemplateCard> {
               : cardWidth * 0.75,
           clipBehavior: Clip.hardEdge,
           decoration: BoxDecoration(
-            color: tokens.muted.withValues(alpha: 0.4),
+            color: tokens.active.withValues(alpha: 0.4),
             border: Border.all(
-              color: _hovered
-                  ? tokens.mutedForeground.withValues(alpha: 0.5)
-                  : tokens.border,
+              color: _hovered ? tokens.accent : tokens.border,
             ),
             borderRadius: AppRadii.lgAll,
           ),

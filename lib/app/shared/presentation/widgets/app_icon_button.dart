@@ -46,7 +46,7 @@ class _AppIconButtonState extends State<AppIconButton> {
           alignment: Alignment.center,
           decoration: BoxDecoration(
             color: widget.backgroundColor ??
-                (_hovered ? tokens.accent : Colors.transparent),
+                (_hovered ? tokens.active : Colors.transparent),
             borderRadius: AppRadii.mdAll,
           ),
           child: widget.child,

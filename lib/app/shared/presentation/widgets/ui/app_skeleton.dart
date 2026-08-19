@@ -45,7 +45,7 @@ class _AppSkeletonState extends State<AppSkeleton>
         width: widget.width,
         height: widget.height,
         decoration: BoxDecoration(
-          color: tokens.muted,
+          color: tokens.active,
           borderRadius: widget.borderRadius ?? AppRadii.smAll,
         ),
       ),

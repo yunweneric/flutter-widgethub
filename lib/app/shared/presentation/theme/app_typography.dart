@@ -1,11 +1,13 @@
-/// Typography system for the application (shadcn-style).
+/// Typography system (LingoDesk design language).
+///
+/// Urbanist is the app's only UI family — warm, geometric, set bold for
+/// headings and buttons with no letter-spacing tricks. Code blocks keep
+/// JetBrains Mono, because WidgetHub shows real source code.
 ///
 /// Two layers:
 ///  1. [AppTypography.textTheme] — the Material [TextTheme] registered on
 ///     [ThemeData]. Slot sizes stay compatible with how existing library
-///     content consumes them (displayMedium as a 16-17px section heading,
-///     bodyMedium as 14px muted body, etc.) while gaining a complete ramp,
-///     tight heading tracking and token-driven colors.
+///     content consumes them.
 ///  2. [AppTextStyles] — semantic docs-site styles (display, h1-h4, lead,
 ///     muted, code...) used by the app chrome, resolved via `context.text`.
 ///
@@ -20,7 +22,7 @@ import 'package:google_fonts/google_fonts.dart';
 class AppTypography {
   AppTypography._();
 
-  /// Base sans-serif style (Inter).
+  /// Base UI style (Urbanist).
   static TextStyle sans({
     required Color color,
     required double fontSize,
@@ -28,12 +30,12 @@ class AppTypography {
     double? height,
     double? letterSpacing,
   }) {
-    return GoogleFonts.inter(
+    return GoogleFonts.urbanist(
       color: color,
       fontSize: fontSize,
       fontWeight: fontWeight,
       height: height,
-      letterSpacing: letterSpacing,
+      letterSpacing: letterSpacing ?? 0,
     );
   }
 
@@ -54,45 +56,43 @@ class AppTypography {
 
   /// Material text theme derived from [tokens].
   ///
-  /// Headings use the foreground token with tight tracking; body and label
-  /// slots use the muted foreground, matching how the existing screens and
-  /// library content already consume them.
+  /// Headings use the foreground token set bold; body and label slots use
+  /// the muted foreground, matching how the existing screens and library
+  /// content already consume them.
   static TextTheme textTheme(AppTokens tokens) {
     final Color fg = tokens.foreground;
-    final Color muted = tokens.mutedForeground;
+    final Color muted = tokens.muted;
 
     return TextTheme(
-      // Legacy-compatible slots (sizes preserved from the previous theme).
-      displayLarge: sans(
-          color: fg, fontSize: 32, fontWeight: FontWeight.w800, letterSpacing: -0.8, height: 1.2),
-      displayMedium: sans(
-          color: fg, fontSize: 17, fontWeight: FontWeight.w600, letterSpacing: -0.2, height: 1.35),
-      displaySmall: sans(
-          color: fg, fontSize: 13, fontWeight: FontWeight.w600, height: 1.35),
-      // Full heading ramp.
-      headlineLarge: sans(
-          color: fg, fontSize: 28, fontWeight: FontWeight.w700, letterSpacing: -0.6, height: 1.25),
-      headlineMedium: sans(
-          color: fg, fontSize: 24, fontWeight: FontWeight.w600, letterSpacing: -0.45, height: 1.25),
-      headlineSmall: sans(
-          color: fg, fontSize: 20, fontWeight: FontWeight.w600, letterSpacing: -0.3, height: 1.3),
-      titleLarge: sans(
-          color: fg, fontSize: 18, fontWeight: FontWeight.w600, letterSpacing: -0.2, height: 1.35),
-      titleMedium: sans(
-          color: fg, fontSize: 16, fontWeight: FontWeight.w600, height: 1.4),
-      titleSmall: sans(
-          color: fg, fontSize: 14, fontWeight: FontWeight.w600, height: 1.4),
+      // Legacy-compatible slots (sizes preserved).
+      displayLarge:
+          sans(color: fg, fontSize: 32, fontWeight: FontWeight.w700, height: 1.15),
+      displayMedium:
+          sans(color: fg, fontSize: 17, fontWeight: FontWeight.w700, height: 1.3),
+      displaySmall:
+          sans(color: fg, fontSize: 13, fontWeight: FontWeight.w700, height: 1.35),
+      // Full heading ramp (LingoDesk scale).
+      headlineLarge:
+          sans(color: fg, fontSize: 40, fontWeight: FontWeight.w700, height: 1.05),
+      headlineMedium:
+          sans(color: fg, fontSize: 30, fontWeight: FontWeight.w700, height: 1.12),
+      headlineSmall:
+          sans(color: fg, fontSize: 22, fontWeight: FontWeight.w700, height: 1.2),
+      titleLarge:
+          sans(color: fg, fontSize: 22, fontWeight: FontWeight.w700, height: 1.2),
+      titleMedium:
+          sans(color: fg, fontSize: 16, fontWeight: FontWeight.w700, height: 1.35),
+      titleSmall:
+          sans(color: fg, fontSize: 14, fontWeight: FontWeight.w700, height: 1.35),
       // Body.
-      bodyLarge: sans(color: fg, fontSize: 16, height: 1.6),
-      bodyMedium: sans(
-          color: muted, fontSize: 14, height: 1.55, letterSpacing: 0.05),
-      bodySmall: sans(color: muted, fontSize: 12, height: 1.5),
+      bodyLarge: sans(color: fg, fontSize: 16, height: 1.55),
+      bodyMedium: sans(color: muted, fontSize: 14, height: 1.45),
+      bodySmall: sans(color: muted, fontSize: 12, height: 1.45),
       // Labels.
-      labelLarge: sans(
-          color: fg, fontSize: 14, fontWeight: FontWeight.w500, height: 1.4),
-      labelMedium: sans(color: muted, fontSize: 14, height: 1.4),
-      labelSmall:
-          sans(color: muted, fontSize: 12, height: 1.4, letterSpacing: 0),
+      labelLarge:
+          sans(color: fg, fontSize: 14, fontWeight: FontWeight.w700, height: 1.2),
+      labelMedium: sans(color: muted, fontSize: 14, height: 1.35),
+      labelSmall: sans(color: muted, fontSize: 12, height: 1.35),
     );
   }
 }
@@ -105,71 +105,66 @@ class AppTextStyles {
 
   const AppTextStyles(this._tokens);
 
-  /// Hero display headline — 48/800, tight tracking.
+  /// Hero display headline — 48/700, snug.
   TextStyle get display => AppTypography.sans(
       color: _tokens.foreground,
       fontSize: 48,
-      fontWeight: FontWeight.w800,
-      letterSpacing: -1.6,
-      height: 1.1);
+      fontWeight: FontWeight.w700,
+      height: 1.08);
 
   /// Page title — 36/700.
   TextStyle get h1 => AppTypography.sans(
       color: _tokens.foreground,
       fontSize: 36,
       fontWeight: FontWeight.w700,
-      letterSpacing: -1.0,
-      height: 1.15);
+      height: 1.12);
 
-  /// Section title — 30/600.
+  /// Section title — 30/700.
   TextStyle get h2 => AppTypography.sans(
       color: _tokens.foreground,
       fontSize: 30,
-      fontWeight: FontWeight.w600,
-      letterSpacing: -0.75,
-      height: 1.2);
+      fontWeight: FontWeight.w700,
+      height: 1.15);
 
-  /// Sub-section title — 24/600.
+  /// Sub-section title — 24/700.
   TextStyle get h3 => AppTypography.sans(
       color: _tokens.foreground,
       fontSize: 24,
-      fontWeight: FontWeight.w600,
-      letterSpacing: -0.6,
-      height: 1.25);
+      fontWeight: FontWeight.w700,
+      height: 1.2);
 
-  /// Minor heading — 20/600.
+  /// Minor heading — 20/700.
   TextStyle get h4 => AppTypography.sans(
       color: _tokens.foreground,
       fontSize: 20,
-      fontWeight: FontWeight.w600,
-      letterSpacing: -0.4,
-      height: 1.3);
+      fontWeight: FontWeight.w700,
+      height: 1.25);
 
   /// Lead paragraph under titles — 18/400 muted.
-  TextStyle get lead => AppTypography.sans(
-      color: _tokens.mutedForeground, fontSize: 18, height: 1.55);
+  TextStyle get lead =>
+      AppTypography.sans(color: _tokens.muted, fontSize: 18, height: 1.55);
 
   /// Default paragraph — 16/400.
-  TextStyle get p => AppTypography.sans(
-      color: _tokens.foreground, fontSize: 16, height: 1.6);
+  TextStyle get p =>
+      AppTypography.sans(color: _tokens.foreground, fontSize: 16, height: 1.55);
 
-  /// Emphasized small text — 14/500.
+  /// Emphasized small text — 14/600.
   TextStyle get small => AppTypography.sans(
       color: _tokens.foreground,
       fontSize: 14,
-      fontWeight: FontWeight.w500,
-      height: 1.4);
+      fontWeight: FontWeight.w600,
+      height: 1.35);
 
   /// Muted small text — 14/400.
-  TextStyle get muted => AppTypography.sans(
-      color: _tokens.mutedForeground, fontSize: 14, height: 1.5);
+  TextStyle get muted =>
+      AppTypography.sans(color: _tokens.muted, fontSize: 14, height: 1.45);
 
-  /// Sidebar/group overline — 11/600 uppercase-style tracking.
+  /// Sidebar/group overline — 11/700 with wide tracking.
   TextStyle get overline => AppTypography.sans(
-      color: _tokens.mutedForeground,
+      color: _tokens.muted,
       fontSize: 11,
-      fontWeight: FontWeight.w600,
-      letterSpacing: 0.6,
+      fontWeight: FontWeight.w700,
+      letterSpacing: 0.8,
       height: 1.4);
 
   /// Inline/code block text — JetBrains Mono 13.

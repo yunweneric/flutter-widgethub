@@ -17,7 +17,7 @@ class AppKbd extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
       decoration: BoxDecoration(
-        color: tokens.muted,
+        color: tokens.active,
         borderRadius: BorderRadius.circular(4),
         border: Border.all(color: tokens.border),
       ),

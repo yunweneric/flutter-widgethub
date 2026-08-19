@@ -108,7 +108,7 @@ class _AppLayoutState extends State<AppLayout> {
                 child: Container(
                   width: drawerWidth,
                   decoration: BoxDecoration(
-                    color: tokens.background,
+                    color: tokens.sidebar,
                     border: Border(
                       right: BorderSide(color: tokens.border),
                     ),
@@ -245,6 +245,8 @@ class _DrawerContent extends StatelessWidget {
               ),
               Row(
                 children: [
+                  const ThemeVariantButton(),
+                  const SizedBox(width: AppSpace.xs),
                   _ThemeModeButton(
                     icon: AppIcons.sun,
                     isActive: !isDark,

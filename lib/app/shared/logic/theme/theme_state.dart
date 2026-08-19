@@ -2,34 +2,32 @@ part of 'theme_bloc.dart';
 
 /// Base class for theme state.
 ///
-/// Contains the current theme mode of the application.
+/// Carries the current theme mode and the active palette variant.
 class ThemeState {
   /// The current theme mode.
   final ThemeMode themeMode;
 
+  /// The active palette variant.
+  final AppThemeVariant variant;
+
   /// Creates a theme state.
-  ThemeState({required this.themeMode});
+  ThemeState({required this.themeMode, required this.variant});
+
+  /// The resolved palette for the active variant.
+  AppPalette get palette => variant.palette;
 
   /// Properties for equality comparison.
-  List get props => [themeMode];
+  List get props => [themeMode, variant];
 }
 
 /// Initial theme state.
-///
-/// Represents the initial theme state when the app starts.
 class ThemeInitial extends ThemeState {
   /// Creates an initial theme state.
-  ThemeInitial({required super.themeMode});
+  ThemeInitial({required super.themeMode, required super.variant});
 }
 
 /// Updated theme state.
-///
-/// Represents a theme state after a theme change has been applied.
 class UpdateTheme extends ThemeState {
-  /// The updated theme mode.
-  @override
-  final ThemeMode themeMode;
-
   /// Creates an updated theme state.
-  UpdateTheme({required this.themeMode}) : super(themeMode: themeMode);
+  UpdateTheme({required super.themeMode, required super.variant});
 }

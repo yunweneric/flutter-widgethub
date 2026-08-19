@@ -38,7 +38,7 @@ class _AppSearchBarState extends State<AppSearchBar> {
           height: 36,
           padding: const EdgeInsets.symmetric(horizontal: AppSpace.md),
           decoration: BoxDecoration(
-            color: _hovered ? tokens.accent : tokens.muted.withValues(alpha: 0.6),
+            color: _hovered ? tokens.active : tokens.active.withValues(alpha: 0.6),
             borderRadius: AppRadii.mdAll,
             border: Border.all(color: tokens.border),
           ),
@@ -287,7 +287,7 @@ class _SearchResultRowState extends State<_SearchResultRow> {
           padding: const EdgeInsets.symmetric(
               horizontal: AppSpace.md, vertical: 10),
           decoration: BoxDecoration(
-            color: _hovered ? tokens.accent : Colors.transparent,
+            color: _hovered ? tokens.active : Colors.transparent,
             borderRadius: AppRadii.smAll,
           ),
           child: Row(

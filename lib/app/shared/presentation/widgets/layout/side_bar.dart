@@ -47,7 +47,7 @@ class _SideBarState extends State<SideBar> {
             .pathSegments;
 
         return Container(
-          color: tokens.background,
+          color: tokens.sidebar,
           child: SingleChildScrollView(
             padding: const EdgeInsets.fromLTRB(
                 AppSpace.lg, AppSpace.xl, AppSpace.md, AppSpace.huge),

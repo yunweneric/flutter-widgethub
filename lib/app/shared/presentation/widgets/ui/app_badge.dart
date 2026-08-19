@@ -71,7 +71,7 @@ class AppBadge extends StatelessWidget {
             style: AppTypography.sans(
               color: fg,
               fontSize: 12,
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w600,
               height: 1.4,
             ),
           ),

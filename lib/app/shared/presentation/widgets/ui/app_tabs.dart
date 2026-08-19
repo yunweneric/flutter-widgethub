@@ -48,7 +48,7 @@ class AppTabs extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(3),
       decoration: BoxDecoration(
-        color: tokens.muted,
+        color: tokens.active,
         borderRadius: AppRadii.mdAll,
       ),
       child: Row(
@@ -56,8 +56,7 @@ class AppTabs extends StatelessWidget {
         children: List.generate(items.length, (i) {
           final item = items[i];
           final bool active = i == activeIndex;
-          final Color fg =
-              active ? tokens.foreground : tokens.mutedForeground;
+          final Color fg = active ? tokens.onBrandFill : tokens.muted;
 
           return MouseRegion(
             cursor: SystemMouseCursors.click,
@@ -71,17 +70,13 @@ class AppTabs extends StatelessWidget {
                   vertical: 6,
                 ),
                 decoration: BoxDecoration(
-                  color: active ? tokens.background : Colors.transparent,
+                  color: active ? tokens.brandFill : Colors.transparent,
                   borderRadius: AppRadii.smAll,
-                  boxShadow: active
-                      ? [
-                          BoxShadow(
-                            color: Colors.black.withValues(alpha: 0.08),
-                            blurRadius: 4,
-                            offset: const Offset(0, 1),
-                          ),
-                        ]
-                      : null,
+                  border: Border.all(
+                    color: active
+                        ? tokens.brandFillBorder
+                        : Colors.transparent,
+                  ),
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
@@ -99,7 +94,8 @@ class AppTabs extends StatelessWidget {
                         style: AppTypography.sans(
                           color: fg,
                           fontSize: 13,
-                          fontWeight: FontWeight.w500,
+                          fontWeight:
+                              active ? FontWeight.w700 : FontWeight.w600,
                           height: 1.0,
                         ),
                       ),

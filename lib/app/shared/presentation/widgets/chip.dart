@@ -36,11 +36,11 @@ class _AppChipState extends State<AppChip> {
     final bool active = widget.active ?? false;
 
     final Color bg = active
-        ? tokens.secondary
+        ? tokens.brandFill
         : _hovered
-            ? tokens.accent.withValues(alpha: 0.7)
+            ? tokens.active.withValues(alpha: 0.7)
             : Colors.transparent;
-    final Color fg = active ? tokens.foreground : tokens.mutedForeground;
+    final Color fg = active ? tokens.onBrandFill : tokens.muted;
 
     return MouseRegion(
       cursor: SystemMouseCursors.click,
@@ -56,6 +56,9 @@ class _AppChipState extends State<AppChip> {
           decoration: BoxDecoration(
             color: bg,
             borderRadius: AppRadii.smAll,
+            border: Border.all(
+              color: active ? tokens.brandFillBorder : Colors.transparent,
+            ),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,

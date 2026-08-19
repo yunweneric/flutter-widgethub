@@ -61,8 +61,12 @@ export 'presentation/widgets/icon.dart';
 export 'presentation/widgets/language_button.dart';
 
 // Theme / Design tokens
+export 'presentation/theme/app_motion.dart';
+export 'presentation/theme/app_palette.dart';
 export 'presentation/theme/app_tokens.dart';
 export 'presentation/theme/app_typography.dart';
+export 'presentation/widgets/app_logo.dart';
+export 'presentation/widgets/theme_variant_button.dart';
 
 // Utilities
 export 'presentation/utils/colors.dart';

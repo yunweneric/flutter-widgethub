@@ -284,7 +284,7 @@ class _ComingSoonBlock extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: AppRadii.lgAll,
         border: Border.all(color: tokens.border),
-        color: tokens.muted.withValues(alpha: 0.4),
+        color: tokens.active.withValues(alpha: 0.4),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

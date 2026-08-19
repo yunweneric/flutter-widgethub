@@ -66,7 +66,7 @@ class _RowItemState extends State<RowItem> {
   @override
   Widget build(BuildContext context) {
     final tokens = context.tokens;
-    final Color fg = _hovered ? tokens.foreground : tokens.mutedForeground;
+    final Color fg = _hovered ? tokens.accent : tokens.muted;
 
     return MouseRegion(
       cursor: SystemMouseCursors.click,
