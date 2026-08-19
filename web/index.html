@@ -27,9 +27,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png" />
-  <link rel="mask-icon" href="icons/safari-pinned-tab.svg" color="#5bbad5" />
-  <meta name="msapplication-TileColor" content="#da532c" />
-  <meta name="theme-color" content="#ffffff" />
+  <link rel="mask-icon" href="icons/safari-pinned-tab.svg" color="#1a5ca8" />
+  <meta name="msapplication-TileColor" content="#1a5ca8" />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8fafc" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0c151f" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./styles/loader.css" />
 
@@ -41,22 +42,22 @@
 <body>
   <div id="preloader">
     <div class="container">
-      <div class="animated-text"></div>
-    </div>
-
-    <div class="footer">
-      <div class="relative logos">
-        <img src="./images/flutterwidgethub_Logo.png" alt="" class="lightLogo" />
-        <img src="./images/flutterwidgethub_Logo_white.png" alt="" class="darkLogo" />
+      <div class="logos">
+        <img src="./images/flutterwidgethub_Logo.png" alt="Flutter WidgetHub" class="lightLogo" />
+        <img src="./images/flutterwidgethub_Logo_white.png" alt="Flutter WidgetHub" class="darkLogo" />
       </div>
-      <p style="font-size: 12px;">Developed with 💙 for the Flutter Community!</p>
+
+      <p class="animated-text" role="status" aria-live="polite"></p>
+
+      <div class="progress" role="progressbar" aria-label="Loading Flutter WidgetHub"></div>
     </div>
 
     <div id="btn_container">
-      <button id="skip_btn">Skip</button>
-      <button id="always_skip_btn">Always Skip</button>
+      <button id="skip_btn" type="button">Skip</button>
+      <button id="always_skip_btn" type="button">Always skip</button>
     </div>
 
+    <p class="footer">Built with 💙 for the Flutter community</p>
   </div>
 
   <script src="loader.js" defer></script>

@@ -73,6 +73,7 @@ export 'presentation/utils/colors.dart';
 export 'presentation/utils/icons.dart';
 export 'presentation/utils/images.dart';
 export 'presentation/utils/lang_util.dart';
+export 'presentation/utils/project_links.dart';
 export 'presentation/utils/sizing.dart';
 export 'presentation/utils/theme.dart';
 export 'presentation/utils/util.dart';

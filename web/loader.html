@@ -5,32 +5,32 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./styles/loader.css" />
-  <title>Flutter Widget Hub</title>
+  <title>Flutter WidgetHub</title>
 </head>
+
+<!-- Standalone preview of the boot screen: same markup as index.html so the
+     loader can be iterated on without a full Flutter build. -->
 
 <body>
   <div id="preloader">
     <div class="container">
-      <div class="animated-text"></div>
-    </div>
-
-    <div class="footer">
       <div class="logos">
-        <img src="./images/flutterwidgethub_Logo.png" alt="" class="lightLogo" />
-        <img src="./images/flutterwidgethub_Logo_white.png" alt="" class="darkLogo" />
+        <img src="./images/flutterwidgethub_Logo.png" alt="Flutter WidgetHub" class="lightLogo" />
+        <img src="./images/flutterwidgethub_Logo_white.png" alt="Flutter WidgetHub" class="darkLogo" />
       </div>
-      <p>Developed with 💙 by Yunwen!</p>
-      <div class="footer-icons">
-        <a href="https://github.com/yunweneric"><img src="./icons/github.svg" alt="" /></a>
-        <a href="https://www.linkedin.com/in/yunweneric"><img src="./icons/linkedin.svg" alt="" /></a>
-        <a href="https://x.com/yunweneric"><img src="./icons/x.svg" alt="" /></a>
-      </div>
+
+      <p class="animated-text" role="status" aria-live="polite"></p>
+
+      <div class="progress" role="progressbar" aria-label="Loading Flutter WidgetHub"></div>
     </div>
 
-    <button id="skip_btn">Skip</button>
-    <button id="always_skip_btn">Always Skip</button>
-  </div>
+    <div id="btn_container">
+      <button id="skip_btn" type="button" class="active">Skip</button>
+      <button id="always_skip_btn" type="button" class="active">Always skip</button>
+    </div>
 
+    <p class="footer">Built with 💙 for the Flutter community</p>
+  </div>
 
   <script src="loader.js" defer></script>
 </body>

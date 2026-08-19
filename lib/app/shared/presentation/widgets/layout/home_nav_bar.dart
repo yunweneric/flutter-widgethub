@@ -8,6 +8,7 @@ import 'package:flutterui/app/shared/presentation/widgets/app_search_bar.dart';
 import 'package:flutterui/app/shared/presentation/widgets/device_frame_selector_button.dart';
 import 'package:flutterui/app/shared/presentation/widgets/github_icon_with_stars.dart';
 import 'package:flutterui/app/shared/presentation/widgets/language_button.dart';
+import 'package:flutterui/app/shared/presentation/widgets/layout/docs_nav_bar.dart';
 import 'package:flutterui/app/shared/presentation/widgets/theme_variant_button.dart';
 import 'package:flutterui/app/shared/shared.dart';
 import 'package:go_router/go_router.dart';
@@ -34,49 +35,54 @@ class _HomeNavBarState extends State<HomeNavBar> {
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeBloc, ThemeState>(
       builder: (context, state) {
-        return AppSizing.isMobile(context)
-            ? HomeMobileNav(isHomeScreenLayout: widget.isHomeScreenLayout)
-            : AppContainer(
-                isHomeScreenLayout: widget.isHomeScreenLayout,
-                child: Stack(
-                  alignment: Alignment.center,
+        if (AppSizing.isMobile(context)) {
+          return HomeMobileNav(isHomeScreenLayout: widget.isHomeScreenLayout);
+        }
+
+        // The docs shell has a sidebar to align to; the landing page does
+        // not, and keeps the floating pill.
+        if (!widget.isHomeScreenLayout) return const DocsNavBar();
+
+        return AppContainer(
+          isHomeScreenLayout: widget.isHomeScreenLayout,
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              // Center: nav links.
+              Center(
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    // Center: nav links.
-                    Center(
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          ...links.map((item) => _NavLinkItem(item: item)),
-                        ],
-                      ),
-                    ),
-                    // Left: logo. Right: actions.
-                    Row(
-                      children: [
-                        AppLogo(
-                          width: 96,
-                          onTap: () => context.go(RouteNames.home),
-                        ),
-                        const Spacer(),
-                        const AppSearchBar(),
-                        const SizedBox(width: AppSpace.sm),
-                        const LanguageButton(),
-                        const SizedBox(width: AppSpace.xs),
-                        const DeviceFrameSelectorButton(),
-                        const SizedBox(width: AppSpace.xs),
-                        const GitHubIconWithStars(
-                          owner: 'yunweneric',
-                          repo: 'flutter-widgethub',
-                          url:
-                              'https://github.com/yunweneric/flutter-widgethub/',
-                        ),
-                        const SizedBox(width: AppSpace.xs),
-                        const ThemeControlButton(),
-                      ],
-                    ),
+                    ...links.map((item) => _NavLinkItem(item: item)),
                   ],
                 ),
-              );
+              ),
+              // Left: logo. Right: actions.
+              Row(
+                children: [
+                  AppLogo(
+                    width: 96,
+                    onTap: () => context.go(RouteNames.home),
+                  ),
+                  const Spacer(),
+                  const AppSearchBar(),
+                  const SizedBox(width: AppSpace.sm),
+                  const LanguageButton(),
+                  const SizedBox(width: AppSpace.xs),
+                  const DeviceFrameSelectorButton(),
+                  const SizedBox(width: AppSpace.xs),
+                  const GitHubIconWithStars(
+                    owner: ProjectLinks.owner,
+                    repo: ProjectLinks.repoName,
+                    url: ProjectLinks.repo,
+                  ),
+                  const SizedBox(width: AppSpace.xs),
+                  const ThemeControlButton(),
+                ],
+              ),
+            ],
+          ),
+        );
       },
     );
   }

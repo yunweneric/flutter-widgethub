@@ -17,6 +17,10 @@ import 'package:go_router/go_router.dart';
 /// Docs sidebar (desktop) — grouped navigation with uppercase overline
 /// section labels, shadcn docs style.
 class SideBar extends StatefulWidget {
+  /// Width of the sidebar column in the docs grid. The docs nav bar
+  /// mirrors it so the two share one vertical rule.
+  static const double width = 260;
+
   const SideBar({super.key});
 
   @override

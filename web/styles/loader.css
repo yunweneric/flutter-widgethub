@@ -1,179 +1,289 @@
-  @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+/* Boot screen shown before the Flutter engine takes over the page.
+   Colours mirror the app's default "WidgetHub Blue" palette so the
+   hand-off to the real UI is seamless. */
+:root {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --fg: #121a24;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --brand: #1a5ca8;
+  --accent: #4fb0e6;
+  --track: rgba(18, 26, 36, 0.08);
+  --glow: rgba(26, 92, 168, 0.1);
+  --shadow: 0 1px 2px rgba(18, 26, 36, 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0c151f;
+    --surface: #14202d;
+    --fg: #ffffff;
+    --muted: rgba(255, 255, 255, 0.65);
+    --border: rgba(255, 255, 255, 0.12);
+    --brand: #1f6abe;
+    --accent: #4fb0e6;
+    --track: rgba(255, 255, 255, 0.1);
+    --glow: rgba(79, 176, 230, 0.12);
+    --shadow: none;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
 }
 
-body,
-html {
-  margin: 0;  
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  background-color: #f0f0f0;
-}
-
+html,
 body {
-  background-color: #ffffff;
-  color: #000000;
-}
-
-body.dark-mode {
-  background-color: #000000;
-  color: #ffffff;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--fg);
+  -webkit-font-smoothing: antialiased;
 }
 
 #preloader {
+  position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
+  justify-content: center;
+  gap: 2rem;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 4.5rem 1.5rem 5.5rem;
+  overflow: hidden;
 }
 
-#btn_container {
-  position: fixed;
-  right: 2rem;
-  top: 2rem;
+/* Soft brand wash behind the stack — the only decoration on the page. */
+#preloader::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(760px, 90vw);
+  aspect-ratio: 1;
+  transform: translate(-50%, -60%);
+  background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
   display: flex;
-  gap: 5px;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+  max-width: 40rem;
 }
 
-#skip_btn,
-#always_skip_btn {
-  padding: 0.6rem 2rem;
-  border-radius: 0.2rem;
-  border: none;
-  cursor: pointer;
-  transition: all 0.7s;
+/* Mark ---------------------------------------------------------------- */
+
+.logos {
+  position: relative;
+  width: 176px;
+  height: 52px;
+}
+
+.logos img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
-
-#skip_btn.active,
-#always_skip_btn.active {
+.logos .lightLogo {
   opacity: 1;
 }
 
+@media (prefers-color-scheme: dark) {
+  .logos .lightLogo {
+    opacity: 0;
+  }
+
+  .logos .darkLogo {
+    opacity: 1;
+  }
+}
+
+/* Rotating line ------------------------------------------------------- */
+
 .animated-text {
-  opacity: 0;
-  transform: scale(1);
-  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-  text-transform: capitalize;
-  font-size: 2.5rem;
-  font-weight: 800;
-  width: 60vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Reserved so swapping copy never shifts the layout. */
+  min-height: 4.5rem;
+  max-width: 34ch;
   margin: 0 auto;
+  font-size: clamp(1.0625rem, 1.1rem + 0.6vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: -0.015em;
   text-align: center;
+  text-wrap: balance;
+  color: var(--fg);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .animated-text.active {
   opacity: 1;
-  transform: scale(1.2);
+  transform: translateY(0);
 }
 
 .animated-text.hidden {
   opacity: 0;
-  transform: scale(1.1);
-  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  transform: translateY(-8px);
+  transition: opacity 0.35s ease-in, transform 0.35s ease-in;
 }
+
+/* Indeterminate progress --------------------------------------------- */
+
+.progress {
+  position: relative;
+  width: min(240px, 55vw);
+  height: 2px;
+  border-radius: 999px;
+  background: var(--track);
+  overflow: hidden;
+}
+
+.progress::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 45%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--brand), var(--accent));
+  animation: sweep 1.5s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes sweep {
+  0% {
+    transform: translateX(-110%);
+  }
+  100% {
+    transform: translateX(330%);
+  }
+}
+
+/* Skip controls ------------------------------------------------------- */
+
+#btn_container {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Both buttons stay hidden until the engine reports it can hand over —
+   flutter_bootstrap.js is what adds `.active`. */
+#skip_btn,
+#always_skip_btn {
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease,
+    background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  padding: 0.55rem 1.1rem;
+  border-radius: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  cursor: pointer;
+}
+
+#skip_btn.active,
+#always_skip_btn.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+#skip_btn {
+  border: 1px solid transparent;
+  background-color: var(--brand);
+  color: #ffffff;
+  box-shadow: var(--shadow);
+}
+
+#skip_btn:hover {
+  background-color: var(--accent);
+}
+
+#always_skip_btn {
+  border: 1px solid var(--border);
+  background-color: var(--surface);
+  color: var(--muted);
+}
+
+#always_skip_btn:hover {
+  color: var(--fg);
+  border-color: var(--muted);
+}
+
+/* Footer -------------------------------------------------------------- */
 
 .footer {
   position: fixed;
-  bottom: 0.5rem;
+  bottom: 1.5rem;
+  left: 0;
+  right: 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  letter-spacing: 0.01em;
+  color: var(--muted);
 }
 
-.footer img {
-  width: 6rem;
-  margin-bottom: 2rem;
-}
-
-.footer-icons {
-  display: flex;
-  gap: 0.8rem;
-  margin-top: 0.5rem;
-}
-.footer-icons img {
-  cursor: pointer;
-  transition: all 0.5s;
-  width: 2rem;
-  height: 2rem;
-  padding: 0.5rem;
-  border-radius: 0.2rem;
-  background-color: rgb(223, 221, 221);
-}
-
-.footer-icons img:hover {
-  transform: scale(1.2);
-  background-color: rgb(223, 221, 221);
-  border-radius: 0.2rem;
-}
-
-.lightLogo {
-  visibility: hidden;
-  opacity: 0;
-  transition: all 0.7s;
-}
-
-.darkLogo {
-  left: 50%;
-  right: 50%;
-  top: 0;
-  bottom: 0;
-  transform: translate(-50%, -30%);
-  position: absolute;
-  visibility: hidden;
-  opacity: 0;
-  transition: all 0.7s;
-}
-.showDarkLogo,
-.showLightLogo {
-  visibility: visible;
-  transition: all 0.7s;
-  opacity: 1;
-}
-
-@media only screen and (max-width: 997px) and (min-width: 1200px) {
-  .animated-text {
-    font-size: 2rem;
-    font-weight: 800;
-    width: 70vw;
-  }
-}
 @media only screen and (max-width: 600px) {
+  #preloader {
+    gap: 1.5rem;
+    padding: 4rem 1.25rem 4.5rem;
+  }
+
+  .logos {
+    width: 148px;
+    height: 44px;
+  }
+
+  #btn_container {
+    top: 1rem;
+    right: 1rem;
+  }
+
+  #skip_btn,
+  #always_skip_btn {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
   .animated-text {
-    font-size: 1.8rem;
-    font-weight: 800;
-    width: 70vw;
+    transform: none;
+    transition: opacity 0.3s linear;
   }
 
-  .footer {
-    font-size: 0.8rem;
+  .animated-text.hidden {
+    transform: none;
   }
 
-  .footer img {
-    width: 6rem;
-    margin-bottom: 2rem;
-  }
-
-  .footer-icons {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-  }
-  .footer-icons img {
-    width: 2rem;
-    height: 2rem;
+  .progress::after {
+    animation-duration: 3s;
   }
 }

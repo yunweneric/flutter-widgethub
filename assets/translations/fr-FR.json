@@ -99,6 +99,7 @@
   "fruityLipsTitle": "Carrousel de fruits",
   "getStarted": "Commencer",
   "heroBadge": "Open source · Conçu pour Flutter",
+  "heroCopyPaste": "Copiez, collez, publiez — sous licence MIT.",
   "heroDescription": "Des composants prêts à l'emploi et blocs de mise en page flexibles aux animations fluides et effets saisissants, nos outils vous aident à créer rapidement des applications belles et fonctionnelles.",
   "heroTitle": "Explorez {count}+ composants Flutter éblouissants",
   "home": "Accueil",
@@ -168,5 +169,6 @@
   "wordsCoverOfEnglishLanguage": "5 000 mots couvrent 97 % de la langue anglaise",
   "xNewWordsLeftXComplete": "20 nouveaux mots restants  ·  80% complété",
   "templates": "Modèles",
-  "effects": "Effets"
+  "effects": "Effets",
+  "viewComponent": "Voir le composant"
 }

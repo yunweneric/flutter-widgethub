@@ -1,68 +1,48 @@
-const lightLogo = document.querySelector(".lightLogo");
-const darkLogo = document.querySelector(".darkLogo");
+// Boot-screen copy rotator. The engine swaps this whole page out once it
+// boots, so keep it dependency-free and cheap. Light/dark and the logo
+// swap are handled in CSS via prefers-color-scheme.
+(() => {
+  const HOLD = 3200; // ms a line stays on screen
+  const FADE = 400; // ms the out-transition takes (matches loader.css)
 
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("DOMContentLoaded");
-  // Detects the user's preferred color scheme
-  const userPrefersDark =
-    window.matchMedia &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-  // Apply the dark mode class if the user prefers dark mode
-  if (userPrefersDark) {
-    document.body.classList.add("dark-mode");
-    darkLogo.classList.add("showDarkLogo");
-  } else {
-    lightLogo.classList.add("showLightLogo");
-  }
-
-  // Listen for changes to the user's color scheme preference
-  window
-    .matchMedia("(prefers-color-scheme: dark)")
-    .addEventListener("change", (e) => {
-      if (e.matches) {
-        document.body.classList.add("dark-mode");
-        darkLogo.classList.add("showDarkLogo");
-        lightLogo.classList.remove("showLightLogo");
-      } else {
-        document.body.classList.remove("dark-mode");
-        darkLogo.classList.remove("showDarkLogo");
-        lightLogo.classList.add("showLightLogo");
-      }
-    });
-  const textElement = document.querySelector(".animated-text");
-  const strings = [
-    "Hi!",
-    "Welcome to Flutter Widget Hub!",
-    "Enjoy Our Vast Collection of Flutter Templates, Blocks, Animations and Effects",
-    "We are getting everything ready for you!",
-    "Initial Load time might be longer than expected, Please stay put!",
+  const lines = [
+    "Welcome to Flutter WidgetHub",
+    "Templates, blocks, animations and effects — production-ready",
+    "Copy any component straight into your project",
+    "Setting up your workspace",
+    "First load takes a moment while the engine warms up",
   ];
+
+  const el = document.querySelector(".animated-text");
+  if (!el) return;
+
   let index = 0;
+  let timer;
 
-  function animateText() {
-    // Remove 'active' class to initiate fade out and zoom out
-    textElement.classList.remove("active");
-    textElement.classList.add("hidden");
+  const show = () => {
+    el.textContent = lines[index];
+    el.classList.remove("hidden");
+    el.classList.add("active");
+    index = (index + 1) % lines.length;
+    timer = setTimeout(hide, HOLD);
+  };
 
-    setTimeout(() => {
-      // After the text fades out, change the text content
-      textElement.textContent = strings[index];
+  const hide = () => {
+    el.classList.remove("active");
+    el.classList.add("hidden");
+    timer = setTimeout(show, FADE);
+  };
 
-      // Remove 'hidden' class to reset the scale and opacity before adding 'active'
-      textElement.classList.remove("hidden");
-      textElement.classList.add("active");
+  // Pause while the tab is hidden so the copy isn't halfway through a
+  // rotation when the visitor comes back.
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      clearTimeout(timer);
+    } else {
+      clearTimeout(timer);
+      show();
+    }
+  });
 
-      // Move the current item to the end of the list to create an infinite loop
-      // strings.push(strings.shift());
-
-      index = (index + 1) % strings.length;
-    }, 1000); // Wait for fade-out and zoom-out to complete (1 second)
-  }
-
-  // Initial call to start the animation
-  animateText();
-
-  // Set an interval to animate the text every 2 seconds
-  setInterval(animateText, 5000);
-});
+  show();
+})();

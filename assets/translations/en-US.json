@@ -99,6 +99,7 @@
   "fruityLipsTitle": "Fruity Lips Carousel",
   "getStarted": "Get Started",
   "heroBadge": "Open source · Built for Flutter",
+  "heroCopyPaste": "Copy, paste, ship — MIT licensed.",
   "heroDescription": "From ready-to-use components and flexible layout blocks to smooth animations and striking effects, our tools help you create beautiful, functional apps quickly and efficiently.",
   "heroTitle": "Explore {count}+ Stunning Flutter Components",
   "home": "Home",
@@ -168,5 +169,6 @@
   "wordsCoverOfEnglishLanguage": "5,000 words cover 97% of the English language",
   "xNewWordsLeftXComplete": "20 new words left  ·  80% complete",
   "templates": "Templates",
-  "effects": "Effects"
+  "effects": "Effects",
+  "viewComponent": "View component"
 }

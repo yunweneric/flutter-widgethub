@@ -5,6 +5,7 @@ import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
 import 'package:flutterui/app/shared/presentation/theme/app_typography.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
+import 'package:flutterui/app/shared/presentation/utils/project_links.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/utils/util.dart';
 import 'package:flutterui/app/shared/presentation/widgets/app_icon_button.dart';
@@ -12,26 +13,8 @@ import 'package:flutterui/app/shared/presentation/widgets/app_logo.dart';
 import 'package:flutterui/app/shared/presentation/widgets/github_icon_with_stars.dart';
 import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 import 'package:flutterui/app/shared/presentation/widgets/theme_variant_button.dart';
+import 'package:flutterui/app/shared/presentation/widgets/ui/app_text_link.dart';
 import 'package:go_router/go_router.dart';
-
-/// Canonical links to the project's home on GitHub.
-class ProjectLinks {
-  ProjectLinks._();
-
-  static const String repo = 'https://github.com/yunweneric/flutter-widgethub';
-  static const String newIssue = '$repo/issues/new';
-  static const String discussions = '$repo/discussions';
-  static const String license = '$repo/blob/main/LICENSE';
-  static const String contributing = '$repo/blob/main/CONTRIBUTION.md';
-  static const String codeOfConduct = '$repo/blob/main/CODE_OF_CONDUCT.md';
-
-  static const String owner = 'yunweneric';
-  static const String repoName = 'flutter-widgethub';
-
-  static const String x = 'https://x.com/yunweneric';
-  static const String linkedIn = 'https://www.linkedin.com/in/yunweneric';
-  static const String tiktok = 'https://www.tiktok.com/@yunweneric';
-}
 
 /// Site colophon: what this is, where to go next, and who made it.
 ///
@@ -166,19 +149,19 @@ class _FooterColumns extends StatelessWidget {
       _FooterColumn(
         title: LangUtil.trans("footerBrowse"),
         links: [
-          _FooterLinkData(
+          AppTextLink(
             label: LangUtil.trans("footerBlocks"),
             route: RouteNames.blocks,
           ),
-          _FooterLinkData(
+          AppTextLink(
             label: LangUtil.trans("footerTemplates"),
             route: RouteNames.templates,
           ),
-          _FooterLinkData(
+          AppTextLink(
             label: LangUtil.trans("footerAnimations"),
             route: RouteNames.animations,
           ),
-          _FooterLinkData(
+          AppTextLink(
             label: LangUtil.trans("footerEffects"),
             route: RouteNames.effects,
           ),
@@ -187,19 +170,19 @@ class _FooterColumns extends StatelessWidget {
       _FooterColumn(
         title: LangUtil.trans("resources"),
         links: [
-          _FooterLinkData(
+          AppTextLink(
             label: LangUtil.trans("getStarted"),
             route: RouteNames.getStarted,
           ),
-          _FooterLinkData(
+          AppTextLink(
             label: LangUtil.trans("footerRequestComponent"),
             route: RouteNames.requestComponent,
           ),
-          _FooterLinkData(
+          AppTextLink(
             label: LangUtil.trans("footerContributing"),
             url: ProjectLinks.contributing,
           ),
-          _FooterLinkData(
+          AppTextLink(
             label: LangUtil.trans("footerLicense"),
             url: ProjectLinks.license,
           ),
@@ -208,16 +191,16 @@ class _FooterColumns extends StatelessWidget {
       _FooterColumn(
         title: LangUtil.trans("footerCommunity"),
         links: [
-          _FooterLinkData(label: "GitHub", url: ProjectLinks.repo),
-          _FooterLinkData(
+          const AppTextLink(label: "GitHub", url: ProjectLinks.repo),
+          AppTextLink(
             label: LangUtil.trans("footerDiscussions"),
             url: ProjectLinks.discussions,
           ),
-          _FooterLinkData(
+          AppTextLink(
             label: LangUtil.trans("footerReportIssue"),
             url: ProjectLinks.newIssue,
           ),
-          _FooterLinkData(
+          AppTextLink(
             label: LangUtil.trans("footerCodeOfConduct"),
             url: ProjectLinks.codeOfConduct,
           ),
@@ -247,7 +230,7 @@ class _FooterColumns extends StatelessWidget {
 /// One titled stack of links.
 class _FooterColumn extends StatelessWidget {
   final String title;
-  final List<_FooterLinkData> links;
+  final List<AppTextLink> links;
 
   const _FooterColumn({required this.title, required this.links});
 
@@ -261,65 +244,9 @@ class _FooterColumn extends StatelessWidget {
         for (final link in links)
           Padding(
             padding: const EdgeInsets.only(bottom: AppSpace.sm),
-            child: _FooterLink(data: link),
+            child: link,
           ),
       ],
-    );
-  }
-}
-
-/// Where a footer link points: an in-app [route] or an external [url].
-class _FooterLinkData {
-  final String label;
-  final String? route;
-  final String? url;
-
-  const _FooterLinkData({required this.label, this.route, this.url});
-}
-
-/// Muted link that picks up the palette accent on hover.
-class _FooterLink extends StatefulWidget {
-  final _FooterLinkData data;
-
-  const _FooterLink({required this.data});
-
-  @override
-  State<_FooterLink> createState() => _FooterLinkState();
-}
-
-class _FooterLinkState extends State<_FooterLink> {
-  bool _hovered = false;
-
-  void _open() {
-    final route = widget.data.route;
-    if (route != null) {
-      context.go(route);
-      return;
-    }
-    final url = widget.data.url;
-    if (url != null) UtilHelper.openUrl(url);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final tokens = context.tokens;
-
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      onEnter: (_) => setState(() => _hovered = true),
-      onExit: (_) => setState(() => _hovered = false),
-      child: GestureDetector(
-        onTap: _open,
-        child: AnimatedDefaultTextStyle(
-          duration: AppMotion.fast,
-          style: AppTypography.sans(
-            color: _hovered ? tokens.accent : tokens.mutedForeground,
-            fontSize: 13.5,
-            height: 1.4,
-          ),
-          child: Text(widget.data.label),
-        ),
-      ),
     );
   }
 }
