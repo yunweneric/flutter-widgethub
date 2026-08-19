@@ -3,7 +3,9 @@ import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
+import 'package:flutterui/app/shared/presentation/widgets/app_container.dart';
 import 'package:flutterui/app/shared/presentation/widgets/layout/app_layout.dart';
+import 'package:flutterui/app/shared/presentation/widgets/layout/home_mobile_nav.dart';
 import 'package:flutterui/app/shared/presentation/widgets/layout/side_bar.dart';
 
 /// Docs shell: fixed-width sidebar on the left, content on the right.
@@ -37,8 +39,9 @@ class _AppLayoutState extends State<ComponentLayoutScreen> {
       children: [
         SizedBox(
           width: AppSizing.width(context),
-          // Fill the viewport under the 64px nav.
-          height: AppSizing.height(context) - (isMobile ? 56 : 64),
+          // Fill the viewport under the floating nav.
+          height: AppSizing.height(context) -
+              (isMobile ? HomeMobileNav.navHeight : AppContainer.navHeight),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

@@ -20,12 +20,19 @@ class CodeHighlight extends StatefulWidget {
   /// Optional filename/label shown in a header bar above the code.
   final String? title;
 
+  /// Cap on the scrollable code area (defaults to 640).
+  ///
+  /// When the block is laid out inside a bounded height (a fixed-height
+  /// pane), the code area shrinks to fit instead of overflowing.
+  final double? maxHeight;
+
   const CodeHighlight({
     required this.code,
     super.key,
     this.borderRadius,
     this.fontSize,
     this.title,
+    this.maxHeight,
   });
 
   @override
@@ -55,83 +62,94 @@ class _CodeHighlightState extends State<CodeHighlight> {
   @override
   Widget build(BuildContext context) {
     final tokens = context.tokens;
-    return FutureBuilder(
-      future: setupHighLighter(),
-      builder: (ctx, snapshot) {
-        return Container(
-          width: double.infinity,
-          clipBehavior: Clip.hardEdge,
-          decoration: BoxDecoration(
-            color: tokens.codeBackground,
-            borderRadius: widget.borderRadius ?? AppRadii.lgAll,
-            border: Border.all(color: ZincColors.zinc800),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              if (widget.title != null)
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: AppSpace.lg, vertical: 10),
-                  decoration: const BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(color: ZincColors.zinc800),
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        widget.title!,
-                        style: AppTypography.mono(
-                          color: ZincColors.zinc400,
-                          fontSize: 12,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        // Inside a fixed-height pane the code area flexes; in a scrolling
+        // page it keeps its natural height up to [maxHeight].
+        final bool bounded = constraints.hasBoundedHeight;
+
+        return FutureBuilder(
+          future: setupHighLighter(),
+          builder: (ctx, snapshot) {
+            final Widget codeArea = Stack(
+              children: [
+                snapshot.connectionState == ConnectionState.waiting
+                    ? const _CodeLoader()
+                    : ConstrainedBox(
+                        constraints: BoxConstraints(
+                          maxHeight: widget.maxHeight ?? 640,
                         ),
-                      ),
-                      _CopyButton(hasCopied: hasCopied, onTap: _copy),
-                    ],
-                  ),
-                ),
-              Stack(
-                children: [
-                  snapshot.connectionState == ConnectionState.waiting
-                      ? const _CodeLoader()
-                      : ConstrainedBox(
-                          constraints: const BoxConstraints(maxHeight: 640),
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.vertical,
                           child: SingleChildScrollView(
-                            scrollDirection: Axis.vertical,
-                            child: SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              child: Padding(
-                                padding: const EdgeInsets.all(AppSpace.xl),
-                                child: Text.rich(
-                                  content!,
-                                  softWrap: false,
-                                  overflow: TextOverflow.clip,
-                                  style: AppTypography.mono(
-                                    color: tokens.codeForeground,
-                                    fontSize: widget.fontSize ??
-                                        (AppSizing.isMobile(context)
-                                            ? 12
-                                            : 13),
-                                    height: 1.7,
-                                  ),
+                            scrollDirection: Axis.horizontal,
+                            child: Padding(
+                              padding: const EdgeInsets.all(AppSpace.xl),
+                              child: Text.rich(
+                                content!,
+                                softWrap: false,
+                                overflow: TextOverflow.clip,
+                                style: AppTypography.mono(
+                                  color: tokens.codeForeground,
+                                  fontSize: widget.fontSize ??
+                                      (AppSizing.isMobile(context) ? 12 : 13),
+                                  height: 1.7,
                                 ),
                               ),
                             ),
                           ),
                         ),
-                  if (widget.title == null)
-                    Positioned(
-                      right: AppSpace.md,
-                      top: AppSpace.md,
-                      child: _CopyButton(hasCopied: hasCopied, onTap: _copy),
+                      ),
+                if (widget.title == null)
+                  Positioned(
+                    right: AppSpace.md,
+                    top: AppSpace.md,
+                    child: _CopyButton(hasCopied: hasCopied, onTap: _copy),
+                  ),
+              ],
+            );
+
+            return Container(
+              width: double.infinity,
+              clipBehavior: Clip.hardEdge,
+              decoration: BoxDecoration(
+                color: tokens.codeBackground,
+                borderRadius: widget.borderRadius ?? AppRadii.lgAll,
+                border: Border.all(color: ZincColors.zinc800),
+              ),
+              child: Column(
+                mainAxisSize: bounded ? MainAxisSize.max : MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  if (widget.title != null)
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: AppSpace.lg, vertical: 10),
+                      decoration: const BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(color: ZincColors.zinc800),
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            widget.title!,
+                            style: AppTypography.mono(
+                              color: ZincColors.zinc400,
+                              fontSize: 12,
+                            ),
+                          ),
+                          _CopyButton(hasCopied: hasCopied, onTap: _copy),
+                        ],
+                      ),
                     ),
+                  if (bounded) Flexible(child: codeArea) else codeArea,
                 ],
               ),
-            ],
-          ),
+            );
+          },
         );
       },
     );

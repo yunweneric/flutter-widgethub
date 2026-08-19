@@ -16,8 +16,8 @@ import 'package:flutterui/app/shared/presentation/widgets/ui/app_button.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-/// "Browse the library" landing section: category switcher on the left,
-/// live previews of the active category on the right.
+/// "Browse the library" landing section: category switcher on top,
+/// live previews of the active category below.
 class AssetsSection extends StatefulWidget {
   const AssetsSection({super.key});
 
@@ -38,6 +38,23 @@ class _AssetsSectionState extends State<AssetsSection> {
   void initState() {
     activeBlock = blocks.first;
     super.initState();
+  }
+
+  /// Columns the tile grid is laid out on: one on the smallest phones,
+  /// two on phones and tablets, four from desktop up so a whole category
+  /// fits on a single row.
+  int get _columns {
+    if (AppSizing.isXMobile(context)) return 1;
+    if (AppSizing.isMobile(context) || AppSizing.isTablet(context)) return 2;
+    return 4;
+  }
+
+  /// Tile height relative to its width — phones get taller previews since
+  /// their tiles span (nearly) the full viewport.
+  double get _tileRatio {
+    if (AppSizing.isXMobile(context)) return 1.4;
+    if (AppSizing.isMobile(context)) return 0.85;
+    return 0.75;
   }
 
   @override
@@ -79,108 +96,76 @@ class _AssetsSectionState extends State<AssetsSection> {
                 },
               ),
               const SizedBox(height: AppSpace.xxl),
-              Wrap(
-                runSpacing: AppSpace.xxl,
-                runAlignment: WrapAlignment.spaceBetween,
-                alignment: WrapAlignment.spaceBetween,
-                children: [
-                  if (!isMobile)
-                    SizedBox(
-                      width: AppSizing.kWPercentage(
-                          context, AppSizing.isTablet(context) ? 20 : 100),
-                      child: Wrap(
-                        spacing: AppSizing.kWPercentage(context, 2.5),
-                        crossAxisAlignment: WrapCrossAlignment.center,
-                        runAlignment: WrapAlignment.spaceBetween,
-                        children: [
-                          ...blocks.map(
-                            (item) => MouseRegion(
-                              cursor: SystemMouseCursors.click,
-                              child: GestureDetector(
-                                onTap: () =>
-                                    setState(() => activeBlock = item),
-                                child: ComponentBlock(
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  // Everything is measured off the real content width so the
+                  // grid stays exact once the section hits its max width.
+                  final int columns = _columns;
+                  final double gap = isMobile ? AppSpace.lg : AppSpace.xl;
+                  final double tileWidth =
+                      (constraints.maxWidth - gap * (columns - 1)) / columns;
+                  final double tileHeight = tileWidth * _tileRatio;
+
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (!isMobile) ...[
+                        Wrap(
+                          spacing: gap,
+                          runSpacing: AppSpace.lg,
+                          children: [
+                            ...blocks.map(
+                              (item) => MouseRegion(
+                                cursor: SystemMouseCursors.click,
+                                child: GestureDetector(
+                                  onTap: () =>
+                                      setState(() => activeBlock = item),
+                                  child: ComponentBlock(
                                     item: item,
-                                    isActive: activeBlock == item),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  Builder(
-                    builder: (context) {
-                      List<AppCategoryModel> allBlockItems =
-                          blocks.expand((item) => item.items).toList();
-                      List<AppCategoryModel> activeBlockItem =
-                          activeBlock.items;
-                      final displayWidget =
-                          isMobile ? allBlockItems : activeBlockItem;
-                      return Container(
-                        alignment: Alignment.centerLeft,
-                        constraints: BoxConstraints(
-                            minHeight: AppSizing.kHPercentage(context, 25)),
-                        width: AppSizing.kWPercentage(
-                            context, AppSizing.isTablet(context) ? 70 : 100),
-                        child: AnimatedSwitcher(
-                          duration: const Duration(milliseconds: 600),
-                          key: ValueKey(activeBlock),
-                          child: displayWidget.isEmpty && !isMobile
-                              ? _ComingSoonBlock(
-                                  height:
-                                      AppSizing.kHPercentage(context, 25),
-                                  width: AppSizing.kWPercentage(
-                                      context,
-                                      AppSizing.isTablet(context)
-                                          ? 70
-                                          : 100),
-                                )
-                              : Wrap(
-                                  runSpacing:
-                                      AppSizing.kWPercentage(context, 2.5),
-                                  crossAxisAlignment:
-                                      WrapCrossAlignment.start,
-                                  alignment: AppSizing.isTablet(context)
-                                      ? WrapAlignment.end
-                                      : WrapAlignment.start,
-                                  runAlignment: WrapAlignment.start,
-                                  children: List.generate(
-                                    displayWidget.length,
-                                    (index) {
-                                      final item = displayWidget[index];
-                                      return Container(
-                                        margin: EdgeInsets.only(
-                                          left: AppSizing.isTablet(context)
-                                              ? AppSizing.kWPercentage(
-                                                  context, 2.5)
-                                              : 0,
-                                          right: AppSizing.isTablet(context)
-                                              ? 0
-                                              : AppSizing.kWPercentage(
-                                                  context, 2.5),
-                                        ),
-                                        child: _CategoryPreviewCard(
-                                          item: item,
-                                          parentWidth: generateWidth(),
-                                          parentHeight:
-                                              AppSizing.kWPercentage(
-                                            context,
-                                            AppSizing.isXMobile(context)
-                                                ? 60
-                                                : isMobile
-                                                    ? 35
-                                                    : 15,
-                                          ),
-                                        ),
-                                      );
-                                    },
+                                    width: tileWidth,
+                                    isActive: activeBlock == item,
                                   ),
                                 ),
+                              ),
+                            )
+                          ],
                         ),
-                      );
-                    },
-                  ),
-                ],
+                        const SizedBox(height: AppSpace.xl),
+                      ],
+                      Builder(
+                        builder: (context) {
+                          final List<AppCategoryModel> items = isMobile
+                              ? blocks.expand((item) => item.items).toList()
+                              : activeBlock.items;
+                          return AnimatedSwitcher(
+                            duration: const Duration(milliseconds: 600),
+                            key: ValueKey(activeBlock),
+                            child: items.isEmpty && !isMobile
+                                ? _ComingSoonBlock(
+                                    height: tileHeight,
+                                    width: constraints.maxWidth,
+                                  )
+                                : Wrap(
+                                    spacing: gap,
+                                    runSpacing: gap,
+                                    crossAxisAlignment:
+                                        WrapCrossAlignment.start,
+                                    children: [
+                                      ...items.map(
+                                        (item) => _CategoryPreviewCard(
+                                          item: item,
+                                          parentWidth: tileWidth,
+                                          parentHeight: tileHeight,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                          );
+                        },
+                      ),
+                    ],
+                  );
+                },
               ),
               const SizedBox(height: AppSpace.huge),
             ],
@@ -188,19 +173,6 @@ class _AssetsSectionState extends State<AssetsSection> {
         ),
       ),
     );
-  }
-
-  double generateWidth() {
-    if (AppSizing.isXMobile(context)) {
-      return AppSizing.kWPercentage(context, 90);
-    }
-    if (AppSizing.isMobile(context)) {
-      return AppSizing.kWPercentage(context, 42);
-    } else if (AppSizing.isTablet(context)) {
-      return AppSizing.kWPercentage(context, 19);
-    } else {
-      return AppSizing.kWPercentage(context, 20);
-    }
   }
 }
 
@@ -239,29 +211,30 @@ class _CategoryPreviewCardState extends State<_CategoryPreviewCard> {
           context.go(
               "/components/${widget.item.category.link()}/${widget.item.subCategory.link()}");
         },
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            DeviceSectionFrame(
-              deviceAlignment: widget.item.alignment,
-              parentWidth: widget.parentWidth,
-              parentHeight: widget.parentHeight,
-              childWidth: AppSizing.kWPercentage(context, 10),
-              childHeight: AppSizing.kWPercentage(context, 22),
-              child: widget.item.widget,
-            ),
-            const SizedBox(height: AppSpace.md),
-            Text(
-              formatted,
-              style: AppTypography.sans(
-                color:
-                    _hovered ? tokens.foreground : tokens.mutedForeground,
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
+        child: SizedBox(
+          width: widget.parentWidth,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              DeviceSectionFrame(
+                deviceAlignment: widget.item.alignment,
+                parentWidth: widget.parentWidth,
+                parentHeight: widget.parentHeight,
+                childWidth: widget.parentWidth * 0.5,
+                childHeight: widget.parentWidth * 1.1,
+                child: widget.item.widget,
               ),
-            ),
-            const SizedBox(height: AppSpace.sm),
-          ],
+              const SizedBox(height: AppSpace.md),
+              Text(
+                formatted,
+                style: AppTypography.sans(
+                  color: _hovered ? tokens.foreground : tokens.mutedForeground,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

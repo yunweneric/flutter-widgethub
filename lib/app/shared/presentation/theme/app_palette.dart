@@ -7,12 +7,18 @@ library;
 
 import 'package:flutter/material.dart';
 
-/// The six palettes the user can pick from in the theme picker.
+/// The palettes the user can pick from in the theme picker. The first
+/// entry is the house look and the fallback for anything unrecognised.
 enum AppThemeVariant {
+  blue(
+    id: 'blue',
+    label: 'WidgetHub Blue',
+    description: 'The house look — the logo blue on cool grey.',
+  ),
   teal(
     id: 'teal',
     label: 'Teal Desk',
-    description: 'The house look — saturated teal on warm stone.',
+    description: 'Saturated teal on warm stone.',
   ),
   indigo(
     id: 'indigo',
@@ -59,7 +65,7 @@ enum AppThemeVariant {
         return variant;
       }
     }
-    return AppThemeVariant.teal;
+    return AppThemeVariant.blue;
   }
 }
 
@@ -184,6 +190,7 @@ class AppPalettes {
   static const _darkMuted = Color(0xB3FFFFFF); // white70
 
   static AppPalette of(AppThemeVariant variant) => switch (variant) {
+        AppThemeVariant.blue => blue,
         AppThemeVariant.teal => teal,
         AppThemeVariant.indigo => indigo,
         AppThemeVariant.violet => violet,
@@ -191,6 +198,43 @@ class AppPalettes {
         AppThemeVariant.rose => rose,
         AppThemeVariant.graphite => graphite,
       };
+
+  /// The brand palette, keyed to the logo: the deep wordmark blue carries
+  /// the light stage, and the lighter stripe blue becomes the dark-stage
+  /// accent where the deep blue would sink into the background.
+  static const blue = AppPalette(
+    variant: AppThemeVariant.blue,
+    light: AppScheme(
+      brand: Color(0xFF1A5CA8),
+      onBrand: Colors.white,
+      accent: Color(0xFF1A5CA8),
+      brandFill: Color(0xFFE8F1FA),
+      brandFillBorder: Color(0xFFC9DEF2),
+      onBrandFill: Color(0xFF14487F),
+      background: Color(0xFFF8FAFC),
+      sidebar: Colors.white,
+      card: Colors.white,
+      border: Color(0xFFE2E8F0),
+      foreground: Color(0xFF121A24),
+      muted: Color(0xFF64748B),
+      active: Color(0xFFEDF2F8),
+    ),
+    dark: AppScheme(
+      brand: Color(0xFF1F6ABE),
+      onBrand: Colors.white,
+      accent: Color(0xFF4FB0E6),
+      brandFill: Color(0xFF10294A),
+      brandFillBorder: Color(0xFF2A6FBF),
+      onBrandFill: Color(0xFFCFE3F7),
+      background: Color(0xFF0C151F),
+      sidebar: Color(0xFF09111A),
+      card: Color(0xFF14202D),
+      border: _darkBorder,
+      foreground: Colors.white,
+      muted: _darkMuted,
+      active: Color(0xFF1A2836),
+    ),
+  );
 
   static const teal = AppPalette(
     variant: AppThemeVariant.teal,

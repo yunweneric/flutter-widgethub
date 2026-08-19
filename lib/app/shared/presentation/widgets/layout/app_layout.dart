@@ -143,8 +143,6 @@ class _DrawerContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final tokens = context.tokens;
     final componentBloc = getIt.get<ComponentBloc>();
-    final themeBloc = getIt.get<ThemeBloc>();
-    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     final activePath =
         getIt.get<GoRouter>().routeInformationProvider.value.uri.pathSegments;
@@ -165,15 +163,12 @@ class _DrawerContent extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              GestureDetector(
+              AppLogo(
+                width: 90,
                 onTap: () {
                   onClose();
                   context.go(RouteNames.home);
                 },
-                child: Image.asset(
-                  isDark ? AppImages.logoLight : AppImages.logoDark,
-                  width: 90,
-                ),
               ),
               AppIconButton(
                 onPressed: onClose,
@@ -243,67 +238,11 @@ class _DrawerContent extends StatelessWidget {
                 }),
                 style: context.text.muted.copyWith(fontSize: 11),
               ),
-              Row(
-                children: [
-                  const ThemeVariantButton(),
-                  const SizedBox(width: AppSpace.xs),
-                  _ThemeModeButton(
-                    icon: AppIcons.sun,
-                    isActive: !isDark,
-                    onTap: () => themeBloc
-                        .add(ChangeTheme(themeMode: ThemeMode.light)),
-                  ),
-                  const SizedBox(width: AppSpace.xs),
-                  _ThemeModeButton(
-                    icon: AppIcons.moon,
-                    isActive: isDark,
-                    onTap: () =>
-                        themeBloc.add(ChangeTheme(themeMode: ThemeMode.dark)),
-                  ),
-                ],
-              ),
+              const ThemeControlButton(),
             ],
           ),
         ),
       ],
-    );
-  }
-}
-
-class _ThemeModeButton extends StatelessWidget {
-  final String icon;
-  final bool isActive;
-  final VoidCallback onTap;
-
-  const _ThemeModeButton({
-    required this.icon,
-    required this.isActive,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final tokens = context.tokens;
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: 32,
-        height: 32,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: isActive ? tokens.secondary : Colors.transparent,
-          borderRadius: AppRadii.smAll,
-          border: Border.all(
-            color: isActive ? tokens.border : Colors.transparent,
-          ),
-        ),
-        child: AppIcon(
-          icon: icon,
-          size: 14,
-          color:
-              isActive ? tokens.foreground : tokens.mutedForeground,
-        ),
-      ),
     );
   }
 }

@@ -1,0 +1,106 @@
+name: Deploy to GitHub Pages
+
+# Builds the Flutter web bundle and publishes it to GitHub Pages.
+#
+# LOCAL TESTING:
+#   flutter build web --release \
+#     --target lib/app/core/main_prod.dart \
+#     --base-href "/flutter-widgethub/"
+#   cp build/web/index.html build/web/404.html
+#   python3 -m http.server --directory build/web 8080
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+# Pages only ever serves one version; a queued deploy supersedes a
+# running one rather than racing it.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    name: Build web bundle
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Resolve Flutter version
+        id: meta
+        run: |
+          set -euo pipefail
+          if [ -f ".fvmrc" ]; then
+            FLUTTER_VERSION=$(grep -o '"flutter"[[:space:]]*:[[:space:]]*"[^"]*"' .fvmrc | cut -d'"' -f4)
+          fi
+          echo "flutter_version=${FLUTTER_VERSION:-3.38.0}" >> "$GITHUB_OUTPUT"
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ steps.meta.outputs.flutter_version }}
+          channel: stable
+          cache: true
+
+      # A custom domain serves the site from the root; a bare project page
+      # serves it from /<repo>/. Getting this wrong 404s every asset —
+      # including flutter_bootstrap.js, which leaves the page stuck on its
+      # loading curtain — so it is derived rather than hard-coded.
+      - name: Resolve base href
+        id: site
+        run: |
+          set -euo pipefail
+          if [ -f "web/CNAME" ]; then
+            DOMAIN=$(tr -d '[:space:]' < web/CNAME)
+            echo "base_href=/" >> "$GITHUB_OUTPUT"
+            echo "Custom domain: ${DOMAIN} — base href /"
+          else
+            echo "base_href=/${{ github.event.repository.name }}/" >> "$GITHUB_OUTPUT"
+            echo "Project page — base href /${{ github.event.repository.name }}/"
+          fi
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Analyze code
+        run: flutter analyze --no-fatal-infos --no-fatal-warnings
+
+      - name: Build web bundle
+        run: |
+          flutter build web \
+            --release \
+            --target lib/app/core/main_prod.dart \
+            --base-href "${{ steps.site.outputs.base_href }}" \
+            --pwa-strategy none
+
+      # The app uses path URL strategy, so /components/blocks is a real URL
+      # the browser asks Pages for directly on reload or deep link. Pages has
+      # no rewrite rules; serving index.html as the 404 body hands those
+      # requests to the router instead of a "file not found".
+      - name: Add SPA fallback
+        run: cp build/web/index.html build/web/404.html
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/web
+
+  deploy:
+    name: Publish to GitHub Pages
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

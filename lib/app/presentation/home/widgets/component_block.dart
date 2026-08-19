@@ -12,7 +12,15 @@ class ComponentBlock extends StatefulWidget {
   final AppCategoryGroupModel item;
   final bool isActive;
 
-  const ComponentBlock({super.key, required this.isActive, required this.item});
+  /// Measured column width; falls back to a viewport share when unset.
+  final double? width;
+
+  const ComponentBlock({
+    super.key,
+    required this.isActive,
+    required this.item,
+    this.width,
+  });
 
   @override
   State<ComponentBlock> createState() => _ComponentBlockState();
@@ -32,9 +40,8 @@ class _ComponentBlockState extends State<ComponentBlock> {
           Text(
             widget.item.category.describe(),
             style: AppTypography.sans(
-              color: widget.isActive
-                  ? tokens.foreground
-                  : tokens.mutedForeground,
+              color:
+                  widget.isActive ? tokens.foreground : tokens.mutedForeground,
               fontSize: 16,
               fontWeight: FontWeight.w600,
               letterSpacing: -0.2,
@@ -52,12 +59,13 @@ class _ComponentBlockState extends State<ComponentBlock> {
         ],
       ),
       builder: (context, value, child) {
+        final blockWidth = widget.width ?? AppSizing.kWPercentage(context, 20);
         return SizedBox(
-          width: AppSizing.kWPercentage(context, 20),
+          width: blockWidth,
           child: Column(
             children: [
               Divider(
-                endIndent: value * AppSizing.kWPercentage(context, 20),
+                endIndent: value * blockWidth,
                 thickness: 2,
                 color: widget.isActive ? tokens.accent : tokens.border,
               ),

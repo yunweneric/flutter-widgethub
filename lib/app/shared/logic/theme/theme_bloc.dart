@@ -18,7 +18,7 @@ class ThemeBloc extends HydratedBloc<ThemeEvent, ThemeState> {
   ThemeBloc()
       : super(ThemeInitial(
           themeMode: ThemeMode.system,
-          variant: AppThemeVariant.teal,
+          variant: AppThemeVariant.blue,
         )) {
     on<ChangeTheme>((event, emit) {
       emit(UpdateTheme(themeMode: event.themeMode, variant: state.variant));
@@ -28,6 +28,11 @@ class ThemeBloc extends HydratedBloc<ThemeEvent, ThemeState> {
     });
   }
 
+  /// Bumped whenever the house variant changes, so sessions that stored a
+  /// pick under the previous default land on the new one instead of being
+  /// stuck on a look they never chose.
+  static const int _schemaVersion = 2;
+
   @override
   ThemeState? fromJson(Map<String, dynamic> json) {
     final ThemeMode mode = switch (json['themeMode']) {
@@ -35,14 +40,18 @@ class ThemeBloc extends HydratedBloc<ThemeEvent, ThemeState> {
       'dark' => ThemeMode.dark,
       _ => ThemeMode.system,
     };
+    final bool current = json['v'] == _schemaVersion;
     return UpdateTheme(
       themeMode: mode,
-      variant: AppThemeVariant.fromId(json['variant'] as String?),
+      variant: current
+          ? AppThemeVariant.fromId(json['variant'] as String?)
+          : AppThemeVariant.blue,
     );
   }
 
   @override
   Map<String, dynamic>? toJson(ThemeState state) => {
+        'v': _schemaVersion,
         'themeMode': state.themeMode.name,
         'variant': state.variant.id,
       };
