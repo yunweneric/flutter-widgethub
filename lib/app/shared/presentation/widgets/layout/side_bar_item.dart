@@ -69,8 +69,7 @@ class _SideBarItemState extends State<SideBarItem> {
                 width: 3,
                 height: 20,
                 decoration: BoxDecoration(
-                  color:
-                      widget.isActive ? tokens.accent : Colors.transparent,
+                  color: widget.isActive ? tokens.accent : Colors.transparent,
                   borderRadius: BorderRadius.circular(2),
                 ),
               ),

@@ -29,8 +29,7 @@ class _TemplateCardState extends State<TemplateCard> {
     final tokens = context.tokens;
     final componentDetails = widget.component.codeComponents[widget.index];
     final double cardWidth = widget.width ??
-        AppSizing.kWPercentage(
-            context, AppSizing.isMobile(context) ? 100 : 35);
+        AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 35);
 
     return MouseRegion(
       cursor: SystemMouseCursors.click,

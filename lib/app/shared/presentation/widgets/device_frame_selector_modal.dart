@@ -4,7 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/shared/logic/device_frame/device_frame_bloc.dart';
+import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
+import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 
 /// Modal dialog for selecting a device frame.
 ///
@@ -78,8 +80,8 @@ class DeviceFrameSelectorModal extends StatelessWidget {
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                       IconButton(
-                        icon: Icon(
-                          Icons.close,
+                        icon: AppIcon(
+                          icon: AppIcons.close,
                           size: 20.w,
                           color: Theme.of(context).iconTheme.color,
                         ),
@@ -244,8 +246,8 @@ class _DeviceCard extends StatelessWidget {
                       screen: Container(
                         color: Theme.of(context).scaffoldBackgroundColor,
                         child: Center(
-                          child: Icon(
-                            Icons.phone_android,
+                          child: AppIcon(
+                            icon: AppIcons.mobile,
                             size: 12.w,
                             color: Theme.of(context)
                                 .iconTheme
@@ -275,8 +277,8 @@ class _DeviceCard extends StatelessWidget {
               bottom: 5,
               left: 0,
               right: 0,
-              child: Icon(
-                Icons.check_circle,
+              child: AppIcon(
+                icon: AppIcons.checkCircle,
                 size: 18.w,
                 color: Theme.of(context).primaryColor,
               ),

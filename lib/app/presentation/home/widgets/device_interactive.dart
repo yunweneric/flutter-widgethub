@@ -10,24 +10,26 @@ import 'package:flutter/material.dart';
 import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
 import 'package:flutterui/app/shared/presentation/theme/app_typography.dart';
 import 'package:flutterui/app/shared/presentation/utils/colors.dart';
+import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/code_highlight.dart';
 import 'package:flutterui/app/shared/presentation/widgets/device_frame.dart';
+import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 
 /// One selectable accent in the demo.
 class _Accent {
   final Color color;
   final String labelKey;
-  final IconData icon;
+  final AppIconData icon;
 
   const _Accent(this.color, this.labelKey, this.icon);
 }
 
 const List<_Accent> _accents = [
-  _Accent(Color(0xFFE11D48), 'red', Icons.home_rounded),
-  _Accent(Color(0xFF0D9488), 'teal', Icons.notifications_rounded),
-  _Accent(Color(0xFF2563EB), 'blue', Icons.verified_user_rounded),
+  _Accent(Color(0xFFE11D48), 'red', AppIcons.home),
+  _Accent(Color(0xFF0D9488), 'teal', AppIcons.notification),
+  _Accent(Color(0xFF2563EB), 'blue', AppIcons.verified),
 ];
 
 class DeviceInteractive extends StatefulWidget {
@@ -98,7 +100,7 @@ class _DeviceInteractiveState extends State<DeviceInteractive> {
             const SizedBox(height: AppSpace.md),
             Row(
               children: [
-                Icon(Icons.touch_app_rounded, size: 14, color: tokens.muted),
+                AppIcon(icon: AppIcons.touch, size: 14, color: tokens.muted),
                 const SizedBox(width: AppSpace.sm),
                 Flexible(
                   child: Text(
@@ -133,8 +135,8 @@ class _PreviewPane extends StatelessWidget {
         // Pane header — mirrors the code pane's filename bar.
         Container(
           width: double.infinity,
-          padding: const EdgeInsets.symmetric(
-              horizontal: AppSpace.lg, vertical: 10),
+          padding:
+              const EdgeInsets.symmetric(horizontal: AppSpace.lg, vertical: 10),
           decoration: BoxDecoration(
             border: Border(bottom: BorderSide(color: tokens.border)),
           ),
@@ -241,9 +243,8 @@ class _AccentSwitcher extends StatelessWidget {
                       : Colors.transparent,
                   borderRadius: AppRadii.smAll,
                   border: Border.all(
-                    color: active
-                        ? accent.withValues(alpha: 0.5)
-                        : tokens.border,
+                    color:
+                        active ? accent.withValues(alpha: 0.5) : tokens.border,
                   ),
                 ),
                 child: Row(
@@ -347,7 +348,7 @@ class _DemoApp extends StatelessWidget {
         items: [
           for (final item in _accents)
             BottomNavigationBarItem(
-              icon: Icon(item.icon),
+              icon: AppIcon(icon: item.icon),
               label: LangUtil.trans(item.labelKey),
             ),
         ],
@@ -374,8 +375,7 @@ class _DotGridPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(_DotGridPainter oldDelegate) =>
-      oldDelegate.color != color;
+  bool shouldRepaint(_DotGridPainter oldDelegate) => oldDelegate.color != color;
 }
 
 /// Snippet shown in the code pane — a trimmed version of the widget

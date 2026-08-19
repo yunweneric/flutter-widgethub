@@ -31,7 +31,11 @@ class AppBadge extends StatelessWidget {
     final tokens = context.tokens;
 
     final (Color bg, Color fg, Color? border) = switch (variant) {
-      AppBadgeVariant.primary => (tokens.primary, tokens.primaryForeground, null),
+      AppBadgeVariant.primary => (
+          tokens.primary,
+          tokens.primaryForeground,
+          null
+        ),
       AppBadgeVariant.secondary => (
           tokens.secondary,
           tokens.secondaryForeground,

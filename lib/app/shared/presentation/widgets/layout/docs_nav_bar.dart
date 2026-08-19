@@ -70,19 +70,29 @@ class DocsNavBar extends StatelessWidget {
           Expanded(
             child: LayoutBuilder(
               builder: (context, constraints) {
+                final double available = constraints.maxWidth;
+
+                // The bar sheds its optional parts before it can overflow.
+                // Section links go first — the sidebar already navigates —
+                // then the language picker.
+                final bool showLinks = available >= 720;
+                final bool showLanguage = available >= 620;
+
                 return Padding(
                   padding: EdgeInsets.only(
-                    left: contentInset(constraints.maxWidth),
+                    left: contentInset(available),
                     right: AppSpace.xl,
                   ),
                   child: Row(
                     children: [
-                      const _DocsNavLinks(),
+                      if (showLinks) const _DocsNavLinks(),
                       const Spacer(),
                       const AppSearchBar(),
                       const SizedBox(width: AppSpace.sm),
-                      const LanguageButton(),
-                      const SizedBox(width: AppSpace.xs),
+                      if (showLanguage) ...[
+                        const LanguageButton(),
+                        const SizedBox(width: AppSpace.xs),
+                      ],
                       const DeviceFrameSelectorButton(),
                       const SizedBox(width: AppSpace.xs),
                       const GitHubIconWithStars(

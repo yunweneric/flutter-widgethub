@@ -49,8 +49,7 @@ class _HomeMobileNavState extends State<HomeMobileNav> {
               border: Border.all(color: tokens.border),
               boxShadow: [
                 BoxShadow(
-                  color:
-                      Colors.black.withValues(alpha: isDark ? 0.3 : 0.06),
+                  color: Colors.black.withValues(alpha: isDark ? 0.3 : 0.06),
                   blurRadius: 24,
                   offset: const Offset(0, 8),
                 ),

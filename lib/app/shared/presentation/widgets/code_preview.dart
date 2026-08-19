@@ -10,6 +10,7 @@ import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/chip.dart';
 import 'package:flutterui/app/shared/presentation/widgets/code_highlight.dart';
 import 'package:flutterui/app/shared/presentation/widgets/device_frame.dart';
+import 'package:flutterui/app/shared/presentation/widgets/fullscreen_preview.dart';
 import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 import 'package:flutterui/app/shared/presentation/widgets/ui/app_tabs.dart';
 
@@ -48,7 +49,7 @@ class _CodePreviewState extends State<CodePreview> {
                   items: [
                     AppTabItem(
                       label: LangUtil.trans("preview"),
-                      icon: const AppIcon(icon: AppIcons.tab),
+                      icon: const AppIcon(icon: AppIcons.preview),
                     ),
                     AppTabItem(
                       label: LangUtil.trans("code"),
@@ -57,11 +58,18 @@ class _CodePreviewState extends State<CodePreview> {
                   ],
                 ),
                 if (!isCode)
-                  _DeviceSelector(
-                    component: widget.component,
-                    selectedDevice: selectedDevice,
-                    onDeviceSelected: (device) =>
-                        setState(() => selectedDevice = device),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      _DeviceSelector(
+                        component: widget.component,
+                        selectedDevice: selectedDevice,
+                        onDeviceSelected: (device) =>
+                            setState(() => selectedDevice = device),
+                      ),
+                      const SizedBox(width: AppSpace.xs),
+                      FullscreenPreviewButton(component: widget.component),
+                    ],
                   ),
               ],
             ),
@@ -98,8 +106,8 @@ class _CodePreviewState extends State<CodePreview> {
                   : Container(
                       key: const ValueKey('preview'),
                       width: double.infinity,
-                      padding: const EdgeInsets.symmetric(
-                          vertical: AppSpace.xxl),
+                      padding:
+                          const EdgeInsets.symmetric(vertical: AppSpace.xxl),
                       decoration: BoxDecoration(
                         color: tokens.background,
                         borderRadius: AppRadii.lgAll,

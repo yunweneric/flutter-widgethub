@@ -148,7 +148,8 @@ class AppTheme {
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: t.foreground,
-          padding: const EdgeInsets.symmetric(horizontal: AppSpace.md, vertical: 10),
+          padding:
+              const EdgeInsets.symmetric(horizontal: AppSpace.md, vertical: 10),
           minimumSize: const Size(0, 40),
           shape: RoundedRectangleBorder(borderRadius: AppRadii.mdAll),
           textStyle: textTheme.labelLarge,
@@ -159,7 +160,8 @@ class AppTheme {
       ),
 
       inputDecorationTheme: InputDecorationTheme(
-        contentPadding: const EdgeInsets.symmetric(horizontal: AppSpace.md, vertical: 12),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: AppSpace.md, vertical: 12),
         hintStyle: textTheme.bodyMedium,
         labelStyle: textTheme.bodyMedium,
         floatingLabelStyle: textTheme.bodySmall?.copyWith(color: t.muted),
@@ -185,8 +187,8 @@ class AppTheme {
         backgroundColor: isDark ? t.active : t.card,
         selectedColor: t.brandFill,
         side: BorderSide(color: isDark ? Colors.white24 : t.border),
-        padding:
-            const EdgeInsets.symmetric(horizontal: AppSpace.sm, vertical: AppSpace.xs),
+        padding: const EdgeInsets.symmetric(
+            horizontal: AppSpace.sm, vertical: AppSpace.xs),
         labelStyle: AppTypography.sans(
           color: t.foreground,
           fontSize: 12,

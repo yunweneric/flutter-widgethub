@@ -113,9 +113,8 @@ class AppStatusStyle {
     switch (status) {
       case AppStatus.success:
         return AppStatusStyle(
-          accent: isDark
-              ? AppStatusColors.successLift
-              : AppStatusColors.complete,
+          accent:
+              isDark ? AppStatusColors.successLift : AppStatusColors.complete,
           fill: isDark
               ? AppStatusColors.successDeep
               : AppStatusColors.successSoft,
@@ -135,9 +134,8 @@ class AppStatusStyle {
         );
       case AppStatus.warning:
         return AppStatusStyle(
-          accent: isDark
-              ? AppStatusColors.warningLift
-              : AppStatusColors.warning,
+          accent:
+              isDark ? AppStatusColors.warningLift : AppStatusColors.warning,
           fill: isDark
               ? AppStatusColors.warningDeep
               : AppStatusColors.warningSoft,
@@ -222,7 +220,7 @@ class AppTokens {
     return AppTokens(
       // A theme built outside AppTheme carries no extension — fall back
       // to the house look.
-      palette: theme.extension<AppPalette>() ?? AppPalettes.teal,
+      palette: theme.extension<AppPalette>() ?? AppPalettes.blue,
       isDark: theme.brightness == Brightness.dark,
     );
   }

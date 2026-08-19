@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 
@@ -25,7 +25,7 @@ class _InputssideBarCategoriestate extends State<InputsBlocItem> {
                 hintText: "Search",
                 prefixIcon: CircleAvatar(
                   backgroundColor: Colors.transparent,
-                  child: SvgPicture.asset(AppIcons.search, width: 20),
+                  child: AppIcon(icon: AppIcons.search, size: 20),
                 ),
               ),
             ),

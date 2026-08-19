@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
+import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 
 class AuthBlocItem extends StatefulWidget {
   const AuthBlocItem({super.key});
@@ -14,12 +15,12 @@ class _AuthsideBarCategoriestate extends State<AuthBlocItem> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Builder(builder: (context) {
-        List<String> icons = [
-          "assets/icons/google.svg",
-          "assets/icons/tiktok.svg",
-          "assets/icons/linkedin.svg",
-          "assets/icons/youtube.svg",
-          "assets/icons/spotify.svg",
+        const List<AppIconData> icons = [
+          AppIcons.google,
+          AppIcons.tiktok,
+          AppIcons.linkedIn,
+          AppIcons.youtube,
+          AppIcons.spotify,
         ];
         return SafeArea(
           child: Column(
@@ -51,7 +52,7 @@ class _AuthsideBarCategoriestate extends State<AuthBlocItem> {
                       ),
                       onPressed: () {},
                       label: const Text("Login"),
-                      icon: const Icon(Icons.arrow_forward_rounded),
+                      icon: const AppIcon(icon: AppIcons.arrowForward),
                     ),
                   ],
                 ),
@@ -66,7 +67,7 @@ class _AuthsideBarCategoriestate extends State<AuthBlocItem> {
                   ...icons.map((item) {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: ClipOval(child: SvgPicture.asset(item, width: 30)),
+                      child: AppIcon(icon: item, size: 30),
                     );
                   })
                 ],

@@ -45,7 +45,7 @@ class ResourceSection extends StatelessWidget {
 
 /// Hoverable resource link row.
 class RowItem extends StatefulWidget {
-  final String leading;
+  final AppIconData leading;
   final String title;
   final VoidCallback onTap;
 

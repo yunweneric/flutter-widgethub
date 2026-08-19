@@ -3,8 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/shared/logic/language_bloc/language_bloc.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_motion.dart';
 import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
 import 'package:flutterui/app/shared/presentation/theme/app_typography.dart';
+import 'package:flutterui/app/shared/presentation/utils/icons.dart';
+import 'package:flutterui/app/shared/presentation/widgets/app_icon_button.dart';
+import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 
 /// Compact language switcher — ghost trigger with a popover menu.
 class LanguageButton extends StatefulWidget {
@@ -63,8 +67,11 @@ class _LanguageButtonState extends State<LanguageButton> {
                       ),
                       if (lang == current) ...[
                         const Spacer(),
-                        Icon(Icons.check,
-                            size: 14, color: tokens.mutedForeground),
+                        AppIcon(
+                          icon: AppIcons.check,
+                          size: 14,
+                          color: tokens.mutedForeground,
+                        ),
                       ],
                     ],
                   ),
@@ -76,29 +83,33 @@ class _LanguageButtonState extends State<LanguageButton> {
             onExit: (_) => setState(() => _hovered = false),
             cursor: SystemMouseCursors.click,
             child: AnimatedContainer(
-              duration: const Duration(milliseconds: 150),
-              height: 36,
-              padding: const EdgeInsets.symmetric(horizontal: AppSpace.md),
+              duration: AppMotion.fast,
+              curve: Curves.easeOut,
+              height: AppActionSurface.size,
+              padding: const EdgeInsets.symmetric(horizontal: AppSpace.sm),
               alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: _hovered ? tokens.active : Colors.transparent,
-                borderRadius: AppRadii.mdAll,
-              ),
+              decoration:
+                  AppActionSurface.decoration(tokens, hovered: _hovered),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
                     current.languageCode.toUpperCase(),
                     style: AppTypography.sans(
-                      color: tokens.mutedForeground,
+                      color: AppActionSurface.foreground(tokens,
+                          hovered: _hovered),
                       fontSize: 13,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w600,
                       height: 1.0,
                     ),
                   ),
-                  const SizedBox(width: 4),
-                  Icon(Icons.keyboard_arrow_down_rounded,
-                      size: 14, color: tokens.mutedForeground),
+                  const SizedBox(width: 2),
+                  AppIcon(
+                    icon: AppIcons.chevronDown,
+                    size: 14,
+                    color:
+                        AppActionSurface.foreground(tokens, hovered: _hovered),
+                  ),
                 ],
               ),
             ),

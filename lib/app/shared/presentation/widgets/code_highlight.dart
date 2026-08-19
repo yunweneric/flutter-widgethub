@@ -192,8 +192,7 @@ class _CopyButtonState extends State<_CopyButton> {
 
   @override
   Widget build(BuildContext context) {
-    final Color fg =
-        widget.hasCopied ? ZincColors.zinc50 : ZincColors.zinc400;
+    final Color fg = widget.hasCopied ? ZincColors.zinc50 : ZincColors.zinc400;
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       onEnter: (_) => setState(() => _hovered = true),
@@ -214,7 +213,11 @@ class _CopyButtonState extends State<_CopyButton> {
             mainAxisSize: MainAxisSize.min,
             children: [
               widget.hasCopied
-                  ? const Icon(Icons.check, size: 14, color: ZincColors.zinc50)
+                  ? const AppIcon(
+                      icon: AppIcons.check,
+                      size: 14,
+                      color: ZincColors.zinc50,
+                    )
                   : AppIcon(icon: AppIcons.clipboard, color: fg, size: 14),
               if (!AppSizing.isMobile(context)) ...[
                 const SizedBox(width: 6),

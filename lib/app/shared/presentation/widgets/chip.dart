@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
 import 'package:flutterui/app/shared/presentation/theme/app_typography.dart';
+import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 
 /// Compact toggle chip used in toolbars (e.g. Preview | Code | Copy).
@@ -8,7 +9,7 @@ import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 /// Restyled to the shadcn look: active = solid secondary surface with
 /// foreground text, inactive = ghost with muted foreground.
 class AppChip extends StatefulWidget {
-  final String icon;
+  final AppIconData icon;
   final String? title;
   final bool? active;
   final EdgeInsetsGeometry? padding;

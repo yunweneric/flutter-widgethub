@@ -8,6 +8,7 @@ import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
 import 'package:flutterui/app/shared/presentation/theme/app_typography.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
+import 'package:flutterui/app/shared/presentation/widgets/app_icon_button.dart';
 import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 
 /// The single theme control: one popover for brightness mode
@@ -96,36 +97,41 @@ class _ThemeControlButtonState extends State<ThemeControlButton> {
             onExit: (_) => setState(() => _hovered = false),
             child: AnimatedContainer(
               duration: AppMotion.fast,
-              width: 36,
-              height: 36,
+              curve: Curves.easeOut,
+              width: AppActionSurface.size,
+              height: AppActionSurface.size,
               alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: _hovered ? tokens.active : Colors.transparent,
-                borderRadius: AppRadii.mdAll,
-              ),
-              // Swatch + tiny mode glyph: one control for the whole theme.
-              child: Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  _Swatch(color: tokens.brand, size: 18, ring: tokens.border),
-                  Positioned(
-                    right: -4,
-                    bottom: -4,
-                    child: Container(
-                      padding: const EdgeInsets.all(2),
-                      decoration: BoxDecoration(
-                        color: tokens.card,
-                        shape: BoxShape.circle,
-                        border: Border.all(color: tokens.border),
-                      ),
+              decoration:
+                  AppActionSurface.decoration(tokens, hovered: _hovered),
+              // Mode glyph carries the control; the active variant is told
+              // by a brand dot ringed in the surface colour, rather than a
+              // flat swatch with a bubble hanging off the corner.
+              child: SizedBox(
+                width: 22,
+                height: 22,
+                child: Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    Center(
                       child: AppIcon(
                         icon: isDark ? AppIcons.moon : AppIcons.sun,
-                        size: 8,
-                        color: tokens.muted,
+                        size: 16,
+                        color: AppActionSurface.foreground(tokens,
+                            hovered: _hovered),
                       ),
                     ),
-                  ),
-                ],
+                    Positioned(
+                      right: -1,
+                      bottom: -1,
+                      child: _Swatch(
+                        color: tokens.brand,
+                        size: 9,
+                        ring: AppActionSurface.fill(tokens, hovered: _hovered),
+                        ringWidth: 1.5,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -136,7 +142,7 @@ class _ThemeControlButtonState extends State<ThemeControlButton> {
 }
 
 class _ModeButton extends StatefulWidget {
-  final String icon;
+  final AppIconData icon;
   final String label;
   final bool isActive;
   final AppTokens tokens;
@@ -179,9 +185,7 @@ class _ModeButtonState extends State<_ModeButton> {
                       : Colors.transparent,
               borderRadius: AppRadii.smAll,
               border: Border.all(
-                color: widget.isActive
-                    ? t.brandFillBorder
-                    : Colors.transparent,
+                color: widget.isActive ? t.brandFillBorder : Colors.transparent,
               ),
             ),
             child: Column(
@@ -257,7 +261,7 @@ class _VariantRow extends StatelessWidget {
         ),
         if (selected) ...[
           const SizedBox(width: AppSpace.sm),
-          Icon(Icons.check, size: 14, color: tokens.accent),
+          AppIcon(icon: AppIcons.check, size: 14, color: tokens.accent),
         ],
       ],
     );
@@ -268,8 +272,14 @@ class _Swatch extends StatelessWidget {
   final Color color;
   final double size;
   final Color ring;
+  final double ringWidth;
 
-  const _Swatch({required this.color, required this.size, required this.ring});
+  const _Swatch({
+    required this.color,
+    required this.size,
+    required this.ring,
+    this.ringWidth = 1,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -279,7 +289,7 @@ class _Swatch extends StatelessWidget {
       decoration: BoxDecoration(
         color: color,
         shape: BoxShape.circle,
-        border: Border.all(color: ring),
+        border: Border.all(color: ring, width: ringWidth),
       ),
     );
   }

@@ -9,9 +9,11 @@ import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
 import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart';
 import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
 import 'package:flutterui/app/shared/presentation/theme/app_typography.dart';
+import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/device_section_frame.dart';
+import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 import 'package:flutterui/app/shared/presentation/widgets/ui/app_button.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -81,7 +83,7 @@ class _AssetsSectionState extends State<AssetsSection> {
               AppButton(
                 label: LangUtil.trans("browseAllAssets"),
                 variant: AppButtonVariant.outline,
-                trailing: const Icon(Icons.arrow_forward_rounded, size: 16),
+                trailing: const AppIcon(icon: AppIcons.arrowForward, size: 16),
                 onPressed: () {
                   componentBloc.add(
                     UpdateActiveCategoryEvent(

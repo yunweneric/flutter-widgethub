@@ -1,27 +1,109 @@
-/// Icon asset path const Stringants.
+/// The application's icon catalogue.
 ///
-/// Defines all icon asset paths used throughout the application.
-/// All icons are stored as SVG files in the assets/icons directory.
+/// Every glyph in the app chrome comes from [Hugeicons](https://hugeicons.com)
+/// (stroke-rounded set) so the whole UI shares one stroke weight, corner
+/// radius and optical size. The constants below are semantic names — call
+/// sites ask for `AppIcons.search`, never for a specific Hugeicons symbol —
+/// which keeps a swap of the underlying glyph a one-line change here.
+///
+/// Render them with `AppIcon`, which inherits its colour from the surrounding
+/// [IconTheme] the way Flutter's own `Icon` does.
+library;
+
+import 'package:hugeicons/hugeicons.dart';
+
+/// The shape Hugeicons hands back for a single glyph.
+///
+/// Aliased so widgets can declare `AppIconData` fields without leaking the
+/// package's raw `List<List<dynamic>>` representation into every signature.
+typedef AppIconData = List<List<dynamic>>;
+
+/// Semantic icon constants used throughout the application.
 class AppIcons {
-  static const String code = "assets/icons/code.svg";
-  static const String tab = "assets/icons/tab.svg";
-  static const String menu = "assets/icons/menu.svg";
-  static const String clipboard = "assets/icons/clipboard.svg";
-  static const String desktop = "assets/icons/desktop.svg";
-  static const String tablet = "assets/icons/tablet.svg";
-  static const String mobile = "assets/icons/mobile.svg";
-  static const String github = "assets/icons/github.svg";
-  static const String chevron_down = "assets/icons/chevron_down.svg";
-  static const String tiktok = "assets/icons/tiktok.svg";
-  static const String sun = "assets/icons/sun.svg";
-  static const String search = "assets/icons/search.svg";
-  static const String moon = "assets/icons/moon.svg";
-  static const String back = "assets/icons/back.svg";
-  static const String next = "assets/icons/next.svg";
-  static const String linkedIn = "assets/icons/linkedIn.svg";
-  static const String x = "assets/icons/x.svg";
-  static const String diamond = "assets/icons/diamond.svg";
-  static const String card = "assets/icons/card.svg";
-  static const String link = "assets/icons/link.svg";
-  static const String download = "assets/icons/download.svg";
+  const AppIcons._();
+
+  // ---------------------------------------------------------------------
+  // Navigation & chrome
+  // ---------------------------------------------------------------------
+  static const AppIconData menu = HugeIcons.strokeRoundedMenu01;
+  static const AppIconData search = HugeIcons.strokeRoundedSearch01;
+  static const AppIconData close = HugeIcons.strokeRoundedCancel01;
+  static const AppIconData back = HugeIcons.strokeRoundedArrowLeft02;
+  static const AppIconData next = HugeIcons.strokeRoundedArrowRight02;
+  static const AppIconData chevronLeft = HugeIcons.strokeRoundedArrowLeft01;
+  static const AppIconData chevronRight = HugeIcons.strokeRoundedArrowRight01;
+  static const AppIconData chevronDown = HugeIcons.strokeRoundedArrowDown01;
+  static const AppIconData arrowForward = HugeIcons.strokeRoundedArrowRight02;
+  static const AppIconData arrowUpRight = HugeIcons.strokeRoundedArrowUpRight01;
+
+  // ---------------------------------------------------------------------
+  // Status
+  // ---------------------------------------------------------------------
+  static const AppIconData check = HugeIcons.strokeRoundedTick02;
+  static const AppIconData checkCircle =
+      HugeIcons.strokeRoundedCheckmarkCircle02;
+  static const AppIconData star = HugeIcons.strokeRoundedStar;
+  static const AppIconData flash = HugeIcons.strokeRoundedFlash;
+  static const AppIconData notification = HugeIcons.strokeRoundedNotification01;
+
+  // ---------------------------------------------------------------------
+  // Docs & code surfaces
+  // ---------------------------------------------------------------------
+  static const AppIconData code = HugeIcons.strokeRoundedSourceCode;
+
+  /// Preview tab in the component viewer.
+  static const AppIconData preview = HugeIcons.strokeRoundedLayout01;
+  static const AppIconData clipboard = HugeIcons.strokeRoundedCopy01;
+  static const AppIconData link = HugeIcons.strokeRoundedLink02;
+  static const AppIconData download = HugeIcons.strokeRoundedDownload04;
+  static const AppIconData fullscreen = HugeIcons.strokeRoundedFullScreen;
+  static const AppIconData fullscreenExit =
+      HugeIcons.strokeRoundedMinimizeScreen;
+
+  // ---------------------------------------------------------------------
+  // Component catalogue
+  // ---------------------------------------------------------------------
+  static const AppIconData blocks = HugeIcons.strokeRoundedGridView;
+  static const AppIconData templates = HugeIcons.strokeRoundedDashboardSquare01;
+  static const AppIconData diamond = HugeIcons.strokeRoundedDiamond01;
+  static const AppIconData card = HugeIcons.strokeRoundedCreditCard;
+  static const AppIconData cart = HugeIcons.strokeRoundedShoppingCart01;
+  static const AppIconData home = HugeIcons.strokeRoundedHome01;
+  static const AppIconData unlocked = HugeIcons.strokeRoundedSquareUnlock01;
+  static const AppIconData verified = HugeIcons.strokeRoundedCheckmarkBadge01;
+  static const AppIconData touch = HugeIcons.strokeRoundedTouch01;
+
+  // ---------------------------------------------------------------------
+  // Devices & platforms
+  // ---------------------------------------------------------------------
+  static const AppIconData mobile = HugeIcons.strokeRoundedSmartPhone01;
+  static const AppIconData tablet = HugeIcons.strokeRoundedTablet01;
+  static const AppIconData frame = HugeIcons.strokeRoundedDeviceAccess;
+  static const AppIconData desktop = HugeIcons.strokeRoundedComputer;
+  static const AppIconData web = HugeIcons.strokeRoundedGlobal;
+  static const AppIconData android = HugeIcons.strokeRoundedAndroid;
+  static const AppIconData apple = HugeIcons.strokeRoundedApple;
+
+  /// Hugeicons ships no Linux mark in the free set; a terminal reads as the
+  /// closest neutral stand-in.
+  static const AppIconData linux = HugeIcons.strokeRoundedComputerTerminal01;
+
+  // ---------------------------------------------------------------------
+  // Theme & locale
+  // ---------------------------------------------------------------------
+  static const AppIconData sun = HugeIcons.strokeRoundedSun03;
+  static const AppIconData moon = HugeIcons.strokeRoundedMoon02;
+
+  // ---------------------------------------------------------------------
+  // Social
+  // ---------------------------------------------------------------------
+  static const AppIconData github = HugeIcons.strokeRoundedGithub;
+  static const AppIconData x = HugeIcons.strokeRoundedNewTwitter;
+  static const AppIconData linkedIn = HugeIcons.strokeRoundedLinkedin02;
+  static const AppIconData tiktok = HugeIcons.strokeRoundedTiktok;
+  static const AppIconData youtube = HugeIcons.strokeRoundedYoutube;
+  static const AppIconData facebook = HugeIcons.strokeRoundedFacebook01;
+  static const AppIconData google = HugeIcons.strokeRoundedGoogle;
+  static const AppIconData spotify = HugeIcons.strokeRoundedSpotify;
+  static const AppIconData telegram = HugeIcons.strokeRoundedTelegram;
 }

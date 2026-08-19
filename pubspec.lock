@@ -493,6 +493,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  hugeicons:
+    dependency: "direct main"
+    description:
+      name: hugeicons
+      sha256: "5a4bb3f3e0a34df5ab8c41f43eb8c63382af8b3dcb8d63e8231b3d4dda3433e5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.7"
   hydrated_bloc:
     dependency: "direct main"
     description:

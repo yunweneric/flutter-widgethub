@@ -60,8 +60,7 @@ class ComponentDetailsFooter extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               if (canPrevious) previous,
-              if (canPrevious && canNext)
-                const SizedBox(height: AppSpace.md),
+              if (canPrevious && canNext) const SizedBox(height: AppSpace.md),
               if (canNext) next,
             ],
           );

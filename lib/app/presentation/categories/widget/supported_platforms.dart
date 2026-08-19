@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
 import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
 import 'package:flutterui/app/shared/presentation/theme/app_typography.dart';
@@ -36,12 +36,10 @@ class SupportPlatformSection extends StatelessWidget {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    SvgPicture.string(
-                      item.icon(),
-                      colorFilter:
-                          ColorFilter.mode(tokens.accent, BlendMode.srcIn),
-                      width: 14,
-                      height: 14,
+                    AppIcon(
+                      icon: item.icon(),
+                      color: tokens.accent,
+                      size: 14,
                     ),
                     const SizedBox(width: 6),
                     Text(

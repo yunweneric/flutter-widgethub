@@ -33,6 +33,7 @@ export 'logic/device_frame/device_frame_bloc.dart';
 
 // Layout Widgets
 export 'presentation/widgets/layout/app_layout.dart';
+export 'presentation/widgets/layout/docs_nav_bar.dart';
 export 'presentation/widgets/layout/home_nav_bar.dart';
 export 'presentation/widgets/layout/home_mobile_nav.dart';
 export 'presentation/widgets/layout/main_content.dart';
@@ -56,6 +57,7 @@ export 'presentation/widgets/device_frame.dart';
 export 'presentation/widgets/device_section_frame.dart';
 export 'presentation/widgets/device_frame_selector_button.dart';
 export 'presentation/widgets/device_frame_selector_modal.dart';
+export 'presentation/widgets/fullscreen_preview.dart';
 export 'presentation/widgets/github_icon_with_stars.dart';
 export 'presentation/widgets/icon.dart';
 export 'presentation/widgets/language_button.dart';

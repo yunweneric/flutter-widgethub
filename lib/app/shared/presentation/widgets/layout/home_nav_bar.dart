@@ -1,20 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterui/app/core/core.dart';
-import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
-import 'package:flutterui/app/shared/presentation/theme/app_typography.dart';
-import 'package:flutterui/app/shared/presentation/widgets/app_logo.dart';
-import 'package:flutterui/app/shared/presentation/widgets/app_search_bar.dart';
-import 'package:flutterui/app/shared/presentation/widgets/device_frame_selector_button.dart';
-import 'package:flutterui/app/shared/presentation/widgets/github_icon_with_stars.dart';
-import 'package:flutterui/app/shared/presentation/widgets/language_button.dart';
-import 'package:flutterui/app/shared/presentation/widgets/layout/docs_nav_bar.dart';
-import 'package:flutterui/app/shared/presentation/widgets/theme_variant_button.dart';
 import 'package:flutterui/app/shared/shared.dart';
 import 'package:go_router/go_router.dart';
 
-/// Floating top navigation (desktop): logo on the left, links centered,
-/// actions on the right — one pill, LingoDesk style.
+/// Top navigation, in whichever shape the current page calls for.
+///
+/// Mobile gets the compact bar; the docs shell gets [DocsNavBar], which
+/// shares the sidebar/content grid; the landing page keeps the floating
+/// pill — logo and links on the left, actions on the right.
 class HomeNavBar extends StatefulWidget {
   final bool isHomeScreenLayout;
 
@@ -43,32 +37,36 @@ class _HomeNavBarState extends State<HomeNavBar> {
         // not, and keeps the floating pill.
         if (!widget.isHomeScreenLayout) return const DocsNavBar();
 
+        // One row, no overlay: links sit beside the logo and the actions
+        // are pushed right by a single Spacer, so the two groups can no
+        // longer collide the way absolutely-centred links did.
         return AppContainer(
           isHomeScreenLayout: widget.isHomeScreenLayout,
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              // Center: nav links.
-              Center(
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    ...links.map((item) => _NavLinkItem(item: item)),
-                  ],
-                ),
-              ),
-              // Left: logo. Right: actions.
-              Row(
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              final double available = constraints.maxWidth;
+
+              // Shed the optional parts before the pill can overflow.
+              final bool showLinks = available >= 900;
+              final bool showLanguage = available >= 600;
+
+              return Row(
                 children: [
                   AppLogo(
                     width: 96,
                     onTap: () => context.go(RouteNames.home),
                   ),
+                  if (showLinks) ...[
+                    const SizedBox(width: AppSpace.lg),
+                    ...links.map((item) => _NavLinkItem(item: item)),
+                  ],
                   const Spacer(),
                   const AppSearchBar(),
                   const SizedBox(width: AppSpace.sm),
-                  const LanguageButton(),
-                  const SizedBox(width: AppSpace.xs),
+                  if (showLanguage) ...[
+                    const LanguageButton(),
+                    const SizedBox(width: AppSpace.xs),
+                  ],
                   const DeviceFrameSelectorButton(),
                   const SizedBox(width: AppSpace.xs),
                   const GitHubIconWithStars(
@@ -79,8 +77,8 @@ class _HomeNavBarState extends State<HomeNavBar> {
                   const SizedBox(width: AppSpace.xs),
                   const ThemeControlButton(),
                 ],
-              ),
-            ],
+              );
+            },
           ),
         );
       },

@@ -73,9 +73,7 @@ class AppTabs extends StatelessWidget {
                   color: active ? tokens.brandFill : Colors.transparent,
                   borderRadius: AppRadii.smAll,
                   border: Border.all(
-                    color: active
-                        ? tokens.brandFillBorder
-                        : Colors.transparent,
+                    color: active ? tokens.brandFillBorder : Colors.transparent,
                   ),
                 ),
                 child: Row(

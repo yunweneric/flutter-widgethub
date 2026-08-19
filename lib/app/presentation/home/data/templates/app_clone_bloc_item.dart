@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
+import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 
 class AppCloneBlocItem extends StatefulWidget {
   const AppCloneBlocItem({super.key});
@@ -14,12 +15,12 @@ class _AppClonesideBarCategoriestate extends State<AppCloneBlocItem> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Builder(builder: (context) {
-        List<String> icons = [
-          "assets/icons/google.svg",
-          "assets/icons/tiktok.svg",
-          "assets/icons/linkedin.svg",
-          "assets/icons/youtube.svg",
-          "assets/icons/spotify.svg",
+        const List<AppIconData> icons = [
+          AppIcons.google,
+          AppIcons.tiktok,
+          AppIcons.linkedIn,
+          AppIcons.youtube,
+          AppIcons.spotify,
         ];
         return Container(
           margin: EdgeInsets.only(top: AppSizing.kHPercentage(context, 22)),
@@ -28,7 +29,7 @@ class _AppClonesideBarCategoriestate extends State<AppCloneBlocItem> {
             spacing: 30,
             children: [
               ...icons.map((item) {
-                return ClipOval(child: SvgPicture.asset(item, width: 30));
+                return AppIcon(icon: item, size: 30);
               }),
             ],
           ),

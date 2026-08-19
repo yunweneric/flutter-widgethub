@@ -25,7 +25,7 @@ enum AppDeviceType {
   /// Returns the icon identifier for this device type.
   ///
   /// Returns the icon name from [AppIcons] corresponding to this device type.
-  String generateIcon() {
+  AppIconData generateIcon() {
     switch (this) {
       case AppDeviceType.MOBILE:
         return AppIcons.mobile;

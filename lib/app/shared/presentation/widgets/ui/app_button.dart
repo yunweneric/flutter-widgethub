@@ -25,10 +25,10 @@ enum AppButtonSize { sm, md, lg, icon }
 /// AppButton(
 ///   label: 'Browse',
 ///   variant: AppButtonVariant.outline,
-///   trailing: Icon(Icons.arrow_forward, size: 16),
+///   trailing: AppIcon(icon: AppIcons.arrowForward, size: 16),
 ///   onPressed: () {},
 /// );
-/// AppButton.icon(icon: Icon(Icons.copy, size: 16), onPressed: () {});
+/// AppButton.icon(icon: AppIcon(icon: AppIcons.clipboard, size: 16), onPressed: () {});
 /// ```
 class AppButton extends StatefulWidget {
   final String? label;
@@ -89,8 +89,7 @@ class _AppButtonState extends State<AppButton> {
 
   double get _fontSize => widget.size == AppButtonSize.sm ? 13 : 14;
 
-  ({Color bg, Color fg, Color? border, Color? glow}) _colors(
-      AppTokens tokens) {
+  ({Color bg, Color fg, Color? border, Color? glow}) _colors(AppTokens tokens) {
     final bool hovered = _hovered;
     switch (widget.variant) {
       case AppButtonVariant.primary:
@@ -195,8 +194,7 @@ class _AppButtonState extends State<AppButton> {
         height: widget.size == AppButtonSize.icon ? 36 : null,
         width: widget.size == AppButtonSize.icon ? 36 : null,
         padding: _padding,
-        alignment:
-            widget.size == AppButtonSize.icon ? Alignment.center : null,
+        alignment: widget.size == AppButtonSize.icon ? Alignment.center : null,
         decoration: BoxDecoration(
           color: colors.bg,
           borderRadius: AppRadii.mdAll,
@@ -225,8 +223,7 @@ class _AppButtonState extends State<AppButton> {
         onTap: disabled ? null : widget.onPressed,
         onTapDown: disabled ? null : (_) => setState(() => _pressed = true),
         onTapUp: disabled ? null : (_) => setState(() => _pressed = false),
-        onTapCancel:
-            disabled ? null : () => setState(() => _pressed = false),
+        onTapCancel: disabled ? null : () => setState(() => _pressed = false),
         child: button,
       ),
     );

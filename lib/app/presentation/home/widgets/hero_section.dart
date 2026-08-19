@@ -1,8 +1,8 @@
 /// Hero section widget for the home screen.
 ///
 /// Landing hero: announcement badge, display headline with the live
-/// component count highlighted, muted lead, CTA pair, and a self-scrolling
-/// wall of live component previews on the right.
+/// component count highlighted, muted lead, CTA pair, and an interactive
+/// phone on the right running real templates you can tap through.
 library;
 
 import 'package:flutter/material.dart';
@@ -16,13 +16,14 @@ import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart
 import 'package:flutterui/app/shared/data/models/component.dart';
 import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
 import 'package:flutterui/app/shared/presentation/theme/app_typography.dart';
+import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/utils/util.dart';
+import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 import 'package:flutterui/app/shared/presentation/widgets/ui/app_badge.dart';
 import 'package:flutterui/app/shared/presentation/widgets/ui/app_button.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
-import 'package:flutterui/components/presentation/templates/leave_review/leave_a_review_widget.dart';
 import 'package:flutterui/components/presentation/templates/nike_zoomer/nike_zoomer_widget.dart';
 import 'package:go_router/go_router.dart';
 
@@ -68,10 +69,18 @@ class _HeroSectionState extends State<HeroSection> {
     );
   }
 
-  /// Newest components first, capped so the wall stays cheap to render.
+  /// Full-screen templates first (they play best as apps), newest first,
+  /// capped so the stage stays cheap to build.
   List<Component> _showcase(List<Component> all) {
-    final list = all.reversed.toList();
-    return list.length > 8 ? list.sublist(0, 8) : list;
+    final templates = <Component>[];
+    final rest = <Component>[];
+    for (final component in all.reversed) {
+      if (component.codeComponents.isEmpty) continue;
+      (component.category == ComponentCategoryEnum.TEMPLATES ? templates : rest)
+          .add(component);
+    }
+    final list = [...templates, ...rest];
+    return list.length > 10 ? list.sublist(0, 10) : list;
   }
 
   @override
@@ -108,8 +117,7 @@ class _HeroSectionState extends State<HeroSection> {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
-                          height: isMobile ? AppSpace.xxl : AppSpace.huge),
+                      SizedBox(height: isMobile ? AppSpace.xxl : AppSpace.huge),
                       if (wide)
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -124,8 +132,7 @@ class _HeroSectionState extends State<HeroSection> {
                         const SizedBox(height: AppSpace.xxl),
                         stage,
                       ],
-                      SizedBox(
-                          height: isMobile ? AppSpace.xxl : AppSpace.huge),
+                      SizedBox(height: isMobile ? AppSpace.xxl : AppSpace.huge),
                       _StatsStrip(state: state),
                     ],
                   );
@@ -193,7 +200,7 @@ class _HeroCopy extends StatelessWidget {
               label: LangUtil.trans("browseAllAssets"),
               variant: AppButtonVariant.outline,
               size: AppButtonSize.lg,
-              trailing: const Icon(Icons.arrow_forward_rounded, size: 16),
+              trailing: const AppIcon(icon: AppIcons.arrowForward, size: 16),
               onPressed: onBrowseAll,
             ),
           ],
@@ -221,7 +228,7 @@ class _HeroCopy extends StatelessWidget {
               children: [
                 Container(width: 1, height: 16, color: tokens.border),
                 const SizedBox(width: AppSpace.lg),
-                Icon(Icons.bolt_rounded, size: 15, color: tokens.accent),
+                AppIcon(icon: AppIcons.flash, size: 15, color: tokens.accent),
                 const SizedBox(width: 6),
                 Text(
                   LangUtil.trans("heroCopyPaste"),
@@ -348,7 +355,6 @@ class _InteractiveStageState extends State<_InteractiveStage> {
   /// Previews shown until the component bloc has loaded.
   static final List<_StageApp> _fallback = [
     const _StageApp(title: 'Nike Zoomer', child: NikeZoomerTemplate()),
-    const _StageApp(title: 'Leave a review', child: LeaveReviewHomeScreen()),
     const _StageApp(title: 'Theme toggle', child: ThemeToggle()),
   ];
 
@@ -413,14 +419,14 @@ class _InteractiveStageState extends State<_InteractiveStage> {
               Positioned(
                 left: 0,
                 child: _StageArrow(
-                  icon: Icons.chevron_left_rounded,
+                  icon: AppIcons.chevronLeft,
                   onTap: () => _select(index - 1 + apps.length),
                 ),
               ),
               Positioned(
                 right: 0,
                 child: _StageArrow(
-                  icon: Icons.chevron_right_rounded,
+                  icon: AppIcons.chevronRight,
                   onTap: () => _select(index + 1),
                 ),
               ),
@@ -461,7 +467,7 @@ class _InteractiveStageState extends State<_InteractiveStage> {
                 label: LangUtil.trans("viewComponent"),
                 variant: AppButtonVariant.link,
                 size: AppButtonSize.sm,
-                trailing: const Icon(Icons.north_east_rounded, size: 14),
+                trailing: const AppIcon(icon: AppIcons.arrowUpRight, size: 14),
                 onPressed: () => widget.onOpen(app.component!),
               ),
           ],
@@ -540,7 +546,15 @@ class _PhoneShell extends StatelessWidget {
                     viewPadding: const EdgeInsets.only(top: 44, bottom: 20),
                     viewInsets: EdgeInsets.zero,
                   ),
-                  child: Scaffold(body: child),
+                  // Its own Navigator, so a template that pushes a route
+                  // navigates inside the phone instead of hijacking the
+                  // whole site.
+                  child: Navigator(
+                    onGenerateRoute: (settings) => MaterialPageRoute<void>(
+                      settings: settings,
+                      builder: (_) => Scaffold(body: child),
+                    ),
+                  ),
                 ),
                 // Dynamic island.
                 Positioned(
@@ -571,7 +585,7 @@ class _PhoneShell extends StatelessWidget {
 
 /// Circular prev/next control sitting over the stage edges.
 class _StageArrow extends StatefulWidget {
-  final IconData icon;
+  final AppIconData icon;
   final VoidCallback onTap;
 
   const _StageArrow({required this.icon, required this.onTap});
@@ -602,8 +616,8 @@ class _StageArrowState extends State<_StageArrow> {
             shape: BoxShape.circle,
             border: Border.all(color: tokens.border),
           ),
-          child: Icon(
-            widget.icon,
+          child: AppIcon(
+            icon: widget.icon,
             size: 22,
             color: _hovered ? tokens.onBrand : tokens.foreground,
           ),
@@ -678,21 +692,21 @@ class _StatsStrip extends StatelessWidget {
         .length;
     final int components = state.allComponents.length - templates;
 
-    final stats = <(String, String, IconData)>[
+    final stats = <(String, String, AppIconData)>[
       (
         components > 0 ? '$components' : '–',
         LangUtil.trans("statsComponents"),
-        Icons.widgets_outlined,
+        AppIcons.blocks,
       ),
       (
         templates > 0 ? '$templates' : '–',
         LangUtil.trans("statsTemplates"),
-        Icons.dashboard_customize_outlined,
+        AppIcons.templates,
       ),
       (
         '100%',
         LangUtil.trans("statsFree"),
-        Icons.lock_open_rounded,
+        AppIcons.unlocked,
       ),
     ];
 
@@ -732,7 +746,7 @@ class _StatsStrip extends StatelessWidget {
 class _StatCard extends StatelessWidget {
   final String value;
   final String label;
-  final IconData icon;
+  final AppIconData icon;
 
   const _StatCard({
     required this.value,
@@ -761,7 +775,7 @@ class _StatCard extends StatelessWidget {
               borderRadius: AppRadii.mdAll,
               border: Border.all(color: tokens.brandFillBorder),
             ),
-            child: Icon(icon, size: 18, color: tokens.accent),
+            child: AppIcon(icon: icon, size: 18, color: tokens.accent),
           ),
           const SizedBox(width: AppSpace.md),
           Expanded(

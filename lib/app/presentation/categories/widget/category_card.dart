@@ -27,8 +27,7 @@ class _CategoryCardState extends State<CategoryCard> {
     final tokens = context.tokens;
     final Component componentDetails = widget.component;
     final double cardWidth = widget.width ??
-        AppSizing.kWPercentage(
-            context, AppSizing.isMobile(context) ? 100 : 35);
+        AppSizing.kWPercentage(context, AppSizing.isMobile(context) ? 100 : 35);
 
     return MouseRegion(
       cursor: SystemMouseCursors.click,
@@ -36,8 +35,8 @@ class _CategoryCardState extends State<CategoryCard> {
       onExit: (_) => setState(() => _hovered = false),
       child: GestureDetector(
         onTap: () {
-          componentBloc.add(
-              UpdateActiveComponentEvent(newComponent: componentDetails));
+          componentBloc
+              .add(UpdateActiveComponentEvent(newComponent: componentDetails));
           final link =
               "/components/${componentDetails.category.link()}/${componentDetails.subcategory.link()}/${componentDetails.id}/";
           context.go(link);

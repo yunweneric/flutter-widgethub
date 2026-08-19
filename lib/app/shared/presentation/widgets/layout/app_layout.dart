@@ -45,8 +45,9 @@ class _AppLayoutState extends State<AppLayout> {
       builder: (context, state) {
         final bool isMobile = AppSizing.isMobile(context);
         final bool drawerOpen = isMobile && state.isOpen;
-        final double drawerWidth =
-            AppSizing.width(context) < 360 ? AppSizing.width(context) * 0.9 : 320;
+        final double drawerWidth = AppSizing.width(context) < 360
+            ? AppSizing.width(context) * 0.9
+            : 320;
 
         return Scaffold(
           body: Stack(
@@ -172,7 +173,8 @@ class _DrawerContent extends StatelessWidget {
               ),
               AppIconButton(
                 onPressed: onClose,
-                child: Icon(Icons.close, size: 18, color: tokens.mutedForeground),
+                // Colour comes from the button, so the glyph lifts on hover.
+                child: const AppIcon(icon: AppIcons.close, size: 18),
               ),
             ],
           ),

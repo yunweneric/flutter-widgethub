@@ -38,7 +38,8 @@ class _AppSearchBarState extends State<AppSearchBar> {
           height: 36,
           padding: const EdgeInsets.symmetric(horizontal: AppSpace.md),
           decoration: BoxDecoration(
-            color: _hovered ? tokens.active : tokens.active.withValues(alpha: 0.6),
+            color:
+                _hovered ? tokens.active : tokens.active.withValues(alpha: 0.6),
             borderRadius: AppRadii.mdAll,
             border: Border.all(color: tokens.border),
           ),
@@ -130,9 +131,8 @@ class _SearchBarState extends State<SearchBar> {
   @override
   Widget build(BuildContext context) {
     final tokens = context.tokens;
-    final double width = AppSizing.isMobile(context)
-        ? AppSizing.kWPercentage(context, 92)
-        : 560;
+    final double width =
+        AppSizing.isMobile(context) ? AppSizing.kWPercentage(context, 92) : 560;
 
     return Align(
       alignment: Alignment.topCenter,
@@ -162,8 +162,7 @@ class _SearchBarState extends State<SearchBar> {
               children: [
                 // Input row.
                 Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: AppSpace.lg),
+                  padding: const EdgeInsets.symmetric(horizontal: AppSpace.lg),
                   child: Row(
                     children: [
                       AppIcon(
@@ -221,8 +220,8 @@ class _SearchBarState extends State<SearchBar> {
                                 ),
                                 children: [
                                   TextSpan(
-                                    text: LangUtil.trans(
-                                        'notFoundInCollections'),
+                                    text:
+                                        LangUtil.trans('notFoundInCollections'),
                                     style: AppTypography.sans(
                                       color: tokens.mutedForeground,
                                       fontSize: 14,
@@ -284,8 +283,8 @@ class _SearchResultRowState extends State<_SearchResultRow> {
         onTap: widget.onTap,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 120),
-          padding: const EdgeInsets.symmetric(
-              horizontal: AppSpace.md, vertical: 10),
+          padding:
+              const EdgeInsets.symmetric(horizontal: AppSpace.md, vertical: 10),
           decoration: BoxDecoration(
             color: _hovered ? tokens.active : Colors.transparent,
             borderRadius: AppRadii.smAll,

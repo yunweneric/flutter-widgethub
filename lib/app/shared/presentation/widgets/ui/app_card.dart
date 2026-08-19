@@ -46,8 +46,8 @@ class _AppCardState extends State<AppCard> {
       curve: AppMotion.curve,
       padding: widget.padding,
       clipBehavior: widget.clipBehavior,
-      transform: Matrix4.translationValues(
-          0, lifted ? -AppMotion.hoverLift : 0, 0),
+      transform:
+          Matrix4.translationValues(0, lifted ? -AppMotion.hoverLift : 0, 0),
       decoration: BoxDecoration(
         color: widget.color ?? tokens.card,
         borderRadius: widget.borderRadius ?? AppRadii.mdAll,
@@ -70,9 +70,8 @@ class _AppCardState extends State<AppCard> {
     if (!interactive) return card;
 
     return MouseRegion(
-      cursor: widget.onTap != null
-          ? SystemMouseCursors.click
-          : MouseCursor.defer,
+      cursor:
+          widget.onTap != null ? SystemMouseCursors.click : MouseCursor.defer,
       onEnter: (_) => setState(() => _hovered = true),
       onExit: (_) => setState(() => _hovered = false),
       child: GestureDetector(onTap: widget.onTap, child: card),

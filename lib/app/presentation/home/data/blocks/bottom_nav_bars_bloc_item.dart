@@ -1,7 +1,8 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
+import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 
 class BottomNavBarsBlocItem extends StatefulWidget {
   const BottomNavBarsBlocItem({super.key});
@@ -67,11 +68,13 @@ class _BottomNavBarssideBarCategoriestate extends State<BottomNavBarsBlocItem> {
         },
         currentIndex: currentIndex,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.notification_add), label: "Notifications"),
+              icon: AppIcon(icon: AppIcons.home), label: "Home"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart), label: "Cart"),
+              icon: AppIcon(icon: AppIcons.notification),
+              label: "Notifications"),
+          BottomNavigationBarItem(
+              icon: AppIcon(icon: AppIcons.cart), label: "Cart"),
         ],
       ),
       body: Column(

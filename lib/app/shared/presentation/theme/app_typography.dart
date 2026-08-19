@@ -65,32 +65,32 @@ class AppTypography {
 
     return TextTheme(
       // Legacy-compatible slots (sizes preserved).
-      displayLarge:
-          sans(color: fg, fontSize: 32, fontWeight: FontWeight.w700, height: 1.15),
-      displayMedium:
-          sans(color: fg, fontSize: 17, fontWeight: FontWeight.w700, height: 1.3),
-      displaySmall:
-          sans(color: fg, fontSize: 13, fontWeight: FontWeight.w700, height: 1.35),
+      displayLarge: sans(
+          color: fg, fontSize: 32, fontWeight: FontWeight.w700, height: 1.15),
+      displayMedium: sans(
+          color: fg, fontSize: 17, fontWeight: FontWeight.w700, height: 1.3),
+      displaySmall: sans(
+          color: fg, fontSize: 13, fontWeight: FontWeight.w700, height: 1.35),
       // Full heading ramp (LingoDesk scale).
-      headlineLarge:
-          sans(color: fg, fontSize: 40, fontWeight: FontWeight.w700, height: 1.05),
-      headlineMedium:
-          sans(color: fg, fontSize: 30, fontWeight: FontWeight.w700, height: 1.12),
-      headlineSmall:
-          sans(color: fg, fontSize: 22, fontWeight: FontWeight.w700, height: 1.2),
-      titleLarge:
-          sans(color: fg, fontSize: 22, fontWeight: FontWeight.w700, height: 1.2),
-      titleMedium:
-          sans(color: fg, fontSize: 16, fontWeight: FontWeight.w700, height: 1.35),
-      titleSmall:
-          sans(color: fg, fontSize: 14, fontWeight: FontWeight.w700, height: 1.35),
+      headlineLarge: sans(
+          color: fg, fontSize: 40, fontWeight: FontWeight.w700, height: 1.05),
+      headlineMedium: sans(
+          color: fg, fontSize: 30, fontWeight: FontWeight.w700, height: 1.12),
+      headlineSmall: sans(
+          color: fg, fontSize: 22, fontWeight: FontWeight.w700, height: 1.2),
+      titleLarge: sans(
+          color: fg, fontSize: 22, fontWeight: FontWeight.w700, height: 1.2),
+      titleMedium: sans(
+          color: fg, fontSize: 16, fontWeight: FontWeight.w700, height: 1.35),
+      titleSmall: sans(
+          color: fg, fontSize: 14, fontWeight: FontWeight.w700, height: 1.35),
       // Body.
       bodyLarge: sans(color: fg, fontSize: 16, height: 1.55),
       bodyMedium: sans(color: muted, fontSize: 14, height: 1.45),
       bodySmall: sans(color: muted, fontSize: 12, height: 1.45),
       // Labels.
-      labelLarge:
-          sans(color: fg, fontSize: 14, fontWeight: FontWeight.w700, height: 1.2),
+      labelLarge: sans(
+          color: fg, fontSize: 14, fontWeight: FontWeight.w700, height: 1.2),
       labelMedium: sans(color: muted, fontSize: 14, height: 1.35),
       labelSmall: sans(color: muted, fontSize: 12, height: 1.35),
     );

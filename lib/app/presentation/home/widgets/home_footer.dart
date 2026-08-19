@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutterui/app/core/routes/route_names.dart';
-import 'package:flutterui/app/shared/presentation/theme/app_motion.dart';
 import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
 import 'package:flutterui/app/shared/presentation/theme/app_typography.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
@@ -253,7 +252,7 @@ class _FooterColumn extends StatelessWidget {
 
 /// Square icon button that opens an external profile.
 class _SocialButton extends StatelessWidget {
-  final String icon;
+  final AppIconData icon;
   final String url;
 
   const _SocialButton({required this.icon, required this.url});
