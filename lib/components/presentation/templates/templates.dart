@@ -6,6 +6,7 @@
 /// - App clones
 /// - Landing pages
 export 'airbnb/airbnb.dart';
+export 'animated_fruit_carousel/animated_fruit_carousel_data.dart';
 export 'auth/auth_01/auth_01_data.dart';
 export 'auth/auth_02/auth_02_data.dart';
 export 'auth/auth_03/auth_03_data.dart';

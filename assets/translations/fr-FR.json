@@ -22,6 +22,8 @@
   },
   "airbnbDescription": "Un modèle complet de clone Airbnb avec des modèles UI/UX modernes pour les applications de réservation d'hébergement",
   "airbnbTitle": "Modèle Clone Airbnb",
+  "animatedFruitCarouselDescription": "Un carrousel de boissons aux fruits où le dégradé de fond, le nom du parfum, l'image du fruit et la canette se mettent en place avec une animation élastique.",
+  "animatedFruitCarouselTitle": "Carrousel de fruits animé",
   "app_components": {
     "apple_books": {
       "description": "L'animation du bouton d'action flottant Apple Books mise en œuvre avec une micro-interaction basique.",

@@ -22,6 +22,8 @@
   },
   "airbnbDescription": "A complete Airbnb clone template with modern UI/UX patterns for accommodation booking applications",
   "airbnbTitle": "Airbnb Clone Template",
+  "animatedFruitCarouselDescription": "A fruit drink carousel where the background gradient, flavour name, fruit backdrop and can all spring into place on an elastic curve.",
+  "animatedFruitCarouselTitle": "Animated Fruit Carousel",
   "app_components": {
     "apple_books": {
       "description": "The Apple Books Floating action button animation implemented with basic micro interaction",

@@ -22,6 +22,7 @@ class AllComponents {
   /// List of all registered components in the system.
   static List<Component> widgets = [
     BasuuData.component,
+    AnimatedFruitCarouselTemplateData.component,
     FruityLipsTemplateData.component,
     NikeZoomerTemplateData.component,
     FadeCarouselTemplateData.component,
