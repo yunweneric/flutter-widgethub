@@ -5,6 +5,8 @@
 /// phone on the right running real templates you can tap through.
 library;
 
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterui/app/core/routes/route_names.dart';
@@ -42,6 +44,9 @@ class HeroSection extends StatefulWidget {
 class _HeroSectionState extends State<HeroSection> {
   final componentBloc = getIt.get<ComponentBloc>();
 
+  /// Seeds the showcase shuffle — fixed for the life of this widget.
+  final int _seed = DateTime.now().microsecondsSinceEpoch;
+
   @override
   void initState() {
     componentBloc.add(GetAllComponentsEvent());
@@ -69,19 +74,20 @@ class _HeroSectionState extends State<HeroSection> {
     );
   }
 
-  /// Featured components only, templates first (they play best as apps),
-  /// newest first, capped so the stage stays cheap to build.
+  /// Featured components only, in a fresh order on every visit, capped so
+  /// the stage stays cheap to build.
+  ///
+  /// The shuffle is seeded once per mount so rebuilds — every tap on the
+  /// dock is one — keep the order they started with; a reload picks a new
+  /// one, and with it a different component on stage first.
   ///
   /// Flip `isFeatured` on a component's data to add or remove it here.
   List<Component> _showcase(List<Component> all) {
-    final templates = <Component>[];
-    final rest = <Component>[];
-    for (final component in all.reversed) {
-      if (!component.isFeatured || component.codeComponents.isEmpty) continue;
-      (component.category == ComponentCategoryEnum.TEMPLATES ? templates : rest)
-          .add(component);
-    }
-    final list = [...templates, ...rest];
+    final list = [
+      for (final component in all)
+        if (component.isFeatured && component.codeComponents.isNotEmpty)
+          component,
+    ]..shuffle(Random(_seed));
     return list.length > 10 ? list.sublist(0, 10) : list;
   }
 

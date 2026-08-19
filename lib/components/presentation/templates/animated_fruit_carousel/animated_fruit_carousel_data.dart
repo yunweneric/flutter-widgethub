@@ -25,8 +25,8 @@ class AnimatedFruitCarouselTemplateData {
     setup: setup,
     category: ComponentCategoryEnum.BLOCKS,
     subcategory: SubComponentCategoryEnum.SLIDERS_AND_CAROUSELS,
-    assetLink:
-        "https://github.com/yunweneric/flutter-open-ui/raw/animated_fruit_carousel/assets/images.zip",
+    // The source branch ships loose PNGs under assets/images/, not a zip.
+    assetLink: null,
     gitHubLink:
         "https://github.com/yunweneric/flutter-open-ui/tree/animated_fruit_carousel",
     supportedPlatforms: [SupportedPlatform.ANDROID, SupportedPlatform.IOS],

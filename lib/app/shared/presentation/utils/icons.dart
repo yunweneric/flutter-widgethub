@@ -74,6 +74,21 @@ class AppIcons {
   static const AppIconData touch = HugeIcons.strokeRoundedTouch01;
 
   // ---------------------------------------------------------------------
+  // Money & commerce
+  // ---------------------------------------------------------------------
+  static const AppIconData send = HugeIcons.strokeRoundedSent;
+  static const AppIconData receive = HugeIcons.strokeRoundedDownload04;
+  static const AppIconData add = HugeIcons.strokeRoundedAdd01;
+  static const AppIconData chip = HugeIcons.strokeRoundedChip;
+  static const AppIconData contactless = HugeIcons.strokeRoundedNfc;
+  static const AppIconData coffee = HugeIcons.strokeRoundedCoffee02;
+  static const AppIconData shoppingBag = HugeIcons.strokeRoundedShoppingBag01;
+  static const AppIconData airplane = HugeIcons.strokeRoundedAirplaneTakeOff01;
+  static const AppIconData hotel = HugeIcons.strokeRoundedHotel01;
+  static const AppIconData coins = HugeIcons.strokeRoundedCoins01;
+  static const AppIconData bank = HugeIcons.strokeRoundedBank;
+
+  // ---------------------------------------------------------------------
   // Devices & platforms
   // ---------------------------------------------------------------------
   static const AppIconData mobile = HugeIcons.strokeRoundedSmartPhone01;
