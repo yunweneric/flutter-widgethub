@@ -4,15 +4,15 @@ import 'package:flutter_svg/flutter_svg.dart';
 class Auth05Theme {
   static const Color background = Color(0xFF0D0D1B);
   static const Color card = Colors.white;
-  static const Color primaryButton = Color(0xFF2563EB);
-  static const Color accent = Color(0xFF6C7AFA);
-  static const Color dividerColor = Color(0xFFE5E7EB);
-  static const Color inputBorder = Color(0xFFE5E7EB);
-  static const Color inputHint = Color(0xFFB0B3C7);
-  static const Color textDark = Color(0xFF181C2E);
+  static const Color primaryButton = Color(0xFF18181B);
+  static const Color accent = Color(0xFF18181B);
+  static const Color dividerColor = Color(0xFFE4E4E7);
+  static const Color inputBorder = Color(0xFFE4E4E7);
+  static const Color inputHint = Color(0xFFA1A1AA);
+  static const Color textDark = Color(0xFF18181B);
   static const Color textLight = Colors.white;
-  static const Color textGray = Color(0xFFB0B3C7);
-  static const Color link = Color(0xFF6C7AFA);
+  static const Color textGray = Color(0xFFA1A1AA);
+  static const Color link = Color(0xFF18181B);
 
   static const TextStyle logo = TextStyle(
     color: primaryButton,
@@ -210,7 +210,7 @@ class _Auth05InputCard extends StatelessWidget {
                 const Icon(Icons.email_outlined, color: Auth05Theme.inputHint),
             obscureText: false,
           ),
-          const Divider(height: 1, color: Color(0xFFF0F0F0)),
+          const Divider(height: 1, color: Color(0xFFF4F4F5)),
           _Auth05InputField(
             controller: passwordController,
             hintText: '********',

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/device_frame.dart';
 
+/// Muted, rounded canvas hosting a scaled-down live device preview.
 class DeviceSectionFrame extends StatefulWidget {
   final double? parentWidth;
   final double? parentHeight;
@@ -28,13 +29,15 @@ class DeviceSectionFrame extends StatefulWidget {
 class _DeviceSectionFrameState extends State<DeviceSectionFrame> {
   @override
   Widget build(BuildContext context) {
+    final tokens = context.tokens;
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20.w),
+      padding: const EdgeInsets.symmetric(horizontal: AppSpace.lg),
       width: widget.parentWidth ?? AppSizing.kWPercentage(context, 40),
       height: widget.parentHeight ?? AppSizing.kHPercentage(context, 35),
       decoration: BoxDecoration(
-        color: Theme.of(context).primaryColor.withValues(alpha: 0.1),
-        borderRadius: AppSizing.radiusMd(),
+        color: tokens.muted.withValues(alpha: 0.5),
+        borderRadius: AppRadii.lgAll,
+        border: Border.all(color: tokens.border),
       ),
       child: FittedBox(
         clipBehavior: Clip.hardEdge,

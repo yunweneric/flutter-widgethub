@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/app/core/core.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_typography.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/widgets/app_icon_button.dart';
 import 'package:flutterui/app/shared/presentation/widgets/app_search_bar.dart';
+import 'package:flutterui/app/shared/presentation/widgets/device_frame_selector_button.dart';
+import 'package:flutterui/app/shared/presentation/widgets/github_icon_with_stars.dart';
 import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
+import 'package:flutterui/app/shared/presentation/widgets/language_button.dart';
 import 'package:flutterui/app/shared/shared.dart';
 import 'package:go_router/go_router.dart';
 
+/// Top navigation bar (desktop) — 64px, hairline border, shadcn docs style.
 class HomeNavBar extends StatefulWidget {
   final bool isHomeScreenLayout;
 
@@ -23,117 +28,131 @@ class _HomeNavBarState extends State<HomeNavBar> {
     NavLink(title: LangUtil.trans(("components")), path: RouteNames.components),
   ];
 
-  bool isLogoHovered = false;
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeBloc, ThemeState>(
       builder: (context, state) {
         return AppSizing.isMobile(context)
-            ? HomeMobileNav(
-                isHomeScreenLayout: widget.isHomeScreenLayout,
-              )
+            ? HomeMobileNav(isHomeScreenLayout: widget.isHomeScreenLayout)
             : AppContainer(
                 isHomeScreenLayout: widget.isHomeScreenLayout,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      children: [
-                        IconButton(
-                          onPressed: () => context.go(RouteNames.home),
-                          onHover: (value) => setState(() {
-                            isLogoHovered = value;
-                          }),
-                          icon: AnimatedScale(
-                            duration: const Duration(milliseconds: 200),
-                            scale: isLogoHovered ? 1.1 : 1.0,
-                            child: AnimatedSwitcher(
-                              duration: const Duration(milliseconds: 100),
-                              child: Theme.of(context).brightness ==
-                                      Brightness.light
-                                  ? Image.asset(AppImages.logoDark, width: 100)
-                                  : Image.asset(
-                                      AppImages.logoLight,
-                                      width: 100,
-                                    ),
-                            ),
-                          ),
-                        ),
-                        KwSpacer(width: 50.w),
-                        Row(
-                          children: [
-                            ...links.map((item) {
-                              final activeRoute = getIt
-                                  .get<GoRouter>()
-                                  .routeInformationProvider
-                                  .value
-                                  .uri
-                                  .path;
-                              final isActive = activeRoute == item.path;
-                              return Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: TextButton(
-                                  onPressed: () => context.go(item.path),
-                                  child: Text(
-                                    item.title,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyMedium!
-                                        .copyWith(
-                                          color: isActive
-                                              ? Theme.of(context).primaryColor
-                                              : null,
-                                        ),
-                                  ),
-                                ),
-                              );
-                            })
-                          ],
-                        ),
-                      ],
+                    _Logo(onTap: () => context.go(RouteNames.home)),
+                    const SizedBox(width: AppSpace.xl),
+                    ...links.map((item) => _NavLinkItem(item: item)),
+                    const Spacer(),
+                    const AppSearchBar(),
+                    const SizedBox(width: AppSpace.sm),
+                    const LanguageButton(),
+                    const SizedBox(width: AppSpace.xs),
+                    const DeviceFrameSelectorButton(),
+                    const SizedBox(width: AppSpace.xs),
+                    const GitHubIconWithStars(
+                      owner: 'yunweneric',
+                      repo: 'flutter-widgethub',
+                      url: 'https://github.com/yunweneric/flutter-widgethub/',
                     ),
-                    Row(
-                      children: [
-                        const LanguageButton(),
-                        AppIconButton(
-                          onPressed: () => showSearchModal(context),
-                          child: const AppIcon(icon: AppIcons.search),
-                        ),
-                        KwSpacer(width: 8.w),
-                        const DeviceFrameSelectorButton(),
-                        KwSpacer(width: 8.w),
-                        const GitHubIconWithStars(
-                          owner: 'yunweneric',
-                          repo: 'flutter-widgethub',
-                          url:
-                              'https://github.com/yunweneric/flutter-widgethub/',
-                        ),
-                        KwSpacer(width: 8.w),
-                        Builder(
-                          builder: (context) {
-                            final theme = getIt.get<ThemeBloc>();
-                            final isDark =
-                                Theme.of(context).brightness == Brightness.dark;
-                            return AppIconButton(
-                              onPressed: () => theme.add(
-                                ChangeTheme(
-                                    themeMode: isDark
-                                        ? ThemeMode.light
-                                        : ThemeMode.dark),
-                              ),
-                              child: AppIcon(
-                                icon: isDark ? AppIcons.moon : AppIcons.sun,
-                              ),
-                            );
-                          },
-                        ),
-                      ],
-                    )
+                    const SizedBox(width: AppSpace.xs),
+                    const _ThemeToggleButton(),
                   ],
                 ),
               );
       },
+    );
+  }
+}
+
+class _Logo extends StatefulWidget {
+  final VoidCallback onTap;
+
+  const _Logo({required this.onTap});
+
+  @override
+  State<_Logo> createState() => _LogoState();
+}
+
+class _LogoState extends State<_Logo> {
+  bool _hovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) => setState(() => _hovered = true),
+      onExit: (_) => setState(() => _hovered = false),
+      child: GestureDetector(
+        onTap: widget.onTap,
+        child: AnimatedOpacity(
+          duration: const Duration(milliseconds: 150),
+          opacity: _hovered ? 0.8 : 1.0,
+          child: Image.asset(
+            isDark ? AppImages.logoLight : AppImages.logoDark,
+            width: 96,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _NavLinkItem extends StatefulWidget {
+  final NavLink item;
+
+  const _NavLinkItem({required this.item});
+
+  @override
+  State<_NavLinkItem> createState() => _NavLinkItemState();
+}
+
+class _NavLinkItemState extends State<_NavLinkItem> {
+  bool _hovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final tokens = context.tokens;
+    final activeRoute =
+        getIt.get<GoRouter>().routeInformationProvider.value.uri.path;
+    final bool isActive = activeRoute.startsWith(widget.item.path);
+
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) => setState(() => _hovered = true),
+      onExit: (_) => setState(() => _hovered = false),
+      child: GestureDetector(
+        onTap: () => context.go(widget.item.path),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: AppSpace.md),
+          child: Text(
+            widget.item.title,
+            style: AppTypography.sans(
+              color: isActive || _hovered
+                  ? tokens.foreground
+                  : tokens.mutedForeground,
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+              height: 1.0,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _ThemeToggleButton extends StatelessWidget {
+  const _ThemeToggleButton();
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = getIt.get<ThemeBloc>();
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    return AppIconButton(
+      onPressed: () => theme.add(
+        ChangeTheme(themeMode: isDark ? ThemeMode.light : ThemeMode.dark),
+      ),
+      child: AppIcon(icon: isDark ? AppIcons.moon : AppIcons.sun, size: 16),
     );
   }
 }

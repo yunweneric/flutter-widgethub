@@ -1,40 +1,38 @@
-/// Application color constants.
+/// Application color constants (legacy compatibility layer).
 ///
-/// Defines all color constants used throughout the application
-/// including primary colors, background colors, text colors, and card colors.
+/// The palette is now defined by the semantic design tokens in
+/// `theme/app_tokens.dart` (shadcn zinc). This class re-points the old
+/// constants at the zinc scale so existing code keeps compiling while it
+/// migrates to `context.tokens`.
 library;
 
 import 'package:flutter/material.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
 
-/// Color constants for the application.
+/// Legacy color constants, aligned to the zinc token palette.
 ///
-/// Provides static color constants for consistent theming across the app.
+/// Prefer `context.tokens` (see [AppTokens]) in new code — these constants
+/// cannot adapt to the active theme mode.
 class AppColors {
-  static const Color primary = Color(0xFF3867D6);
-  // static const Color PRIMARY = Colors.teal;
+  static const Color primary = ZincColors.zinc900;
 
   // Background colors
-  static const Color bg = Color(0xFFFFFFFF);
-  static const Color bgDark = Color(0xFF161616);
+  static const Color bg = Colors.white;
+  static const Color bgDark = ZincColors.zinc950;
+  static const Color bgCardDark = ZincColors.zinc900;
 
-  static const Color bgCardDark = Color(0xff01a1f2a);
-  // static const Color BGCARDDARK = Color(0xFF262626);
-
-  static const Color darkPrimary = Color(0xFF283C64);
-  static const Color bgGray = Color(0XFF8D9091);
-  static const Color bgGray2 = Color(0XFFD9D9D9);
-  static const Color bgGray3 = Color(0XFFFBFBFB);
+  static const Color darkPrimary = ZincColors.zinc800;
+  static const Color bgGray = ZincColors.zinc500;
+  static const Color bgGray2 = ZincColors.zinc200;
+  static const Color bgGray3 = ZincColors.zinc50;
 
   // Card colors
-  // static const Color BGCARDDARK = Color(0XFF1A1F2A);
-  static const Color cardColor = Color.fromARGB(255, 237, 237, 237);
-  static const Color red = Color(0xFFED1010);
-  static const Color darkRed = Color(0xFF8B2813);
+  static const Color cardColor = ZincColors.zinc100;
+  static const Color red = Color(0xFFEF4444);
+  static const Color darkRed = Color(0xFF7F1D1D);
 
   // Text colors
-  static const Color textBlack = Color(0xFF262B3D);
-  static const Color textGrey = Color(0XFF8D9091);
-  static const Color textWhite = Color(0XFFFFFFFF);
-
-  //My colors*
+  static const Color textBlack = ZincColors.zinc950;
+  static const Color textGrey = ZincColors.zinc500;
+  static const Color textWhite = ZincColors.zinc50;
 }

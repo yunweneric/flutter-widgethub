@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_typography.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
-import 'package:flutterui/app/shared/presentation/widgets/app_icon_button.dart';
 import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
+import 'package:flutterui/app/shared/presentation/widgets/ui/app_kbd.dart';
 import 'package:flutterui/components/presentation/export/store.dart';
 import 'package:go_router/go_router.dart';
 
+/// Search trigger in the nav bar — a ⌘K-style field that opens the
+/// command-palette search dialog.
 class AppSearchBar extends StatefulWidget {
   const AppSearchBar({super.key});
 
@@ -17,52 +20,70 @@ class AppSearchBar extends StatefulWidget {
 }
 
 class _AppSearchBarState extends State<AppSearchBar> {
+  bool _hovered = false;
+
   @override
   Widget build(BuildContext context) {
-    return AppSizing.isTablet(context)
-        ? AppIconButton(
-              onPressed: () => showSearchModal(context),
-              child: const AppIcon(icon: AppIcons.search),
-          )
-        : SizedBox(
-            width: AppSizing.kWPercentage(context, 15),
-            child: Transform.scale(
-              scale: 0.8,
-              child: TextField(
-                readOnly: true,
-                onTap: () {
-                  showSearchModal(context);
-                },
-                decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 20),
-                  hintText: LangUtil.trans("searchComponent"),
-                  prefixIcon: Transform.scale(
-                    scale: 0.5,
-                    child: AppIcon(
-                      icon: AppIcons.search,
-                      size: 10.w,
-                    ),
+    final tokens = context.tokens;
+
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) => setState(() => _hovered = true),
+      onExit: (_) => setState(() => _hovered = false),
+      child: GestureDetector(
+        onTap: () => showSearchModal(context),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 150),
+          width: AppSizing.isTablet(context) ? 180 : 240,
+          height: 36,
+          padding: const EdgeInsets.symmetric(horizontal: AppSpace.md),
+          decoration: BoxDecoration(
+            color: _hovered ? tokens.accent : tokens.muted.withValues(alpha: 0.6),
+            borderRadius: AppRadii.mdAll,
+            border: Border.all(color: tokens.border),
+          ),
+          child: Row(
+            children: [
+              AppIcon(
+                  icon: AppIcons.search,
+                  size: 14,
+                  color: tokens.mutedForeground),
+              const SizedBox(width: AppSpace.sm),
+              Expanded(
+                child: Text(
+                  LangUtil.trans("searchComponent"),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppTypography.sans(
+                    color: tokens.mutedForeground,
+                    fontSize: 13,
+                    height: 1.0,
                   ),
-                  filled: true,
-                  fillColor: Theme.of(context).cardColor,
                 ),
               ),
-            ),
-          );
+              const SizedBox(width: AppSpace.sm),
+              const AppKbd(label: '⌘K'),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
+/// Opens the command-palette search dialog.
 Future<dynamic> showSearchModal(BuildContext context) {
   return showDialog(
     barrierDismissible: true,
     context: context,
-    barrierColor: Colors.black.withValues(alpha: 0.4),
+    barrierColor: Colors.black.withValues(alpha: 0.5),
     builder: (context) {
       return const SearchBar();
     },
   );
 }
 
+/// Command-palette style search dialog (shadcn `cmdk` look).
 class SearchBar extends StatefulWidget {
   const SearchBar({super.key});
 
@@ -71,34 +92,16 @@ class SearchBar extends StatefulWidget {
 }
 
 class _SearchBarState extends State<SearchBar> {
-  bool isExpanded = false;
-
-  late FocusNode _focusNode;
+  late final FocusNode _focusNode;
   final allItems = AllComponents.widgets;
   List<Component> filteredData = [];
-  String? searchTerm;
-
-  void filter(String title) {
-    if (isExpanded == false) {
-      setState(() => isExpanded = true);
-    }
-
-    final term = title.toLowerCase();
-    final data = allItems
-        .where((item) =>
-            item.title.toLowerCase().contains(term) ||
-            item.description.toLowerCase().contains(term))
-        .toList();
-    setState(() {
-      searchTerm = title;
-      filteredData = data;
-    });
-  }
+  String searchTerm = '';
 
   @override
   void initState() {
     _focusNode = FocusNode();
     _focusNode.requestFocus();
+    filteredData = allItems;
     super.initState();
   }
 
@@ -108,160 +111,225 @@ class _SearchBarState extends State<SearchBar> {
     super.dispose();
   }
 
+  void filter(String title) {
+    final term = title.toLowerCase().trim();
+    final data = term.isEmpty
+        ? allItems
+        : allItems
+            .where((item) =>
+                LangUtil.trans(item.title).toLowerCase().contains(term) ||
+                LangUtil.trans(item.description).toLowerCase().contains(term) ||
+                item.category.describe().toLowerCase().contains(term))
+            .toList();
+    setState(() {
+      searchTerm = title;
+      filteredData = data;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return StatefulBuilder(builder: (context, child) {
-      return Column(
-        children: [
-          KhSpacer(height: AppSizing.kHPercentage(context, 25)),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: Container(
-              width: AppSizing.kWPercentage(
-                context,
-                AppSizing.isMobile(context)
-                    ? 80
-                    : AppSizing.isTablet(context)
-                        ? 50
-                        : 35,
-              ),
-              decoration: BoxDecoration(
-                color: Theme.of(context).scaffoldBackgroundColor,
-                border: Border.all(color: Theme.of(context).cardColor),
-              ),
-              child: Column(
-                children: [
-                  Material(
-                    elevation: 0,
-                    color: Theme.of(context).scaffoldBackgroundColor,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: TextField(
-                        focusNode: _focusNode,
-                        onChanged: filter,
-                        style: const TextStyle(fontSize: 14),
-                        decoration: InputDecoration(
-                          border: const OutlineInputBorder(
-                              borderSide: BorderSide.none),
-                          enabledBorder: const OutlineInputBorder(
-                              borderSide: BorderSide.none),
-                          focusedBorder: const OutlineInputBorder(
-                              borderSide: BorderSide.none),
-                          contentPadding:
-                              const EdgeInsets.symmetric(horizontal: 10),
-                          hintText: LangUtil.trans("searchComponent"),
-                          hintStyle: const TextStyle(fontSize: 14),
-                          prefixIcon: Transform.scale(
-                            scale: 0.4,
-                            child: AppIcon(
-                                icon: AppIcons.search,
-                                color: Theme.of(context).highlightColor),
+    final tokens = context.tokens;
+    final double width = AppSizing.isMobile(context)
+        ? AppSizing.kWPercentage(context, 92)
+        : 560;
+
+    return Align(
+      alignment: Alignment.topCenter,
+      child: Padding(
+        padding: EdgeInsets.only(
+          top: AppSizing.isMobile(context) ? 80 : 120,
+        ),
+        child: Material(
+          color: Colors.transparent,
+          child: Container(
+            width: width,
+            clipBehavior: Clip.hardEdge,
+            decoration: BoxDecoration(
+              color: tokens.popover,
+              borderRadius: AppRadii.lgAll,
+              border: Border.all(color: tokens.border),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.25),
+                  blurRadius: 40,
+                  offset: const Offset(0, 16),
+                ),
+              ],
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Input row.
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: AppSpace.lg),
+                  child: Row(
+                    children: [
+                      AppIcon(
+                        icon: AppIcons.search,
+                        size: 16,
+                        color: tokens.mutedForeground,
+                      ),
+                      const SizedBox(width: AppSpace.sm),
+                      Expanded(
+                        child: TextField(
+                          focusNode: _focusNode,
+                          onChanged: filter,
+                          style: AppTypography.sans(
+                            color: tokens.foreground,
+                            fontSize: 14,
+                          ),
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            enabledBorder: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                            contentPadding: const EdgeInsets.symmetric(
+                                vertical: AppSpace.lg),
+                            hintText: LangUtil.trans("searchComponent"),
+                            hintStyle: AppTypography.sans(
+                              color: tokens.mutedForeground,
+                              fontSize: 14,
+                            ),
                           ),
                         ),
                       ),
-                    ),
+                      GestureDetector(
+                        onTap: () => context.pop(),
+                        child: const AppKbd(label: 'esc'),
+                      ),
+                    ],
                   ),
-                  Builder(builder: (context) {
-                    double heightFactor = 6.5;
-                    if (AppSizing.isMobile(context)) heightFactor = 8;
-                    if (AppSizing.isTablet(context)) heightFactor = 7;
-                    return AnimatedContainer(
-                      constraints: BoxConstraints(
-                          maxHeight: AppSizing.kHPercentage(context, 60)),
-                      height: isExpanded
-                          ? AppSizing.kHPercentage(
-                              context,
-                              filteredData.isEmpty
-                                  ? 20
-                                  : filteredData.length * heightFactor)
-                          : 0,
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).scaffoldBackgroundColor,
-                        border: BorderDirectional(
-                            top: BorderSide(
-                                color: Theme.of(context).dividerColor)),
-                      ),
-                      duration: const Duration(milliseconds: 300),
-                      alignment: Alignment.center,
-                      child: Material(
-                        color: Colors.transparent,
-                        child: AnimatedSwitcher(
-                          duration: const Duration(milliseconds: 300),
-                          child: filteredData.isEmpty
-                              ? RichText(
-                                  text: TextSpan(
-                                    text: "'$searchTerm' ",
-                                    style: DefaultTextStyle.of(context)
-                                        .style
-                                        .copyWith(
-                                            color:
-                                                Theme.of(context).primaryColor),
-                                    children: <TextSpan>[
-                                      TextSpan(
-                                        text: LangUtil.trans(
-                                            'notFoundInCollections'),
-                                        style: TextStyle(
-                                            color: Theme.of(context)
-                                                .primaryColorDark),
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              : ListView.builder(
-                                  itemCount: filteredData.length,
-                                  itemBuilder: (context, index) {
-                                    final component = filteredData[index];
-                                    return ListTile(
-                                      onTap: () async {
-                                        context.pop();
-
-                                        final link =
-                                            "/components/${component.category.link()}/${component.subcategory.link()}/${component.id}/";
-                                        context.go(link);
-                                      },
-                                      title: Text(
-                                        LangUtil.trans(component.title),
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .displayMedium,
-                                      ),
-                                      subtitle: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            component.category.describe(),
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodySmall!
-                                                .copyWith(
-                                                    color: Theme.of(context)
-                                                        .primaryColor),
-                                          ),
-                                          Text(
-                                            LangUtil.trans(
-                                                component.description),
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodySmall,
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  },
+                ),
+                Container(height: 1, color: tokens.border),
+                // Results.
+                Flexible(
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxHeight: AppSizing.kHPercentage(context, 45),
+                    ),
+                    child: filteredData.isEmpty
+                        ? Padding(
+                            padding: const EdgeInsets.all(AppSpace.xxl),
+                            child: Text.rich(
+                              TextSpan(
+                                text: "'$searchTerm' ",
+                                style: AppTypography.sans(
+                                  color: tokens.foreground,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
                                 ),
-                        ),
-                      ),
-                    );
-                  })
-                ],
-              ),
+                                children: [
+                                  TextSpan(
+                                    text: LangUtil.trans(
+                                        'notFoundInCollections'),
+                                    style: AppTypography.sans(
+                                      color: tokens.mutedForeground,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )
+                        : ListView.builder(
+                            shrinkWrap: true,
+                            padding: const EdgeInsets.all(AppSpace.sm),
+                            itemCount: filteredData.length,
+                            itemBuilder: (context, index) {
+                              final component = filteredData[index];
+                              return _SearchResultRow(
+                                component: component,
+                                onTap: () {
+                                  context.pop();
+                                  final link =
+                                      "/components/${component.category.link()}/${component.subcategory.link()}/${component.id}/";
+                                  context.go(link);
+                                },
+                              );
+                            },
+                          ),
+                  ),
+                ),
+              ],
             ),
           ),
-        ],
-      );
-    });
+        ),
+      ),
+    );
+  }
+}
+
+class _SearchResultRow extends StatefulWidget {
+  final Component component;
+  final VoidCallback onTap;
+
+  const _SearchResultRow({required this.component, required this.onTap});
+
+  @override
+  State<_SearchResultRow> createState() => _SearchResultRowState();
+}
+
+class _SearchResultRowState extends State<_SearchResultRow> {
+  bool _hovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final tokens = context.tokens;
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) => setState(() => _hovered = true),
+      onExit: (_) => setState(() => _hovered = false),
+      child: GestureDetector(
+        onTap: widget.onTap,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 120),
+          padding: const EdgeInsets.symmetric(
+              horizontal: AppSpace.md, vertical: 10),
+          decoration: BoxDecoration(
+            color: _hovered ? tokens.accent : Colors.transparent,
+            borderRadius: AppRadii.smAll,
+          ),
+          child: Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      LangUtil.trans(widget.component.title),
+                      style: AppTypography.sans(
+                        color: tokens.foreground,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      LangUtil.trans(widget.component.description),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: AppTypography.sans(
+                        color: tokens.mutedForeground,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: AppSpace.md),
+              Text(
+                widget.component.category.describe(),
+                style: AppTypography.sans(
+                  color: tokens.mutedForeground,
+                  fontSize: 11,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

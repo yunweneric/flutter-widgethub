@@ -54,8 +54,7 @@ class MyApp extends StatelessWidget {
                 },
                 builder: (context, langState) {
                   return ScreenUtilInit(
-                    designSize:
-                        Size(constraints.maxWidth, constraints.maxHeight),
+                    designSize: Size(constraints.maxWidth, constraints.maxHeight),
                     useInheritedMediaQuery: true,
                     builder: (context, child) {
                       return MaterialApp.router(
@@ -69,10 +68,7 @@ class MyApp extends StatelessWidget {
                         darkTheme: AppTheme.dark(),
                         themeMode: state.themeMode,
                         scrollBehavior: AppScrollBehavior(),
-                        builder: (context, child) {
-                          return child!;
-                          // return SplitText();
-                        },
+                        builder: (context, child) => child!,
                       );
                     },
                   );

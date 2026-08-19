@@ -3,70 +3,50 @@
 /// Contains the complete Dart code implementation of the [ClassicButton] widget
 /// that can be copied and used in other projects.
 const classicButtonCode = '''import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/shared/ui/utils/sizing.dart';
-import 'package:flutterui/shared/ui/widgets/icon.dart';
 
-class AppChip extends StatefulWidget {
-  final String icon;
-  final String? title;
-  final bool? active;
-  final EdgeInsetsGeometry? padding;
-  final void Function()? onTap;
-
-  const AppChip({
-    super.key,
-    required this.icon,
-    this.title,
-    this.active,
-    this.padding,
-    this.onTap,
-  });
+/// A classic solid button with press feedback, styled after shadcn/ui.
+class ClassicButton extends StatefulWidget {
+  const ClassicButton({super.key});
 
   @override
-  State<AppChip> createState() => _AppChipState();
+  State<ClassicButton> createState() => _ClassicButtonState();
 }
 
-class _AppChipState extends State<AppChip> {
-  @override
-  initState() {
-    setState(() => isActive = widget.active ?? false);
-    super.initState();
-  }
+class _ClassicButtonState extends State<ClassicButton> {
+  bool _pressed = false;
 
-  bool isActive = false;
   @override
   Widget build(BuildContext context) {
-    return Builder(
-      builder: (context) {
-        isActive = widget.active == null ? isActive : widget.active!;
-        return TweenAnimationBuilder(
-            key: ValueKey(isActive),
-            duration: const Duration(milliseconds: 500),
-            tween: ColorTween(begin: Theme.of(context).primaryColor, end: Theme.of(context).highlightColor),
-            builder: (context, color, child) {
-              return ElevatedButton(
-                onHover: (value) {
-                  setState(() => isActive = !isActive);
-                },
-                onPressed: () {
-                  setState(() => isActive = !isActive);
-                  if (widget.onTap != null) widget.onTap!();
-                },
-                child: Row(
-                  children: [
-                    AppIcon(icon: widget.icon, color: isActive ? Theme.of(context).primaryColor : Theme.of(context).highlightColor),
-                    if (widget.title != null) KwSpacer(width: 5.w),
-                    if (widget.title != null)
-                      Text(
-                        widget.title!,
-                        style: TextStyle(color: isActive ? Theme.of(context).primaryColor : Theme.of(context).highlightColor),
-                      ),
-                  ],
-                ),
-              );
-            });
-      },
+    final colorScheme = Theme.of(context).colorScheme;
+    return Center(
+      child: GestureDetector(
+        onTapDown: (_) => setState(() => _pressed = true),
+        onTapUp: (_) => setState(() => _pressed = false),
+        onTapCancel: () => setState(() => _pressed = false),
+        child: AnimatedScale(
+          scale: _pressed ? 0.97 : 1.0,
+          duration: const Duration(milliseconds: 100),
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 150),
+            height: 40,
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: colorScheme.primary
+                  .withValues(alpha: _pressed ? 0.9 : 1.0),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Text(
+              "Get started",
+              style: TextStyle(
+                color: colorScheme.onPrimary,
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

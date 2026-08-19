@@ -16,10 +16,10 @@ class _Auth02WidgetState extends State<Auth02Widget> {
   final TextEditingController _passwordController = TextEditingController();
 
   static final ThemeData _customTheme = ThemeData(
-    primaryColor: const Color(0xFF2563EB),
-    scaffoldBackgroundColor: const Color(0xFFF7F8FA),
+    primaryColor: const Color(0xFF18181B),
+    scaffoldBackgroundColor: const Color(0xFFF4F4F5),
     cardColor: Colors.white,
-    dividerColor: const Color(0xFFE5E7EB),
+    dividerColor: const Color(0xFFE4E4E7),
     textTheme: const TextTheme(
       displayLarge: TextStyle(
         fontSize: 32,
@@ -29,11 +29,11 @@ class _Auth02WidgetState extends State<Auth02Widget> {
       ),
       bodyMedium: TextStyle(
         fontSize: 15,
-        color: Color(0xFFD1D5DB),
+        color: Color(0xFFD4D4D8),
       ),
       bodySmall: TextStyle(
         fontSize: 14,
-        color: Color(0xFF6B7280),
+        color: Color(0xFF71717A),
       ),
       labelLarge: TextStyle(
         fontSize: 18,
@@ -47,22 +47,22 @@ class _Auth02WidgetState extends State<Auth02Widget> {
       contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: BorderSide(color: Color(0xFFE5E7EB)),
+        borderSide: BorderSide(color: Color(0xFFE4E4E7)),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: BorderSide(color: Color(0xFFE5E7EB)),
+        borderSide: BorderSide(color: Color(0xFFE4E4E7)),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: BorderSide(color: Color(0xFF2563EB)),
+        borderSide: BorderSide(color: Color(0xFF18181B)),
       ),
-      hintStyle: TextStyle(color: Color(0xFF6B7280), fontSize: 15),
-      labelStyle: TextStyle(color: Color(0xFF6B7280), fontSize: 15),
+      hintStyle: TextStyle(color: Color(0xFF71717A), fontSize: 15),
+      labelStyle: TextStyle(color: Color(0xFF71717A), fontSize: 15),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Color(0xFF2563EB),
+        backgroundColor: Color(0xFF18181B),
         foregroundColor: Colors.white,
         textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -72,7 +72,7 @@ class _Auth02WidgetState extends State<Auth02Widget> {
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         backgroundColor: Colors.white,
-        side: BorderSide(color: Color(0xFFE5E7EB)),
+        side: BorderSide(color: Color(0xFFE4E4E7)),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         textStyle: TextStyle(fontSize: 16, color: Colors.black),
         minimumSize: Size.fromHeight(52),
@@ -80,12 +80,12 @@ class _Auth02WidgetState extends State<Auth02Widget> {
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
-        foregroundColor: Color(0xFF2563EB),
+        foregroundColor: Color(0xFF18181B),
         textStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
       ),
     ),
     checkboxTheme: CheckboxThemeData(
-      fillColor: MaterialStatePropertyAll(Color(0xFF2563EB)),
+      fillColor: MaterialStatePropertyAll(Color(0xFF18181B)),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
     ),
   );
@@ -152,7 +152,7 @@ class _AuthBackground extends StatelessWidget {
       height: AppSizing.kheight(context) * 0.5,
       width: double.infinity,
       decoration: const BoxDecoration(
-        color: Color(0xFF2563EB),
+        color: Color(0xFF18181B),
       ),
       child: AppIcon.grid(),
     );
@@ -276,7 +276,7 @@ class _GoogleButton extends StatelessWidget {
       label: const Text('Continue with Google', style: TextStyle(color: Colors.black)),
       style: OutlinedButton.styleFrom(
         backgroundColor: Colors.white,
-        side: const BorderSide(color: Color(0xFFE5E7EB)),
+        side: const BorderSide(color: Color(0xFFE4E4E7)),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         textStyle: const TextStyle(fontSize: 16, color: Colors.black),
         minimumSize: const Size.fromHeight(48),
@@ -344,7 +344,7 @@ class _PasswordField extends StatelessWidget {
         suffixIcon: IconButton(
           icon: Icon(
             obscureText ? Icons.visibility_off : Icons.visibility,
-            color: const Color(0xFF6B7280),
+            color: const Color(0xFF71717A),
           ),
           onPressed: onToggle,
         ),
@@ -372,7 +372,7 @@ class _RememberMeRow extends StatelessWidget {
           onChanged: onChanged,
           visualDensity: VisualDensity.compact,
         ),
-        const Text('Remember me', style: TextStyle(color: Color(0xFF6B7280))),
+        const Text('Remember me', style: TextStyle(color: Color(0xFF71717A))),
         const Spacer(),
         TextButton(
           onPressed: () {},
@@ -411,7 +411,7 @@ class _SignUpLink extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text("Don't have an account? ", style: TextStyle(color: Color(0xFF6B7280))),
+        const Text("Don't have an account? ", style: TextStyle(color: Color(0xFF71717A))),
         GestureDetector(
           onTap: () {},
           child: Text(

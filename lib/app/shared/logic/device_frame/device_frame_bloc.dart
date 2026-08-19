@@ -16,7 +16,8 @@ part 'device_frame_state.dart';
 /// HydratedBloc. Initializes with iPhone 13 as the default device.
 class DeviceFrameBloc extends HydratedBloc<DeviceFrameEvent, DeviceFrameState> {
   /// Creates a device frame bloc with iPhone 13 as initial device.
-  DeviceFrameBloc() : super(DeviceFrameState(selectedDeviceInfo: Devices.ios.iPhone13)) {
+  DeviceFrameBloc()
+      : super(DeviceFrameState(selectedDeviceInfo: Devices.ios.iPhone13)) {
     on<UpdateDeviceFrameEvent>((event, emit) {
       emit(state.copyWith(selectedDeviceInfo: event.deviceInfo));
     });

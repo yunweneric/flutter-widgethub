@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_typography.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
@@ -9,69 +10,71 @@ import 'package:flutterui/app/shared/presentation/widgets/app_icon_button.dart';
 import 'package:flutterui/app/shared/presentation/widgets/github_icon_with_stars.dart';
 import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 
-class HomeFooter extends StatefulWidget {
+/// Site footer: hairline top border, muted credit line and quick actions.
+class HomeFooter extends StatelessWidget {
   const HomeFooter({super.key});
 
   @override
-  State<HomeFooter> createState() => _HomeFooterState();
-}
-
-class _HomeFooterState extends State<HomeFooter> {
-  @override
   Widget build(BuildContext context) {
+    final tokens = context.tokens;
+    final bool isMobile = AppSizing.isMobile(context);
+
     return Container(
-      width: AppSizing.width(context),
+      width: double.infinity,
       decoration: BoxDecoration(
-        border: BorderDirectional(
-            top: BorderSide(color: Theme.of(context).dividerColor)),
+        border: Border(top: BorderSide(color: tokens.border)),
       ),
-      child: Column(
-        children: [
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 20.h),
-            width: AppSizing.kWPercentage(context, 90),
+      child: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 1400),
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: isMobile ? AppSpace.lg : AppSpace.xl,
+              vertical: AppSpace.xl,
+            ),
             child: Wrap(
               crossAxisAlignment: WrapCrossAlignment.center,
               alignment: WrapAlignment.spaceBetween,
+              runSpacing: AppSpace.lg,
               children: [
                 SizedBox(
-                  width: AppSizing.kWPercentage(
-                      context, AppSizing.isMobile(context) ? 100 : 40),
+                  width:
+                      AppSizing.kWPercentage(context, isMobile ? 100 : 50),
                   child: Text(
                     LangUtil.trans("homeFooter", args: {
                       "year": DateTime.now().year.toString(),
                       "community": "Flutter Community",
                     }),
-                    style: Theme.of(context).textTheme.bodySmall,
-                    textAlign: AppSizing.isMobile(context)
-                        ? TextAlign.center
-                        : TextAlign.left,
+                    style: AppTypography.sans(
+                      color: tokens.mutedForeground,
+                      fontSize: 13,
+                      height: 1.5,
+                    ),
+                    textAlign:
+                        isMobile ? TextAlign.center : TextAlign.left,
                   ),
                 ),
-
-                Container(
-                  margin: EdgeInsets.only(
-                      top: AppSizing.isMobile(context) ? 20 : 0),
-                  width: AppSizing.kWPercentage(
-                      context, AppSizing.isMobile(context) ? 100 : 40),
+                SizedBox(
+                  width:
+                      AppSizing.kWPercentage(context, isMobile ? 100 : 30),
                   child: Row(
-                    mainAxisAlignment: AppSizing.isMobile(context)
+                    mainAxisAlignment: isMobile
                         ? MainAxisAlignment.center
                         : MainAxisAlignment.end,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      KwSpacer(width: 5.w),
                       const GitHubIconWithStars(
                         owner: 'yunweneric',
                         repo: 'flutter-widgethub',
-                        url: 'https://github.com/yunweneric/flutter-widgethub/',
+                        url:
+                            'https://github.com/yunweneric/flutter-widgethub/',
                       ),
-                      KwSpacer(width: 5.w),
+                      const SizedBox(width: AppSpace.sm),
                       Builder(
                         builder: (context) {
                           final theme = getIt.get<ThemeBloc>();
-                          final isDark =
-                              Theme.of(context).brightness == Brightness.dark;
+                          final isDark = Theme.of(context).brightness ==
+                              Brightness.dark;
                           return AppIconButton(
                             onPressed: () => theme.add(
                               ChangeTheme(
@@ -81,18 +84,18 @@ class _HomeFooterState extends State<HomeFooter> {
                             ),
                             child: AppIcon(
                               icon: isDark ? AppIcons.moon : AppIcons.sun,
+                              size: 16,
                             ),
                           );
                         },
                       ),
                     ],
                   ),
-                )
-                // navBar
+                ),
               ],
             ),
           ),
-        ],
+        ),
       ),
     );
   }

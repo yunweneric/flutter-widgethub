@@ -25,7 +25,7 @@ class _DiscloseSwitcherState extends State<DiscloseSwitcher> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
                 border: Border.all(
-                  color: isOn ? Colors.grey.withValues(alpha: 0.2) : Colors.transparent,
+                  color: isOn ? theme.dividerColor : Colors.transparent,
                 ),
               ),
               padding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 2),
@@ -38,16 +38,16 @@ class _DiscloseSwitcherState extends State<DiscloseSwitcher> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SwitchListTile.adaptive(
-                      activeColor: Colors.red,
+                      activeColor: theme.colorScheme.primary,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
                       contentPadding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      tileColor: const Color.fromARGB(125, 33, 107, 243).withValues(alpha: 0.05),
+                      tileColor: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
                       value: isOn,
                       title: Row(
                         children: [
-                          SvgPicture.string(svgIcon, color: theme.highlightColor),
+                          SvgPicture.string(svgIcon, color: theme.colorScheme.onSurfaceVariant),
                           const SizedBox(width: 10),
                           const Text(
                             "Predictive Completion",
@@ -67,12 +67,12 @@ class _DiscloseSwitcherState extends State<DiscloseSwitcher> {
                         children: [
                           Checkbox(
                             value: isChecked,
-                            activeColor: Colors.black,
+                            activeColor: theme.colorScheme.primary,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(5),
                             ),
                             side: BorderSide(
-                              color: theme.highlightColor,
+                              color: theme.dividerColor,
                             ),
                             onChanged: (val) {
                               setState(() {

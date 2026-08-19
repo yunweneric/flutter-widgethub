@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutterui/app/presentation/home/model/component_block_model.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_typography.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 
+/// Category switcher entry in the landing "assets" section.
+///
+/// Active entry gets a foreground top rule and emphasized title.
 class ComponentBlock extends StatefulWidget {
   final AppCategoryGroupModel item;
   final bool isActive;
@@ -16,6 +21,7 @@ class ComponentBlock extends StatefulWidget {
 class _ComponentBlockState extends State<ComponentBlock> {
   @override
   Widget build(BuildContext context) {
+    final tokens = context.tokens;
     return TweenAnimationBuilder(
       key: ValueKey(widget.isActive),
       duration: const Duration(milliseconds: 200),
@@ -25,12 +31,23 @@ class _ComponentBlockState extends State<ComponentBlock> {
         children: [
           Text(
             widget.item.category.describe(),
-            style: Theme.of(context).textTheme.displayMedium,
+            style: AppTypography.sans(
+              color: widget.isActive
+                  ? tokens.foreground
+                  : tokens.mutedForeground,
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+              letterSpacing: -0.2,
+            ),
           ),
-          const Kh10Spacer(),
+          const SizedBox(height: AppSpace.sm),
           Text(
             LangUtil.trans(widget.item.description),
-            style: Theme.of(context).textTheme.bodySmall,
+            style: AppTypography.sans(
+              color: tokens.mutedForeground,
+              fontSize: 13,
+              height: 1.5,
+            ),
           ),
         ],
       ),
@@ -41,12 +58,12 @@ class _ComponentBlockState extends State<ComponentBlock> {
             children: [
               Divider(
                 endIndent: value * AppSizing.kWPercentage(context, 20),
-                color: widget.isActive
-                    ? Theme.of(context).primaryColor
-                    : Theme.of(context).scaffoldBackgroundColor,
+                thickness: 2,
+                color: widget.isActive ? tokens.foreground : tokens.border,
               ),
-              const Kh10Spacer(),
+              const SizedBox(height: AppSpace.md),
               child!,
+              const SizedBox(height: AppSpace.lg),
             ],
           ),
         );

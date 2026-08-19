@@ -112,7 +112,7 @@ class Auth01PasswordField extends StatelessWidget {
             suffixIcon: IconButton(
               icon: Icon(
                 obscureText ? Icons.visibility_off : Icons.visibility,
-                color: const Color(0xFF6B7280),
+                color: const Color(0xFF71717A),
               ),
               onPressed: onToggleObscure,
             ),

@@ -25,10 +25,10 @@ class _Auth01RegisterWidgetState extends State<Auth01RegisterWidget> {
   final TextEditingController _passwordController = TextEditingController();
 
   static final ThemeData _customTheme = ThemeData(
-    primaryColor: const Color(0xFF2563EB),
+    primaryColor: const Color(0xFF18181B),
     scaffoldBackgroundColor: Colors.white,
     cardColor: Colors.white,
-    dividerColor: const Color(0xFFE5E7EB),
+    dividerColor: const Color(0xFFE4E4E7),
     textTheme: const TextTheme(
       displayLarge: TextStyle(
         fontSize: 32,
@@ -43,11 +43,11 @@ class _Auth01RegisterWidgetState extends State<Auth01RegisterWidget> {
       ),
       bodyMedium: TextStyle(
         fontSize: 15,
-        color: Color(0xFF6B7280),
+        color: Color(0xFF71717A),
       ),
       bodySmall: TextStyle(
         fontSize: 14,
-        color: Color(0xFF6B7280),
+        color: Color(0xFF71717A),
       ),
       labelLarge: TextStyle(
         fontSize: 18,
@@ -61,22 +61,22 @@ class _Auth01RegisterWidgetState extends State<Auth01RegisterWidget> {
       contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: BorderSide(color: Color(0xFFE5E7EB)),
+        borderSide: BorderSide(color: Color(0xFFE4E4E7)),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: BorderSide(color: Color(0xFFE5E7EB)),
+        borderSide: BorderSide(color: Color(0xFFE4E4E7)),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: BorderSide(color: Color(0xFF2563EB)),
+        borderSide: BorderSide(color: Color(0xFF18181B)),
       ),
-      hintStyle: TextStyle(color: Color(0xFF6B7280), fontSize: 15),
-      labelStyle: TextStyle(color: Color(0xFF6B7280), fontSize: 15),
+      hintStyle: TextStyle(color: Color(0xFF71717A), fontSize: 15),
+      labelStyle: TextStyle(color: Color(0xFF71717A), fontSize: 15),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Color(0xFF2563EB),
+        backgroundColor: Color(0xFF18181B),
         foregroundColor: Colors.white,
         textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -86,7 +86,7 @@ class _Auth01RegisterWidgetState extends State<Auth01RegisterWidget> {
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         backgroundColor: Colors.white,
-        side: BorderSide(color: Color(0xFFE5E7EB)),
+        side: BorderSide(color: Color(0xFFE4E4E7)),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         textStyle: TextStyle(fontSize: 16, color: Colors.black),
         minimumSize: Size.fromHeight(52),
@@ -94,7 +94,7 @@ class _Auth01RegisterWidgetState extends State<Auth01RegisterWidget> {
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
-        foregroundColor: Color(0xFF2563EB),
+        foregroundColor: Color(0xFF18181B),
         textStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
       ),
     ),

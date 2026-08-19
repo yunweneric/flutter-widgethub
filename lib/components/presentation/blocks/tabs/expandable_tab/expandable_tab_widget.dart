@@ -60,7 +60,7 @@ class _ExpandableTabState extends State<ExpandableTab> {
                         decoration: BoxDecoration(
                           color: isActive
                               ? item.color
-                              : const Color.fromARGB(255, 213, 212, 212),
+                              : Theme.of(context).colorScheme.surfaceContainerHighest,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         width: isActive ? textWidth : 50,

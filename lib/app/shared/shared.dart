@@ -39,6 +39,9 @@ export 'presentation/widgets/layout/main_content.dart';
 export 'presentation/widgets/layout/side_bar.dart';
 export 'presentation/widgets/layout/side_bar_item.dart';
 
+// UI Primitives (shadcn-style)
+export 'presentation/widgets/ui/ui.dart';
+
 // UI Widgets
 export 'presentation/widgets/app_container.dart';
 export 'presentation/widgets/app_dropdown_button.dart';
@@ -56,6 +59,10 @@ export 'presentation/widgets/device_frame_selector_modal.dart';
 export 'presentation/widgets/github_icon_with_stars.dart';
 export 'presentation/widgets/icon.dart';
 export 'presentation/widgets/language_button.dart';
+
+// Theme / Design tokens
+export 'presentation/theme/app_tokens.dart';
+export 'presentation/theme/app_typography.dart';
 
 // Utilities
 export 'presentation/utils/colors.dart';

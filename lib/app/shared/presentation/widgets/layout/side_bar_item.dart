@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_typography.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 
+/// Sidebar navigation row (shadcn docs style).
+///
+/// 32px tall rounded row: muted text, accent surface on hover, and
+/// accent surface + foreground text when active.
 class SideBarItem extends StatefulWidget {
   final String title;
   final bool isActive;
@@ -19,42 +24,50 @@ class SideBarItem extends StatefulWidget {
 }
 
 class _SideBarItemState extends State<SideBarItem> {
+  bool _hovered = false;
+
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 400),
-      decoration: BoxDecoration(
-        border: BorderDirectional(
-          start: BorderSide(
-            width: 2.w,
+    final tokens = context.tokens;
+    final bool emphasized = widget.isActive || _hovered;
+
+    final name = LangUtil.trans("SubComponentCategoryEnum.${widget.title}");
+    final formatted = name[0].toUpperCase() +
+        name.split("_").join(" ").substring(1).toLowerCase();
+
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) => setState(() => _hovered = true),
+      onExit: (_) => setState(() => _hovered = false),
+      child: GestureDetector(
+        onTap: widget.onPressed,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 120),
+          height: 32,
+          margin: const EdgeInsets.only(bottom: 2),
+          padding: const EdgeInsets.symmetric(horizontal: AppSpace.md),
+          alignment: Alignment.centerLeft,
+          decoration: BoxDecoration(
             color: widget.isActive
-                ? Theme.of(context).primaryColor
-                : Theme.of(context).dividerColor,
+                ? tokens.accent
+                : _hovered
+                    ? tokens.accent.withValues(alpha: 0.6)
+                    : Colors.transparent,
+            borderRadius: AppRadii.smAll,
           ),
-        ),
-      ),
-      child: TextButton(
-        style: TextButton.styleFrom(
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              topRight: Radius.circular(5.r),
-              bottomRight: Radius.circular(5.r),
+          child: Text(
+            formatted,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: AppTypography.sans(
+              color: emphasized ? tokens.foreground : tokens.mutedForeground,
+              fontSize: 14,
+              fontWeight:
+                  widget.isActive ? FontWeight.w500 : FontWeight.w400,
+              height: 1.0,
             ),
           ),
-          alignment: Alignment.centerLeft,
         ),
-        onPressed: widget.onPressed,
-        child: Builder(builder: (context) {
-          final name =
-              LangUtil.trans("SubComponentCategoryEnum.${widget.title}");
-          final formatted = name[0].toUpperCase() +
-              name.split("_").join(" ").substring(1).toLowerCase();
-          return Text(
-            formatted,
-            style: Theme.of(context).textTheme.bodyMedium,
-          );
-        }),
       ),
     );
   }

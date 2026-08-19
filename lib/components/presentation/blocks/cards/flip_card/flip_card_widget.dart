@@ -70,11 +70,18 @@ class _ComponentFlipCardState extends State<ComponentFlipCard> {
           // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
+            DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Theme.of(context).colorScheme.primary,
               ),
-              child: Text('Drawer Header'),
+              child: Text(
+                'Drawer Header',
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.onPrimary,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
             ),
             ListTile(
               title: const Text('Home'),

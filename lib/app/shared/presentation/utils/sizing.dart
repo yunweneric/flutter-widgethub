@@ -6,6 +6,7 @@ library;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
 import 'package:flutterui/app/shared/presentation/utils/colors.dart';
 
 /// Utility class for sizing and responsive design calculations.
@@ -20,34 +21,35 @@ class AppSizing {
       (height(context) * value) / 100;
   static double kWPercentage(BuildContext context, double value) =>
       (width(context) * value) / 100;
-  static BorderRadius radiusMd() => BorderRadius.circular(10.r);
-  static BorderRadius radiusSm() => BorderRadius.circular(8.r);
+  static BorderRadius radiusMd() => AppRadii.mdAll;
+  static BorderRadius radiusSm() => AppRadii.smAll;
+  static BorderRadius radiusLg() => AppRadii.lgAll;
 
   static OutlineInputBorder mainBorder(Color color) {
     return OutlineInputBorder(
-      borderSide: BorderSide(width: 0.6, color: color),
-      borderRadius: BorderRadius.all(Radius.circular(15.r)),
+      borderSide: BorderSide(color: color),
+      borderRadius: AppRadii.mdAll,
     );
   }
 
   static OutlineInputBorder mainFocusBorder() {
     return OutlineInputBorder(
-      borderSide: const BorderSide(width: 0.6, color: AppColors.primary),
-      borderRadius: BorderRadius.all(Radius.circular(15.r)),
+      borderSide: const BorderSide(width: 1.5, color: AppColors.primary),
+      borderRadius: AppRadii.mdAll,
     );
   }
 
   static OutlineInputBorder focusedErrorBorder() {
     return OutlineInputBorder(
-      borderSide: const BorderSide(width: 1, color: AppColors.red),
-      borderRadius: BorderRadius.all(Radius.circular(15.r)),
+      borderSide: const BorderSide(width: 1.5, color: AppColors.red),
+      borderRadius: AppRadii.mdAll,
     );
   }
 
   static OutlineInputBorder errorBorder() {
     return OutlineInputBorder(
-      borderSide: const BorderSide(width: 0.6, color: AppColors.red),
-      borderRadius: BorderRadius.all(Radius.circular(15.r)),
+      borderSide: const BorderSide(color: AppColors.red),
+      borderRadius: AppRadii.mdAll,
     );
   }
 

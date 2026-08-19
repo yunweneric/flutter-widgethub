@@ -45,7 +45,8 @@ class _DockingBarWidgetState extends State<DockingBarWidget> {
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               decoration: BoxDecoration(
                 color: theme.cardColor,
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(color: theme.dividerColor),
               ),
               child: TweenAnimationBuilder(
                   key: ValueKey(activeIndex),
@@ -86,7 +87,13 @@ class _DockingBarWidgetState extends State<DockingBarWidget> {
                                 color: theme.highlightColor,
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              child: SvgPicture.string(icons[i]),
+                              child: SvgPicture.string(
+                                icons[i],
+                                colorFilter: ColorFilter.mode(
+                                  theme.colorScheme.onSurface,
+                                  BlendMode.srcIn,
+                                ),
+                              ),
                             ),
                           ),
                         );

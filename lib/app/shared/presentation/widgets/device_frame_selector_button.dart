@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/shared/logic/device_frame/device_frame_bloc.dart';
 import 'package:flutterui/app/shared/presentation/widgets/app_icon_button.dart';
@@ -27,9 +26,9 @@ class DeviceFrameSelectorButton extends StatelessWidget {
               builder: (context) => const DeviceFrameSelectorModal(),
             );
           },
-          child: AppIcon(
+          child: const AppIcon(
             icon: AppIcons.mobile,
-            size: 20.w,
+            size: 16,
           ),
         );
       },

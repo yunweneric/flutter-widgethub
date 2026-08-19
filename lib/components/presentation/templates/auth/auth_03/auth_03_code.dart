@@ -7,15 +7,15 @@ class Auth03Theme {
   static const Color backgroundStart = Color.fromARGB(255, 0, 0, 0);
   static const Color backgroundEnd = Color(0xFF23273E);
   static const Color card = Colors.white;
-  static const Color primaryButton = Color(0xFF2563EB);
-  static const Color accent = Color(0xFF6C7AFA);
-  static const Color dividerColor = Color(0xFFE5E7EB);
-  static const Color inputBorder = Color(0xFFE5E7EB);
-  static const Color inputHint = Color(0xFFB0B3C7);
-  static const Color textDark = Color(0xFF181C2E);
+  static const Color primaryButton = Color(0xFF18181B);
+  static const Color accent = Color(0xFF18181B);
+  static const Color dividerColor = Color(0xFFE4E4E7);
+  static const Color inputBorder = Color(0xFFE4E4E7);
+  static const Color inputHint = Color(0xFFA1A1AA);
+  static const Color textDark = Color(0xFF18181B);
   static const Color textLight = Colors.white;
-  static const Color textGray = Color(0xFF6B7280);
-  static const Color checkboxActive = Color(0xFF2563EB);
+  static const Color textGray = Color(0xFF71717A);
+  static const Color checkboxActive = Color(0xFF18181B);
   static const Color googleRed = Color(0xFFEA4335);
   static const Color facebookBlue = Color(0xFF1877F3);
 

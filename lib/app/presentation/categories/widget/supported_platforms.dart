@@ -1,64 +1,65 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_typography.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 
+/// Supported-platform pills for a component (shadcn badge style).
 class SupportPlatformSection extends StatelessWidget {
   final Component component;
   const SupportPlatformSection({super.key, required this.component});
 
   @override
   Widget build(BuildContext context) {
+    final tokens = context.tokens;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           LangUtil.trans("supportOn"),
-          style: Theme.of(context).textTheme.displayMedium,
+          style: context.text.h4,
         ),
-        const Kh10Spacer(),
-        Row(
+        const SizedBox(height: AppSpace.md),
+        Wrap(
+          spacing: AppSpace.sm,
+          runSpacing: AppSpace.sm,
           children: [
             ...component.supportedPlatforms.map((item) {
-              bool hasHovered = false;
-              return StatefulBuilder(builder: (context, setState) {
-                return InkWell(
-                  highlightColor: Theme.of(context).scaffoldBackgroundColor,
-                  splashColor: Theme.of(context).scaffoldBackgroundColor,
-                  hoverColor: Theme.of(context).scaffoldBackgroundColor,
-                  onTap: () {},
-                  onHover: (val) {
-                    setState(() => hasHovered = val);
-                  },
-                  child: AnimatedScale(
-                    scale: hasHovered ? 1.1 : 1.0,
-                    duration: const Duration(milliseconds: 300),
-                    child: Container(
-                      width: 40.w,
-                      height: 40.w,
-                      margin: const EdgeInsets.only(right: 20),
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).cardColor,
-                        borderRadius: AppSizing.radiusMd(),
-                      ),
-                      child: SvgPicture.string(
-                        item.icon(),
-                        color: Theme.of(context).primaryColorDark,
-                        width: 20.w,
-                        height: 20.w,
+              return Container(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: AppSpace.md, vertical: 6),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(999),
+                  border: Border.all(color: tokens.border),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SvgPicture.string(
+                      item.icon(),
+                      colorFilter: ColorFilter.mode(
+                          tokens.foreground, BlendMode.srcIn),
+                      width: 14,
+                      height: 14,
+                    ),
+                    const SizedBox(width: 6),
+                    Text(
+                      item.describe(),
+                      style: AppTypography.sans(
+                        color: tokens.foreground,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                        height: 1.0,
                       ),
                     ),
-                  ),
-                );
-              });
-            })
+                  ],
+                ),
+              );
+            }),
           ],
         ),
-        const Kh20Spacer(),
-        const Kh10Spacer(),
+        const SizedBox(height: AppSpace.xxl),
       ],
     );
   }

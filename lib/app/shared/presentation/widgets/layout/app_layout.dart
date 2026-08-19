@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutterui/app/core/routes/route_names.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/presentation/home/data/export/sidebar_categories.dart';
-import 'package:flutterui/app/presentation/home/model/component_block_model.dart';
 import 'package:flutterui/app/presentation/home/widgets/home_footer.dart';
 import 'package:flutterui/app/shared/shared.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+/// Root page layout: sticky top nav, scrollable content column and an
+/// optional footer. On mobile the navigation lives in a slide-over drawer
+/// with a scrim (shadcn docs style).
 class AppLayout extends StatefulWidget {
   final bool? hideFooter;
   final bool? isHomeScreenLayout;
@@ -27,135 +28,97 @@ class AppLayout extends StatefulWidget {
   State<AppLayout> createState() => _AppLayoutState();
 }
 
-class _AppLayoutState extends State<AppLayout>
-    with SingleTickerProviderStateMixin {
-  AnimationController? animationController;
-  Animation<double>? navBarAnimation;
-  final themeBloc = getIt.get<ThemeBloc>();
-  final componentBloc = getIt.get<ComponentBloc>();
+class _AppLayoutState extends State<AppLayout> {
   final sidebarBloc = getIt.get<SidebarBloc>();
 
-  @override
-  void initState() {
-    animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 500),
-    );
-    navBarAnimation =
-        Tween<double>(begin: 1.0, end: 0.0).animate(animationController!);
+  static const Duration _drawerDuration = Duration(milliseconds: 250);
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      animationController?.forward();
-    });
-    super.initState();
-  }
-
-  void animateNavBar(bool isNavBarOpen) {
-    navBarAnimation =
-        Tween<double>(begin: 1.0, end: 0.0).animate(animationController!);
-    if (!isNavBarOpen) {
-      animationController?.forward();
-    } else {
-      animationController?.reverse();
-    }
+  void _closeDrawer() {
+    sidebarBloc.add(UpdateSideBarEvent(newStatus: false));
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<SidebarBloc, SidebarState>(
-      listener: (context, state) {
-        if (state is SidebarUpdateStatus) animateNavBar(state.isOpen);
-      },
+    final tokens = context.tokens;
+
+    return BlocBuilder<SidebarBloc, SidebarState>(
       builder: (context, state) {
+        final bool isMobile = AppSizing.isMobile(context);
+        final bool drawerOpen = isMobile && state.isOpen;
+        final double drawerWidth =
+            AppSizing.width(context) < 360 ? AppSizing.width(context) * 0.9 : 320;
+
         return Scaffold(
           body: Stack(
             children: [
-              AnimatedBuilder(
-                  animation: animationController!,
-                  builder: (context, child) {
-                    final value = AppSizing.isMobile(context) ||
-                            AppSizing.isXMobile(context)
-                        ? navBarAnimation?.value ?? 0.0
-                        : 0.0;
-                    return Transform(
-                      alignment: Alignment.center,
-                      transform: Matrix4.identity()
-                        ..setEntry(3, 2, 0.01)
-                        ..scale(1.0, 1.0, -0.5)
-                        ..rotateY(0.2 * value)
-                        ..translate(
-                            AppSizing.kWPercentage(context, 120.0 * value)),
-                      child: SingleChildScrollView(
-                        controller: widget.controller,
-                        child: Column(
-                          children: [
-                            KhSpacer(height: 80),
-                            ConstrainedBox(
-                              constraints: BoxConstraints(
-                                  minHeight:
-                                      AppSizing.kHPercentage(context, 80)),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: widget.children,
-                              ),
+              // Page: nav + scrollable content.
+              Column(
+                children: [
+                  HomeNavBar(
+                    isHomeScreenLayout: widget.isHomeScreenLayout ?? true,
+                  ),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      controller: widget.controller,
+                      child: Column(
+                        children: [
+                          ConstrainedBox(
+                            constraints: BoxConstraints(
+                              minHeight: AppSizing.kHPercentage(context, 80),
                             ),
-                            widget.hideFooter == true
-                                ? const SizedBox.shrink()
-                                : const HomeFooter(),
-                          ],
-                        ),
-                      ),
-                    );
-                  }),
-              AnimatedPositioned(
-                top: 20,
-                left: state.isOpen ? 0 : -AppSizing.width(context),
-                duration: const Duration(milliseconds: 500),
-                child: SizedBox(
-                  height: AppSizing.height(context),
-                  width: AppSizing.kWPercentage(context, 100),
-                  child: SafeArea(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: AppSizing.kHPercentage(context, 2),
-                        horizontal: 0,
-                      ),
-                      child: SingleChildScrollView(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            _SideBarComponents(
-                              isHomeScreenLayout: widget.isHomeScreenLayout,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: widget.children,
                             ),
-                            const Kh20Spacer(),
-                            Column(
-                              children: [
-                                _NavbarSection(child: _ThemingSection()),
-                                const Kh20Spacer(),
-                                Text(
-                                  LangUtil.trans("homeFooter", args: {
-                                    "year": DateTime.now().year.toString(),
-                                    "community": "flutter community",
-                                  }),
-                                  style: Theme.of(context).textTheme.bodySmall,
-                                ),
-                                const Kh20Spacer(),
-                              ],
-                            ),
-                          ],
-                        ),
+                          ),
+                          widget.hideFooter == true
+                              ? const SizedBox.shrink()
+                              : const HomeFooter(),
+                        ],
                       ),
+                    ),
+                  ),
+                ],
+              ),
+
+              // Scrim.
+              IgnorePointer(
+                ignoring: !drawerOpen,
+                child: AnimatedOpacity(
+                  duration: _drawerDuration,
+                  opacity: drawerOpen ? 1 : 0,
+                  child: GestureDetector(
+                    onTap: _closeDrawer,
+                    child: Container(
+                      width: double.infinity,
+                      height: double.infinity,
+                      color: Colors.black.withValues(alpha: 0.5),
                     ),
                   ),
                 ),
               ),
+
+              // Slide-over drawer.
               AnimatedPositioned(
+                duration: _drawerDuration,
+                curve: Curves.easeOutCubic,
                 top: 0,
-                left: !state.isOpen ? 0 : AppSizing.width(context),
-                duration: const Duration(milliseconds: 500),
-                child: HomeNavBar(
-                  isHomeScreenLayout: widget.isHomeScreenLayout ?? true,
+                bottom: 0,
+                left: drawerOpen ? 0 : -(drawerWidth + 16),
+                child: Container(
+                  width: drawerWidth,
+                  decoration: BoxDecoration(
+                    color: tokens.background,
+                    border: Border(
+                      right: BorderSide(color: tokens.border),
+                    ),
+                  ),
+                  child: SafeArea(
+                    child: _DrawerContent(
+                      isHomeScreenLayout: widget.isHomeScreenLayout,
+                      onClose: _closeDrawer,
+                    ),
+                  ),
                 ),
               ),
             ],
@@ -164,249 +127,181 @@ class _AppLayoutState extends State<AppLayout>
       },
     );
   }
-
-  Widget navbarSection({required Widget child}) {
-    return _NavbarSection(child: child);
-  }
-
-  Widget navItem(
-      {required String title, String? icon, required VoidCallback onPressed}) {
-    return _NavItem(title: title, icon: icon, onPressed: onPressed);
-  }
 }
 
-class _NavbarSection extends StatelessWidget {
-  final Widget child;
+/// Content of the mobile slide-over drawer.
+class _DrawerContent extends StatelessWidget {
+  final bool? isHomeScreenLayout;
+  final VoidCallback onClose;
 
-  const _NavbarSection({required this.child});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: AppSizing.width(context),
-      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-      decoration: BoxDecoration(
-        border: BorderDirectional(
-            top: BorderSide(color: Theme.of(context).dividerColor)),
-      ),
-      child: child,
-    );
-  }
-}
-
-class _NavItem extends StatelessWidget {
-  final String title;
-  final String? icon;
-  final VoidCallback onPressed;
-
-  const _NavItem({
-    required this.title,
-    this.icon,
-    required this.onPressed,
+  const _DrawerContent({
+    required this.isHomeScreenLayout,
+    required this.onClose,
   });
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onPressed,
-      child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 10),
-        child: Row(
-          children: [
-            if (icon != null) ...[
-              AppIcon(icon: icon!, size: 20),
-              KwSpacer(width: 5),
-            ],
-            Text(title, style: Theme.of(context).textTheme.bodyMedium),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _SideBarComponents extends StatelessWidget {
-  final bool? isHomeScreenLayout;
-
-  const _SideBarComponents({this.isHomeScreenLayout});
-
-  @override
-  Widget build(BuildContext context) {
-    final sidebarBloc = getIt.get<SidebarBloc>();
+    final tokens = context.tokens;
     final componentBloc = getIt.get<ComponentBloc>();
-
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 30),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              TextButton(
-                child: AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 500),
-                  child: Theme.of(context).brightness == Brightness.dark
-                      ? Image.asset(
-                          AppImages.logoLight,
-                          width: 100,
-                        )
-                      : Image.asset(
-                          AppImages.logoDark,
-                          width: 100,
-                        ),
-                ),
-                onPressed: () {
-                  context.go(RouteNames.home);
-                },
-              ),
-              CircleAvatar(
-                backgroundColor: Colors.transparent,
-                child: TextButton(
-                  onPressed: () {
-                    sidebarBloc.add(UpdateSideBarEvent(newStatus: false));
-                  },
-                  child: const Icon(Icons.close),
-                ),
-              ),
-            ],
-          ),
-          KhSpacer(height: 30),
-          BlocConsumer<ComponentBloc, ComponentState>(
-            listener: (context, state) {},
-            builder: (context, state) {
-              final activePath = getIt
-                  .get<GoRouter>()
-                  .routeInformationProvider
-                  .value
-                  .uri
-                  .pathSegments;
-
-              return Builder(builder: (context) {
-                List<AppCategoryGroupModel> categoriesGroup = [
-                  ...sideBarCategories.where((item) {
-                    final condition =
-                        item.category != ComponentCategoryEnum.ANIMATIONS;
-                    return condition;
-                  }),
-                ];
-                return isHomeScreenLayout == true || isHomeScreenLayout == null
-                    ? Column(
-                        children: [
-                          ...categoriesGroup.map((categoryGroup) {
-                            return _NavItem(
-                              onPressed: () {
-                                sidebarBloc
-                                    .add(UpdateSideBarEvent(newStatus: false));
-                                context.go(
-                                    "/components/${categoryGroup.category.link()}/${categoryGroup.items.first.subCategory.link()}");
-                              },
-                              title: categoryGroup.category.describe(),
-                            );
-                          }),
-                        ],
-                      )
-                    : Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          KhSpacer(height: 30.h),
-                          ...categoriesGroup.map((item) {
-                            return Container(
-                              margin: EdgeInsets.only(bottom: 30.h),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(item.category.describe(),
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .displayMedium),
-                                  KhSpacer(height: 15.h),
-                                  Stack(
-                                    children: [
-                                      ListView.builder(
-                                        itemCount: item.items.length,
-                                        physics:
-                                            const NeverScrollableScrollPhysics(),
-                                        shrinkWrap: true,
-                                        itemBuilder: (context, index) {
-                                          final category = item.items[index];
-                                          return SideBarItem(
-                                            isActive: activePath.contains(
-                                                category.subCategory.link()),
-                                            title:
-                                                category.subCategory.describe(),
-                                            onPressed: () {
-                                              sidebarBloc.add(
-                                                  UpdateSideBarEvent(
-                                                      newStatus: false));
-                                              componentBloc.add(
-                                                  UpdateActiveCategoryEvent(
-                                                      category: category));
-                                              context.go(
-                                                  "/components/${category.category.link()}/${category.subCategory.link()}");
-                                            },
-                                          );
-                                        },
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            );
-                          }),
-                        ],
-                      );
-              });
-            },
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _ThemingSection extends StatelessWidget {
-  const _ThemingSection();
-
-  @override
-  Widget build(BuildContext context) {
     final themeBloc = getIt.get<ThemeBloc>();
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    final activePath =
+        getIt.get<GoRouter>().routeInformationProvider.value.uri.pathSegments;
+
+    final categoriesGroup = [
+      ...sideBarCategories.where(
+        (item) => item.category != ComponentCategoryEnum.ANIMATIONS,
+      ),
+    ];
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          "Choose Theming",
-          style: Theme.of(context).textTheme.displayMedium,
-        ),
-        const Kh10Spacer(),
+        // Header: logo + close.
         Padding(
-          padding: const EdgeInsets.only(left: 5),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          padding: const EdgeInsets.fromLTRB(
+              AppSpace.lg, AppSpace.md, AppSpace.sm, AppSpace.md),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _NavItem(
-                onPressed: () =>
-                    themeBloc.add(ChangeTheme(themeMode: ThemeMode.light)),
-                icon: AppIcons.sun,
-                title: LangUtil.trans("light"),
+              GestureDetector(
+                onTap: () {
+                  onClose();
+                  context.go(RouteNames.home);
+                },
+                child: Image.asset(
+                  isDark ? AppImages.logoLight : AppImages.logoDark,
+                  width: 90,
+                ),
               ),
-              _NavItem(
-                onPressed: () =>
-                    themeBloc.add(ChangeTheme(themeMode: ThemeMode.dark)),
-                icon: AppIcons.moon,
-                title: LangUtil.trans("dark"),
+              AppIconButton(
+                onPressed: onClose,
+                child: Icon(Icons.close, size: 18, color: tokens.mutedForeground),
               ),
-              _NavItem(
-                onPressed: () =>
-                    themeBloc.add(ChangeTheme(themeMode: ThemeMode.system)),
-                icon: AppIcons.desktop,
-                title: LangUtil.trans("system"),
+            ],
+          ),
+        ),
+        Container(height: 1, color: tokens.border),
+
+        // Navigation groups.
+        Expanded(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(
+                horizontal: AppSpace.md, vertical: AppSpace.lg),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ...categoriesGroup.map((group) {
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: AppSpace.xl),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: AppSpace.md, bottom: AppSpace.sm),
+                          child: Text(
+                            group.category.describe().toUpperCase(),
+                            style: context.text.overline,
+                          ),
+                        ),
+                        ...group.items.map((category) {
+                          return SideBarItem(
+                            isActive: activePath
+                                .contains(category.subCategory.link()),
+                            title: category.subCategory.describe(),
+                            onPressed: () {
+                              onClose();
+                              componentBloc.add(UpdateActiveCategoryEvent(
+                                  category: category));
+                              context.go(
+                                  "/components/${category.category.link()}/${category.subCategory.link()}");
+                            },
+                          );
+                        }),
+                      ],
+                    ),
+                  );
+                }),
+              ],
+            ),
+          ),
+        ),
+
+        // Footer: theme switcher.
+        Container(height: 1, color: tokens.border),
+        Padding(
+          padding: const EdgeInsets.all(AppSpace.lg),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                LangUtil.trans("homeFooter", args: {
+                  "year": DateTime.now().year.toString(),
+                  "community": "Flutter Community",
+                }),
+                style: context.text.muted.copyWith(fontSize: 11),
+              ),
+              Row(
+                children: [
+                  _ThemeModeButton(
+                    icon: AppIcons.sun,
+                    isActive: !isDark,
+                    onTap: () => themeBloc
+                        .add(ChangeTheme(themeMode: ThemeMode.light)),
+                  ),
+                  const SizedBox(width: AppSpace.xs),
+                  _ThemeModeButton(
+                    icon: AppIcons.moon,
+                    isActive: isDark,
+                    onTap: () =>
+                        themeBloc.add(ChangeTheme(themeMode: ThemeMode.dark)),
+                  ),
+                ],
               ),
             ],
           ),
         ),
       ],
+    );
+  }
+}
+
+class _ThemeModeButton extends StatelessWidget {
+  final String icon;
+  final bool isActive;
+  final VoidCallback onTap;
+
+  const _ThemeModeButton({
+    required this.icon,
+    required this.isActive,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final tokens = context.tokens;
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: 32,
+        height: 32,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: isActive ? tokens.secondary : Colors.transparent,
+          borderRadius: AppRadii.smAll,
+          border: Border.all(
+            color: isActive ? tokens.border : Colors.transparent,
+          ),
+        ),
+        child: AppIcon(
+          icon: icon,
+          size: 14,
+          color:
+              isActive ? tokens.foreground : tokens.mutedForeground,
+        ),
+      ),
     );
   }
 }

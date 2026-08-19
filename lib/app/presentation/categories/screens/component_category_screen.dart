@@ -8,7 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterui/app/presentation/categories/widget/category_card.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_typography.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
+import 'package:flutterui/app/shared/presentation/widgets/ui/app_badge.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/utils/util.dart';
 import 'package:flutterui/app/shared/presentation/widgets/layout/main_content.dart';
@@ -52,6 +55,7 @@ class _ComponentCategoryScreenState extends State<ComponentCategoryScreen> {
               child: activeCategory == null
                   ? const SizedBox()
                   : Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Builder(builder: (context) {
                           final name =
@@ -66,12 +70,17 @@ class _ComponentCategoryScreenState extends State<ComponentCategoryScreen> {
                             final codeComponentCount = b.codeComponents.length;
                             return a + codeComponentCount;
                           });
-                          return Text(
-                            "$formatted (${UtilHelper.formatNumber(count)})",
-                            style: Theme.of(context).textTheme.displayLarge,
+                          return Row(
+                            children: [
+                              Text(formatted, style: context.text.h1),
+                              const SizedBox(width: AppSpace.md),
+                              AppBadge(
+                                label: UtilHelper.formatNumber(count),
+                              ),
+                            ],
                           );
                         }),
-                        const Kh20Spacer(),
+                        const SizedBox(height: AppSpace.xxl),
                       ],
                     ),
             ),
@@ -91,20 +100,23 @@ class _ComponentCategoryScreenState extends State<ComponentCategoryScreen> {
                             ),
                           ),
                         )
-                      : Wrap(
-                          alignment: WrapAlignment.spaceBetween,
-                          runAlignment: WrapAlignment.spaceBetween,
-                          crossAxisAlignment: WrapCrossAlignment.center,
-                          spacing: AppSizing.isTablet(context)
-                              ? AppSizing.kWPercentage(context, 2)
-                              : AppSizing.kWPercentage(context, 5),
-                          runSpacing: AppSizing.kWPercentage(context, 5),
-                          children: [
-                            ...components.map((item) {
-                              return CategoryCard(component: item);
-                            })
-                          ],
-                        ),
+                      : LayoutBuilder(builder: (context, constraints) {
+                          final bool single = AppSizing.isMobile(context);
+                          const double gap = AppSpace.xl;
+                          final double cardWidth = single
+                              ? constraints.maxWidth
+                              : (constraints.maxWidth - gap) / 2;
+                          return Wrap(
+                            spacing: gap,
+                            runSpacing: AppSpace.xxl,
+                            children: [
+                              ...components.map((item) {
+                                return CategoryCard(
+                                    component: item, width: cardWidth);
+                              })
+                            ],
+                          );
+                        }),
                 );
               },
             ),

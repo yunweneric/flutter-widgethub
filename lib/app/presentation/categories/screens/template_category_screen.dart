@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterui/app/presentation/categories/widget/component_details_footer.dart';
 import 'package:flutterui/app/presentation/categories/widget/template_card.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_typography.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/layout/main_content.dart';
@@ -49,12 +51,18 @@ class _TemplateCategoryScreenState extends State<TemplateCategoryScreen> {
                 child: activeCategory == null
                     ? const SizedBox()
                     : Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             LangUtil.trans(component.title),
-                            style: Theme.of(context).textTheme.displayLarge,
+                            style: context.text.h1,
                           ),
-                          const Kh20Spacer(),
+                          const SizedBox(height: AppSpace.md),
+                          Text(
+                            LangUtil.trans(component.description),
+                            style: context.text.lead,
+                          ),
+                          const SizedBox(height: AppSpace.xxl),
                         ],
                       ),
               ),
@@ -73,30 +81,27 @@ class _TemplateCategoryScreenState extends State<TemplateCategoryScreen> {
                               child:
                                   Text(LangUtil.trans('noItemInThisCategory')),
                             ))
-                        : Wrap(
-                            alignment: WrapAlignment.spaceBetween,
-                            runAlignment: WrapAlignment.spaceBetween,
-                            crossAxisAlignment: WrapCrossAlignment.center,
-                            spacing: AppSizing.isTablet(context)
-                                ? AppSizing.kWPercentage(context, 2)
-                                : AppSizing.kWPercentage(context, 5),
-                            runSpacing: AppSizing.kWPercentage(context, 5),
-                            children: [
-                              // ...components.first.codeComponents.asMap().entries.map((entry) {
-                              //   return TemplateCard(
-                              //     component: components.first,
-                              //     index: entry.key,
-                              //   );
-                              // })
-
-                              ...component.codeComponents.map((item) {
-                                return TemplateCard(
-                                  component: component,
-                                  index: component.codeComponents.indexOf(item),
-                                );
-                              })
-                            ],
-                          ),
+                        : LayoutBuilder(builder: (context, constraints) {
+                            final bool single = AppSizing.isMobile(context);
+                            const double gap = AppSpace.xl;
+                            final double cardWidth = single
+                                ? constraints.maxWidth
+                                : (constraints.maxWidth - gap) / 2;
+                            return Wrap(
+                              spacing: gap,
+                              runSpacing: AppSpace.xxl,
+                              children: [
+                                ...component.codeComponents.map((item) {
+                                  return TemplateCard(
+                                    component: component,
+                                    index:
+                                        component.codeComponents.indexOf(item),
+                                    width: cardWidth,
+                                  );
+                                })
+                              ],
+                            );
+                          }),
                   );
                 },
               ),

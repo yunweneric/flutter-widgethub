@@ -29,7 +29,7 @@ class _SlideTabWidgetState extends State<SlideTabWidget> {
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: AppSizing.width(context) * 0.02, vertical: 8),
             decoration: BoxDecoration(
-              color: Colors.grey.withValues(alpha: 0.2),
+              color: Theme.of(context).colorScheme.surfaceContainerHighest,
               borderRadius: BorderRadius.circular(30),
             ),
             child: Stack(
@@ -51,7 +51,7 @@ class _SlideTabWidgetState extends State<SlideTabWidget> {
                       width: textWidth,
                       padding: const EdgeInsets.symmetric(vertical: 12),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Theme.of(context).colorScheme.surface,
                         borderRadius: BorderRadius.circular(30),
                       ),
                     ),
@@ -88,7 +88,9 @@ class _SlideTabWidgetState extends State<SlideTabWidget> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    SvgPicture.string(item.icon, height: 20),
+                                    SvgPicture.string(item.icon,
+                                        height: 20,
+                                        colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.onSurface, BlendMode.srcIn)),
                                     SizedBox(width: AppSizing.width(context) * 0.02),
                                     Text(
                                       item.title,
@@ -96,7 +98,10 @@ class _SlideTabWidgetState extends State<SlideTabWidget> {
                                       maxLines: 1,
                                       overflow: TextOverflow.clip,
                                       textAlign: TextAlign.center,
-                                      style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w600,
+                                          color: Theme.of(context).colorScheme.onSurface),
                                     ),
                                   ],
                                 ),

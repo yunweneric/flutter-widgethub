@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/app/core/service_locators.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/layout/app_layout.dart';
 import 'package:flutterui/app/shared/presentation/widgets/layout/side_bar.dart';
 
+/// Docs shell: fixed-width sidebar on the left, content on the right.
 class ComponentLayoutScreen extends StatefulWidget {
   final Widget child;
   const ComponentLayoutScreen({super.key, required this.child});
@@ -14,9 +16,10 @@ class ComponentLayoutScreen extends StatefulWidget {
 }
 
 class _AppLayoutState extends State<ComponentLayoutScreen> {
-  final duration = const Duration(seconds: 1);
+  static const double _sidebarWidth = 260;
 
   final componentBloc = getIt.get<ComponentBloc>();
+
   @override
   void initState() {
     componentBloc.add(GetAllComponentsEvent());
@@ -25,26 +28,31 @@ class _AppLayoutState extends State<ComponentLayoutScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final tokens = context.tokens;
+    final bool isMobile = AppSizing.isMobile(context);
+
     return AppLayout(
       hideFooter: true,
       isHomeScreenLayout: false,
       children: [
         SizedBox(
           width: AppSizing.width(context),
-          height: AppSizing.height(context),
+          // Fill the viewport under the 64px nav.
+          height: AppSizing.height(context) - (isMobile ? 56 : 64),
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AnimatedContainer(
-                duration: duration,
-                decoration: BoxDecoration(
-                  border: Border(
-                      right: BorderSide(color: Theme.of(context).dividerColor)),
+              if (!isMobile)
+                Container(
+                  width: _sidebarWidth,
+                  height: double.infinity,
+                  decoration: BoxDecoration(
+                    border: Border(
+                      right: BorderSide(color: tokens.border),
+                    ),
+                  ),
+                  child: const SideBar(),
                 ),
-                width: AppSizing.isMobile(context)
-                    ? 0
-                    : AppSizing.width(context) * 0.2,
-                child: const SideBar(),
-              ),
               Expanded(child: widget.child),
             ],
           ),

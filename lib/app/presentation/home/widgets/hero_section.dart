@@ -1,15 +1,12 @@
 /// Hero section widget for the home screen.
 ///
-/// Displays the main hero content including title, description, action buttons,
-/// and a staggered grid of recent component previews. Automatically loads
-/// and displays the last 3 components from the component list.
+/// shadcn-style landing hero: announcement badge, display headline,
+/// muted lead, CTA pair and a live component preview grid.
 library;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-// import 'package:flutterui/screens/routes/app_router.gr.dart';
 import 'package:flutterui/app/core/routes/route_names.dart';
 import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/presentation/home/model/component_block_model.dart';
@@ -17,20 +14,20 @@ import 'package:flutterui/app/presentation/home/screens/theme_toggle.dart';
 import 'package:flutterui/app/shared/data/enums/component_category_enum.dart';
 import 'package:flutterui/app/shared/data/enums/sub_component_category_enum.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
-import 'package:flutterui/app/shared/presentation/utils/colors.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_typography.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/utils/util.dart';
 import 'package:flutterui/app/shared/presentation/widgets/device_section_frame.dart';
+import 'package:flutterui/app/shared/presentation/widgets/ui/app_badge.dart';
+import 'package:flutterui/app/shared/presentation/widgets/ui/app_button.dart';
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:flutterui/components/presentation/templates/leave_review/leave_a_review_widget.dart';
 import 'package:flutterui/components/presentation/templates/nike_zoomer/nike_zoomer_widget.dart';
 import 'package:go_router/go_router.dart';
 
-/// Hero section widget with component previews.
-///
-/// Displays the main hero content and a staggered grid showing the last
-/// 3 components from the component library.
+/// Hero section with live component previews.
 class HeroSection extends StatefulWidget {
   /// Callback invoked when the "Browse All Assets" button is pressed.
   final VoidCallback onBrowserAll;
@@ -51,8 +48,24 @@ class _HeroSectionState extends State<HeroSection> {
     super.initState();
   }
 
+  void _goToComponents() {
+    componentBloc.add(
+      UpdateActiveCategoryEvent(
+        category: AppCategoryModel(
+          widget: widget,
+          category: ComponentCategoryEnum.INTRODUCTION,
+          subCategory: SubComponentCategoryEnum.ALL_COMPONENTS,
+        ),
+      ),
+    );
+    context.go(RouteNames.components);
+  }
+
   @override
   Widget build(BuildContext context) {
+    final tokens = context.tokens;
+    final bool isMobile = AppSizing.isMobile(context);
+
     return BlocBuilder<ComponentBloc, ComponentState>(
       builder: (context, state) {
         final count = UtilHelper.countComponents(state.allComponents);
@@ -68,7 +81,6 @@ class _HeroSectionState extends State<HeroSection> {
         Widget? thirdComponent;
 
         if (last3Components.isNotEmpty) {
-          // Flatten all codeComponents from the last 3 components, preserving order
           final List<Widget> widgets = [];
           for (final component in last3Components) {
             for (final codeComponent in component.codeComponents) {
@@ -80,177 +92,160 @@ class _HeroSectionState extends State<HeroSection> {
           thirdComponent = widgets.length > 2 ? widgets[2] : null;
         }
 
-        return Container(
-          margin: EdgeInsets.symmetric(
-              horizontal: AppSizing.kWPercentage(context, 5)),
-          width: AppSizing.kWPercentage(context, 100),
-          alignment: Alignment.topLeft,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Kh20Spacer(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        return Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 1400),
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: isMobile ? AppSpace.lg : AppSpace.xl,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    width: AppSizing.kWPercentage(
-                        context, AppSizing.isMobile(context) ? 80 : 35),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Builder(builder: (context) {
-                          return SelectableText(
-                            LangUtil.trans("heroTitle", args: {
-                              "count": count,
-                            }),
-                            style: Theme.of(context)
-                                .textTheme
-                                .displayLarge!
-                                .copyWith(
-                                    fontSize: AppSizing.isMobile(context)
-                                        ? 40.sp
-                                        : 50.sp),
-                          );
-                        }),
-                        const Kh20Spacer(),
-                        SelectableText(
-                          LangUtil.trans("heroDescription"),
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
-                        const Kh20Spacer(),
-                        Builder(builder: (context) {
-                          final theme =
-                              Theme.of(context).brightness == Brightness.dark
+                  SizedBox(height: isMobile ? AppSpace.xxl : AppSpace.huge),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      // Left: copy + CTAs.
+                      Expanded(
+                        flex: isMobile ? 1 : 5,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            AppBadge(
+                              label: LangUtil.trans("heroBadge"),
+                              variant: AppBadgeVariant.outline,
+                              leading: Container(
+                                width: 6,
+                                height: 6,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFF22C55E),
+                                  borderRadius: BorderRadius.circular(999),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: AppSpace.xl),
+                            SelectableText(
+                              LangUtil.trans("heroTitle", args: {
+                                "count": count,
+                              }),
+                              style: isMobile
+                                  ? context.text.h1
+                                  : context.text.display,
+                            ),
+                            const SizedBox(height: AppSpace.xl),
+                            ConstrainedBox(
+                              constraints:
+                                  const BoxConstraints(maxWidth: 520),
+                              child: SelectableText(
+                                LangUtil.trans("heroDescription"),
+                                style: context.text.lead,
+                              ),
+                            ),
+                            const SizedBox(height: AppSpace.xxl),
+                            Wrap(
+                              spacing: AppSpace.md,
+                              runSpacing: AppSpace.md,
+                              children: [
+                                AppButton(
+                                  label: LangUtil.trans("exploreNow"),
+                                  size: AppButtonSize.lg,
+                                  onPressed: _goToComponents,
+                                ),
+                                AppButton(
+                                  label: LangUtil.trans("browseAllAssets"),
+                                  variant: AppButtonVariant.outline,
+                                  size: AppButtonSize.lg,
+                                  trailing: const Icon(
+                                      Icons.arrow_forward_rounded,
+                                      size: 16),
+                                  onPressed: widget.onBrowserAll,
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: AppSpace.xxl),
+                            Builder(builder: (context) {
+                              final theme = Theme.of(context).brightness ==
+                                      Brightness.dark
                                   ? 'dark'
                                   : 'light';
-                          return Row(
-                            children: [
-                              Image.asset("assets/images/flutter_$theme.png",
-                                  width: 100.w),
-                              KwSpacer(width: 20.w),
-                              Image.asset("assets/images/dart_$theme.png",
-                                  width: 100.w),
-                            ],
-                          );
-                        }),
-                        const Kh20Spacer(),
-                        const Kh20Spacer(),
-                        Wrap(
-                          runSpacing: 20,
-                          children: [
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Theme.of(context).primaryColor,
-                              ),
-                              onPressed: () {
-                                componentBloc.add(
-                                  UpdateActiveCategoryEvent(
-                                    category: AppCategoryModel(
-                                      widget: widget,
-                                      category:
-                                          ComponentCategoryEnum.INTRODUCTION,
-                                      subCategory: SubComponentCategoryEnum
-                                          .ALL_COMPONENTS,
-                                    ),
-                                  ),
-                                );
-                                context.go(RouteNames.components);
-                              },
-                              child: Text(
-                                LangUtil.trans("exploreNow"),
-                                style: const TextStyle(color: AppColors.bg),
-                              ),
-                            ),
-                            KwSpacer(width: 20.w),
-                            ElevatedButton.icon(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    Theme.of(context).scaffoldBackgroundColor,
-                                side: BorderSide(
-                                    color: Theme.of(context).dividerColor),
-                              ),
-                              iconAlignment: IconAlignment.end,
-                              onPressed: widget.onBrowserAll,
-                              icon: const Icon(Icons.arrow_forward_rounded),
-                              label: Text(
-                                LangUtil.trans("browseAllAssets"),
-                                style: TextStyle(
-                                    color: Theme.of(context).primaryColorDark),
-                              ),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                  if (!AppSizing.isMobile(context))
-                    SizedBox(
-                      // height: AppSizing.kHPercentage(context, 100),
-                      // width: AppSizing.kWPercentage(context, 52),
-                      width: AppSizing.kWPercentage(context, 52),
-                      // color: Colors.teal,
-                      child: StaggeredGrid.count(
-                        crossAxisCount: 4,
-                        mainAxisSpacing: 10,
-                        crossAxisSpacing: 10,
-                        children: [
-                          StaggeredGridTile.count(
-                            crossAxisCellCount: 2,
-                            mainAxisCellCount: 2.6,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: AppSizing.radiusMd(),
-                              ),
-                              child: DeviceSectionFrame(
-                                child: AnimatedSwitcher(
-                                  duration: const Duration(seconds: 1),
-                                  child: firstComponent ??
-                                      const NikeZoomerTemplate(),
-                                ),
-                              ),
-                            ),
-                          ),
-                          StaggeredGridTile.count(
-                            crossAxisCellCount: 2,
-                            mainAxisCellCount: 3.6,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: AppSizing.radiusMd()),
-                              child: DeviceSectionFrame(
-                                deviceAlignment: Alignment.center,
-                                child: AnimatedSwitcher(
-                                  duration: const Duration(seconds: 2),
-                                  child: secondComponent ??
-                                      const LeaveReviewHomeScreen(),
-                                ),
-                              ),
-                            ),
-                          ),
-                          StaggeredGridTile.count(
-                            crossAxisCellCount: 2,
-                            mainAxisCellCount: 1.0,
-                            child: Builder(builder: (context) {
-                              return Container(
-                                decoration: BoxDecoration(
-                                    borderRadius: AppSizing.radiusMd()),
-                                child: DeviceSectionFrame(
-                                  deviceAlignment: Alignment.topCenter,
-                                  child: AnimatedSwitcher(
-                                    duration: const Duration(seconds: 3),
-                                    child:
-                                        thirdComponent ?? const ThemeToggle(),
-                                  ),
+                              return Opacity(
+                                opacity: 0.75,
+                                child: Row(
+                                  children: [
+                                    Image.asset(
+                                        "assets/images/flutter_$theme.png",
+                                        width: 88),
+                                    const SizedBox(width: AppSpace.xl),
+                                    Image.asset(
+                                        "assets/images/dart_$theme.png",
+                                        width: 88),
+                                  ],
                                 ),
                               );
                             }),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
+
+                      // Right: live preview grid.
+                      if (!isMobile) ...[
+                        const SizedBox(width: AppSpace.xxxl),
+                        Expanded(
+                          flex: 6,
+                          child: StaggeredGrid.count(
+                            crossAxisCount: 4,
+                            mainAxisSpacing: AppSpace.md,
+                            crossAxisSpacing: AppSpace.md,
+                            children: [
+                              StaggeredGridTile.count(
+                                crossAxisCellCount: 2,
+                                mainAxisCellCount: 2.6,
+                                child: _PreviewTile(
+                                  child: AnimatedSwitcher(
+                                    duration: const Duration(seconds: 1),
+                                    child: firstComponent ??
+                                        const NikeZoomerTemplate(),
+                                  ),
+                                ),
+                              ),
+                              StaggeredGridTile.count(
+                                crossAxisCellCount: 2,
+                                mainAxisCellCount: 3.6,
+                                child: _PreviewTile(
+                                  deviceAlignment: Alignment.center,
+                                  child: AnimatedSwitcher(
+                                    duration: const Duration(seconds: 2),
+                                    child: secondComponent ??
+                                        const LeaveReviewHomeScreen(),
+                                  ),
+                                ),
+                              ),
+                              StaggeredGridTile.count(
+                                crossAxisCellCount: 2,
+                                mainAxisCellCount: 1.0,
+                                child: _PreviewTile(
+                                  deviceAlignment: Alignment.topCenter,
+                                  child: AnimatedSwitcher(
+                                    duration: const Duration(seconds: 3),
+                                    child: thirdComponent ??
+                                        const ThemeToggle(),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
+                  SizedBox(height: isMobile ? AppSpace.xxl : AppSpace.huge),
+
+                  // Stats strip.
+                  _StatsStrip(state: state, tokens: tokens),
                 ],
               ),
-            ],
+            ),
           ),
         );
       },
@@ -258,25 +253,82 @@ class _HeroSectionState extends State<HeroSection> {
   }
 }
 
-class Demo1 extends StatefulWidget {
-  const Demo1({super.key});
+/// Bordered rounded tile that hosts a live device preview.
+class _PreviewTile extends StatelessWidget {
+  final Widget child;
+  final Alignment? deviceAlignment;
 
-  @override
-  State<Demo1> createState() => _Demo1State();
-}
+  const _PreviewTile({required this.child, this.deviceAlignment});
 
-class _Demo1State extends State<Demo1> {
-  final isRed = true;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
+    final tokens = context.tokens;
+    return Container(
+      clipBehavior: Clip.hardEdge,
+      decoration: BoxDecoration(
+        color: tokens.muted.withValues(alpha: 0.4),
+        borderRadius: AppRadii.lgAll,
+        border: Border.all(color: tokens.border),
+      ),
+      child: DeviceSectionFrame(
+        deviceAlignment: deviceAlignment,
+        child: child,
+      ),
+    );
+  }
+}
+
+/// Row of headline stats under the hero.
+class _StatsStrip extends StatelessWidget {
+  final ComponentState state;
+  final AppTokens tokens;
+
+  const _StatsStrip({required this.state, required this.tokens});
+
+  @override
+  Widget build(BuildContext context) {
+    final int templates = state.allComponents
+        .where((c) => c.category == ComponentCategoryEnum.TEMPLATES)
+        .length;
+    final int components = state.allComponents.length - templates;
+
+    final stats = [
+      ('${components > 0 ? components : '–'}',
+          LangUtil.trans("statsComponents")),
+      ('${templates > 0 ? templates : '–'}', LangUtil.trans("statsTemplates")),
+      ('100%', LangUtil.trans("statsFree")),
+    ];
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(vertical: AppSpace.xl),
+      decoration: BoxDecoration(
+        border: Border(
+          top: BorderSide(color: tokens.border),
+        ),
+      ),
+      child: Wrap(
+        spacing: AppSpace.huge,
+        runSpacing: AppSpace.lg,
         children: [
-          Container(
-            height: 300,
-            width: 200,
-            color: Colors.red,
-          ),
+          ...stats.map((stat) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  stat.$1,
+                  style: AppTypography.sans(
+                    color: tokens.foreground,
+                    fontSize: 28,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: -0.6,
+                  ),
+                ),
+                const SizedBox(height: 2),
+                Text(stat.$2, style: context.text.muted),
+              ],
+            );
+          }),
         ],
       ),
     );

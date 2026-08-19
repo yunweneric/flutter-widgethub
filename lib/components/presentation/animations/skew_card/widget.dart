@@ -100,8 +100,9 @@ class _SkewCardState extends State<SkewCard> {
       margin: const EdgeInsets.symmetric(horizontal: 30),
       padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(30),
+        color: Theme.of(context).cardColor,
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: Theme.of(context).dividerColor),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

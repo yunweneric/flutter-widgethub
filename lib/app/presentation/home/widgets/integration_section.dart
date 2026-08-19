@@ -1,70 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterui/app/presentation/home/widgets/device_interactive.dart';
-import 'package:flutterui/app/shared/presentation/utils/icons.dart';
+import 'package:flutterui/app/presentation/home/widgets/section_header.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 
-class IntegrationSection extends StatefulWidget {
+/// "Integration" landing section: eyebrow, title, lead and the interactive
+/// device demo.
+class IntegrationSection extends StatelessWidget {
   const IntegrationSection({super.key});
 
   @override
-  State<IntegrationSection> createState() => _IntegrationSectionState();
-}
-
-class _IntegrationSectionState extends State<IntegrationSection> {
-  @override
   Widget build(BuildContext context) {
-    return Container(
-      width: AppSizing.kWPercentage(context, 90),
-      alignment: Alignment.topLeft,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AppSizing.isMobile(context)
-              ? KhSpacer(height: 100)
-              : KhSpacer(height: 100),
-          Row(
+    final bool isMobile = AppSizing.isMobile(context);
+    return Center(
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 1400),
+        child: Container(
+          width: double.infinity,
+          padding: EdgeInsets.symmetric(
+            horizontal: isMobile ? AppSpace.lg : AppSpace.xl,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SvgPicture.asset(AppIcons.diamond),
-              KwSpacer(width: 5.w),
-              Text(
-                LangUtil.trans("integration"),
-                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 18.sp,
-                      color: Theme.of(context).primaryColor,
-                    ),
+              const SizedBox(height: AppSpace.huge),
+              SectionHeader(
+                eyebrow: LangUtil.trans("integration"),
+                title: LangUtil.trans("integrationTitle"),
+                description: LangUtil.trans("integrationDescription"),
               ),
+              const SizedBox(height: AppSpace.xxl),
+              const DeviceInteractive(),
+              const SizedBox(height: AppSpace.huge),
             ],
           ),
-          const SizedBox(height: 20),
-          SizedBox(
-            width: AppSizing.kHPercentage(context, 70),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  LangUtil.trans("integrationTitle"),
-                  style: Theme.of(context)
-                      .textTheme
-                      .displayLarge!
-                      .copyWith(fontSize: 40.sp),
-                ),
-                const Kh20Spacer(),
-                Text(
-                  LangUtil.trans("integrationDescription"),
-                  style: Theme.of(context).textTheme.bodyMedium,
-                ),
-                const Kh20Spacer(),
-              ],
-            ),
-          ),
-          KhSpacer(height: 30.h),
-          const DeviceInteractive(),
-          KhSpacer(height: 100.h),
-        ],
+        ),
       ),
     );
   }

@@ -1,60 +1,55 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_typography.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/github_icon_with_stars.dart';
 
-class ComponentFooter extends StatefulWidget {
+/// Footer for docs pages: muted credit line + GitHub stars.
+class ComponentFooter extends StatelessWidget {
   const ComponentFooter({super.key});
 
   @override
-  State<ComponentFooter> createState() => _DetailedFooterState();
-}
-
-class _DetailedFooterState extends State<ComponentFooter> {
-  @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: AppSizing.kPadding(0, 30.h),
-      width: AppSizing.width(context),
+    final tokens = context.tokens;
+    final bool isMobile = AppSizing.isMobile(context);
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: AppSpace.xl),
       child: Wrap(
-        runSpacing: 20,
+        runSpacing: AppSpace.lg,
         crossAxisAlignment: WrapCrossAlignment.center,
         runAlignment: WrapAlignment.spaceBetween,
         alignment: WrapAlignment.spaceBetween,
-        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           SizedBox(
-            width: AppSizing.kWPercentage(
-                context, AppSizing.isMobile(context) ? 100 : 35),
+            width: AppSizing.kWPercentage(context, isMobile ? 100 : 35),
             child: Text(
               LangUtil.trans("componentFooter"),
-              style: Theme.of(context).textTheme.bodySmall,
-              textAlign: AppSizing.isMobile(context)
-                  ? TextAlign.center
-                  : TextAlign.left,
+              style: AppTypography.sans(
+                color: tokens.mutedForeground,
+                fontSize: 13,
+                height: 1.5,
+              ),
+              textAlign: isMobile ? TextAlign.center : TextAlign.left,
             ),
           ),
           SizedBox(
-            width: AppSizing.kWPercentage(
-                context, AppSizing.isMobile(context) ? 100 : 35),
+            width: AppSizing.kWPercentage(context, isMobile ? 100 : 35),
             child: Row(
-              mainAxisAlignment: AppSizing.isMobile(context)
+              mainAxisAlignment: isMobile
                   ? MainAxisAlignment.center
                   : MainAxisAlignment.end,
               mainAxisSize: MainAxisSize.min,
-              children: [
-                CircleAvatar(
-                  backgroundColor: Colors.transparent,
-                  child: const GitHubIconWithStars(
-                    owner: 'yunweneric',
-                    repo: 'flutter-widgethub',
-                    url: 'https://github.com/yunweneric/flutter-widgethub/',
-                  ),
-                )
+              children: const [
+                GitHubIconWithStars(
+                  owner: 'yunweneric',
+                  repo: 'flutter-widgethub',
+                  url: 'https://github.com/yunweneric/flutter-widgethub/',
+                ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );

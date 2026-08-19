@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutterui/app/shared/data/models/component.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_typography.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/utils/util.dart';
 import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 
+/// External resource links for a component (GitHub repo, assets).
 class ResourceSection extends StatelessWidget {
   final Component component;
   const ResourceSection({super.key, required this.component});
@@ -20,9 +22,9 @@ class ResourceSection extends StatelessWidget {
       children: [
         Text(
           LangUtil.trans("resources"),
-          style: Theme.of(context).textTheme.displayMedium,
+          style: context.text.h4,
         ),
-        const KhSpacer(height: 5),
+        const SizedBox(height: AppSpace.md),
         if (component.gitHubLink != null)
           RowItem(
             onTap: () => UtilHelper.openUrl(component.gitHubLink!),
@@ -35,13 +37,13 @@ class ResourceSection extends StatelessWidget {
             leading: AppIcons.download,
             title: LangUtil.trans("downloadAssets"),
           ),
-        const Kh20Spacer(),
-        const Kh10Spacer(),
+        const SizedBox(height: AppSpace.xxl),
       ],
     );
   }
 }
 
+/// Hoverable resource link row.
 class RowItem extends StatefulWidget {
   final String leading;
   final String title;
@@ -59,36 +61,38 @@ class RowItem extends StatefulWidget {
 }
 
 class _RowItemState extends State<RowItem> {
-  bool isHovered = false;
+  bool _hovered = false;
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      highlightColor: Theme.of(context).scaffoldBackgroundColor,
-      splashColor: Theme.of(context).scaffoldBackgroundColor,
-      hoverColor: Theme.of(context).scaffoldBackgroundColor,
-      onTap: widget.onTap,
-      onHover: (val) {
-        setState(() => isHovered = val);
-      },
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 10),
-        child: AnimatedScale(
-          alignment: Alignment.centerLeft,
-          duration: const Duration(milliseconds: 300),
-          scale: isHovered ? 1.05 : 1.0,
+    final tokens = context.tokens;
+    final Color fg = _hovered ? tokens.foreground : tokens.mutedForeground;
+
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) => setState(() => _hovered = true),
+      onExit: (_) => setState(() => _hovered = false),
+      child: GestureDetector(
+        onTap: widget.onTap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: AppSpace.sm),
           child: Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              AppIcon(
-                  icon: widget.leading,
-                  color: isHovered ? Theme.of(context).primaryColor : null),
-              const KwSpacer(width: 5),
+              AppIcon(icon: widget.leading, color: fg, size: 15),
+              const SizedBox(width: AppSpace.sm),
               Text(
                 widget.title,
-                style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                    color: isHovered ? Theme.of(context).primaryColor : null),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
+                style: AppTypography.sans(
+                  color: fg,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                ).copyWith(
+                  decoration: _hovered ? TextDecoration.underline : null,
+                  decorationColor: fg,
+                ),
               ),
             ],
           ),

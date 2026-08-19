@@ -1,7 +1,8 @@
 /// Wrapper screen for displaying component details.
 ///
-/// Manages the display of component details including code preview,
-/// supported platforms, resources, and navigation between components.
+/// shadcn docs-style component page: title + lead description, platform
+/// badges, live preview / code tabs, setup instructions and resources,
+/// finished with previous/next pagination cards.
 library;
 
 import 'package:flutter/material.dart';
@@ -10,6 +11,8 @@ import 'package:flutterui/app/core/service_locators.dart';
 import 'package:flutterui/app/presentation/categories/widget/component_details_footer.dart';
 import 'package:flutterui/app/presentation/categories/widget/resource_section.dart';
 import 'package:flutterui/app/presentation/categories/widget/supported_platforms.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_typography.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/widgets/code_highlight.dart';
@@ -18,11 +21,7 @@ import 'package:flutterui/app/shared/presentation/widgets/layout/main_content.da
 import 'package:flutterui/components/data/logic/component/component_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-/// Wrapper widget for component detail screens.
-///
-/// Displays detailed information about a component including its code,
-/// supported platforms, and related resources. Handles navigation to
-/// component detail pages.
+/// Component detail page.
 class ComponentDetailsWrapper extends StatefulWidget {
   /// The component subcategory ID to display.
   final String id;
@@ -36,6 +35,7 @@ class ComponentDetailsWrapper extends StatefulWidget {
 
 class _HomeScreenState extends State<ComponentDetailsWrapper> {
   final componentBloc = getIt.get<ComponentBloc>();
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ComponentBloc, ComponentState>(
@@ -57,24 +57,38 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
           final canNext = activeIndex < state.allComponents.length - 1;
           return MainContent(
             children: [
-              Text(LangUtil.trans(component.title),
-                  style: Theme.of(context).textTheme.displayLarge),
-              const Kh10Spacer(),
-              Text(LangUtil.trans(component.description),
-                  style: Theme.of(context).textTheme.bodyMedium),
-              const Kh20Spacer(),
-              Text(LangUtil.trans("Setup"),
-                  style: Theme.of(context).textTheme.displayMedium),
-              const Kh10Spacer(),
-              const Kh10Spacer(),
-              CodeHighlight(
-                  code: component.setup, borderRadius: AppSizing.radiusSm()),
-              const Kh20Spacer(),
-              const Kh10Spacer(),
+              // Title + description.
+              Text(
+                LangUtil.trans(component.title),
+                style: context.text.h1,
+              ),
+              const SizedBox(height: AppSpace.md),
+              Text(
+                LangUtil.trans(component.description),
+                style: context.text.lead,
+              ),
+              const SizedBox(height: AppSpace.xl),
+
+              // Platforms.
               SupportPlatformSection(component: component),
-              ResourceSection(component: component),
+
+              // Live preview / code.
               CodePreview(component: component),
-              const Kh20Spacer(),
+              const SizedBox(height: AppSpace.xxl),
+
+              // Setup.
+              Text(LangUtil.trans("Setup"), style: context.text.h3),
+              const SizedBox(height: AppSpace.md),
+              CodeHighlight(
+                code: component.setup,
+                title: 'setup',
+              ),
+              const SizedBox(height: AppSpace.xxl),
+
+              // Resources.
+              ResourceSection(component: component),
+
+              // Pagination.
               ComponentDetailsFooter(
                 canPrevious: canPrevious,
                 canNext: canNext,
@@ -89,21 +103,19 @@ class _HomeScreenState extends State<ComponentDetailsWrapper> {
             SizedBox(
               height: AppSizing.kHPercentage(context, 60),
               child: Center(
-                  child: RichText(
-                text: TextSpan(
-                  text: "'${widget.id}' ",
-                  style: DefaultTextStyle.of(context)
-                      .style
-                      .copyWith(color: Theme.of(context).primaryColor),
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: LangUtil.trans('notFoundInCollections'),
-                      style:
-                          TextStyle(color: Theme.of(context).primaryColorDark),
-                    ),
-                  ],
+                child: Text.rich(
+                  TextSpan(
+                    text: "'${widget.id}' ",
+                    style: context.text.small,
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: LangUtil.trans('notFoundInCollections'),
+                        style: context.text.muted,
+                      ),
+                    ],
+                  ),
                 ),
-              )),
+              ),
             ),
           ],
         );

@@ -1,24 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/app/core/service_locators.dart';
-import 'package:flutterui/app/shared/logic/theme/theme_bloc.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_typography.dart';
 import 'package:flutterui/app/shared/presentation/utils/icons.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
 import 'package:flutterui/app/shared/presentation/utils/util.dart';
 import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:syntax_highlight/syntax_highlight.dart';
 
+/// shadcn-style code block.
+///
+/// Dark surface in both themes, JetBrains Mono, optional filename header
+/// and a copy button pinned top-right.
 class CodeHighlight extends StatefulWidget {
   final String code;
   final double? fontSize;
   final BorderRadiusGeometry? borderRadius;
+
+  /// Optional filename/label shown in a header bar above the code.
+  final String? title;
+
   const CodeHighlight({
     required this.code,
     super.key,
     this.borderRadius,
     this.fontSize,
+    this.title,
   });
 
   @override
@@ -27,47 +34,107 @@ class CodeHighlight extends StatefulWidget {
 
 class _CodeHighlightState extends State<CodeHighlight> {
   TextSpan? content;
-  final duration = const Duration(seconds: 1);
   bool hasCopied = false;
-  final themBloc = getIt.get<ThemeBloc>();
 
-  Future setupHighLighter(Brightness brightness) async {
+  Future<void> setupHighLighter() async {
     await Highlighter.initialize(['dart', 'yaml']);
-    var lightTheme = await HighlighterTheme.loadLightTheme();
-    var darkTheme = await HighlighterTheme.loadDarkTheme();
-    var highlighter = Highlighter(
-      language: 'dart',
-      theme: brightness == Brightness.dark ? darkTheme : lightTheme,
-    );
-    var highlightedCode = highlighter.highlight(widget.code);
-    content = highlightedCode;
+    // Code blocks are always dark (shadcn docs style).
+    final theme = await HighlighterTheme.loadDarkTheme();
+    final highlighter = Highlighter(language: 'dart', theme: theme);
+    content = highlighter.highlight(widget.code);
+  }
+
+  void _copy() {
+    setState(() => hasCopied = true);
+    UtilHelper.copy(context, data: widget.code);
+    Future.delayed(const Duration(seconds: 3), () {
+      if (mounted) setState(() => hasCopied = false);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    final tokens = context.tokens;
     return FutureBuilder(
-        future: setupHighLighter(Theme.of(context).brightness),
-        builder: (ctx, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const _CodeLoader();
-          }
-          return _CodeContent(
-            content: content!,
-            code: widget.code,
-            fontSize: widget.fontSize,
-            borderRadius: widget.borderRadius,
-            hasCopied: hasCopied,
-            onCopyTap: () {
-              setState(() => hasCopied = true);
-              UtilHelper.copy(context, data: widget.code);
-              Future.delayed(const Duration(seconds: 3), () {
-                if (mounted) {
-                  setState(() => hasCopied = false);
-                }
-              });
-            },
-          );
-        });
+      future: setupHighLighter(),
+      builder: (ctx, snapshot) {
+        return Container(
+          width: double.infinity,
+          clipBehavior: Clip.hardEdge,
+          decoration: BoxDecoration(
+            color: tokens.codeBackground,
+            borderRadius: widget.borderRadius ?? AppRadii.lgAll,
+            border: Border.all(color: ZincColors.zinc800),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (widget.title != null)
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: AppSpace.lg, vertical: 10),
+                  decoration: const BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(color: ZincColors.zinc800),
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        widget.title!,
+                        style: AppTypography.mono(
+                          color: ZincColors.zinc400,
+                          fontSize: 12,
+                        ),
+                      ),
+                      _CopyButton(hasCopied: hasCopied, onTap: _copy),
+                    ],
+                  ),
+                ),
+              Stack(
+                children: [
+                  snapshot.connectionState == ConnectionState.waiting
+                      ? const _CodeLoader()
+                      : ConstrainedBox(
+                          constraints: const BoxConstraints(maxHeight: 640),
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.vertical,
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Padding(
+                                padding: const EdgeInsets.all(AppSpace.xl),
+                                child: Text.rich(
+                                  content!,
+                                  softWrap: false,
+                                  overflow: TextOverflow.clip,
+                                  style: AppTypography.mono(
+                                    color: tokens.codeForeground,
+                                    fontSize: widget.fontSize ??
+                                        (AppSizing.isMobile(context)
+                                            ? 12
+                                            : 13),
+                                    height: 1.7,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                  if (widget.title == null)
+                    Positioned(
+                      right: AppSpace.md,
+                      top: AppSpace.md,
+                      child: _CopyButton(hasCopied: hasCopied, onTap: _copy),
+                    ),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }
 
@@ -76,127 +143,71 @@ class _CodeLoader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: CircularProgressIndicator());
-  }
-}
-
-class _CodeContent extends StatelessWidget {
-  final TextSpan content;
-  final String code;
-  final double? fontSize;
-  final BorderRadiusGeometry? borderRadius;
-  final bool hasCopied;
-  final VoidCallback onCopyTap;
-
-  const _CodeContent({
-    required this.content,
-    required this.code,
-    this.fontSize,
-    this.borderRadius,
-    required this.hasCopied,
-    required this.onCopyTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    return Stack(
-      children: [
-        Container(
-          width: AppSizing.kWPercentage(context, 100),
-          decoration: BoxDecoration(
-            color: Theme.of(context)
-                .cardColor
-                .withValues(alpha: isDark ? 0.6 : 0.1),
-            borderRadius: borderRadius ?? BorderRadius.circular(12.r),
-            border: Border.all(
-              color: Theme.of(context).dividerColor.withValues(alpha: 0.2),
-              width: 1,
-            ),
-          ),
-          child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
-                child: Text.rich(
-                  content,
-                  softWrap: false,
-                  overflow: TextOverflow.clip,
-                  style: GoogleFonts.sourceCodePro(
-                    fontSize: fontSize ??
-                        (AppSizing.isMobile(context) ? 11.sp : 14.sp),
-                    height: 1.8,
-                    letterSpacing: 0.3,
-                  ),
-                ),
-              ),
-            ),
+    return const SizedBox(
+      height: 120,
+      child: Center(
+        child: SizedBox(
+          width: 18,
+          height: 18,
+          child: CircularProgressIndicator(
+            strokeWidth: 2,
+            color: ZincColors.zinc500,
           ),
         ),
-        Positioned(
-          right: 16,
-          top: 16,
-          child: _CopyButton(
-            hasCopied: hasCopied,
-            onTap: onCopyTap,
-          ),
-        ),
-      ],
+      ),
     );
   }
 }
 
-class _CopyButton extends StatelessWidget {
+class _CopyButton extends StatefulWidget {
   final bool hasCopied;
   final VoidCallback onTap;
 
-  const _CopyButton({
-    required this.hasCopied,
-    required this.onTap,
-  });
+  const _CopyButton({required this.hasCopied, required this.onTap});
+
+  @override
+  State<_CopyButton> createState() => _CopyButtonState();
+}
+
+class _CopyButtonState extends State<_CopyButton> {
+  bool _hovered = false;
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(8.r),
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+    final Color fg =
+        widget.hasCopied ? ZincColors.zinc50 : ZincColors.zinc400;
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) => setState(() => _hovered = true),
+      onExit: (_) => setState(() => _hovered = false),
+      child: GestureDetector(
+        onTap: widget.onTap,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 120),
+          padding:
+              const EdgeInsets.symmetric(horizontal: AppSpace.sm, vertical: 6),
           decoration: BoxDecoration(
-            color: isDark
+            color: _hovered
                 ? Colors.white.withValues(alpha: 0.1)
-                : Colors.black.withValues(alpha: 0.05),
-            borderRadius: BorderRadius.circular(8.r),
-            border: Border.all(
-              color: Theme.of(context).dividerColor.withValues(alpha: 0.2),
-              width: 1,
-            ),
+                : Colors.transparent,
+            borderRadius: AppRadii.smAll,
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              AppIcon(
-                icon: AppIcons.clipboard,
-                color: hasCopied
-                    ? Theme.of(context).primaryColor
-                    : Theme.of(context).highlightColor,
-                size: 16,
-              ),
+              widget.hasCopied
+                  ? const Icon(Icons.check, size: 14, color: ZincColors.zinc50)
+                  : AppIcon(icon: AppIcons.clipboard, color: fg, size: 14),
               if (!AppSizing.isMobile(context)) ...[
-                KwSpacer(width: 6.w),
+                const SizedBox(width: 6),
                 Text(
-                  LangUtil.trans(hasCopied ? "copied" : "copy"),
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        fontSize: 12.sp,
-                        color: hasCopied
-                            ? Theme.of(context).primaryColor
-                            : Theme.of(context).highlightColor,
-                      ),
+                  LangUtil.trans(widget.hasCopied ? "copied" : "copy"),
+                  style: AppTypography.sans(
+                    color: fg,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500,
+                    height: 1.0,
+                  ),
                 ),
               ],
             ],

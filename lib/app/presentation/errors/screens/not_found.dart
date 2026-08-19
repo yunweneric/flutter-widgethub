@@ -5,25 +5,24 @@
 library;
 
 import 'package:flutter/material.dart';
+import 'package:flutterui/app/core/routes/route_names.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_typography.dart';
 import 'package:flutterui/app/shared/presentation/utils/lang_util.dart';
-// import 'package:flutterui/screens/routes/app_router.gr.dart';
 import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
+import 'package:flutterui/app/shared/presentation/widgets/ui/app_button.dart';
+import 'package:go_router/go_router.dart';
 
 /// Screen displayed when a route is not found.
-///
-/// Shows an error message and provides navigation back to the home page.
-class NotFoundScreen extends StatefulWidget {
+class NotFoundScreen extends StatelessWidget {
   /// Creates a not found screen.
   const NotFoundScreen({super.key});
 
   @override
-  State<NotFoundScreen> createState() => _NotFoundScreenState();
-}
-
-class _NotFoundScreenState extends State<NotFoundScreen> {
-  @override
   Widget build(BuildContext context) {
+    final tokens = context.tokens;
     return Scaffold(
+      backgroundColor: tokens.background,
       body: SizedBox(
         width: AppSizing.width(context),
         height: AppSizing.height(context),
@@ -31,14 +30,20 @@ class _NotFoundScreenState extends State<NotFoundScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(LangUtil.trans("pageNotFound")),
-            ElevatedButton(
-              onPressed: () {
-                // final router = context.innerRouterOf<StackRouter>(ComponentLayoutRoute.name);
-                // print(router);
-                // context.router.pushNamed(RouteNames.home);
-              },
-              child: Text(LangUtil.trans("home")),
+            Text(
+              '404',
+              style: AppTypography.mono(
+                color: tokens.mutedForeground,
+                fontSize: 14,
+              ),
+            ),
+            const SizedBox(height: AppSpace.md),
+            Text(LangUtil.trans("pageNotFound"), style: context.text.h2),
+            const SizedBox(height: AppSpace.xl),
+            AppButton(
+              label: LangUtil.trans("home"),
+              variant: AppButtonVariant.outline,
+              onPressed: () => context.go(RouteNames.home),
             ),
           ],
         ),

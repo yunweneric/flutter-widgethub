@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_typography.dart';
 import 'package:flutterui/app/shared/presentation/widgets/icon.dart';
 
+/// Compact toggle chip used in toolbars (e.g. Preview | Code | Copy).
+///
+/// Restyled to the shadcn look: active = solid secondary surface with
+/// foreground text, inactive = ghost with muted foreground.
 class AppChip extends StatefulWidget {
   final String icon;
   final String? title;
@@ -24,60 +28,55 @@ class AppChip extends StatefulWidget {
 }
 
 class _AppChipState extends State<AppChip> {
-  @override
-  initState() {
-    setState(() => isActive = widget.active ?? false);
-    super.initState();
-  }
+  bool _hovered = false;
 
-  bool isActive = false;
   @override
   Widget build(BuildContext context) {
-    return Builder(
-      builder: (context) {
-        isActive = widget.active == null ? isActive : widget.active!;
-        return TweenAnimationBuilder(
-            key: ValueKey(isActive),
-            duration: const Duration(milliseconds: 500),
-            tween: ColorTween(
-                begin: Theme.of(context).primaryColor,
-                end: Theme.of(context).highlightColor),
-            builder: (context, color, child) {
-              return ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  elevation: 0,
-                  shadowColor: Colors.transparent,
+    final tokens = context.tokens;
+    final bool active = widget.active ?? false;
+
+    final Color bg = active
+        ? tokens.secondary
+        : _hovered
+            ? tokens.accent.withValues(alpha: 0.7)
+            : Colors.transparent;
+    final Color fg = active ? tokens.foreground : tokens.mutedForeground;
+
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) => setState(() => _hovered = true),
+      onExit: (_) => setState(() => _hovered = false),
+      child: GestureDetector(
+        onTap: widget.onTap,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 150),
+          curve: Curves.easeOut,
+          padding: widget.padding ??
+              const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
+          decoration: BoxDecoration(
+            color: bg,
+            borderRadius: AppRadii.smAll,
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              AppIcon(icon: widget.icon, color: fg, size: 15),
+              if (widget.title != null) ...[
+                const SizedBox(width: 6),
+                Text(
+                  widget.title!,
+                  style: AppTypography.sans(
+                    color: fg,
+                    fontSize: 13,
+                    fontWeight: FontWeight.w500,
+                    height: 1.0,
+                  ),
                 ),
-                onHover: (value) {
-                  // setState(() => isActive = !isActive);
-                },
-                onPressed: () {
-                  setState(() => isActive = !isActive);
-                  if (widget.onTap != null) widget.onTap!();
-                },
-                child: Row(
-                  children: [
-                    AppIcon(
-                      icon: widget.icon,
-                      color: isActive
-                          ? Theme.of(context).primaryColor
-                          : Theme.of(context).highlightColor,
-                      size: 20,
-                    ),
-                    if (widget.title != null) KwSpacer(width: 5.w),
-                    if (widget.title != null)
-                      Text(
-                        widget.title!,
-                        style: TextStyle(
-                            color: isActive
-                                ? Theme.of(context).primaryColor
-                                : Theme.of(context).highlightColor),
-                      ),
-                  ],
-                ),
-              );
-            });
-      },
+              ],
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

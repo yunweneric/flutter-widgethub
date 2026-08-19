@@ -1,49 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutterui/components/data/logic/component/component_bloc.dart';
-import 'package:flutterui/app/shared/presentation/utils/sizing.dart';
+import 'package:flutterui/app/shared/presentation/theme/app_tokens.dart';
 
-class AppContainer extends StatefulWidget {
+/// Navigation bar shell.
+///
+/// Full-width 64px bar with a hairline bottom border and a translucent
+/// background, centering its content on a max-width column — the shadcn
+/// docs header layout.
+class AppContainer extends StatelessWidget {
   final Widget child;
   final bool isHomeScreenLayout;
+
+  /// Maximum width for the nav content column.
+  static const double maxContentWidth = 1400;
+
   const AppContainer(
       {super.key, required this.child, required this.isHomeScreenLayout});
 
   @override
-  State<AppContainer> createState() => _AppContainerState();
-}
-
-class _AppContainerState extends State<AppContainer> {
-  @override
   Widget build(BuildContext context) {
+    final tokens = context.tokens;
     return Container(
-      width:
-          AppSizing.kWPercentage(context, widget.isHomeScreenLayout ? 90 : 95),
-      margin: EdgeInsets.symmetric(
-          horizontal: AppSizing.kWPercentage(
-              context, widget.isHomeScreenLayout ? 5 : 2.5)),
+      width: double.infinity,
+      height: 64,
       decoration: BoxDecoration(
-        color:
-            Theme.of(context).scaffoldBackgroundColor.withValues(alpha: 0.95),
-        border: Border(
-          bottom: BorderSide(color: Theme.of(context).dividerColor),
-        ),
+        color: tokens.background.withValues(alpha: 0.92),
+        border: Border(bottom: BorderSide(color: tokens.border)),
       ),
-      child: BlocBuilder<ComponentBloc, ComponentState>(
-        builder: (context, state) {
-          return Builder(builder: (context) {
-            return Column(
-              children: [
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: 15.h),
-                  width: AppSizing.kWPercentage(context, 95),
-                  child: widget.child,
-                ),
-              ],
-            );
-          });
-        },
+      child: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: maxContentWidth),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: AppSpace.xl),
+            child: child,
+          ),
+        ),
       ),
     );
   }
